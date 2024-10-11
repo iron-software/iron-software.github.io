@@ -1,0 +1,4375 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class UnicodeRanges
+   | C# Zip API | IronZIP </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class UnicodeRanges
+   | C# Zip API | IronZIP ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="System.Text.Unicode.UnicodeRanges">
+  
+  
+  <h1 id="System_Text_Unicode_UnicodeRanges" data-uid="System.Text.Unicode.UnicodeRanges" class="text-break">Class UnicodeRanges
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">UnicodeRanges</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="System.Text.Unicode.html">System.Text.Unicode</a></h6>
+  <h6><strong>Assembly</strong>: IronZip.dll</h6>
+  <h5 id="System_Text_Unicode_UnicodeRanges_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class UnicodeRanges : Object</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_All_" data-uid="System.Text.Unicode.UnicodeRanges.All*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_All" data-uid="System.Text.Unicode.UnicodeRanges.All">All</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange All { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_AlphabeticPresentationForms_" data-uid="System.Text.Unicode.UnicodeRanges.AlphabeticPresentationForms*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_AlphabeticPresentationForms" data-uid="System.Text.Unicode.UnicodeRanges.AlphabeticPresentationForms">AlphabeticPresentationForms</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange AlphabeticPresentationForms { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Arabic_" data-uid="System.Text.Unicode.UnicodeRanges.Arabic*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Arabic" data-uid="System.Text.Unicode.UnicodeRanges.Arabic">Arabic</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Arabic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_ArabicExtendedA_" data-uid="System.Text.Unicode.UnicodeRanges.ArabicExtendedA*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_ArabicExtendedA" data-uid="System.Text.Unicode.UnicodeRanges.ArabicExtendedA">ArabicExtendedA</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange ArabicExtendedA { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_ArabicPresentationFormsA_" data-uid="System.Text.Unicode.UnicodeRanges.ArabicPresentationFormsA*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_ArabicPresentationFormsA" data-uid="System.Text.Unicode.UnicodeRanges.ArabicPresentationFormsA">ArabicPresentationFormsA</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange ArabicPresentationFormsA { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_ArabicPresentationFormsB_" data-uid="System.Text.Unicode.UnicodeRanges.ArabicPresentationFormsB*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_ArabicPresentationFormsB" data-uid="System.Text.Unicode.UnicodeRanges.ArabicPresentationFormsB">ArabicPresentationFormsB</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange ArabicPresentationFormsB { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_ArabicSupplement_" data-uid="System.Text.Unicode.UnicodeRanges.ArabicSupplement*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_ArabicSupplement" data-uid="System.Text.Unicode.UnicodeRanges.ArabicSupplement">ArabicSupplement</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange ArabicSupplement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Armenian_" data-uid="System.Text.Unicode.UnicodeRanges.Armenian*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Armenian" data-uid="System.Text.Unicode.UnicodeRanges.Armenian">Armenian</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Armenian { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Arrows_" data-uid="System.Text.Unicode.UnicodeRanges.Arrows*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Arrows" data-uid="System.Text.Unicode.UnicodeRanges.Arrows">Arrows</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Arrows { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Balinese_" data-uid="System.Text.Unicode.UnicodeRanges.Balinese*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Balinese" data-uid="System.Text.Unicode.UnicodeRanges.Balinese">Balinese</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Balinese { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Bamum_" data-uid="System.Text.Unicode.UnicodeRanges.Bamum*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Bamum" data-uid="System.Text.Unicode.UnicodeRanges.Bamum">Bamum</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Bamum { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_BasicLatin_" data-uid="System.Text.Unicode.UnicodeRanges.BasicLatin*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_BasicLatin" data-uid="System.Text.Unicode.UnicodeRanges.BasicLatin">BasicLatin</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange BasicLatin { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Batak_" data-uid="System.Text.Unicode.UnicodeRanges.Batak*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Batak" data-uid="System.Text.Unicode.UnicodeRanges.Batak">Batak</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Batak { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Bengali_" data-uid="System.Text.Unicode.UnicodeRanges.Bengali*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Bengali" data-uid="System.Text.Unicode.UnicodeRanges.Bengali">Bengali</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Bengali { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_BlockElements_" data-uid="System.Text.Unicode.UnicodeRanges.BlockElements*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_BlockElements" data-uid="System.Text.Unicode.UnicodeRanges.BlockElements">BlockElements</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange BlockElements { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Bopomofo_" data-uid="System.Text.Unicode.UnicodeRanges.Bopomofo*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Bopomofo" data-uid="System.Text.Unicode.UnicodeRanges.Bopomofo">Bopomofo</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Bopomofo { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_BopomofoExtended_" data-uid="System.Text.Unicode.UnicodeRanges.BopomofoExtended*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_BopomofoExtended" data-uid="System.Text.Unicode.UnicodeRanges.BopomofoExtended">BopomofoExtended</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange BopomofoExtended { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_BoxDrawing_" data-uid="System.Text.Unicode.UnicodeRanges.BoxDrawing*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_BoxDrawing" data-uid="System.Text.Unicode.UnicodeRanges.BoxDrawing">BoxDrawing</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange BoxDrawing { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_BraillePatterns_" data-uid="System.Text.Unicode.UnicodeRanges.BraillePatterns*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_BraillePatterns" data-uid="System.Text.Unicode.UnicodeRanges.BraillePatterns">BraillePatterns</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange BraillePatterns { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Buginese_" data-uid="System.Text.Unicode.UnicodeRanges.Buginese*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Buginese" data-uid="System.Text.Unicode.UnicodeRanges.Buginese">Buginese</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Buginese { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Buhid_" data-uid="System.Text.Unicode.UnicodeRanges.Buhid*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Buhid" data-uid="System.Text.Unicode.UnicodeRanges.Buhid">Buhid</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Buhid { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Cham_" data-uid="System.Text.Unicode.UnicodeRanges.Cham*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Cham" data-uid="System.Text.Unicode.UnicodeRanges.Cham">Cham</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Cham { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Cherokee_" data-uid="System.Text.Unicode.UnicodeRanges.Cherokee*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Cherokee" data-uid="System.Text.Unicode.UnicodeRanges.Cherokee">Cherokee</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Cherokee { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CherokeeSupplement_" data-uid="System.Text.Unicode.UnicodeRanges.CherokeeSupplement*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CherokeeSupplement" data-uid="System.Text.Unicode.UnicodeRanges.CherokeeSupplement">CherokeeSupplement</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CherokeeSupplement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CjkCompatibility_" data-uid="System.Text.Unicode.UnicodeRanges.CjkCompatibility*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CjkCompatibility" data-uid="System.Text.Unicode.UnicodeRanges.CjkCompatibility">CjkCompatibility</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CjkCompatibility { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CjkCompatibilityForms_" data-uid="System.Text.Unicode.UnicodeRanges.CjkCompatibilityForms*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CjkCompatibilityForms" data-uid="System.Text.Unicode.UnicodeRanges.CjkCompatibilityForms">CjkCompatibilityForms</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CjkCompatibilityForms { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CjkCompatibilityIdeographs_" data-uid="System.Text.Unicode.UnicodeRanges.CjkCompatibilityIdeographs*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CjkCompatibilityIdeographs" data-uid="System.Text.Unicode.UnicodeRanges.CjkCompatibilityIdeographs">CjkCompatibilityIdeographs</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CjkCompatibilityIdeographs { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CjkRadicalsSupplement_" data-uid="System.Text.Unicode.UnicodeRanges.CjkRadicalsSupplement*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CjkRadicalsSupplement" data-uid="System.Text.Unicode.UnicodeRanges.CjkRadicalsSupplement">CjkRadicalsSupplement</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CjkRadicalsSupplement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CjkStrokes_" data-uid="System.Text.Unicode.UnicodeRanges.CjkStrokes*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CjkStrokes" data-uid="System.Text.Unicode.UnicodeRanges.CjkStrokes">CjkStrokes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CjkStrokes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CjkSymbolsandPunctuation_" data-uid="System.Text.Unicode.UnicodeRanges.CjkSymbolsandPunctuation*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CjkSymbolsandPunctuation" data-uid="System.Text.Unicode.UnicodeRanges.CjkSymbolsandPunctuation">CjkSymbolsandPunctuation</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CjkSymbolsandPunctuation { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CjkUnifiedIdeographs_" data-uid="System.Text.Unicode.UnicodeRanges.CjkUnifiedIdeographs*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CjkUnifiedIdeographs" data-uid="System.Text.Unicode.UnicodeRanges.CjkUnifiedIdeographs">CjkUnifiedIdeographs</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CjkUnifiedIdeographs { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CjkUnifiedIdeographsExtensionA_" data-uid="System.Text.Unicode.UnicodeRanges.CjkUnifiedIdeographsExtensionA*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CjkUnifiedIdeographsExtensionA" data-uid="System.Text.Unicode.UnicodeRanges.CjkUnifiedIdeographsExtensionA">CjkUnifiedIdeographsExtensionA</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CjkUnifiedIdeographsExtensionA { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CombiningDiacriticalMarks_" data-uid="System.Text.Unicode.UnicodeRanges.CombiningDiacriticalMarks*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CombiningDiacriticalMarks" data-uid="System.Text.Unicode.UnicodeRanges.CombiningDiacriticalMarks">CombiningDiacriticalMarks</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CombiningDiacriticalMarks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CombiningDiacriticalMarksExtended_" data-uid="System.Text.Unicode.UnicodeRanges.CombiningDiacriticalMarksExtended*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CombiningDiacriticalMarksExtended" data-uid="System.Text.Unicode.UnicodeRanges.CombiningDiacriticalMarksExtended">CombiningDiacriticalMarksExtended</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CombiningDiacriticalMarksExtended { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CombiningDiacriticalMarksforSymbols_" data-uid="System.Text.Unicode.UnicodeRanges.CombiningDiacriticalMarksforSymbols*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CombiningDiacriticalMarksforSymbols" data-uid="System.Text.Unicode.UnicodeRanges.CombiningDiacriticalMarksforSymbols">CombiningDiacriticalMarksforSymbols</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CombiningDiacriticalMarksforSymbols { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CombiningDiacriticalMarksSupplement_" data-uid="System.Text.Unicode.UnicodeRanges.CombiningDiacriticalMarksSupplement*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CombiningDiacriticalMarksSupplement" data-uid="System.Text.Unicode.UnicodeRanges.CombiningDiacriticalMarksSupplement">CombiningDiacriticalMarksSupplement</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CombiningDiacriticalMarksSupplement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CombiningHalfMarks_" data-uid="System.Text.Unicode.UnicodeRanges.CombiningHalfMarks*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CombiningHalfMarks" data-uid="System.Text.Unicode.UnicodeRanges.CombiningHalfMarks">CombiningHalfMarks</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CombiningHalfMarks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CommonIndicNumberForms_" data-uid="System.Text.Unicode.UnicodeRanges.CommonIndicNumberForms*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CommonIndicNumberForms" data-uid="System.Text.Unicode.UnicodeRanges.CommonIndicNumberForms">CommonIndicNumberForms</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CommonIndicNumberForms { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_ControlPictures_" data-uid="System.Text.Unicode.UnicodeRanges.ControlPictures*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_ControlPictures" data-uid="System.Text.Unicode.UnicodeRanges.ControlPictures">ControlPictures</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange ControlPictures { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Coptic_" data-uid="System.Text.Unicode.UnicodeRanges.Coptic*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Coptic" data-uid="System.Text.Unicode.UnicodeRanges.Coptic">Coptic</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Coptic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CurrencySymbols_" data-uid="System.Text.Unicode.UnicodeRanges.CurrencySymbols*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CurrencySymbols" data-uid="System.Text.Unicode.UnicodeRanges.CurrencySymbols">CurrencySymbols</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CurrencySymbols { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Cyrillic_" data-uid="System.Text.Unicode.UnicodeRanges.Cyrillic*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Cyrillic" data-uid="System.Text.Unicode.UnicodeRanges.Cyrillic">Cyrillic</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Cyrillic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CyrillicExtendedA_" data-uid="System.Text.Unicode.UnicodeRanges.CyrillicExtendedA*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CyrillicExtendedA" data-uid="System.Text.Unicode.UnicodeRanges.CyrillicExtendedA">CyrillicExtendedA</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CyrillicExtendedA { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CyrillicExtendedB_" data-uid="System.Text.Unicode.UnicodeRanges.CyrillicExtendedB*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CyrillicExtendedB" data-uid="System.Text.Unicode.UnicodeRanges.CyrillicExtendedB">CyrillicExtendedB</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CyrillicExtendedB { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CyrillicExtendedC_" data-uid="System.Text.Unicode.UnicodeRanges.CyrillicExtendedC*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CyrillicExtendedC" data-uid="System.Text.Unicode.UnicodeRanges.CyrillicExtendedC">CyrillicExtendedC</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CyrillicExtendedC { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_CyrillicSupplement_" data-uid="System.Text.Unicode.UnicodeRanges.CyrillicSupplement*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_CyrillicSupplement" data-uid="System.Text.Unicode.UnicodeRanges.CyrillicSupplement">CyrillicSupplement</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange CyrillicSupplement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Devanagari_" data-uid="System.Text.Unicode.UnicodeRanges.Devanagari*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Devanagari" data-uid="System.Text.Unicode.UnicodeRanges.Devanagari">Devanagari</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Devanagari { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_DevanagariExtended_" data-uid="System.Text.Unicode.UnicodeRanges.DevanagariExtended*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_DevanagariExtended" data-uid="System.Text.Unicode.UnicodeRanges.DevanagariExtended">DevanagariExtended</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange DevanagariExtended { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Dingbats_" data-uid="System.Text.Unicode.UnicodeRanges.Dingbats*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Dingbats" data-uid="System.Text.Unicode.UnicodeRanges.Dingbats">Dingbats</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Dingbats { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_EnclosedAlphanumerics_" data-uid="System.Text.Unicode.UnicodeRanges.EnclosedAlphanumerics*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_EnclosedAlphanumerics" data-uid="System.Text.Unicode.UnicodeRanges.EnclosedAlphanumerics">EnclosedAlphanumerics</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange EnclosedAlphanumerics { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_EnclosedCjkLettersandMonths_" data-uid="System.Text.Unicode.UnicodeRanges.EnclosedCjkLettersandMonths*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_EnclosedCjkLettersandMonths" data-uid="System.Text.Unicode.UnicodeRanges.EnclosedCjkLettersandMonths">EnclosedCjkLettersandMonths</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange EnclosedCjkLettersandMonths { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Ethiopic_" data-uid="System.Text.Unicode.UnicodeRanges.Ethiopic*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Ethiopic" data-uid="System.Text.Unicode.UnicodeRanges.Ethiopic">Ethiopic</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Ethiopic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_EthiopicExtended_" data-uid="System.Text.Unicode.UnicodeRanges.EthiopicExtended*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_EthiopicExtended" data-uid="System.Text.Unicode.UnicodeRanges.EthiopicExtended">EthiopicExtended</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange EthiopicExtended { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_EthiopicExtendedA_" data-uid="System.Text.Unicode.UnicodeRanges.EthiopicExtendedA*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_EthiopicExtendedA" data-uid="System.Text.Unicode.UnicodeRanges.EthiopicExtendedA">EthiopicExtendedA</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange EthiopicExtendedA { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_EthiopicSupplement_" data-uid="System.Text.Unicode.UnicodeRanges.EthiopicSupplement*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_EthiopicSupplement" data-uid="System.Text.Unicode.UnicodeRanges.EthiopicSupplement">EthiopicSupplement</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange EthiopicSupplement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_GeneralPunctuation_" data-uid="System.Text.Unicode.UnicodeRanges.GeneralPunctuation*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_GeneralPunctuation" data-uid="System.Text.Unicode.UnicodeRanges.GeneralPunctuation">GeneralPunctuation</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange GeneralPunctuation { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_GeometricShapes_" data-uid="System.Text.Unicode.UnicodeRanges.GeometricShapes*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_GeometricShapes" data-uid="System.Text.Unicode.UnicodeRanges.GeometricShapes">GeometricShapes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange GeometricShapes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Georgian_" data-uid="System.Text.Unicode.UnicodeRanges.Georgian*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Georgian" data-uid="System.Text.Unicode.UnicodeRanges.Georgian">Georgian</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Georgian { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_GeorgianExtended_" data-uid="System.Text.Unicode.UnicodeRanges.GeorgianExtended*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_GeorgianExtended" data-uid="System.Text.Unicode.UnicodeRanges.GeorgianExtended">GeorgianExtended</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange GeorgianExtended { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_GeorgianSupplement_" data-uid="System.Text.Unicode.UnicodeRanges.GeorgianSupplement*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_GeorgianSupplement" data-uid="System.Text.Unicode.UnicodeRanges.GeorgianSupplement">GeorgianSupplement</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange GeorgianSupplement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Glagolitic_" data-uid="System.Text.Unicode.UnicodeRanges.Glagolitic*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Glagolitic" data-uid="System.Text.Unicode.UnicodeRanges.Glagolitic">Glagolitic</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Glagolitic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_GreekandCoptic_" data-uid="System.Text.Unicode.UnicodeRanges.GreekandCoptic*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_GreekandCoptic" data-uid="System.Text.Unicode.UnicodeRanges.GreekandCoptic">GreekandCoptic</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange GreekandCoptic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_GreekExtended_" data-uid="System.Text.Unicode.UnicodeRanges.GreekExtended*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_GreekExtended" data-uid="System.Text.Unicode.UnicodeRanges.GreekExtended">GreekExtended</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange GreekExtended { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Gujarati_" data-uid="System.Text.Unicode.UnicodeRanges.Gujarati*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Gujarati" data-uid="System.Text.Unicode.UnicodeRanges.Gujarati">Gujarati</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Gujarati { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Gurmukhi_" data-uid="System.Text.Unicode.UnicodeRanges.Gurmukhi*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Gurmukhi" data-uid="System.Text.Unicode.UnicodeRanges.Gurmukhi">Gurmukhi</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Gurmukhi { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_HalfwidthandFullwidthForms_" data-uid="System.Text.Unicode.UnicodeRanges.HalfwidthandFullwidthForms*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_HalfwidthandFullwidthForms" data-uid="System.Text.Unicode.UnicodeRanges.HalfwidthandFullwidthForms">HalfwidthandFullwidthForms</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange HalfwidthandFullwidthForms { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_HangulCompatibilityJamo_" data-uid="System.Text.Unicode.UnicodeRanges.HangulCompatibilityJamo*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_HangulCompatibilityJamo" data-uid="System.Text.Unicode.UnicodeRanges.HangulCompatibilityJamo">HangulCompatibilityJamo</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange HangulCompatibilityJamo { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_HangulJamo_" data-uid="System.Text.Unicode.UnicodeRanges.HangulJamo*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_HangulJamo" data-uid="System.Text.Unicode.UnicodeRanges.HangulJamo">HangulJamo</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange HangulJamo { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_HangulJamoExtendedA_" data-uid="System.Text.Unicode.UnicodeRanges.HangulJamoExtendedA*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_HangulJamoExtendedA" data-uid="System.Text.Unicode.UnicodeRanges.HangulJamoExtendedA">HangulJamoExtendedA</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange HangulJamoExtendedA { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_HangulJamoExtendedB_" data-uid="System.Text.Unicode.UnicodeRanges.HangulJamoExtendedB*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_HangulJamoExtendedB" data-uid="System.Text.Unicode.UnicodeRanges.HangulJamoExtendedB">HangulJamoExtendedB</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange HangulJamoExtendedB { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_HangulSyllables_" data-uid="System.Text.Unicode.UnicodeRanges.HangulSyllables*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_HangulSyllables" data-uid="System.Text.Unicode.UnicodeRanges.HangulSyllables">HangulSyllables</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange HangulSyllables { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Hanunoo_" data-uid="System.Text.Unicode.UnicodeRanges.Hanunoo*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Hanunoo" data-uid="System.Text.Unicode.UnicodeRanges.Hanunoo">Hanunoo</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Hanunoo { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Hebrew_" data-uid="System.Text.Unicode.UnicodeRanges.Hebrew*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Hebrew" data-uid="System.Text.Unicode.UnicodeRanges.Hebrew">Hebrew</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Hebrew { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Hiragana_" data-uid="System.Text.Unicode.UnicodeRanges.Hiragana*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Hiragana" data-uid="System.Text.Unicode.UnicodeRanges.Hiragana">Hiragana</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Hiragana { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_IdeographicDescriptionCharacters_" data-uid="System.Text.Unicode.UnicodeRanges.IdeographicDescriptionCharacters*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_IdeographicDescriptionCharacters" data-uid="System.Text.Unicode.UnicodeRanges.IdeographicDescriptionCharacters">IdeographicDescriptionCharacters</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange IdeographicDescriptionCharacters { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_IpaExtensions_" data-uid="System.Text.Unicode.UnicodeRanges.IpaExtensions*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_IpaExtensions" data-uid="System.Text.Unicode.UnicodeRanges.IpaExtensions">IpaExtensions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange IpaExtensions { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Javanese_" data-uid="System.Text.Unicode.UnicodeRanges.Javanese*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Javanese" data-uid="System.Text.Unicode.UnicodeRanges.Javanese">Javanese</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Javanese { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Kanbun_" data-uid="System.Text.Unicode.UnicodeRanges.Kanbun*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Kanbun" data-uid="System.Text.Unicode.UnicodeRanges.Kanbun">Kanbun</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Kanbun { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_KangxiRadicals_" data-uid="System.Text.Unicode.UnicodeRanges.KangxiRadicals*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_KangxiRadicals" data-uid="System.Text.Unicode.UnicodeRanges.KangxiRadicals">KangxiRadicals</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange KangxiRadicals { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Kannada_" data-uid="System.Text.Unicode.UnicodeRanges.Kannada*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Kannada" data-uid="System.Text.Unicode.UnicodeRanges.Kannada">Kannada</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Kannada { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Katakana_" data-uid="System.Text.Unicode.UnicodeRanges.Katakana*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Katakana" data-uid="System.Text.Unicode.UnicodeRanges.Katakana">Katakana</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Katakana { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_KatakanaPhoneticExtensions_" data-uid="System.Text.Unicode.UnicodeRanges.KatakanaPhoneticExtensions*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_KatakanaPhoneticExtensions" data-uid="System.Text.Unicode.UnicodeRanges.KatakanaPhoneticExtensions">KatakanaPhoneticExtensions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange KatakanaPhoneticExtensions { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_KayahLi_" data-uid="System.Text.Unicode.UnicodeRanges.KayahLi*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_KayahLi" data-uid="System.Text.Unicode.UnicodeRanges.KayahLi">KayahLi</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange KayahLi { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Khmer_" data-uid="System.Text.Unicode.UnicodeRanges.Khmer*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Khmer" data-uid="System.Text.Unicode.UnicodeRanges.Khmer">Khmer</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Khmer { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_KhmerSymbols_" data-uid="System.Text.Unicode.UnicodeRanges.KhmerSymbols*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_KhmerSymbols" data-uid="System.Text.Unicode.UnicodeRanges.KhmerSymbols">KhmerSymbols</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange KhmerSymbols { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Lao_" data-uid="System.Text.Unicode.UnicodeRanges.Lao*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Lao" data-uid="System.Text.Unicode.UnicodeRanges.Lao">Lao</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Lao { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Latin1Supplement_" data-uid="System.Text.Unicode.UnicodeRanges.Latin1Supplement*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Latin1Supplement" data-uid="System.Text.Unicode.UnicodeRanges.Latin1Supplement">Latin1Supplement</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Latin1Supplement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_LatinExtendedA_" data-uid="System.Text.Unicode.UnicodeRanges.LatinExtendedA*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_LatinExtendedA" data-uid="System.Text.Unicode.UnicodeRanges.LatinExtendedA">LatinExtendedA</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange LatinExtendedA { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_LatinExtendedAdditional_" data-uid="System.Text.Unicode.UnicodeRanges.LatinExtendedAdditional*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_LatinExtendedAdditional" data-uid="System.Text.Unicode.UnicodeRanges.LatinExtendedAdditional">LatinExtendedAdditional</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange LatinExtendedAdditional { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_LatinExtendedB_" data-uid="System.Text.Unicode.UnicodeRanges.LatinExtendedB*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_LatinExtendedB" data-uid="System.Text.Unicode.UnicodeRanges.LatinExtendedB">LatinExtendedB</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange LatinExtendedB { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_LatinExtendedC_" data-uid="System.Text.Unicode.UnicodeRanges.LatinExtendedC*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_LatinExtendedC" data-uid="System.Text.Unicode.UnicodeRanges.LatinExtendedC">LatinExtendedC</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange LatinExtendedC { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_LatinExtendedD_" data-uid="System.Text.Unicode.UnicodeRanges.LatinExtendedD*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_LatinExtendedD" data-uid="System.Text.Unicode.UnicodeRanges.LatinExtendedD">LatinExtendedD</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange LatinExtendedD { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_LatinExtendedE_" data-uid="System.Text.Unicode.UnicodeRanges.LatinExtendedE*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_LatinExtendedE" data-uid="System.Text.Unicode.UnicodeRanges.LatinExtendedE">LatinExtendedE</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange LatinExtendedE { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Lepcha_" data-uid="System.Text.Unicode.UnicodeRanges.Lepcha*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Lepcha" data-uid="System.Text.Unicode.UnicodeRanges.Lepcha">Lepcha</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Lepcha { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_LetterlikeSymbols_" data-uid="System.Text.Unicode.UnicodeRanges.LetterlikeSymbols*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_LetterlikeSymbols" data-uid="System.Text.Unicode.UnicodeRanges.LetterlikeSymbols">LetterlikeSymbols</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange LetterlikeSymbols { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Limbu_" data-uid="System.Text.Unicode.UnicodeRanges.Limbu*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Limbu" data-uid="System.Text.Unicode.UnicodeRanges.Limbu">Limbu</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Limbu { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Lisu_" data-uid="System.Text.Unicode.UnicodeRanges.Lisu*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Lisu" data-uid="System.Text.Unicode.UnicodeRanges.Lisu">Lisu</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Lisu { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Malayalam_" data-uid="System.Text.Unicode.UnicodeRanges.Malayalam*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Malayalam" data-uid="System.Text.Unicode.UnicodeRanges.Malayalam">Malayalam</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Malayalam { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Mandaic_" data-uid="System.Text.Unicode.UnicodeRanges.Mandaic*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Mandaic" data-uid="System.Text.Unicode.UnicodeRanges.Mandaic">Mandaic</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Mandaic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_MathematicalOperators_" data-uid="System.Text.Unicode.UnicodeRanges.MathematicalOperators*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_MathematicalOperators" data-uid="System.Text.Unicode.UnicodeRanges.MathematicalOperators">MathematicalOperators</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange MathematicalOperators { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_MeeteiMayek_" data-uid="System.Text.Unicode.UnicodeRanges.MeeteiMayek*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_MeeteiMayek" data-uid="System.Text.Unicode.UnicodeRanges.MeeteiMayek">MeeteiMayek</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange MeeteiMayek { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_MeeteiMayekExtensions_" data-uid="System.Text.Unicode.UnicodeRanges.MeeteiMayekExtensions*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_MeeteiMayekExtensions" data-uid="System.Text.Unicode.UnicodeRanges.MeeteiMayekExtensions">MeeteiMayekExtensions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange MeeteiMayekExtensions { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_MiscellaneousMathematicalSymbolsA_" data-uid="System.Text.Unicode.UnicodeRanges.MiscellaneousMathematicalSymbolsA*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_MiscellaneousMathematicalSymbolsA" data-uid="System.Text.Unicode.UnicodeRanges.MiscellaneousMathematicalSymbolsA">MiscellaneousMathematicalSymbolsA</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange MiscellaneousMathematicalSymbolsA { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_MiscellaneousMathematicalSymbolsB_" data-uid="System.Text.Unicode.UnicodeRanges.MiscellaneousMathematicalSymbolsB*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_MiscellaneousMathematicalSymbolsB" data-uid="System.Text.Unicode.UnicodeRanges.MiscellaneousMathematicalSymbolsB">MiscellaneousMathematicalSymbolsB</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange MiscellaneousMathematicalSymbolsB { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_MiscellaneousSymbols_" data-uid="System.Text.Unicode.UnicodeRanges.MiscellaneousSymbols*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_MiscellaneousSymbols" data-uid="System.Text.Unicode.UnicodeRanges.MiscellaneousSymbols">MiscellaneousSymbols</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange MiscellaneousSymbols { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_MiscellaneousSymbolsandArrows_" data-uid="System.Text.Unicode.UnicodeRanges.MiscellaneousSymbolsandArrows*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_MiscellaneousSymbolsandArrows" data-uid="System.Text.Unicode.UnicodeRanges.MiscellaneousSymbolsandArrows">MiscellaneousSymbolsandArrows</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange MiscellaneousSymbolsandArrows { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_MiscellaneousTechnical_" data-uid="System.Text.Unicode.UnicodeRanges.MiscellaneousTechnical*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_MiscellaneousTechnical" data-uid="System.Text.Unicode.UnicodeRanges.MiscellaneousTechnical">MiscellaneousTechnical</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange MiscellaneousTechnical { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_ModifierToneLetters_" data-uid="System.Text.Unicode.UnicodeRanges.ModifierToneLetters*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_ModifierToneLetters" data-uid="System.Text.Unicode.UnicodeRanges.ModifierToneLetters">ModifierToneLetters</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange ModifierToneLetters { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Mongolian_" data-uid="System.Text.Unicode.UnicodeRanges.Mongolian*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Mongolian" data-uid="System.Text.Unicode.UnicodeRanges.Mongolian">Mongolian</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Mongolian { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Myanmar_" data-uid="System.Text.Unicode.UnicodeRanges.Myanmar*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Myanmar" data-uid="System.Text.Unicode.UnicodeRanges.Myanmar">Myanmar</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Myanmar { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_MyanmarExtendedA_" data-uid="System.Text.Unicode.UnicodeRanges.MyanmarExtendedA*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_MyanmarExtendedA" data-uid="System.Text.Unicode.UnicodeRanges.MyanmarExtendedA">MyanmarExtendedA</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange MyanmarExtendedA { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_MyanmarExtendedB_" data-uid="System.Text.Unicode.UnicodeRanges.MyanmarExtendedB*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_MyanmarExtendedB" data-uid="System.Text.Unicode.UnicodeRanges.MyanmarExtendedB">MyanmarExtendedB</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange MyanmarExtendedB { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_NewTaiLue_" data-uid="System.Text.Unicode.UnicodeRanges.NewTaiLue*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_NewTaiLue" data-uid="System.Text.Unicode.UnicodeRanges.NewTaiLue">NewTaiLue</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange NewTaiLue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_NKo_" data-uid="System.Text.Unicode.UnicodeRanges.NKo*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_NKo" data-uid="System.Text.Unicode.UnicodeRanges.NKo">NKo</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange NKo { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_None_" data-uid="System.Text.Unicode.UnicodeRanges.None*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_None" data-uid="System.Text.Unicode.UnicodeRanges.None">None</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange None { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_NumberForms_" data-uid="System.Text.Unicode.UnicodeRanges.NumberForms*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_NumberForms" data-uid="System.Text.Unicode.UnicodeRanges.NumberForms">NumberForms</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange NumberForms { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Ogham_" data-uid="System.Text.Unicode.UnicodeRanges.Ogham*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Ogham" data-uid="System.Text.Unicode.UnicodeRanges.Ogham">Ogham</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Ogham { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_OlChiki_" data-uid="System.Text.Unicode.UnicodeRanges.OlChiki*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_OlChiki" data-uid="System.Text.Unicode.UnicodeRanges.OlChiki">OlChiki</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange OlChiki { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_OpticalCharacterRecognition_" data-uid="System.Text.Unicode.UnicodeRanges.OpticalCharacterRecognition*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_OpticalCharacterRecognition" data-uid="System.Text.Unicode.UnicodeRanges.OpticalCharacterRecognition">OpticalCharacterRecognition</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange OpticalCharacterRecognition { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Oriya_" data-uid="System.Text.Unicode.UnicodeRanges.Oriya*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Oriya" data-uid="System.Text.Unicode.UnicodeRanges.Oriya">Oriya</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Oriya { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Phagspa_" data-uid="System.Text.Unicode.UnicodeRanges.Phagspa*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Phagspa" data-uid="System.Text.Unicode.UnicodeRanges.Phagspa">Phagspa</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Phagspa { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_PhoneticExtensions_" data-uid="System.Text.Unicode.UnicodeRanges.PhoneticExtensions*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_PhoneticExtensions" data-uid="System.Text.Unicode.UnicodeRanges.PhoneticExtensions">PhoneticExtensions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange PhoneticExtensions { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_PhoneticExtensionsSupplement_" data-uid="System.Text.Unicode.UnicodeRanges.PhoneticExtensionsSupplement*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_PhoneticExtensionsSupplement" data-uid="System.Text.Unicode.UnicodeRanges.PhoneticExtensionsSupplement">PhoneticExtensionsSupplement</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange PhoneticExtensionsSupplement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Rejang_" data-uid="System.Text.Unicode.UnicodeRanges.Rejang*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Rejang" data-uid="System.Text.Unicode.UnicodeRanges.Rejang">Rejang</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Rejang { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Runic_" data-uid="System.Text.Unicode.UnicodeRanges.Runic*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Runic" data-uid="System.Text.Unicode.UnicodeRanges.Runic">Runic</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Runic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Samaritan_" data-uid="System.Text.Unicode.UnicodeRanges.Samaritan*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Samaritan" data-uid="System.Text.Unicode.UnicodeRanges.Samaritan">Samaritan</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Samaritan { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Saurashtra_" data-uid="System.Text.Unicode.UnicodeRanges.Saurashtra*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Saurashtra" data-uid="System.Text.Unicode.UnicodeRanges.Saurashtra">Saurashtra</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Saurashtra { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Sinhala_" data-uid="System.Text.Unicode.UnicodeRanges.Sinhala*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Sinhala" data-uid="System.Text.Unicode.UnicodeRanges.Sinhala">Sinhala</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Sinhala { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_SmallFormVariants_" data-uid="System.Text.Unicode.UnicodeRanges.SmallFormVariants*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_SmallFormVariants" data-uid="System.Text.Unicode.UnicodeRanges.SmallFormVariants">SmallFormVariants</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange SmallFormVariants { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_SpacingModifierLetters_" data-uid="System.Text.Unicode.UnicodeRanges.SpacingModifierLetters*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_SpacingModifierLetters" data-uid="System.Text.Unicode.UnicodeRanges.SpacingModifierLetters">SpacingModifierLetters</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange SpacingModifierLetters { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Specials_" data-uid="System.Text.Unicode.UnicodeRanges.Specials*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Specials" data-uid="System.Text.Unicode.UnicodeRanges.Specials">Specials</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Specials { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Sundanese_" data-uid="System.Text.Unicode.UnicodeRanges.Sundanese*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Sundanese" data-uid="System.Text.Unicode.UnicodeRanges.Sundanese">Sundanese</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Sundanese { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_SundaneseSupplement_" data-uid="System.Text.Unicode.UnicodeRanges.SundaneseSupplement*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_SundaneseSupplement" data-uid="System.Text.Unicode.UnicodeRanges.SundaneseSupplement">SundaneseSupplement</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange SundaneseSupplement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_SuperscriptsandSubscripts_" data-uid="System.Text.Unicode.UnicodeRanges.SuperscriptsandSubscripts*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_SuperscriptsandSubscripts" data-uid="System.Text.Unicode.UnicodeRanges.SuperscriptsandSubscripts">SuperscriptsandSubscripts</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange SuperscriptsandSubscripts { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_SupplementalArrowsA_" data-uid="System.Text.Unicode.UnicodeRanges.SupplementalArrowsA*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_SupplementalArrowsA" data-uid="System.Text.Unicode.UnicodeRanges.SupplementalArrowsA">SupplementalArrowsA</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange SupplementalArrowsA { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_SupplementalArrowsB_" data-uid="System.Text.Unicode.UnicodeRanges.SupplementalArrowsB*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_SupplementalArrowsB" data-uid="System.Text.Unicode.UnicodeRanges.SupplementalArrowsB">SupplementalArrowsB</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange SupplementalArrowsB { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_SupplementalMathematicalOperators_" data-uid="System.Text.Unicode.UnicodeRanges.SupplementalMathematicalOperators*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_SupplementalMathematicalOperators" data-uid="System.Text.Unicode.UnicodeRanges.SupplementalMathematicalOperators">SupplementalMathematicalOperators</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange SupplementalMathematicalOperators { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_SupplementalPunctuation_" data-uid="System.Text.Unicode.UnicodeRanges.SupplementalPunctuation*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_SupplementalPunctuation" data-uid="System.Text.Unicode.UnicodeRanges.SupplementalPunctuation">SupplementalPunctuation</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange SupplementalPunctuation { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_SylotiNagri_" data-uid="System.Text.Unicode.UnicodeRanges.SylotiNagri*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_SylotiNagri" data-uid="System.Text.Unicode.UnicodeRanges.SylotiNagri">SylotiNagri</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange SylotiNagri { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Syriac_" data-uid="System.Text.Unicode.UnicodeRanges.Syriac*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Syriac" data-uid="System.Text.Unicode.UnicodeRanges.Syriac">Syriac</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Syriac { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_SyriacSupplement_" data-uid="System.Text.Unicode.UnicodeRanges.SyriacSupplement*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_SyriacSupplement" data-uid="System.Text.Unicode.UnicodeRanges.SyriacSupplement">SyriacSupplement</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange SyriacSupplement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Tagalog_" data-uid="System.Text.Unicode.UnicodeRanges.Tagalog*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Tagalog" data-uid="System.Text.Unicode.UnicodeRanges.Tagalog">Tagalog</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Tagalog { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Tagbanwa_" data-uid="System.Text.Unicode.UnicodeRanges.Tagbanwa*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Tagbanwa" data-uid="System.Text.Unicode.UnicodeRanges.Tagbanwa">Tagbanwa</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Tagbanwa { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_TaiLe_" data-uid="System.Text.Unicode.UnicodeRanges.TaiLe*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_TaiLe" data-uid="System.Text.Unicode.UnicodeRanges.TaiLe">TaiLe</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange TaiLe { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_TaiTham_" data-uid="System.Text.Unicode.UnicodeRanges.TaiTham*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_TaiTham" data-uid="System.Text.Unicode.UnicodeRanges.TaiTham">TaiTham</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange TaiTham { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_TaiViet_" data-uid="System.Text.Unicode.UnicodeRanges.TaiViet*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_TaiViet" data-uid="System.Text.Unicode.UnicodeRanges.TaiViet">TaiViet</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange TaiViet { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Tamil_" data-uid="System.Text.Unicode.UnicodeRanges.Tamil*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Tamil" data-uid="System.Text.Unicode.UnicodeRanges.Tamil">Tamil</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Tamil { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Telugu_" data-uid="System.Text.Unicode.UnicodeRanges.Telugu*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Telugu" data-uid="System.Text.Unicode.UnicodeRanges.Telugu">Telugu</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Telugu { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Thaana_" data-uid="System.Text.Unicode.UnicodeRanges.Thaana*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Thaana" data-uid="System.Text.Unicode.UnicodeRanges.Thaana">Thaana</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Thaana { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Thai_" data-uid="System.Text.Unicode.UnicodeRanges.Thai*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Thai" data-uid="System.Text.Unicode.UnicodeRanges.Thai">Thai</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Thai { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Tibetan_" data-uid="System.Text.Unicode.UnicodeRanges.Tibetan*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Tibetan" data-uid="System.Text.Unicode.UnicodeRanges.Tibetan">Tibetan</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Tibetan { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Tifinagh_" data-uid="System.Text.Unicode.UnicodeRanges.Tifinagh*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Tifinagh" data-uid="System.Text.Unicode.UnicodeRanges.Tifinagh">Tifinagh</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Tifinagh { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_UnifiedCanadianAboriginalSyllabics_" data-uid="System.Text.Unicode.UnicodeRanges.UnifiedCanadianAboriginalSyllabics*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_UnifiedCanadianAboriginalSyllabics" data-uid="System.Text.Unicode.UnicodeRanges.UnifiedCanadianAboriginalSyllabics">UnifiedCanadianAboriginalSyllabics</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange UnifiedCanadianAboriginalSyllabics { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_UnifiedCanadianAboriginalSyllabicsExtended_" data-uid="System.Text.Unicode.UnicodeRanges.UnifiedCanadianAboriginalSyllabicsExtended*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_UnifiedCanadianAboriginalSyllabicsExtended" data-uid="System.Text.Unicode.UnicodeRanges.UnifiedCanadianAboriginalSyllabicsExtended">UnifiedCanadianAboriginalSyllabicsExtended</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange UnifiedCanadianAboriginalSyllabicsExtended { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_Vai_" data-uid="System.Text.Unicode.UnicodeRanges.Vai*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_Vai" data-uid="System.Text.Unicode.UnicodeRanges.Vai">Vai</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange Vai { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_VariationSelectors_" data-uid="System.Text.Unicode.UnicodeRanges.VariationSelectors*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_VariationSelectors" data-uid="System.Text.Unicode.UnicodeRanges.VariationSelectors">VariationSelectors</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange VariationSelectors { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_VedicExtensions_" data-uid="System.Text.Unicode.UnicodeRanges.VedicExtensions*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_VedicExtensions" data-uid="System.Text.Unicode.UnicodeRanges.VedicExtensions">VedicExtensions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange VedicExtensions { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_VerticalForms_" data-uid="System.Text.Unicode.UnicodeRanges.VerticalForms*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_VerticalForms" data-uid="System.Text.Unicode.UnicodeRanges.VerticalForms">VerticalForms</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange VerticalForms { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_YijingHexagramSymbols_" data-uid="System.Text.Unicode.UnicodeRanges.YijingHexagramSymbols*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_YijingHexagramSymbols" data-uid="System.Text.Unicode.UnicodeRanges.YijingHexagramSymbols">YijingHexagramSymbols</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange YijingHexagramSymbols { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_YiRadicals_" data-uid="System.Text.Unicode.UnicodeRanges.YiRadicals*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_YiRadicals" data-uid="System.Text.Unicode.UnicodeRanges.YiRadicals">YiRadicals</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange YiRadicals { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_Text_Unicode_UnicodeRanges_YiSyllables_" data-uid="System.Text.Unicode.UnicodeRanges.YiSyllables*"></a>
+  <h4 id="System_Text_Unicode_UnicodeRanges_YiSyllables" data-uid="System.Text.Unicode.UnicodeRanges.YiSyllables">YiSyllables</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UnicodeRange YiSyllables { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.Text.Unicode.UnicodeRange.html">UnicodeRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronZip/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with NuGet
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronZIP' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironzip-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronZIP to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: "e1a989d9-0eb0-49ff-ad0b-1776183b4fbc"
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironzip-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronZIP free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronZip/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href="/csharp/zip/licensing/"><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="/csharp/zip/licensing/">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>

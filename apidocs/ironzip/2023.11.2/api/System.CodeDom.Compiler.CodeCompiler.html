@@ -1,0 +1,1899 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CodeCompiler
+   | C# Zip API | IronZIP </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CodeCompiler
+   | C# Zip API | IronZIP ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="System.CodeDom.Compiler.CodeCompiler">
+  
+  
+  <h1 id="System_CodeDom_Compiler_CodeCompiler" data-uid="System.CodeDom.Compiler.CodeCompiler" class="text-break">Class CodeCompiler
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html">CodeGenerator</a></div>
+    <div class="level2"><span class="xref">CodeCompiler</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="System.CodeDom.Compiler.ICodeGenerator.html">ICodeGenerator</a></div>
+    <div><a class="xref" href="System.CodeDom.Compiler.ICodeCompiler.html">ICodeCompiler</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDirectives_System_CodeDom_CodeDirectiveCollection_">CodeGenerator.GenerateDirectives(CodeDirectiveCollection)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateNamespaces_System_CodeDom_CodeCompileUnit_">CodeGenerator.GenerateNamespaces(CodeCompileUnit)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTypes_System_CodeDom_CodeNamespace_">CodeGenerator.GenerateTypes(CodeNamespace)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_System_CodeDom_Compiler_ICodeGenerator_Supports_System_CodeDom_Compiler_GeneratorSupport_">CodeGenerator.ICodeGenerator.Supports(GeneratorSupport)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_System_CodeDom_Compiler_ICodeGenerator_GenerateCodeFromType_System_CodeDom_CodeTypeDeclaration_System_IO_TextWriter_System_CodeDom_Compiler_CodeGeneratorOptions_">CodeGenerator.ICodeGenerator.GenerateCodeFromType(CodeTypeDeclaration, TextWriter, CodeGeneratorOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_System_CodeDom_Compiler_ICodeGenerator_GenerateCodeFromExpression_System_CodeDom_CodeExpression_System_IO_TextWriter_System_CodeDom_Compiler_CodeGeneratorOptions_">CodeGenerator.ICodeGenerator.GenerateCodeFromExpression(CodeExpression, TextWriter, CodeGeneratorOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_System_CodeDom_Compiler_ICodeGenerator_GenerateCodeFromCompileUnit_System_CodeDom_CodeCompileUnit_System_IO_TextWriter_System_CodeDom_Compiler_CodeGeneratorOptions_">CodeGenerator.ICodeGenerator.GenerateCodeFromCompileUnit(CodeCompileUnit, TextWriter, CodeGeneratorOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_System_CodeDom_Compiler_ICodeGenerator_GenerateCodeFromNamespace_System_CodeDom_CodeNamespace_System_IO_TextWriter_System_CodeDom_Compiler_CodeGeneratorOptions_">CodeGenerator.ICodeGenerator.GenerateCodeFromNamespace(CodeNamespace, TextWriter, CodeGeneratorOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_System_CodeDom_Compiler_ICodeGenerator_GenerateCodeFromStatement_System_CodeDom_CodeStatement_System_IO_TextWriter_System_CodeDom_Compiler_CodeGeneratorOptions_">CodeGenerator.ICodeGenerator.GenerateCodeFromStatement(CodeStatement, TextWriter, CodeGeneratorOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCodeFromMember_System_CodeDom_CodeTypeMember_System_IO_TextWriter_System_CodeDom_Compiler_CodeGeneratorOptions_">CodeGenerator.GenerateCodeFromMember(CodeTypeMember, TextWriter, CodeGeneratorOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_System_CodeDom_Compiler_ICodeGenerator_IsValidIdentifier_System_String_">CodeGenerator.ICodeGenerator.IsValidIdentifier(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_System_CodeDom_Compiler_ICodeGenerator_ValidateIdentifier_System_String_">CodeGenerator.ICodeGenerator.ValidateIdentifier(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_System_CodeDom_Compiler_ICodeGenerator_CreateEscapedIdentifier_System_String_">CodeGenerator.ICodeGenerator.CreateEscapedIdentifier(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_System_CodeDom_Compiler_ICodeGenerator_CreateValidIdentifier_System_String_">CodeGenerator.ICodeGenerator.CreateValidIdentifier(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_System_CodeDom_Compiler_ICodeGenerator_GetTypeOutput_System_CodeDom_CodeTypeReference_">CodeGenerator.ICodeGenerator.GetTypeOutput(CodeTypeReference)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateExpression_System_CodeDom_CodeExpression_">CodeGenerator.GenerateExpression(CodeExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateSnippetCompileUnit_System_CodeDom_CodeSnippetCompileUnit_">CodeGenerator.GenerateSnippetCompileUnit(CodeSnippetCompileUnit)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCompileUnit_System_CodeDom_CodeCompileUnit_">CodeGenerator.GenerateCompileUnit(CodeCompileUnit)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateNamespace_System_CodeDom_CodeNamespace_">CodeGenerator.GenerateNamespace(CodeNamespace)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateNamespaceImports_System_CodeDom_CodeNamespace_">CodeGenerator.GenerateNamespaceImports(CodeNamespace)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateStatement_System_CodeDom_CodeStatement_">CodeGenerator.GenerateStatement(CodeStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateStatements_System_CodeDom_CodeStatementCollection_">CodeGenerator.GenerateStatements(CodeStatementCollection)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputAttributeDeclarations_System_CodeDom_CodeAttributeDeclarationCollection_">CodeGenerator.OutputAttributeDeclarations(CodeAttributeDeclarationCollection)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputAttributeArgument_System_CodeDom_CodeAttributeArgument_">CodeGenerator.OutputAttributeArgument(CodeAttributeArgument)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputDirection_System_CodeDom_FieldDirection_">CodeGenerator.OutputDirection(FieldDirection)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputFieldScopeModifier_System_CodeDom_MemberAttributes_">CodeGenerator.OutputFieldScopeModifier(MemberAttributes)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputMemberAccessModifier_System_CodeDom_MemberAttributes_">CodeGenerator.OutputMemberAccessModifier(MemberAttributes)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputMemberScopeModifier_System_CodeDom_MemberAttributes_">CodeGenerator.OutputMemberScopeModifier(MemberAttributes)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputType_System_CodeDom_CodeTypeReference_">CodeGenerator.OutputType(CodeTypeReference)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputTypeAttributes_System_Reflection_TypeAttributes_System_Boolean_System_Boolean_">CodeGenerator.OutputTypeAttributes(TypeAttributes, Boolean, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputTypeNamePair_System_CodeDom_CodeTypeReference_System_String_">CodeGenerator.OutputTypeNamePair(CodeTypeReference, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputIdentifier_System_String_">CodeGenerator.OutputIdentifier(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputExpressionList_System_CodeDom_CodeExpressionCollection_">CodeGenerator.OutputExpressionList(CodeExpressionCollection)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputExpressionList_System_CodeDom_CodeExpressionCollection_System_Boolean_">CodeGenerator.OutputExpressionList(CodeExpressionCollection, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputOperator_System_CodeDom_CodeBinaryOperatorType_">CodeGenerator.OutputOperator(CodeBinaryOperatorType)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputParameters_System_CodeDom_CodeParameterDeclarationExpressionCollection_">CodeGenerator.OutputParameters(CodeParameterDeclarationExpressionCollection)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateArrayCreateExpression_System_CodeDom_CodeArrayCreateExpression_">CodeGenerator.GenerateArrayCreateExpression(CodeArrayCreateExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateBaseReferenceExpression_System_CodeDom_CodeBaseReferenceExpression_">CodeGenerator.GenerateBaseReferenceExpression(CodeBaseReferenceExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateBinaryOperatorExpression_System_CodeDom_CodeBinaryOperatorExpression_">CodeGenerator.GenerateBinaryOperatorExpression(CodeBinaryOperatorExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_ContinueOnNewLine_System_String_">CodeGenerator.ContinueOnNewLine(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCastExpression_System_CodeDom_CodeCastExpression_">CodeGenerator.GenerateCastExpression(CodeCastExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDelegateCreateExpression_System_CodeDom_CodeDelegateCreateExpression_">CodeGenerator.GenerateDelegateCreateExpression(CodeDelegateCreateExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateFieldReferenceExpression_System_CodeDom_CodeFieldReferenceExpression_">CodeGenerator.GenerateFieldReferenceExpression(CodeFieldReferenceExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateArgumentReferenceExpression_System_CodeDom_CodeArgumentReferenceExpression_">CodeGenerator.GenerateArgumentReferenceExpression(CodeArgumentReferenceExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateVariableReferenceExpression_System_CodeDom_CodeVariableReferenceExpression_">CodeGenerator.GenerateVariableReferenceExpression(CodeVariableReferenceExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateIndexerExpression_System_CodeDom_CodeIndexerExpression_">CodeGenerator.GenerateIndexerExpression(CodeIndexerExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateArrayIndexerExpression_System_CodeDom_CodeArrayIndexerExpression_">CodeGenerator.GenerateArrayIndexerExpression(CodeArrayIndexerExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateSnippetExpression_System_CodeDom_CodeSnippetExpression_">CodeGenerator.GenerateSnippetExpression(CodeSnippetExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateMethodInvokeExpression_System_CodeDom_CodeMethodInvokeExpression_">CodeGenerator.GenerateMethodInvokeExpression(CodeMethodInvokeExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateMethodReferenceExpression_System_CodeDom_CodeMethodReferenceExpression_">CodeGenerator.GenerateMethodReferenceExpression(CodeMethodReferenceExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateEventReferenceExpression_System_CodeDom_CodeEventReferenceExpression_">CodeGenerator.GenerateEventReferenceExpression(CodeEventReferenceExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDelegateInvokeExpression_System_CodeDom_CodeDelegateInvokeExpression_">CodeGenerator.GenerateDelegateInvokeExpression(CodeDelegateInvokeExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateObjectCreateExpression_System_CodeDom_CodeObjectCreateExpression_">CodeGenerator.GenerateObjectCreateExpression(CodeObjectCreateExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateParameterDeclarationExpression_System_CodeDom_CodeParameterDeclarationExpression_">CodeGenerator.GenerateParameterDeclarationExpression(CodeParameterDeclarationExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDirectionExpression_System_CodeDom_CodeDirectionExpression_">CodeGenerator.GenerateDirectionExpression(CodeDirectionExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GeneratePrimitiveExpression_System_CodeDom_CodePrimitiveExpression_">CodeGenerator.GeneratePrimitiveExpression(CodePrimitiveExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateSingleFloatValue_System_Single_">CodeGenerator.GenerateSingleFloatValue(Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDoubleValue_System_Double_">CodeGenerator.GenerateDoubleValue(Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDecimalValue_System_Decimal_">CodeGenerator.GenerateDecimalValue(Decimal)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDefaultValueExpression_System_CodeDom_CodeDefaultValueExpression_">CodeGenerator.GenerateDefaultValueExpression(CodeDefaultValueExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GeneratePropertyReferenceExpression_System_CodeDom_CodePropertyReferenceExpression_">CodeGenerator.GeneratePropertyReferenceExpression(CodePropertyReferenceExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GeneratePropertySetValueReferenceExpression_System_CodeDom_CodePropertySetValueReferenceExpression_">CodeGenerator.GeneratePropertySetValueReferenceExpression(CodePropertySetValueReferenceExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateThisReferenceExpression_System_CodeDom_CodeThisReferenceExpression_">CodeGenerator.GenerateThisReferenceExpression(CodeThisReferenceExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTypeReferenceExpression_System_CodeDom_CodeTypeReferenceExpression_">CodeGenerator.GenerateTypeReferenceExpression(CodeTypeReferenceExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTypeOfExpression_System_CodeDom_CodeTypeOfExpression_">CodeGenerator.GenerateTypeOfExpression(CodeTypeOfExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateExpressionStatement_System_CodeDom_CodeExpressionStatement_">CodeGenerator.GenerateExpressionStatement(CodeExpressionStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateIterationStatement_System_CodeDom_CodeIterationStatement_">CodeGenerator.GenerateIterationStatement(CodeIterationStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateThrowExceptionStatement_System_CodeDom_CodeThrowExceptionStatement_">CodeGenerator.GenerateThrowExceptionStatement(CodeThrowExceptionStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCommentStatement_System_CodeDom_CodeCommentStatement_">CodeGenerator.GenerateCommentStatement(CodeCommentStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCommentStatements_System_CodeDom_CodeCommentStatementCollection_">CodeGenerator.GenerateCommentStatements(CodeCommentStatementCollection)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateComment_System_CodeDom_CodeComment_">CodeGenerator.GenerateComment(CodeComment)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateMethodReturnStatement_System_CodeDom_CodeMethodReturnStatement_">CodeGenerator.GenerateMethodReturnStatement(CodeMethodReturnStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateConditionStatement_System_CodeDom_CodeConditionStatement_">CodeGenerator.GenerateConditionStatement(CodeConditionStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTryCatchFinallyStatement_System_CodeDom_CodeTryCatchFinallyStatement_">CodeGenerator.GenerateTryCatchFinallyStatement(CodeTryCatchFinallyStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateAssignStatement_System_CodeDom_CodeAssignStatement_">CodeGenerator.GenerateAssignStatement(CodeAssignStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateAttachEventStatement_System_CodeDom_CodeAttachEventStatement_">CodeGenerator.GenerateAttachEventStatement(CodeAttachEventStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateRemoveEventStatement_System_CodeDom_CodeRemoveEventStatement_">CodeGenerator.GenerateRemoveEventStatement(CodeRemoveEventStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateGotoStatement_System_CodeDom_CodeGotoStatement_">CodeGenerator.GenerateGotoStatement(CodeGotoStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateLabeledStatement_System_CodeDom_CodeLabeledStatement_">CodeGenerator.GenerateLabeledStatement(CodeLabeledStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateSnippetStatement_System_CodeDom_CodeSnippetStatement_">CodeGenerator.GenerateSnippetStatement(CodeSnippetStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateVariableDeclarationStatement_System_CodeDom_CodeVariableDeclarationStatement_">CodeGenerator.GenerateVariableDeclarationStatement(CodeVariableDeclarationStatement)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateLinePragmaStart_System_CodeDom_CodeLinePragma_">CodeGenerator.GenerateLinePragmaStart(CodeLinePragma)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateLinePragmaEnd_System_CodeDom_CodeLinePragma_">CodeGenerator.GenerateLinePragmaEnd(CodeLinePragma)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateEvent_System_CodeDom_CodeMemberEvent_System_CodeDom_CodeTypeDeclaration_">CodeGenerator.GenerateEvent(CodeMemberEvent, CodeTypeDeclaration)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateField_System_CodeDom_CodeMemberField_">CodeGenerator.GenerateField(CodeMemberField)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateSnippetMember_System_CodeDom_CodeSnippetTypeMember_">CodeGenerator.GenerateSnippetMember(CodeSnippetTypeMember)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateEntryPointMethod_System_CodeDom_CodeEntryPointMethod_System_CodeDom_CodeTypeDeclaration_">CodeGenerator.GenerateEntryPointMethod(CodeEntryPointMethod, CodeTypeDeclaration)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateMethod_System_CodeDom_CodeMemberMethod_System_CodeDom_CodeTypeDeclaration_">CodeGenerator.GenerateMethod(CodeMemberMethod, CodeTypeDeclaration)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateProperty_System_CodeDom_CodeMemberProperty_System_CodeDom_CodeTypeDeclaration_">CodeGenerator.GenerateProperty(CodeMemberProperty, CodeTypeDeclaration)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateConstructor_System_CodeDom_CodeConstructor_System_CodeDom_CodeTypeDeclaration_">CodeGenerator.GenerateConstructor(CodeConstructor, CodeTypeDeclaration)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTypeConstructor_System_CodeDom_CodeTypeConstructor_">CodeGenerator.GenerateTypeConstructor(CodeTypeConstructor)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTypeStart_System_CodeDom_CodeTypeDeclaration_">CodeGenerator.GenerateTypeStart(CodeTypeDeclaration)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTypeEnd_System_CodeDom_CodeTypeDeclaration_">CodeGenerator.GenerateTypeEnd(CodeTypeDeclaration)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCompileUnitStart_System_CodeDom_CodeCompileUnit_">CodeGenerator.GenerateCompileUnitStart(CodeCompileUnit)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCompileUnitEnd_System_CodeDom_CodeCompileUnit_">CodeGenerator.GenerateCompileUnitEnd(CodeCompileUnit)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateNamespaceStart_System_CodeDom_CodeNamespace_">CodeGenerator.GenerateNamespaceStart(CodeNamespace)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateNamespaceEnd_System_CodeDom_CodeNamespace_">CodeGenerator.GenerateNamespaceEnd(CodeNamespace)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateNamespaceImport_System_CodeDom_CodeNamespaceImport_">CodeGenerator.GenerateNamespaceImport(CodeNamespaceImport)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateAttributeDeclarationsStart_System_CodeDom_CodeAttributeDeclarationCollection_">CodeGenerator.GenerateAttributeDeclarationsStart(CodeAttributeDeclarationCollection)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateAttributeDeclarationsEnd_System_CodeDom_CodeAttributeDeclarationCollection_">CodeGenerator.GenerateAttributeDeclarationsEnd(CodeAttributeDeclarationCollection)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_Supports_System_CodeDom_Compiler_GeneratorSupport_">CodeGenerator.Supports(GeneratorSupport)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsValidIdentifier_System_String_">CodeGenerator.IsValidIdentifier(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_ValidateIdentifier_System_String_">CodeGenerator.ValidateIdentifier(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_CreateEscapedIdentifier_System_String_">CodeGenerator.CreateEscapedIdentifier(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_CreateValidIdentifier_System_String_">CodeGenerator.CreateValidIdentifier(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GetTypeOutput_System_CodeDom_CodeTypeReference_">CodeGenerator.GetTypeOutput(CodeTypeReference)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_QuoteSnippetString_System_String_">CodeGenerator.QuoteSnippetString(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsValidLanguageIndependentIdentifier_System_String_">CodeGenerator.IsValidLanguageIndependentIdentifier(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_ValidateIdentifiers_System_CodeDom_CodeObject_">CodeGenerator.ValidateIdentifiers(CodeObject)</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_CurrentClass">CodeGenerator.CurrentClass</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_CurrentTypeName">CodeGenerator.CurrentTypeName</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_CurrentMember">CodeGenerator.CurrentMember</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_CurrentMemberName">CodeGenerator.CurrentMemberName</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsCurrentInterface">CodeGenerator.IsCurrentInterface</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsCurrentClass">CodeGenerator.IsCurrentClass</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsCurrentStruct">CodeGenerator.IsCurrentStruct</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsCurrentEnum">CodeGenerator.IsCurrentEnum</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsCurrentDelegate">CodeGenerator.IsCurrentDelegate</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_Indent">CodeGenerator.Indent</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_NullToken">CodeGenerator.NullToken</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_Output">CodeGenerator.Output</a>
+    </div>
+    <div>
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_Options">CodeGenerator.Options</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="System.CodeDom.Compiler.html">System.CodeDom.Compiler</a></h6>
+  <h6><strong>Assembly</strong>: IronZip.dll</h6>
+  <h5 id="System_CodeDom_Compiler_CodeCompiler_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class CodeCompiler : CodeGenerator, ICodeGenerator, ICodeCompiler</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler__ctor_" data-uid="System.CodeDom.Compiler.CodeCompiler.#ctor*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler__ctor" data-uid="System.CodeDom.Compiler.CodeCompiler.#ctor">CodeCompiler()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected CodeCompiler()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_CompilerName_" data-uid="System.CodeDom.Compiler.CodeCompiler.CompilerName*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_CompilerName" data-uid="System.CodeDom.Compiler.CodeCompiler.CompilerName">CompilerName</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract string CompilerName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_FileExtension_" data-uid="System.CodeDom.Compiler.CodeCompiler.FileExtension*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_FileExtension" data-uid="System.CodeDom.Compiler.CodeCompiler.FileExtension">FileExtension</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract string FileExtension { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_CmdArgsFromParameters_" data-uid="System.CodeDom.Compiler.CodeCompiler.CmdArgsFromParameters*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_CmdArgsFromParameters_System_CodeDom_Compiler_CompilerParameters_" data-uid="System.CodeDom.Compiler.CodeCompiler.CmdArgsFromParameters(System.CodeDom.Compiler.CompilerParameters)">CmdArgsFromParameters(CompilerParameters)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract string CmdArgsFromParameters(CompilerParameters options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_FromDom_" data-uid="System.CodeDom.Compiler.CodeCompiler.FromDom*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_FromDom_System_CodeDom_Compiler_CompilerParameters_System_CodeDom_CodeCompileUnit_" data-uid="System.CodeDom.Compiler.CodeCompiler.FromDom(System.CodeDom.Compiler.CompilerParameters,System.CodeDom.CodeCompileUnit)">FromDom(CompilerParameters, CodeCompileUnit)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual CompilerResults FromDom(CompilerParameters options, CodeCompileUnit e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.CodeCompileUnit.html">CodeCompileUnit</a></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerResults.html">CompilerResults</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_FromDomBatch_" data-uid="System.CodeDom.Compiler.CodeCompiler.FromDomBatch*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_FromDomBatch_System_CodeDom_Compiler_CompilerParameters_System_CodeDom_CodeCompileUnit___" data-uid="System.CodeDom.Compiler.CodeCompiler.FromDomBatch(System.CodeDom.Compiler.CompilerParameters,System.CodeDom.CodeCompileUnit[])">FromDomBatch(CompilerParameters, CodeCompileUnit[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual CompilerResults FromDomBatch(CompilerParameters options, CodeCompileUnit[] ea)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.CodeCompileUnit.html">CodeCompileUnit</a>[]</td>
+        <td><span class="parametername">ea</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerResults.html">CompilerResults</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_FromFile_" data-uid="System.CodeDom.Compiler.CodeCompiler.FromFile*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_FromFile_System_CodeDom_Compiler_CompilerParameters_System_String_" data-uid="System.CodeDom.Compiler.CodeCompiler.FromFile(System.CodeDom.Compiler.CompilerParameters,System.String)">FromFile(CompilerParameters, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual CompilerResults FromFile(CompilerParameters options, string fileName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerResults.html">CompilerResults</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_FromFileBatch_" data-uid="System.CodeDom.Compiler.CodeCompiler.FromFileBatch*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_FromFileBatch_System_CodeDom_Compiler_CompilerParameters_System_String___" data-uid="System.CodeDom.Compiler.CodeCompiler.FromFileBatch(System.CodeDom.Compiler.CompilerParameters,System.String[])">FromFileBatch(CompilerParameters, String[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual CompilerResults FromFileBatch(CompilerParameters options, string[] fileNames)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">fileNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerResults.html">CompilerResults</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_FromSource_" data-uid="System.CodeDom.Compiler.CodeCompiler.FromSource*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_FromSource_System_CodeDom_Compiler_CompilerParameters_System_String_" data-uid="System.CodeDom.Compiler.CodeCompiler.FromSource(System.CodeDom.Compiler.CompilerParameters,System.String)">FromSource(CompilerParameters, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual CompilerResults FromSource(CompilerParameters options, string source)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">source</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerResults.html">CompilerResults</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_FromSourceBatch_" data-uid="System.CodeDom.Compiler.CodeCompiler.FromSourceBatch*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_FromSourceBatch_System_CodeDom_Compiler_CompilerParameters_System_String___" data-uid="System.CodeDom.Compiler.CodeCompiler.FromSourceBatch(System.CodeDom.Compiler.CompilerParameters,System.String[])">FromSourceBatch(CompilerParameters, String[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual CompilerResults FromSourceBatch(CompilerParameters options, string[] sources)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">sources</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerResults.html">CompilerResults</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_GetResponseFileCmdArgs_" data-uid="System.CodeDom.Compiler.CodeCompiler.GetResponseFileCmdArgs*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_GetResponseFileCmdArgs_System_CodeDom_Compiler_CompilerParameters_System_String_" data-uid="System.CodeDom.Compiler.CodeCompiler.GetResponseFileCmdArgs(System.CodeDom.Compiler.CompilerParameters,System.String)">GetResponseFileCmdArgs(CompilerParameters, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual string GetResponseFileCmdArgs(CompilerParameters options, string cmdArgs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">cmdArgs</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_JoinStringArray_" data-uid="System.CodeDom.Compiler.CodeCompiler.JoinStringArray*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_JoinStringArray_System_String___System_String_" data-uid="System.CodeDom.Compiler.CodeCompiler.JoinStringArray(System.String[],System.String)">JoinStringArray(String[], String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static string JoinStringArray(string[] sa, string separator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">sa</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">separator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_ProcessCompilerOutputLine_" data-uid="System.CodeDom.Compiler.CodeCompiler.ProcessCompilerOutputLine*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_ProcessCompilerOutputLine_System_CodeDom_Compiler_CompilerResults_System_String_" data-uid="System.CodeDom.Compiler.CodeCompiler.ProcessCompilerOutputLine(System.CodeDom.Compiler.CompilerResults,System.String)">ProcessCompilerOutputLine(CompilerResults, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract void ProcessCompilerOutputLine(CompilerResults results, string line)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerResults.html">CompilerResults</a></td>
+        <td><span class="parametername">results</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">line</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_System_CodeDom_Compiler_ICodeCompiler_CompileAssemblyFromDom_" data-uid="System.CodeDom.Compiler.CodeCompiler.System#CodeDom#Compiler#ICodeCompiler#CompileAssemblyFromDom*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_System_CodeDom_Compiler_ICodeCompiler_CompileAssemblyFromDom_System_CodeDom_Compiler_CompilerParameters_System_CodeDom_CodeCompileUnit_" data-uid="System.CodeDom.Compiler.CodeCompiler.System#CodeDom#Compiler#ICodeCompiler#CompileAssemblyFromDom(System.CodeDom.Compiler.CompilerParameters,System.CodeDom.CodeCompileUnit)">ICodeCompiler.CompileAssemblyFromDom(CompilerParameters, CodeCompileUnit)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">CompilerResults ICodeCompiler.CompileAssemblyFromDom(CompilerParameters options, CodeCompileUnit e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.CodeCompileUnit.html">CodeCompileUnit</a></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerResults.html">CompilerResults</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_System_CodeDom_Compiler_ICodeCompiler_CompileAssemblyFromDomBatch_" data-uid="System.CodeDom.Compiler.CodeCompiler.System#CodeDom#Compiler#ICodeCompiler#CompileAssemblyFromDomBatch*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_System_CodeDom_Compiler_ICodeCompiler_CompileAssemblyFromDomBatch_System_CodeDom_Compiler_CompilerParameters_System_CodeDom_CodeCompileUnit___" data-uid="System.CodeDom.Compiler.CodeCompiler.System#CodeDom#Compiler#ICodeCompiler#CompileAssemblyFromDomBatch(System.CodeDom.Compiler.CompilerParameters,System.CodeDom.CodeCompileUnit[])">ICodeCompiler.CompileAssemblyFromDomBatch(CompilerParameters, CodeCompileUnit[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">CompilerResults ICodeCompiler.CompileAssemblyFromDomBatch(CompilerParameters options, CodeCompileUnit[] ea)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.CodeCompileUnit.html">CodeCompileUnit</a>[]</td>
+        <td><span class="parametername">ea</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerResults.html">CompilerResults</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_System_CodeDom_Compiler_ICodeCompiler_CompileAssemblyFromFile_" data-uid="System.CodeDom.Compiler.CodeCompiler.System#CodeDom#Compiler#ICodeCompiler#CompileAssemblyFromFile*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_System_CodeDom_Compiler_ICodeCompiler_CompileAssemblyFromFile_System_CodeDom_Compiler_CompilerParameters_System_String_" data-uid="System.CodeDom.Compiler.CodeCompiler.System#CodeDom#Compiler#ICodeCompiler#CompileAssemblyFromFile(System.CodeDom.Compiler.CompilerParameters,System.String)">ICodeCompiler.CompileAssemblyFromFile(CompilerParameters, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">CompilerResults ICodeCompiler.CompileAssemblyFromFile(CompilerParameters options, string fileName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerResults.html">CompilerResults</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_System_CodeDom_Compiler_ICodeCompiler_CompileAssemblyFromFileBatch_" data-uid="System.CodeDom.Compiler.CodeCompiler.System#CodeDom#Compiler#ICodeCompiler#CompileAssemblyFromFileBatch*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_System_CodeDom_Compiler_ICodeCompiler_CompileAssemblyFromFileBatch_System_CodeDom_Compiler_CompilerParameters_System_String___" data-uid="System.CodeDom.Compiler.CodeCompiler.System#CodeDom#Compiler#ICodeCompiler#CompileAssemblyFromFileBatch(System.CodeDom.Compiler.CompilerParameters,System.String[])">ICodeCompiler.CompileAssemblyFromFileBatch(CompilerParameters, String[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">CompilerResults ICodeCompiler.CompileAssemblyFromFileBatch(CompilerParameters options, string[] fileNames)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">fileNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerResults.html">CompilerResults</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_System_CodeDom_Compiler_ICodeCompiler_CompileAssemblyFromSource_" data-uid="System.CodeDom.Compiler.CodeCompiler.System#CodeDom#Compiler#ICodeCompiler#CompileAssemblyFromSource*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_System_CodeDom_Compiler_ICodeCompiler_CompileAssemblyFromSource_System_CodeDom_Compiler_CompilerParameters_System_String_" data-uid="System.CodeDom.Compiler.CodeCompiler.System#CodeDom#Compiler#ICodeCompiler#CompileAssemblyFromSource(System.CodeDom.Compiler.CompilerParameters,System.String)">ICodeCompiler.CompileAssemblyFromSource(CompilerParameters, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">CompilerResults ICodeCompiler.CompileAssemblyFromSource(CompilerParameters options, string source)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">source</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerResults.html">CompilerResults</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="System_CodeDom_Compiler_CodeCompiler_System_CodeDom_Compiler_ICodeCompiler_CompileAssemblyFromSourceBatch_" data-uid="System.CodeDom.Compiler.CodeCompiler.System#CodeDom#Compiler#ICodeCompiler#CompileAssemblyFromSourceBatch*"></a>
+  <h4 id="System_CodeDom_Compiler_CodeCompiler_System_CodeDom_Compiler_ICodeCompiler_CompileAssemblyFromSourceBatch_System_CodeDom_Compiler_CompilerParameters_System_String___" data-uid="System.CodeDom.Compiler.CodeCompiler.System#CodeDom#Compiler#ICodeCompiler#CompileAssemblyFromSourceBatch(System.CodeDom.Compiler.CompilerParameters,System.String[])">ICodeCompiler.CompileAssemblyFromSourceBatch(CompilerParameters, String[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">CompilerResults ICodeCompiler.CompileAssemblyFromSourceBatch(CompilerParameters options, string[] sources)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerParameters.html">CompilerParameters</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">sources</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="System.CodeDom.Compiler.CompilerResults.html">CompilerResults</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="System.CodeDom.Compiler.ICodeGenerator.html">ICodeGenerator</a>
+  </div>
+  <div>
+      <a class="xref" href="System.CodeDom.Compiler.ICodeCompiler.html">ICodeCompiler</a>
+  </div>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDirectives_System_CodeDom_CodeDirectiveCollection_">GenerateDirectives(CodeDirectiveCollection)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateNamespaces_System_CodeDom_CodeCompileUnit_">GenerateNamespaces(CodeCompileUnit)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTypes_System_CodeDom_CodeNamespace_">GenerateTypes(CodeNamespace)</a>
+    </div>
+    <div class="level">
+      <span class="xref">System.CodeDom.Compiler.CodeGenerator.System.CodeDom.Compiler.ICodeGenerator.Supports(System.CodeDom.Compiler.GeneratorSupport)</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.CodeDom.Compiler.CodeGenerator.System.CodeDom.Compiler.ICodeGenerator.GenerateCodeFromType(System.CodeDom.CodeTypeDeclaration, System.IO.TextWriter, System.CodeDom.Compiler.CodeGeneratorOptions)</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.CodeDom.Compiler.CodeGenerator.System.CodeDom.Compiler.ICodeGenerator.GenerateCodeFromExpression(System.CodeDom.CodeExpression, System.IO.TextWriter, System.CodeDom.Compiler.CodeGeneratorOptions)</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.CodeDom.Compiler.CodeGenerator.System.CodeDom.Compiler.ICodeGenerator.GenerateCodeFromCompileUnit(System.CodeDom.CodeCompileUnit, System.IO.TextWriter, System.CodeDom.Compiler.CodeGeneratorOptions)</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.CodeDom.Compiler.CodeGenerator.System.CodeDom.Compiler.ICodeGenerator.GenerateCodeFromNamespace(System.CodeDom.CodeNamespace, System.IO.TextWriter, System.CodeDom.Compiler.CodeGeneratorOptions)</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.CodeDom.Compiler.CodeGenerator.System.CodeDom.Compiler.ICodeGenerator.GenerateCodeFromStatement(System.CodeDom.CodeStatement, System.IO.TextWriter, System.CodeDom.Compiler.CodeGeneratorOptions)</span>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCodeFromMember_System_CodeDom_CodeTypeMember_System_IO_TextWriter_System_CodeDom_Compiler_CodeGeneratorOptions_">GenerateCodeFromMember(CodeTypeMember, TextWriter, CodeGeneratorOptions)</a>
+    </div>
+    <div class="level">
+      <span class="xref">System.CodeDom.Compiler.CodeGenerator.System.CodeDom.Compiler.ICodeGenerator.IsValidIdentifier(System.String)</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.CodeDom.Compiler.CodeGenerator.System.CodeDom.Compiler.ICodeGenerator.ValidateIdentifier(System.String)</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.CodeDom.Compiler.CodeGenerator.System.CodeDom.Compiler.ICodeGenerator.CreateEscapedIdentifier(System.String)</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.CodeDom.Compiler.CodeGenerator.System.CodeDom.Compiler.ICodeGenerator.CreateValidIdentifier(System.String)</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.CodeDom.Compiler.CodeGenerator.System.CodeDom.Compiler.ICodeGenerator.GetTypeOutput(System.CodeDom.CodeTypeReference)</span>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateExpression_System_CodeDom_CodeExpression_">GenerateExpression(CodeExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateSnippetCompileUnit_System_CodeDom_CodeSnippetCompileUnit_">GenerateSnippetCompileUnit(CodeSnippetCompileUnit)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCompileUnit_System_CodeDom_CodeCompileUnit_">GenerateCompileUnit(CodeCompileUnit)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateNamespace_System_CodeDom_CodeNamespace_">GenerateNamespace(CodeNamespace)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateNamespaceImports_System_CodeDom_CodeNamespace_">GenerateNamespaceImports(CodeNamespace)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateStatement_System_CodeDom_CodeStatement_">GenerateStatement(CodeStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateStatements_System_CodeDom_CodeStatementCollection_">GenerateStatements(CodeStatementCollection)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputAttributeDeclarations_System_CodeDom_CodeAttributeDeclarationCollection_">OutputAttributeDeclarations(CodeAttributeDeclarationCollection)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputAttributeArgument_System_CodeDom_CodeAttributeArgument_">OutputAttributeArgument(CodeAttributeArgument)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputDirection_System_CodeDom_FieldDirection_">OutputDirection(FieldDirection)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputFieldScopeModifier_System_CodeDom_MemberAttributes_">OutputFieldScopeModifier(MemberAttributes)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputMemberAccessModifier_System_CodeDom_MemberAttributes_">OutputMemberAccessModifier(MemberAttributes)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputMemberScopeModifier_System_CodeDom_MemberAttributes_">OutputMemberScopeModifier(MemberAttributes)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputType_System_CodeDom_CodeTypeReference_">OutputType(CodeTypeReference)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputTypeAttributes_System_Reflection_TypeAttributes_System_Boolean_System_Boolean_">OutputTypeAttributes(TypeAttributes, Boolean, Boolean)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputTypeNamePair_System_CodeDom_CodeTypeReference_System_String_">OutputTypeNamePair(CodeTypeReference, String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputIdentifier_System_String_">OutputIdentifier(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputExpressionList_System_CodeDom_CodeExpressionCollection_">OutputExpressionList(CodeExpressionCollection)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputExpressionList_System_CodeDom_CodeExpressionCollection_System_Boolean_">OutputExpressionList(CodeExpressionCollection, Boolean)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputOperator_System_CodeDom_CodeBinaryOperatorType_">OutputOperator(CodeBinaryOperatorType)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_OutputParameters_System_CodeDom_CodeParameterDeclarationExpressionCollection_">OutputParameters(CodeParameterDeclarationExpressionCollection)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateArrayCreateExpression_System_CodeDom_CodeArrayCreateExpression_">GenerateArrayCreateExpression(CodeArrayCreateExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateBaseReferenceExpression_System_CodeDom_CodeBaseReferenceExpression_">GenerateBaseReferenceExpression(CodeBaseReferenceExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateBinaryOperatorExpression_System_CodeDom_CodeBinaryOperatorExpression_">GenerateBinaryOperatorExpression(CodeBinaryOperatorExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_ContinueOnNewLine_System_String_">ContinueOnNewLine(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCastExpression_System_CodeDom_CodeCastExpression_">GenerateCastExpression(CodeCastExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDelegateCreateExpression_System_CodeDom_CodeDelegateCreateExpression_">GenerateDelegateCreateExpression(CodeDelegateCreateExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateFieldReferenceExpression_System_CodeDom_CodeFieldReferenceExpression_">GenerateFieldReferenceExpression(CodeFieldReferenceExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateArgumentReferenceExpression_System_CodeDom_CodeArgumentReferenceExpression_">GenerateArgumentReferenceExpression(CodeArgumentReferenceExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateVariableReferenceExpression_System_CodeDom_CodeVariableReferenceExpression_">GenerateVariableReferenceExpression(CodeVariableReferenceExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateIndexerExpression_System_CodeDom_CodeIndexerExpression_">GenerateIndexerExpression(CodeIndexerExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateArrayIndexerExpression_System_CodeDom_CodeArrayIndexerExpression_">GenerateArrayIndexerExpression(CodeArrayIndexerExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateSnippetExpression_System_CodeDom_CodeSnippetExpression_">GenerateSnippetExpression(CodeSnippetExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateMethodInvokeExpression_System_CodeDom_CodeMethodInvokeExpression_">GenerateMethodInvokeExpression(CodeMethodInvokeExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateMethodReferenceExpression_System_CodeDom_CodeMethodReferenceExpression_">GenerateMethodReferenceExpression(CodeMethodReferenceExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateEventReferenceExpression_System_CodeDom_CodeEventReferenceExpression_">GenerateEventReferenceExpression(CodeEventReferenceExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDelegateInvokeExpression_System_CodeDom_CodeDelegateInvokeExpression_">GenerateDelegateInvokeExpression(CodeDelegateInvokeExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateObjectCreateExpression_System_CodeDom_CodeObjectCreateExpression_">GenerateObjectCreateExpression(CodeObjectCreateExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateParameterDeclarationExpression_System_CodeDom_CodeParameterDeclarationExpression_">GenerateParameterDeclarationExpression(CodeParameterDeclarationExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDirectionExpression_System_CodeDom_CodeDirectionExpression_">GenerateDirectionExpression(CodeDirectionExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GeneratePrimitiveExpression_System_CodeDom_CodePrimitiveExpression_">GeneratePrimitiveExpression(CodePrimitiveExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateSingleFloatValue_System_Single_">GenerateSingleFloatValue(Single)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDoubleValue_System_Double_">GenerateDoubleValue(Double)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDecimalValue_System_Decimal_">GenerateDecimalValue(Decimal)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateDefaultValueExpression_System_CodeDom_CodeDefaultValueExpression_">GenerateDefaultValueExpression(CodeDefaultValueExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GeneratePropertyReferenceExpression_System_CodeDom_CodePropertyReferenceExpression_">GeneratePropertyReferenceExpression(CodePropertyReferenceExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GeneratePropertySetValueReferenceExpression_System_CodeDom_CodePropertySetValueReferenceExpression_">GeneratePropertySetValueReferenceExpression(CodePropertySetValueReferenceExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateThisReferenceExpression_System_CodeDom_CodeThisReferenceExpression_">GenerateThisReferenceExpression(CodeThisReferenceExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTypeReferenceExpression_System_CodeDom_CodeTypeReferenceExpression_">GenerateTypeReferenceExpression(CodeTypeReferenceExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTypeOfExpression_System_CodeDom_CodeTypeOfExpression_">GenerateTypeOfExpression(CodeTypeOfExpression)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateExpressionStatement_System_CodeDom_CodeExpressionStatement_">GenerateExpressionStatement(CodeExpressionStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateIterationStatement_System_CodeDom_CodeIterationStatement_">GenerateIterationStatement(CodeIterationStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateThrowExceptionStatement_System_CodeDom_CodeThrowExceptionStatement_">GenerateThrowExceptionStatement(CodeThrowExceptionStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCommentStatement_System_CodeDom_CodeCommentStatement_">GenerateCommentStatement(CodeCommentStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCommentStatements_System_CodeDom_CodeCommentStatementCollection_">GenerateCommentStatements(CodeCommentStatementCollection)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateComment_System_CodeDom_CodeComment_">GenerateComment(CodeComment)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateMethodReturnStatement_System_CodeDom_CodeMethodReturnStatement_">GenerateMethodReturnStatement(CodeMethodReturnStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateConditionStatement_System_CodeDom_CodeConditionStatement_">GenerateConditionStatement(CodeConditionStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTryCatchFinallyStatement_System_CodeDom_CodeTryCatchFinallyStatement_">GenerateTryCatchFinallyStatement(CodeTryCatchFinallyStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateAssignStatement_System_CodeDom_CodeAssignStatement_">GenerateAssignStatement(CodeAssignStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateAttachEventStatement_System_CodeDom_CodeAttachEventStatement_">GenerateAttachEventStatement(CodeAttachEventStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateRemoveEventStatement_System_CodeDom_CodeRemoveEventStatement_">GenerateRemoveEventStatement(CodeRemoveEventStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateGotoStatement_System_CodeDom_CodeGotoStatement_">GenerateGotoStatement(CodeGotoStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateLabeledStatement_System_CodeDom_CodeLabeledStatement_">GenerateLabeledStatement(CodeLabeledStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateSnippetStatement_System_CodeDom_CodeSnippetStatement_">GenerateSnippetStatement(CodeSnippetStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateVariableDeclarationStatement_System_CodeDom_CodeVariableDeclarationStatement_">GenerateVariableDeclarationStatement(CodeVariableDeclarationStatement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateLinePragmaStart_System_CodeDom_CodeLinePragma_">GenerateLinePragmaStart(CodeLinePragma)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateLinePragmaEnd_System_CodeDom_CodeLinePragma_">GenerateLinePragmaEnd(CodeLinePragma)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateEvent_System_CodeDom_CodeMemberEvent_System_CodeDom_CodeTypeDeclaration_">GenerateEvent(CodeMemberEvent, CodeTypeDeclaration)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateField_System_CodeDom_CodeMemberField_">GenerateField(CodeMemberField)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateSnippetMember_System_CodeDom_CodeSnippetTypeMember_">GenerateSnippetMember(CodeSnippetTypeMember)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateEntryPointMethod_System_CodeDom_CodeEntryPointMethod_System_CodeDom_CodeTypeDeclaration_">GenerateEntryPointMethod(CodeEntryPointMethod, CodeTypeDeclaration)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateMethod_System_CodeDom_CodeMemberMethod_System_CodeDom_CodeTypeDeclaration_">GenerateMethod(CodeMemberMethod, CodeTypeDeclaration)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateProperty_System_CodeDom_CodeMemberProperty_System_CodeDom_CodeTypeDeclaration_">GenerateProperty(CodeMemberProperty, CodeTypeDeclaration)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateConstructor_System_CodeDom_CodeConstructor_System_CodeDom_CodeTypeDeclaration_">GenerateConstructor(CodeConstructor, CodeTypeDeclaration)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTypeConstructor_System_CodeDom_CodeTypeConstructor_">GenerateTypeConstructor(CodeTypeConstructor)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTypeStart_System_CodeDom_CodeTypeDeclaration_">GenerateTypeStart(CodeTypeDeclaration)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateTypeEnd_System_CodeDom_CodeTypeDeclaration_">GenerateTypeEnd(CodeTypeDeclaration)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCompileUnitStart_System_CodeDom_CodeCompileUnit_">GenerateCompileUnitStart(CodeCompileUnit)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateCompileUnitEnd_System_CodeDom_CodeCompileUnit_">GenerateCompileUnitEnd(CodeCompileUnit)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateNamespaceStart_System_CodeDom_CodeNamespace_">GenerateNamespaceStart(CodeNamespace)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateNamespaceEnd_System_CodeDom_CodeNamespace_">GenerateNamespaceEnd(CodeNamespace)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateNamespaceImport_System_CodeDom_CodeNamespaceImport_">GenerateNamespaceImport(CodeNamespaceImport)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateAttributeDeclarationsStart_System_CodeDom_CodeAttributeDeclarationCollection_">GenerateAttributeDeclarationsStart(CodeAttributeDeclarationCollection)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GenerateAttributeDeclarationsEnd_System_CodeDom_CodeAttributeDeclarationCollection_">GenerateAttributeDeclarationsEnd(CodeAttributeDeclarationCollection)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_Supports_System_CodeDom_Compiler_GeneratorSupport_">Supports(GeneratorSupport)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsValidIdentifier_System_String_">IsValidIdentifier(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_ValidateIdentifier_System_String_">ValidateIdentifier(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_CreateEscapedIdentifier_System_String_">CreateEscapedIdentifier(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_CreateValidIdentifier_System_String_">CreateValidIdentifier(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_GetTypeOutput_System_CodeDom_CodeTypeReference_">GetTypeOutput(CodeTypeReference)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_QuoteSnippetString_System_String_">QuoteSnippetString(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsValidLanguageIndependentIdentifier_System_String_">IsValidLanguageIndependentIdentifier(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_ValidateIdentifiers_System_CodeDom_CodeObject_">ValidateIdentifiers(CodeObject)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_CurrentClass">CurrentClass</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_CurrentTypeName">CurrentTypeName</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_CurrentMember">CurrentMember</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_CurrentMemberName">CurrentMemberName</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsCurrentInterface">IsCurrentInterface</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsCurrentClass">IsCurrentClass</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsCurrentStruct">IsCurrentStruct</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsCurrentEnum">IsCurrentEnum</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_IsCurrentDelegate">IsCurrentDelegate</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_Indent">Indent</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_NullToken">NullToken</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_Output">Output</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="System.CodeDom.Compiler.CodeGenerator.html#System_CodeDom_Compiler_CodeGenerator_Options">Options</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronZip/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with NuGet
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronZIP' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironzip-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronZIP to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: "e1a989d9-0eb0-49ff-ad0b-1776183b4fbc"
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironzip-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronZIP free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronZip/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href="/csharp/zip/licensing/"><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="/csharp/zip/licensing/">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>

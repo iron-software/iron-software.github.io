@@ -1,0 +1,84 @@
+{
+  "metadata":[
+    {
+      "src":[
+        {
+          "files":[
+            "bin/IronPdf/lib/netstandard2.0/IronPdf.dll"
+          ]
+        }
+      ],
+      "dest":"api",
+      "filter":"filterConfig.yml",
+      "disableGitFeatures":false,
+      "disableDefaultFilter":false
+    }
+  ],
+  "build":{
+    "content":[
+      {
+        "files":[
+          "api/**.yml",
+          "api/index.md"
+        ]
+      },
+      {
+        "files":[
+          "articles/**.md",
+          "articles/**/toc.yml",
+          "toc.yml",
+          "*.md",
+          "api/index.md"
+        ]
+      }
+    ],
+    "resource":[
+      {
+        "files":[
+          "images/**"
+        ]
+      }
+    ],
+    "overwrite":[
+      {
+        "files":[
+           "apidoc/**.md"
+        ],
+        "exclude":[
+          "obj/**",
+          "api/**",
+          "py/**",
+          "output/ironpdf.com/object-reference/*"
+        ]
+      }
+    ],
+
+
+    "globalMetadata":{
+      "_appTitle":"C# PDF Library Documentation | IronPDF",
+      "_enableSearch": true,
+      "_appFooter" : "<div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>"
+    },
+    "dest":"output/ironpdf.com/object-reference/",
+    "globalMetadataFiles":[
+      "homepages/ironpdf/version.json",
+      "homepages/ironpdf/customVariable.json"
+    ],
+    "fileMetadataFiles":[
+      
+    ],
+    "template": [
+        "templates/default",
+        "templates/darkfx",
+        "plugin/templates/bootstrap-modal"
+    ],
+    "postProcessors":[
+      
+    ],
+    "markdownEngineName":"markdig",
+    "noLangKeyword": false,
+    "keepFileLink": true,
+    "cleanupCacheHistory": false,
+    "disableGitFeatures": false
+  }
+}
