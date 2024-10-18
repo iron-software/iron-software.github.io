@@ -1,0 +1,1259 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CropRectangle
+   | C# IronDrawing API | IronDrawing </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CropRectangle
+   | C# IronDrawing API | IronDrawing ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronSoftware.Drawing.CropRectangle">
+  
+  
+  <h1 id="IronSoftware_Drawing_CropRectangle" data-uid="IronSoftware.Drawing.CropRectangle" class="text-break">Class CropRectangle
+  </h1>
+  <div class="markdown level0 summary"><p>A universally compatible Rectangle for .NET 7, .NET 6, .NET 5, and .NET Core. As well as compatiblity with Windows, NanoServer, IIS, macOS, Mobile, Xamarin, iOS, Android, Google Compute, Azure, AWS, and Linux.</p>
+<p>Works nicely with popular Image Rectangle such as System.Drawing.Rectangle, SkiaSharp.SKRect, SixLabors.ImageSharp.Rectangle, Microsoft.Maui.Graphics.Rect.</p>
+<p>Implicit casting means that using this class to input and output Rectangle from public API&apos;s gives full compatibility to all Rectangle type fully supported by Microsoft.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CropRectangle</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronSoftware.Drawing.html">IronSoftware.Drawing</a></h6>
+  <h6><strong>Assembly</strong>: IronSoftware.Drawing.Common.dll</h6>
+  <h5 id="IronSoftware_Drawing_CropRectangle_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CropRectangle : Object</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle__ctor_" data-uid="IronSoftware.Drawing.CropRectangle.#ctor*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle__ctor" data-uid="IronSoftware.Drawing.CropRectangle.#ctor">CropRectangle()</h4>
+  <div class="markdown level1 summary"><p>Construct a new CropRectangle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CropRectangle()</code></pre>
+  </div>
+  <h5 id="IronSoftware_Drawing_CropRectangle__ctor_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle__ctor_" data-uid="IronSoftware.Drawing.CropRectangle.#ctor*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle__ctor_System_Int32_System_Int32_System_Int32_System_Int32_IronSoftware_Drawing_MeasurementUnits_" data-uid="IronSoftware.Drawing.CropRectangle.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,IronSoftware.Drawing.MeasurementUnits)">CropRectangle(Int32, Int32, Int32, Int32, MeasurementUnits)</h4>
+  <div class="markdown level1 summary"><p>Construct a new CropRectangle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CropRectangle(int x, int y, int width, int height, MeasurementUnits units)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The x-coordinate of the upper-left corner of this Rectangle</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The y-coordinate of the upper-left corner of this Rectangle</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width of this Rectangle</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height of this Rectangle</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.MeasurementUnits.html">MeasurementUnits</a></td>
+        <td><span class="parametername">units</span></td>
+        <td><p>The measurement unit of this Rectangle</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_CropRectangle__ctor_System_Int32_System_Int32_System_Int32_System_Int32_IronSoftware_Drawing_MeasurementUnits__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></div>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_Height_" data-uid="IronSoftware.Drawing.CropRectangle.Height*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_Height" data-uid="IronSoftware.Drawing.CropRectangle.Height">Height</h4>
+  <div class="markdown level1 summary"><p>The height of this Rectangle. The default is 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Height { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_Units_" data-uid="IronSoftware.Drawing.CropRectangle.Units*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_Units" data-uid="IronSoftware.Drawing.CropRectangle.Units">Units</h4>
+  <div class="markdown level1 summary"><p>The measurement unit of this Rectangle. The default is Pixels</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MeasurementUnits Units { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.MeasurementUnits.html">MeasurementUnits</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_Width_" data-uid="IronSoftware.Drawing.CropRectangle.Width*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_Width" data-uid="IronSoftware.Drawing.CropRectangle.Width">Width</h4>
+  <div class="markdown level1 summary"><p>The width of this Rectangle. The default is 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Width { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_X_" data-uid="IronSoftware.Drawing.CropRectangle.X*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_X" data-uid="IronSoftware.Drawing.CropRectangle.X">X</h4>
+  <div class="markdown level1 summary"><p>The x-coordinate of the upper-left corner of this Rectangle. The default is 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int X { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_Y_" data-uid="IronSoftware.Drawing.CropRectangle.Y*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_Y" data-uid="IronSoftware.Drawing.CropRectangle.Y">Y</h4>
+  <div class="markdown level1 summary"><p>The y-coordinate of the upper-left corner of this Rectangle. The default is 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Y { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_ConvertTo_" data-uid="IronSoftware.Drawing.CropRectangle.ConvertTo*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_ConvertTo_IronSoftware_Drawing_MeasurementUnits_System_Int32_" data-uid="IronSoftware.Drawing.CropRectangle.ConvertTo(IronSoftware.Drawing.MeasurementUnits,System.Int32)">ConvertTo(MeasurementUnits, Int32)</h4>
+  <div class="markdown level1 summary"><p>Convert this crop rectangle to the specified units of measurement using the specified DPI
+<br><p><strong>Further Documentation:</strong><br><a href="https://ironsoftware.com/open-source/csharp/drawing/examples/convert-measurement-unit-of-croprectangle/">Code Example</a></p></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CropRectangle ConvertTo(MeasurementUnits units, int dpi = 96)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.MeasurementUnits.html">MeasurementUnits</a></td>
+        <td><span class="parametername">units</span></td>
+        <td><p>Unit of measurement</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>DPI (Dots per inch) for conversion</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td><p>A new crop rectangle which uses the desired units of measurement</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.NotImplementedException</span></td>
+        <td><p>Conversion not implemented</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="operators">Operators
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_IronSoftware_Drawing_CropRectangle__Microsoft_Maui_Graphics_Rect" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~Microsoft.Maui.Graphics.Rect">Implicit(CropRectangle to Rect)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to Microsoft.Maui.Graphics.Rect objects from <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support Microsoft.Maui.Graphics.Rect as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Rect(CropRectangle CropRectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td><span class="parametername">CropRectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> is explicitly cast to a Microsoft.Maui.Graphics.Rect.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Maui.Graphics.Rect</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_IronSoftware_Drawing_CropRectangle__Microsoft_Maui_Graphics_RectF" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~Microsoft.Maui.Graphics.RectF">Implicit(CropRectangle to RectF)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to Microsoft.Maui.Graphics.RectF objects from <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support Microsoft.Maui.Graphics.RectF as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator RectF(CropRectangle CropRectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td><span class="parametername">CropRectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> is explicitly cast to a Microsoft.Maui.Graphics.RectF.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Maui.Graphics.RectF</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_IronSoftware_Drawing_CropRectangle__SixLabors_ImageSharp_Rectangle" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~SixLabors.ImageSharp.Rectangle">Implicit(CropRectangle to Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to SixLabors.ImageSharp.Rectangle objects from <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support SixLabors.ImageSharp.Rectangle as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Rectangle(CropRectangle CropRectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td><span class="parametername">CropRectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> is explicitly cast to a SixLabors.ImageSharp.Rectangle.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_IronSoftware_Drawing_CropRectangle__SixLabors_ImageSharp_RectangleF" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~SixLabors.ImageSharp.RectangleF">Implicit(CropRectangle to RectangleF)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to SixLabors.ImageSharp.RectangleF objects from <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support SixLabors.ImageSharp.RectangleF as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator RectangleF(CropRectangle CropRectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td><span class="parametername">CropRectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> is explicitly cast to a SixLabors.ImageSharp.RectangleF.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.RectangleF</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_IronSoftware_Drawing_CropRectangle__SkiaSharp_SKRect" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~SkiaSharp.SKRect">Implicit(CropRectangle to SKRect)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to SkiaSharp.SKRect objects from <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support SkiaSharp.SKRect as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator SKRect(CropRectangle CropRectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td><span class="parametername">CropRectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> is explicitly cast to a SkiaSharp.SKRect.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKRect</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_IronSoftware_Drawing_CropRectangle__SkiaSharp_SKRectI" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~SkiaSharp.SKRectI">Implicit(CropRectangle to SKRectI)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to SkiaSharp.SKRectI objects from <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support SkiaSharp.SKRectI as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator SKRectI(CropRectangle CropRectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td><span class="parametername">CropRectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> is explicitly cast to a SkiaSharp.SKRectI.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKRectI</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_IronSoftware_Drawing_CropRectangle__System_Drawing_Rectangle" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(IronSoftware.Drawing.CropRectangle)~System.Drawing.Rectangle">Implicit(CropRectangle to Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to System.Drawing.Rectangle objects from <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support Rectangle as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Rectangle(CropRectangle CropRectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td><span class="parametername">CropRectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> is explicitly cast to a System.Drawing.Rectangle.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_Microsoft_Maui_Graphics_Rect__IronSoftware_Drawing_CropRectangle" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(Microsoft.Maui.Graphics.Rect)~IronSoftware.Drawing.CropRectangle">Implicit(Rect to CropRectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts Microsoft.Maui.Graphics.Rect objects to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support Microsoft.Maui.Graphics.Rect as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator CropRectangle(Rect Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Maui.Graphics.Rect</span></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p>Microsoft.Maui.Graphics.Rect will automatically be cast to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_Microsoft_Maui_Graphics_RectF__IronSoftware_Drawing_CropRectangle" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(Microsoft.Maui.Graphics.RectF)~IronSoftware.Drawing.CropRectangle">Implicit(RectF to CropRectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts Microsoft.Maui.Graphics.RectF objects to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support Microsoft.Maui.Graphics.RectF as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator CropRectangle(RectF Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Maui.Graphics.RectF</span></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p>Microsoft.Maui.Graphics.RectF will automatically be cast to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_SixLabors_ImageSharp_Rectangle__IronSoftware_Drawing_CropRectangle" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(SixLabors.ImageSharp.Rectangle)~IronSoftware.Drawing.CropRectangle">Implicit(Rectangle to CropRectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SixLabors.ImageSharp.Rectangle objects to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support SixLabors.ImageSharp.Rectangle as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator CropRectangle(Rectangle Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Rectangle</span></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p>SixLabors.ImageSharp.Rectangle will automatically be cast to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_SixLabors_ImageSharp_RectangleF__IronSoftware_Drawing_CropRectangle" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(SixLabors.ImageSharp.RectangleF)~IronSoftware.Drawing.CropRectangle">Implicit(RectangleF to CropRectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SixLabors.ImageSharp.RectangleF objects to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support SixLabors.ImageSharp.RectangleF as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator CropRectangle(RectangleF Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.RectangleF</span></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p>SixLabors.ImageSharp.RectangleF will automatically be cast to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_SkiaSharp_SKRect__IronSoftware_Drawing_CropRectangle" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(SkiaSharp.SKRect)~IronSoftware.Drawing.CropRectangle">Implicit(SKRect to CropRectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SkiaSharp.SKRect objects to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support SkiaSharp.SKRect as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator CropRectangle(SKRect SKRect)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKRect</span></td>
+        <td><span class="parametername">SKRect</span></td>
+        <td><p>SkiaSharp.SKRect will automatically be cast to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_SkiaSharp_SKRectI__IronSoftware_Drawing_CropRectangle" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(SkiaSharp.SKRectI)~IronSoftware.Drawing.CropRectangle">Implicit(SKRectI to CropRectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SkiaSharp.SKRectI objects to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support SkiaSharp.SKRectI as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator CropRectangle(SKRectI SKRectI)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKRectI</span></td>
+        <td><span class="parametername">SKRectI</span></td>
+        <td><p>SkiaSharp.SKRectI will automatically be cast to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_CropRectangle_op_Implicit_" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_CropRectangle_op_Implicit_System_Drawing_Rectangle__IronSoftware_Drawing_CropRectangle" data-uid="IronSoftware.Drawing.CropRectangle.op_Implicit(System.Drawing.Rectangle)~IronSoftware.Drawing.CropRectangle">Implicit(Rectangle to CropRectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts System.Drawing.Rectangle objects to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a> as parameters and return types, you now automatically support Rectangle as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator CropRectangle(Rectangle Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p>System.Drawing.Rectangle will automatically be cast to <a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronSoftware.System.Drawing/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon api-reference-right-sidebar__list-item--display-none">
+                    <a href="" target="_blank" class="api-reference-right-sidebar__link"></a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronSoftware.System.Drawing/' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('');
+                              
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronDrawing to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: ""
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('');
+                              
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronDrawing free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronSoftware.System.Drawing/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href=""><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>

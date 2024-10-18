@@ -1,0 +1,2723 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class AnyBitmap
+   | C# IronDrawing API | IronDrawing </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class AnyBitmap
+   | C# IronDrawing API | IronDrawing ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronSoftware.Drawing.AnyBitmap">
+  
+  
+  <h1 id="IronSoftware_Drawing_AnyBitmap" data-uid="IronSoftware.Drawing.AnyBitmap" class="text-break">Class AnyBitmap
+  </h1>
+  <div class="markdown level0 summary"><p>A universally compatible Bitmap format for .NET 7, .NET 6, .NET 5, and .NET Core. As well as compatiblity with Windows, NanoServer, IIS, macOS, Mobile, Xamarin, iOS, Android, Google Compute, Azure, AWS, and Linux.</p>
+<p>Works nicely with popular Image and Bitmap formats such as System.Drawing.Bitmap, SkiaSharp, SixLabors.ImageSharp, Microsoft.Maui.Graphics.</p>
+<p>Implicit casting means that using this class to input and output Bitmap and image types from public API&apos;s gives full compatibility to all image type fully supported by Microsoft.</p>
+<p>Unlike System.Drawing.Bitmap this bitmap object is self-memory-managing and does not need to be explicitly &apos;used&apos; or &apos;disposed&apos;.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">AnyBitmap</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronSoftware.Drawing.html">IronSoftware.Drawing</a></h6>
+  <h6><strong>Assembly</strong>: IronSoftware.Drawing.Common.dll</h6>
+  <h5 id="IronSoftware_Drawing_AnyBitmap_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AnyBitmap : Object</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap__ctor_" data-uid="IronSoftware.Drawing.AnyBitmap.#ctor*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap__ctor_System_Byte___" data-uid="IronSoftware.Drawing.AnyBitmap.#ctor(System.Byte[])">AnyBitmap(Byte[])</h4>
+  <div class="markdown level1 summary"><p>Construct a new Bitmap from binary data (bytes).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnyBitmap(byte[] Bytes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">Bytes</span></td>
+        <td><p>A ByteArray of image data in any common format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap__ctor_System_Byte____seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_FromBytes_System_Byte___">FromBytes(Byte[])</a></div>
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap__ctor_" data-uid="IronSoftware.Drawing.AnyBitmap.#ctor*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap__ctor_System_IO_MemoryStream_" data-uid="IronSoftware.Drawing.AnyBitmap.#ctor(System.IO.MemoryStream)">AnyBitmap(MemoryStream)</h4>
+  <div class="markdown level1 summary"><p>Construct a new Bitmap from a <span class="xref">System.IO.Stream</span> (bytes).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnyBitmap(MemoryStream Stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.MemoryStream</span></td>
+        <td><span class="parametername">Stream</span></td>
+        <td><p>A <span class="xref">System.IO.Stream</span> of image data in any common format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap__ctor_System_IO_MemoryStream__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_FromStream_System_IO_MemoryStream_">FromStream(MemoryStream)</a></div>
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap__ctor_" data-uid="IronSoftware.Drawing.AnyBitmap.#ctor*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap__ctor_System_IO_Stream_" data-uid="IronSoftware.Drawing.AnyBitmap.#ctor(System.IO.Stream)">AnyBitmap(Stream)</h4>
+  <div class="markdown level1 summary"><p>Construct a new Bitmap from a <span class="xref">System.IO.Stream</span> (bytes).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnyBitmap(Stream Stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">Stream</span></td>
+        <td><p>A <span class="xref">System.IO.Stream</span> of image data in any common format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap__ctor_System_IO_Stream__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_FromStream_System_IO_MemoryStream_">FromStream(MemoryStream)</a></div>
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap__ctor_" data-uid="IronSoftware.Drawing.AnyBitmap.#ctor*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap__ctor_System_String_" data-uid="IronSoftware.Drawing.AnyBitmap.#ctor(System.String)">AnyBitmap(String)</h4>
+  <div class="markdown level1 summary"><p>Construct a new Bitmap from a file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnyBitmap(string File)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">File</span></td>
+        <td><p>A fully qualified file path./</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap__ctor_System_String__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_FromFile_System_String_">FromFile(String)</a></div>
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap__ctor_" data-uid="IronSoftware.Drawing.AnyBitmap.#ctor*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap__ctor_System_Uri_" data-uid="IronSoftware.Drawing.AnyBitmap.#ctor(System.Uri)">AnyBitmap(Uri)</h4>
+  <div class="markdown level1 summary"><p>Construct a new Bitmap from a Uri</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnyBitmap(Uri Uri)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">Uri</span></td>
+        <td><p>The uri of the image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap__ctor_System_Uri__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_FromUri_System_Uri_">FromUri(Uri)</a></div>
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></div>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_BitsPerPixel_" data-uid="IronSoftware.Drawing.AnyBitmap.BitsPerPixel*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_BitsPerPixel" data-uid="IronSoftware.Drawing.AnyBitmap.BitsPerPixel">BitsPerPixel</h4>
+  <div class="markdown level1 summary"><p>Gets colors depth, in number of bits per pixel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BitsPerPixel { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_FrameCount_" data-uid="IronSoftware.Drawing.AnyBitmap.FrameCount*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_FrameCount" data-uid="IronSoftware.Drawing.AnyBitmap.FrameCount">FrameCount</h4>
+  <div class="markdown level1 summary"><p>Returns the number of frames in our loaded Image.  Each “frame” is a page of an image such as  Tiff or Gif.  All other image formats return 1.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FrameCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap_FrameCount_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_GetAllFrames">GetAllFrames</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_GetAllFrames_" data-uid="IronSoftware.Drawing.AnyBitmap.GetAllFrames*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_GetAllFrames" data-uid="IronSoftware.Drawing.AnyBitmap.GetAllFrames">GetAllFrames</h4>
+  <div class="markdown level1 summary"><p>Returns all of the cloned frames in our loaded Image. Each &quot;frame&quot; is a page of an image such as Tiff or Gif. All other image formats return an IEnumerable of length 1.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;AnyBitmap&gt; GetAllFrames { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap_GetAllFrames_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_FrameCount">FrameCount</a></div>
+      <div><span class="xref">System.Linq</span></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_Height_" data-uid="IronSoftware.Drawing.AnyBitmap.Height*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_Height" data-uid="IronSoftware.Drawing.AnyBitmap.Height">Height</h4>
+  <div class="markdown level1 summary"><p>Height of the image.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Height { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_HorizontalResolution_" data-uid="IronSoftware.Drawing.AnyBitmap.HorizontalResolution*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_HorizontalResolution" data-uid="IronSoftware.Drawing.AnyBitmap.HorizontalResolution">HorizontalResolution</h4>
+  <div class="markdown level1 summary"><p>Gets the resolution of the image in x-direction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Nullable&lt;double&gt; HorizontalResolution { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_Length_" data-uid="IronSoftware.Drawing.AnyBitmap.Length*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_Length" data-uid="IronSoftware.Drawing.AnyBitmap.Length">Length</h4>
+  <div class="markdown level1 summary"><p>Number of raw image bytes stored</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Length { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_MimeType_" data-uid="IronSoftware.Drawing.AnyBitmap.MimeType*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_MimeType" data-uid="IronSoftware.Drawing.AnyBitmap.MimeType">MimeType</h4>
+  <div class="markdown level1 summary"><p>Returns the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types">HTTP MIME types</a> of the image.</p>
+<p>must be one of the following: image/bmp, image/jpeg, image/png, image/gif, image/tiff, image/webp, or image/unknown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string MimeType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_Scan0_" data-uid="IronSoftware.Drawing.AnyBitmap.Scan0*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_Scan0" data-uid="IronSoftware.Drawing.AnyBitmap.Scan0">Scan0</h4>
+  <div class="markdown level1 summary"><p>Gets the address of the first pixel data in the <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>. This can also be thought of as the first scan line in the <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr Scan0 { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td><p>The address of the first 32bpp BGRA pixel data in the <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_Stride_" data-uid="IronSoftware.Drawing.AnyBitmap.Stride*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_Stride" data-uid="IronSoftware.Drawing.AnyBitmap.Stride">Stride</h4>
+  <div class="markdown level1 summary"><p>Gets the stride width (also called scan width) of the <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Stride { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_VerticalResolution_" data-uid="IronSoftware.Drawing.AnyBitmap.VerticalResolution*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_VerticalResolution" data-uid="IronSoftware.Drawing.AnyBitmap.VerticalResolution">VerticalResolution</h4>
+  <div class="markdown level1 summary"><p>Gets the resolution of the image in y-direction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Nullable&lt;double&gt; VerticalResolution { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_Width_" data-uid="IronSoftware.Drawing.AnyBitmap.Width*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_Width" data-uid="IronSoftware.Drawing.AnyBitmap.Width">Width</h4>
+  <div class="markdown level1 summary"><p>Width of the image.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Width { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_Clone_" data-uid="IronSoftware.Drawing.AnyBitmap.Clone*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_Clone" data-uid="IronSoftware.Drawing.AnyBitmap.Clone">Clone()</h4>
+  <div class="markdown level1 summary"><p>Creates an exact duplicate <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnyBitmap Clone()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_Clone_" data-uid="IronSoftware.Drawing.AnyBitmap.Clone*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_Clone_IronSoftware_Drawing_CropRectangle_" data-uid="IronSoftware.Drawing.AnyBitmap.Clone(IronSoftware.Drawing.CropRectangle)">Clone(CropRectangle)</h4>
+  <div class="markdown level1 summary"><p>Creates an exact duplicate <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> of the cropped area.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnyBitmap Clone(CropRectangle Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.CropRectangle.html">CropRectangle</a></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p>Defines the portion of this <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> to copy.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_CreateMultiFrameGif_" data-uid="IronSoftware.Drawing.AnyBitmap.CreateMultiFrameGif*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_CreateMultiFrameGif_System_Collections_Generic_IEnumerable_IronSoftware_Drawing_AnyBitmap__" data-uid="IronSoftware.Drawing.AnyBitmap.CreateMultiFrameGif(System.Collections.Generic.IEnumerable{IronSoftware.Drawing.AnyBitmap})">CreateMultiFrameGif(IEnumerable&lt;AnyBitmap&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates a multi-frame GIF image from multiple AnyBitmaps.</p>
+<p>All images should have the same dimension.</p>
+<p>If not dimension will be scaling to the largest width and height.</p>
+<p>The image dimension still the same with original dimension with background transparent.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AnyBitmap CreateMultiFrameGif(IEnumerable&lt;AnyBitmap&gt; images)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>&gt;</td>
+        <td><span class="parametername">images</span></td>
+        <td><p>Array of <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> to merge into Gif image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_CreateMultiFrameGif_" data-uid="IronSoftware.Drawing.AnyBitmap.CreateMultiFrameGif*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_CreateMultiFrameGif_System_Collections_Generic_IEnumerable_System_String__" data-uid="IronSoftware.Drawing.AnyBitmap.CreateMultiFrameGif(System.Collections.Generic.IEnumerable{System.String})">CreateMultiFrameGif(IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates a multi-frame GIF image from multiple AnyBitmaps.</p>
+<p>All images should have the same dimension.</p>
+<p>If not dimension will be scaling to the largest width and height.</p>
+<p>The image dimension still the same with original dimension with background transparent.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AnyBitmap CreateMultiFrameGif(IEnumerable&lt;string&gt; imagePaths)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">imagePaths</span></td>
+        <td><p>Array of fully qualified file path to merge into Gif image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_CreateMultiFrameTiff_" data-uid="IronSoftware.Drawing.AnyBitmap.CreateMultiFrameTiff*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_CreateMultiFrameTiff_System_Collections_Generic_IEnumerable_IronSoftware_Drawing_AnyBitmap__" data-uid="IronSoftware.Drawing.AnyBitmap.CreateMultiFrameTiff(System.Collections.Generic.IEnumerable{IronSoftware.Drawing.AnyBitmap})">CreateMultiFrameTiff(IEnumerable&lt;AnyBitmap&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates a multi-frame TIFF image from multiple AnyBitmaps.</p>
+<p>All images should have the same dimension.</p>
+<p>If not dimension will be scaling to the largest width and height.</p>
+<p>The image dimension still the same with original dimension with black background.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AnyBitmap CreateMultiFrameTiff(IEnumerable&lt;AnyBitmap&gt; images)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>&gt;</td>
+        <td><span class="parametername">images</span></td>
+        <td><p>Array of <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> to merge into Tiff image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_CreateMultiFrameTiff_" data-uid="IronSoftware.Drawing.AnyBitmap.CreateMultiFrameTiff*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_CreateMultiFrameTiff_System_Collections_Generic_IEnumerable_System_String__" data-uid="IronSoftware.Drawing.AnyBitmap.CreateMultiFrameTiff(System.Collections.Generic.IEnumerable{System.String})">CreateMultiFrameTiff(IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates a multi-frame TIFF image from multiple AnyBitmaps.</p>
+<p>All images should have the same dimension.</p>
+<p>If not dimension will be scaling to the largest width and height.</p>
+<p>The image dimension still the same with original dimension with black background.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AnyBitmap CreateMultiFrameTiff(IEnumerable&lt;string&gt; imagePaths)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">imagePaths</span></td>
+        <td><p>Array of fully qualified file path to merge into Tiff image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_ExportBytes_" data-uid="IronSoftware.Drawing.AnyBitmap.ExportBytes*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_ExportBytes_IronSoftware_Drawing_AnyBitmap_ImageFormat_System_Int32_" data-uid="IronSoftware.Drawing.AnyBitmap.ExportBytes(IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">ExportBytes(AnyBitmap.ImageFormat, Int32)</h4>
+  <div class="markdown level1 summary"><p>Exports the Bitmap as bytes encoded in the <a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a> of your choice.</p>
+<p>Add SkiaSharp, System.Drawing.Common, or SixLabors.ImageSharp to your project to enable this feature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] ExportBytes(AnyBitmap.ImageFormat Format, int Lossy = 100)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a></td>
+        <td><span class="parametername">Format</span></td>
+        <td><p>An image encoding format.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">Lossy</span></td>
+        <td><p>JPEG and WebP encoding quality (ignored for all other values of <a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a>). Higher values return larger file sizes. 0 is lowest quality , 100 is highest.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>Transcoded image bytes.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_ExportFile_" data-uid="IronSoftware.Drawing.AnyBitmap.ExportFile*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_ExportFile_System_String_IronSoftware_Drawing_AnyBitmap_ImageFormat_System_Int32_" data-uid="IronSoftware.Drawing.AnyBitmap.ExportFile(System.String,IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">ExportFile(String, AnyBitmap.ImageFormat, Int32)</h4>
+  <div class="markdown level1 summary"><p>Exports the Bitmap as a file encoded in the <a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a> of your choice.</p>
+<p>Add SkiaSharp, System.Drawing.Common, or SixLabors.ImageSharp to your project to enable the encoding feature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExportFile(string File, AnyBitmap.ImageFormat Format, int Lossy = 100)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">File</span></td>
+        <td><p>A fully qualified file path.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a></td>
+        <td><span class="parametername">Format</span></td>
+        <td><p>An image encoding format.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">Lossy</span></td>
+        <td><p>JPEG and WebP encoding quality (ignored for all other values of <a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a>). Higher values return larger file sizes. 0 is lowest quality, 100 is highest.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_ExportStream_" data-uid="IronSoftware.Drawing.AnyBitmap.ExportStream*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_ExportStream_System_IO_Stream_IronSoftware_Drawing_AnyBitmap_ImageFormat_System_Int32_" data-uid="IronSoftware.Drawing.AnyBitmap.ExportStream(System.IO.Stream,IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">ExportStream(Stream, AnyBitmap.ImageFormat, Int32)</h4>
+  <div class="markdown level1 summary"><p>Saves the Bitmap to an existing <span class="xref">System.IO.Stream</span> encoded in the <a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a> of your choice.</p>
+<p>Add SkiaSharp, System.Drawing.Common, or SixLabors.ImageSharp to your project to enable the encoding feature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExportStream(Stream Stream, AnyBitmap.ImageFormat Format, int Lossy = 100)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">Stream</span></td>
+        <td><p>An image encoding format.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a></td>
+        <td><span class="parametername">Format</span></td>
+        <td><p>An image encoding format.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">Lossy</span></td>
+        <td><p>JPEG and WebP encoding quality (ignored for all other values of <a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a>). Higher values return larger file sizes. 0 is lowest quality, 100 is highest.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_FromBitmap_" data-uid="IronSoftware.Drawing.AnyBitmap.FromBitmap*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_FromBitmap__1___0_" data-uid="IronSoftware.Drawing.AnyBitmap.FromBitmap``1(``0)">FromBitmap&lt;T&gt;(T)</h4>
+  <div class="markdown level1 summary"><p>Generic method to convert popular image types to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p> Support includes SixLabors.ImageSharp.Image, SkiaSharp.SKImage, SkiaSharp.SKBitmap, System.Drawing.Bitmap, System.Drawing.Image and Microsoft.Maui.Graphics formats.</p>
+<p>Syntax sugar. Explicit casts already also exist to and from <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> and all supported types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AnyBitmap FromBitmap&lt;T&gt;(T OtherBitmapFormat)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">OtherBitmapFormat</span></td>
+        <td><p>A bitmap or image format from another graphics library.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td><p>A <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The Type to cast from. Support includes SixLabors.ImageSharp.Image, SkiaSharp.SKImage, SkiaSharp.SKBitmap, System.Drawing.Bitmap, System.Drawing.Image and Microsoft.Maui.Graphics formats.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_FromBytes_" data-uid="IronSoftware.Drawing.AnyBitmap.FromBytes*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_FromBytes_System_Byte___" data-uid="IronSoftware.Drawing.AnyBitmap.FromBytes(System.Byte[])">FromBytes(Byte[])</h4>
+  <div class="markdown level1 summary"><p>Create a new Bitmap from a a Byte Array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AnyBitmap FromBytes(byte[] Bytes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">Bytes</span></td>
+        <td><p>A ByteArray of image data in any common format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap_FromBytes_System_Byte____seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_FromBytes_System_Byte___">FromBytes(Byte[])</a></div>
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap__ctor_System_Byte___">AnyBitmap(Byte[])</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_FromFile_" data-uid="IronSoftware.Drawing.AnyBitmap.FromFile*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_FromFile_System_String_" data-uid="IronSoftware.Drawing.AnyBitmap.FromFile(System.String)">FromFile(String)</h4>
+  <div class="markdown level1 summary"><p>Create a new Bitmap from a file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AnyBitmap FromFile(string File)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">File</span></td>
+        <td><p>A fully qualified file path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap_FromFile_System_String__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_FromFile_System_String_">FromFile(String)</a></div>
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_FromStream_" data-uid="IronSoftware.Drawing.AnyBitmap.FromStream*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_FromStream_System_IO_MemoryStream_" data-uid="IronSoftware.Drawing.AnyBitmap.FromStream(System.IO.MemoryStream)">FromStream(MemoryStream)</h4>
+  <div class="markdown level1 summary"><p>Create a new Bitmap from a <span class="xref">System.IO.Stream</span> (bytes).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AnyBitmap FromStream(MemoryStream Stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.MemoryStream</span></td>
+        <td><span class="parametername">Stream</span></td>
+        <td><p>A <span class="xref">System.IO.Stream</span> of image data in any common format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap_FromStream_System_IO_MemoryStream__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_FromStream_System_IO_MemoryStream_">FromStream(MemoryStream)</a></div>
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_FromStream_" data-uid="IronSoftware.Drawing.AnyBitmap.FromStream*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_FromStream_System_IO_Stream_" data-uid="IronSoftware.Drawing.AnyBitmap.FromStream(System.IO.Stream)">FromStream(Stream)</h4>
+  <div class="markdown level1 summary"><p>Create a new Bitmap from a <span class="xref">System.IO.Stream</span> (bytes).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AnyBitmap FromStream(Stream Stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">Stream</span></td>
+        <td><p>A <span class="xref">System.IO.Stream</span> of image data in any common format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap_FromStream_System_IO_Stream__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_FromStream_System_IO_MemoryStream_">FromStream(MemoryStream)</a></div>
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_FromUri_" data-uid="IronSoftware.Drawing.AnyBitmap.FromUri*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_FromUri_System_Uri_" data-uid="IronSoftware.Drawing.AnyBitmap.FromUri(System.Uri)">FromUri(Uri)</h4>
+  <div class="markdown level1 summary"><p>Construct a new Bitmap from a Uri</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AnyBitmap FromUri(Uri Uri)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">Uri</span></td>
+        <td><p>The uri of the image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap_FromUri_System_Uri__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></div>
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_FromUri_System_Uri_">FromUri(Uri)</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_GetBytes_" data-uid="IronSoftware.Drawing.AnyBitmap.GetBytes*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_GetBytes" data-uid="IronSoftware.Drawing.AnyBitmap.GetBytes">GetBytes()</h4>
+  <div class="markdown level1 summary"><p>The raw image data as byte[] (ByteArray)&quot;/&gt;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBytes()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>A byte[] (ByteArray)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_GetHashCode_" data-uid="IronSoftware.Drawing.AnyBitmap.GetHashCode*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_GetHashCode" data-uid="IronSoftware.Drawing.AnyBitmap.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"><p>Hashing integer based on image raw binary data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Int</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_GetImageFormat_" data-uid="IronSoftware.Drawing.AnyBitmap.GetImageFormat*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_GetImageFormat" data-uid="IronSoftware.Drawing.AnyBitmap.GetImageFormat">GetImageFormat()</h4>
+  <div class="markdown level1 summary"><p>Image formats which <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> readed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnyBitmap.ImageFormat GetImageFormat()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_GetStream_" data-uid="IronSoftware.Drawing.AnyBitmap.GetStream*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_GetStream" data-uid="IronSoftware.Drawing.AnyBitmap.GetStream">GetStream()</h4>
+  <div class="markdown level1 summary"><p>The raw image data as a <span class="xref">System.IO.MemoryStream</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryStream GetStream()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.MemoryStream</span></td>
+        <td><p><span class="xref">System.IO.MemoryStream</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_SaveAs_" data-uid="IronSoftware.Drawing.AnyBitmap.SaveAs*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_SaveAs_System_String_" data-uid="IronSoftware.Drawing.AnyBitmap.SaveAs(System.String)">SaveAs(String)</h4>
+  <div class="markdown level1 summary"><p>Saves the raw image data to a file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SaveAs(string File)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">File</span></td>
+        <td><p>A fully qualified file path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap_SaveAs_System_String__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_TrySaveAs_System_String_">TrySaveAs(String)</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_SaveAs_" data-uid="IronSoftware.Drawing.AnyBitmap.SaveAs*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_SaveAs_System_String_IronSoftware_Drawing_AnyBitmap_ImageFormat_System_Int32_" data-uid="IronSoftware.Drawing.AnyBitmap.SaveAs(System.String,IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">SaveAs(String, AnyBitmap.ImageFormat, Int32)</h4>
+  <div class="markdown level1 summary"><p>Saves the image data to a file. Allows for the image to be transcoded to popular image formats.</p>
+<p>Add SkiaSharp, System.Drawing.Common, or SixLabors.ImageSharp to your project to enable the encoding feature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SaveAs(string File, AnyBitmap.ImageFormat Format, int Lossy = 100)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">File</span></td>
+        <td><p>A fully qualified file path.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a></td>
+        <td><span class="parametername">Format</span></td>
+        <td><p>An image encoding format.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">Lossy</span></td>
+        <td><p>JPEG and WebP encoding quality (ignored for all other values of <a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a>). Higher values return larger file sizes. 0 is lowest quality , 100 is highest.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap_SaveAs_System_String_IronSoftware_Drawing_AnyBitmap_ImageFormat_System_Int32__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_TrySaveAs_System_String_IronSoftware_Drawing_AnyBitmap_ImageFormat_System_Int32_">TrySaveAs(String, AnyBitmap.ImageFormat, Int32)</a></div>
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_TrySaveAs_System_String_">TrySaveAs(String)</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_ToBitmap_" data-uid="IronSoftware.Drawing.AnyBitmap.ToBitmap*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_ToBitmap__1" data-uid="IronSoftware.Drawing.AnyBitmap.ToBitmap``1">ToBitmap&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>Generic method to convert <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> to popular image types.</p>
+<p> Support includes SixLabors.ImageSharp.Image, SkiaSharp.SKImage, SkiaSharp.SKBitmap, System.Drawing.Bitmap, System.Drawing.Image and Microsoft.Maui.Graphics formats.</p>
+<p>Syntax sugar. Explicit casts already also exist to and from <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> and all supported types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T ToBitmap&lt;T&gt;()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><p>A <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The Type to cast to. Support includes SixLabors.ImageSharp.Image, SkiaSharp.SKImage, SkiaSharp.SKBitmap, System.Drawing.Bitmap, System.Drawing.Image and Microsoft.Maui.Graphics formats.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_ToStream_" data-uid="IronSoftware.Drawing.AnyBitmap.ToStream*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_ToStream_IronSoftware_Drawing_AnyBitmap_ImageFormat_System_Int32_" data-uid="IronSoftware.Drawing.AnyBitmap.ToStream(IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">ToStream(AnyBitmap.ImageFormat, Int32)</h4>
+  <div class="markdown level1 summary"><p>Exports the Bitmap as a <span class="xref">System.IO.MemoryStream</span> encoded in the <a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a> of your choice.</p>
+<p>Add SkiaSharp, System.Drawing.Common, or SixLabors.ImageSharp to your project to enable the encoding feature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryStream ToStream(AnyBitmap.ImageFormat Format, int Lossy = 100)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a></td>
+        <td><span class="parametername">Format</span></td>
+        <td><p>An image encoding format.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">Lossy</span></td>
+        <td><p>JPEG and WebP encoding quality (ignored for all other values of <a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a>). Higher values return larger file sizes. 0 is lowest quality, 100 is highest.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.MemoryStream</span></td>
+        <td><p>Transcoded image bytes in a <span class="xref">System.IO.MemoryStream</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_ToStreamFn_" data-uid="IronSoftware.Drawing.AnyBitmap.ToStreamFn*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_ToStreamFn_IronSoftware_Drawing_AnyBitmap_ImageFormat_System_Int32_" data-uid="IronSoftware.Drawing.AnyBitmap.ToStreamFn(IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">ToStreamFn(AnyBitmap.ImageFormat, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;Stream&gt; ToStreamFn(AnyBitmap.ImageFormat Format, int Lossy = 100)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a></td>
+        <td><span class="parametername">Format</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">Lossy</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.IO.Stream</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_ToString_" data-uid="IronSoftware.Drawing.AnyBitmap.ToString*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_ToString" data-uid="IronSoftware.Drawing.AnyBitmap.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>A Base64 encoded string representation of the raw image binary data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The bitmap data as a Base64 string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap_ToString_seealso">See Also</h5>
+  <div class="seealso">
+      <div><span class="xref">System.Convert.ToBase64String(System.Byte[])</span></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_TrySaveAs_" data-uid="IronSoftware.Drawing.AnyBitmap.TrySaveAs*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_TrySaveAs_System_String_" data-uid="IronSoftware.Drawing.AnyBitmap.TrySaveAs(System.String)">TrySaveAs(String)</h4>
+  <div class="markdown level1 summary"><p>Tries to Save the raw image data to a file.
+<returns>returns true on success, false on failure.</returns></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TrySaveAs(string File)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">File</span></td>
+        <td><p>A fully qualified file path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap_TrySaveAs_System_String__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_SaveAs_System_String_">SaveAs(String)</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_TrySaveAs_" data-uid="IronSoftware.Drawing.AnyBitmap.TrySaveAs*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_TrySaveAs_System_String_IronSoftware_Drawing_AnyBitmap_ImageFormat_System_Int32_" data-uid="IronSoftware.Drawing.AnyBitmap.TrySaveAs(System.String,IronSoftware.Drawing.AnyBitmap.ImageFormat,System.Int32)">TrySaveAs(String, AnyBitmap.ImageFormat, Int32)</h4>
+  <div class="markdown level1 summary"><p>Tries to Save the image data to a file. Allows for the image to be transcoded to popular image formats.</p>
+<p>Add SkiaSharp, System.Drawing.Common, or SixLabors.ImageSharp to your project to enable the encoding feature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TrySaveAs(string File, AnyBitmap.ImageFormat Format, int Lossy = 100)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">File</span></td>
+        <td><p>A fully qualified file path.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a></td>
+        <td><span class="parametername">Format</span></td>
+        <td><p>An image encoding format.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">Lossy</span></td>
+        <td><p>JPEG and WebP encoding quality (ignored for all other values of <a class="xref" href="IronSoftware.Drawing.AnyBitmap.ImageFormat.html">AnyBitmap.ImageFormat</a>). Higher values return larger file sizes. 0 is lowest quality , 100 is highest.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>returns true on success, false on failure.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_AnyBitmap_TrySaveAs_System_String_IronSoftware_Drawing_AnyBitmap_ImageFormat_System_Int32__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html#IronSoftware_Drawing_AnyBitmap_SaveAs_System_String_IronSoftware_Drawing_AnyBitmap_ImageFormat_System_Int32_">SaveAs(String, AnyBitmap.ImageFormat, Int32)</a></div>
+  </div>
+  <h3 id="operators">Operators
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_IronSoftware_Drawing_AnyBitmap__Microsoft_Maui_Graphics_Platform_PlatformImage" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~Microsoft.Maui.Graphics.Platform.PlatformImage">Implicit(AnyBitmap to PlatformImage)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to Microsoft.Maui.Graphics.Platform.PlatformImage objects from <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support Microsoft.Maui.Graphics as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator PlatformImage(AnyBitmap bitmap)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td><span class="parametername">bitmap</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> is implicitly cast to a Microsoft.Maui.Graphics.Platform.PlatformImage.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Maui.Graphics.Platform.PlatformImage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_IronSoftware_Drawing_AnyBitmap__SixLabors_ImageSharp_Image" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~SixLabors.ImageSharp.Image">Implicit(AnyBitmap to Image)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to SixLabors.ImageSharp.Image objects from <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support ImageSharp as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Image(AnyBitmap bitmap)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td><span class="parametername">bitmap</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> is implicitly cast to a SixLabors.ImageSharp.Image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Image</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_IronSoftware_Drawing_AnyBitmap__SixLabors_ImageSharp_Image_SixLabors_ImageSharp_PixelFormats_Rgb24_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~SixLabors.ImageSharp.Image{SixLabors.ImageSharp.PixelFormats.Rgb24}">Implicit(AnyBitmap to Image&lt;Rgb24&gt;)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to SixLabors.ImageSharp.Image objects from <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support ImageSharp as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Image&lt;Rgb24&gt;(AnyBitmap bitmap)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td><span class="parametername">bitmap</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> is implicitly cast to a SixLabors.ImageSharp.Image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Image</span>&lt;<span class="xref">SixLabors.ImageSharp.PixelFormats.Rgb24</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_IronSoftware_Drawing_AnyBitmap__SixLabors_ImageSharp_Image_SixLabors_ImageSharp_PixelFormats_Rgba32_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~SixLabors.ImageSharp.Image{SixLabors.ImageSharp.PixelFormats.Rgba32}">Implicit(AnyBitmap to Image&lt;Rgba32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to SixLabors.ImageSharp.Image objects from <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support ImageSharp as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Image&lt;Rgba32&gt;(AnyBitmap bitmap)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td><span class="parametername">bitmap</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> is implicitly cast to a SixLabors.ImageSharp.Image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Image</span>&lt;<span class="xref">SixLabors.ImageSharp.PixelFormats.Rgba32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_IronSoftware_Drawing_AnyBitmap__SkiaSharp_SKBitmap" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~SkiaSharp.SKBitmap">Implicit(AnyBitmap to SKBitmap)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to SkiaSharp.SKBitmap objects from <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support SkiaSharp.SKBitmap as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator SKBitmap(AnyBitmap bitmap)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td><span class="parametername">bitmap</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> is explicitly cast to a SkiaSharp.SKBitmap.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKBitmap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_IronSoftware_Drawing_AnyBitmap__SkiaSharp_SKImage" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~SkiaSharp.SKImage">Implicit(AnyBitmap to SKImage)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to SkiaSharp.SKImage objects from <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support SkiaSharp.SKImage as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator SKImage(AnyBitmap bitmap)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td><span class="parametername">bitmap</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> is implicitly cast to a SkiaSharp.SKImage.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKImage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_IronSoftware_Drawing_AnyBitmap__System_Drawing_Bitmap" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~System.Drawing.Bitmap">Implicit(AnyBitmap to Bitmap)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to System.Drawing.Bitmap objects from <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support System.Drawing.Common as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Bitmap(AnyBitmap bitmap)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td><span class="parametername">bitmap</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> is implicitly cast to a System.Drawing.Bitmap.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Bitmap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_IronSoftware_Drawing_AnyBitmap__System_Drawing_Image" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(IronSoftware.Drawing.AnyBitmap)~System.Drawing.Image">Implicit(AnyBitmap to Image)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to System.Drawing.Image objects from <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support System.Drawing.Common as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Image(AnyBitmap bitmap)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td><span class="parametername">bitmap</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> is implicitly cast to a System.Drawing.Image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Image</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_Microsoft_Maui_Graphics_Platform_PlatformImage__IronSoftware_Drawing_AnyBitmap" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(Microsoft.Maui.Graphics.Platform.PlatformImage)~IronSoftware.Drawing.AnyBitmap">Implicit(PlatformImage to AnyBitmap)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts Microsoft.Maui.Graphics.Platform.PlatformImage objects to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support Microsoft.Maui.Graphics as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator AnyBitmap(PlatformImage Image)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Maui.Graphics.Platform.PlatformImage</span></td>
+        <td><span class="parametername">Image</span></td>
+        <td><p>Microsoft.Maui.Graphics.Platform.PlatformImage will automatically be cast to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_SixLabors_ImageSharp_Image__IronSoftware_Drawing_AnyBitmap" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(SixLabors.ImageSharp.Image)~IronSoftware.Drawing.AnyBitmap">Implicit(Image to AnyBitmap)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SixLabors.ImageSharp.Image objects to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support ImageSharp as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator AnyBitmap(Image Image)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Image</span></td>
+        <td><span class="parametername">Image</span></td>
+        <td><p>SixLabors.ImageSharp.Image will automatically be cast to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_SixLabors_ImageSharp_Image_SixLabors_ImageSharp_PixelFormats_Rgb24___IronSoftware_Drawing_AnyBitmap" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(SixLabors.ImageSharp.Image{SixLabors.ImageSharp.PixelFormats.Rgb24})~IronSoftware.Drawing.AnyBitmap">Implicit(Image&lt;Rgb24&gt; to AnyBitmap)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SixLabors.ImageSharp.Image objects to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support ImageSharp as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator AnyBitmap(Image&lt;Rgb24&gt; Image)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Image</span>&lt;<span class="xref">SixLabors.ImageSharp.PixelFormats.Rgb24</span>&gt;</td>
+        <td><span class="parametername">Image</span></td>
+        <td><p>SixLabors.ImageSharp.Image will automatically be cast to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_SixLabors_ImageSharp_Image_SixLabors_ImageSharp_PixelFormats_Rgba32___IronSoftware_Drawing_AnyBitmap" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(SixLabors.ImageSharp.Image{SixLabors.ImageSharp.PixelFormats.Rgba32})~IronSoftware.Drawing.AnyBitmap">Implicit(Image&lt;Rgba32&gt; to AnyBitmap)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SixLabors.ImageSharp.Image objects to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support ImageSharp as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator AnyBitmap(Image&lt;Rgba32&gt; Image)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Image</span>&lt;<span class="xref">SixLabors.ImageSharp.PixelFormats.Rgba32</span>&gt;</td>
+        <td><span class="parametername">Image</span></td>
+        <td><p>SixLabors.ImageSharp.Image will automatically be cast to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_SkiaSharp_SKBitmap__IronSoftware_Drawing_AnyBitmap" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(SkiaSharp.SKBitmap)~IronSoftware.Drawing.AnyBitmap">Implicit(SKBitmap to AnyBitmap)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SkiaSharp.SKBitmap objects to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support SkiaSharp as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator AnyBitmap(SKBitmap Image)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKBitmap</span></td>
+        <td><span class="parametername">Image</span></td>
+        <td><p>SkiaSharp.SKBitmap will automatically be cast to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_SkiaSharp_SKImage__IronSoftware_Drawing_AnyBitmap" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(SkiaSharp.SKImage)~IronSoftware.Drawing.AnyBitmap">Implicit(SKImage to AnyBitmap)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SkiaSharp.SKImage objects to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support SkiaSharp as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator AnyBitmap(SKImage Image)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKImage</span></td>
+        <td><span class="parametername">Image</span></td>
+        <td><p>SkiaSharp.SKImage will automatically be cast to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_System_Drawing_Bitmap__IronSoftware_Drawing_AnyBitmap" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(System.Drawing.Bitmap)~IronSoftware.Drawing.AnyBitmap">Implicit(Bitmap to AnyBitmap)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts System.Drawing.Bitmap objects to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support System.Drawing.Common as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator AnyBitmap(Bitmap Image)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Bitmap</span></td>
+        <td><span class="parametername">Image</span></td>
+        <td><p>System.Drawing.Bitmap will automatically be cast to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_AnyBitmap_op_Implicit_" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_AnyBitmap_op_Implicit_System_Drawing_Image__IronSoftware_Drawing_AnyBitmap" data-uid="IronSoftware.Drawing.AnyBitmap.op_Implicit(System.Drawing.Image)~IronSoftware.Drawing.AnyBitmap">Implicit(Image to AnyBitmap)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts System.Drawing.Image objects to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a> as parameters or return types, you now automatically support System.Drawing.Common as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator AnyBitmap(Image Image)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Image</span></td>
+        <td><span class="parametername">Image</span></td>
+        <td><p>System.Drawing.Image will automatically be cast to <a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.AnyBitmap.html">AnyBitmap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronSoftware.System.Drawing/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon api-reference-right-sidebar__list-item--display-none">
+                    <a href="" target="_blank" class="api-reference-right-sidebar__link"></a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronSoftware.System.Drawing/' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('');
+                              
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronDrawing to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: ""
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('');
+                              
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronDrawing free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronSoftware.System.Drawing/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href=""><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>
