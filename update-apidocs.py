@@ -17,7 +17,7 @@ PRODUCTS_CATALOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "iro
 DOCS_BUILDING_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scaffolds")
 DOCFX_EXECUTABLE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scaffolds", "tools", "docfx", "tools", "docfx.exe")
 JAVA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scaffolds", "tools", "jdk")
-APIDOCS_STORAGE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "apidocs")
+APIDOCS_STORAGE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "object-reference")
 APIDOCS_DESTINATION_PATH_TEMPLATE = APIDOCS_STORAGE_PATH + os.path.sep + "{}" + os.path.sep + "{}"
 
 def is_windows_os() -> bool:
@@ -90,9 +90,9 @@ def build_dotnet_apidoc(info:dict, version_string:str):
     binary_dir = "bin/{}".format(info["packageName"])
     nupkg_url = "https://www.nuget.org/api/v2/package/{}/{}".format(info["packageName"], version_string)
     nupkg_path = "bin/{package}/{package}.nupkg".format(package = info["packageName"])
-    nuspec_file = os.path.join(binary_dir, "{}.nuspec".format(info["packageName"]))
+    nuspec_file = "{}/{}.nuspec".format(binary_dir, info["packageName"])
     build_output_dir = "output/{}{}/object-reference/".format(info["domain"], info["path"])
-    apidocs_storage_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "apidocs", info["code"], version_string)
+    apidocs_storage_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "object-reference", info["code"], version_string)
     apidocs_template_header = "- name: {} .NET API - v{}\n".format(info["name"], version_string)
 
     # Navigate to script directory
