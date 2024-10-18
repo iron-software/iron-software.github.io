@@ -1,0 +1,1937 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class EscherGraphics
+   | C# Excel API | IronXL </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class EscherGraphics
+   | C# Excel API | IronXL ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="NPOI.HSSF.UserModel.EscherGraphics">
+  
+  
+  <h1 id="NPOI_HSSF_UserModel_EscherGraphics" data-uid="NPOI.HSSF.UserModel.EscherGraphics" class="text-break">Class EscherGraphics
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">EscherGraphics</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="NPOI.HSSF.UserModel.html">NPOI.HSSF.UserModel</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="NPOI_HSSF_UserModel_EscherGraphics_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class EscherGraphics : Object</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics__ctor_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.#ctor*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics__ctor_NPOI_HSSF_UserModel_HSSFShapeGroup_NPOI_HSSF_UserModel_HSSFWorkbook_System_Drawing_Color_System_Single_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.#ctor(NPOI.HSSF.UserModel.HSSFShapeGroup,NPOI.HSSF.UserModel.HSSFWorkbook,System.Drawing.Color,System.Single)">EscherGraphics(HSSFShapeGroup, HSSFWorkbook, Color, Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EscherGraphics(HSSFShapeGroup escherGroup, HSSFWorkbook workbook, Color forecolor, float verticalPointsPerPixel)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.UserModel.HSSFShapeGroup.html">HSSFShapeGroup</a></td>
+        <td><span class="parametername">escherGroup</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.UserModel.HSSFWorkbook.html">HSSFWorkbook</a></td>
+        <td><span class="parametername">workbook</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td><span class="parametername">forecolor</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">verticalPointsPerPixel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_Background_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Background*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_Background" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Background">Background</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color Background { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_Clip_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Clip*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_Clip" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Clip">Clip</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle Clip { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_ClipBounds_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.ClipBounds*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_ClipBounds" data-uid="NPOI.HSSF.UserModel.EscherGraphics.ClipBounds">ClipBounds</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle ClipBounds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_Color_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Color*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_Color" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Color">Color</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color Color { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_Font_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Font*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_Font" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Font">Font</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Font Font { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Font</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_ClearRect_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.ClearRect*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_ClearRect_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.ClearRect(System.Int32,System.Int32,System.Int32,System.Int32)">ClearRect(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearRect(int x, int y, int width, int height)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_ClipRect_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.ClipRect*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_ClipRect_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.ClipRect(System.Int32,System.Int32,System.Int32,System.Int32)">ClipRect(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClipRect(int x, int y, int width, int height)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_CopyArea_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.CopyArea*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_CopyArea_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.CopyArea(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">CopyArea(Int32, Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyArea(int x, int y, int width, int height, int dx, int dy)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dx</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dy</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_Create_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Create*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_Create" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Create">Create()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EscherGraphics Create()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.UserModel.EscherGraphics.html">EscherGraphics</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_Dispose_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Dispose*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_Dispose" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_Dispose_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Dispose*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_Dispose_System_Boolean_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawArc_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawArc*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawArc_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawArc(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">DrawArc(Int32, Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawArc(int x, int y, int width, int height, int startAngle, int arcAngle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startAngle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">arcAngle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawImage_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawImage*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawImage_System_Drawing_Image_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawImage(System.Drawing.Image,System.Int32,System.Int32)">DrawImage(Image, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DrawImage(Image image, int i, int j)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Image</span></td>
+        <td><span class="parametername">image</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">i</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">j</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawImage_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawImage*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawImage_System_Drawing_Image_System_Int32_System_Int32_System_Drawing_Color_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawImage(System.Drawing.Image,System.Int32,System.Int32,System.Drawing.Color)">DrawImage(Image, Int32, Int32, Color)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DrawImage(Image image, int i, int j, Color color)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Image</span></td>
+        <td><span class="parametername">image</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">i</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">j</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawImage_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawImage*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawImage_System_Drawing_Image_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawImage(System.Drawing.Image,System.Int32,System.Int32,System.Int32,System.Int32)">DrawImage(Image, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DrawImage(Image image, int i, int j, int k, int l)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Image</span></td>
+        <td><span class="parametername">image</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">i</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">j</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">k</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">l</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawImage_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawImage*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawImage_System_Drawing_Image_System_Int32_System_Int32_System_Int32_System_Int32_System_Drawing_Color_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawImage(System.Drawing.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Drawing.Color)">DrawImage(Image, Int32, Int32, Int32, Int32, Color)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DrawImage(Image image, int i, int j, int k, int l, Color color)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Image</span></td>
+        <td><span class="parametername">image</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">i</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">j</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">k</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">l</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawImage_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawImage*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawImage_System_Drawing_Image_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawImage(System.Drawing.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">DrawImage(Image, Int32, Int32, Int32, Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DrawImage(Image img, int dx1, int dy1, int dx2, int dy2, int sx1, int sy1, int sx2, int sy2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Image</span></td>
+        <td><span class="parametername">img</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dx1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dy1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dx2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dy2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sx1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sy1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sx2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sy2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawImage_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawImage*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawImage_System_Drawing_Image_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Drawing_Color_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawImage(System.Drawing.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Drawing.Color)">DrawImage(Image, Int32, Int32, Int32, Int32, Int32, Int32, Int32, Int32, Color)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DrawImage(Image img, int dx1, int dy1, int dx2, int dy2, int sx1, int sy1, int sx2, int sy2, Color bgcolor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Image</span></td>
+        <td><span class="parametername">img</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dx1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dy1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dx2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dy2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sx1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sy1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sx2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sy2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td><span class="parametername">bgcolor</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawLine_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawLine*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawLine_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawLine(System.Int32,System.Int32,System.Int32,System.Int32)">DrawLine(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawLine(int x1, int y1, int x2, int y2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawLine_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawLine*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawLine_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawLine(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">DrawLine(Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawLine(int x1, int y1, int x2, int y2, int width)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawOval_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawOval*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawOval_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawOval(System.Int32,System.Int32,System.Int32,System.Int32)">DrawOval(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawOval(int x, int y, int width, int height)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawPolygon_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawPolygon*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawPolygon_System_Int32___System_Int32___System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawPolygon(System.Int32[],System.Int32[],System.Int32)">DrawPolygon(Int32[], Int32[], Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawPolygon(int[] xPoints, int[] yPoints, int nPoints)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td><span class="parametername">xPoints</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td><span class="parametername">yPoints</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">nPoints</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawPolyline_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawPolyline*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawPolyline_System_Int32___System_Int32___System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawPolyline(System.Int32[],System.Int32[],System.Int32)">DrawPolyline(Int32[], Int32[], Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawPolyline(int[] xPoints, int[] yPoints, int nPoints)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td><span class="parametername">xPoints</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td><span class="parametername">yPoints</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">nPoints</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawRect_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawRect*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawRect_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawRect(System.Int32,System.Int32,System.Int32,System.Int32)">DrawRect(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawRect(int x, int y, int width, int height)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawRoundRect_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawRoundRect*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawRoundRect_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawRoundRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">DrawRoundRect(Int32, Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawRoundRect(int x, int y, int width, int height, int arcWidth, int arcHeight)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">arcWidth</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">arcHeight</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_DrawString_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawString*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_DrawString_System_String_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.DrawString(System.String,System.Int32,System.Int32)">DrawString(String, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawString(string str, int x, int y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">str</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_FillArc_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.FillArc*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_FillArc_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.FillArc(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">FillArc(Int32, Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void FillArc(int x, int y, int width, int height, int startAngle, int arcAngle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startAngle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">arcAngle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_FillOval_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.FillOval*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_FillOval_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.FillOval(System.Int32,System.Int32,System.Int32,System.Int32)">FillOval(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void FillOval(int x, int y, int width, int height)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_FillPolygon_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.FillPolygon*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_FillPolygon_System_Int32___System_Int32___System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.FillPolygon(System.Int32[],System.Int32[],System.Int32)">FillPolygon(Int32[], Int32[], Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void FillPolygon(int[] xPoints, int[] yPoints, int nPoints)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td><span class="parametername">xPoints</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td><span class="parametername">yPoints</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">nPoints</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_FillRect_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.FillRect*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_FillRect_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.FillRect(System.Int32,System.Int32,System.Int32,System.Int32)">FillRect(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void FillRect(int x, int y, int width, int height)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_FillRoundRect_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.FillRoundRect*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_FillRoundRect_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.FillRoundRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">FillRoundRect(Int32, Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void FillRoundRect(int x, int y, int width, int height, int arcWidth, int arcHeight)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">arcWidth</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">arcHeight</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_GetClipRect_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.GetClipRect*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_GetClipRect" data-uid="NPOI.HSSF.UserModel.EscherGraphics.GetClipRect">GetClipRect()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle GetClipRect()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_SetClip_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.SetClip*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_SetClip_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.SetClip(System.Int32,System.Int32,System.Int32,System.Int32)">SetClip(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetClip(int x, int y, int width, int height)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_SetColor_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.SetColor*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_SetColor_System_Drawing_Color_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.SetColor(System.Drawing.Color)">SetColor(Color)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetColor(Color color)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_SetFont_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.SetFont*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_SetFont_System_Drawing_Font_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.SetFont(System.Drawing.Font)">SetFont(Font)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFont(Font f)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Font</span></td>
+        <td><span class="parametername">f</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_SetPaintMode_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.SetPaintMode*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_SetPaintMode" data-uid="NPOI.HSSF.UserModel.EscherGraphics.SetPaintMode">SetPaintMode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPaintMode()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_SetXORMode_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.SetXORMode*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_SetXORMode_System_Drawing_Color_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.SetXORMode(System.Drawing.Color)">SetXORMode(Color)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetXORMode(Color color)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_EscherGraphics_Translate_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Translate*"></a>
+  <h4 id="NPOI_HSSF_UserModel_EscherGraphics_Translate_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.EscherGraphics.Translate(System.Int32,System.Int32)">Translate(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Translate(int x, int y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronXL to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: "fb47f498-31a3-4a06-82df-66cc39733c08"
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronXL free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href="/csharp/excel/licensing/"><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="/csharp/excel/licensing/">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>

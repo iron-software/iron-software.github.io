@@ -1,0 +1,3997 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class InternalSheet
+   | C# Excel API | IronXL </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class InternalSheet
+   | C# Excel API | IronXL ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="NPOI.HSSF.Model.InternalSheet">
+  
+  
+  <h1 id="NPOI_HSSF_Model_InternalSheet" data-uid="NPOI.HSSF.Model.InternalSheet" class="text-break">Class InternalSheet
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">InternalSheet</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="NPOI.HSSF.Model.html">NPOI.HSSF.Model</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="NPOI_HSSF_Model_InternalSheet_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class InternalSheet : Object</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet__isUncalced" data-uid="NPOI.HSSF.Model.InternalSheet._isUncalced">_isUncalced</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool _isUncalced</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet__rowsAggregate" data-uid="NPOI.HSSF.Model.InternalSheet._rowsAggregate">_rowsAggregate</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected RowRecordsAggregate _rowsAggregate</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Aggregates.RowRecordsAggregate.html">RowRecordsAggregate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_colBreaks" data-uid="NPOI.HSSF.Model.InternalSheet.colBreaks">colBreaks</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected PageBreakRecord colBreaks</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.PageBreakRecord.html">PageBreakRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_condFormatting" data-uid="NPOI.HSSF.Model.InternalSheet.condFormatting">condFormatting</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ConditionalFormattingTable condFormatting</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Aggregates.ConditionalFormattingTable.html">ConditionalFormattingTable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_defaultcolwidth" data-uid="NPOI.HSSF.Model.InternalSheet.defaultcolwidth">defaultcolwidth</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected DefaultColWidthRecord defaultcolwidth</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.DefaultColWidthRecord.html">DefaultColWidthRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_defaultrowheight" data-uid="NPOI.HSSF.Model.InternalSheet.defaultrowheight">defaultrowheight</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected DefaultRowHeightRecord defaultrowheight</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.DefaultRowHeightRecord.html">DefaultRowHeightRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_dims" data-uid="NPOI.HSSF.Model.InternalSheet.dims">dims</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected DimensionsRecord dims</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.DimensionsRecord.html">DimensionsRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_dimsloc" data-uid="NPOI.HSSF.Model.InternalSheet.dimsloc">dimsloc</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int dimsloc</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_eofLoc" data-uid="NPOI.HSSF.Model.InternalSheet.eofLoc">eofLoc</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int eofLoc</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_footer" data-uid="NPOI.HSSF.Model.InternalSheet.footer">footer</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected FooterRecord footer</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.FooterRecord.html">FooterRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_gridset" data-uid="NPOI.HSSF.Model.InternalSheet.gridset">gridset</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected GridsetRecord gridset</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.GridsetRecord.html">GridsetRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_header" data-uid="NPOI.HSSF.Model.InternalSheet.header">header</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected HeaderRecord header</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.HeaderRecord.html">HeaderRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_margins" data-uid="NPOI.HSSF.Model.InternalSheet.margins">margins</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected IMargin[] margins</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.IMargin.html">IMargin</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_merged" data-uid="NPOI.HSSF.Model.InternalSheet.merged">merged</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected MergeCellsRecord merged</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.MergeCellsRecord.html">MergeCellsRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_printGridlines" data-uid="NPOI.HSSF.Model.InternalSheet.printGridlines">printGridlines</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected PrintGridlinesRecord printGridlines</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.PrintGridlinesRecord.html">PrintGridlinesRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_printSetup" data-uid="NPOI.HSSF.Model.InternalSheet.printSetup">printSetup</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected PrintSetupRecord printSetup</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.PrintSetupRecord.html">PrintSetupRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_records" data-uid="NPOI.HSSF.Model.InternalSheet.records">records</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;RecordBase&gt; records</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.HSSF.Record.RecordBase.html">RecordBase</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_rowBreaks" data-uid="NPOI.HSSF.Model.InternalSheet.rowBreaks">rowBreaks</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected PageBreakRecord rowBreaks</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.PageBreakRecord.html">PageBreakRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_selection" data-uid="NPOI.HSSF.Model.InternalSheet.selection">selection</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected SelectionRecord selection</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.SelectionRecord.html">SelectionRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_sheetext" data-uid="NPOI.HSSF.Model.InternalSheet.sheetext">sheetext</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected SheetExtRecord sheetext</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.SheetExtRecord.html">SheetExtRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_Model_InternalSheet_windowTwo" data-uid="NPOI.HSSF.Model.InternalSheet.windowTwo">windowTwo</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected WindowTwoRecord windowTwo</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.WindowTwoRecord.html">WindowTwoRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_ActiveCellCol_" data-uid="NPOI.HSSF.Model.InternalSheet.ActiveCellCol*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_ActiveCellCol" data-uid="NPOI.HSSF.Model.InternalSheet.ActiveCellCol">ActiveCellCol</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ActiveCellCol { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_ActiveCellRow_" data-uid="NPOI.HSSF.Model.InternalSheet.ActiveCellRow*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_ActiveCellRow" data-uid="NPOI.HSSF.Model.InternalSheet.ActiveCellRow">ActiveCellRow</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ActiveCellRow { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_ColumnInfos_" data-uid="NPOI.HSSF.Model.InternalSheet.ColumnInfos*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_ColumnInfos" data-uid="NPOI.HSSF.Model.InternalSheet.ColumnInfos">ColumnInfos</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ColumnInfoRecordsAggregate ColumnInfos { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Aggregates.ColumnInfoRecordsAggregate.html">ColumnInfoRecordsAggregate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_ConditionalFormattingTable_" data-uid="NPOI.HSSF.Model.InternalSheet.ConditionalFormattingTable*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_ConditionalFormattingTable" data-uid="NPOI.HSSF.Model.InternalSheet.ConditionalFormattingTable">ConditionalFormattingTable</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConditionalFormattingTable ConditionalFormattingTable { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Aggregates.ConditionalFormattingTable.html">ConditionalFormattingTable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_DefaultColumnWidth_" data-uid="NPOI.HSSF.Model.InternalSheet.DefaultColumnWidth*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_DefaultColumnWidth" data-uid="NPOI.HSSF.Model.InternalSheet.DefaultColumnWidth">DefaultColumnWidth</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DefaultColumnWidth { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_DefaultRowHeight_" data-uid="NPOI.HSSF.Model.InternalSheet.DefaultRowHeight*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_DefaultRowHeight" data-uid="NPOI.HSSF.Model.InternalSheet.DefaultRowHeight">DefaultRowHeight</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short DefaultRowHeight { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_DisplayFormulas_" data-uid="NPOI.HSSF.Model.InternalSheet.DisplayFormulas*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_DisplayFormulas" data-uid="NPOI.HSSF.Model.InternalSheet.DisplayFormulas">DisplayFormulas</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DisplayFormulas { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_DisplayGridlines_" data-uid="NPOI.HSSF.Model.InternalSheet.DisplayGridlines*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_DisplayGridlines" data-uid="NPOI.HSSF.Model.InternalSheet.DisplayGridlines">DisplayGridlines</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DisplayGridlines { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_DisplayRowColHeadings_" data-uid="NPOI.HSSF.Model.InternalSheet.DisplayRowColHeadings*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_DisplayRowColHeadings" data-uid="NPOI.HSSF.Model.InternalSheet.DisplayRowColHeadings">DisplayRowColHeadings</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DisplayRowColHeadings { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_Footer_" data-uid="NPOI.HSSF.Model.InternalSheet.Footer*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_Footer" data-uid="NPOI.HSSF.Model.InternalSheet.Footer">Footer</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FooterRecord Footer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.FooterRecord.html">FooterRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_GridsetRecord_" data-uid="NPOI.HSSF.Model.InternalSheet.GridsetRecord*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_GridsetRecord" data-uid="NPOI.HSSF.Model.InternalSheet.GridsetRecord">GridsetRecord</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GridsetRecord GridsetRecord { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.GridsetRecord.html">GridsetRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_Header_" data-uid="NPOI.HSSF.Model.InternalSheet.Header*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_Header" data-uid="NPOI.HSSF.Model.InternalSheet.Header">Header</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HeaderRecord Header { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.HeaderRecord.html">HeaderRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_IsAutoTabColor_" data-uid="NPOI.HSSF.Model.InternalSheet.IsAutoTabColor*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_IsAutoTabColor" data-uid="NPOI.HSSF.Model.InternalSheet.IsAutoTabColor">IsAutoTabColor</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsAutoTabColor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_IsGridsPrinted_" data-uid="NPOI.HSSF.Model.InternalSheet.IsGridsPrinted*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_IsGridsPrinted" data-uid="NPOI.HSSF.Model.InternalSheet.IsGridsPrinted">IsGridsPrinted</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsGridsPrinted { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_IsUncalced_" data-uid="NPOI.HSSF.Model.InternalSheet.IsUncalced*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_IsUncalced" data-uid="NPOI.HSSF.Model.InternalSheet.IsUncalced">IsUncalced</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsUncalced { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_LeftCol_" data-uid="NPOI.HSSF.Model.InternalSheet.LeftCol*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_LeftCol" data-uid="NPOI.HSSF.Model.InternalSheet.LeftCol">LeftCol</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short LeftCol { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_NextRow_" data-uid="NPOI.HSSF.Model.InternalSheet.NextRow*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_NextRow" data-uid="NPOI.HSSF.Model.InternalSheet.NextRow">NextRow</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RowRecord NextRow { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.RowRecord.html">RowRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_NumConditionalFormattings_" data-uid="NPOI.HSSF.Model.InternalSheet.NumConditionalFormattings*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_NumConditionalFormattings" data-uid="NPOI.HSSF.Model.InternalSheet.NumConditionalFormattings">NumConditionalFormattings</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumConditionalFormattings { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_NumMergedRegions_" data-uid="NPOI.HSSF.Model.InternalSheet.NumMergedRegions*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_NumMergedRegions" data-uid="NPOI.HSSF.Model.InternalSheet.NumMergedRegions">NumMergedRegions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumMergedRegions { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_PageSettings_" data-uid="NPOI.HSSF.Model.InternalSheet.PageSettings*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_PageSettings" data-uid="NPOI.HSSF.Model.InternalSheet.PageSettings">PageSettings</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PageSettingsBlock PageSettings { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Aggregates.PageSettingsBlock.html">PageSettingsBlock</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_PaneInformation_" data-uid="NPOI.HSSF.Model.InternalSheet.PaneInformation*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_PaneInformation" data-uid="NPOI.HSSF.Model.InternalSheet.PaneInformation">PaneInformation</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PaneInformation PaneInformation { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.Util.PaneInformation.html">PaneInformation</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_PreOffset_" data-uid="NPOI.HSSF.Model.InternalSheet.PreOffset*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_PreOffset" data-uid="NPOI.HSSF.Model.InternalSheet.PreOffset">PreOffset</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PreOffset { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_PrintGridlines_" data-uid="NPOI.HSSF.Model.InternalSheet.PrintGridlines*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_PrintGridlines" data-uid="NPOI.HSSF.Model.InternalSheet.PrintGridlines">PrintGridlines</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PrintGridlinesRecord PrintGridlines { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.PrintGridlinesRecord.html">PrintGridlinesRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_PrintSetup_" data-uid="NPOI.HSSF.Model.InternalSheet.PrintSetup*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_PrintSetup" data-uid="NPOI.HSSF.Model.InternalSheet.PrintSetup">PrintSetup</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PrintSetupRecord PrintSetup { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.PrintSetupRecord.html">PrintSetupRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_ProtectionBlock_" data-uid="NPOI.HSSF.Model.InternalSheet.ProtectionBlock*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_ProtectionBlock" data-uid="NPOI.HSSF.Model.InternalSheet.ProtectionBlock">ProtectionBlock</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WorksheetProtectionBlock ProtectionBlock { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Aggregates.WorksheetProtectionBlock.html">WorksheetProtectionBlock</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_Records_" data-uid="NPOI.HSSF.Model.InternalSheet.Records*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_Records" data-uid="NPOI.HSSF.Model.InternalSheet.Records">Records</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;RecordBase&gt; Records { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.HSSF.Record.RecordBase.html">RecordBase</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_RowsAggregate_" data-uid="NPOI.HSSF.Model.InternalSheet.RowsAggregate*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_RowsAggregate" data-uid="NPOI.HSSF.Model.InternalSheet.RowsAggregate">RowsAggregate</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RowRecordsAggregate RowsAggregate { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Aggregates.RowRecordsAggregate.html">RowRecordsAggregate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_Selection_" data-uid="NPOI.HSSF.Model.InternalSheet.Selection*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_Selection" data-uid="NPOI.HSSF.Model.InternalSheet.Selection">Selection</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SelectionRecord Selection { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.SelectionRecord.html">SelectionRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_TabColorIndex_" data-uid="NPOI.HSSF.Model.InternalSheet.TabColorIndex*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_TabColorIndex" data-uid="NPOI.HSSF.Model.InternalSheet.TabColorIndex">TabColorIndex</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short TabColorIndex { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_TopRow_" data-uid="NPOI.HSSF.Model.InternalSheet.TopRow*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_TopRow" data-uid="NPOI.HSSF.Model.InternalSheet.TopRow">TopRow</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short TopRow { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_WindowTwo_" data-uid="NPOI.HSSF.Model.InternalSheet.WindowTwo*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_WindowTwo" data-uid="NPOI.HSSF.Model.InternalSheet.WindowTwo">WindowTwo</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WindowTwoRecord WindowTwo { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.WindowTwoRecord.html">WindowTwoRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_AddMergedRegion_" data-uid="NPOI.HSSF.Model.InternalSheet.AddMergedRegion*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_AddMergedRegion_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.AddMergedRegion(System.Int32,System.Int32,System.Int32,System.Int32)">AddMergedRegion(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AddMergedRegion(int rowFrom, int colFrom, int rowTo, int colTo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rowFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">colFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rowTo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">colTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_AddRow_" data-uid="NPOI.HSSF.Model.InternalSheet.AddRow*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_AddRow_NPOI_HSSF_Record_RowRecord_" data-uid="NPOI.HSSF.Model.InternalSheet.AddRow(NPOI.HSSF.Record.RowRecord)">AddRow(RowRecord)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddRow(RowRecord row)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.RowRecord.html">RowRecord</a></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_AddValueRecord_" data-uid="NPOI.HSSF.Model.InternalSheet.AddValueRecord*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_AddValueRecord_System_Int32_NPOI_HSSF_Record_CellValueRecordInterface_" data-uid="NPOI.HSSF.Model.InternalSheet.AddValueRecord(System.Int32,NPOI.HSSF.Record.CellValueRecordInterface)">AddValueRecord(Int32, CellValueRecordInterface)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddValueRecord(int row, CellValueRecordInterface col)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.CellValueRecordInterface.html">CellValueRecordInterface</a></td>
+        <td><span class="parametername">col</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_AggregateDrawingRecords_" data-uid="NPOI.HSSF.Model.InternalSheet.AggregateDrawingRecords*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_AggregateDrawingRecords_NPOI_HSSF_Model_DrawingManager2_System_Boolean_" data-uid="NPOI.HSSF.Model.InternalSheet.AggregateDrawingRecords(NPOI.HSSF.Model.DrawingManager2,System.Boolean)">AggregateDrawingRecords(DrawingManager2, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AggregateDrawingRecords(DrawingManager2 drawingManager, bool CreateIfMissing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Model.DrawingManager2.html">DrawingManager2</a></td>
+        <td><span class="parametername">drawingManager</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">CreateIfMissing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CloneSheet_" data-uid="NPOI.HSSF.Model.InternalSheet.CloneSheet*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CloneSheet" data-uid="NPOI.HSSF.Model.InternalSheet.CloneSheet">CloneSheet()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InternalSheet CloneSheet()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Model.InternalSheet.html">InternalSheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateBlank_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateBlank*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateBlank_System_Int32_System_Int16_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateBlank(System.Int32,System.Int16)">CreateBlank(Int32, Int16)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlankRecord CreateBlank(int row, short col)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">col</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.BlankRecord.html">BlankRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateBOF_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateBOF*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateBOF" data-uid="NPOI.HSSF.Model.InternalSheet.CreateBOF">CreateBOF()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Record CreateBOF()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateCalcCount_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateCalcCount*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateCalcCount" data-uid="NPOI.HSSF.Model.InternalSheet.CreateCalcCount">CreateCalcCount()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Record CreateCalcCount()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateCalcMode_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateCalcMode*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateCalcMode" data-uid="NPOI.HSSF.Model.InternalSheet.CreateCalcMode">CreateCalcMode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Record CreateCalcMode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateDefaultColWidth_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateDefaultColWidth*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateDefaultColWidth" data-uid="NPOI.HSSF.Model.InternalSheet.CreateDefaultColWidth">CreateDefaultColWidth()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected DefaultColWidthRecord CreateDefaultColWidth()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.DefaultColWidthRecord.html">DefaultColWidthRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateDefaultRowHeight_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateDefaultRowHeight*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateDefaultRowHeight" data-uid="NPOI.HSSF.Model.InternalSheet.CreateDefaultRowHeight">CreateDefaultRowHeight()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected DefaultRowHeightRecord CreateDefaultRowHeight()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.DefaultRowHeightRecord.html">DefaultRowHeightRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateDelta_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateDelta*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateDelta" data-uid="NPOI.HSSF.Model.InternalSheet.CreateDelta">CreateDelta()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Record CreateDelta()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateEOF_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateEOF*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateEOF" data-uid="NPOI.HSSF.Model.InternalSheet.CreateEOF">CreateEOF()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Record CreateEOF()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateFreezePane_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateFreezePane*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateFreezePane_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateFreezePane(System.Int32,System.Int32,System.Int32,System.Int32)">CreateFreezePane(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CreateFreezePane(int colSplit, int rowSplit, int topRow, int leftmostColumn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">colSplit</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rowSplit</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">topRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">leftmostColumn</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateGridset_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateGridset*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateGridset" data-uid="NPOI.HSSF.Model.InternalSheet.CreateGridset">CreateGridset()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected GridsetRecord CreateGridset()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.GridsetRecord.html">GridsetRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateGuts_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateGuts*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateGuts" data-uid="NPOI.HSSF.Model.InternalSheet.CreateGuts">CreateGuts()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected GutsRecord CreateGuts()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.GutsRecord.html">GutsRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateHCenter_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateHCenter*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateHCenter" data-uid="NPOI.HSSF.Model.InternalSheet.CreateHCenter">CreateHCenter()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Record CreateHCenter()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateIndex_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateIndex*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateIndex" data-uid="NPOI.HSSF.Model.InternalSheet.CreateIndex">CreateIndex()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Record CreateIndex()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateIteration_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateIteration*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateIteration" data-uid="NPOI.HSSF.Model.InternalSheet.CreateIteration">CreateIteration()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Record CreateIteration()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateLabelSST_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateLabelSST*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateLabelSST_System_Int32_System_Int16_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateLabelSST(System.Int32,System.Int16,System.Int32)">CreateLabelSST(Int32, Int16, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LabelSSTRecord CreateLabelSST(int row, short col, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">col</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.LabelSSTRecord.html">LabelSSTRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateNumber_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateNumber*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateNumber_System_Int32_System_Int16_System_Double_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateNumber(System.Int32,System.Int16,System.Double)">CreateNumber(Int32, Int16, Double)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NumberRecord CreateNumber(int row, short col, double value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">col</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.NumberRecord.html">NumberRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateObjectProtect_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateObjectProtect*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateObjectProtect" data-uid="NPOI.HSSF.Model.InternalSheet.CreateObjectProtect">CreateObjectProtect()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ObjectProtectRecord CreateObjectProtect()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.ObjectProtectRecord.html">ObjectProtectRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreatePassword_" data-uid="NPOI.HSSF.Model.InternalSheet.CreatePassword*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreatePassword" data-uid="NPOI.HSSF.Model.InternalSheet.CreatePassword">CreatePassword()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static PasswordRecord CreatePassword()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.PasswordRecord.html">PasswordRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreatePrintGridlines_" data-uid="NPOI.HSSF.Model.InternalSheet.CreatePrintGridlines*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreatePrintGridlines" data-uid="NPOI.HSSF.Model.InternalSheet.CreatePrintGridlines">CreatePrintGridlines()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected PrintGridlinesRecord CreatePrintGridlines()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.PrintGridlinesRecord.html">PrintGridlinesRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreatePrintHeaders_" data-uid="NPOI.HSSF.Model.InternalSheet.CreatePrintHeaders*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreatePrintHeaders" data-uid="NPOI.HSSF.Model.InternalSheet.CreatePrintHeaders">CreatePrintHeaders()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Record CreatePrintHeaders()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreatePrintSetup_" data-uid="NPOI.HSSF.Model.InternalSheet.CreatePrintSetup*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreatePrintSetup" data-uid="NPOI.HSSF.Model.InternalSheet.CreatePrintSetup">CreatePrintSetup()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Record CreatePrintSetup()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateProtect_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateProtect*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateProtect" data-uid="NPOI.HSSF.Model.InternalSheet.CreateProtect">CreateProtect()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ProtectRecord CreateProtect()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.ProtectRecord.html">ProtectRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateRefMode_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateRefMode*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateRefMode" data-uid="NPOI.HSSF.Model.InternalSheet.CreateRefMode">CreateRefMode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Record CreateRefMode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateRow_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateRow*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateRow_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateRow(System.Int32)">CreateRow(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RowRecord CreateRow(int row)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.RowRecord.html">RowRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateSaveRecalc_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateSaveRecalc*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateSaveRecalc" data-uid="NPOI.HSSF.Model.InternalSheet.CreateSaveRecalc">CreateSaveRecalc()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Record CreateSaveRecalc()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateScenarioProtect_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateScenarioProtect*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateScenarioProtect" data-uid="NPOI.HSSF.Model.InternalSheet.CreateScenarioProtect">CreateScenarioProtect()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ScenarioProtectRecord CreateScenarioProtect()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.ScenarioProtectRecord.html">ScenarioProtectRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateSheet_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateSheet*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateSheet" data-uid="NPOI.HSSF.Model.InternalSheet.CreateSheet">CreateSheet()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static InternalSheet CreateSheet()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Model.InternalSheet.html">InternalSheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateSheet_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateSheet*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateSheet_NPOI_HSSF_Model_RecordStream_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateSheet(NPOI.HSSF.Model.RecordStream)">CreateSheet(RecordStream)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static InternalSheet CreateSheet(RecordStream rs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Model.RecordStream.html">RecordStream</a></td>
+        <td><span class="parametername">rs</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Model.InternalSheet.html">InternalSheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateSplitPane_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateSplitPane*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateSplitPane_System_Int32_System_Int32_System_Int32_System_Int32_NPOI_SS_UserModel_PanePosition_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateSplitPane(System.Int32,System.Int32,System.Int32,System.Int32,NPOI.SS.UserModel.PanePosition)">CreateSplitPane(Int32, Int32, Int32, Int32, PanePosition)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CreateSplitPane(int xSplitPos, int ySplitPos, int topRow, int leftmostColumn, PanePosition activePane)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">xSplitPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ySplitPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">topRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">leftmostColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.PanePosition.html">PanePosition</a></td>
+        <td><span class="parametername">activePane</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateVCenter_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateVCenter*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateVCenter" data-uid="NPOI.HSSF.Model.InternalSheet.CreateVCenter">CreateVCenter()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Record CreateVCenter()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_CreateWSBool_" data-uid="NPOI.HSSF.Model.InternalSheet.CreateWSBool*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_CreateWSBool" data-uid="NPOI.HSSF.Model.InternalSheet.CreateWSBool">CreateWSBool()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Record CreateWSBool()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_FindFirstRecordBySid_" data-uid="NPOI.HSSF.Model.InternalSheet.FindFirstRecordBySid*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_FindFirstRecordBySid_System_Int16_" data-uid="NPOI.HSSF.Model.InternalSheet.FindFirstRecordBySid(System.Int16)">FindFirstRecordBySid(Int16)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Record FindFirstRecordBySid(short sid)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">sid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Record.html">Record</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_FindFirstRecordLocBySid_" data-uid="NPOI.HSSF.Model.InternalSheet.FindFirstRecordLocBySid*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_FindFirstRecordLocBySid_System_Int16_" data-uid="NPOI.HSSF.Model.InternalSheet.FindFirstRecordLocBySid(System.Int16)">FindFirstRecordLocBySid(Int16)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FindFirstRecordLocBySid(short sid)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">sid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_GetColumnOutlineLevel_" data-uid="NPOI.HSSF.Model.InternalSheet.GetColumnOutlineLevel*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_GetColumnOutlineLevel_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.GetColumnOutlineLevel(System.Int32)">GetColumnOutlineLevel(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetColumnOutlineLevel(int columnIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">columnIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_GetColumnWidth_" data-uid="NPOI.HSSF.Model.InternalSheet.GetColumnWidth*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_GetColumnWidth_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.GetColumnWidth(System.Int32)">GetColumnWidth(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetColumnWidth(int columnIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">columnIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_GetMergedRegionAt_" data-uid="NPOI.HSSF.Model.InternalSheet.GetMergedRegionAt*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_GetMergedRegionAt_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.GetMergedRegionAt(System.Int32)">GetMergedRegionAt(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CellRangeAddress GetMergedRegionAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.Util.CellRangeAddress.html">CellRangeAddress</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_GetNoteRecords_" data-uid="NPOI.HSSF.Model.InternalSheet.GetNoteRecords*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_GetNoteRecords" data-uid="NPOI.HSSF.Model.InternalSheet.GetNoteRecords">GetNoteRecords()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NoteRecord[] GetNoteRecords()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.NoteRecord.html">NoteRecord</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_GetOrCreateDataValidityTable_" data-uid="NPOI.HSSF.Model.InternalSheet.GetOrCreateDataValidityTable*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_GetOrCreateDataValidityTable" data-uid="NPOI.HSSF.Model.InternalSheet.GetOrCreateDataValidityTable">GetOrCreateDataValidityTable()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataValidityTable GetOrCreateDataValidityTable()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Aggregates.DataValidityTable.html">DataValidityTable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_GetRow_" data-uid="NPOI.HSSF.Model.InternalSheet.GetRow*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_GetRow_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.GetRow(System.Int32)">GetRow(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RowRecord GetRow(int rownum)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rownum</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.RowRecord.html">RowRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_GetValueRecords_" data-uid="NPOI.HSSF.Model.InternalSheet.GetValueRecords*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_GetValueRecords" data-uid="NPOI.HSSF.Model.InternalSheet.GetValueRecords">GetValueRecords()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CellValueRecordInterface[] GetValueRecords()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.CellValueRecordInterface.html">CellValueRecordInterface</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_GetWindowTwo_" data-uid="NPOI.HSSF.Model.InternalSheet.GetWindowTwo*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_GetWindowTwo" data-uid="NPOI.HSSF.Model.InternalSheet.GetWindowTwo">GetWindowTwo()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WindowTwoRecord GetWindowTwo()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.WindowTwoRecord.html">WindowTwoRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_GetXFIndexForColAt_" data-uid="NPOI.HSSF.Model.InternalSheet.GetXFIndexForColAt*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_GetXFIndexForColAt_System_Int16_" data-uid="NPOI.HSSF.Model.InternalSheet.GetXFIndexForColAt(System.Int16)">GetXFIndexForColAt(Int16)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short GetXFIndexForColAt(short columnIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">columnIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_GroupColumnRange_" data-uid="NPOI.HSSF.Model.InternalSheet.GroupColumnRange*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_GroupColumnRange_System_Int32_System_Int32_System_Boolean_" data-uid="NPOI.HSSF.Model.InternalSheet.GroupColumnRange(System.Int32,System.Int32,System.Boolean)">GroupColumnRange(Int32, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GroupColumnRange(int fromColumn, int toColumn, bool indent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">fromColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">toColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">indent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_GroupRowRange_" data-uid="NPOI.HSSF.Model.InternalSheet.GroupRowRange*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_GroupRowRange_System_Int32_System_Int32_System_Boolean_" data-uid="NPOI.HSSF.Model.InternalSheet.GroupRowRange(System.Int32,System.Int32,System.Boolean)">GroupRowRange(Int32, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GroupRowRange(int fromRow, int toRow, bool indent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">fromRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">toRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">indent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_IsColumnHidden_" data-uid="NPOI.HSSF.Model.InternalSheet.IsColumnHidden*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_IsColumnHidden_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.IsColumnHidden(System.Int32)">IsColumnHidden(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsColumnHidden(int columnIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">columnIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_Preserialize_" data-uid="NPOI.HSSF.Model.InternalSheet.Preserialize*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_Preserialize" data-uid="NPOI.HSSF.Model.InternalSheet.Preserialize">Preserialize()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Preserialize()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_RemoveMergedRegion_" data-uid="NPOI.HSSF.Model.InternalSheet.RemoveMergedRegion*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_RemoveMergedRegion_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.RemoveMergedRegion(System.Int32)">RemoveMergedRegion(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveMergedRegion(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_RemoveRow_" data-uid="NPOI.HSSF.Model.InternalSheet.RemoveRow*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_RemoveRow_NPOI_HSSF_Record_RowRecord_" data-uid="NPOI.HSSF.Model.InternalSheet.RemoveRow(NPOI.HSSF.Record.RowRecord)">RemoveRow(RowRecord)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveRow(RowRecord row)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.RowRecord.html">RowRecord</a></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_RemoveValueRecord_" data-uid="NPOI.HSSF.Model.InternalSheet.RemoveValueRecord*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_RemoveValueRecord_System_Int32_NPOI_HSSF_Record_CellValueRecordInterface_" data-uid="NPOI.HSSF.Model.InternalSheet.RemoveValueRecord(System.Int32,NPOI.HSSF.Record.CellValueRecordInterface)">RemoveValueRecord(Int32, CellValueRecordInterface)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveValueRecord(int row, CellValueRecordInterface col)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.CellValueRecordInterface.html">CellValueRecordInterface</a></td>
+        <td><span class="parametername">col</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_ReplaceValueRecord_" data-uid="NPOI.HSSF.Model.InternalSheet.ReplaceValueRecord*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_ReplaceValueRecord_NPOI_HSSF_Record_CellValueRecordInterface_" data-uid="NPOI.HSSF.Model.InternalSheet.ReplaceValueRecord(NPOI.HSSF.Record.CellValueRecordInterface)">ReplaceValueRecord(CellValueRecordInterface)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReplaceValueRecord(CellValueRecordInterface newval)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.CellValueRecordInterface.html">CellValueRecordInterface</a></td>
+        <td><span class="parametername">newval</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_SetActiveCell_" data-uid="NPOI.HSSF.Model.InternalSheet.SetActiveCell*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_SetActiveCell_System_Int32_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.SetActiveCell(System.Int32,System.Int32)">SetActiveCell(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetActiveCell(int row, int column)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_SetActiveCellRange_" data-uid="NPOI.HSSF.Model.InternalSheet.SetActiveCellRange*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_SetActiveCellRange_System_Collections_Generic_List_NPOI_SS_Util_CellRangeAddress8Bit__System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.SetActiveCellRange(System.Collections.Generic.List{NPOI.SS.Util.CellRangeAddress8Bit},System.Int32,System.Int32,System.Int32)">SetActiveCellRange(List&lt;CellRangeAddress8Bit&gt;, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetActiveCellRange(List&lt;CellRangeAddress8Bit&gt; cellranges, int activeRange, int activeRow, int activeColumn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.SS.Util.CellRangeAddress8Bit.html">CellRangeAddress8Bit</a>&gt;</td>
+        <td><span class="parametername">cellranges</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">activeRange</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">activeRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">activeColumn</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_SetActiveCellRange_" data-uid="NPOI.HSSF.Model.InternalSheet.SetActiveCellRange*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_SetActiveCellRange_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.SetActiveCellRange(System.Int32,System.Int32,System.Int32,System.Int32)">SetActiveCellRange(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetActiveCellRange(int firstRow, int lastRow, int firstColumn, int lastColumn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">firstRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">lastRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">firstColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">lastColumn</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_SetColumn_" data-uid="NPOI.HSSF.Model.InternalSheet.SetColumn*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_SetColumn_System_Int32_System_Int32_System_Int32_System_Boolean_System_Boolean_" data-uid="NPOI.HSSF.Model.InternalSheet.SetColumn(System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean)">SetColumn(Int32, Int32, Int32, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetColumn(int column, int width, int level, bool hidden, bool collapsed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">hidden</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">collapsed</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_SetColumn_" data-uid="NPOI.HSSF.Model.InternalSheet.SetColumn*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_SetColumn_System_Int32_System_Nullable_System_Int16__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_Nullable_System_Boolean__" data-uid="NPOI.HSSF.Model.InternalSheet.SetColumn(System.Int32,System.Nullable{System.Int16},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})">SetColumn(Int32, Nullable&lt;Int16&gt;, Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, Nullable&lt;Boolean&gt;, Nullable&lt;Boolean&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetColumn(int column, Nullable&lt;short&gt; xfStyle, Nullable&lt;int&gt; width, Nullable&lt;int&gt; level, Nullable&lt;bool&gt; hidden, Nullable&lt;bool&gt; collapsed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int16</span>&gt;</td>
+        <td><span class="parametername">xfStyle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">hidden</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">collapsed</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_SetColumnGroupCollapsed_" data-uid="NPOI.HSSF.Model.InternalSheet.SetColumnGroupCollapsed*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_SetColumnGroupCollapsed_System_Int32_System_Boolean_" data-uid="NPOI.HSSF.Model.InternalSheet.SetColumnGroupCollapsed(System.Int32,System.Boolean)">SetColumnGroupCollapsed(Int32, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetColumnGroupCollapsed(int columnNumber, bool collapsed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">columnNumber</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">collapsed</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_SetColumnHidden_" data-uid="NPOI.HSSF.Model.InternalSheet.SetColumnHidden*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_SetColumnHidden_System_Int32_System_Boolean_" data-uid="NPOI.HSSF.Model.InternalSheet.SetColumnHidden(System.Int32,System.Boolean)">SetColumnHidden(Int32, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetColumnHidden(int column, bool hidden)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">hidden</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_SetColumnWidth_" data-uid="NPOI.HSSF.Model.InternalSheet.SetColumnWidth*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_SetColumnWidth_System_Int32_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.SetColumnWidth(System.Int32,System.Int32)">SetColumnWidth(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetColumnWidth(int column, int width)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_SetDefaultColumnStyle_" data-uid="NPOI.HSSF.Model.InternalSheet.SetDefaultColumnStyle*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_SetDefaultColumnStyle_System_Int32_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.SetDefaultColumnStyle(System.Int32,System.Int32)">SetDefaultColumnStyle(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDefaultColumnStyle(int column, int styleIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">styleIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_SetDimensions_" data-uid="NPOI.HSSF.Model.InternalSheet.SetDimensions*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_SetDimensions_System_Int32_System_Int16_System_Int32_System_Int16_" data-uid="NPOI.HSSF.Model.InternalSheet.SetDimensions(System.Int32,System.Int16,System.Int32,System.Int16)">SetDimensions(Int32, Int16, Int32, Int16)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDimensions(int firstrow, short firstcol, int lastrow, short lastcol)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">firstrow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">firstcol</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">lastrow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">lastcol</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_SetSCLRecord_" data-uid="NPOI.HSSF.Model.InternalSheet.SetSCLRecord*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_SetSCLRecord_NPOI_HSSF_Record_SCLRecord_" data-uid="NPOI.HSSF.Model.InternalSheet.SetSCLRecord(NPOI.HSSF.Record.SCLRecord)">SetSCLRecord(SCLRecord)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSCLRecord(SCLRecord sclRecord)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.SCLRecord.html">SCLRecord</a></td>
+        <td><span class="parametername">sclRecord</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_SetSelected_" data-uid="NPOI.HSSF.Model.InternalSheet.SetSelected*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_SetSelected_System_Boolean_" data-uid="NPOI.HSSF.Model.InternalSheet.SetSelected(System.Boolean)">SetSelected(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSelected(bool sel)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">sel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_ShiftBreaks_" data-uid="NPOI.HSSF.Model.InternalSheet.ShiftBreaks*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_ShiftBreaks_NPOI_HSSF_Record_PageBreakRecord_System_Int16_System_Int16_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.ShiftBreaks(NPOI.HSSF.Record.PageBreakRecord,System.Int16,System.Int16,System.Int32)">ShiftBreaks(PageBreakRecord, Int16, Int16, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShiftBreaks(PageBreakRecord breaks, short start, short stop, int count)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.PageBreakRecord.html">PageBreakRecord</a></td>
+        <td><span class="parametername">breaks</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">start</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">stop</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">count</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_ShiftColumnBreaks_" data-uid="NPOI.HSSF.Model.InternalSheet.ShiftColumnBreaks*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_ShiftColumnBreaks_System_Int16_System_Int16_System_Int16_" data-uid="NPOI.HSSF.Model.InternalSheet.ShiftColumnBreaks(System.Int16,System.Int16,System.Int16)">ShiftColumnBreaks(Int16, Int16, Int16)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShiftColumnBreaks(short startingCol, short endingCol, short count)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">startingCol</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">endingCol</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">count</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_ShiftRowBreaks_" data-uid="NPOI.HSSF.Model.InternalSheet.ShiftRowBreaks*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_ShiftRowBreaks_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.ShiftRowBreaks(System.Int32,System.Int32,System.Int32)">ShiftRowBreaks(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShiftRowBreaks(int startingRow, int endingRow, int count)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startingRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endingRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">count</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_UpdateFormulasAfterCellShift_" data-uid="NPOI.HSSF.Model.InternalSheet.UpdateFormulasAfterCellShift*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_UpdateFormulasAfterCellShift_NPOI_SS_Formula_FormulaShifter_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.UpdateFormulasAfterCellShift(NPOI.SS.Formula.FormulaShifter,System.Int32)">UpdateFormulasAfterCellShift(FormulaShifter, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateFormulasAfterCellShift(FormulaShifter shifter, int externSheetIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.Formula.FormulaShifter.html">FormulaShifter</a></td>
+        <td><span class="parametername">shifter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">externSheetIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_Model_InternalSheet_VisitContainedRecords_" data-uid="NPOI.HSSF.Model.InternalSheet.VisitContainedRecords*"></a>
+  <h4 id="NPOI_HSSF_Model_InternalSheet_VisitContainedRecords_NPOI_HSSF_Record_Aggregates_RecordVisitor_System_Int32_" data-uid="NPOI.HSSF.Model.InternalSheet.VisitContainedRecords(NPOI.HSSF.Record.Aggregates.RecordVisitor,System.Int32)">VisitContainedRecords(RecordVisitor, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void VisitContainedRecords(RecordVisitor rv, int offset)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.Aggregates.RecordVisitor.html">RecordVisitor</a></td>
+        <td><span class="parametername">rv</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronXL to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: "fb47f498-31a3-4a06-82df-66cc39733c08"
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronXL free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href="/csharp/excel/licensing/"><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="/csharp/excel/licensing/">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>

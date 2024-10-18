@@ -1,0 +1,3271 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class XWPFDocument
+   | C# Excel API | IronXL </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class XWPFDocument
+   | C# Excel API | IronXL ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="NPOI.XWPF.UserModel.XWPFDocument">
+  
+  
+  <h1 id="NPOI_XWPF_UserModel_XWPFDocument" data-uid="NPOI.XWPF.UserModel.XWPFDocument" class="text-break">Class XWPFDocument
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="NPOI.POIXMLDocumentPart.html">POIXMLDocumentPart</a></div>
+    <div class="level2"><a class="xref" href="NPOI.POIXMLDocument.html">POIXMLDocument</a></div>
+    <div class="level3"><span class="xref">XWPFDocument</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="NPOI.XWPF.UserModel.Document.html">Document</a></div>
+    <div><a class="xref" href="NPOI.XWPF.UserModel.IBody.html">IBody</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_OLE_OBJECT_REL_TYPE">POIXMLDocument.OLE_OBJECT_REL_TYPE</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_PACK_OBJECT_REL_TYPE">POIXMLDocument.PACK_OBJECT_REL_TYPE</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_OpenPackage_System_String_">POIXMLDocument.OpenPackage(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_GetRelatedByType_System_String_">POIXMLDocument.GetRelatedByType(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_HasOOXMLHeader_System_IO_Stream_">POIXMLDocument.HasOOXMLHeader(Stream)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_GetProperties">POIXMLDocument.GetProperties()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Load_NPOI_POIXMLFactory_">POIXMLDocument.Load(POIXMLFactory)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Close">POIXMLDocument.Close()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Write_System_IO_Stream_">POIXMLDocument.Write(Stream)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Package">POIXMLDocument.Package</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_CorePart">POIXMLDocument.CorePart</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_Rebase_NPOI_OpenXml4Net_OPC_OPCPackage_">POIXMLDocumentPart.Rebase(OPCPackage)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetPackagePart">POIXMLDocumentPart.GetPackagePart()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_ConvertStreamToXml_System_IO_Stream_">POIXMLDocumentPart.ConvertStreamToXml(Stream)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetPackageRelationship">POIXMLDocumentPart.GetPackageRelationship()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetRelations">POIXMLDocumentPart.GetRelations()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetRelationById_System_String_">POIXMLDocumentPart.GetRelationById(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetRelationId_NPOI_POIXMLDocumentPart_">POIXMLDocumentPart.GetRelationId(POIXMLDocumentPart)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_AddRelation_System_String_NPOI_POIXMLDocumentPart_">POIXMLDocumentPart.AddRelation(String, POIXMLDocumentPart)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_RemoveRelation_NPOI_POIXMLDocumentPart_">POIXMLDocumentPart.RemoveRelation(POIXMLDocumentPart)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_RemoveRelation_NPOI_POIXMLDocumentPart_System_Boolean_">POIXMLDocumentPart.RemoveRelation(POIXMLDocumentPart, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetParent">POIXMLDocumentPart.GetParent()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_ToString">POIXMLDocumentPart.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_OnSave_System_Collections_Generic_List_NPOI_OpenXml4Net_OPC_PackagePart__">POIXMLDocumentPart.OnSave(List&lt;PackagePart&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_PrepareForCommit">POIXMLDocumentPart.PrepareForCommit()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_CreateRelationship_NPOI_POIXMLRelation_NPOI_POIXMLFactory_">POIXMLDocumentPart.CreateRelationship(POIXMLRelation, POIXMLFactory)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_CreateRelationship_NPOI_POIXMLRelation_NPOI_POIXMLFactory_System_Int32_">POIXMLDocumentPart.CreateRelationship(POIXMLRelation, POIXMLFactory, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_CreateRelationship_NPOI_POIXMLRelation_NPOI_POIXMLFactory_System_Int32_System_Boolean_">POIXMLDocumentPart.CreateRelationship(POIXMLRelation, POIXMLFactory, Int32, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_Read_NPOI_POIXMLFactory_System_Collections_Generic_Dictionary_NPOI_OpenXml4Net_OPC_PackagePart_NPOI_POIXMLDocumentPart__">POIXMLDocumentPart.Read(POIXMLFactory, Dictionary&lt;PackagePart, POIXMLDocumentPart&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetTargetPart_NPOI_OpenXml4Net_OPC_PackageRelationship_">POIXMLDocumentPart.GetTargetPart(PackageRelationship)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_onDocumentRemove">POIXMLDocumentPart.onDocumentRemove()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_NamespaceManager">POIXMLDocumentPart.NamespaceManager</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="NPOI.XWPF.UserModel.html">NPOI.XWPF.UserModel</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="NPOI_XWPF_UserModel_XWPFDocument_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class XWPFDocument : POIXMLDocument, Document, IBody</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument__ctor_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.#ctor*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument__ctor" data-uid="NPOI.XWPF.UserModel.XWPFDocument.#ctor">XWPFDocument()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFDocument()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument__ctor_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.#ctor*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument__ctor_NPOI_OpenXml4Net_OPC_OPCPackage_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.#ctor(NPOI.OpenXml4Net.OPC.OPCPackage)">XWPFDocument(OPCPackage)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFDocument(OPCPackage pkg)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.OpenXml4Net.OPC.OPCPackage.html">OPCPackage</a></td>
+        <td><span class="parametername">pkg</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument__ctor_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.#ctor*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument__ctor_System_IO_Stream_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.#ctor(System.IO.Stream)">XWPFDocument(Stream)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFDocument(Stream is1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">is1</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_bodyElements" data-uid="NPOI.XWPF.UserModel.XWPFDocument.bodyElements">bodyElements</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;IBodyElement&gt; bodyElements</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.IBodyElement.html">IBodyElement</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_comments" data-uid="NPOI.XWPF.UserModel.XWPFDocument.comments">comments</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;XWPFComment&gt; comments</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFComment.html">XWPFComment</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_contentControls" data-uid="NPOI.XWPF.UserModel.XWPFDocument.contentControls">contentControls</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;XWPFSDT&gt; contentControls</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFSDT.html">XWPFSDT</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_endnotes" data-uid="NPOI.XWPF.UserModel.XWPFDocument.endnotes">endnotes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Dictionary&lt;int, XWPFFootnote&gt; endnotes</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="NPOI.XWPF.UserModel.XWPFFootnote.html">XWPFFootnote</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_footers" data-uid="NPOI.XWPF.UserModel.XWPFDocument.footers">footers</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;XWPFFooter&gt; footers</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFFooter.html">XWPFFooter</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_footnotes" data-uid="NPOI.XWPF.UserModel.XWPFDocument.footnotes">footnotes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected XWPFFootnotes footnotes</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFFootnotes.html">XWPFFootnotes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_headers" data-uid="NPOI.XWPF.UserModel.XWPFDocument.headers">headers</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;XWPFHeader&gt; headers</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFHeader.html">XWPFHeader</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_hyperlinks" data-uid="NPOI.XWPF.UserModel.XWPFDocument.hyperlinks">hyperlinks</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;XWPFHyperlink&gt; hyperlinks</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFHyperlink.html">XWPFHyperlink</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_numbering" data-uid="NPOI.XWPF.UserModel.XWPFDocument.numbering">numbering</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected XWPFNumbering numbering</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFNumbering.html">XWPFNumbering</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_packagePictures" data-uid="NPOI.XWPF.UserModel.XWPFDocument.packagePictures">packagePictures</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Dictionary&lt;long, List&lt;XWPFPictureData&gt;&gt; packagePictures</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.Int64</span>, <span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFPictureData.html">XWPFPictureData</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_paragraphs" data-uid="NPOI.XWPF.UserModel.XWPFDocument.paragraphs">paragraphs</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;XWPFParagraph&gt; paragraphs</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFParagraph.html">XWPFParagraph</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_pictures" data-uid="NPOI.XWPF.UserModel.XWPFDocument.pictures">pictures</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;XWPFPictureData&gt; pictures</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFPictureData.html">XWPFPictureData</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_styles" data-uid="NPOI.XWPF.UserModel.XWPFDocument.styles">styles</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected XWPFStyles styles</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFStyles.html">XWPFStyles</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_tables" data-uid="NPOI.XWPF.UserModel.XWPFDocument.tables">tables</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;XWPFTable&gt; tables</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFTable.html">XWPFTable</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_AllPackagePictures_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.AllPackagePictures*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_AllPackagePictures" data-uid="NPOI.XWPF.UserModel.XWPFDocument.AllPackagePictures">AllPackagePictures</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;XWPFPictureData&gt; AllPackagePictures { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFPictureData.html">XWPFPictureData</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_AllPictures_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.AllPictures*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_AllPictures" data-uid="NPOI.XWPF.UserModel.XWPFDocument.AllPictures">AllPictures</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;XWPFPictureData&gt; AllPictures { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFPictureData.html">XWPFPictureData</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_BodyElements_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.BodyElements*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_BodyElements" data-uid="NPOI.XWPF.UserModel.XWPFDocument.BodyElements">BodyElements</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;IBodyElement&gt; BodyElements { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.IBodyElement.html">IBodyElement</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_Document_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.Document*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_Document" data-uid="NPOI.XWPF.UserModel.XWPFDocument.Document">Document</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CT_Document Document { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronXL.Xml.Wordprocessing.CT_Document</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_Endnotes_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.Endnotes*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_Endnotes" data-uid="NPOI.XWPF.UserModel.XWPFDocument.Endnotes">Endnotes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;int, XWPFFootnote&gt; Endnotes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="NPOI.XWPF.UserModel.XWPFFootnote.html">XWPFFootnote</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_FooterList_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.FooterList*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_FooterList" data-uid="NPOI.XWPF.UserModel.XWPFDocument.FooterList">FooterList</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;XWPFFooter&gt; FooterList { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFFooter.html">XWPFFooter</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_HeaderList_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.HeaderList*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_HeaderList" data-uid="NPOI.XWPF.UserModel.XWPFDocument.HeaderList">HeaderList</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;XWPFHeader&gt; HeaderList { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFHeader.html">XWPFHeader</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_IsTrackRevisions_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.IsTrackRevisions*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_IsTrackRevisions" data-uid="NPOI.XWPF.UserModel.XWPFDocument.IsTrackRevisions">IsTrackRevisions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsTrackRevisions { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_Paragraphs_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.Paragraphs*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_Paragraphs" data-uid="NPOI.XWPF.UserModel.XWPFDocument.Paragraphs">Paragraphs</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;XWPFParagraph&gt; Paragraphs { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFParagraph.html">XWPFParagraph</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_Part_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.Part*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_Part" data-uid="NPOI.XWPF.UserModel.XWPFDocument.Part">Part</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public POIXMLDocumentPart Part { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.POIXMLDocumentPart.html">POIXMLDocumentPart</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_PartType_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.PartType*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_PartType" data-uid="NPOI.XWPF.UserModel.XWPFDocument.PartType">PartType</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BodyType PartType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.BodyType.html">BodyType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_Tables_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.Tables*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_Tables" data-uid="NPOI.XWPF.UserModel.XWPFDocument.Tables">Tables</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;XWPFTable&gt; Tables { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFTable.html">XWPFTable</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_AddEndnote_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.AddEndnote*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_AddEndnote_IronXL_Xml_Wordprocessing_CT_FtnEdn_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.AddEndnote(IronXL.Xml.Wordprocessing.CT_FtnEdn)">AddEndnote(CT_FtnEdn)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFFootnote AddEndnote(CT_FtnEdn note)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronXL.Xml.Wordprocessing.CT_FtnEdn</span></td>
+        <td><span class="parametername">note</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFFootnote.html">XWPFFootnote</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_AddFootnote_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.AddFootnote*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_AddFootnote_IronXL_Xml_Wordprocessing_CT_FtnEdn_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.AddFootnote(IronXL.Xml.Wordprocessing.CT_FtnEdn)">AddFootnote(CT_FtnEdn)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFFootnote AddFootnote(CT_FtnEdn note)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronXL.Xml.Wordprocessing.CT_FtnEdn</span></td>
+        <td><span class="parametername">note</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFFootnote.html">XWPFFootnote</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_AddPictureData_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.AddPictureData*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_AddPictureData_System_Byte___System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.AddPictureData(System.Byte[],System.Int32)">AddPictureData(Byte[], Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AddPictureData(byte[] pictureData, int format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">pictureData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_AddPictureData_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.AddPictureData*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_AddPictureData_System_IO_Stream_System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.AddPictureData(System.IO.Stream,System.Int32)">AddPictureData(Stream, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AddPictureData(Stream is1, int format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">is1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_Commit_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.Commit*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_Commit" data-uid="NPOI.XWPF.UserModel.XWPFDocument.Commit">Commit()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Commit()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_Commit">POIXMLDocumentPart.Commit()</a></div>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_CreateFootnotes_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateFootnotes*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_CreateFootnotes" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateFootnotes">CreateFootnotes()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFFootnotes CreateFootnotes()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFFootnotes.html">XWPFFootnotes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_CreateNumbering_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateNumbering*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_CreateNumbering" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateNumbering">CreateNumbering()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFNumbering CreateNumbering()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFNumbering.html">XWPFNumbering</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_CreateParagraph_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateParagraph*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_CreateParagraph" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateParagraph">CreateParagraph()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFParagraph CreateParagraph()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFParagraph.html">XWPFParagraph</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_CreateStyles_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateStyles*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_CreateStyles" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateStyles">CreateStyles()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFStyles CreateStyles()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFStyles.html">XWPFStyles</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_CreateTable_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateTable*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_CreateTable" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateTable">CreateTable()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFTable CreateTable()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFTable.html">XWPFTable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_CreateTable_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateTable*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_CreateTable_System_Int32_System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateTable(System.Int32,System.Int32)">CreateTable(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFTable CreateTable(int rows, int cols)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rows</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">cols</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFTable.html">XWPFTable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_CreateTOC_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateTOC*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_CreateTOC" data-uid="NPOI.XWPF.UserModel.XWPFDocument.CreateTOC">CreateTOC()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CreateTOC()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_EnforceCommentsProtection_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.EnforceCommentsProtection*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_EnforceCommentsProtection" data-uid="NPOI.XWPF.UserModel.XWPFDocument.EnforceCommentsProtection">EnforceCommentsProtection()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EnforceCommentsProtection()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_EnforceFillingFormsProtection_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.EnforceFillingFormsProtection*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_EnforceFillingFormsProtection" data-uid="NPOI.XWPF.UserModel.XWPFDocument.EnforceFillingFormsProtection">EnforceFillingFormsProtection()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EnforceFillingFormsProtection()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_EnforceReadonlyProtection_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.EnforceReadonlyProtection*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_EnforceReadonlyProtection" data-uid="NPOI.XWPF.UserModel.XWPFDocument.EnforceReadonlyProtection">EnforceReadonlyProtection()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EnforceReadonlyProtection()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_EnforceTrackedChangesProtection_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.EnforceTrackedChangesProtection*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_EnforceTrackedChangesProtection" data-uid="NPOI.XWPF.UserModel.XWPFDocument.EnforceTrackedChangesProtection">EnforceTrackedChangesProtection()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EnforceTrackedChangesProtection()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_EnforceUpdateFields_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.EnforceUpdateFields*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_EnforceUpdateFields" data-uid="NPOI.XWPF.UserModel.XWPFDocument.EnforceUpdateFields">EnforceUpdateFields()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EnforceUpdateFields()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_FindPackagePictureData_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.FindPackagePictureData*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_FindPackagePictureData_System_Byte___System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.FindPackagePictureData(System.Byte[],System.Int32)">FindPackagePictureData(Byte[], Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFPictureData FindPackagePictureData(byte[] pictureData, int format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">pictureData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFPictureData.html">XWPFPictureData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetAllEmbedds_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetAllEmbedds*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetAllEmbedds" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetAllEmbedds">GetAllEmbedds()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override List&lt;PackagePart&gt; GetAllEmbedds()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.OpenXml4Net.OPC.PackagePart.html">PackagePart</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_GetAllEmbedds">POIXMLDocument.GetAllEmbedds()</a></div>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetBodyElementsIterator_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetBodyElementsIterator*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetBodyElementsIterator" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetBodyElementsIterator">GetBodyElementsIterator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;IBodyElement&gt; GetBodyElementsIterator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.IBodyElement.html">IBodyElement</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetCommentByID_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetCommentByID*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetCommentByID_System_String_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetCommentByID(System.String)">GetCommentByID(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFComment GetCommentByID(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFComment.html">XWPFComment</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetComments_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetComments*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetComments" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetComments">GetComments()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFComment[] GetComments()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFComment.html">XWPFComment</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetCTStyle_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetCTStyle*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetCTStyle" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetCTStyle">GetCTStyle()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CT_Styles GetCTStyle()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronXL.Xml.Wordprocessing.CT_Styles</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetEndnoteByID_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetEndnoteByID*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetEndnoteByID_System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetEndnoteByID(System.Int32)">GetEndnoteByID(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFFootnote GetEndnoteByID(int id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFFootnote.html">XWPFFootnote</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetFooterArray_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetFooterArray*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetFooterArray_System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetFooterArray(System.Int32)">GetFooterArray(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFFooter GetFooterArray(int pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFFooter.html">XWPFFooter</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetFootnoteByID_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetFootnoteByID*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetFootnoteByID_System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetFootnoteByID(System.Int32)">GetFootnoteByID(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFFootnote GetFootnoteByID(int id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFFootnote.html">XWPFFootnote</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetFootnotes_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetFootnotes*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetFootnotes" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetFootnotes">GetFootnotes()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;XWPFFootnote&gt; GetFootnotes()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFFootnote.html">XWPFFootnote</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetHeaderArray_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetHeaderArray*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetHeaderArray_System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetHeaderArray(System.Int32)">GetHeaderArray(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFHeader GetHeaderArray(int pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFHeader.html">XWPFHeader</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetHeaderFooterPolicy_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetHeaderFooterPolicy*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetHeaderFooterPolicy" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetHeaderFooterPolicy">GetHeaderFooterPolicy()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFHeaderFooterPolicy GetHeaderFooterPolicy()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.Model.XWPFHeaderFooterPolicy.html">XWPFHeaderFooterPolicy</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetHyperlinkByID_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetHyperlinkByID*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetHyperlinkByID_System_String_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetHyperlinkByID(System.String)">GetHyperlinkByID(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFHyperlink GetHyperlinkByID(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFHyperlink.html">XWPFHyperlink</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetHyperlinks_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetHyperlinks*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetHyperlinks" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetHyperlinks">GetHyperlinks()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFHyperlink[] GetHyperlinks()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFHyperlink.html">XWPFHyperlink</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetLastParagraph_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetLastParagraph*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetLastParagraph" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetLastParagraph">GetLastParagraph()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFParagraph GetLastParagraph()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFParagraph.html">XWPFParagraph</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetNextPicNameNumber_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetNextPicNameNumber*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetNextPicNameNumber_System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetNextPicNameNumber(System.Int32)">GetNextPicNameNumber(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetNextPicNameNumber(int format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetNumbering_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetNumbering*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetNumbering" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetNumbering">GetNumbering()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFNumbering GetNumbering()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFNumbering.html">XWPFNumbering</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetParagraph_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetParagraph*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetParagraph_IronXL_Xml_Wordprocessing_CT_P_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetParagraph(IronXL.Xml.Wordprocessing.CT_P)">GetParagraph(CT_P)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFParagraph GetParagraph(CT_P p)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronXL.Xml.Wordprocessing.CT_P</span></td>
+        <td><span class="parametername">p</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFParagraph.html">XWPFParagraph</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetParagraphArray_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetParagraphArray*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetParagraphArray_System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetParagraphArray(System.Int32)">GetParagraphArray(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFParagraph GetParagraphArray(int pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFParagraph.html">XWPFParagraph</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetParagraphPos_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetParagraphPos*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetParagraphPos_System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetParagraphPos(System.Int32)">GetParagraphPos(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetParagraphPos(int pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetParagraphsEnumerator_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetParagraphsEnumerator*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetParagraphsEnumerator" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetParagraphsEnumerator">GetParagraphsEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;XWPFParagraph&gt; GetParagraphsEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFParagraph.html">XWPFParagraph</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetPartById_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetPartById*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetPartById_System_String_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetPartById(System.String)">GetPartById(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PackagePart GetPartById(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.OpenXml4Net.OPC.PackagePart.html">PackagePart</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetPictureDataByID_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetPictureDataByID*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetPictureDataByID_System_String_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetPictureDataByID(System.String)">GetPictureDataByID(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFPictureData GetPictureDataByID(string blipID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blipID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFPictureData.html">XWPFPictureData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetPosOfParagraph_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetPosOfParagraph*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetPosOfParagraph_NPOI_XWPF_UserModel_XWPFParagraph_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetPosOfParagraph(NPOI.XWPF.UserModel.XWPFParagraph)">GetPosOfParagraph(XWPFParagraph)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetPosOfParagraph(XWPFParagraph p)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFParagraph.html">XWPFParagraph</a></td>
+        <td><span class="parametername">p</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetPosOfTable_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetPosOfTable*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetPosOfTable_NPOI_XWPF_UserModel_XWPFTable_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetPosOfTable(NPOI.XWPF.UserModel.XWPFTable)">GetPosOfTable(XWPFTable)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetPosOfTable(XWPFTable t)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFTable.html">XWPFTable</a></td>
+        <td><span class="parametername">t</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetStyles_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetStyles*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetStyles" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetStyles">GetStyles()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFStyles GetStyles()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFStyles.html">XWPFStyles</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetTable_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetTable*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetTable_IronXL_Xml_Wordprocessing_CT_Tbl_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetTable(IronXL.Xml.Wordprocessing.CT_Tbl)">GetTable(CT_Tbl)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFTable GetTable(CT_Tbl ctTbl)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronXL.Xml.Wordprocessing.CT_Tbl</span></td>
+        <td><span class="parametername">ctTbl</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFTable.html">XWPFTable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetTableArray_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetTableArray*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetTableArray_System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetTableArray(System.Int32)">GetTableArray(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFTable GetTableArray(int pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFTable.html">XWPFTable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetTableCell_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetTableCell*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetTableCell_IronXL_Xml_Wordprocessing_CT_Tc_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetTableCell(IronXL.Xml.Wordprocessing.CT_Tc)">GetTableCell(CT_Tc)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFTableCell GetTableCell(CT_Tc cell)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronXL.Xml.Wordprocessing.CT_Tc</span></td>
+        <td><span class="parametername">cell</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFTableCell.html">XWPFTableCell</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetTablePos_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetTablePos*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetTablePos_System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetTablePos(System.Int32)">GetTablePos(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetTablePos(int pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetTablesEnumerator_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetTablesEnumerator*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetTablesEnumerator" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetTablesEnumerator">GetTablesEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;XWPFTable&gt; GetTablesEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;<a class="xref" href="NPOI.XWPF.UserModel.XWPFTable.html">XWPFTable</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetTblStyle_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetTblStyle*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetTblStyle_NPOI_XWPF_UserModel_XWPFTable_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetTblStyle(NPOI.XWPF.UserModel.XWPFTable)">GetTblStyle(XWPFTable)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetTblStyle(XWPFTable table)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFTable.html">XWPFTable</a></td>
+        <td><span class="parametername">table</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_GetXWPFDocument_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetXWPFDocument*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_GetXWPFDocument" data-uid="NPOI.XWPF.UserModel.XWPFDocument.GetXWPFDocument">GetXWPFDocument()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFDocument GetXWPFDocument()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFDocument.html">XWPFDocument</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_InsertNewParagraph_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.InsertNewParagraph*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_InsertNewParagraph_System_Xml_XmlDocument_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.InsertNewParagraph(System.Xml.XmlDocument)">InsertNewParagraph(XmlDocument)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFParagraph InsertNewParagraph(XmlDocument cursor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Xml.XmlDocument</span></td>
+        <td><span class="parametername">cursor</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFParagraph.html">XWPFParagraph</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_InsertNewTbl_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.InsertNewTbl*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_InsertNewTbl_System_Xml_XmlDocument_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.InsertNewTbl(System.Xml.XmlDocument)">InsertNewTbl(XmlDocument)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XWPFTable InsertNewTbl(XmlDocument cursor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Xml.XmlDocument</span></td>
+        <td><span class="parametername">cursor</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFTable.html">XWPFTable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_InsertTable_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.InsertTable*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_InsertTable_System_Int32_NPOI_XWPF_UserModel_XWPFTable_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.InsertTable(System.Int32,NPOI.XWPF.UserModel.XWPFTable)">InsertTable(Int32, XWPFTable)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InsertTable(int pos, XWPFTable table)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFTable.html">XWPFTable</a></td>
+        <td><span class="parametername">table</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_IsEnforcedCommentsProtection_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.IsEnforcedCommentsProtection*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_IsEnforcedCommentsProtection" data-uid="NPOI.XWPF.UserModel.XWPFDocument.IsEnforcedCommentsProtection">IsEnforcedCommentsProtection()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEnforcedCommentsProtection()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_IsEnforcedFillingFormsProtection_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.IsEnforcedFillingFormsProtection*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_IsEnforcedFillingFormsProtection" data-uid="NPOI.XWPF.UserModel.XWPFDocument.IsEnforcedFillingFormsProtection">IsEnforcedFillingFormsProtection()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEnforcedFillingFormsProtection()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_IsEnforcedReadonlyProtection_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.IsEnforcedReadonlyProtection*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_IsEnforcedReadonlyProtection" data-uid="NPOI.XWPF.UserModel.XWPFDocument.IsEnforcedReadonlyProtection">IsEnforcedReadonlyProtection()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEnforcedReadonlyProtection()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_IsEnforcedTrackedChangesProtection_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.IsEnforcedTrackedChangesProtection*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_IsEnforcedTrackedChangesProtection" data-uid="NPOI.XWPF.UserModel.XWPFDocument.IsEnforcedTrackedChangesProtection">IsEnforcedTrackedChangesProtection()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEnforcedTrackedChangesProtection()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_IsEnforcedUpdateFields_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.IsEnforcedUpdateFields*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_IsEnforcedUpdateFields" data-uid="NPOI.XWPF.UserModel.XWPFDocument.IsEnforcedUpdateFields">IsEnforcedUpdateFields()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEnforcedUpdateFields()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_NewPackage_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.NewPackage*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_NewPackage" data-uid="NPOI.XWPF.UserModel.XWPFDocument.NewPackage">NewPackage()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static OPCPackage NewPackage()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.OpenXml4Net.OPC.OPCPackage.html">OPCPackage</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_RegisterPackagePictureData_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.RegisterPackagePictureData*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_RegisterPackagePictureData_NPOI_XWPF_UserModel_XWPFPictureData_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.RegisterPackagePictureData(NPOI.XWPF.UserModel.XWPFPictureData)">RegisterPackagePictureData(XWPFPictureData)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RegisterPackagePictureData(XWPFPictureData picData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFPictureData.html">XWPFPictureData</a></td>
+        <td><span class="parametername">picData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_RemoveBodyElement_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.RemoveBodyElement*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_RemoveBodyElement_System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.RemoveBodyElement(System.Int32)">RemoveBodyElement(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RemoveBodyElement(int pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_RemoveProtectionEnforcement_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.RemoveProtectionEnforcement*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_RemoveProtectionEnforcement" data-uid="NPOI.XWPF.UserModel.XWPFDocument.RemoveProtectionEnforcement">RemoveProtectionEnforcement()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveProtectionEnforcement()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_SetParagraph_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.SetParagraph*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_SetParagraph_NPOI_XWPF_UserModel_XWPFParagraph_System_Int32_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.SetParagraph(NPOI.XWPF.UserModel.XWPFParagraph,System.Int32)">SetParagraph(XWPFParagraph, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetParagraph(XWPFParagraph paragraph, int pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFParagraph.html">XWPFParagraph</a></td>
+        <td><span class="parametername">paragraph</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XWPF_UserModel_XWPFDocument_SetTable_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.SetTable*"></a>
+  <h4 id="NPOI_XWPF_UserModel_XWPFDocument_SetTable_System_Int32_NPOI_XWPF_UserModel_XWPFTable_" data-uid="NPOI.XWPF.UserModel.XWPFDocument.SetTable(System.Int32,NPOI.XWPF.UserModel.XWPFTable)">SetTable(Int32, XWPFTable)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetTable(int pos, XWPFTable table)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.XWPF.UserModel.XWPFTable.html">XWPFTable</a></td>
+        <td><span class="parametername">table</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="NPOI.XWPF.UserModel.Document.html">Document</a>
+  </div>
+  <div>
+      <a class="xref" href="NPOI.XWPF.UserModel.IBody.html">IBody</a>
+  </div>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_OLE_OBJECT_REL_TYPE">OLE_OBJECT_REL_TYPE</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_PACK_OBJECT_REL_TYPE">PACK_OBJECT_REL_TYPE</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_OpenPackage_System_String_">OpenPackage(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_GetRelatedByType_System_String_">GetRelatedByType(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_HasOOXMLHeader_System_IO_Stream_">HasOOXMLHeader(Stream)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_GetProperties">GetProperties()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Load_NPOI_POIXMLFactory_">Load(POIXMLFactory)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Close">Close()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Write_System_IO_Stream_">Write(Stream)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Package">Package</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_CorePart">CorePart</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_Rebase_NPOI_OpenXml4Net_OPC_OPCPackage_">Rebase(OPCPackage)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetPackagePart">GetPackagePart()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_ConvertStreamToXml_System_IO_Stream_">ConvertStreamToXml(Stream)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetPackageRelationship">GetPackageRelationship()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetRelations">GetRelations()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetRelationById_System_String_">GetRelationById(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetRelationId_NPOI_POIXMLDocumentPart_">GetRelationId(POIXMLDocumentPart)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_AddRelation_System_String_NPOI_POIXMLDocumentPart_">AddRelation(String, POIXMLDocumentPart)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_RemoveRelation_NPOI_POIXMLDocumentPart_">RemoveRelation(POIXMLDocumentPart)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_RemoveRelation_NPOI_POIXMLDocumentPart_System_Boolean_">RemoveRelation(POIXMLDocumentPart, Boolean)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetParent">GetParent()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_ToString">ToString()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_OnSave_System_Collections_Generic_List_NPOI_OpenXml4Net_OPC_PackagePart__">OnSave(List&lt;PackagePart&gt;)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_PrepareForCommit">PrepareForCommit()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_CreateRelationship_NPOI_POIXMLRelation_NPOI_POIXMLFactory_">CreateRelationship(POIXMLRelation, POIXMLFactory)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_CreateRelationship_NPOI_POIXMLRelation_NPOI_POIXMLFactory_System_Int32_">CreateRelationship(POIXMLRelation, POIXMLFactory, Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_CreateRelationship_NPOI_POIXMLRelation_NPOI_POIXMLFactory_System_Int32_System_Boolean_">CreateRelationship(POIXMLRelation, POIXMLFactory, Int32, Boolean)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_Read_NPOI_POIXMLFactory_System_Collections_Generic_Dictionary_NPOI_OpenXml4Net_OPC_PackagePart_NPOI_POIXMLDocumentPart__">Read(POIXMLFactory, Dictionary&lt;PackagePart, POIXMLDocumentPart&gt;)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetTargetPart_NPOI_OpenXml4Net_OPC_PackageRelationship_">GetTargetPart(PackageRelationship)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_onDocumentRemove">onDocumentRemove()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_NamespaceManager">NamespaceManager</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronXL to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: "fb47f498-31a3-4a06-82df-66cc39733c08"
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronXL free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href="/csharp/excel/licensing/"><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="/csharp/excel/licensing/">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>

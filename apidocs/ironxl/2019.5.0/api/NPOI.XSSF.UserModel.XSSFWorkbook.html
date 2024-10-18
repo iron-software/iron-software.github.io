@@ -1,0 +1,3908 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class XSSFWorkbook
+   | C# Excel API | IronXL </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class XSSFWorkbook
+   | C# Excel API | IronXL ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook">
+  
+  
+  <h1 id="NPOI_XSSF_UserModel_XSSFWorkbook" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook" class="text-break">Class XSSFWorkbook
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="NPOI.POIXMLDocumentPart.html">POIXMLDocumentPart</a></div>
+    <div class="level2"><a class="xref" href="NPOI.POIXMLDocument.html">POIXMLDocument</a></div>
+    <div class="level3"><span class="xref">XSSFWorkbook</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="NPOI.SS.UserModel.IWorkbook.html">IWorkbook</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_OLE_OBJECT_REL_TYPE">POIXMLDocument.OLE_OBJECT_REL_TYPE</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_PACK_OBJECT_REL_TYPE">POIXMLDocument.PACK_OBJECT_REL_TYPE</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_OpenPackage_System_String_">POIXMLDocument.OpenPackage(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_GetRelatedByType_System_String_">POIXMLDocument.GetRelatedByType(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_HasOOXMLHeader_System_IO_Stream_">POIXMLDocument.HasOOXMLHeader(Stream)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_GetProperties">POIXMLDocument.GetProperties()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Load_NPOI_POIXMLFactory_">POIXMLDocument.Load(POIXMLFactory)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Close">POIXMLDocument.Close()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Write_System_IO_Stream_">POIXMLDocument.Write(Stream)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Package">POIXMLDocument.Package</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_CorePart">POIXMLDocument.CorePart</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_Rebase_NPOI_OpenXml4Net_OPC_OPCPackage_">POIXMLDocumentPart.Rebase(OPCPackage)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetPackagePart">POIXMLDocumentPart.GetPackagePart()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_ConvertStreamToXml_System_IO_Stream_">POIXMLDocumentPart.ConvertStreamToXml(Stream)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetPackageRelationship">POIXMLDocumentPart.GetPackageRelationship()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetRelations">POIXMLDocumentPart.GetRelations()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetRelationById_System_String_">POIXMLDocumentPart.GetRelationById(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetRelationId_NPOI_POIXMLDocumentPart_">POIXMLDocumentPart.GetRelationId(POIXMLDocumentPart)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_AddRelation_System_String_NPOI_POIXMLDocumentPart_">POIXMLDocumentPart.AddRelation(String, POIXMLDocumentPart)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_RemoveRelation_NPOI_POIXMLDocumentPart_">POIXMLDocumentPart.RemoveRelation(POIXMLDocumentPart)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_RemoveRelation_NPOI_POIXMLDocumentPart_System_Boolean_">POIXMLDocumentPart.RemoveRelation(POIXMLDocumentPart, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetParent">POIXMLDocumentPart.GetParent()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_ToString">POIXMLDocumentPart.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_OnSave_System_Collections_Generic_List_NPOI_OpenXml4Net_OPC_PackagePart__">POIXMLDocumentPart.OnSave(List&lt;PackagePart&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_PrepareForCommit">POIXMLDocumentPart.PrepareForCommit()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_CreateRelationship_NPOI_POIXMLRelation_NPOI_POIXMLFactory_">POIXMLDocumentPart.CreateRelationship(POIXMLRelation, POIXMLFactory)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_CreateRelationship_NPOI_POIXMLRelation_NPOI_POIXMLFactory_System_Int32_">POIXMLDocumentPart.CreateRelationship(POIXMLRelation, POIXMLFactory, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_CreateRelationship_NPOI_POIXMLRelation_NPOI_POIXMLFactory_System_Int32_System_Boolean_">POIXMLDocumentPart.CreateRelationship(POIXMLRelation, POIXMLFactory, Int32, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_Read_NPOI_POIXMLFactory_System_Collections_Generic_Dictionary_NPOI_OpenXml4Net_OPC_PackagePart_NPOI_POIXMLDocumentPart__">POIXMLDocumentPart.Read(POIXMLFactory, Dictionary&lt;PackagePart, POIXMLDocumentPart&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetTargetPart_NPOI_OpenXml4Net_OPC_PackageRelationship_">POIXMLDocumentPart.GetTargetPart(PackageRelationship)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_onDocumentRemove">POIXMLDocumentPart.onDocumentRemove()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_NamespaceManager">POIXMLDocumentPart.NamespaceManager</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="NPOI.XSSF.UserModel.html">NPOI.XSSF.UserModel</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="NPOI_XSSF_UserModel_XSSFWorkbook_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class XSSFWorkbook : POIXMLDocument, IWorkbook</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook__ctor_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.#ctor*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook__ctor" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.#ctor">XSSFWorkbook()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XSSFWorkbook()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook__ctor_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.#ctor*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook__ctor_NPOI_OpenXml4Net_OPC_OPCPackage_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.#ctor(NPOI.OpenXml4Net.OPC.OPCPackage)">XSSFWorkbook(OPCPackage)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XSSFWorkbook(OPCPackage pkg)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.OpenXml4Net.OPC.OPCPackage.html">OPCPackage</a></td>
+        <td><span class="parametername">pkg</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook__ctor_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.#ctor*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook__ctor_System_IO_FileInfo_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.#ctor(System.IO.FileInfo)">XSSFWorkbook(FileInfo)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XSSFWorkbook(FileInfo file)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.FileInfo</span></td>
+        <td><span class="parametername">file</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook__ctor_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.#ctor*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook__ctor_System_IO_Stream_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.#ctor(System.IO.Stream)">XSSFWorkbook(Stream)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XSSFWorkbook(Stream is1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">is1</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook__ctor_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.#ctor*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook__ctor_System_String_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.#ctor(System.String)">XSSFWorkbook(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XSSFWorkbook(string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_DEFAULT_CHARACTER_WIDTH" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.DEFAULT_CHARACTER_WIDTH">DEFAULT_CHARACTER_WIDTH</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float DEFAULT_CHARACTER_WIDTH</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_PICTURE_TYPE_BMP" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PICTURE_TYPE_BMP">PICTURE_TYPE_BMP</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PICTURE_TYPE_BMP</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_PICTURE_TYPE_DIB" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PICTURE_TYPE_DIB">PICTURE_TYPE_DIB</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PICTURE_TYPE_DIB</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_PICTURE_TYPE_EMF" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PICTURE_TYPE_EMF">PICTURE_TYPE_EMF</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PICTURE_TYPE_EMF</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_PICTURE_TYPE_EPS" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PICTURE_TYPE_EPS">PICTURE_TYPE_EPS</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PICTURE_TYPE_EPS</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_PICTURE_TYPE_GIF" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PICTURE_TYPE_GIF">PICTURE_TYPE_GIF</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PICTURE_TYPE_GIF</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_PICTURE_TYPE_JPEG" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PICTURE_TYPE_JPEG">PICTURE_TYPE_JPEG</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PICTURE_TYPE_JPEG</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_PICTURE_TYPE_JPG" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PICTURE_TYPE_JPG">PICTURE_TYPE_JPG</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PICTURE_TYPE_JPG</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_PICTURE_TYPE_PICT" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PICTURE_TYPE_PICT">PICTURE_TYPE_PICT</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PICTURE_TYPE_PICT</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_PICTURE_TYPE_PNG" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PICTURE_TYPE_PNG">PICTURE_TYPE_PNG</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PICTURE_TYPE_PNG</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_PICTURE_TYPE_TIFF" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PICTURE_TYPE_TIFF">PICTURE_TYPE_TIFF</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PICTURE_TYPE_TIFF</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_PICTURE_TYPE_WMF" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PICTURE_TYPE_WMF">PICTURE_TYPE_WMF</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PICTURE_TYPE_WMF</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_PICTURE_TYPE_WPG" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PICTURE_TYPE_WPG">PICTURE_TYPE_WPG</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int PICTURE_TYPE_WPG</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_ActiveSheetIndex_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.ActiveSheetIndex*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_ActiveSheetIndex" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.ActiveSheetIndex">ActiveSheetIndex</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ActiveSheetIndex { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_Count_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Count*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_Count" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Count">Count</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_ExternalLinksTable_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.ExternalLinksTable*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_ExternalLinksTable" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.ExternalLinksTable">ExternalLinksTable</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;ExternalLinksTable&gt; ExternalLinksTable { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XSSF.Model.ExternalLinksTable.html">ExternalLinksTable</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_FirstVisibleTab_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.FirstVisibleTab*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_FirstVisibleTab" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.FirstVisibleTab">FirstVisibleTab</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FirstVisibleTab { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_IsHidden_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsHidden*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_IsHidden" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsHidden">IsHidden</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsHidden { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_IsReadOnly_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsReadOnly*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_IsReadOnly" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsReadOnly">IsReadOnly</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsReadOnly { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_Item_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Item*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_Item_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet this[int index] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_MissingCellPolicy_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.MissingCellPolicy*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_MissingCellPolicy" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.MissingCellPolicy">MissingCellPolicy</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MissingCellPolicy MissingCellPolicy { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.MissingCellPolicy.html">MissingCellPolicy</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_NumberOfFonts_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.NumberOfFonts*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_NumberOfFonts" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.NumberOfFonts">NumberOfFonts</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short NumberOfFonts { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_NumberOfNames_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.NumberOfNames*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_NumberOfNames" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.NumberOfNames">NumberOfNames</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumberOfNames { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_NumberOfSheets_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.NumberOfSheets*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_NumberOfSheets" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.NumberOfSheets">NumberOfSheets</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumberOfSheets { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_NumCellStyles_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.NumCellStyles*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_NumCellStyles" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.NumCellStyles">NumCellStyles</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short NumCellStyles { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_PivotTables_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PivotTables*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_PivotTables" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.PivotTables">PivotTables</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;XSSFPivotTable&gt; PivotTables { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XSSF.UserModel.XSSFPivotTable.html">XSSFPivotTable</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_Add_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Add*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_Add_NPOI_SS_UserModel_ISheet_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Add(NPOI.SS.UserModel.ISheet)">Add(ISheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(ISheet item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_AddPicture_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.AddPicture*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_AddPicture_System_Byte___NPOI_SS_UserModel_PictureType_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.AddPicture(System.Byte[],NPOI.SS.UserModel.PictureType)">AddPicture(Byte[], PictureType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AddPicture(byte[] pictureData, PictureType format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">pictureData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.PictureType.html">PictureType</a></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_AddPicture_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.AddPicture*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_AddPicture_System_Byte___System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.AddPicture(System.Byte[],System.Int32)">AddPicture(Byte[], Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AddPicture(byte[] pictureData, int format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">pictureData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_AddPicture_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.AddPicture*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_AddPicture_System_IO_Stream_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.AddPicture(System.IO.Stream,System.Int32)">AddPicture(Stream, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AddPicture(Stream picStream, int format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">picStream</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_AddPivotCache_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.AddPivotCache*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_AddPivotCache_System_String_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.AddPivotCache(System.String)">AddPivotCache(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected CT_PivotCache AddPivotCache(string rId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">rId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronXL.Xml.Spreadsheet.CT_PivotCache</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_AddToolPack_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.AddToolPack*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_AddToolPack_NPOI_SS_Formula_Udf_UDFFinder_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.AddToolPack(NPOI.SS.Formula.Udf.UDFFinder)">AddToolPack(UDFFinder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddToolPack(UDFFinder toopack)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.Formula.Udf.UDFFinder.html">UDFFinder</a></td>
+        <td><span class="parametername">toopack</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_BeforeDocumentRead_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.BeforeDocumentRead*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_BeforeDocumentRead" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.BeforeDocumentRead">BeforeDocumentRead()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void BeforeDocumentRead()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_Clear_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Clear*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_Clear" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Clear">Clear()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_CloneSheet_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CloneSheet*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_CloneSheet_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CloneSheet(System.Int32)">CloneSheet(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet CloneSheet(int sheetNum)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetNum</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_Commit_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Commit*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_Commit" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Commit">Commit()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Commit()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_Commit">POIXMLDocumentPart.Commit()</a></div>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_Contains_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Contains*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_Contains_NPOI_SS_UserModel_ISheet_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Contains(NPOI.SS.UserModel.ISheet)">Contains(ISheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(ISheet item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_CopyTo_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CopyTo*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_CopyTo_NPOI_SS_UserModel_ISheet___System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CopyTo(NPOI.SS.UserModel.ISheet[],System.Int32)">CopyTo(ISheet[], Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyTo(ISheet[] array, int arrayIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a>[]</td>
+        <td><span class="parametername">array</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">arrayIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateCellStyle_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateCellStyle*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateCellStyle" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateCellStyle">CreateCellStyle()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICellStyle CreateCellStyle()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ICellStyle.html">ICellStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateDataFormat_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateDataFormat*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateDataFormat" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateDataFormat">CreateDataFormat()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDataFormat CreateDataFormat()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IDataFormat.html">IDataFormat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateDialogsheet_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateDialogsheet*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateDialogsheet_System_String_IronXL_Xml_Spreadsheet_CT_Dialogsheet_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateDialogsheet(System.String,IronXL.Xml.Spreadsheet.CT_Dialogsheet)">CreateDialogsheet(String, CT_Dialogsheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected XSSFDialogsheet CreateDialogsheet(string sheetname, CT_Dialogsheet dialogsheet)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sheetname</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IronXL.Xml.Spreadsheet.CT_Dialogsheet</span></td>
+        <td><span class="parametername">dialogsheet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.UserModel.XSSFDialogsheet.html">XSSFDialogsheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateFont_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateFont*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateFont" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateFont">CreateFont()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IFont CreateFont()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IFont.html">IFont</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateName_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateName*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateName" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateName">CreateName()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IName CreateName()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IName.html">IName</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateSheet_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateSheet*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateSheet" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateSheet">CreateSheet()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet CreateSheet()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateSheet_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateSheet*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_CreateSheet_System_String_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.CreateSheet(System.String)">CreateSheet(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet CreateSheet(string sheetname)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sheetname</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_Dispose_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Dispose*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_Dispose" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Dispose()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_FindFont_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.FindFont*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_FindFont_System_Int16_System_Int16_System_Int16_System_String_System_Boolean_System_Boolean_NPOI_SS_UserModel_FontSuperScript_NPOI_SS_UserModel_FontUnderlineType_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.FindFont(System.Int16,System.Int16,System.Int16,System.String,System.Boolean,System.Boolean,NPOI.SS.UserModel.FontSuperScript,NPOI.SS.UserModel.FontUnderlineType)">FindFont(Int16, Int16, Int16, String, Boolean, Boolean, FontSuperScript, FontUnderlineType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IFont FindFont(short boldWeight, short color, short fontHeight, string name, bool italic, bool strikeout, FontSuperScript typeOffset, FontUnderlineType underline)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">boldWeight</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">fontHeight</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">italic</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">strikeout</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.FontSuperScript.html">FontSuperScript</a></td>
+        <td><span class="parametername">typeOffset</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.FontUnderlineType.html">FontUnderlineType</a></td>
+        <td><span class="parametername">underline</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IFont.html">IFont</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetAllEmbedds_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetAllEmbedds*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetAllEmbedds" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetAllEmbedds">GetAllEmbedds()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override List&lt;PackagePart&gt; GetAllEmbedds()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.OpenXml4Net.OPC.PackagePart.html">PackagePart</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_GetAllEmbedds">POIXMLDocument.GetAllEmbedds()</a></div>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetAllPictures_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetAllPictures*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetAllPictures" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetAllPictures">GetAllPictures()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList GetAllPictures()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetBuiltInName_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetBuiltInName*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetBuiltInName_System_String_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetBuiltInName(System.String,System.Int32)">GetBuiltInName(String, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XSSFName GetBuiltInName(string builtInCode, int sheetNumber)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">builtInCode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetNumber</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.UserModel.XSSFName.html">XSSFName</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetCalculationChain_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetCalculationChain*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetCalculationChain" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetCalculationChain">GetCalculationChain()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CalculationChain GetCalculationChain()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.Model.CalculationChain.html">CalculationChain</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetCellStyleAt_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetCellStyleAt*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetCellStyleAt_System_Int16_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetCellStyleAt(System.Int16)">GetCellStyleAt(Int16)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICellStyle GetCellStyleAt(short idx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">idx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ICellStyle.html">ICellStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetCellStyleAt_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetCellStyleAt*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetCellStyleAt_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetCellStyleAt(System.Int32)">GetCellStyleAt(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XSSFCellStyle GetCellStyleAt(int idx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">idx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.UserModel.XSSFCellStyle.html">XSSFCellStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetCreationHelper_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetCreationHelper*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetCreationHelper" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetCreationHelper">GetCreationHelper()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICreationHelper GetCreationHelper()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ICreationHelper.html">ICreationHelper</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetCTWorkbook_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetCTWorkbook*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetCTWorkbook" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetCTWorkbook">GetCTWorkbook()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CT_Workbook GetCTWorkbook()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronXL.Xml.Spreadsheet.CT_Workbook</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetCustomXMLMappings_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetCustomXMLMappings*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetCustomXMLMappings" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetCustomXMLMappings">GetCustomXMLMappings()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;XSSFMap&gt; GetCustomXMLMappings()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.XSSF.UserModel.XSSFMap.html">XSSFMap</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetEnumerator_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetEnumerator*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetEnumerator" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetFontAt_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetFontAt*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetFontAt_System_Int16_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetFontAt(System.Int16)">GetFontAt(Int16)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IFont GetFontAt(short idx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">idx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IFont.html">IFont</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetForceFormulaRecalculation_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetForceFormulaRecalculation*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetForceFormulaRecalculation" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetForceFormulaRecalculation">GetForceFormulaRecalculation()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetForceFormulaRecalculation()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetMapInfo_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetMapInfo*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetMapInfo" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetMapInfo">GetMapInfo()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MapInfo GetMapInfo()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.Model.MapInfo.html">MapInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetName_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetName*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetName_System_String_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetName(System.String)">GetName(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IName GetName(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IName.html">IName</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetNameAt_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetNameAt*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetNameAt_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetNameAt(System.Int32)">GetNameAt(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IName GetNameAt(int nameIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">nameIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IName.html">IName</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetNameIndex_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetNameIndex*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetNameIndex_System_String_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetNameIndex(System.String)">GetNameIndex(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetNameIndex(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetPrintArea_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetPrintArea*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetPrintArea_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetPrintArea(System.Int32)">GetPrintArea(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetPrintArea(int sheetIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetSharedStringSource_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetSharedStringSource*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetSharedStringSource" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetSharedStringSource">GetSharedStringSource()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SharedStringsTable GetSharedStringSource()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.Model.SharedStringsTable.html">SharedStringsTable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetSheet_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetSheet*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetSheet_System_String_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetSheet(System.String)">GetSheet(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet GetSheet(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetSheetAt_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetSheetAt*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetSheetAt_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetSheetAt(System.Int32)">GetSheetAt(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet GetSheetAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetSheetIndex_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetSheetIndex*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetSheetIndex_NPOI_SS_UserModel_ISheet_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetSheetIndex(NPOI.SS.UserModel.ISheet)">GetSheetIndex(ISheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetSheetIndex(ISheet sheet)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td><span class="parametername">sheet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetSheetIndex_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetSheetIndex*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetSheetIndex_System_String_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetSheetIndex(System.String)">GetSheetIndex(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetSheetIndex(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetSheetName_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetSheetName*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetSheetName_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetSheetName(System.Int32)">GetSheetName(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetSheetName(int sheetIx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetStylesSource_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetStylesSource*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetStylesSource" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetStylesSource">GetStylesSource()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StylesTable GetStylesSource()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.Model.StylesTable.html">StylesTable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_GetTheme_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetTheme*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_GetTheme" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.GetTheme">GetTheme()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ThemesTable GetTheme()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.Model.ThemesTable.html">ThemesTable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_IndexOf_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IndexOf*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_IndexOf_NPOI_SS_UserModel_ISheet_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IndexOf(NPOI.SS.UserModel.ISheet)">IndexOf(ISheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int IndexOf(ISheet item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_Insert_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Insert*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_Insert_System_Int32_NPOI_SS_UserModel_ISheet_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Insert(System.Int32,NPOI.SS.UserModel.ISheet)">Insert(Int32, ISheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Insert(int index, ISheet item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_IsDate1904_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsDate1904*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_IsDate1904" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsDate1904">IsDate1904()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsDate1904()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_IsMacroEnabled_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsMacroEnabled*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_IsMacroEnabled" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsMacroEnabled">IsMacroEnabled()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsMacroEnabled()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_IsRevisionLocked_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsRevisionLocked*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_IsRevisionLocked" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsRevisionLocked">IsRevisionLocked()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsRevisionLocked()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_IsSheetHidden_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsSheetHidden*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_IsSheetHidden_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsSheetHidden(System.Int32)">IsSheetHidden(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSheetHidden(int sheetIx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_IsSheetVeryHidden_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsSheetVeryHidden*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_IsSheetVeryHidden_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsSheetVeryHidden(System.Int32)">IsSheetVeryHidden(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSheetVeryHidden(int sheetIx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_IsStructureLocked_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsStructureLocked*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_IsStructureLocked" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsStructureLocked">IsStructureLocked()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsStructureLocked()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_IsWindowsLocked_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsWindowsLocked*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_IsWindowsLocked" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.IsWindowsLocked">IsWindowsLocked()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsWindowsLocked()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_LinkExternalWorkbook_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.LinkExternalWorkbook*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_LinkExternalWorkbook_System_String_NPOI_SS_UserModel_IWorkbook_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.LinkExternalWorkbook(System.String,NPOI.SS.UserModel.IWorkbook)">LinkExternalWorkbook(String, IWorkbook)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LinkExternalWorkbook(string name, IWorkbook workbook)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IWorkbook.html">IWorkbook</a></td>
+        <td><span class="parametername">workbook</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_LockRevision_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.LockRevision*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_LockRevision" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.LockRevision">LockRevision()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LockRevision()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_LockStructure_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.LockStructure*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_LockStructure" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.LockStructure">LockStructure()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LockStructure()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_LockWindows_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.LockWindows*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_LockWindows" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.LockWindows">LockWindows()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LockWindows()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_newPackage_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.newPackage*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_newPackage" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.newPackage">newPackage()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static OPCPackage newPackage()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.OpenXml4Net.OPC.OPCPackage.html">OPCPackage</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_Remove_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Remove*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_Remove_NPOI_SS_UserModel_ISheet_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Remove(NPOI.SS.UserModel.ISheet)">Remove(ISheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(ISheet item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_RemoveAt_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.RemoveAt*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_RemoveAt_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.RemoveAt(System.Int32)">RemoveAt(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_RemoveName_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.RemoveName*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_RemoveName_NPOI_XSSF_UserModel_XSSFName_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.RemoveName(NPOI.XSSF.UserModel.XSSFName)">RemoveName(XSSFName)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveName(XSSFName name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.UserModel.XSSFName.html">XSSFName</a></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_RemoveName_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.RemoveName*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_RemoveName_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.RemoveName(System.Int32)">RemoveName(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveName(int nameIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">nameIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_RemoveName_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.RemoveName*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_RemoveName_System_String_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.RemoveName(System.String)">RemoveName(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveName(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_RemovePrintArea_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.RemovePrintArea*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_RemovePrintArea_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.RemovePrintArea(System.Int32)">RemovePrintArea(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemovePrintArea(int sheetIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_RemoveSheetAt_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.RemoveSheetAt*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_RemoveSheetAt_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.RemoveSheetAt(System.Int32)">RemoveSheetAt(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveSheetAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_SetActiveSheet_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetActiveSheet*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_SetActiveSheet_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetActiveSheet(System.Int32)">SetActiveSheet(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetActiveSheet(int sheetIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_SetForceFormulaRecalculation_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetForceFormulaRecalculation*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_SetForceFormulaRecalculation_System_Boolean_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetForceFormulaRecalculation(System.Boolean)">SetForceFormulaRecalculation(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetForceFormulaRecalculation(bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_SetPrintArea_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetPrintArea*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_SetPrintArea_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetPrintArea(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">SetPrintArea(Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPrintArea(int sheetIndex, int startColumn, int endColumn, int startRow, int endRow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endRow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_SetPrintArea_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetPrintArea*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_SetPrintArea_System_Int32_System_String_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetPrintArea(System.Int32,System.String)">SetPrintArea(Int32, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPrintArea(int sheetIndex, string reference)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">reference</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_SetRepeatingRowsAndColumns_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetRepeatingRowsAndColumns*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_SetRepeatingRowsAndColumns_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetRepeatingRowsAndColumns(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">SetRepeatingRowsAndColumns(Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRepeatingRowsAndColumns(int sheetIndex, int startColumn, int endColumn, int startRow, int endRow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endRow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_SetSelectedTab_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetSelectedTab*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_SetSelectedTab_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetSelectedTab(System.Int32)">SetSelectedTab(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSelectedTab(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_SetSheetHidden_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetSheetHidden*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_SetSheetHidden_System_Int32_NPOI_SS_UserModel_SheetState_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetSheetHidden(System.Int32,NPOI.SS.UserModel.SheetState)">SetSheetHidden(Int32, SheetState)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSheetHidden(int sheetIx, SheetState state)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIx</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.SheetState.html">SheetState</a></td>
+        <td><span class="parametername">state</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_SetSheetHidden_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetSheetHidden*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_SetSheetHidden_System_Int32_System_Boolean_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetSheetHidden(System.Int32,System.Boolean)">SetSheetHidden(Int32, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSheetHidden(int sheetIx, bool hidden)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIx</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">hidden</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_SetSheetHidden_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetSheetHidden*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_SetSheetHidden_System_Int32_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetSheetHidden(System.Int32,System.Int32)">SetSheetHidden(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSheetHidden(int sheetIx, int hidden)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIx</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">hidden</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_SetSheetName_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetSheetName*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_SetSheetName_System_Int32_System_String_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetSheetName(System.Int32,System.String)">SetSheetName(Int32, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSheetName(int sheetIndex, string sheetname)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sheetname</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_SetSheetOrder_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetSheetOrder*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_SetSheetOrder_System_String_System_Int32_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.SetSheetOrder(System.String,System.Int32)">SetSheetOrder(String, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSheetOrder(string sheetname, int pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sheetname</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_UnlockRevision_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.UnlockRevision*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_UnlockRevision" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.UnlockRevision">UnlockRevision()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnlockRevision()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_UnlockStructure_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.UnlockStructure*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_UnlockStructure" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.UnlockStructure">UnlockStructure()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnlockStructure()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_UnlockWindows_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.UnlockWindows*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_UnlockWindows" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.UnlockWindows">UnlockWindows()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnlockWindows()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XSSF_UserModel_XSSFWorkbook_Write_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Write*"></a>
+  <h4 id="NPOI_XSSF_UserModel_XSSFWorkbook_Write_System_IO_Stream_System_Boolean_" data-uid="NPOI.XSSF.UserModel.XSSFWorkbook.Write(System.IO.Stream,System.Boolean)">Write(Stream, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(Stream stream, bool leaveOpen)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">leaveOpen</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="NPOI.SS.UserModel.IWorkbook.html">IWorkbook</a>
+  </div>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_OLE_OBJECT_REL_TYPE">OLE_OBJECT_REL_TYPE</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_PACK_OBJECT_REL_TYPE">PACK_OBJECT_REL_TYPE</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_OpenPackage_System_String_">OpenPackage(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_GetRelatedByType_System_String_">GetRelatedByType(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_HasOOXMLHeader_System_IO_Stream_">HasOOXMLHeader(Stream)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_GetProperties">GetProperties()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Load_NPOI_POIXMLFactory_">Load(POIXMLFactory)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Close">Close()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Write_System_IO_Stream_">Write(Stream)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_Package">Package</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocument.html#NPOI_POIXMLDocument_CorePart">CorePart</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_Rebase_NPOI_OpenXml4Net_OPC_OPCPackage_">Rebase(OPCPackage)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetPackagePart">GetPackagePart()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_ConvertStreamToXml_System_IO_Stream_">ConvertStreamToXml(Stream)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetPackageRelationship">GetPackageRelationship()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetRelations">GetRelations()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetRelationById_System_String_">GetRelationById(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetRelationId_NPOI_POIXMLDocumentPart_">GetRelationId(POIXMLDocumentPart)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_AddRelation_System_String_NPOI_POIXMLDocumentPart_">AddRelation(String, POIXMLDocumentPart)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_RemoveRelation_NPOI_POIXMLDocumentPart_">RemoveRelation(POIXMLDocumentPart)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_RemoveRelation_NPOI_POIXMLDocumentPart_System_Boolean_">RemoveRelation(POIXMLDocumentPart, Boolean)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetParent">GetParent()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_ToString">ToString()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_OnSave_System_Collections_Generic_List_NPOI_OpenXml4Net_OPC_PackagePart__">OnSave(List&lt;PackagePart&gt;)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_PrepareForCommit">PrepareForCommit()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_CreateRelationship_NPOI_POIXMLRelation_NPOI_POIXMLFactory_">CreateRelationship(POIXMLRelation, POIXMLFactory)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_CreateRelationship_NPOI_POIXMLRelation_NPOI_POIXMLFactory_System_Int32_">CreateRelationship(POIXMLRelation, POIXMLFactory, Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_CreateRelationship_NPOI_POIXMLRelation_NPOI_POIXMLFactory_System_Int32_System_Boolean_">CreateRelationship(POIXMLRelation, POIXMLFactory, Int32, Boolean)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_Read_NPOI_POIXMLFactory_System_Collections_Generic_Dictionary_NPOI_OpenXml4Net_OPC_PackagePart_NPOI_POIXMLDocumentPart__">Read(POIXMLFactory, Dictionary&lt;PackagePart, POIXMLDocumentPart&gt;)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_GetTargetPart_NPOI_OpenXml4Net_OPC_PackageRelationship_">GetTargetPart(PackageRelationship)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_onDocumentRemove">onDocumentRemove()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIXMLDocumentPart.html#NPOI_POIXMLDocumentPart_NamespaceManager">NamespaceManager</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronXL to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: "fb47f498-31a3-4a06-82df-66cc39733c08"
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronXL free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href="/csharp/excel/licensing/"><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="/csharp/excel/licensing/">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>

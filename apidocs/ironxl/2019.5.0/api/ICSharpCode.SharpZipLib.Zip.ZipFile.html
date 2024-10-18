@@ -1,0 +1,1741 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ZipFile
+   | C# Excel API | IronXL </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ZipFile
+   | C# Excel API | IronXL ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile">
+  
+  
+  <h1 id="ICSharpCode_SharpZipLib_Zip_ZipFile" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile" class="text-break">Class ZipFile
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ZipFile</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ICSharpCode.SharpZipLib.Zip.html">ICSharpCode.SharpZipLib.Zip</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="ICSharpCode_SharpZipLib_Zip_ZipFile_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ZipFile : Object</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile__ctor_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.#ctor*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile__ctor_System_IO_FileStream_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.#ctor(System.IO.FileStream)">ZipFile(FileStream)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ZipFile(FileStream file)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.FileStream</span></td>
+        <td><span class="parametername">file</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile__ctor_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.#ctor*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile__ctor_System_IO_Stream_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.#ctor(System.IO.Stream)">ZipFile(Stream)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ZipFile(Stream stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile__ctor_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.#ctor*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile__ctor_System_String_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.#ctor(System.String)">ZipFile(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ZipFile(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_KeysRequired" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.KeysRequired">KeysRequired</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ZipFile.KeysRequiredEventHandler KeysRequired</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.ZipFile.KeysRequiredEventHandler.html">ZipFile.KeysRequiredEventHandler</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_BufferSize_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.BufferSize*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_BufferSize" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.BufferSize">BufferSize</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BufferSize { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Count_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Count*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Count" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Count">Count</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_EntryByIndex_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.EntryByIndex*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_EntryByIndex_System_Int32_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.EntryByIndex(System.Int32)">EntryByIndex[Int32]</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ZipEntry this[int index] { get; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.ZipEntry.html">ZipEntry</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_EntryFactory_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.EntryFactory*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_EntryFactory" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.EntryFactory">EntryFactory</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEntryFactory EntryFactory { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.IEntryFactory.html">IEntryFactory</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_IsEmbeddedArchive_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.IsEmbeddedArchive*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_IsEmbeddedArchive" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.IsEmbeddedArchive">IsEmbeddedArchive</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEmbeddedArchive { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_IsNewArchive_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.IsNewArchive*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_IsNewArchive" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.IsNewArchive">IsNewArchive</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsNewArchive { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_IsStreamOwner_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.IsStreamOwner*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_IsStreamOwner" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.IsStreamOwner">IsStreamOwner</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsStreamOwner { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_IsUpdating_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.IsUpdating*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_IsUpdating" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.IsUpdating">IsUpdating</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsUpdating { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Name_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Name*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Name" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Name">Name</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_NameTransform_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.NameTransform*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_NameTransform" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.NameTransform">NameTransform</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public INameTransform NameTransform { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Core.INameTransform.html">INameTransform</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Password_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Password*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Password" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Password">Password</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Password { set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Size_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Size*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Size" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Size">Size</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Size { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_UseZip64_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.UseZip64*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_UseZip64" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.UseZip64">UseZip64</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UseZip64 UseZip64 { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.UseZip64.html">UseZip64</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_ZipFileComment_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.ZipFileComment*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_ZipFileComment" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.ZipFileComment">ZipFileComment</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ZipFileComment { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_AbortUpdate_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.AbortUpdate*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_AbortUpdate" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.AbortUpdate">AbortUpdate()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AbortUpdate()</code></pre>
+  </div>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_ICSharpCode_SharpZipLib_Zip_IStaticDataSource_System_String_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add(ICSharpCode.SharpZipLib.Zip.IStaticDataSource,System.String)">Add(IStaticDataSource, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(IStaticDataSource dataSource, string entryName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.IStaticDataSource.html">IStaticDataSource</a></td>
+        <td><span class="parametername">dataSource</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">entryName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_ICSharpCode_SharpZipLib_Zip_IStaticDataSource_System_String_ICSharpCode_SharpZipLib_Zip_CompressionMethod_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add(ICSharpCode.SharpZipLib.Zip.IStaticDataSource,System.String,ICSharpCode.SharpZipLib.Zip.CompressionMethod)">Add(IStaticDataSource, String, CompressionMethod)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(IStaticDataSource dataSource, string entryName, CompressionMethod compressionMethod)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.IStaticDataSource.html">IStaticDataSource</a></td>
+        <td><span class="parametername">dataSource</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">entryName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.CompressionMethod.html">CompressionMethod</a></td>
+        <td><span class="parametername">compressionMethod</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_ICSharpCode_SharpZipLib_Zip_IStaticDataSource_System_String_ICSharpCode_SharpZipLib_Zip_CompressionMethod_System_Boolean_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add(ICSharpCode.SharpZipLib.Zip.IStaticDataSource,System.String,ICSharpCode.SharpZipLib.Zip.CompressionMethod,System.Boolean)">Add(IStaticDataSource, String, CompressionMethod, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(IStaticDataSource dataSource, string entryName, CompressionMethod compressionMethod, bool useUnicodeText)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.IStaticDataSource.html">IStaticDataSource</a></td>
+        <td><span class="parametername">dataSource</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">entryName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.CompressionMethod.html">CompressionMethod</a></td>
+        <td><span class="parametername">compressionMethod</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">useUnicodeText</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_ICSharpCode_SharpZipLib_Zip_ZipEntry_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add(ICSharpCode.SharpZipLib.Zip.ZipEntry)">Add(ZipEntry)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(ZipEntry entry)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.ZipEntry.html">ZipEntry</a></td>
+        <td><span class="parametername">entry</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_System_String_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add(System.String)">Add(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(string fileName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_System_String_ICSharpCode_SharpZipLib_Zip_CompressionMethod_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add(System.String,ICSharpCode.SharpZipLib.Zip.CompressionMethod)">Add(String, CompressionMethod)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(string fileName, CompressionMethod compressionMethod)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.CompressionMethod.html">CompressionMethod</a></td>
+        <td><span class="parametername">compressionMethod</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_System_String_ICSharpCode_SharpZipLib_Zip_CompressionMethod_System_Boolean_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add(System.String,ICSharpCode.SharpZipLib.Zip.CompressionMethod,System.Boolean)">Add(String, CompressionMethod, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(string fileName, CompressionMethod compressionMethod, bool useUnicodeText)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.CompressionMethod.html">CompressionMethod</a></td>
+        <td><span class="parametername">compressionMethod</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">useUnicodeText</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Add_System_String_System_String_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Add(System.String,System.String)">Add(String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(string fileName, string entryName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">entryName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_AddDirectory_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.AddDirectory*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_AddDirectory_System_String_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.AddDirectory(System.String)">AddDirectory(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddDirectory(string directoryName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">directoryName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_BeginUpdate_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.BeginUpdate*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_BeginUpdate" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.BeginUpdate">BeginUpdate()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BeginUpdate()</code></pre>
+  </div>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_BeginUpdate_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.BeginUpdate*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_BeginUpdate_ICSharpCode_SharpZipLib_Zip_IArchiveStorage_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.BeginUpdate(ICSharpCode.SharpZipLib.Zip.IArchiveStorage)">BeginUpdate(IArchiveStorage)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BeginUpdate(IArchiveStorage archiveStorage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.IArchiveStorage.html">IArchiveStorage</a></td>
+        <td><span class="parametername">archiveStorage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_BeginUpdate_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.BeginUpdate*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_BeginUpdate_ICSharpCode_SharpZipLib_Zip_IArchiveStorage_ICSharpCode_SharpZipLib_Zip_IDynamicDataSource_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.BeginUpdate(ICSharpCode.SharpZipLib.Zip.IArchiveStorage,ICSharpCode.SharpZipLib.Zip.IDynamicDataSource)">BeginUpdate(IArchiveStorage, IDynamicDataSource)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BeginUpdate(IArchiveStorage archiveStorage, IDynamicDataSource dataSource)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.IArchiveStorage.html">IArchiveStorage</a></td>
+        <td><span class="parametername">archiveStorage</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.IDynamicDataSource.html">IDynamicDataSource</a></td>
+        <td><span class="parametername">dataSource</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Close_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Close*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Close" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Close">Close()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Close()</code></pre>
+  </div>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_CommitUpdate_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.CommitUpdate*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_CommitUpdate" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.CommitUpdate">CommitUpdate()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CommitUpdate()</code></pre>
+  </div>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Create_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Create*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Create_System_IO_Stream_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Create(System.IO.Stream)">Create(Stream)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ZipFile Create(Stream outStream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">outStream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.ZipFile.html">ZipFile</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Create_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Create*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Create_System_String_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Create(System.String)">Create(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ZipFile Create(string fileName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.ZipFile.html">ZipFile</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Delete_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Delete*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Delete_ICSharpCode_SharpZipLib_Zip_ZipEntry_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Delete(ICSharpCode.SharpZipLib.Zip.ZipEntry)">Delete(ZipEntry)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Delete(ZipEntry entry)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.ZipEntry.html">ZipEntry</a></td>
+        <td><span class="parametername">entry</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Delete_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Delete*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Delete_System_String_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Delete(System.String)">Delete(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Delete(string fileName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Dispose_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Dispose*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Dispose_System_Boolean_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_Finalize_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Finalize*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_Finalize" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.Finalize">Finalize()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Finalize()</code></pre>
+  </div>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_FindEntry_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.FindEntry*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_FindEntry_System_String_System_Boolean_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.FindEntry(System.String,System.Boolean)">FindEntry(String, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FindEntry(string name, bool ignoreCase)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreCase</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_GetEntry_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.GetEntry*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_GetEntry_System_String_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.GetEntry(System.String)">GetEntry(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ZipEntry GetEntry(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.ZipEntry.html">ZipEntry</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_GetEnumerator_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.GetEnumerator*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_GetEnumerator" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_GetInputStream_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.GetInputStream*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_GetInputStream_ICSharpCode_SharpZipLib_Zip_ZipEntry_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.GetInputStream(ICSharpCode.SharpZipLib.Zip.ZipEntry)">GetInputStream(ZipEntry)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Stream GetInputStream(ZipEntry entry)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.ZipEntry.html">ZipEntry</a></td>
+        <td><span class="parametername">entry</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_GetInputStream_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.GetInputStream*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_GetInputStream_System_Int64_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.GetInputStream(System.Int64)">GetInputStream(Int64)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Stream GetInputStream(long entryIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">entryIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_SetComment_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.SetComment*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_SetComment_System_String_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.SetComment(System.String)">SetComment(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetComment(string comment)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">comment</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_TestArchive_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.TestArchive*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_TestArchive_System_Boolean_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.TestArchive(System.Boolean)">TestArchive(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TestArchive(bool testData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">testData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="ICSharpCode_SharpZipLib_Zip_ZipFile_TestArchive_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.TestArchive*"></a>
+  <h4 id="ICSharpCode_SharpZipLib_Zip_ZipFile_TestArchive_System_Boolean_ICSharpCode_SharpZipLib_Zip_TestStrategy_ICSharpCode_SharpZipLib_Zip_ZipTestResultHandler_" data-uid="ICSharpCode.SharpZipLib.Zip.ZipFile.TestArchive(System.Boolean,ICSharpCode.SharpZipLib.Zip.TestStrategy,ICSharpCode.SharpZipLib.Zip.ZipTestResultHandler)">TestArchive(Boolean, TestStrategy, ZipTestResultHandler)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TestArchive(bool testData, TestStrategy strategy, ZipTestResultHandler resultHandler)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">testData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.TestStrategy.html">TestStrategy</a></td>
+        <td><span class="parametername">strategy</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ICSharpCode.SharpZipLib.Zip.ZipTestResultHandler.html">ZipTestResultHandler</a></td>
+        <td><span class="parametername">resultHandler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
+  </div>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronXL to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: "fb47f498-31a3-4a06-82df-66cc39733c08"
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronXL free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href="/csharp/excel/licensing/"><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="/csharp/excel/licensing/">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>

@@ -1,0 +1,3781 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class HSSFWorkbook
+   | C# Excel API | IronXL </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class HSSFWorkbook
+   | C# Excel API | IronXL ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook">
+  
+  
+  <h1 id="NPOI_HSSF_UserModel_HSSFWorkbook" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook" class="text-break">Class HSSFWorkbook
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="NPOI.POIDocument.html">POIDocument</a></div>
+    <div class="level2"><span class="xref">HSSFWorkbook</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="NPOI.SS.UserModel.IWorkbook.html">IWorkbook</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_sInf">POIDocument.sInf</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_dsInf">POIDocument.dsInf</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_directory">POIDocument.directory</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_initialized">POIDocument.initialized</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_CreateInformationProperties">POIDocument.CreateInformationProperties()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_ReadProperties">POIDocument.ReadProperties()</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_GetPropertySet_System_String_">POIDocument.GetPropertySet(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_WriteProperties_NPOI_POIFS_FileSystem_POIFSFileSystem_">POIDocument.WriteProperties(POIFSFileSystem)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_WriteProperties_NPOI_POIFS_FileSystem_POIFSFileSystem_System_Collections_IList_">POIDocument.WriteProperties(POIFSFileSystem, IList)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_WritePropertySet_System_String_NPOI_HPSF_PropertySet_NPOI_POIFS_FileSystem_POIFSFileSystem_">POIDocument.WritePropertySet(String, PropertySet, POIFSFileSystem)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_CopyNodes_NPOI_POIFS_FileSystem_POIFSFileSystem_NPOI_POIFS_FileSystem_POIFSFileSystem_System_Collections_Generic_List_System_String__">POIDocument.CopyNodes(POIFSFileSystem, POIFSFileSystem, List&lt;String&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_CopyNodes_NPOI_POIFS_FileSystem_DirectoryNode_NPOI_POIFS_FileSystem_DirectoryNode_System_Collections_Generic_List_System_String__">POIDocument.CopyNodes(DirectoryNode, DirectoryNode, List&lt;String&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_DocumentSummaryInformation">POIDocument.DocumentSummaryInformation</a>
+    </div>
+    <div>
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_SummaryInformation">POIDocument.SummaryInformation</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="NPOI.HSSF.UserModel.html">NPOI.HSSF.UserModel</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="NPOI_HSSF_UserModel_HSSFWorkbook_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class HSSFWorkbook : POIDocument, IWorkbook</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor">HSSFWorkbook()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HSSFWorkbook()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_NPOI_HSSF_Model_InternalWorkbook_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor(NPOI.HSSF.Model.InternalWorkbook)">HSSFWorkbook(InternalWorkbook)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HSSFWorkbook(InternalWorkbook book)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Model.InternalWorkbook.html">InternalWorkbook</a></td>
+        <td><span class="parametername">book</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_NPOI_POIFS_FileSystem_DirectoryNode_NPOI_POIFS_FileSystem_POIFSFileSystem_System_Boolean_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor(NPOI.POIFS.FileSystem.DirectoryNode,NPOI.POIFS.FileSystem.POIFSFileSystem,System.Boolean)">HSSFWorkbook(DirectoryNode, POIFSFileSystem, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HSSFWorkbook(DirectoryNode directory, POIFSFileSystem fs, bool preserveNodes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.POIFS.FileSystem.DirectoryNode.html">DirectoryNode</a></td>
+        <td><span class="parametername">directory</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.POIFS.FileSystem.POIFSFileSystem.html">POIFSFileSystem</a></td>
+        <td><span class="parametername">fs</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">preserveNodes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_NPOI_POIFS_FileSystem_DirectoryNode_System_Boolean_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor(NPOI.POIFS.FileSystem.DirectoryNode,System.Boolean)">HSSFWorkbook(DirectoryNode, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HSSFWorkbook(DirectoryNode directory, bool preserveNodes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.POIFS.FileSystem.DirectoryNode.html">DirectoryNode</a></td>
+        <td><span class="parametername">directory</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">preserveNodes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_NPOI_POIFS_FileSystem_POIFSFileSystem_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor(NPOI.POIFS.FileSystem.POIFSFileSystem)">HSSFWorkbook(POIFSFileSystem)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HSSFWorkbook(POIFSFileSystem fs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.POIFS.FileSystem.POIFSFileSystem.html">POIFSFileSystem</a></td>
+        <td><span class="parametername">fs</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_NPOI_POIFS_FileSystem_POIFSFileSystem_System_Boolean_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor(NPOI.POIFS.FileSystem.POIFSFileSystem,System.Boolean)">HSSFWorkbook(POIFSFileSystem, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HSSFWorkbook(POIFSFileSystem fs, bool preserveNodes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.POIFS.FileSystem.POIFSFileSystem.html">POIFSFileSystem</a></td>
+        <td><span class="parametername">fs</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">preserveNodes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_System_IO_Stream_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor(System.IO.Stream)">HSSFWorkbook(Stream)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HSSFWorkbook(Stream s)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">s</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook__ctor_System_IO_Stream_System_Boolean_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.#ctor(System.IO.Stream,System.Boolean)">HSSFWorkbook(Stream, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HSSFWorkbook(Stream s, bool preserveNodes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">s</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">preserveNodes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook__sheets" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook._sheets">_sheets</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;HSSFSheet&gt; _sheets</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.HSSF.UserModel.HSSFSheet.html">HSSFSheet</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_ENCODING_COMPRESSED_UNICODE" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.ENCODING_COMPRESSED_UNICODE">ENCODING_COMPRESSED_UNICODE</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const byte ENCODING_COMPRESSED_UNICODE = 0</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_ENCODING_UTF_16" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.ENCODING_UTF_16">ENCODING_UTF_16</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const byte ENCODING_UTF_16 = 1</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_INITIAL_CAPACITY" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.INITIAL_CAPACITY">INITIAL_CAPACITY</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int INITIAL_CAPACITY = 3</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_ActiveSheetIndex_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.ActiveSheetIndex*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_ActiveSheetIndex" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.ActiveSheetIndex">ActiveSheetIndex</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ActiveSheetIndex { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_BackupFlag_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.BackupFlag*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_BackupFlag" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.BackupFlag">BackupFlag</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool BackupFlag { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_Count_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Count*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_Count" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Count">Count</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_DisplayedTab_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.DisplayedTab*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_DisplayedTab" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.DisplayedTab">DisplayedTab</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short DisplayedTab { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_FirstVisibleTab_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.FirstVisibleTab*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_FirstVisibleTab" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.FirstVisibleTab">FirstVisibleTab</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FirstVisibleTab { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_ForceFormulaRecalculation_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.ForceFormulaRecalculation*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_ForceFormulaRecalculation" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.ForceFormulaRecalculation">ForceFormulaRecalculation</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ForceFormulaRecalculation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_IsHidden_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.IsHidden*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_IsHidden" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.IsHidden">IsHidden</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsHidden { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_IsReadOnly_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.IsReadOnly*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_IsReadOnly" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.IsReadOnly">IsReadOnly</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsReadOnly { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_IsWriteProtected_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.IsWriteProtected*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_IsWriteProtected" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.IsWriteProtected">IsWriteProtected</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsWriteProtected { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_Item_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Item*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_Item_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet this[int index] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_MissingCellPolicy_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.MissingCellPolicy*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_MissingCellPolicy" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.MissingCellPolicy">MissingCellPolicy</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MissingCellPolicy MissingCellPolicy { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.MissingCellPolicy.html">MissingCellPolicy</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_NewUID_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.NewUID*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_NewUID" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.NewUID">NewUID</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] NewUID { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_NumberOfFonts_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.NumberOfFonts*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_NumberOfFonts" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.NumberOfFonts">NumberOfFonts</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short NumberOfFonts { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_NumberOfNames_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.NumberOfNames*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_NumberOfNames" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.NumberOfNames">NumberOfNames</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumberOfNames { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_NumberOfSheets_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.NumberOfSheets*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_NumberOfSheets" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.NumberOfSheets">NumberOfSheets</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumberOfSheets { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_NumCellStyles_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.NumCellStyles*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_NumCellStyles" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.NumCellStyles">NumCellStyles</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short NumCellStyles { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_RootDirectory_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RootDirectory*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_RootDirectory" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RootDirectory">RootDirectory</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DirectoryNode RootDirectory { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.POIFS.FileSystem.DirectoryNode.html">DirectoryNode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_Workbook_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Workbook*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_Workbook" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Workbook">Workbook</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InternalWorkbook Workbook { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Model.InternalWorkbook.html">InternalWorkbook</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_Add_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Add*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_Add_NPOI_SS_UserModel_ISheet_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Add(NPOI.SS.UserModel.ISheet)">Add(ISheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(ISheet item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_AddOlePackage_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.AddOlePackage*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_AddOlePackage_NPOI_POIFS_FileSystem_POIFSFileSystem_System_String_System_String_System_String_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.AddOlePackage(NPOI.POIFS.FileSystem.POIFSFileSystem,System.String,System.String,System.String)">AddOlePackage(POIFSFileSystem, String, String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AddOlePackage(POIFSFileSystem poiData, string label, string fileName, string command)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.POIFS.FileSystem.POIFSFileSystem.html">POIFSFileSystem</a></td>
+        <td><span class="parametername">poiData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">label</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">command</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_AddOlePackage_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.AddOlePackage*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_AddOlePackage_System_Byte___System_String_System_String_System_String_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.AddOlePackage(System.Byte[],System.String,System.String,System.String)">AddOlePackage(Byte[], String, String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AddOlePackage(byte[] oleData, string label, string fileName, string command)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">oleData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">label</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">command</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_AddPicture_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.AddPicture*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_AddPicture_System_Byte___NPOI_SS_UserModel_PictureType_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.AddPicture(System.Byte[],NPOI.SS.UserModel.PictureType)">AddPicture(Byte[], PictureType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AddPicture(byte[] pictureData, PictureType format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">pictureData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.PictureType.html">PictureType</a></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_AddSSTString_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.AddSSTString*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_AddSSTString_System_String_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.AddSSTString(System.String)">AddSSTString(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AddSSTString(string str)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">str</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_AddToolPack_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.AddToolPack*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_AddToolPack_NPOI_SS_Formula_Udf_UDFFinder_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.AddToolPack(NPOI.SS.Formula.Udf.UDFFinder)">AddToolPack(UDFFinder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddToolPack(UDFFinder toopack)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.Formula.Udf.UDFFinder.html">UDFFinder</a></td>
+        <td><span class="parametername">toopack</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_ChangeExternalReference_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.ChangeExternalReference*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_ChangeExternalReference_System_String_System_String_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.ChangeExternalReference(System.String,System.String)">ChangeExternalReference(String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ChangeExternalReference(string oldUrl, string newUrl)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">oldUrl</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">newUrl</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_Clear_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Clear*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_Clear" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Clear">Clear()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_CloneSheet_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CloneSheet*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_CloneSheet_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CloneSheet(System.Int32)">CloneSheet(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet CloneSheet(int sheetIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_Close_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Close*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_Close" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Close">Close()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Close()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_Contains_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Contains*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_Contains_NPOI_SS_UserModel_ISheet_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Contains(NPOI.SS.UserModel.ISheet)">Contains(ISheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(ISheet item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_CopyTo_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CopyTo*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_CopyTo_NPOI_SS_UserModel_ISheet___System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CopyTo(NPOI.SS.UserModel.ISheet[],System.Int32)">CopyTo(ISheet[], Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyTo(ISheet[] array, int arrayIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a>[]</td>
+        <td><span class="parametername">array</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">arrayIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_Create_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Create*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_Create_NPOI_HSSF_Model_InternalWorkbook_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Create(NPOI.HSSF.Model.InternalWorkbook)">Create(InternalWorkbook)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static HSSFWorkbook Create(InternalWorkbook book)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Model.InternalWorkbook.html">InternalWorkbook</a></td>
+        <td><span class="parametername">book</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.UserModel.HSSFWorkbook.html">HSSFWorkbook</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_CreateCellStyle_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CreateCellStyle*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_CreateCellStyle" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CreateCellStyle">CreateCellStyle()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICellStyle CreateCellStyle()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ICellStyle.html">ICellStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_CreateDataFormat_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CreateDataFormat*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_CreateDataFormat" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CreateDataFormat">CreateDataFormat()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDataFormat CreateDataFormat()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IDataFormat.html">IDataFormat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_CreateFont_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CreateFont*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_CreateFont" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CreateFont">CreateFont()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IFont CreateFont()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IFont.html">IFont</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_CreateName_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CreateName*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_CreateName" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CreateName">CreateName()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IName CreateName()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IName.html">IName</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_CreateSheet_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CreateSheet*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_CreateSheet" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CreateSheet">CreateSheet()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet CreateSheet()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_CreateSheet_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CreateSheet*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_CreateSheet_System_String_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.CreateSheet(System.String)">CreateSheet(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet CreateSheet(string sheetname)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sheetname</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_Dispose_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Dispose*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_Dispose" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Dispose()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_DumpDrawingGroupRecords_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.DumpDrawingGroupRecords*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_DumpDrawingGroupRecords_System_Boolean_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.DumpDrawingGroupRecords(System.Boolean)">DumpDrawingGroupRecords(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DumpDrawingGroupRecords(bool fat)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">fat</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_FindFont_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.FindFont*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_FindFont_System_Int16_System_Int16_System_Int16_System_String_System_Boolean_System_Boolean_NPOI_SS_UserModel_FontSuperScript_NPOI_SS_UserModel_FontUnderlineType_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.FindFont(System.Int16,System.Int16,System.Int16,System.String,System.Boolean,System.Boolean,NPOI.SS.UserModel.FontSuperScript,NPOI.SS.UserModel.FontUnderlineType)">FindFont(Int16, Int16, Int16, String, Boolean, Boolean, FontSuperScript, FontUnderlineType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IFont FindFont(short boldWeight, short color, short fontHeight, string name, bool italic, bool strikeout, FontSuperScript typeOffset, FontUnderlineType underline)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">boldWeight</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">fontHeight</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">italic</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">strikeout</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.FontSuperScript.html">FontSuperScript</a></td>
+        <td><span class="parametername">typeOffset</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.FontUnderlineType.html">FontUnderlineType</a></td>
+        <td><span class="parametername">underline</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IFont.html">IFont</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetAllEmbeddedObjects_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetAllEmbeddedObjects*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetAllEmbeddedObjects" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetAllEmbeddedObjects">GetAllEmbeddedObjects()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;HSSFObjectData&gt; GetAllEmbeddedObjects()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="NPOI.HSSF.UserModel.HSSFObjectData.html">HSSFObjectData</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetAllPictures_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetAllPictures*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetAllPictures" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetAllPictures">GetAllPictures()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList GetAllPictures()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetBytes_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetBytes*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetBytes" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetBytes">GetBytes()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBytes()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetCellStyleAt_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetCellStyleAt*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetCellStyleAt_System_Int16_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetCellStyleAt(System.Int16)">GetCellStyleAt(Int16)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICellStyle GetCellStyleAt(short idx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">idx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ICellStyle.html">ICellStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetCreationHelper_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetCreationHelper*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetCreationHelper" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetCreationHelper">GetCreationHelper()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICreationHelper GetCreationHelper()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ICreationHelper.html">ICreationHelper</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetCustomPalette_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetCustomPalette*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetCustomPalette" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetCustomPalette">GetCustomPalette()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HSSFPalette GetCustomPalette()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.UserModel.HSSFPalette.html">HSSFPalette</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetEnumerator_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetEnumerator*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetEnumerator" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetExternalSheetIndex_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetExternalSheetIndex*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetExternalSheetIndex_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetExternalSheetIndex(System.Int32)">GetExternalSheetIndex(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetExternalSheetIndex(int internalSheetIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">internalSheetIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetFontAt_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetFontAt*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetFontAt_System_Int16_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetFontAt(System.Int16)">GetFontAt(Int16)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IFont GetFontAt(short idx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">idx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IFont.html">IFont</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetName_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetName*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetName_System_String_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetName(System.String)">GetName(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IName GetName(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IName.html">IName</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetNameAt_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetNameAt*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetNameAt_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetNameAt(System.Int32)">GetNameAt(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IName GetNameAt(int nameIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">nameIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IName.html">IName</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetNameIndex_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetNameIndex*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetNameIndex_NPOI_HSSF_UserModel_HSSFName_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetNameIndex(NPOI.HSSF.UserModel.HSSFName)">GetNameIndex(HSSFName)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetNameIndex(HSSFName name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.UserModel.HSSFName.html">HSSFName</a></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetNameIndex_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetNameIndex*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetNameIndex_System_String_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetNameIndex(System.String)">GetNameIndex(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetNameIndex(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetNameName_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetNameName*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetNameName_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetNameName(System.Int32)">GetNameName(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetNameName(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetNameRecord_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetNameRecord*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetNameRecord_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetNameRecord(System.Int32)">GetNameRecord(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NameRecord GetNameRecord(int nameIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">nameIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.Record.NameRecord.html">NameRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetOleMap_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetOleMap*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetOleMap" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetOleMap">GetOleMap()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static Dictionary&lt;string, ClassID&gt; GetOleMap()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="NPOI.Util.ClassID.html">ClassID</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetPrintArea_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetPrintArea*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetPrintArea_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetPrintArea(System.Int32)">GetPrintArea(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetPrintArea(int sheetIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetSheet_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetSheet*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetSheet_System_String_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetSheet(System.String)">GetSheet(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet GetSheet(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetSheetAt_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetSheetAt*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetSheetAt_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetSheetAt(System.Int32)">GetSheetAt(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet GetSheetAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetSheetIndex_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetSheetIndex*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetSheetIndex_NPOI_SS_UserModel_ISheet_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetSheetIndex(NPOI.SS.UserModel.ISheet)">GetSheetIndex(ISheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetSheetIndex(ISheet sheet)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td><span class="parametername">sheet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetSheetIndex_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetSheetIndex*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetSheetIndex_System_String_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetSheetIndex(System.String)">GetSheetIndex(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetSheetIndex(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetSheetName_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetSheetName*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetSheetName_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetSheetName(System.Int32)">GetSheetName(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetSheetName(int sheetIx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_GetSSTString_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetSSTString*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_GetSSTString_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.GetSSTString(System.Int32)">GetSSTString(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetSSTString(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_IndexOf_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.IndexOf*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_IndexOf_NPOI_SS_UserModel_ISheet_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.IndexOf(NPOI.SS.UserModel.ISheet)">IndexOf(ISheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int IndexOf(ISheet item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_Insert_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Insert*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_Insert_System_Int32_NPOI_SS_UserModel_ISheet_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Insert(System.Int32,NPOI.SS.UserModel.ISheet)">Insert(Int32, ISheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Insert(int index, ISheet item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_InsertChartRecord_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.InsertChartRecord*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_InsertChartRecord" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.InsertChartRecord">InsertChartRecord()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InsertChartRecord()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_IsSheetHidden_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.IsSheetHidden*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_IsSheetHidden_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.IsSheetHidden(System.Int32)">IsSheetHidden(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSheetHidden(int sheetIx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_IsSheetVeryHidden_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.IsSheetVeryHidden*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_IsSheetVeryHidden_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.IsSheetVeryHidden(System.Int32)">IsSheetVeryHidden(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSheetVeryHidden(int sheetIx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_LinkExternalWorkbook_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.LinkExternalWorkbook*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_LinkExternalWorkbook_System_String_NPOI_SS_UserModel_IWorkbook_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.LinkExternalWorkbook(System.String,NPOI.SS.UserModel.IWorkbook)">LinkExternalWorkbook(String, IWorkbook)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LinkExternalWorkbook(string name, IWorkbook workbook)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IWorkbook.html">IWorkbook</a></td>
+        <td><span class="parametername">workbook</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_Remove_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Remove*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_Remove_NPOI_SS_UserModel_ISheet_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Remove(NPOI.SS.UserModel.ISheet)">Remove(ISheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(ISheet item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_RemoveAt_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RemoveAt*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_RemoveAt_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RemoveAt(System.Int32)">RemoveAt(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_RemoveName_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RemoveName*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_RemoveName_NPOI_HSSF_UserModel_HSSFName_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RemoveName(NPOI.HSSF.UserModel.HSSFName)">RemoveName(HSSFName)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveName(HSSFName name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.HSSF.UserModel.HSSFName.html">HSSFName</a></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_RemoveName_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RemoveName*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_RemoveName_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RemoveName(System.Int32)">RemoveName(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveName(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_RemoveName_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RemoveName*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_RemoveName_System_String_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RemoveName(System.String)">RemoveName(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveName(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_RemovePrintArea_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RemovePrintArea*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_RemovePrintArea_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RemovePrintArea(System.Int32)">RemovePrintArea(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemovePrintArea(int sheetIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_RemoveSheetAt_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RemoveSheetAt*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_RemoveSheetAt_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.RemoveSheetAt(System.Int32)">RemoveSheetAt(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveSheetAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_ResetFontCache_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.ResetFontCache*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_ResetFontCache" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.ResetFontCache">ResetFontCache()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ResetFontCache()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_ResolveNameXText_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.ResolveNameXText*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_ResolveNameXText_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.ResolveNameXText(System.Int32,System.Int32)">ResolveNameXText(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ResolveNameXText(int reFindex, int definedNameIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">reFindex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">definedNameIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_SetActiveSheet_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetActiveSheet*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_SetActiveSheet_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetActiveSheet(System.Int32)">SetActiveSheet(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetActiveSheet(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_SetPrintArea_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetPrintArea*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_SetPrintArea_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetPrintArea(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">SetPrintArea(Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPrintArea(int sheetIndex, int startColumn, int endColumn, int startRow, int endRow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endRow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_SetPrintArea_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetPrintArea*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_SetPrintArea_System_Int32_System_String_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetPrintArea(System.Int32,System.String)">SetPrintArea(Int32, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPrintArea(int sheetIndex, string reference)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">reference</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_SetRepeatingRowsAndColumns_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetRepeatingRowsAndColumns*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_SetRepeatingRowsAndColumns_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetRepeatingRowsAndColumns(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">SetRepeatingRowsAndColumns(Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRepeatingRowsAndColumns(int sheetIndex, int startColumn, int endColumn, int startRow, int endRow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endRow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSelectedTab_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSelectedTab*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSelectedTab_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSelectedTab(System.Int32)">SetSelectedTab(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSelectedTab(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSelectedTabs_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSelectedTabs*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSelectedTabs_System_Int32___" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSelectedTabs(System.Int32[])">SetSelectedTabs(Int32[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSelectedTabs(int[] indexes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td><span class="parametername">indexes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSheetHidden_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSheetHidden*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSheetHidden_System_Int32_NPOI_SS_UserModel_SheetState_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSheetHidden(System.Int32,NPOI.SS.UserModel.SheetState)">SetSheetHidden(Int32, SheetState)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSheetHidden(int sheetIx, SheetState hidden)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIx</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.SheetState.html">SheetState</a></td>
+        <td><span class="parametername">hidden</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSheetHidden_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSheetHidden*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSheetHidden_System_Int32_System_Boolean_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSheetHidden(System.Int32,System.Boolean)">SetSheetHidden(Int32, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSheetHidden(int sheetIx, bool hidden)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIx</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">hidden</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSheetHidden_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSheetHidden*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSheetHidden_System_Int32_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSheetHidden(System.Int32,System.Int32)">SetSheetHidden(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSheetHidden(int sheetIx, int hidden)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIx</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">hidden</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSheetName_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSheetName*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSheetName_System_Int32_System_String_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSheetName(System.Int32,System.String)">SetSheetName(Int32, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSheetName(int sheetIx, string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sheetIx</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSheetOrder_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSheetOrder*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_SetSheetOrder_System_String_System_Int32_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.SetSheetOrder(System.String,System.Int32)">SetSheetOrder(String, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSheetOrder(string sheetname, int pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sheetname</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_UnwriteProtectWorkbook_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.UnwriteProtectWorkbook*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_UnwriteProtectWorkbook" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.UnwriteProtectWorkbook">UnwriteProtectWorkbook()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnwriteProtectWorkbook()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_Write_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Write*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_Write_System_IO_Stream_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.Write(System.IO.Stream)">Write(Stream)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Write(Stream stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_Write_System_IO_Stream_">POIDocument.Write(Stream)</a></div>
+  
+  
+  <a id="NPOI_HSSF_UserModel_HSSFWorkbook_WriteProtectWorkbook_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.WriteProtectWorkbook*"></a>
+  <h4 id="NPOI_HSSF_UserModel_HSSFWorkbook_WriteProtectWorkbook_System_String_System_String_" data-uid="NPOI.HSSF.UserModel.HSSFWorkbook.WriteProtectWorkbook(System.String,System.String)">WriteProtectWorkbook(String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteProtectWorkbook(string password, string username)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">password</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">username</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="NPOI.SS.UserModel.IWorkbook.html">IWorkbook</a>
+  </div>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_sInf">sInf</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_dsInf">dsInf</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_directory">directory</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_initialized">initialized</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_CreateInformationProperties">CreateInformationProperties()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_ReadProperties">ReadProperties()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_GetPropertySet_System_String_">GetPropertySet(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_WriteProperties_NPOI_POIFS_FileSystem_POIFSFileSystem_">WriteProperties(POIFSFileSystem)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_WriteProperties_NPOI_POIFS_FileSystem_POIFSFileSystem_System_Collections_IList_">WriteProperties(POIFSFileSystem, IList)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_WritePropertySet_System_String_NPOI_HPSF_PropertySet_NPOI_POIFS_FileSystem_POIFSFileSystem_">WritePropertySet(String, PropertySet, POIFSFileSystem)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_CopyNodes_NPOI_POIFS_FileSystem_POIFSFileSystem_NPOI_POIFS_FileSystem_POIFSFileSystem_System_Collections_Generic_List_System_String__">CopyNodes(POIFSFileSystem, POIFSFileSystem, List&lt;String&gt;)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_CopyNodes_NPOI_POIFS_FileSystem_DirectoryNode_NPOI_POIFS_FileSystem_DirectoryNode_System_Collections_Generic_List_System_String__">CopyNodes(DirectoryNode, DirectoryNode, List&lt;String&gt;)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_DocumentSummaryInformation">DocumentSummaryInformation</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="NPOI.POIDocument.html#NPOI_POIDocument_SummaryInformation">SummaryInformation</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronXL to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: "fb47f498-31a3-4a06-82df-66cc39733c08"
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronXL free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href="/csharp/excel/licensing/"><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="/csharp/excel/licensing/">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>

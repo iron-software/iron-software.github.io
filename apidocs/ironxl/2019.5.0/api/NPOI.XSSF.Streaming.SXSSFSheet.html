@@ -1,0 +1,3837 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SXSSFSheet
+   | C# Excel API | IronXL </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SXSSFSheet
+   | C# Excel API | IronXL ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="NPOI.XSSF.Streaming.SXSSFSheet">
+  
+  
+  <h1 id="NPOI_XSSF_Streaming_SXSSFSheet" data-uid="NPOI.XSSF.Streaming.SXSSFSheet" class="text-break">Class SXSSFSheet
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">SXSSFSheet</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="NPOI.XSSF.Streaming.html">NPOI.XSSF.Streaming</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="NPOI_XSSF_Streaming_SXSSFSheet_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SXSSFSheet : Object, ISheet</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet__ctor_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.#ctor*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet__ctor_NPOI_XSSF_Streaming_SXSSFWorkbook_NPOI_XSSF_UserModel_XSSFSheet_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.#ctor(NPOI.XSSF.Streaming.SXSSFWorkbook,NPOI.XSSF.UserModel.XSSFSheet)">SXSSFSheet(SXSSFWorkbook, XSSFSheet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SXSSFSheet(SXSSFWorkbook workbook, XSSFSheet xSheet)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.Streaming.SXSSFWorkbook.html">SXSSFWorkbook</a></td>
+        <td><span class="parametername">workbook</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.UserModel.XSSFSheet.html">XSSFSheet</a></td>
+        <td><span class="parametername">xSheet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet__autoSizeColumnTracker" data-uid="NPOI.XSSF.Streaming.SXSSFSheet._autoSizeColumnTracker">_autoSizeColumnTracker</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AutoSizeColumnTracker _autoSizeColumnTracker</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.Streaming.AutoSizeColumnTracker.html">AutoSizeColumnTracker</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet__randomAccessWindowSize" data-uid="NPOI.XSSF.Streaming.SXSSFSheet._randomAccessWindowSize">_randomAccessWindowSize</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int _randomAccessWindowSize</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet__rows" data-uid="NPOI.XSSF.Streaming.SXSSFSheet._rows">_rows</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SortedDictionary&lt;int, SXSSFRow&gt; _rows</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.SortedDictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="NPOI.XSSF.Streaming.SXSSFRow.html">SXSSFRow</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet__sh" data-uid="NPOI.XSSF.Streaming.SXSSFSheet._sh">_sh</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XSSFSheet _sh</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.UserModel.XSSFSheet.html">XSSFSheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet__workbook" data-uid="NPOI.XSSF.Streaming.SXSSFSheet._workbook">_workbook</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SXSSFWorkbook _workbook</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.Streaming.SXSSFWorkbook.html">SXSSFWorkbook</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet__writer" data-uid="NPOI.XSSF.Streaming.SXSSFSheet._writer">_writer</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SheetDataWriter _writer</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.Streaming.SheetDataWriter.html">SheetDataWriter</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_allFlushed" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.allFlushed">allFlushed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool allFlushed</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_lastFlushedRowNumber" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.lastFlushedRowNumber">lastFlushedRowNumber</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int lastFlushedRowNumber</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_outlineLevelRow" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.outlineLevelRow">outlineLevelRow</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int outlineLevelRow</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_Autobreaks_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.Autobreaks*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_Autobreaks" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.Autobreaks">Autobreaks</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Autobreaks { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_ColumnBreaks_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ColumnBreaks*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_ColumnBreaks" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ColumnBreaks">ColumnBreaks</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] ColumnBreaks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_DefaultColumnWidth_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DefaultColumnWidth*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_DefaultColumnWidth" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DefaultColumnWidth">DefaultColumnWidth</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DefaultColumnWidth { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_DefaultRowHeight_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DefaultRowHeight*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_DefaultRowHeight" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DefaultRowHeight">DefaultRowHeight</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short DefaultRowHeight { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_DefaultRowHeightInPoints_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DefaultRowHeightInPoints*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_DefaultRowHeightInPoints" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DefaultRowHeightInPoints">DefaultRowHeightInPoints</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float DefaultRowHeightInPoints { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_DisplayFormulas_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DisplayFormulas*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_DisplayFormulas" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DisplayFormulas">DisplayFormulas</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DisplayFormulas { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_DisplayGridlines_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DisplayGridlines*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_DisplayGridlines" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DisplayGridlines">DisplayGridlines</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DisplayGridlines { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_DisplayGuts_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DisplayGuts*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_DisplayGuts" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DisplayGuts">DisplayGuts</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DisplayGuts { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_DisplayRowColHeadings_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DisplayRowColHeadings*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_DisplayRowColHeadings" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DisplayRowColHeadings">DisplayRowColHeadings</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DisplayRowColHeadings { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_DisplayZeros_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DisplayZeros*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_DisplayZeros" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DisplayZeros">DisplayZeros</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DisplayZeros { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_DrawingPatriarch_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DrawingPatriarch*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_DrawingPatriarch" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.DrawingPatriarch">DrawingPatriarch</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDrawing DrawingPatriarch { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IDrawing.html">IDrawing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_FirstRowNum_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.FirstRowNum*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_FirstRowNum" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.FirstRowNum">FirstRowNum</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FirstRowNum { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_FitToPage_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.FitToPage*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_FitToPage" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.FitToPage">FitToPage</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool FitToPage { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_Footer_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.Footer*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_Footer" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.Footer">Footer</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IFooter Footer { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IFooter.html">IFooter</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_ForceFormulaRecalculation_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ForceFormulaRecalculation*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_ForceFormulaRecalculation" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ForceFormulaRecalculation">ForceFormulaRecalculation</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ForceFormulaRecalculation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_Header_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.Header*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_Header" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.Header">Header</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IHeader Header { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IHeader.html">IHeader</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_HorizontallyCenter_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.HorizontallyCenter*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_HorizontallyCenter" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.HorizontallyCenter">HorizontallyCenter</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HorizontallyCenter { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_IsActive_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsActive*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_IsActive" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsActive">IsActive</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsActive { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_IsPrintGridlines_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsPrintGridlines*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_IsPrintGridlines" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsPrintGridlines">IsPrintGridlines</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsPrintGridlines { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_IsRightToLeft_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsRightToLeft*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_IsRightToLeft" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsRightToLeft">IsRightToLeft</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsRightToLeft { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_IsSelected_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsSelected*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_IsSelected" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsSelected">IsSelected</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSelected { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_LastRowNum_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.LastRowNum*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_LastRowNum" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.LastRowNum">LastRowNum</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LastRowNum { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_LeftCol_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.LeftCol*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_LeftCol" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.LeftCol">LeftCol</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short LeftCol { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_NumMergedRegions_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.NumMergedRegions*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_NumMergedRegions" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.NumMergedRegions">NumMergedRegions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumMergedRegions { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_PaneInformation_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.PaneInformation*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_PaneInformation" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.PaneInformation">PaneInformation</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PaneInformation PaneInformation { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.Util.PaneInformation.html">PaneInformation</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_PhysicalNumberOfRows_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.PhysicalNumberOfRows*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_PhysicalNumberOfRows" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.PhysicalNumberOfRows">PhysicalNumberOfRows</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PhysicalNumberOfRows { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_PrintSetup_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.PrintSetup*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_PrintSetup" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.PrintSetup">PrintSetup</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IPrintSetup PrintSetup { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IPrintSetup.html">IPrintSetup</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_Protect_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.Protect*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_Protect" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.Protect">Protect</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Protect { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_RepeatingColumns_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RepeatingColumns*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_RepeatingColumns" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RepeatingColumns">RepeatingColumns</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CellRangeAddress RepeatingColumns { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.Util.CellRangeAddress.html">CellRangeAddress</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_RepeatingRows_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RepeatingRows*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_RepeatingRows" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RepeatingRows">RepeatingRows</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CellRangeAddress RepeatingRows { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.Util.CellRangeAddress.html">CellRangeAddress</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_RowBreaks_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RowBreaks*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_RowBreaks" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RowBreaks">RowBreaks</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] RowBreaks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_RowSumsBelow_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RowSumsBelow*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_RowSumsBelow" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RowSumsBelow">RowSumsBelow</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RowSumsBelow { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_RowSumsRight_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RowSumsRight*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_RowSumsRight" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RowSumsRight">RowSumsRight</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RowSumsRight { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_ScenarioProtect_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ScenarioProtect*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_ScenarioProtect" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ScenarioProtect">ScenarioProtect</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ScenarioProtect { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SheetConditionalFormatting_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SheetConditionalFormatting*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SheetConditionalFormatting" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SheetConditionalFormatting">SheetConditionalFormatting</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheetConditionalFormatting SheetConditionalFormatting { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheetConditionalFormatting.html">ISheetConditionalFormatting</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SheetName_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SheetName*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SheetName" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SheetName">SheetName</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SheetName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_TabColorIndex_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.TabColorIndex*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_TabColorIndex" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.TabColorIndex">TabColorIndex</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short TabColorIndex { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_TopRow_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.TopRow*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_TopRow" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.TopRow">TopRow</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short TopRow { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_VerticallyCenter_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.VerticallyCenter*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_VerticallyCenter" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.VerticallyCenter">VerticallyCenter</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool VerticallyCenter { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_Workbook_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.Workbook*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_Workbook" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.Workbook">Workbook</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IWorkbook Workbook { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IWorkbook.html">IWorkbook</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_AddMergedRegion_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.AddMergedRegion*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_AddMergedRegion_NPOI_SS_Util_CellRangeAddress_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.AddMergedRegion(NPOI.SS.Util.CellRangeAddress)">AddMergedRegion(CellRangeAddress)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AddMergedRegion(CellRangeAddress region)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.Util.CellRangeAddress.html">CellRangeAddress</a></td>
+        <td><span class="parametername">region</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_AddValidationData_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.AddValidationData*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_AddValidationData_NPOI_SS_UserModel_IDataValidation_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.AddValidationData(NPOI.SS.UserModel.IDataValidation)">AddValidationData(IDataValidation)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddValidationData(IDataValidation dataValidation)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IDataValidation.html">IDataValidation</a></td>
+        <td><span class="parametername">dataValidation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_AutoSizeColumn_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.AutoSizeColumn*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_AutoSizeColumn_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.AutoSizeColumn(System.Int32)">AutoSizeColumn(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AutoSizeColumn(int column)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_AutoSizeColumn_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.AutoSizeColumn*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_AutoSizeColumn_System_Int32_System_Boolean_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.AutoSizeColumn(System.Int32,System.Boolean)">AutoSizeColumn(Int32, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AutoSizeColumn(int column, bool useMergedCells)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">useMergedCells</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_changeRowNum_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.changeRowNum*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_changeRowNum_NPOI_XSSF_Streaming_SXSSFRow_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.changeRowNum(NPOI.XSSF.Streaming.SXSSFRow,System.Int32)">changeRowNum(SXSSFRow, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void changeRowNum(SXSSFRow row, int newRowNum)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.Streaming.SXSSFRow.html">SXSSFRow</a></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">newRowNum</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_CopyRow_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CopyRow*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_CopyRow_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CopyRow(System.Int32,System.Int32)">CopyRow(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRow CopyRow(int sourceIndex, int targetIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sourceIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">targetIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IRow.html">IRow</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_CopySheet_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CopySheet*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_CopySheet_System_String_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CopySheet(System.String)">CopySheet(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet CopySheet(string Name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">Name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_CopySheet_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CopySheet*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_CopySheet_System_String_System_Boolean_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CopySheet(System.String,System.Boolean)">CopySheet(String, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ISheet CopySheet(string Name, bool copyStyle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">Name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">copyStyle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_CreateDrawingPatriarch_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CreateDrawingPatriarch*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_CreateDrawingPatriarch" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CreateDrawingPatriarch">CreateDrawingPatriarch()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDrawing CreateDrawingPatriarch()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IDrawing.html">IDrawing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_CreateFreezePane_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CreateFreezePane*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_CreateFreezePane_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CreateFreezePane(System.Int32,System.Int32)">CreateFreezePane(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CreateFreezePane(int colSplit, int rowSplit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">colSplit</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rowSplit</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_CreateFreezePane_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CreateFreezePane*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_CreateFreezePane_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CreateFreezePane(System.Int32,System.Int32,System.Int32,System.Int32)">CreateFreezePane(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CreateFreezePane(int colSplit, int rowSplit, int leftmostColumn, int topRow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">colSplit</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rowSplit</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">leftmostColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">topRow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_CreateRow_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CreateRow*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_CreateRow_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CreateRow(System.Int32)">CreateRow(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRow CreateRow(int rownum)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rownum</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IRow.html">IRow</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_CreateSplitPane_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CreateSplitPane*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_CreateSplitPane_System_Int32_System_Int32_System_Int32_System_Int32_NPOI_SS_UserModel_PanePosition_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.CreateSplitPane(System.Int32,System.Int32,System.Int32,System.Int32,NPOI.SS.UserModel.PanePosition)">CreateSplitPane(Int32, Int32, Int32, Int32, PanePosition)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CreateSplitPane(int xSplitPos, int ySplitPos, int leftmostColumn, int topRow, PanePosition activePane)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">xSplitPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ySplitPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">leftmostColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">topRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.PanePosition.html">PanePosition</a></td>
+        <td><span class="parametername">activePane</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_dispose_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.dispose*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_dispose" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.dispose">dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool dispose()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_flushRows_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.flushRows*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_flushRows" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.flushRows">flushRows()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void flushRows()</code></pre>
+  </div>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GetCellComment_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetCellComment*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GetCellComment_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetCellComment(System.Int32,System.Int32)">GetCellComment(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IComment GetCellComment(int row, int column)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IComment.html">IComment</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GetColumnOutlineLevel_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetColumnOutlineLevel*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GetColumnOutlineLevel_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetColumnOutlineLevel(System.Int32)">GetColumnOutlineLevel(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetColumnOutlineLevel(int columnIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">columnIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GetColumnStyle_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetColumnStyle*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GetColumnStyle_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetColumnStyle(System.Int32)">GetColumnStyle(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICellStyle GetColumnStyle(int column)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ICellStyle.html">ICellStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GetColumnWidth_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetColumnWidth*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GetColumnWidth_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetColumnWidth(System.Int32)">GetColumnWidth(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetColumnWidth(int columnIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">columnIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GetColumnWidthInPixels_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetColumnWidthInPixels*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GetColumnWidthInPixels_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetColumnWidthInPixels(System.Int32)">GetColumnWidthInPixels(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetColumnWidthInPixels(int columnIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">columnIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GetDataValidationHelper_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetDataValidationHelper*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GetDataValidationHelper" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetDataValidationHelper">GetDataValidationHelper()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDataValidationHelper GetDataValidationHelper()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IDataValidationHelper.html">IDataValidationHelper</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GetDataValidations_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetDataValidations*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GetDataValidations" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetDataValidations">GetDataValidations()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;IDataValidation&gt; GetDataValidations()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.SS.UserModel.IDataValidation.html">IDataValidation</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GetEnumerator_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetEnumerator*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GetEnumerator" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GetMargin_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetMargin*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GetMargin_NPOI_SS_UserModel_MarginType_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetMargin(NPOI.SS.UserModel.MarginType)">GetMargin(MarginType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetMargin(MarginType margin)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.MarginType.html">MarginType</a></td>
+        <td><span class="parametername">margin</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GetMergedRegion_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetMergedRegion*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GetMergedRegion_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetMergedRegion(System.Int32)">GetMergedRegion(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CellRangeAddress GetMergedRegion(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.Util.CellRangeAddress.html">CellRangeAddress</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GetRow_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetRow*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GetRow_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetRow(System.Int32)">GetRow(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRow GetRow(int rownum)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rownum</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IRow.html">IRow</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GetRowEnumerator_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetRowEnumerator*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GetRowEnumerator" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GetRowEnumerator">GetRowEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator GetRowEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_getSheetDataWriter_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.getSheetDataWriter*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_getSheetDataWriter" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.getSheetDataWriter">getSheetDataWriter()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SheetDataWriter getSheetDataWriter()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.XSSF.Streaming.SheetDataWriter.html">SheetDataWriter</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_getWorksheetXMLInputStream_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.getWorksheetXMLInputStream*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_getWorksheetXMLInputStream" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.getWorksheetXMLInputStream">getWorksheetXMLInputStream()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Stream getWorksheetXMLInputStream()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GroupColumn_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GroupColumn*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GroupColumn_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GroupColumn(System.Int32,System.Int32)">GroupColumn(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GroupColumn(int fromColumn, int toColumn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">fromColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">toColumn</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_GroupRow_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GroupRow*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_GroupRow_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.GroupRow(System.Int32,System.Int32)">GroupRow(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GroupRow(int fromRow, int toRow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">fromRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">toRow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_IsColumnBroken_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsColumnBroken*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_IsColumnBroken_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsColumnBroken(System.Int32)">IsColumnBroken(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsColumnBroken(int column)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_IsColumnHidden_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsColumnHidden*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_IsColumnHidden_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsColumnHidden(System.Int32)">IsColumnHidden(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsColumnHidden(int columnIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">columnIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_IsDate1904_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsDate1904*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_IsDate1904" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsDate1904">IsDate1904()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsDate1904()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_IsMergedRegion_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsMergedRegion*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_IsMergedRegion_NPOI_SS_Util_CellRangeAddress_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsMergedRegion(NPOI.SS.Util.CellRangeAddress)">IsMergedRegion(CellRangeAddress)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsMergedRegion(CellRangeAddress mergedRegion)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.Util.CellRangeAddress.html">CellRangeAddress</a></td>
+        <td><span class="parametername">mergedRegion</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_IsRowBroken_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsRowBroken*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_IsRowBroken_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.IsRowBroken(System.Int32)">IsRowBroken(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsRowBroken(int row)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_ProtectSheet_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ProtectSheet*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_ProtectSheet_System_String_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ProtectSheet(System.String)">ProtectSheet(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ProtectSheet(string password)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">password</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_RemoveArrayFormula_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RemoveArrayFormula*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_RemoveArrayFormula_NPOI_SS_UserModel_ICell_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RemoveArrayFormula(NPOI.SS.UserModel.ICell)">RemoveArrayFormula(ICell)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICellRange&lt;ICell&gt; RemoveArrayFormula(ICell cell)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ICell.html">ICell</a></td>
+        <td><span class="parametername">cell</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ICellRange-1.html">ICellRange</a>&lt;<a class="xref" href="NPOI.SS.UserModel.ICell.html">ICell</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_RemoveColumnBreak_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RemoveColumnBreak*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_RemoveColumnBreak_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RemoveColumnBreak(System.Int32)">RemoveColumnBreak(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveColumnBreak(int column)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_RemoveMergedRegion_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RemoveMergedRegion*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_RemoveMergedRegion_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RemoveMergedRegion(System.Int32)">RemoveMergedRegion(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveMergedRegion(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_RemoveRow_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RemoveRow*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_RemoveRow_NPOI_SS_UserModel_IRow_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RemoveRow(NPOI.SS.UserModel.IRow)">RemoveRow(IRow)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveRow(IRow row)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IRow.html">IRow</a></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_RemoveRowBreak_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RemoveRowBreak*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_RemoveRowBreak_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.RemoveRowBreak(System.Int32)">RemoveRowBreak(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveRowBreak(int row)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetActive_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetActive*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetActive_System_Boolean_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetActive(System.Boolean)">SetActive(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetActive(bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetActiveCell_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetActiveCell*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetActiveCell_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetActiveCell(System.Int32,System.Int32)">SetActiveCell(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetActiveCell(int row, int column)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetActiveCellRange_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetActiveCellRange*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetActiveCellRange_System_Collections_Generic_List_NPOI_SS_Util_CellRangeAddress8Bit__System_Int32_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetActiveCellRange(System.Collections.Generic.List{NPOI.SS.Util.CellRangeAddress8Bit},System.Int32,System.Int32,System.Int32)">SetActiveCellRange(List&lt;CellRangeAddress8Bit&gt;, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetActiveCellRange(List&lt;CellRangeAddress8Bit&gt; cellranges, int activeRange, int activeRow, int activeColumn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="NPOI.SS.Util.CellRangeAddress8Bit.html">CellRangeAddress8Bit</a>&gt;</td>
+        <td><span class="parametername">cellranges</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">activeRange</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">activeRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">activeColumn</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetActiveCellRange_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetActiveCellRange*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetActiveCellRange_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetActiveCellRange(System.Int32,System.Int32,System.Int32,System.Int32)">SetActiveCellRange(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetActiveCellRange(int firstRow, int lastRow, int firstColumn, int lastColumn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">firstRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">lastRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">firstColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">lastColumn</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetArrayFormula_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetArrayFormula*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetArrayFormula_System_String_NPOI_SS_Util_CellRangeAddress_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetArrayFormula(System.String,NPOI.SS.Util.CellRangeAddress)">SetArrayFormula(String, CellRangeAddress)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICellRange&lt;ICell&gt; SetArrayFormula(string formula, CellRangeAddress range)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">formula</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.Util.CellRangeAddress.html">CellRangeAddress</a></td>
+        <td><span class="parametername">range</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ICellRange-1.html">ICellRange</a>&lt;<a class="xref" href="NPOI.SS.UserModel.ICell.html">ICell</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetAutoFilter_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetAutoFilter*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetAutoFilter_NPOI_SS_Util_CellRangeAddress_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetAutoFilter(NPOI.SS.Util.CellRangeAddress)">SetAutoFilter(CellRangeAddress)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IAutoFilter SetAutoFilter(CellRangeAddress range)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.Util.CellRangeAddress.html">CellRangeAddress</a></td>
+        <td><span class="parametername">range</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.IAutoFilter.html">IAutoFilter</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetColumnBreak_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetColumnBreak*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetColumnBreak_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetColumnBreak(System.Int32)">SetColumnBreak(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetColumnBreak(int column)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetColumnGroupCollapsed_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetColumnGroupCollapsed*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetColumnGroupCollapsed_System_Int32_System_Boolean_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetColumnGroupCollapsed(System.Int32,System.Boolean)">SetColumnGroupCollapsed(Int32, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetColumnGroupCollapsed(int columnNumber, bool collapsed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">columnNumber</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">collapsed</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetColumnHidden_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetColumnHidden*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetColumnHidden_System_Int32_System_Boolean_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetColumnHidden(System.Int32,System.Boolean)">SetColumnHidden(Int32, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetColumnHidden(int columnIndex, bool hidden)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">columnIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">hidden</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetColumnWidth_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetColumnWidth*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetColumnWidth_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetColumnWidth(System.Int32,System.Int32)">SetColumnWidth(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetColumnWidth(int columnIndex, int width)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">columnIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetDefaultColumnStyle_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetDefaultColumnStyle*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetDefaultColumnStyle_System_Int32_NPOI_SS_UserModel_ICellStyle_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetDefaultColumnStyle(System.Int32,NPOI.SS.UserModel.ICellStyle)">SetDefaultColumnStyle(Int32, ICellStyle)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDefaultColumnStyle(int column, ICellStyle style)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.ICellStyle.html">ICellStyle</a></td>
+        <td><span class="parametername">style</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetMargin_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetMargin*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetMargin_NPOI_SS_UserModel_MarginType_System_Double_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetMargin(NPOI.SS.UserModel.MarginType,System.Double)">SetMargin(MarginType, Double)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetMargin(MarginType margin, double size)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NPOI.SS.UserModel.MarginType.html">MarginType</a></td>
+        <td><span class="parametername">margin</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">size</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetRandomAccessWindowSize_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetRandomAccessWindowSize*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetRandomAccessWindowSize_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetRandomAccessWindowSize(System.Int32)">SetRandomAccessWindowSize(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRandomAccessWindowSize(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetRowBreak_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetRowBreak*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetRowBreak_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetRowBreak(System.Int32)">SetRowBreak(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRowBreak(int row)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetRowGroupCollapsed_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetRowGroupCollapsed*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetRowGroupCollapsed_System_Int32_System_Boolean_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetRowGroupCollapsed(System.Int32,System.Boolean)">SetRowGroupCollapsed(Int32, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRowGroupCollapsed(int row, bool collapse)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">collapse</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetRowOutlineLevel_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetRowOutlineLevel*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetRowOutlineLevel_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetRowOutlineLevel(System.Int32,System.Int32)">SetRowOutlineLevel(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRowOutlineLevel(int rownum, int level)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rownum</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_SetZoom_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetZoom*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_SetZoom_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.SetZoom(System.Int32,System.Int32)">SetZoom(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetZoom(int numerator, int denominator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">numerator</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">denominator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_ShiftRows_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ShiftRows*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_ShiftRows_System_Int32_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ShiftRows(System.Int32,System.Int32,System.Int32)">ShiftRows(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShiftRows(int startRow, int endRow, int n)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">n</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_ShiftRows_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ShiftRows*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_ShiftRows_System_Int32_System_Int32_System_Int32_System_Boolean_System_Boolean_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ShiftRows(System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean)">ShiftRows(Int32, Int32, Int32, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShiftRows(int startRow, int endRow, int n, bool copyRowHeight, bool resetOriginalRowHeight)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">n</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">copyRowHeight</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">resetOriginalRowHeight</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_ShowInPane_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ShowInPane*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_ShowInPane_System_Int16_System_Int16_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ShowInPane(System.Int16,System.Int16)">ShowInPane(Int16, Int16)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShowInPane(short toprow, short leftcol)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">toprow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">leftcol</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_ShowInPane_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ShowInPane*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_ShowInPane_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.ShowInPane(System.Int32,System.Int32)">ShowInPane(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShowInPane(int toprow, int leftcol)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">toprow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">leftcol</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_UngroupColumn_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.UngroupColumn*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_UngroupColumn_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.UngroupColumn(System.Int32,System.Int32)">UngroupColumn(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UngroupColumn(int fromColumn, int toColumn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">fromColumn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">toColumn</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="NPOI_XSSF_Streaming_SXSSFSheet_UngroupRow_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.UngroupRow*"></a>
+  <h4 id="NPOI_XSSF_Streaming_SXSSFSheet_UngroupRow_System_Int32_System_Int32_" data-uid="NPOI.XSSF.Streaming.SXSSFSheet.UngroupRow(System.Int32,System.Int32)">UngroupRow(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UngroupRow(int fromRow, int toRow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">fromRow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">toRow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="NPOI.SS.UserModel.ISheet.html">ISheet</a>
+  </div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronXL to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: "fb47f498-31a3-4a06-82df-66cc39733c08"
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronXL free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href="/csharp/excel/licensing/"><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="/csharp/excel/licensing/">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>
