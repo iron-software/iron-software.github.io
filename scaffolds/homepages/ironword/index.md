@@ -13,17 +13,16 @@
 - Image: Loading images from files or streams, setting wrap text, position offset, width, height, and other properties.
 - Shape: Setting wrap text, position offset, width, height, shape type, and rotation.
 
-## Get Started 
+## Get Started
 
-- Quickstart Guide:  	https://ironsoftware.com/csharp/word/docs/
-- Install with NuGet:   https://www.nuget.org/packages/IronWord/	
-
+- Quickstart Guide: <https://ironsoftware.com/csharp/word/docs/>
+- Install with NuGet: <https://www.nuget.org/packages/IronWord/>
 
 ## C# Code Examples
 
 ### Add Image
 
-```cs
+```csharp
 using IronWord;
 using IronWord.Models;
 
@@ -49,7 +48,7 @@ doc.SaveAs("save_document.docx");
 
 ### Add Table
 
-```cs
+```csharp
 using IronWord;
 using IronWord.Models;
 
@@ -92,13 +91,11 @@ WordDocument doc = new WordDocument(table);
 
 // Export Word document
 doc.SaveAs("Document.docx");
-
 ```
 
-Documentation
-=============================================================
+## Documentation
 
-- More Code Samples				:	https://ironsoftware.com/csharp/word/examples/create-empty-word/
-- API Reference       		                :	https://ironsoftware.com/csharp/word/object-reference/api/
-- Tutorials					:	https://ironsoftware.com/csharp/word/tutorials/document-element/
-- Support					:	developers@ironsoftware.com
+- More Code Samples : <https://ironsoftware.com/csharp/word/examples/create-empty-word/>
+- API Reference : [https://ironsoftware.com/csharp/word/object-reference/api/](index.html)
+- Tutorials : <https://ironsoftware.com/csharp/word/tutorials/document-element/>
+- Support : <developers@ironsoftware.com>

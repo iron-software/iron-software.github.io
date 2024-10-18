@@ -1,19 +1,19 @@
-# IronQR  - The QR Library for .NET 
+# IronQR - The QR Library for .NET
 
 IronQR is an Iron Software's QR Code reading and writing library. In addition to highly customizable QR Generation, it uses an advanced Machine Learning Model with Mobile, Desktop, and Cloud compatibility to detect QR Codes for reading.
 
 ## Features of IronQR
 
-* Read and Generate QR Codes in C# .NET Projects
-* Create QR Code Generatorfor Mobile iOS and Android
-* Read QR Code Reader for Mobile iOS and Android
-* Generate QR Codes Library and in Xamarin
-* Use Machine Learning to read QR Codes
+- Read and Generate QR Codes in C# .NET Projects
+- Create QR Code Generatorfor Mobile iOS and Android
+- Read QR Code Reader for Mobile iOS and Android
+- Generate QR Codes Library and in Xamarin
+- Use Machine Learning to read QR Codes
 
-## Get Started 
+## Get Started
 
-- Quickstart Guide:  	https://ironsoftware.com/csharp/qr/
-- Install with NuGet:   https://www.nuget.org/packages/IronQR/	
+- Quickstart Guide: <https://ironsoftware.com/csharp/qr/>
+- Install with NuGet: <https://www.nuget.org/packages/IronQR/>
 
 ## Compatibility
 
@@ -42,10 +42,9 @@ IronQR is an Iron Software's QR Code reading and writing library. In addition to
 - **Desktop** (WPF & MAUI)
 - **Console** (App & Library)
 
-
 ## C# Code Examples
 
-```cs
+```csharp
 using IronQr;
 using IronSoftware.Drawing;
 
@@ -59,7 +58,7 @@ AnyBitmap qrImage = myQr.Save();
 qrImage.SaveAs("qr.png");
 ```
 
-```cs
+```csharp
 using IronQr;
 using IronSoftware.Drawing;
 
@@ -78,7 +77,7 @@ IEnumerable<QrResult> results = reader.Read(imageInput);
 
 ## Documentation
 
-- More Code Samples				:	https://ironsoftware.com/csharp/qr/examples/qr-quickstart/
-- API Reference       				:	https://ironsoftware.com/csharp/qr/object-reference/api/
-- Tutorials					:	https://ironsoftware.com/csharp/qr/tutorials/csharp-qr-code-generator/
-- Support					:	developers@ironsoftware.com
+- More Code Samples : <https://ironsoftware.com/csharp/qr/examples/qr-quickstart/>
+- API Reference : [https://ironsoftware.com/csharp/qr/object-reference/api/](index.html)
+- Tutorials : <https://ironsoftware.com/csharp/qr/tutorials/csharp-qr-code-generator/>
+- Support : <developers@ironsoftware.com>

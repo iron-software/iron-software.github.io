@@ -34,7 +34,7 @@
   </script>
   <!-- End VWO Async SmartCode -->
     <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
     
@@ -86,7 +86,14 @@
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="ironpdf">IronPDF</h1>
@@ -95,7 +102,7 @@
 <p>IronPDF features HTML to PDF for .NET Core, Standard, &amp; Framework with full HTML to PDF support including CSS3 and JS.</p>
 <p>There is a quick-start guide at <a href="https://ironpdf.com/docs/">https://ironpdf.com/docs/</a></p>
 <h2 id="compatibility">Compatibility</h2>
-<p>Welcome the the cutting edge of .NET PDF rendering and manipulation technology with  IronPDF  now featuring Chrome identical HTML rendering with full support for:</p>
+<p>Welcome the the cutting edge of .NET PDF rendering and manipulation technology with IronPDF now featuring Chrome identical HTML rendering with full support for:</p>
 <ul>
 <li>Generate PDFs in C# with HTML, MVC, ASPX, &amp; images.</li>
 <li>Supports .NET Core 2, 3 &amp; .NET 5, 6, 7, 8 for Windows, Linux, macOs and Azure.</li>
@@ -105,14 +112,14 @@
 <li>JavaScript including Angular and React</li>
 <li>SVG and all common image assets</li>
 </ul>
-<h2 id="to-install">To Install:</h2>
-<pre><code>PM&gt; Install-Package IronPdf
+<h2 id="to-install">To Install</h2>
+<pre><code class="lang-shell">PM&gt; Install-Package IronPdf
 </code></pre>
-<p>Remove any reference to IronPdf.Threading which is now legacy software.  The IronPdf main package is threading and async compatible!</p>
-<h4 id="try-out-the-new-2021-api">Try out the new 2021 API</h4>
-<p>We haven’t broken the IronPDF API you are using, it will remain!</p>
+<p>Remove any reference to IronPdf.Threading which is now legacy software. The IronPdf main package is threading and async compatible!</p>
+<h3 id="try-out-the-new-2021-api">Try out the new 2021 API</h3>
+<p>We haven't broken the IronPDF API you are using, it will remain!</p>
 <p>However, the old style is being superseded by a better one to give you more control. For examples you now have Print options and Http Login controls specific to your renderer</p>
-<pre><code>using IronPdf;
+<pre><code class="lang-cs">using IronPdf;
 
 //...
 
@@ -126,9 +133,9 @@ var doc = Renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Hello world!&lt;/h1&gt;&quot;
 //var doc = Renderer.RenderHtmlFileAsPdf(&quot;example.html&quot;);
 doc.SaveAs(&quot;google_chrome.pdf&quot;);
 </code></pre>
-<h3 id="pixel-perfect-chrome-rendering">Pixel perfect Chrome rendering!</h3>
-<p>This example will give you PDFs which are pixel perfect to the latest chrome desktop browser’s “print to pdf” functionality:</p>
-<pre><code>ChromePdfRenderer Renderer = new ChromePdfRenderer();
+<h3 id="pixel-perfect-chrome-rendering">Pixel perfect Chrome rendering</h3>
+<p>This example will give you PDFs which are pixel perfect to the latest chrome desktop browser's &quot;print to pdf&quot; functionality:</p>
+<pre><code class="lang-cs">ChromePdfRenderer Renderer = new ChromePdfRenderer();
 Renderer.RenderingOptions.CssMediaType = IronPdf.Rendering.PdfCssMediaType.Print;
 Renderer.RenderingOptions.PrintHtmlBackgrounds = false;
 Renderer.RenderingOptions.CreatePdfFormsFromHtml = false;
@@ -140,36 +147,36 @@ var doc = Renderer.RenderUrlAsPdf(&quot;https://www.google.com/&quot;);
 <li>Responsive layout support</li>
 <li>Creating PDF Forms from your HTML form elements.</li>
 </ul>
-<pre><code>ChromePdfRenderer Renderer = new ChromePdfRenderer();
+<pre><code class="lang-cs">ChromePdfRenderer Renderer = new ChromePdfRenderer();
 Renderer.RenderingOptions.CssMediaType = IronPdf.Rendering.PdfCssMediaType.Screen;
 Renderer.RenderingOptions.PrintHtmlBackgrounds = true;
 Renderer.RenderingOptions.CreatePdfFormsFromHtml = true;
 Renderer.RenderingOptions.ViewPortWidth = 1080 ; //px
 var doc = Renderer.RenderUrlAsPdf(&quot;https://www.google.com/&quot;);
 </code></pre>
-<h3 id="use-every-cpu-core-available">Use every CPU core available!</h3>
+<h3 id="use-every-cpu-core-available">Use every CPU core available</h3>
 <p>Multithreading and Async support for our Chrome rendering engine is in a different league to all previous builds.</p>
 <p>For enterprise grade multi-threading use our Chrome in your existing threads and it will work. For web applications this also takes zero setup.</p>
 <p>For batch processing for HtmlToPdf we suggest using the built in .NET Parallel.ForEach</p>
 <p>We love async and have provided Async variants of methods such as ChromePdfRenderer.RenderHtmlAsPdf</p>
 <h2 id="documentation-links">Documentation Links</h2>
 <ul>
-<li>Code Samples				:	<a href="https://ironpdf.com/examples/">https://ironpdf.com/examples/</a></li>
-<li>MSDN Class Reference		:	<a href="https://ironpdf.com/object-reference/api/">https://ironpdf.com/object-reference/api/</a></li>
-<li>How-To Guides             :   <a href="https://ironpdf.com/how-to/html-file-to-pdf/">https://ironpdf.com/how-to/html-file-to-pdf/</a></li>
-<li>Tutorials					:	<a href="https://ironpdf.com/tutorials/">https://ironpdf.com/tutorials/</a></li>
-<li>Support					:	developers@ironsoftware.com</li>
+<li>Code Samples : <a href="https://ironpdf.com/examples/using-html-to-create-a-pdf/">https://ironpdf.com/examples/using-html-to-create-a-pdf/</a></li>
+<li>MSDN Class Reference : &lt;./&gt;</li>
+<li>How-To Guides : <a href="https://ironpdf.com/how-to/html-file-to-pdf/">https://ironpdf.com/how-to/html-file-to-pdf/</a></li>
+<li>Tutorials : <a href="https://ironpdf.com/tutorials/html-to-pdf/">https://ironpdf.com/tutorials/html-to-pdf/</a></li>
+<li>Support : <a href="mailto:developers@ironsoftware.com">developers@ironsoftware.com</a></li>
 </ul>
 <h2 id="msdn-style-class-reference">MSDN Style Class Reference</h2>
-<p>Explore the <a href="https://ironpdf.com/object-reference/api/IronPdf.html">IronPDF API</a> in the left navigation of this page.</p>
+<p>Explore the <a href="IronPdf.html">IronPDF API</a> in the left navigation of this page.</p>
 <p>Popular Links include:</p>
 <ul>
-<li><a href="https://ironpdf.com/object-reference/api/IronPdf.html">IronPdf Namespace</a> Index of all IronPdf Classes</li>
-<li><a href="https://ironpdf.com/object-reference/api/IronPdf.ChromePdfRenderer.html">IronPdf.ChromePdfRenderer</a> Html to PDF generator</li>
-<li><a href="https://ironpdf.com/object-reference/api/IronPdf.ChromePdfRenderOptions.html">IronPdf.ChromePdfRenderOptions</a> Html to PDF generation settings</li>
-<li><a href="https://ironpdf.com/object-reference/api/IronPdf.AspxToPdf.html">IronPdf.AspxToPdf</a> ASPX to PDF generator</li>
-<li><a href="https://ironpdf.com/object-reference/api/IronPdf.ImageToPdfConverter.html">IronPdf.ImageToPdfConverter</a> Image to PDF generator</li>
-<li><a href="https://ironpdf.com/object-reference/api/IronPdf.PdfDocument.html">IronPdf.PdfDocument</a> A class to open, manipulate, extract data and save PDF files</li>
+<li><a href="IronPdf.html">IronPdf Namespace</a> Index of all IronPdf Classes</li>
+<li><a href="IronPdf.ChromePdfRenderer.html">IronPdf.ChromePdfRenderer</a> Html to PDF generator</li>
+<li><a href="IronPdf.ChromePdfRenderOptions.html">IronPdf.ChromePdfRenderOptions</a> Html to PDF generation settings</li>
+<li><a href="IronPdf.AspxToPdf.html">IronPdf.AspxToPdf</a> ASPX to PDF generator</li>
+<li><a href="IronPdf.ImageToPdfConverter.html">IronPdf.ImageToPdfConverter</a> Image to PDF generator</li>
+<li><a href="IronPdf.PdfDocument.html">IronPdf.PdfDocument</a> A class to open, manipulate, extract data and save PDF files</li>
 </ul>
 </article>
           </div>

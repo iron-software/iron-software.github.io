@@ -1,11 +1,11 @@
-IronOCR  - The OCR & Tesseract Library for .NET 
-=============================================================
+# IronOCR - The OCR & Tesseract Library for .NET
 
 IronOCR is an advanced OCR (Optical Character Recognition) library for C# and .NET
 
 IronOCR reads Text, Barcodes & QR from all major image and PDF formats using the latest Tesseract 5 engine. This library adds OCR functionality to Desktop, Console and Web applications in minutes.
 
 IronOCR's Unique Features:
+
 - Pure .Net OCR API
 - All OCR tasks run locally (no SAAS)
 - 125 languages
@@ -19,17 +19,15 @@ IronOCR's Unique Features:
 
 Data output options include: Plain Text, Barcode Data and an OCR Result class containing paragraphs, lines, words, and characters.
 
-## Language Support:
+## Language Support
 
-125 Languages including: Arabic, Chinese, English, Finnish, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Spanish...  
+125 Languages including: Arabic, Chinese, English, Finnish, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Spanish...
 
 Custom language packs can also be created.
 
-
 ## Get Started
 
-**Quickstart**:  https://ironsoftware.com/csharp/ocr/
-**Install With NuGet**: https://www.nuget.org/packages/IronOcr/
+**Quickstart**: <https://ironsoftware.com/csharp/ocr/> **Install With NuGet**: <https://www.nuget.org/packages/IronOcr/>
 
 ## Compatibility
 
@@ -42,10 +40,9 @@ IronOcr provides Tesseract OCR on Mac, Windows, Linux, Azure and Docker for:
 - Mono for MacOS and Linux
 - Xamarin for MacOS
 
-
 ## C# Code Example
 
-```cs
+```csharp
 using IronOcr;
 
 var Ocr = new IronTesseract();
@@ -60,10 +57,9 @@ using (var Input = new OcrInput("image.png"))
 }
 ```
 
-
 ## Further Documentation
 
-- Code Samples			:	https://ironsoftware.com/csharp/ocr/examples/simple-csharp-ocr-tesseract/
-- MSDN Class Reference		:	https://ironsoftware.com/csharp/ocr/object-reference/
-- Tutorials			:	https://ironsoftware.com/csharp/ocr/tutorials/how-to-read-text-from-an-image-in-csharp-net/
-- Support			:	developers@ironsoftware.com
+- Code Samples : <https://ironsoftware.com/csharp/ocr/examples/simple-csharp-ocr-tesseract/>
+- API Reference : [https://ironsoftware.com/csharp/ocr/object-reference/api/](index.html)
+- Tutorials : <https://ironsoftware.com/csharp/ocr/tutorials/how-to-read-text-from-an-image-in-csharp-net/>
+- Support : <developers@ironsoftware.com>
