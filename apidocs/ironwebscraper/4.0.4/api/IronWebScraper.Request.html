@@ -1,0 +1,625 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Request
+   | C# Web Scraping API | IronWebScraper </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Request
+   | C# Web Scraping API | IronWebScraper ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronWebScraper.Request">
+  
+  
+  <h1 id="IronWebScraper_Request" data-uid="IronWebScraper.Request" class="text-break">Class Request
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a http request to be made by IronWebScraper</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Request</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronWebScraper.html">IronWebScraper</a></h6>
+  <h6><strong>Assembly</strong>: IronWebScraper.dll</h6>
+  <h5 id="IronWebScraper_Request_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Request</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronWebScraper_Request__ctor_" data-uid="IronWebScraper.Request.#ctor*"></a>
+  <h4 id="IronWebScraper_Request__ctor" data-uid="IronWebScraper.Request.#ctor">Request()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Request()</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="IronWebScraper_Request_Action" data-uid="IronWebScraper.Request.Action">Action</h4>
+  <div class="markdown level1 summary"><p>The Action&lt;Response&gt; which will be used to parse the response.  See IronWebScraper.Parse.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action&lt;Response&gt; Action</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="IronWebScraper.Response.html">Response</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronWebScraper_Request_Identity" data-uid="IronWebScraper.Request.Identity">Identity</h4>
+  <div class="markdown level1 summary"><p>An HttpIdentity comprising Proxy, Headers, UserAgnet etc.. which will be used to fetch the Request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HttpIdentity Identity</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWebScraper.HttpIdentity.html">HttpIdentity</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronWebScraper_Request_MetaData" data-uid="IronWebScraper.Request.MetaData">MetaData</h4>
+  <div class="markdown level1 summary"><p>Allows additional meta-data of any Type to be attached to a request, and retrieved when the subsequent Response is parsed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MetaData MetaData</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWebScraper.MetaData.html">MetaData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronWebScraper_Request_Method_" data-uid="IronWebScraper.Request.Method*"></a>
+  <h4 id="IronWebScraper_Request_Method" data-uid="IronWebScraper.Request.Method">Method</h4>
+  <div class="markdown level1 summary"><p>Http Request method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Method { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>&quot;GET&quot; or &quot;POST&quot;</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Request_Retries_" data-uid="IronWebScraper.Request.Retries*"></a>
+  <h4 id="IronWebScraper_Request_Retries" data-uid="IronWebScraper.Request.Retries">Retries</h4>
+  <div class="markdown level1 summary"><p>Number of attempts which have been made to fetch content from this Request so far.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Retries { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Request_Url_" data-uid="IronWebScraper.Request.Url*"></a>
+  <h4 id="IronWebScraper_Request_Url" data-uid="IronWebScraper.Request.Url">Url</h4>
+  <div class="markdown level1 summary"><p>Absolute URL to be scraped.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Url { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronWebScraper_Request_Hash_" data-uid="IronWebScraper.Request.Hash*"></a>
+  <h4 id="IronWebScraper_Request_Hash_System_String_System_Action_IronWebScraper_Response__System_Net_Http_FormUrlEncodedContent_" data-uid="IronWebScraper.Request.Hash(System.String,System.Action{IronWebScraper.Response},System.Net.Http.FormUrlEncodedContent)">Hash(String, Action&lt;Response&gt;, FormUrlEncodedContent)</h4>
+  <div class="markdown level1 summary"><p>Hashing function for uniquely identifying web requests.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Hash(string url, Action&lt;Response&gt; parse, FormUrlEncodedContent postVars = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>An absolute Url.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="IronWebScraper.Response.html">Response</a>&gt;</td>
+        <td><span class="parametername">parse</span></td>
+        <td><p>An Action&lt;Response&gt; parser Method.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Net.Http.FormUrlEncodedContent</span></td>
+        <td><span class="parametername">postVars</span></td>
+        <td><p>FormUrlEncodedContent POST variables if present.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div class="level">
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronWebScraper/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronWebScraper' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironwebscraper-logo-rotated.svg');
+                              background-size: 456px; background-position: top 20px left -286px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronWebscraper to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: "b29ae6f3-aba5-4aed-a432-4dd47242aa72"
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironwebscraper-logo-rotated.svg');
+                              background-size: 456px; background-position: top 20px left -286px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronWebscraper free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronWebScraper/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href="/csharp/webscraper/licensing/"><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="/csharp/webscraper/licensing/">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>
