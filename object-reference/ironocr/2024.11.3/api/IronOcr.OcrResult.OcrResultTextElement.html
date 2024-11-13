@@ -1,0 +1,1024 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class OcrResult.OcrResultTextElement
+   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class OcrResult.OcrResultTextElement
+   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronOcr.OcrResult.OcrResultTextElement">
+  
+  
+  <h1 id="IronOcr_OcrResult_OcrResultTextElement" data-uid="IronOcr.OcrResult.OcrResultTextElement" class="text-break">Class OcrResult.OcrResultTextElement
+  </h1>
+  <div class="markdown level0 summary"><p>An abstract class representing discovered OCR DOM text elements such as <a class="xref" href="IronOcr.OcrResult.Character.html">OcrResult.Character</a>,  <a class="xref" href="IronOcr.OcrResult.Word.html">OcrResult.Word</a>,  <a class="xref" href="IronOcr.OcrResult.Line.html">OcrResult.Line</a>,  <a class="xref" href="IronOcr.OcrResult.Paragraph.html">OcrResult.Paragraph</a> ...</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="IronOcr.OcrResult.OcrResultElement.html">OcrResult.OcrResultElement</a></div>
+    <div class="level2"><span class="xref">OcrResult.OcrResultTextElement</span></div>
+      <div class="level3"><a class="xref" href="IronOcr.OcrResult.Block.html">OcrResult.Block</a></div>
+      <div class="level3"><a class="xref" href="IronOcr.OcrResult.Character.html">OcrResult.Character</a></div>
+      <div class="level3"><a class="xref" href="IronOcr.OcrResult.Line.html">OcrResult.Line</a></div>
+      <div class="level3"><a class="xref" href="IronOcr.OcrResult.Page.html">OcrResult.Page</a></div>
+      <div class="level3"><a class="xref" href="IronOcr.OcrResult.Paragraph.html">OcrResult.Paragraph</a></div>
+      <div class="level3"><a class="xref" href="IronOcr.OcrResult.Table.html">OcrResult.Table</a></div>
+      <div class="level3"><a class="xref" href="IronOcr.OcrResult.Word.html">OcrResult.Word</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IronSoftware.IDocumentTextObject</span></div>
+    <div><span class="xref">IronSoftware.IDocumentObject</span></div>
+    <div><span class="xref">IronSoftware.IBounded</span></div>
+    <div><span class="xref">IronSoftware.IColored</span></div>
+    <div><span class="xref">IronSoftware.ITransformable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="IronOcr.OcrResult.OcrResultElement.html#IronOcr_OcrResult_OcrResultElement_ToBitmap_IronOcr_OcrInput_">OcrResult.OcrResultElement.ToBitmap(OcrInput)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronOcr.OcrResult.OcrResultElement.html#IronOcr_OcrResult_OcrResultElement_Width">OcrResult.OcrResultElement.Width</a>
+    </div>
+    <div>
+      <a class="xref" href="IronOcr.OcrResult.OcrResultElement.html#IronOcr_OcrResult_OcrResultElement_Height">OcrResult.OcrResultElement.Height</a>
+    </div>
+    <div>
+      <a class="xref" href="IronOcr.OcrResult.OcrResultElement.html#IronOcr_OcrResult_OcrResultElement_X">OcrResult.OcrResultElement.X</a>
+    </div>
+    <div>
+      <a class="xref" href="IronOcr.OcrResult.OcrResultElement.html#IronOcr_OcrResult_OcrResultElement_Y">OcrResult.OcrResultElement.Y</a>
+    </div>
+    <div>
+      <a class="xref" href="IronOcr.OcrResult.OcrResultElement.html#IronOcr_OcrResult_OcrResultElement_Location">OcrResult.OcrResultElement.Location</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronOcr.html">IronOcr</a></h6>
+  <h6><strong>Assembly</strong>: IronOcr.dll</h6>
+  <h5 id="IronOcr_OcrResult_OcrResultTextElement_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class OcrResultTextElement : OcrResult.OcrResultElement</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement__ctor_" data-uid="IronOcr.OcrResult.OcrResultTextElement.#ctor*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement__ctor" data-uid="IronOcr.OcrResult.OcrResultTextElement.#ctor">OcrResultTextElement()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected OcrResultTextElement()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_Bottom_" data-uid="IronOcr.OcrResult.OcrResultTextElement.Bottom*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_Bottom" data-uid="IronOcr.OcrResult.OcrResultTextElement.Bottom">Bottom</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Bottom { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_BoundingBox_" data-uid="IronOcr.OcrResult.OcrResultTextElement.BoundingBox*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_BoundingBox" data-uid="IronOcr.OcrResult.OcrResultTextElement.BoundingBox">BoundingBox</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RectangleF BoundingBox { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.RectangleF</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_Color_" data-uid="IronOcr.OcrResult.OcrResultTextElement.Color*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_Color" data-uid="IronOcr.OcrResult.OcrResultTextElement.Color">Color</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color Color { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_Confidence_" data-uid="IronOcr.OcrResult.OcrResultTextElement.Confidence*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_Confidence" data-uid="IronOcr.OcrResult.OcrResultTextElement.Confidence">Confidence</h4>
+  <div class="markdown level1 summary"><p>OCR statistical accuracy confidence as an average of every character within this object. <p> 1 = 100%, 0 = 0%</p></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual double Confidence { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_Contents_" data-uid="IronOcr.OcrResult.OcrResultTextElement.Contents*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_Contents" data-uid="IronOcr.OcrResult.OcrResultTextElement.Contents">Contents</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Contents { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_DocumentId_" data-uid="IronOcr.OcrResult.OcrResultTextElement.DocumentId*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_DocumentId" data-uid="IronOcr.OcrResult.OcrResultTextElement.DocumentId">DocumentId</h4>
+  <div class="markdown level1 summary"><p>TODO: Implement DocumentId</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDocumentId DocumentId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.IDocumentId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_FillColor_" data-uid="IronOcr.OcrResult.OcrResultTextElement.FillColor*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_FillColor" data-uid="IronOcr.OcrResult.OcrResultTextElement.FillColor">FillColor</h4>
+  <div class="markdown level1 summary"><p>TODO: Implement FillColor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color FillColor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_Font_" data-uid="IronOcr.OcrResult.OcrResultTextElement.Font*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_Font" data-uid="IronOcr.OcrResult.OcrResultTextElement.Font">Font</h4>
+  <div class="markdown level1 summary"><p>TODO: Implement Font</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDocumentFontObject Font { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.IDocumentFontObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_FontSize_" data-uid="IronOcr.OcrResult.OcrResultTextElement.FontSize*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_FontSize" data-uid="IronOcr.OcrResult.OcrResultTextElement.FontSize">FontSize</h4>
+  <div class="markdown level1 summary"><p>TODO: Implement FontSize</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float FontSize { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_Left_" data-uid="IronOcr.OcrResult.OcrResultTextElement.Left*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_Left" data-uid="IronOcr.OcrResult.OcrResultTextElement.Left">Left</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Left { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_Matrix_" data-uid="IronOcr.OcrResult.OcrResultTextElement.Matrix*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_Matrix" data-uid="IronOcr.OcrResult.OcrResultTextElement.Matrix">Matrix</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MatrixStruct Matrix { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.MatrixStruct</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_ObjNum_" data-uid="IronOcr.OcrResult.OcrResultTextElement.ObjNum*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_ObjNum" data-uid="IronOcr.OcrResult.OcrResultTextElement.ObjNum">ObjNum</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint ObjNum { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_PageIndex_" data-uid="IronOcr.OcrResult.OcrResultTextElement.PageIndex*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_PageIndex" data-uid="IronOcr.OcrResult.OcrResultTextElement.PageIndex">PageIndex</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint PageIndex { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_PdfDocumentId_" data-uid="IronOcr.OcrResult.OcrResultTextElement.PdfDocumentId*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_PdfDocumentId" data-uid="IronOcr.OcrResult.OcrResultTextElement.PdfDocumentId">PdfDocumentId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDocumentId PdfDocumentId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.IDocumentId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_RenderMode_" data-uid="IronOcr.OcrResult.OcrResultTextElement.RenderMode*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_RenderMode" data-uid="IronOcr.OcrResult.OcrResultTextElement.RenderMode">RenderMode</h4>
+  <div class="markdown level1 summary"><p>TODO: Implement RenderMode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextRenderModes RenderMode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.TextRenderModes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_Right_" data-uid="IronOcr.OcrResult.OcrResultTextElement.Right*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_Right" data-uid="IronOcr.OcrResult.OcrResultTextElement.Right">Right</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Right { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_Scale_" data-uid="IronOcr.OcrResult.OcrResultTextElement.Scale*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_Scale" data-uid="IronOcr.OcrResult.OcrResultTextElement.Scale">Scale</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PointF Scale { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.PointF</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_StrokeColor_" data-uid="IronOcr.OcrResult.OcrResultTextElement.StrokeColor*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_StrokeColor" data-uid="IronOcr.OcrResult.OcrResultTextElement.StrokeColor">StrokeColor</h4>
+  <div class="markdown level1 summary"><p>TODO: Implement StrokeColor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color StrokeColor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_Text_" data-uid="IronOcr.OcrResult.OcrResultTextElement.Text*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_Text" data-uid="IronOcr.OcrResult.OcrResultTextElement.Text">Text</h4>
+  <div class="markdown level1 summary"><p>The full text of this OcrResultElement as a string. This is truncated when the product is unlicensed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Text { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_TextDirection_" data-uid="IronOcr.OcrResult.OcrResultTextElement.TextDirection*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_TextDirection" data-uid="IronOcr.OcrResult.OcrResultTextElement.TextDirection">TextDirection</h4>
+  <div class="markdown level1 summary"><p>The direction text was read in: such as 'Left to Right' or 'Top to Bottom'.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OcrResult.TextFlow TextDirection { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronOcr.OcrResult.TextFlow.html">OcrResult.TextFlow</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_Top_" data-uid="IronOcr.OcrResult.OcrResultTextElement.Top*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_Top" data-uid="IronOcr.OcrResult.OcrResultTextElement.Top">Top</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Top { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_Translate_" data-uid="IronOcr.OcrResult.OcrResultTextElement.Translate*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_Translate" data-uid="IronOcr.OcrResult.OcrResultTextElement.Translate">Translate</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PointF Translate { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.PointF</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronOcr_OcrResult_OcrResultTextElement_ToString_" data-uid="IronOcr.OcrResult.OcrResultTextElement.ToString*"></a>
+  <h4 id="IronOcr_OcrResult_OcrResultTextElement_ToString" data-uid="IronOcr.OcrResult.OcrResultTextElement.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Full OCR text discovered within this object. <p> A synonym of <a class="xref" href="IronOcr.OcrResult.OcrResultTextElement.html#IronOcr_OcrResult_OcrResultTextElement_Text">Text</a></p>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">IronSoftware.IDocumentTextObject</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.IDocumentObject</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.IBounded</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.IColored</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.ITransformable</span>
+  </div>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="IronOcr.OcrResult.OcrResultElement.html#IronOcr_OcrResult_OcrResultElement_ToBitmap_IronOcr_OcrInput_">ToBitmap(OcrInput)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronOcr.OcrResult.OcrResultElement.html#IronOcr_OcrResult_OcrResultElement_Width">Width</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronOcr.OcrResult.OcrResultElement.html#IronOcr_OcrResult_OcrResultElement_Height">Height</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronOcr.OcrResult.OcrResultElement.html#IronOcr_OcrResult_OcrResultElement_X">X</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronOcr.OcrResult.OcrResultElement.html#IronOcr_OcrResult_OcrResultElement_Y">Y</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronOcr.OcrResult.OcrResultElement.html#IronOcr_OcrResult_OcrResultElement_Location">Location</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronOcr/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronOcr' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironocr-logo.svg');
+                              background-size: 511px; background-position: top 61px left -335px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronOCR to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: "43eca219-1649-4e89-a2af-f0540d77df01"
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironocr-logo.svg');
+                              background-size: 511px; background-position: top 61px left -335px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronOCR free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronOcr/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href="/csharp/ocr/licensing/"><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="/csharp/ocr/licensing/">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>
