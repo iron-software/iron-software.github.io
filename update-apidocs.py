@@ -1,24 +1,11 @@
-import requests, json, re
-import os
-import platform
-import shutil
-import subprocess
-import zipfile
+import json, re, os, platform, shutil, subprocess, zipfile, urllib, time
 import xml.etree.ElementTree as ET
 from urllib.request import urlretrieve
-import urllib
-import time
+from apidocs import *
 
-NUGET_ENDPOINT_FORMAT = "https://api-v2v3search-0.nuget.org/query?q=packageid:{}"
-MAVEN_ENDPOINT_FORMAT = "https://search.maven.org/solrsearch/select?q=g:{groupId}+AND+a:{artifactId}&core=gav&rows=1000&wt=json"
-NPM_ENDPOINT_FORMAT = "https://registry.npmjs.org/{package_name}"
-PYPI_ENDPOINT_FORMAT = "https://pypi.org/pypi/{package_name}/json"
-PRODUCTS_CATALOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "iron-products.json")
 DOCS_BUILDING_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scaffolds")
 DOCFX_EXECUTABLE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scaffolds", "tools", "docfx", "tools", "docfx.exe")
 JAVA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scaffolds", "tools", "jdk")
-APIDOCS_STORAGE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "object-reference")
-APIDOCS_DESTINATION_PATH_TEMPLATE = APIDOCS_STORAGE_PATH + os.path.sep + "{}" + os.path.sep + "{}"
 
 def is_windows_os() -> bool:
     return platform.system() == "Windows"
@@ -28,10 +15,6 @@ def get_jar_executable_path() -> str:
         return os.path.join(JAVA_PATH, "windows", "bin", "jar.exe")
     else:
         return os.path.join(JAVA_PATH, "linux", "bin", "jar")
-
-def apidoc_already_exists(info:dict, version_string:str) -> bool:
-    destination_path = APIDOCS_DESTINATION_PATH_TEMPLATE.format(info["code"], version_string)
-    return os.path.exists(destination_path)
 
 def build_java_apidoc(info:dict, version_string:str):
     # Navigate to script directory
@@ -153,31 +136,6 @@ def build_dotnet_apidoc(info:dict, version_string:str):
         print("ERROR BUILDING " + info["packageName"] + " version " + version_string)
     finally:
         time.sleep(20)
-
-def get_maven_package_versions(group_id:str, artifact_id:str) -> dict:
-    response = requests.get(url=MAVEN_ENDPOINT_FORMAT.format(groupId = group_id, artifactId = artifact_id))
-    data = response.json()
-    versions = data["response"]["docs"];
-    return versions;
-
-def get_pip_package_versions(package_name:str) -> dict:
-    response = requests.get(url=PYPI_ENDPOINT_FORMAT.format(package_name = package_name))
-    data = response.json()
-    versions = data["info"]["releases"];
-    return versions;
-
-
-def get_npm_package_versions(package_name:str) -> dict:
-    response = requests.get(url=NPM_ENDPOINT_FORMAT.format(package_name = package_name))
-    data = response.json()
-    versions = data["versions"];
-    return versions;
-
-def get_nuget_package_versions(package:str) -> dict:
-    response = requests.get(url=NUGET_ENDPOINT_FORMAT.format(package))
-    data = response.json()
-    versions = data["data"][0]["versions"];
-    return versions;
 
 # Open and read the JSON file
 with open(PRODUCTS_CATALOG, 'r') as file:

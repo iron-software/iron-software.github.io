@@ -1,0 +1,39 @@
+# IronPowerPoint: PowerPoint Library for .NET
+
+**IronPPT** is a PowerPoint library developed by Iron Software. It excels in providing robust functionality for working with PowerPoint presentations in .NET applications.
+
+- Load, Manipulate, and Save PowerPoint Presentations. Easily work with .pptx and .ppt files.
+- SlideSetup: Configure slide size, orientation, background color, and layout.
+- Text: Handle text content, styles, splitting, appending text, and adding text boxes.
+- TextStyle: Manage font family, size, color, bold, italic, underline, and alignment.
+- Shapes: Add and manipulate shapes, including setting size, position, type, and rotation.
+- Images: Insert images into slides with options for scaling, alignment, and positioning.
+
+## Installation
+
+### IronPPT Library
+
+Installing IronPPT is quick and straightforward. Add the package using the following method:
+
+```shell
+Install-Package IronPPT
+```
+
+Alternatively, you can download it directly from the official [IronPPT NuGet website](https://www.nuget.org/packages/IronPPT).
+
+After installation, simply include `using IronPPT;` at the top of your C# code to get started.
+
+## Applying License Key
+
+To use IronPPT, apply a valid license or trial key by setting the **LicenseKey** property. Add the following code immediately after the import statement and before calling any IronPPT methods:
+
+```cs
+IronPPT.License.LicenseKey = "IRONPPT.MYLICENSE.KEY.1EF01";
+```
+
+## Documentation
+
+- Code Samples : <https://ironsoftware.com/csharp/ppt/examples/create-empty-presentation/>
+- API Reference : [https://ironsoftware.com/csharp/ppt/object-reference/api/](index.html)
+- Tutorials : <https://ironsoftware.com/csharp/ppt/tutorials/slide-element//>
+- Support : <developers@ironsoftware.com>
