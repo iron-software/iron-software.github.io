@@ -42,7 +42,7 @@ def get_nuget_package_versions(package:str) -> dict:
     versions = data["data"][0]["versions"];
     return versions;
 
-def query_product_info(product_code:str, product_name:str=None) -> dict|None:
+def query_product_info(product_code:str, product_name:str=None) -> dict:
     selected_product=None
     package_versions=None
     latest_version=None
