@@ -79,7 +79,7 @@ using (var archive = new IronZipArchive("existing.zip"))
 }
 ```
 
-# Documentation
+## Documentation
 
 - More Code Samples : <https://ironsoftware.com/csharp/zip/examples/qr-quickstart/>
 - API Reference : [https://ironsoftware.com/csharp/zip/object-reference/api/](index.html)
