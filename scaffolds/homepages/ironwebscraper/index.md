@@ -24,4 +24,4 @@ Quickstart Guide: <https://ironsoftware.com/csharp/webscraper/>
 - Code Samples : <https://ironsoftware.com/csharp/webscraper/examples/c-sharp-web-scraper>
 - Tutorials : <https://ironsoftware.com/csharp/webscraper/tutorials/webscraping-in-c-sharp/>
 - NuGet Package Manager : <https://www.nuget.org/packages/IronWebScraper/>
-- Support : <developers@ironsoftware.com>
+- Support : <support@ironsoftware.com>

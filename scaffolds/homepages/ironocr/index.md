@@ -1,65 +1,63 @@
 # IronOCR - The OCR & Tesseract Library for .NET
 
-IronOCR is an advanced OCR (Optical Character Recognition) library for C# and .NET
+IronOCR is an advanced OCR (Optical Character Recognition) library for C# and .NET.
 
-IronOCR reads Text, Barcodes & QR from all major image and PDF formats using the latest Tesseract 5 engine. This library adds OCR functionality to Desktop, Console and Web applications in minutes.
+IronOCR extracts text, barcodes, and QR codes from all major image and PDF formats using the latest Tesseract 5 engine. It enables OCR functionality in desktop, console, and web applications within minutes.
 
-IronOCR's Unique Features:
+Unique Features of IronOCR:
 
 - Pure .Net OCR API
-- All OCR tasks run locally (no SAAS)
-- 125 languages
-- Barcode & QR Code reading
-- Corrects low quality, noisy and distorted scans
-- Performance tuned above and beyond any other known build of Tesseract OCR.
-- Reads PDFs
-- Can export searchable PDF documents from OCR
-- Reads multi-page TIFFs
-- Can save any OCR Scan to a searchable PDF document or XHTML
+- Runs entirely locally(no SaaS required)
+- Supports 125 languages
+- Reads barcodes and QR codes
+- Corrects low-quality, noisy, and distorted scans
+- Performance-optimized beyond any known Tesseract OCR build
+- Reads PDFs and multi-page TIFFs
+- Exports OCR scans as searchable PDFs or XHTML
 
-Data output options include: Plain Text, Barcode Data and an OCR Result class containing paragraphs, lines, words, and characters.
+Outputs data as plain text, barcode data, or an OCR result class (including paragraphs, lines, words, and characters).
 
 ## Language Support
 
-125 Languages including: Arabic, Chinese, English, Finnish, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Spanish...
+Supports 125 languages, including: Arabic, Chinese, English, Finnish, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Spanish, and more.
 
 Custom language packs can also be created.
 
-## Get Started
-
-**Quickstart**: <https://ironsoftware.com/csharp/ocr/> **Install With NuGet**: <https://www.nuget.org/packages/IronOcr/>
-
 ## Compatibility
 
-IronOcr provides Tesseract OCR on Mac, Windows, Linux, Azure and Docker for:
+- .NET 9, .NET 8, .NET 7, .NET 6, .NET 5, and .NET Core, Standard, and Framework 4.6.2+
+- Windows, macOS, Linux, Android, iOS, Docker, Azure, and AWS
+- Console, Desktop, and Web Apps. MVC, Blazor, MAUI, Razor Pages, Web Forms
 
-- .Net Framework 4.0 +
-- .Net Standard 2.0 +
-- .Net Core 2.0 +
-- .Net 5
-- Mono for MacOS and Linux
-- Xamarin for MacOS
+## Get Started
+
+**Quickstart**: <https://ironsoftware.com/csharp/ocr/> <br>
+**Install With NuGet**: <https://www.nuget.org/packages/IronOcr/>
 
 ## C# Code Example
 
 ```csharp
 using IronOcr;
 
-var Ocr = new IronTesseract();
-Ocr.Language = OcrLanguage.English;
+// Instantiate Tesseract Engine
+var ocrTesseract = new IronTesseract();
+ocrTesseract.Language = OcrLanguage.English;
 
-using (var Input = new OcrInput("image.png"))
-{
-    // Input.Deskew();  // use if image not straight
-    // Input.DeNoise(); // use if image contains digital noise
-    var Result = Ocr.Read(Input);
-    Console.WriteLine(Result.Text);
-}
+// Import image
+using var ocrInput = new OcrInput();
+ocrInput.LoadImage("image.png");
+// Input.Deskew();  // use if image not straight
+// Input.DeNoise(); // use if image contains digital noise
+
+// Perform OCR
+var ocrResult = ocrTesseract.Read(ocrInput);
+Console.WriteLine(ocrResult.Text);
 ```
 
 ## Further Documentation
 
-- Code Samples : <https://ironsoftware.com/csharp/ocr/examples/simple-csharp-ocr-tesseract/>
-- API Reference : [https://ironsoftware.com/csharp/ocr/object-reference/api/](index.html)
+- Code Examples : <https://ironsoftware.com/csharp/ocr/examples/simple-csharp-ocr-tesseract/>
+- How-To Guides : <https://ironsoftware.com/csharp/ocr/how-to/iron-tesseract/>
 - Tutorials : <https://ironsoftware.com/csharp/ocr/tutorials/how-to-read-text-from-an-image-in-csharp-net/>
-- Support : <developers@ironsoftware.com>
+- API Reference : [https://ironsoftware.com/csharp/ocr/object-reference/api/](index.html)
+- Support : <support@ironsoftware.com>

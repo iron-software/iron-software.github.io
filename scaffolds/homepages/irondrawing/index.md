@@ -10,7 +10,7 @@ There is a quick-start guide at <https://ironsoftware.com/open-source/csharp/dra
 
 **IronSoftware.Drawing** has cross platform support compatibility with:
 
-- .NET 7, .NET 6, .NET 5, .NET Core, .NET Standard, and .NET Framework 4.6.2+
+- .NET 9, .NET 8, .NET 7, .NET 6, .NET 5, and .NET Core, Standard, and Framework 4.6.2+
 - Windows, macOS, Linux, Docker, Azure, and AWS
 - Converts between all of the old and new graphics libraries. For `Bitmap`, `Color`, `Rectangle`, and `Font` Inputs and Outputs can be of only one type that supports ALL of the new standards. Internally, you can continue to do what you like.
 
@@ -29,4 +29,4 @@ dotnet add package IronSoftware.System.Drawing
 ## Documentation Links
 
 - Company Information <https://ironsoftware.com/>
-- Support : <developers@ironsoftware.com>
+- Support : <support@ironsoftware.com>

@@ -1,6 +1,6 @@
 # IronQR - The QR Library for .NET
 
-IronQR is an Iron Software's QR Code reading and writing library. In addition to highly customizable QR Generation, it uses an advanced Machine Learning Model with Mobile, Desktop, and Cloud compatibility to detect QR Codes for reading.
+IronQR is Iron Software’s QR code reading and writing library. In addition to highly customizable QR code generation, it utilizes an advanced machine learning model for QR code detection, ensuring compatibility across mobile, desktop, and cloud environments.
 
 ## Features of IronQR
 
@@ -20,7 +20,7 @@ IronQR is an Iron Software's QR Code reading and writing library. In addition to
 ### .NET Version Support
 
 - **C#**, **VB.NET**, **F#**
-- **.NET 7, 6**, 5, and Core 3.1+
+- **.NET 9, 8, 7, 6**, 5, and Core 3.1+
 - .NET Standard (2.0+)
 - .NET Framework (4.6.2+)
 
@@ -44,6 +44,8 @@ IronQR is an Iron Software's QR Code reading and writing library. In addition to
 
 ## C# Code Examples
 
+### Write QR Code
+
 ```csharp
 using IronQr;
 using IronSoftware.Drawing;
@@ -57,6 +59,8 @@ AnyBitmap qrImage = myQr.Save();
 // Save QR Code Bitmap as File
 qrImage.SaveAs("qr.png");
 ```
+
+### Read QR Code
 
 ```csharp
 using IronQr;
@@ -77,7 +81,8 @@ IEnumerable<QrResult> results = reader.Read(imageInput);
 
 ## Documentation
 
-- More Code Samples : <https://ironsoftware.com/csharp/qr/examples/qr-quickstart/>
-- API Reference : [https://ironsoftware.com/csharp/qr/object-reference/api/](index.html)
+- Code Examples : <https://ironsoftware.com/csharp/qr/examples/qr-quickstart/>
+- How-To Guides : <https://ironsoftware.com/csharp/qr/how-to/read-qr-codes-from-image/>
 - Tutorials : <https://ironsoftware.com/csharp/qr/tutorials/csharp-qr-code-generator/>
-- Support : <developers@ironsoftware.com>
+- API Reference : [https://ironsoftware.com/csharp/qr/object-reference/api/](index.html)
+- Support : <support@ironsoftware.com>

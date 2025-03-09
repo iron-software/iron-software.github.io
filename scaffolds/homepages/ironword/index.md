@@ -13,6 +13,14 @@
 - Image: Loading images from files or streams, setting wrap text, position offset, width, height, and other properties.
 - Shape: Setting wrap text, position offset, width, height, shape type, and rotation.
 
+## Compatibility
+
+Supports applications and websites developed in:
+
+- .NET 9, .NET 8, .NET 7, .NET 6, .NET 5, and .NET Core, Standard, and Framework 4.6.2+
+- Windows, macOS, Linux, Android, iOS, Docker, Azure, and AWS
+- Console, Desktop, and Web Apps. MVC, Blazor, MAUI, Razor Pages, Web Forms
+
 ## Get Started
 
 - Quickstart Guide: <https://ironsoftware.com/csharp/word/docs/>
@@ -96,6 +104,7 @@ doc.SaveAs("Document.docx");
 ## Documentation
 
 - More Code Samples : <https://ironsoftware.com/csharp/word/examples/create-empty-word/>
-- API Reference : [https://ironsoftware.com/csharp/word/object-reference/api/](index.html)
+- How-To Guides : <https://ironsoftware.com/csharp/word/how-to/license-keys/>
 - Tutorials : <https://ironsoftware.com/csharp/word/tutorials/document-element/>
-- Support : <developers@ironsoftware.com>
+- API Reference : [https://ironsoftware.com/csharp/word/object-reference/api/](index.html)
+- Support : <support@ironsoftware.com>

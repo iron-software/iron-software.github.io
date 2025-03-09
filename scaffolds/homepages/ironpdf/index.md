@@ -1,22 +1,20 @@
 # IronPDF
 
-IronPDF is a .NET library allowing the generation, reading, editing & saving PDF files in .NET projects.
+IronPDF is a .NET library that allows you to generate, read, edit, and save PDF files in .NET projects.
 
-IronPDF features HTML to PDF for .NET Core, Standard, & Framework with full HTML to PDF support including CSS3 and JS.
+IronPDF supports HTML to PDF conversion for .NET Core, .NET Standard, and .NET Framework, with full compatibility for CSS3 and JavaScript.
 
-There is a quick-start guide at <https://ironpdf.com/docs/>
+A quick-start guide is available at <https://ironpdf.com/docs/>
 
 ## Compatibility
 
 Welcome the the cutting edge of .NET PDF rendering and manipulation technology with IronPDF now featuring Chrome identical HTML rendering with full support for:
 
-- Generate PDFs in C# with HTML, MVC, ASPX, & images.
-- Supports .NET Core 2, 3 & .NET 5, 6, 7, 8 for Windows, Linux, macOs and Azure.
-- Supports applications and websites developed in .NET FrameWork 4+ for Windows and Azure
-- HTML5
-- Bootstrap and Responsive CSS3
-- JavaScript including Angular and React
-- SVG and all common image assets
+- Generating PDFs from: HTML, URL, JavaScript, CSS and many image formats.
+- .NET 9, .NET 8, .NET 7, .NET 6, .NET 5, and .NET Core, Standard, and Framework 4.6.2+
+- Windows, macOS, Linux, Docker, Azure, and AWS
+- Console, Desktop, and Web Apps. MVC, Blazor, MAUI, Razor Pages, Web Forms
+- And many more! Visit our website to see all our code examples and a full list of our 50+ features
 
 ## To Install
 
@@ -24,56 +22,70 @@ Welcome the the cutting edge of .NET PDF rendering and manipulation technology w
 PM> Install-Package IronPdf
 ```
 
-Remove any reference to IronPdf.Threading which is now legacy software. The IronPdf main package is threading and async compatible!
+### Pixel Perfect Chrome Rendering!
 
-### Try out the new 2021 API
+We haven’t changed the IronPDF API you are using. It will remain the same!
 
-We haven't broken the IronPDF API you are using, it will remain!
-
-However, the old style is being superseded by a better one to give you more control. For examples you now have Print options and Http Login controls specific to your renderer
+However, the old style is being replaced with a better version to give you more control. For example, you now have access to print options and HTTP login controls specific to your renderer.
 
 ```cs
 using IronPdf;
 
-//...
+// Instantiate Chrome renderer
+ChromePdfRenderer renderer = new ChromePdfRenderer();
 
-ChromePdfRenderer Renderer = new ChromePdfRenderer();
-Renderer.RenderingOptions.FitToPaperWidth = true;
-Renderer.RenderingOptions.CssMediaType = IronPdf.Rendering.PdfCssMediaType.Screen;
-Renderer.RenderingOptions.PrintHtmlBackgrounds = true;
-Renderer.RenderingOptions.CreatePdfFormsFromHtml = true;
-var doc = Renderer.RenderHtmlAsPdf("<h1>Hello world!</h1>");
-//var doc = Renderer.RenderUrlAsPdf("https://www.google.com/");
-//var doc = Renderer.RenderHtmlFileAsPdf("example.html");
-doc.SaveAs("google_chrome.pdf");
+// Configure rendering engine
+renderer.RenderingOptions.PaperFit.UseFitToPageRendering();
+renderer.RenderingOptions.CssMediaType = IronPdf.Rendering.PdfCssMediaType.Screen;
+renderer.RenderingOptions.PrintHtmlBackgrounds = true;
+renderer.RenderingOptions.CreatePdfFormsFromHtml = true;
+
+// Render HTML string to PDF
+var pdf = renderer.RenderHtmlAsPdf("<h1>Hello world!</h1>");
+
+// Render URL to PDF
+//var pdf = Renderer.RenderUrlAsPdf("https://www.google.com/");
+
+// Render HTML file to PDF
+//var pdf = Renderer.RenderHtmlFileAsPdf("example.html");
+
+// Export PDF document
+pdf.SaveAs("google_chrome.pdf");
 ```
 
-### Pixel perfect Chrome rendering
+### Use Chrome's Default Settings!
 
-This example will give you PDFs which are pixel perfect to the latest chrome desktop browser's "print to pdf" functionality:
+This example will generate PDFs that are pixel-perfect, matching the latest Chrome desktop browser’s 'Print to PDF' functionality.
 
 ```cs
-ChromePdfRenderer Renderer = new ChromePdfRenderer();
-Renderer.RenderingOptions.CssMediaType = IronPdf.Rendering.PdfCssMediaType.Print;
-Renderer.RenderingOptions.PrintHtmlBackgrounds = false;
-Renderer.RenderingOptions.CreatePdfFormsFromHtml = false;
-var doc = Renderer.RenderUrlAsPdf("https://www.google.com/");
+// Instantiate Chrome renderer
+ChromePdfRenderer renderer = new ChromePdfRenderer();
+
+// Use Chrome default setting
+renderer.RenderingOptions = ChromePdfRenderOptions.DefaultChrome;
+
+var pdf = renderer.RenderUrlAsPdf("https://www.google.com/");
 ```
 
-### However...we would recommend using improved features such as:
+### Use Responsive Layout!
 
 Using screen stylesheets to print PDFs which are less fiddly to develop and more true to existing web assets.
 
 - Responsive layout support
-- Creating PDF Forms from your HTML form elements.
+- Creating PDF Forms from your HTML form elements
 
 ```cs
-ChromePdfRenderer Renderer = new ChromePdfRenderer();
-Renderer.RenderingOptions.CssMediaType = IronPdf.Rendering.PdfCssMediaType.Screen;
-Renderer.RenderingOptions.PrintHtmlBackgrounds = true;
-Renderer.RenderingOptions.CreatePdfFormsFromHtml = true;
-Renderer.RenderingOptions.ViewPortWidth = 1080 ; //px
-var doc = Renderer.RenderUrlAsPdf("https://www.google.com/");
+// Instantiate Chrome renderer
+ChromePdfRenderer renderer = new ChromePdfRenderer();
+
+// Configure rendering engine
+renderer.RenderingOptions.CssMediaType = IronPdf.Rendering.PdfCssMediaType.Screen;
+renderer.RenderingOptions.PrintHtmlBackgrounds = true;
+renderer.RenderingOptions.CreatePdfFormsFromHtml = true;
+renderer.RenderingOptions.PaperFit.UseResponsiveCssRendering(1080); //px
+
+// Render URL to PDF
+var pdf = renderer.RenderUrlAsPdf("https://www.google.com/");
 ```
 
 ### Use every CPU core available
@@ -82,17 +94,17 @@ Multithreading and Async support for our Chrome rendering engine is in a differe
 
 For enterprise grade multi-threading use our Chrome in your existing threads and it will work. For web applications this also takes zero setup.
 
-For batch processing for HtmlToPdf we suggest using the built in .NET Parallel.ForEach
+For batch processing for HtmlToPdf we suggest using the built in .NET Parallel.ForEach.
 
-We love async and have provided Async variants of methods such as ChromePdfRenderer.RenderHtmlAsPdf
+We love async and have provided Async variants of methods such as ChromePdfRenderer.RenderHtmlAsPdf.
 
 ## Documentation Links
 
-- Code Samples : <https://ironpdf.com/examples/using-html-to-create-a-pdf/>
-- MSDN Class Reference : [https://ironpdf.com/object-reference/api/](index.html)
+- Code Examples : <https://ironpdf.com/examples/using-html-to-create-a-pdf/>
 - How-To Guides : <https://ironpdf.com/how-to/html-file-to-pdf/>
 - Tutorials : <https://ironpdf.com/tutorials/html-to-pdf/>
-- Support : <developers@ironsoftware.com>
+- MSDN Class Reference : [https://ironpdf.com/object-reference/api/](index.html)
+- Support : <support@ironsoftware.com>
 
 ## MSDN Style Class Reference
 

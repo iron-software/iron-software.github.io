@@ -9,31 +9,57 @@
 - Shapes: Add and manipulate shapes, including setting size, position, type, and rotation.
 - Images: Insert images into slides with options for scaling, alignment, and positioning.
 
-## Installation
+## Compatibility
 
-### IronPPT Library
+Supports applications and websites developed in:
 
-Installing IronPPT is quick and straightforward. Add the package using the following method:
+- .NET 9, .NET 8, .NET 7, .NET 6, .NET 5, and .NET Core, Standard, and Framework 4.6.2+
+- Windows, macOS, Linux, Android, iOS, Docker, Azure, and AWS
+- Console, Desktop, and Web Apps. MVC, Blazor, MAUI, Razor Pages, Web Forms
 
-```shell
-Install-Package IronPPT
-```
+## Get Started
 
-Alternatively, you can download it directly from the official [IronPPT NuGet website](https://www.nuget.org/packages/IronPPT).
+- Quickstart Guide: <https://ironsoftware.com/csharp/word/docs/>
+- Install with NuGet: <https://www.nuget.org/packages/IronWord/>
 
-After installation, simply include `using IronPPT;` at the top of your C# code to get started.
+## C# Code Examples
 
-## Applying License Key
-
-To use IronPPT, apply a valid license or trial key by setting the **LicenseKey** property. Add the following code immediately after the import statement and before calling any IronPPT methods:
+### Create Empty Presentation
 
 ```cs
-IronPPT.License.LicenseKey = "IRONPPT.MYLICENSE.KEY.1EF01";
+using IronPPT;
+ 
+// Create new PowerPoint presentation
+var document = new PresentationDocument();
+ 
+// Export PowerPoint presentation
+document.Save("output.pptx");
+```
+
+### Add Paragraph
+
+```cs
+using IronPPT;
+using IronPPT.Models;
+ 
+// Create new PowerPoint presentation
+var document = new PresentationDocument();
+ 
+// Add text to paragraph
+var paragraph = new Paragraph();
+paragraph.AddText("First paragraph.");
+ 
+// Add paragraph
+document.Slides[0].AddParagraph(paragraph);
+ 
+// Export PowerPoint presentation
+document.Save("addParagraph.pptx");
 ```
 
 ## Documentation
 
-- Code Samples : <https://ironsoftware.com/csharp/ppt/examples/create-empty-presentation/>
+- Code Examples : <https://ironsoftware.com/csharp/ppt/examples/create-empty-presentation/>
+- How-To Guides : <https://ironsoftware.com/csharp/ppt/how-to/license-keys/>
 - API Reference : [https://ironsoftware.com/csharp/ppt/object-reference/api/](index.html)
 - Tutorials : <https://ironsoftware.com/csharp/ppt/tutorials/slide-element//>
-- Support : <developers@ironsoftware.com>
+- Support : <support@ironsoftware.com>

@@ -2,21 +2,17 @@
 
 IronPrint is a print library developed by Iron Software. The library is compatible with a wide variety of environments, including Windows, macOS, Android, and iOS.
 
---------------------------------------------------------------------------------
-
 ## Get Started
 
 - Quickstart Guide: <https://ironsoftware.com/csharp/print/docs/>
 - Install with NuGet: <https://www.nuget.org/packages/IronPrint/>
-
---------------------------------------------------------------------------------
 
 ## Compatibility
 
 ### .NET Version Support
 
 - **C#**, **VB.NET**, **F#**
-- **.NET 8, 7**, 6, 5, and Core 3.1+
+- **.NET 9, 8, 7**, 6, 5, and Core 3.1+
 - .NET Framework (4.6.2+)
 
 ### Operating Systems and Environments Support
@@ -32,9 +28,10 @@ IronPrint is a print library developed by Iron Software. The library is compatib
 - **Desktop** (WPF & MAUI & Windows Avalonia)
 - **Console** (App & Library)
 
---------------------------------------------------------------------------------
-
 ## C# Code Examples
+
+
+### Print Silently
 
 ```csharp
 using IronPrint;
@@ -43,12 +40,16 @@ using IronPrint;
 Printer.Print("newDoc.pdf");
 ```
 
+### Print With Dialog
+
 ```csharp
 using IronPrint;
 
 // Show print dialog
 Printer.ShowPrintDialog("newDoc.pdf");
 ```
+
+### Printer Settings
 
 ```csharp
 using IronPrint;
@@ -63,11 +64,10 @@ printSettings.PaperOrientation = PaperOrientation.Portrait;
 Printer.Print("newDoc.pdf", printSettings);
 ```
 
---------------------------------------------------------------------------------
-
 ## Documentation
 
-- More Code Samples : <https://ironsoftware.com/csharp/print/examples/print/>
+- Code Examples : <https://ironsoftware.com/csharp/print/examples/print/>
+- How-To Guides : <https://ironsoftware.com/csharp/print/how-to/license-keys/>
 - API Reference : [https://ironsoftware.com/csharp/print/object-reference/api/](index.html)
 - Tutorials : <https://ironsoftware.com/csharp/print/tutorials/print-document/>
-- Support : <developers@ironsoftware.com>
+- Support : <support@ironsoftware.com>
