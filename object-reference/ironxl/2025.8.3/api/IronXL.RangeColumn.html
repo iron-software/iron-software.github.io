@@ -1,0 +1,965 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class RangeColumn
+   | C# Excel API | IronXL </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class RangeColumn
+   | C# Excel API | IronXL ">
+    <meta name="generator" content="docfx 2.58.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+        <link rel="canonical" href="https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.RangeColumn.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryParam = urlParams.get('q');
+      if (queryParam) {
+        var cleanUrl = window.location.protocol + "//" + window.location.hostname + window.location.pathname;
+        window.location = cleanUrl;
+      }
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronXL.RangeColumn">
+  
+  
+  <h1 id="IronXL_RangeColumn" data-uid="IronXL.RangeColumn" class="text-break">Class RangeColumn
+  </h1>
+  <div class="markdown level0 summary"><p>A class that represents a single column of cells.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="IronXL.Range.html">Range</a></div>
+    <div class="level2"><span class="xref">RangeColumn</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="IronXL.Cell.html">Cell</a>&gt;</div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ClearContents">Range.ClearContents()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_GetEnumerator">Range.GetEnumerator()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ToArray">Range.ToArray()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Sum">Range.Sum()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Max">Range.Max()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Min">Range.Min()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Avg">Range.Avg()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AddRange_IronXL_Range_">Range.AddRange(Range)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AddRange_IronXL_RangeAddress_">Range.AddRange(RangeAddress)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SubtractRange_IronXL_Range_">Range.SubtractRange(Range)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SubtractRange_IronXL_RangeAddress_">Range.SubtractRange(RangeAddress)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveRow_System_Int32_">Range.RemoveRow(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveRow_IronXL_RangeRow_">Range.RemoveRow(RangeRow)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveColumn_System_String_">Range.RemoveColumn(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveColumn_System_Int32_">Range.RemoveColumn(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveColumn_IronXL_RangeColumn_">Range.RemoveColumn(RangeColumn)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertRow_System_Int32_">Range.InsertRow(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertRows_System_Int32_System_Int32_">Range.InsertRows(Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumn_System_Int32_">Range.InsertColumn(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumn_System_String_">Range.InsertColumn(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumns_System_String_System_Int32_">Range.InsertColumns(String, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumns_System_Int32_System_Int32_">Range.InsertColumns(Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortAscending">Range.SortAscending()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortDescending">Range.SortDescending()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortByColumn_System_String_IronXL_SortOrder_">Range.SortByColumn(String, SortOrder)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortByColumn_System_Int32_IronXL_SortOrder_">Range.SortByColumn(Int32, SortOrder)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Trim">Range.Trim()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ToDataTable_System_Boolean_">Range.ToDataTable(Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SetCellValue_System_Int32_System_Int32_System_Object_">Range.SetCellValue(Int32, Int32, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_GetValue__1">Range.GetValue&lt;TType&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_TryGetValue__1___0__">Range.TryGetValue&lt;TType&gt;(TType)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ToString">Range.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Copy_IronXL_WorkSheet_System_String_">Range.Copy(WorkSheet, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Replace_System_String_System_String_">Range.Replace(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SaveAsNamedTable_System_String_System_Boolean_IronXL_Styles_TableStyle_System_Boolean_">Range.SaveAsNamedTable(String, Boolean, TableStyle, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SaveAsNamedRange_System_String_System_Boolean_">Range.SaveAsNamedRange(String, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Row_System_Int32_">Range.Row(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Column_System_Int32_">Range.Column(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RangeAddress">Range.RangeAddress</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RangeAddressAsString">Range.RangeAddressAsString</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Count">Range.Count</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ColumnCount">Range.ColumnCount</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RowCount">Range.RowCount</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Style">Range.Style</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_WorkBook">Range.WorkBook</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_IsEmpty">Range.IsEmpty</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Rows">Range.Rows</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Columns">Range.Columns</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Value">Range.Value</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_FormatString">Range.FormatString</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Formula">Range.Formula</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_StringValue">Range.StringValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_DateTimeValue">Range.DateTimeValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_BoolValue">Range.BoolValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_IntValue">Range.IntValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_DoubleValue">Range.DoubleValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_DecimalValue">Range.DecimalValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_FloatValue">Range.FloatValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Int64Value">Range.Int64Value</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_LongValue">Range.LongValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Int32Value">Range.Int32Value</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AllRowsInRange">Range.AllRowsInRange</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AllColumnsInRange">Range.AllColumnsInRange</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronXL.html">IronXL</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="IronXL_RangeColumn_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RangeColumn : Range, IEnumerable&lt;Cell&gt;, IEnumerable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronXL_RangeColumn_ColumnLetter_" data-uid="IronXL.RangeColumn.ColumnLetter*"></a>
+  <h4 id="IronXL_RangeColumn_ColumnLetter" data-uid="IronXL.RangeColumn.ColumnLetter">ColumnLetter</h4>
+  <div class="markdown level1 summary"><p>Gets the letter anme of the column.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ColumnLetter { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_RangeColumn_ColumnNumber_" data-uid="IronXL.RangeColumn.ColumnNumber*"></a>
+  <h4 id="IronXL_RangeColumn_ColumnNumber" data-uid="IronXL.RangeColumn.ColumnNumber">ColumnNumber</h4>
+  <div class="markdown level1 summary"><p>0-based index of the column.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ColumnNumber { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_RangeColumn_Hidden_" data-uid="IronXL.RangeColumn.Hidden*"></a>
+  <h4 id="IronXL_RangeColumn_Hidden" data-uid="IronXL.RangeColumn.Hidden">Hidden</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether this column is hidden.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Hidden { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_RangeColumn_Width_" data-uid="IronXL.RangeColumn.Width*"></a>
+  <h4 id="IronXL_RangeColumn_Width" data-uid="IronXL.RangeColumn.Width">Width</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the width of the column.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Width { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronXL_RangeColumn_AutoSizeColumn_" data-uid="IronXL.RangeColumn.AutoSizeColumn*"></a>
+  <h4 id="IronXL_RangeColumn_AutoSizeColumn" data-uid="IronXL.RangeColumn.AutoSizeColumn">AutoSizeColumn()</h4>
+  <div class="markdown level1 summary"><p>Changes width of the column to fit the content.
+NOTE: This method measures the text in the cell based on the font
+that is used for the cell. If the exact font is not found on the
+machine it will try to measure it with a defalt font. If the
+default could not be found, it will try to use any font available.
+Finally if there are no fonts found the exception will be thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AutoSizeColumn()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">SixLabors.Fonts.FontException</span></td>
+        <td><p>Trown when no fonts found istalled
+on the machine.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_RangeColumn_AutoSizeColumn_" data-uid="IronXL.RangeColumn.AutoSizeColumn*"></a>
+  <h4 id="IronXL_RangeColumn_AutoSizeColumn_System_Boolean_" data-uid="IronXL.RangeColumn.AutoSizeColumn(System.Boolean)">AutoSizeColumn(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Changes width of the column to fit the content.
+NOTE: This method measures the text in the cell based on the font
+that is used for the cell. If the exact font is not found on the
+machine it will try to measure it with a defalt font. If the
+default could not be found, it will try to use any font available.
+Finally if there are no fonts found the exception will be thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AutoSizeColumn(bool useMergedCells)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">useMergedCells</span></td>
+        <td><p>If true, the width of merged cells will
+be taken into account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">SixLabors.Fonts.FontException</span></td>
+        <td><p>Trown when no fonts found istalled
+on the machine.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_RangeColumn_RemoveColumn_" data-uid="IronXL.RangeColumn.RemoveColumn*"></a>
+  <h4 id="IronXL_RangeColumn_RemoveColumn" data-uid="IronXL.RangeColumn.RemoveColumn">RemoveColumn()</h4>
+  <div class="markdown level1 summary"><p>Removes the column from the worksheet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveColumn()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
+  </div>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ClearContents">ClearContents()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_GetEnumerator">GetEnumerator()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ToArray">ToArray()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Sum">Sum()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Max">Max()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Min">Min()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Avg">Avg()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AddRange_IronXL_Range_">AddRange(Range)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AddRange_IronXL_RangeAddress_">AddRange(RangeAddress)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SubtractRange_IronXL_Range_">SubtractRange(Range)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SubtractRange_IronXL_RangeAddress_">SubtractRange(RangeAddress)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveRow_System_Int32_">RemoveRow(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveRow_IronXL_RangeRow_">RemoveRow(RangeRow)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveColumn_System_String_">RemoveColumn(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveColumn_System_Int32_">RemoveColumn(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveColumn_IronXL_RangeColumn_">RemoveColumn(RangeColumn)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertRow_System_Int32_">InsertRow(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertRows_System_Int32_System_Int32_">InsertRows(Int32, Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumn_System_Int32_">InsertColumn(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumn_System_String_">InsertColumn(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumns_System_String_System_Int32_">InsertColumns(String, Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumns_System_Int32_System_Int32_">InsertColumns(Int32, Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortAscending">SortAscending()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortDescending">SortDescending()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortByColumn_System_String_IronXL_SortOrder_">SortByColumn(String, SortOrder)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortByColumn_System_Int32_IronXL_SortOrder_">SortByColumn(Int32, SortOrder)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Trim">Trim()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ToDataTable_System_Boolean_">ToDataTable(Boolean)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SetCellValue_System_Int32_System_Int32_System_Object_">SetCellValue(Int32, Int32, Object)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_GetValue__1">GetValue&lt;TType&gt;()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_TryGetValue__1___0__">TryGetValue&lt;TType&gt;(TType)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ToString">ToString()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Copy_IronXL_WorkSheet_System_String_">Copy(WorkSheet, String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Replace_System_String_System_String_">Replace(String, String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SaveAsNamedTable_System_String_System_Boolean_IronXL_Styles_TableStyle_System_Boolean_">SaveAsNamedTable(String, Boolean, TableStyle, Boolean)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SaveAsNamedRange_System_String_System_Boolean_">SaveAsNamedRange(String, Boolean)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Row_System_Int32_">Row(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Column_System_Int32_">Column(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RangeAddress">RangeAddress</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RangeAddressAsString">RangeAddressAsString</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Count">Count</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ColumnCount">ColumnCount</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RowCount">RowCount</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Style">Style</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_WorkBook">WorkBook</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_IsEmpty">IsEmpty</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Rows">Rows</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Columns">Columns</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Value">Value</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_FormatString">FormatString</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Formula">Formula</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_StringValue">StringValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_DateTimeValue">DateTimeValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_BoolValue">BoolValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_IntValue">IntValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_DoubleValue">DoubleValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_DecimalValue">DecimalValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_FloatValue">FloatValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Int64Value">Int64Value</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_LongValue">LongValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Int32Value">Int32Value</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AllRowsInRange">AllRowsInRange</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AllColumnsInRange">AllColumnsInRange</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronXL to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: "fb47f498-31a3-4a06-82df-66cc39733c08"
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironxl-logo.svg');
+                              background-size: 356px; background-position: top 67px left -179px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronXL free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href="/csharp/excel/licensing/"><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="/csharp/excel/licensing/">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>

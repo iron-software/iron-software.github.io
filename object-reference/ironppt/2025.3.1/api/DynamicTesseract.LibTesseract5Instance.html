@@ -1,0 +1,3747 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class LibTesseract5Instance
+   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class LibTesseract5Instance
+   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <script>
+      window.is_pdf = document.location.href.indexOf('ironpdf.com') > -1;
+      var vwoCode = is_pdf ? 460839 : 561725;
+  
+    </script>
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function() {
+  var account_id=vwoCode,
+  version=2.0,
+  settings_tolerance=2000,
+  hide_element='body',
+  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+  /* DO NOT EDIT BELOW THIS LINE */
+  f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=this.getSettings(),n=d.createElement('script'),i=this;if(t){n.textContent=t;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);i.load(e)}}else{n.fetchPriority='high';n.src=e;n.type='text/javascript';n.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(n)}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t=d.currentScript,n=d.createElement('style'),i=this.hide_element(),r=t&&!t.async&&i?i+this.hide_element_style():'',c=d.getElementsByTagName('head')[0];n.setAttribute('id','_vis_opt_path_hides');v&&n.setAttribute('nonce',v.nonce);n.setAttribute('type','text/css');if(n.styleSheet)n.styleSheet.cssText=r;else n.appendChild(d.createTextNode(r));c.appendChild(n);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version)}};w._vwo_code=code;code.init();})();
+  </script>
+  <!-- End VWO Async SmartCode -->
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="DynamicTesseract.LibTesseract5Instance">
+  
+  
+  <h1 id="DynamicTesseract_LibTesseract5Instance" data-uid="DynamicTesseract.LibTesseract5Instance" class="text-break">Class LibTesseract5Instance
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">LibTesseract5Instance</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="DynamicTesseract.ILibTesseract.html">ILibTesseract</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="DynamicTesseract.html">DynamicTesseract</a></h6>
+  <h6><strong>Assembly</strong>: IronOcr.dll</h6>
+  <h5 id="DynamicTesseract_LibTesseract5Instance_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class LibTesseract5Instance : Object, ILibTesseract</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance__ctor_" data-uid="DynamicTesseract.LibTesseract5Instance.#ctor*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance__ctor" data-uid="DynamicTesseract.LibTesseract5Instance.#ctor">LibTesseract5Instance()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LibTesseract5Instance()</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseAPIAnalyseLayout_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIAnalyseLayout*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseAPIAnalyseLayout_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIAnalyseLayout(System.Runtime.InteropServices.HandleRef)">BaseAPIAnalyseLayout(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr BaseAPIAnalyseLayout(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseAPIClear_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIClear*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseAPIClear_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIClear(System.Runtime.InteropServices.HandleRef)">BaseAPIClear(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BaseAPIClear(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiCreate_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiCreate*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiCreate" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiCreate">BaseApiCreate()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr BaseApiCreate()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiDelete_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiDelete*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiDelete_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiDelete(System.Runtime.InteropServices.HandleRef)">BaseApiDelete(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BaseApiDelete(HandleRef ptr)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">ptr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiGetBoolVariable_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetBoolVariable*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiGetBoolVariable_System_Runtime_InteropServices_HandleRef_System_String_System_Int32__" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetBoolVariable(System.Runtime.InteropServices.HandleRef,System.String,System.Int32@)">BaseApiGetBoolVariable(HandleRef, String, out Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BaseApiGetBoolVariable(HandleRef handle, string name, out int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiGetBoxTextInternal_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetBoxTextInternal*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiGetBoxTextInternal_System_Runtime_InteropServices_HandleRef_System_Int32_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetBoxTextInternal(System.Runtime.InteropServices.HandleRef,System.Int32)">BaseApiGetBoxTextInternal(HandleRef, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr BaseApiGetBoxTextInternal(HandleRef handle, int pageNum)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageNum</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseAPIGetComponentImages_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIGetComponentImages*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseAPIGetComponentImages_System_Runtime_InteropServices_HandleRef_DynamicTesseract_PageIteratorLevel_System_Int32_System_IntPtr_System_IntPtr_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIGetComponentImages(System.Runtime.InteropServices.HandleRef,DynamicTesseract.PageIteratorLevel,System.Int32,System.IntPtr,System.IntPtr)">BaseAPIGetComponentImages(HandleRef, PageIteratorLevel, Int32, IntPtr, IntPtr)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr BaseAPIGetComponentImages(HandleRef handle, PageIteratorLevel level, int text_only, IntPtr pixa, IntPtr blockids)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PageIteratorLevel.html">PageIteratorLevel</a></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">text_only</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td><span class="parametername">pixa</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td><span class="parametername">blockids</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseAPIGetDatapath_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIGetDatapath*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseAPIGetDatapath_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIGetDatapath(System.Runtime.InteropServices.HandleRef)">BaseAPIGetDatapath(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string BaseAPIGetDatapath(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiGetDoubleVariable_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetDoubleVariable*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiGetDoubleVariable_System_Runtime_InteropServices_HandleRef_System_String_System_Double__" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetDoubleVariable(System.Runtime.InteropServices.HandleRef,System.String,System.Double@)">BaseApiGetDoubleVariable(HandleRef, String, out Double)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BaseApiGetDoubleVariable(HandleRef handle, string name, out double value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiGetHOCRTextInternal_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetHOCRTextInternal*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiGetHOCRTextInternal_System_Runtime_InteropServices_HandleRef_System_Int32_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetHOCRTextInternal(System.Runtime.InteropServices.HandleRef,System.Int32)">BaseApiGetHOCRTextInternal(HandleRef, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr BaseApiGetHOCRTextInternal(HandleRef handle, int pageNum)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageNum</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiGetIntVariable_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetIntVariable*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiGetIntVariable_System_Runtime_InteropServices_HandleRef_System_String_System_Int32__" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetIntVariable(System.Runtime.InteropServices.HandleRef,System.String,System.Int32@)">BaseApiGetIntVariable(HandleRef, String, out Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BaseApiGetIntVariable(HandleRef handle, string name, out int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiGetIterator_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetIterator*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiGetIterator_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetIterator(System.Runtime.InteropServices.HandleRef)">BaseApiGetIterator(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr BaseApiGetIterator(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseAPIGetPageSegMode_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIGetPageSegMode*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseAPIGetPageSegMode_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIGetPageSegMode(System.Runtime.InteropServices.HandleRef)">BaseAPIGetPageSegMode(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PageSegMode BaseAPIGetPageSegMode(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PageSegMode.html">PageSegMode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiGetStringVariableInternal_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetStringVariableInternal*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiGetStringVariableInternal_System_Runtime_InteropServices_HandleRef_System_String_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetStringVariableInternal(System.Runtime.InteropServices.HandleRef,System.String)">BaseApiGetStringVariableInternal(HandleRef, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr BaseApiGetStringVariableInternal(HandleRef handle, string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseAPIGetThresholdedImage_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIGetThresholdedImage*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseAPIGetThresholdedImage_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIGetThresholdedImage(System.Runtime.InteropServices.HandleRef)">BaseAPIGetThresholdedImage(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr BaseAPIGetThresholdedImage(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiGetUNLVTextInternal_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetUNLVTextInternal*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiGetUNLVTextInternal_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiGetUNLVTextInternal(System.Runtime.InteropServices.HandleRef)">BaseApiGetUNLVTextInternal(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr BaseApiGetUNLVTextInternal(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseAPIGetUTF8TextInternal_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIGetUTF8TextInternal*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseAPIGetUTF8TextInternal_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIGetUTF8TextInternal(System.Runtime.InteropServices.HandleRef)">BaseAPIGetUTF8TextInternal(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr BaseAPIGetUTF8TextInternal(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiInit_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiInit*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiInit_System_Runtime_InteropServices_HandleRef_System_String_System_String_System_Int32_System_String___System_Int32_System_String___System_String___System_UIntPtr_System_Boolean_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiInit(System.Runtime.InteropServices.HandleRef,System.String,System.String,System.Int32,System.String[],System.Int32,System.String[],System.String[],System.UIntPtr,System.Boolean)">BaseApiInit(HandleRef, String, String, Int32, String[], Int32, String[], String[], UIntPtr, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BaseApiInit(HandleRef handle, string datapath, string language, int mode, string[] configs, int configs_size, string[] vars_vec, string[] vars_values, UIntPtr vars_vec_size, bool set_only_non_debug_params)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">datapath</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">language</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">mode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">configs</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">configs_size</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">vars_vec</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">vars_values</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><span class="parametername">vars_vec_size</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">set_only_non_debug_params</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseAPIMeanTextConf_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIMeanTextConf*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseAPIMeanTextConf_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPIMeanTextConf(System.Runtime.InteropServices.HandleRef)">BaseAPIMeanTextConf(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BaseAPIMeanTextConf(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiPrintVariablesToFile_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiPrintVariablesToFile*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiPrintVariablesToFile_System_Runtime_InteropServices_HandleRef_System_String_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiPrintVariablesToFile(System.Runtime.InteropServices.HandleRef,System.String)">BaseApiPrintVariablesToFile(HandleRef, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BaseApiPrintVariablesToFile(HandleRef handle, string filename)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filename</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiRecognize_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiRecognize*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiRecognize_System_Runtime_InteropServices_HandleRef_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiRecognize(System.Runtime.InteropServices.HandleRef,System.Runtime.InteropServices.HandleRef)">BaseApiRecognize(HandleRef, HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BaseApiRecognize(HandleRef handle, HandleRef monitor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">monitor</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiSetDebugVariable_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiSetDebugVariable*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiSetDebugVariable_System_Runtime_InteropServices_HandleRef_System_String_System_IntPtr_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiSetDebugVariable(System.Runtime.InteropServices.HandleRef,System.String,System.IntPtr)">BaseApiSetDebugVariable(HandleRef, String, IntPtr)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BaseApiSetDebugVariable(HandleRef handle, string name, IntPtr valPtr)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td><span class="parametername">valPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiSetImage_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiSetImage*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiSetImage_System_Runtime_InteropServices_HandleRef_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiSetImage(System.Runtime.InteropServices.HandleRef,System.Runtime.InteropServices.HandleRef)">BaseApiSetImage(HandleRef, HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BaseApiSetImage(HandleRef handle, HandleRef pixHandle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">pixHandle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiSetInputName_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiSetInputName*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiSetInputName_System_Runtime_InteropServices_HandleRef_System_String_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiSetInputName(System.Runtime.InteropServices.HandleRef,System.String)">BaseApiSetInputName(HandleRef, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BaseApiSetInputName(HandleRef handle, string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseAPISetInputName_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPISetInputName*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseAPISetInputName_System_Runtime_InteropServices_HandleRef_System_String_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPISetInputName(System.Runtime.InteropServices.HandleRef,System.String)">BaseAPISetInputName(HandleRef, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BaseAPISetInputName(HandleRef handle, string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseAPISetOutputName_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPISetOutputName*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseAPISetOutputName_System_Runtime_InteropServices_HandleRef_System_String_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPISetOutputName(System.Runtime.InteropServices.HandleRef,System.String)">BaseAPISetOutputName(HandleRef, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BaseAPISetOutputName(HandleRef handle, string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseAPISetPageSegMode_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPISetPageSegMode*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseAPISetPageSegMode_System_Runtime_InteropServices_HandleRef_DynamicTesseract_PageSegMode_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseAPISetPageSegMode(System.Runtime.InteropServices.HandleRef,DynamicTesseract.PageSegMode)">BaseAPISetPageSegMode(HandleRef, PageSegMode)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BaseAPISetPageSegMode(HandleRef handle, PageSegMode mode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PageSegMode.html">PageSegMode</a></td>
+        <td><span class="parametername">mode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiSetRectangle_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiSetRectangle*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiSetRectangle_System_Runtime_InteropServices_HandleRef_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiSetRectangle(System.Runtime.InteropServices.HandleRef,System.Int32,System.Int32,System.Int32,System.Int32)">BaseApiSetRectangle(HandleRef, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BaseApiSetRectangle(HandleRef handle, int left, int top, int width, int height)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">left</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">top</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BaseApiSetVariable_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiSetVariable*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BaseApiSetVariable_System_Runtime_InteropServices_HandleRef_System_String_System_IntPtr_" data-uid="DynamicTesseract.LibTesseract5Instance.BaseApiSetVariable(System.Runtime.InteropServices.HandleRef,System.String,System.IntPtr)">BaseApiSetVariable(HandleRef, String, IntPtr)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BaseApiSetVariable(HandleRef handle, string name, IntPtr valPtr)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td><span class="parametername">valPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_BoxTextRendererCreate_" data-uid="DynamicTesseract.LibTesseract5Instance.BoxTextRendererCreate*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_BoxTextRendererCreate_System_String_" data-uid="DynamicTesseract.LibTesseract5Instance.BoxTextRendererCreate(System.String)">BoxTextRendererCreate(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr BoxTextRendererCreate(string outputbase)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">outputbase</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ChoiceIteratorDelete_" data-uid="DynamicTesseract.LibTesseract5Instance.ChoiceIteratorDelete*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ChoiceIteratorDelete_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ChoiceIteratorDelete(System.Runtime.InteropServices.HandleRef)">ChoiceIteratorDelete(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ChoiceIteratorDelete(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ChoiceIteratorGetConfidence_" data-uid="DynamicTesseract.LibTesseract5Instance.ChoiceIteratorGetConfidence*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ChoiceIteratorGetConfidence_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ChoiceIteratorGetConfidence(System.Runtime.InteropServices.HandleRef)">ChoiceIteratorGetConfidence(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float ChoiceIteratorGetConfidence(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ChoiceIteratorGetUTF8TextInternal_" data-uid="DynamicTesseract.LibTesseract5Instance.ChoiceIteratorGetUTF8TextInternal*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ChoiceIteratorGetUTF8TextInternal_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ChoiceIteratorGetUTF8TextInternal(System.Runtime.InteropServices.HandleRef)">ChoiceIteratorGetUTF8TextInternal(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr ChoiceIteratorGetUTF8TextInternal(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ChoiceIteratorNext_" data-uid="DynamicTesseract.LibTesseract5Instance.ChoiceIteratorNext*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ChoiceIteratorNext_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ChoiceIteratorNext(System.Runtime.InteropServices.HandleRef)">ChoiceIteratorNext(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ChoiceIteratorNext(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_DeleteIntArray_" data-uid="DynamicTesseract.LibTesseract5Instance.DeleteIntArray*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_DeleteIntArray_System_IntPtr_" data-uid="DynamicTesseract.LibTesseract5Instance.DeleteIntArray(System.IntPtr)">DeleteIntArray(IntPtr)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteIntArray(IntPtr arr)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td><span class="parametername">arr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_DeleteResultRenderer_" data-uid="DynamicTesseract.LibTesseract5Instance.DeleteResultRenderer*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_DeleteResultRenderer_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.DeleteResultRenderer(System.Runtime.InteropServices.HandleRef)">DeleteResultRenderer(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteResultRenderer(HandleRef renderer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">renderer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_DeleteText_" data-uid="DynamicTesseract.LibTesseract5Instance.DeleteText*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_DeleteText_System_IntPtr_" data-uid="DynamicTesseract.LibTesseract5Instance.DeleteText(System.IntPtr)">DeleteText(IntPtr)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteText(IntPtr textPtr)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td><span class="parametername">textPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_DeleteTextArray_" data-uid="DynamicTesseract.LibTesseract5Instance.DeleteTextArray*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_DeleteTextArray_System_IntPtr_" data-uid="DynamicTesseract.LibTesseract5Instance.DeleteTextArray(System.IntPtr)">DeleteTextArray(IntPtr)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteTextArray(IntPtr arr)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td><span class="parametername">arr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_GetVersion_" data-uid="DynamicTesseract.LibTesseract5Instance.GetVersion*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_GetVersion" data-uid="DynamicTesseract.LibTesseract5Instance.GetVersion">GetVersion()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetVersion()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_HOcrRendererCreate_" data-uid="DynamicTesseract.LibTesseract5Instance.HOcrRendererCreate*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_HOcrRendererCreate_System_String_" data-uid="DynamicTesseract.LibTesseract5Instance.HOcrRendererCreate(System.String)">HOcrRendererCreate(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr HOcrRendererCreate(string outputbase)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">outputbase</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_HOcrRendererCreate2_" data-uid="DynamicTesseract.LibTesseract5Instance.HOcrRendererCreate2*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_HOcrRendererCreate2_System_String_System_Int32_" data-uid="DynamicTesseract.LibTesseract5Instance.HOcrRendererCreate2(System.String,System.Int32)">HOcrRendererCreate2(String, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr HOcrRendererCreate2(string outputbase, int font_info)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">outputbase</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">font_info</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_PageIteratorBaseline_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorBaseline*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_PageIteratorBaseline_System_Runtime_InteropServices_HandleRef_DynamicTesseract_PageIteratorLevel_System_Int32__System_Int32__System_Int32__System_Int32__" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorBaseline(System.Runtime.InteropServices.HandleRef,DynamicTesseract.PageIteratorLevel,System.Int32@,System.Int32@,System.Int32@,System.Int32@)">PageIteratorBaseline(HandleRef, PageIteratorLevel, out Int32, out Int32, out Int32, out Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PageIteratorBaseline(HandleRef handle, PageIteratorLevel level, out int x1, out int y1, out int x2, out int y2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PageIteratorLevel.html">PageIteratorLevel</a></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_PageIteratorBegin_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorBegin*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_PageIteratorBegin_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorBegin(System.Runtime.InteropServices.HandleRef)">PageIteratorBegin(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PageIteratorBegin(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_PageIteratorBlockType_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorBlockType*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_PageIteratorBlockType_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorBlockType(System.Runtime.InteropServices.HandleRef)">PageIteratorBlockType(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PolyBlockType PageIteratorBlockType(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PolyBlockType.html">PolyBlockType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_PageIteratorBoundingBox_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorBoundingBox*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_PageIteratorBoundingBox_System_Runtime_InteropServices_HandleRef_DynamicTesseract_PageIteratorLevel_System_Int32__System_Int32__System_Int32__System_Int32__" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorBoundingBox(System.Runtime.InteropServices.HandleRef,DynamicTesseract.PageIteratorLevel,System.Int32@,System.Int32@,System.Int32@,System.Int32@)">PageIteratorBoundingBox(HandleRef, PageIteratorLevel, out Int32, out Int32, out Int32, out Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PageIteratorBoundingBox(HandleRef handle, PageIteratorLevel level, out int left, out int top, out int right, out int bottom)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PageIteratorLevel.html">PageIteratorLevel</a></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">left</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">top</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">right</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bottom</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_PageIteratorCopy_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorCopy*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_PageIteratorCopy_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorCopy(System.Runtime.InteropServices.HandleRef)">PageIteratorCopy(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr PageIteratorCopy(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_PageIteratorDelete_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorDelete*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_PageIteratorDelete_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorDelete(System.Runtime.InteropServices.HandleRef)">PageIteratorDelete(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PageIteratorDelete(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_PageIteratorGetBinaryImage_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorGetBinaryImage*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_PageIteratorGetBinaryImage_System_Runtime_InteropServices_HandleRef_DynamicTesseract_PageIteratorLevel_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorGetBinaryImage(System.Runtime.InteropServices.HandleRef,DynamicTesseract.PageIteratorLevel)">PageIteratorGetBinaryImage(HandleRef, PageIteratorLevel)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr PageIteratorGetBinaryImage(HandleRef handle, PageIteratorLevel level)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PageIteratorLevel.html">PageIteratorLevel</a></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_PageIteratorGetImage_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorGetImage*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_PageIteratorGetImage_System_Runtime_InteropServices_HandleRef_DynamicTesseract_PageIteratorLevel_System_Int32_System_Runtime_InteropServices_HandleRef_System_Int32__System_Int32__" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorGetImage(System.Runtime.InteropServices.HandleRef,DynamicTesseract.PageIteratorLevel,System.Int32,System.Runtime.InteropServices.HandleRef,System.Int32@,System.Int32@)">PageIteratorGetImage(HandleRef, PageIteratorLevel, Int32, HandleRef, out Int32, out Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr PageIteratorGetImage(HandleRef handle, PageIteratorLevel level, int padding, HandleRef originalImage, out int left, out int top)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PageIteratorLevel.html">PageIteratorLevel</a></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">padding</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">originalImage</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">left</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">top</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_PageIteratorIsAtBeginningOf_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorIsAtBeginningOf*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_PageIteratorIsAtBeginningOf_System_Runtime_InteropServices_HandleRef_DynamicTesseract_PageIteratorLevel_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorIsAtBeginningOf(System.Runtime.InteropServices.HandleRef,DynamicTesseract.PageIteratorLevel)">PageIteratorIsAtBeginningOf(HandleRef, PageIteratorLevel)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PageIteratorIsAtBeginningOf(HandleRef handle, PageIteratorLevel level)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PageIteratorLevel.html">PageIteratorLevel</a></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_PageIteratorIsAtFinalElement_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorIsAtFinalElement*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_PageIteratorIsAtFinalElement_System_Runtime_InteropServices_HandleRef_DynamicTesseract_PageIteratorLevel_DynamicTesseract_PageIteratorLevel_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorIsAtFinalElement(System.Runtime.InteropServices.HandleRef,DynamicTesseract.PageIteratorLevel,DynamicTesseract.PageIteratorLevel)">PageIteratorIsAtFinalElement(HandleRef, PageIteratorLevel, PageIteratorLevel)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PageIteratorIsAtFinalElement(HandleRef handle, PageIteratorLevel level, PageIteratorLevel element)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PageIteratorLevel.html">PageIteratorLevel</a></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PageIteratorLevel.html">PageIteratorLevel</a></td>
+        <td><span class="parametername">element</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_PageIteratorNext_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorNext*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_PageIteratorNext_System_Runtime_InteropServices_HandleRef_DynamicTesseract_PageIteratorLevel_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorNext(System.Runtime.InteropServices.HandleRef,DynamicTesseract.PageIteratorLevel)">PageIteratorNext(HandleRef, PageIteratorLevel)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PageIteratorNext(HandleRef handle, PageIteratorLevel level)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PageIteratorLevel.html">PageIteratorLevel</a></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_PageIteratorOrientation_" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorOrientation*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_PageIteratorOrientation_System_Runtime_InteropServices_HandleRef_DynamicTesseract_Orientation__DynamicTesseract_WritingDirection__DynamicTesseract_TextLineOrder__System_Single__" data-uid="DynamicTesseract.LibTesseract5Instance.PageIteratorOrientation(System.Runtime.InteropServices.HandleRef,DynamicTesseract.Orientation@,DynamicTesseract.WritingDirection@,DynamicTesseract.TextLineOrder@,System.Single@)">PageIteratorOrientation(HandleRef, out Orientation, out WritingDirection, out TextLineOrder, out Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PageIteratorOrientation(HandleRef handle, out Orientation orientation, out WritingDirection writing_direction, out TextLineOrder textLineOrder, out float deskew_angle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.Orientation.html">Orientation</a></td>
+        <td><span class="parametername">orientation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.WritingDirection.html">WritingDirection</a></td>
+        <td><span class="parametername">writing_direction</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.TextLineOrder.html">TextLineOrder</a></td>
+        <td><span class="parametername">textLineOrder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">deskew_angle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_PDFRendererCreate_" data-uid="DynamicTesseract.LibTesseract5Instance.PDFRendererCreate*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_PDFRendererCreate_System_String_System_IntPtr_System_Int32_" data-uid="DynamicTesseract.LibTesseract5Instance.PDFRendererCreate(System.String,System.IntPtr,System.Int32)">PDFRendererCreate(String, IntPtr, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr PDFRendererCreate(string outputbase, IntPtr datadir, int textonly)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">outputbase</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td><span class="parametername">datadir</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">textonly</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultIteratorCopy_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorCopy*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultIteratorCopy_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorCopy(System.Runtime.InteropServices.HandleRef)">ResultIteratorCopy(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr ResultIteratorCopy(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultIteratorDelete_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorDelete*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultIteratorDelete_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorDelete(System.Runtime.InteropServices.HandleRef)">ResultIteratorDelete(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ResultIteratorDelete(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultIteratorGetChoiceIterator_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorGetChoiceIterator*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultIteratorGetChoiceIterator_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorGetChoiceIterator(System.Runtime.InteropServices.HandleRef)">ResultIteratorGetChoiceIterator(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr ResultIteratorGetChoiceIterator(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultIteratorGetConfidence_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorGetConfidence*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultIteratorGetConfidence_System_Runtime_InteropServices_HandleRef_DynamicTesseract_PageIteratorLevel_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorGetConfidence(System.Runtime.InteropServices.HandleRef,DynamicTesseract.PageIteratorLevel)">ResultIteratorGetConfidence(HandleRef, PageIteratorLevel)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float ResultIteratorGetConfidence(HandleRef handle, PageIteratorLevel level)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PageIteratorLevel.html">PageIteratorLevel</a></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultIteratorGetPageIterator_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorGetPageIterator*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultIteratorGetPageIterator_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorGetPageIterator(System.Runtime.InteropServices.HandleRef)">ResultIteratorGetPageIterator(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr ResultIteratorGetPageIterator(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultIteratorGetUTF8TextInternal_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorGetUTF8TextInternal*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultIteratorGetUTF8TextInternal_System_Runtime_InteropServices_HandleRef_DynamicTesseract_PageIteratorLevel_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorGetUTF8TextInternal(System.Runtime.InteropServices.HandleRef,DynamicTesseract.PageIteratorLevel)">ResultIteratorGetUTF8TextInternal(HandleRef, PageIteratorLevel)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr ResultIteratorGetUTF8TextInternal(HandleRef handle, PageIteratorLevel level)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PageIteratorLevel.html">PageIteratorLevel</a></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultIteratorSymbolIsDropcap_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorSymbolIsDropcap*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultIteratorSymbolIsDropcap_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorSymbolIsDropcap(System.Runtime.InteropServices.HandleRef)">ResultIteratorSymbolIsDropcap(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ResultIteratorSymbolIsDropcap(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultIteratorSymbolIsSubscript_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorSymbolIsSubscript*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultIteratorSymbolIsSubscript_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorSymbolIsSubscript(System.Runtime.InteropServices.HandleRef)">ResultIteratorSymbolIsSubscript(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ResultIteratorSymbolIsSubscript(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultIteratorSymbolIsSuperscript_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorSymbolIsSuperscript*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultIteratorSymbolIsSuperscript_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorSymbolIsSuperscript(System.Runtime.InteropServices.HandleRef)">ResultIteratorSymbolIsSuperscript(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ResultIteratorSymbolIsSuperscript(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultIteratorWordFontAttributes_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorWordFontAttributes*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultIteratorWordFontAttributes_System_Runtime_InteropServices_HandleRef_System_Boolean__System_Boolean__System_Boolean__System_Boolean__System_Boolean__System_Boolean__System_Int32__System_Int32__" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorWordFontAttributes(System.Runtime.InteropServices.HandleRef,System.Boolean@,System.Boolean@,System.Boolean@,System.Boolean@,System.Boolean@,System.Boolean@,System.Int32@,System.Int32@)">ResultIteratorWordFontAttributes(HandleRef, out Boolean, out Boolean, out Boolean, out Boolean, out Boolean, out Boolean, out Int32, out Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr ResultIteratorWordFontAttributes(HandleRef handle, out bool isBold, out bool isItalic, out bool isUnderlined, out bool isMonospace, out bool isSerif, out bool isSmallCaps, out int pointSize, out int fontId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isBold</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isItalic</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isUnderlined</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isMonospace</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isSerif</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isSmallCaps</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pointSize</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">fontId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultIteratorWordIsFromDictionary_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorWordIsFromDictionary*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultIteratorWordIsFromDictionary_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorWordIsFromDictionary(System.Runtime.InteropServices.HandleRef)">ResultIteratorWordIsFromDictionary(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ResultIteratorWordIsFromDictionary(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultIteratorWordIsNumeric_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorWordIsNumeric*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultIteratorWordIsNumeric_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorWordIsNumeric(System.Runtime.InteropServices.HandleRef)">ResultIteratorWordIsNumeric(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ResultIteratorWordIsNumeric(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultIteratorWordRecognitionLanguageInternal_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorWordRecognitionLanguageInternal*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultIteratorWordRecognitionLanguageInternal_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultIteratorWordRecognitionLanguageInternal(System.Runtime.InteropServices.HandleRef)">ResultIteratorWordRecognitionLanguageInternal(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr ResultIteratorWordRecognitionLanguageInternal(HandleRef handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultRendererAddImage_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererAddImage*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultRendererAddImage_System_Runtime_InteropServices_HandleRef_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererAddImage(System.Runtime.InteropServices.HandleRef,System.Runtime.InteropServices.HandleRef)">ResultRendererAddImage(HandleRef, HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ResultRendererAddImage(HandleRef renderer, HandleRef api)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">renderer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">api</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultRendererBeginDocument_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererBeginDocument*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultRendererBeginDocument_System_Runtime_InteropServices_HandleRef_System_IntPtr_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererBeginDocument(System.Runtime.InteropServices.HandleRef,System.IntPtr)">ResultRendererBeginDocument(HandleRef, IntPtr)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ResultRendererBeginDocument(HandleRef renderer, IntPtr titlePtr)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">renderer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td><span class="parametername">titlePtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultRendererEndDocument_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererEndDocument*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultRendererEndDocument_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererEndDocument(System.Runtime.InteropServices.HandleRef)">ResultRendererEndDocument(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ResultRendererEndDocument(HandleRef renderer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">renderer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultRendererExtention_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererExtention*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultRendererExtention_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererExtention(System.Runtime.InteropServices.HandleRef)">ResultRendererExtention(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr ResultRendererExtention(HandleRef renderer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">renderer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultRendererImageNum_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererImageNum*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultRendererImageNum_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererImageNum(System.Runtime.InteropServices.HandleRef)">ResultRendererImageNum(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ResultRendererImageNum(HandleRef renderer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">renderer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultRendererInsert_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererInsert*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultRendererInsert_System_Runtime_InteropServices_HandleRef_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererInsert(System.Runtime.InteropServices.HandleRef,System.Runtime.InteropServices.HandleRef)">ResultRendererInsert(HandleRef, HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ResultRendererInsert(HandleRef renderer, HandleRef next)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">renderer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">next</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultRendererNext_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererNext*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultRendererNext_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererNext(System.Runtime.InteropServices.HandleRef)">ResultRendererNext(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr ResultRendererNext(HandleRef renderer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">renderer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_ResultRendererTitle_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererTitle*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_ResultRendererTitle_System_Runtime_InteropServices_HandleRef_" data-uid="DynamicTesseract.LibTesseract5Instance.ResultRendererTitle(System.Runtime.InteropServices.HandleRef)">ResultRendererTitle(HandleRef)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr ResultRendererTitle(HandleRef renderer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">renderer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_TessBaseAPIDetectOrientationScript_" data-uid="DynamicTesseract.LibTesseract5Instance.TessBaseAPIDetectOrientationScript*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_TessBaseAPIDetectOrientationScript_System_Runtime_InteropServices_HandleRef_System_Int32__System_Single__System_IntPtr__System_Single__" data-uid="DynamicTesseract.LibTesseract5Instance.TessBaseAPIDetectOrientationScript(System.Runtime.InteropServices.HandleRef,System.Int32@,System.Single@,System.IntPtr@,System.Single@)">TessBaseAPIDetectOrientationScript(HandleRef, out Int32, out Single, out IntPtr, out Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TessBaseAPIDetectOrientationScript(HandleRef handle, out int orient_deg, out float orient_conf, out IntPtr script_name, out float script_conf)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Runtime.InteropServices.HandleRef</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">orient_deg</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">orient_conf</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td><span class="parametername">script_name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">script_conf</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_TextRendererCreate_" data-uid="DynamicTesseract.LibTesseract5Instance.TextRendererCreate*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_TextRendererCreate_System_String_" data-uid="DynamicTesseract.LibTesseract5Instance.TextRendererCreate(System.String)">TextRendererCreate(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr TextRendererCreate(string outputbase)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">outputbase</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_LibTesseract5Instance_UnlvRendererCreate_" data-uid="DynamicTesseract.LibTesseract5Instance.UnlvRendererCreate*"></a>
+  <h4 id="DynamicTesseract_LibTesseract5Instance_UnlvRendererCreate_System_String_" data-uid="DynamicTesseract.LibTesseract5Instance.UnlvRendererCreate(System.String)">UnlvRendererCreate(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntPtr UnlvRendererCreate(string outputbase)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">outputbase</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IntPtr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="DynamicTesseract.ILibTesseract.html">ILibTesseract</a>
+  </div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronOcr/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronOcr' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>
+      
+      <div class="modal" id="trial-license">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i style="z-index: 2;" class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironocr-logo.svg');
+                              background-size: 511px; background-position: top 61px left -335px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download	.trial-license__info-content {}
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: flex-start;">
+                    <div class="trial-license__info-title">Want to deploy IronOCR to a live project for FREE?
+                    </div>
+                    <div class="trial-license__info-features">
+                      <div class="trial-license__info-features-title">What’s included?
+                      </div>
+                      <div class="trial-license__info-features-list">
+                        <div class="trial-license__info-features-single">30 days of fully-functional product
+                        </div>
+                        <div class="trial-license__info-features-single">Test and share in a live environment
+                        </div>
+                        <div class="trial-license__info-features-single">No watermarks in production
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download .trial-license__action {}
+                  }
+                </style>
+                <div class="trial-license__action" style="min-height: 400px;">
+                  <div class="trial-license__action-title">
+                    Get your free 
+                    <strong>30-day Trial Key
+                    </strong> instantly.
+                  </div>
+                  <div id="hubspot-form__form" class="hubspot-form__form-wrapper">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        region: "na1",
+                        portalId: "22630553",
+                        formId: "43eca219-1649-4e89-a2af-f0540d77df01"
+                      });
+                    </script>
+                  </div>
+                  <script>
+                  $(document).on("submit", "form", function() {
+                    if ($(this).find(":input._has_error").length === 0) {
+                      $('#trial-license').modal("hide");
+                      $('#trial-license-form-sent').modal();
+                      history.pushState("", document.title, window.location.pathname + '#trial-license-form-sent', window.location.search);
+                    }
+                  })
+      
+                  $(document).on("click", 'a[href$="#trial-license"]', function(e) {
+                    e.preventDefault();
+                    $('#trial-license').modal();
+                  })
+                  
+                    
+                  </script>
+                  <div class="trial-license__action-features">
+                    <div class="trial-license__action-features-single">No credit card or account creation required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="trial-license-form-sent">
+        <div class="modal-dialog">
+          <div class="
+                      modal-content
+                      modal-content_border-0
+                      modal-content_padding-0
+                      ">
+            <div class="modal-header">
+              <i class="slide-out-close-bold" data-dismiss="modal" aria-hidden="true" style="z-index: 2;">
+              </i>
+            </div>
+            <div class="
+                        modal-body
+                        modal-body_padding-0
+                        ">
+              <div class="
+                          trial-license
+                          trial-license_light">
+                <div class="trial-license__info">
+                  <div class="trial-license__info-img" style="
+                              background-image: url('https://ironsoftware.com/img/products/ironocr-logo.svg');
+                              background-size: 511px; background-position: top 61px left -335px;
+                              ">
+                  </div>
+                  <style>
+                    @media (min-width: 992px) {
+                      #trial-license-after-download-form-sent .trial-license__info-content {
+                        padding-top: 24px;
+                        padding-bottom: 40px;
+                        padding-left: 322px;
+                        padding-right: 83px;
+                      }
+                    }
+                  </style>
+                  <div class="trial-license__info-content" style="justify-content: center;">
+                    <div class="trial-license__info-title">Your Trial License Key has been emailed to you.
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  @media (min-width: 992px) {
+                    #trial-license-after-download-form-sent .trial-license__action {
+                      padding-top: 3px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                    }
+                  }
+                </style>
+                  <div class="trial-license__action" style="min-height: 317px; z-index: 1;">
+                    <div class="trial-license__action-title" style="margin-top: 32px;">
+                      <strong>Download IronOCR free to apply<br>your Trial Licenses Key</strong>
+                    </div>
+                    <div class="trial-license__action-buttons" style="margin-top: 16px;">
+                      <a class="trial-license__action-button trial-license__action-button_red" style="margin: 5px; width: 230px; font-size: 15px;" href="https://www.nuget.org/packages/IronOcr/" target="_blank"><i class="trial-license__action-button-icon nuget-icon-white2"></i> <span class="trial-license__action-button-text">Install with NuGet </span></a>
+                      <a class="trial-license__action-button trial-license__action-button_white" style="margin: 5px; width: 230px; font-size: 15px;" href="/csharp/ocr/licensing/"><span class="trial-license__action-button-text">View Licenses</span></a>
+                    </div>
+                    <div class="trial-license__action-description trial-license__action-description_highlighted" style="font-size: 15px;">
+                      Licenses from <a href="/csharp/ocr/licensing/">$499</a>. Have a question? <a href="#helpscout-support" onclick="return show_helpscout(event)">Get in touch</a>.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+    
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async="" defer="" src="//js.hs-scripts.com/22630553.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>
