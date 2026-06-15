@@ -321,7 +321,8 @@ $(function () {
               curHits.map(function (hit) {
                 var currentUrl = window.location.href;
                 var itemRawHref = relativeUrlToAbsoluteUrl(currentUrl, relHref + hit.href);
-                var itemHref = relHref + hit.href + "?q=" + query;
+                //var itemHref = relHref + hit.href + "?q=" + query;
+                var itemHref = relHref + hit.href;
                 var itemTitle = hit.title;
                 var itemBrief = extractContentBrief(hit.keywords);
 
