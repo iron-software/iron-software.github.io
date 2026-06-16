@@ -1,5 +1,9 @@
 from colorama import init, Fore, Style
 
+# Enable ANSI colour translation on legacy Windows consoles (no-op elsewhere). Without this the
+# escape codes print as literal garbage in cmd.exe / older PowerShell.
+init()
+
 class StatusLogger:
 
     @staticmethod

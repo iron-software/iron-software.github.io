@@ -1,15 +1,44 @@
+# /bin/env/python3
+""" apidocs.py — Shared Product Version Management Utilities
+"""
+
 import requests, json, re
 import os
+import concurrent.futures
+import xml.etree.ElementTree as ET
+from email.utils import parsedate_to_datetime
 
+# Network timeout (seconds) for registry/metadata requests — keeps a flaky endpoint from hanging.
+HTTP_TIMEOUT = 30
+
+# API Endpoint Structure for each Package Manager (NuGet, NPM, PyPi + Maven Central)
 NUGET_ENDPOINT_FORMAT = "https://api-v2v3search-0.nuget.org/query?q=packageid:{}"
-MAVEN_ENDPOINT_FORMAT = "https://search.maven.org/solrsearch/select?q=g:{groupId}+AND+a:{artifactId}&core=gav&rows=1000&wt=json"
 NPM_ENDPOINT_FORMAT = "https://registry.npmjs.org/{package_name}"
 PYPI_ENDPOINT_FORMAT = "https://pypi.org/pypi/{package_name}/json"
+# Maven Central object storage. Versions come from maven-metadata.xml; each version's release
+# date is read from the Last-Modified header of its .pom (see get_maven_package_versions).
+MAVEN_REPOSITORY_BASE = "https://repo1.maven.org/maven2"
+
+# Fully-qualified path to the `iron-product.json` file
 PRODUCTS_CATALOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "iron-products.json")
+
+# Fully-qualified path to the cache directory where all API Documentation reside post-generation.
 APIDOCS_STORAGE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "object-reference")
+
+# Reusable path template used to place generated API Documentation in their proper spots in the object-reference cache.
 APIDOCS_DESTINATION_PATH_TEMPLATE = APIDOCS_STORAGE_PATH + os.path.sep + "{}" + os.path.sep + "{}"
 
+
 def get_apidoc_path(info:dict, version_string:str) -> str:
+    """Builds the storage path for a product's API documentation
+    
+    Args:
+        info (dict): A product entry (source for iron-products.json).
+        version (str): The product's version.
+
+    Returns:
+        str: the full path to a product's versioned API Documentation directory
+    """
     destination_path = APIDOCS_DESTINATION_PATH_TEMPLATE.format(info["code"], version_string)
     return destination_path
 
@@ -17,30 +46,63 @@ def apidoc_already_exists(info:dict, version_string:str) -> bool:
     destination_path = get_apidoc_path(info, version_string)
     return os.path.exists(destination_path)
 
-def get_maven_package_versions(group_id:str, artifact_id:str) -> dict:
-    response = requests.get(url=MAVEN_ENDPOINT_FORMAT.format(groupId = group_id, artifactId = artifact_id))
-    data = response.json()
-    versions = data["response"]["docs"];
-    return versions;
+def get_maven_package_versions(group_id:str, artifact_id:str) -> list:
+    """Return the maven artifact's published versions, newest first.
+
+    Each entry is ``{"v": <version>, "timestamp": <epoch seconds>, "lastModified": <raw header>}``,
+    preserving the ``"v"`` key the rest of the tooling reads.
+
+    Args:
+        group_id (str): Artifact's group ID
+        artifact_id (str): Artifact unique ID
+    Returns:
+        list: a list of available versions for the specified artifact
+    """
+    
+    group_path = group_id.replace(".", "/")
+    artifact_base_url = f"{MAVEN_REPOSITORY_BASE}/{group_path}/{artifact_id}"
+
+    # 1. Fetch maven-metadata.xml for the full, authoritative version list.
+    metadata_response = requests.get(f"{artifact_base_url}/maven-metadata.xml", timeout=HTTP_TIMEOUT)
+    metadata_response.raise_for_status()
+    metadata_root = ET.fromstring(metadata_response.content)
+    version_strings = [el.text for el in metadata_root.findall("./versioning/versions/version") if el.text]
+
+    # 2. For each version, HEAD its .pom and read Last-Modified as the release date. The HEADs are
+    #    independent, so run them concurrently (dozens of versions × one round-trip each otherwise).
+    def resolve_version(version_string:str):
+        pom_url = f"{artifact_base_url}/{version_string}/{artifact_id}-{version_string}.pom"
+        try:
+            pom_head = requests.head(pom_url, allow_redirects=True, timeout=HTTP_TIMEOUT)
+        except requests.RequestException:
+            return None
+        if pom_head.status_code != 200:
+            return None
+        last_modified = pom_head.headers.get("Last-Modified")
+        release_timestamp = parsedate_to_datetime(last_modified).timestamp() if last_modified else 0.0
+        return {"v": version_string, "timestamp": release_timestamp, "lastModified": last_modified}
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=12) as executor:
+        versions = [entry for entry in executor.map(resolve_version, version_strings) if entry is not None]
+
+    # 3. Newest first, so callers that take [0] as the latest version stay correct.
+    versions.sort(key=lambda entry: entry["timestamp"], reverse=True)
+    return versions
 
 def get_pip_package_versions(package_name:str) -> dict:
-    response = requests.get(url=PYPI_ENDPOINT_FORMAT.format(package_name = package_name))
+    response = requests.get(url=PYPI_ENDPOINT_FORMAT.format(package_name = package_name), timeout=HTTP_TIMEOUT)
     data = response.json()
-    versions = data["releases"];
-    return versions;
-
+    return data["releases"]
 
 def get_npm_package_versions(package_name:str) -> dict:
-    response = requests.get(url=NPM_ENDPOINT_FORMAT.format(package_name = package_name))
+    response = requests.get(url=NPM_ENDPOINT_FORMAT.format(package_name = package_name), timeout=HTTP_TIMEOUT)
     data = response.json()
-    versions = data["versions"];
-    return versions;
+    return data["versions"]
 
 def get_nuget_package_versions(package:str) -> dict:
-    response = requests.get(url=NUGET_ENDPOINT_FORMAT.format(package))
+    response = requests.get(url=NUGET_ENDPOINT_FORMAT.format(package), timeout=HTTP_TIMEOUT)
     data = response.json()
-    versions = data["data"][0]["versions"];
-    return versions;
+    return data["data"][0]["versions"]
 
 def query_product_info(product_code:str, product_name:str=None) -> dict:
     selected_product=None
@@ -58,11 +120,11 @@ def query_product_info(product_code:str, product_name:str=None) -> dict:
         if selected_product is not None:
             if selected_product["packageType"] == "nuget":
                 package_versions = get_nuget_package_versions(selected_product["packageName"])
-            elif product["packageType"] == "maven":
+            elif selected_product["packageType"] == "maven":
                 package_versions = get_maven_package_versions(selected_product["groupId"], selected_product["artifactId"])
-            elif product["packageType"] == "pip":
+            elif selected_product["packageType"] == "pip":
                 package_versions = get_pip_package_versions(selected_product["packageName"])
-            elif product["packageType"] == "npm":
+            elif selected_product["packageType"] == "npm":
                 package_versions = get_npm_package_versions(selected_product["packageName"])
             
             if len(package_versions) > 0:
