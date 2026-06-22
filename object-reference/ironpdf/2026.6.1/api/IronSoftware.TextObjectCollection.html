@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TextObjectCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextObjectCollection Class - IronPDF C# API Reference
+      v2 (human)     title:       TextObjectCollection: PdfPage TextChunks Type in C#
+      v1 (algorithm) description: TextObjectCollection is the IronPDF C# class behind PdfPage.TextChunks and PdfPage.Lines. Reference Add, Remove, IsReadOnly, Items, ToJson.
+      v2 (human)     description: Read and edit PDF text collections in C# with IronPDF TextObjectCollection. Observable IList<TextObject> returned from PdfPage.TextChunks.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextObjectCollection | IronPDF C# PDF Text Collection</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TextObjectCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="TextObjectCollection | IronPDF C# PDF Text Collection">
+    <meta name="description" content="Reference for IronPDF TextObjectCollection in C#: concrete observable implementor of IPdfTextObjectCollection returned from PdfPage.TextChunks.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextObjectCollection | IronPDF C# PDF Text Collection",
+    "name": "TextObjectCollection class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.TextObjectCollection.html",
+    "abstract": "TextObjectCollection in IronPDF presents the per-run or per-line text surface of a PDF page as a concrete observable IList<TextObject> returned at runtime from PdfPage.TextChunks and PdfPage.Lines. Declared members are the IsReadOnly flag, the Items list reference, the typed Add, Remove, RemoveAt, and Clear mutators, an overridden GetHashCode, and ToJson. The inherited Count, indexer, Move, Insert, IndexOf, and CollectionChanged event come from ObservableCollection<TextObject>. Paired with IPdfTextObjectCollection (interface) and TextObject (element) in the IronPDF read-side PDF DOM collection family.",
+    "description": "Reference for IronPDF TextObjectCollection in C#: concrete observable implementor of IPdfTextObjectCollection returned from PdfPage.TextChunks.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Pages;\nusing IronSoftware;\n\nPdfDocument pdf = PdfDocument.FromFile(\"invoice.pdf\");\n\nforeach (PdfPage page in pdf.Pages)\n{\n    // PdfPage.TextChunks is typed IPdfTextObjectCollection.\n    IPdfTextObjectCollection chunks = page.TextChunks;\n\n    foreach (TextObject run in chunks)\n    {\n        System.Console.WriteLine(\n            $\"Page {run.PageIndex}: \\\"{run.Contents}\\\" at {run.BoundingBox}\");\n    }\n\n    // Cast to the concrete TextObjectCollection only when collection-edit\n    // or CollectionChanged observation is required.\n    if (chunks is TextObjectCollection concrete && !concrete.IsReadOnly)\n    {\n        int runCount = concrete.Count;\n        // concrete.CollectionChanged += (s, e) => { ... };\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain TextObjectCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextObjectCollection is in the IronSoftware namespace, shipped in IronPdf.dll. It derives from System.Collections.ObjectModel.ObservableCollection<TextObject> and implements IPdfTextObjectCollection, IDocumentTextObjectCollection<TextObject>, IList<TextObject>, ICollection<TextObject>, IEnumerable<TextObject>, and IJsonSerializable. It is the concrete type returned at runtime from PdfPage.TextChunks and PdfPage.Lines."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between TextObjectCollection, IPdfTextObjectCollection, and TextObject?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextObjectCollection, IPdfTextObjectCollection, and TextObject sit at three distinct layers of the IronPDF text DOM. IPdfTextObjectCollection is the interface in the IronSoftware namespace that the IronPDF API exposes as the return type of PdfPage.TextChunks and PdfPage.Lines. TextObjectCollection is the concrete class in the IronSoftware namespace that implements IPdfTextObjectCollection by deriving from ObservableCollection<TextObject>; it is the runtime type behind the interface. TextObject is the element type that each entry of the collection holds and represents one text run with Contents, BoundingBox, PageIndex, FontSize, and typography. When PdfPage.Lines is the source, the same TextObjectCollection holds LineTextObject instances, which derive from TextObject and represent one visual line each."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is a cast needed to use TextObjectCollection from PdfPage.TextChunks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfPage.TextChunks and PdfPage.Lines are both statically typed as IPdfTextObjectCollection on the PdfPage reference. The interface exposes the IList<TextObject> surface (Count, indexer, Add, Remove, Clear, GetEnumerator, IsReadOnly, IJsonSerializable.ToJson) and is sufficient for read-side enumeration and for typed mutation. A cast to the concrete TextObjectCollection is required when the calling code needs the ObservableCollection<TextObject> surface, in particular the CollectionChanged event for INotifyCollectionChanged observation, the Move method for index reordering, or direct assignment to the Items property to swap the underlying storage. The runtime type returned by IronPDF is TextObjectCollection in the current release, so the cast is documented behavior."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you observe live changes to a PDF page's text collection in a WPF or MAUI client?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cast the IPdfTextObjectCollection returned from PdfPage.TextChunks (or PdfPage.Lines) to the concrete TextObjectCollection, then subscribe to the CollectionChanged event that TextObjectCollection inherits from ObservableCollection<TextObject>. The event raises on Add, Remove, Move, and Replace operations performed through the typed mutators, which makes the collection bindable to any view layer that consumes INotifyCollectionChanged (WPF ItemsControl, MAUI CollectionView, Avalonia ItemsRepeater). PdfDocument is IDisposable and should be disposed after the binding scope ends. Mutations to the collection do not by themselves write back to the on-disk PDF; persist changes through the usual PdfDocument save methods."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -160,6 +231,39 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TextObjectCollection : ObservableCollection&lt;TextObject&gt;, IPdfTextObjectCollection, IDocumentTextObjectCollection&lt;TextObject&gt;, IEnumerable&lt;TextObject&gt;, IEnumerable, IList&lt;TextObject&gt;, ICollection&lt;TextObject&gt;, IJsonSerializable</code></pre>
   </div>
+                    <!-- archetype-N:start TextObjectCollection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>The per-run or per-line text surface of a PDF page arrives at runtime as <code>TextObjectCollection</code>, the concrete observable list IronPDF returns. It is the observable <code>IList&lt;TextObject&gt;</code> you enumerate to walk every text run and bind to a UI through <code>INotifyCollectionChanged</code>. The observable base supplies the <code>CollectionChanged</code> event and the standard list surface, while <code>TextObjectCollection</code> itself declares the typed mutation methods, the <code>IsReadOnly</code> flag, the raw <code>Items</code> reference, and a <code>ToJson()</code> serializer.</p>
+<p><code>TextObjectCollection</code> is the runtime type a caller works with when reading PDF text through the IronPDF DOM, classifying or filtering text runs by position and typography, or observing live changes to a page's text content in a UI that binds to <code>INotifyCollectionChanged</code>. The reference page documents no public constructor; the page model produces instances through <code>IronPdf.Pages.PdfPage.TextChunks</code> (one element per text run, typed <code>TextObject</code>) and <code>IronPdf.Pages.PdfPage.Lines</code> (one element per visual line, typed <code>LineTextObject</code> which derives from <code>TextObject</code>).</p>
+<p>To obtain a <code>TextObjectCollection</code>, open a <code>PdfDocument</code>, walk <code>PdfDocument.Pages</code> (typed <code>PdfPagesCollection</code>), and read <code>PdfPage.TextChunks</code> or <code>PdfPage.Lines</code>. Both properties are statically typed as <code>IPdfTextObjectCollection</code>, so consuming code reads through the interface contract by default and casts to <code>TextObjectCollection</code> only when collection-edit or change-observation members are required. The members declared on <code>TextObjectCollection</code> itself group into mutation (<code>Add(TextObject)</code>, <code>Remove(TextObject)</code>, <code>RemoveAt(int)</code>, <code>Clear()</code>), state (<code>IsReadOnly</code> is read-only on this type), storage (<code>Items</code> is the underlying <code>IList&lt;TextObject&gt;</code> reference, get-and-set), and serialization (<code>ToJson()</code> returns a string). The inherited <code>Count</code>, indexer, <code>Move</code>, <code>Insert</code>, <code>IndexOf</code>, and the <code>CollectionChanged</code> event come from <code>ObservableCollection&lt;TextObject&gt;</code> and carry most of the everyday read use. The <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a> puts this collection to work in a complete extraction task.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Pages;
+using IronSoftware;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+
+foreach (PdfPage page in pdf.Pages)
+{
+    // PdfPage.TextChunks is typed IPdfTextObjectCollection.
+    IPdfTextObjectCollection chunks = page.TextChunks;
+
+    foreach (TextObject run in chunks)
+    {
+        System.Console.WriteLine(
+            $&quot;Page {run.PageIndex}: \&quot;{run.Contents}\&quot; at {run.BoundingBox}&quot;);
+    }
+
+    // Cast to the concrete TextObjectCollection only when collection-edit
+    // or CollectionChanged observation is required.
+    if (chunks is TextObjectCollection concrete &amp;&amp; !concrete.IsReadOnly)
+    {
+        int runCount = concrete.Count;
+        // concrete.CollectionChanged += (s, e) =&gt; { ... };
+    }
+}</code></pre></div>
+<p>The <a href="https://ironpdf.com/how-to/access-pdf-dom-object/">access PDF DOM object how-to</a> reaches the parallel <code>ImageObjectCollection</code> and <code>PathObjectCollection</code> containers from the same page model. To edit text in place rather than reading the DOM collection, reach for the <a href="https://ironpdf.com/how-to/find-replace-text/">find and replace text in PDF how-to</a> and its <code>ReplaceTextOnAllPages</code> and <code>ReplaceTextOnPage</code> examples.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

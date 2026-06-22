@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CsvExportOptions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       CsvExportOptions Class - IronPDF C# API Reference
+      v2 (human)     title:       CsvExportOptions: Export PDF Tables to CSV in C#
+      v1 (algorithm) description: CsvExportOptions is the IronPDF C# class for ExportManager.ExportTable: CsvDelimiter, CsvQuoteStrings, CsvNewlineReplacement, plus inherited row-shape settings.
+      v2 (human)     description: Configure CSV output from IronPDF table extraction in C#: set delimiter, quoting, newline replacement, headers, empty rows, span mode, and encoding.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>CsvExportOptions Class | IronPDF C# Extractions</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CsvExportOptions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="CsvExportOptions Class | IronPDF C# Extractions">
+    <meta name="description" content="IronPDF CsvExportOptions in C#: extends ExportOptionsBase with CsvDelimiter, CsvQuoteStrings, and CsvNewlineReplacement for ExportManager CSV output.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "CsvExportOptions Class | IronPDF C# Extractions",
+    "name": "CsvExportOptions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.CsvExportOptions.html",
+    "abstract": "CsvExportOptions controls how ExportManager.ExportTable and ExportManager.ExportTables write extracted PDF tables to comma-separated value files from C# in IronPDF. It exposes CsvDelimiter, CsvQuoteStrings, and CsvNewlineReplacement on top of the inherited IncludeHeaders, IncludeEmptyRows, SpanMode, and TextEncoding row-shape properties. Instantiate with the parameterless constructor and pass to ExportManager, or assign to ExportConfiguration.TableOptions for the higher-level ExportResult pipeline.",
+    "description": "IronPDF CsvExportOptions in C#: extends ExportOptionsBase with CsvDelimiter, CsvQuoteStrings, and CsvNewlineReplacement for ExportManager CSV output.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Extractions;\nusing System.Text;\n\nvar extractor = new PdfExtractor();\nPdfExtractionResult result = extractor.Extract(\"invoice.pdf\");\n\nvar options = new CsvExportOptions\n{\n    CsvDelimiter          = \",\",\n    CsvQuoteStrings       = true,\n    CsvNewlineReplacement = \" \",\n    IncludeHeaders        = true,\n    IncludeEmptyRows      = false,\n    TextEncoding          = Encoding.UTF8\n};\n\n// Export a single extracted table to a CSV file.\nExportManager.ExportTable(result.Tables[0], \"line-items.csv\", options);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is CsvExportOptions located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CsvExportOptions is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It derives from ExportOptionsBase. Instantiate it with the parameterless constructor and pass it to ExportManager.ExportTable or ExportTables, or assign it to ExportConfiguration.TableOptions for the higher-level ExportResult pipeline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should you use CsvExportOptions instead of HtmlExportOptions, JsonExportOptions, TxtExportOptions, or XmlExportOptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All five classes derive from ExportOptionsBase and feed the same ExportManager methods, but each targets one file format. Pick CsvExportOptions when the receiving system is a spreadsheet, a SQL bulk loader, a pandas or R data frame, or any consumer that expects RFC 4180-style comma-separated values. Pick HtmlExportOptions when the output is rendered in a browser or embedded in an email. Pick JsonExportOptions for REST APIs, document stores, or JavaScript clients that need typed values. Pick TxtExportOptions for plain text dumps used by search indexers, log pipelines, or downstream regex parsers. Pick XmlExportOptions when the consumer is an XSLT transform, a SOAP service, or a schema-validated archive format. The choice is driven by the downstream consumer, not by the PDF source."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do extracted CSV files break in Excel or Google Sheets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Two settings on CsvExportOptions account for most spreadsheet ingestion failures. CsvDelimiter defaults to a comma, which is correct for English locales and RFC 4180, but European Excel installations expect a semicolon and will load comma-separated files into a single column. Set CsvDelimiter to a semicolon for those locales. CsvNewlineReplacement controls how line breaks inside a source PDF cell are written to CSV. The default replacement is a single space so that the embedded newline does not start a new row in the consumer; leaving the default unchanged is usually correct. Combining a tab CsvDelimiter with CsvQuoteStrings set to true produces a tab-separated file that survives copy-paste into either spreadsheet without locale tuning."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you export an extracted PDF table to CSV?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Run PdfExtractor.Extract on the source PDF to obtain a PdfExtractionResult, instantiate CsvExportOptions and assign CsvDelimiter, CsvQuoteStrings, CsvNewlineReplacement, plus the inherited IncludeHeaders, IncludeEmptyRows, SpanMode, and TextEncoding to taste, then call the static ExportManager.ExportTable with the chosen TableObject from result.Tables, an output file path, and the options instance. ExportManager.ExportTables takes a List of TableObject and writes them to one or more CSV files depending on the configuration. The format-enum overload ExportTable with ExportFormat.Csv writes a CSV file with default settings when no per-format tuning is needed."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -179,20 +250,33 @@ IncludeHeaders = true
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class CsvExportOptions : ExportOptionsBase</code></pre>
   </div>
-  <h5 id="IronPdf_Extractions_CsvExportOptions_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p><strong>Important Considerations:</strong></p>
-<p>
-<p><strong>Delimiter Choice:</strong> Common delimiters include comma (,), semicolon (;), and tab (\t).</p>
-</p>
-<p>
-<p><strong>Note:</strong> CSV delimiter and quoting options affect how data is interpreted by spreadsheet applications.</p>
-</p>
-<strong>Related Documentation:</strong>
-<p>
-<p><strong>How-To Guide:</strong>
-<a href="https://ironpdf.com/how-to/export-extracted-pdf-data/">CSV Export Guide</a></p>
-</p>
-</div>
+                    <!-- archetype-N:start CsvExportOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Use <code>CsvExportOptions</code> to control how <code>ExportManager.ExportTable</code> and <code>ExportManager.ExportTables</code> write extracted PDF tables to comma-separated value files. It exposes a parameterless constructor plus three CSV-format properties that control delimiter character, embedded-newline handling, and quoting, on top of the four row-shape properties inherited from the base class.</p>
+<p>Use <code>CsvExportOptions</code> when an extraction pipeline calls <code>ExportManager</code> against a <code>TableObject</code> or a list of tables and the output target is a spreadsheet, an analytics warehouse loader, or any tool that expects RFC 4180-style CSV. Typical cases include invoice line-item extraction, financial statement table capture, and scheduled batch jobs that turn tabular PDF reports into ingestible flat files. Pick <code>CsvExportOptions</code> when the receiving system reads CSV; pick <code>HtmlExportOptions</code>, <code>JsonExportOptions</code>, <code>TxtExportOptions</code>, or <code>XmlExportOptions</code> for those respective output formats. The disambiguation FAQ below covers the criteria.</p>
+<p>The constructor takes no arguments, and configuration is by property assignment. <code>CsvDelimiter</code> is the cell separator character with default <code>&quot;,&quot;</code>; set it to <code>&quot;;&quot;</code> for European spreadsheet locales or <code>&quot;\t&quot;</code> for tab-separated output. <code>CsvQuoteStrings</code> (default <code>true</code>) wraps string cells in quotation marks so embedded delimiters and whitespace survive round-tripping; turning it off produces smaller files at the cost of fragility. <code>CsvNewlineReplacement</code> (default <code>&quot; &quot;</code>) is the substitution applied inside cells that contain line breaks in the source PDF, preventing those breaks from being interpreted as row terminators by the consumer. Four inherited properties from <code>ExportOptionsBase</code> shape the rows themselves: <code>IncludeHeaders</code> decides whether the first row carries column labels, <code>IncludeEmptyRows</code> retains or drops blank rows from the extracted table, <code>SpanMode</code> controls how merged-cell spans are flattened, and <code>TextEncoding</code> sets the byte encoding of the written file (defaults to UTF-8 for cross-platform consumers).</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Extractions;
+using System.Text;
+
+var extractor = new PdfExtractor();
+PdfExtractionResult result = extractor.Extract(&quot;invoice.pdf&quot;);
+
+var options = new CsvExportOptions
+{
+    CsvDelimiter          = &quot;,&quot;,
+    CsvQuoteStrings       = true,
+    CsvNewlineReplacement = &quot; &quot;,
+    IncludeHeaders        = true,
+    IncludeEmptyRows      = false,
+    TextEncoding          = Encoding.UTF8
+};
+
+// Export a single extracted table to a CSV file.
+ExportManager.ExportTable(result.Tables[0], &quot;line-items.csv&quot;, options);</code></pre></div>
+<p>The <code>TableObject</code> inputs to this pipeline come from the table-extraction step in the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a>. The full export surface, including the <code>ExportConfiguration.TableOptions</code> slot where a <code>CsvExportOptions</code> instance is consumed by <code>ExportManager.ExportResult</code>, is documented on the <a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.ExportManager.html">ExportManager reference page</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

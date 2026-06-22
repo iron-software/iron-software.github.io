@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfFreeTextAnnotation
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfFreeTextAnnotation Class | IronPDF C# API
+      v2 (human)     title:       PdfFreeTextAnnotation: Read PDF Free-Text Notes in C#
+      v1 (algorithm) description: PdfFreeTextAnnotation is the IronPDF C# class for read-side free-text PDF annotations. Members Appearance, Contents, Rectangle, Color, Hidden, Name, Type.
+      v2 (human)     description: Read always-visible free-text PDF annotations in C# through the IronPDF PdfFreeTextAnnotation class returned by PdfDocument.GetAnnotations.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfFreeTextAnnotation Class | IronPDF Annotations</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfFreeTextAnnotation
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfFreeTextAnnotation Class | IronPDF Annotations">
+    <meta name="description" content="PdfFreeTextAnnotation in IronPDF C#: read-side annotation class derived from PdfAnnotation. Returned by PdfDocument.GetAnnotations. Property reference and example.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfFreeTextAnnotation Class | IronPDF Annotations",
+    "name": "PdfFreeTextAnnotation class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Annotations.PdfFreeTextAnnotation.html",
+    "abstract": "PdfFreeTextAnnotation in IronPDF is the read-side handle for the always-visible free-text notes on a loaded PDF. Instances are typically returned from PdfDocument.GetAnnotations as List of PdfAnnotation and recovered through a pattern-match. The class adds the get-only Appearance string and inherits Contents, Rectangle, Color, Hidden, Name, and Type from PdfAnnotation. Sibling read-side types are PdfTextAnnotation for sticky-note style markup and PdfLinkAnnotation for clickable regions.",
+    "description": "PdfFreeTextAnnotation in IronPDF C#: read-side annotation class derived from PdfAnnotation. Returned by PdfDocument.GetAnnotations. Property reference and example.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Annotations;\n\nvar pdf = PdfDocument.FromFile(\"contract-with-notes.pdf\");\n\n// Read-side enumeration: GetAnnotations returns List<PdfAnnotation>.\n// Pattern-match to recover the PdfFreeTextAnnotation variant.\nList<PdfAnnotation> page1Annotations = pdf.GetAnnotations(pageIndex: 0);\n\nforeach (var annotation in page1Annotations)\n{\n    if (annotation is PdfFreeTextAnnotation freeText)\n    {\n        Console.WriteLine($\"Free-text note: {freeText.Contents}\");\n        Console.WriteLine($\"  Placement: {freeText.Rectangle}\");\n        Console.WriteLine($\"  Appearance: {freeText.Appearance}\");\n        Console.WriteLine($\"  Hidden in viewer: {freeText.Hidden}\");\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain PdfFreeTextAnnotation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfFreeTextAnnotation is in the IronPdf.Annotations namespace, shipped in IronPdf.dll. It is declared public class PdfFreeTextAnnotation : PdfAnnotation, so it derives from the abstract base PdfAnnotation. Instances are typically obtained by enumerating PdfDocument.GetAnnotations(pageIndex) and pattern-matching the result rather than constructed directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfFreeTextAnnotation, PdfTextAnnotation, and TextAnnotation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfFreeTextAnnotation and PdfTextAnnotation are both read-side classes that derive from the abstract PdfAnnotation. PdfFreeTextAnnotation represents a free-text annotation whose body is painted directly onto the page and stays visible at all times, suitable for callouts, redaction labels, and inline review notes. PdfTextAnnotation represents a sticky-note annotation that appears as a small icon and expands to show the text only when the viewer hovers or clicks it. TextAnnotation is a different type entirely: it is the write-side class in the IronPdf.Annotations namespace that implements IAnnotation and is attached to a document through pdf.Annotations.Add. Use TextAnnotation to author new sticky-note annotations and PdfFreeTextAnnotation to read existing free-text annotations off a loaded PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is Appearance get-only on PdfFreeTextAnnotation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Appearance is declared as a get-only string and holds the PDF default-appearance entry that encodes font, size, and color in the PDF appearance syntax. The value is supplied through the six-argument constructor that accepts a Rectangle, Color, name, contents, appearance, and hidden flag, then exposed as a read-only property. Application code that enumerates annotations through PdfDocument.GetAnnotations sees the appearance string as authored by the original PDF or upstream tooling. The Type property on the inherited PdfAnnotation surface reports the annotation kind through a PdfAnnotationType value and is the canonical filter key when scanning a mixed page of annotations for the free-text variant."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read free-text annotations from an existing PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Load the document through one of the PdfDocument constructors, then call pdf.GetAnnotations(pageIndex) for each page of interest. The method returns a List of PdfAnnotation, so iterate the list and use a pattern-match such as 'if (annotation is PdfFreeTextAnnotation freeText)' to recover the free-text variants. The Contents property holds the visible body text, Rectangle the placement, Appearance the PDF default-appearance string, and Hidden whether viewers should render the annotation. PdfDocument.GetAnnotations is the read-side counterpart to pdf.Annotations.Add, which accepts write-side IAnnotation implementors such as TextAnnotation and LinkAnnotation."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -172,6 +243,33 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfFreeTextAnnotation : PdfAnnotation</code></pre>
   </div>
+                  <!-- archetype-N:start PdfFreeTextAnnotation treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a loaded PDF carries always-visible free-text notes, the kind that paint their text directly on the page rather than collapsing to a clickable icon, each one is read back as a <code>PdfFreeTextAnnotation</code>. It is one of three concrete subclasses in the read-side <code>PdfAnnotation</code> hierarchy (alongside <code>PdfTextAnnotation</code> for sticky-note style markup and <code>PdfLinkAnnotation</code> for clickable regions). Instances of this class are typically returned from <code>PdfDocument.GetAnnotations(int pageIndex)</code> rather than constructed in user code.</p>
+<p>Free-text annotations appear whenever a PDF carries text that should remain visible on the page without user interaction: callouts, redaction labels, form watermarks, review comments authored in viewers such as Adobe Acrobat, and headers added by upstream PDF tooling. Application code reaches for <code>PdfFreeTextAnnotation</code> when inspecting an existing document for these inline notes, filtering by author or position, exporting their contents to a review system, or rewriting a document while preserving its annotation layer. Where these notes come from on the authoring side is traced in the <a href="https://ironpdf.com/how-to/annotations/">annotations how-to</a>.</p>
+<p>The visible body of the annotation is exposed through the inherited <code>Contents</code> property. The class adds one own member, <code>Appearance</code>, which is a get-only string holding the PDF default-appearance entry (font, size, and color encoded in the PDF appearance syntax) and is set through the six-argument constructor at construction time. The inherited <code>Rectangle</code> controls page placement, <code>Color</code> controls the surrounding fill, <code>Hidden</code> toggles viewer visibility, <code>Name</code> is the annotation identifier, and <code>Type</code> reports the annotation kind through a <code>PdfAnnotationType</code> value. To pull every free-text note off a page, enumerate the list returned by <code>GetAnnotations</code> and pattern-match against this class.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Annotations;
+
+var pdf = PdfDocument.FromFile(&quot;contract-with-notes.pdf&quot;);
+
+// Read-side enumeration: GetAnnotations returns List&lt;PdfAnnotation&gt;.
+// Pattern-match to recover the PdfFreeTextAnnotation variant.
+List&lt;PdfAnnotation&gt; page1Annotations = pdf.GetAnnotations(pageIndex: 0);
+
+foreach (var annotation in page1Annotations)
+{
+    if (annotation is PdfFreeTextAnnotation freeText)
+    {
+        Console.WriteLine($&quot;Free-text note: {freeText.Contents}&quot;);
+        Console.WriteLine($&quot;  Placement: {freeText.Rectangle}&quot;);
+        Console.WriteLine($&quot;  Appearance: {freeText.Appearance}&quot;);
+        Console.WriteLine($&quot;  Hidden in viewer: {freeText.Hidden}&quot;);
+    }
+}</code></pre></div>
+<p>A runnable project that exercises this surface is the <a href="https://ironpdf.com/examples/annotations/">annotations example</a>. For the related read-side types, consult the <a href="https://ironpdf.com/object-reference/api/IronPdf.Annotations.PdfAnnotation.html"><code>PdfAnnotation</code></a> abstract base and the sibling <a href="https://ironpdf.com/object-reference/api/IronPdf.Annotations.PdfTextAnnotation.html"><code>PdfTextAnnotation</code></a> reference.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

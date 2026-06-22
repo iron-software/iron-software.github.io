@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfDocumentExtensions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfDocumentExtensions Class - IronPDF C# API Reference
+      v2 (human)     title:       PdfDocumentExtensions: IDocumentId to PdfDocument in C#
+      v1 (algorithm) description: PdfDocumentExtensions is the IronPDF C# static class whose ToDocument extension method converts an IDocumentId handle into a full local PdfDocument.
+      v2 (human)     description: Materialise a remote IronPdfEngine IDocumentId handle into a local PdfDocument in C# using the IronPDF PdfDocumentExtensions.ToDocument extension method.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfDocumentExtensions | IronPDF C# ToDocument Extension</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfDocumentExtensions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfDocumentExtensions | IronPDF C# ToDocument Extension">
+    <meta name="description" content="Reference for IronPDF PdfDocumentExtensions in C#: static ToDocument extension on IDocumentId returning PdfDocument, with optional user and owner passwords.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfDocumentExtensions | IronPDF C# ToDocument Extension",
+    "name": "PdfDocumentExtensions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.PdfDocumentExtensions.html",
+    "abstract": "PdfDocumentExtensions in IronPDF materialises a remote IronPdfEngine IDocumentId handle into a fully featured local PdfDocument through its one C# extension method, ToDocument, on the IronSoftware.Abstractions.Pdf.IDocumentId interface. The method signature is public static PdfDocument ToDocument(this IDocumentId id, string Password = \"\", string OwnerPassword = \"\"), and it materialises a lightweight IronPdfEngine document handle into a fully featured IronPdf.PdfDocument that can be saved, stamped, extracted from, or signed. The optional Password and OwnerPassword parameters unlock encrypted source PDFs. A failed conversion raises System.InvalidCastException. The canonical idiom is the extension-method call id.ToDocument(...), which is the bridge between the remote IronPdfEngine gRPC layer and the local IronPDF object model.",
+    "description": "Reference for IronPDF PdfDocumentExtensions in C#: static ToDocument extension on IDocumentId returning PdfDocument, with optional user and owner passwords.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware.Abstractions.Pdf;\n\n// A render or import call against the remote IronPdfEngine returns a handle.\nIDocumentId handle = remoteRenderer.RenderHtmlAsPdf(html);\n\n// Materialise that handle into a full local PdfDocument via the extension.\n// Pass the user and owner passwords only when the source PDF is encrypted.\nusing PdfDocument pdf = handle.ToDocument(Password: \"user-pwd\",\n                                          OwnerPassword: \"owner-pwd\");\npdf.SaveAs(\"materialised.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PdfDocumentExtensions live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfDocumentExtensions is in the IronPdf namespace, shipped in IronPdf.dll. It is declared public static class PdfDocumentExtensions. As a static class it is never instantiated; its single ToDocument method is called through C# extension-method syntax on any value implementing IronSoftware.Abstractions.Pdf.IDocumentId, which is how a remote IronPdfEngine handle becomes a local PdfDocument."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does PdfDocumentExtensions.ToDocument throw when conversion fails?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It throws System.InvalidCastException. This happens when the IDocumentId value passed to the extension is not an IronPDF-owned handle, for example when a foreign implementation of the IronSoftware.Abstractions.Pdf.IDocumentId interface is passed in or when the handle has already been disposed on the IronPdfEngine side. The returned PdfDocument is otherwise a normal managed instance that implements IDisposable and must be disposed by the caller."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you use PdfDocumentExtensions with IronPdfEngine over gRPC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Install the IronPdf.Slim NuGet package, connect at startup with Installation.ConnectToIronPdfHost using an IronPdfConnectionConfiguration.RemoteServer address, and perform render or import operations against the remote engine. Those operations return an IDocumentId handle rather than the full PDF binary. When the client needs to save, stamp, sign, or extract from the document, call ToDocument on the handle to pull the binary across the gRPC channel and produce a local PdfDocument. Wrap the result in a using statement so it is disposed when the client is finished."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you materialise an encrypted PdfDocument from an IDocumentId in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pass the user password as the Password argument and, if the source has a separate owner password, the owner password as the OwnerPassword argument. Both parameters default to the empty string, so they are only supplied when the underlying PDF is encrypted. The extension call id.ToDocument(Password: \"user-pwd\", OwnerPassword: \"owner-pwd\") returns a fully unlocked PdfDocument that can then be saved unencrypted, re-encrypted with new credentials through PdfSecuritySettings, or processed normally."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +221,25 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class PdfDocumentExtensions : Object</code></pre>
   </div>
+                <!-- archetype-N:start PdfDocumentExtensions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Turning a remote-engine <code>IDocumentId</code> reference into a fully materialised <code>IronPdf.PdfDocument</code> is the job of <code>PdfDocumentExtensions</code>. As a static class it is never instantiated and is rarely referenced by name in user code; its single method is called through the C# extension-method syntax on any value whose type implements <code>IronSoftware.Abstractions.Pdf.IDocumentId</code>.</p>
+<p>The intended use is the remote-engine round trip. IronPdfEngine keeps in-progress PDF binaries on the server and hands clients back a lightweight <code>IDocumentId</code> handle over gRPC, exactly as described in the <a href="https://ironpdf.com/get-started/ironpdfengine/">native vs remote engine guide</a>. When the client needs the actual bytes, the page tables, the annotations, or any other on-document API, calling <code>ToDocument</code> on the handle materialises the binary into a local <code>PdfDocument</code> instance ready for <code>SaveAs</code>, extraction, stamping, or signing. The same call also accepts user and owner passwords so an encrypted source can be unlocked at materialisation time.</p>
+<p>The class exposes one method, verified on the live reference page: <code>public static PdfDocument ToDocument(this IDocumentId id, string Password = &quot;&quot;, string OwnerPassword = &quot;&quot;)</code>. The first parameter is the extension target and is bound through <code>this</code>, so the canonical call site reads <code>id.ToDocument(...)</code> rather than the qualified form <code>PdfDocumentExtensions.ToDocument(id, ...)</code>. Both passwords default to the empty string and are needed only when the underlying PDF was encrypted. The return value is a fresh <code>PdfDocument</code> that the caller owns and is responsible for disposing. A failed conversion throws <code>System.InvalidCastException</code>; the <a href="https://ironpdf.com/get-started/installation-overview/">installation overview</a> covers the <code>IronPdf.Slim</code> package setup that pairs this method with IronPdfEngine.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware.Abstractions.Pdf;
+
+// A render or import call against the remote IronPdfEngine returns a handle.
+IDocumentId handle = remoteRenderer.RenderHtmlAsPdf(html);
+
+// Materialise that handle into a full local PdfDocument via the extension.
+// Pass the user and owner passwords only when the source PDF is encrypted.
+using PdfDocument pdf = handle.ToDocument(Password: &quot;user-pwd&quot;,
+                                          OwnerPassword: &quot;owner-pwd&quot;);
+pdf.SaveAs(&quot;materialised.pdf&quot;);</code></pre></div>
+<p>To stand up the engine that produces these handles, the <a href="https://ironpdf.com/get-started/ironpdfengine-docker/">remote container guide</a> shows how the container publishes its gRPC endpoint.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

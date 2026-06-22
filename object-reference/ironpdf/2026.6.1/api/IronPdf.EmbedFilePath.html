@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class EmbedFilePath
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       EmbedFilePath Class - IronPDF C# API Reference
+      v2 (human)     title:       EmbedFilePath: Embed Files in PDF/A-3 with C#
+      v1 (algorithm) description: EmbedFilePath is the IronPDF C# class for embedding an on-disk file in a PDF/A-3 document. Pairs a path with EmbedFileConfiguration for SaveAsPdfA.
+      v2 (human)     description: Embed an XML invoice or source file from disk in a PDF/A-3 document with IronPDF EmbedFilePath in C#. Used for ZUGFeRD and Factur-X workflows.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>EmbedFilePath | IronPDF C# PDF/A-3 Attachments</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class EmbedFilePath
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="EmbedFilePath | IronPDF C# PDF/A-3 Attachments">
+    <meta name="description" content="Reference for IronPDF EmbedFilePath in C#: FilePath plus EmbedFileConfiguration, consumed by PdfDocument.SaveAsPdfA with PdfAVersions.PdfA3b.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "EmbedFilePath | IronPDF C# PDF/A-3 Attachments",
+    "name": "EmbedFilePath class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.EmbedFilePath.html",
+    "abstract": "Embedding a file from disk inside a PDF/A-3 document from C# in IronPDF is the job of EmbedFilePath, the file-path input variant of the embedded-file triad alongside EmbedFileByte and EmbedFileStream. Constructed as EmbedFilePath(string FilePath, EmbedFileConfiguration EmbedFileConfiguration), it pairs an on-disk source path with the per-file metadata that PDF/A-3 requires. A collection of EmbedFilePath values is passed to PdfDocument.SaveAsPdfA or PdfDocument.ConvertToPdfA with PdfAVersions.PdfA3b to produce a PDF/A-3b document containing the embedded payload, the common shape for ZUGFeRD and Factur-X e-invoicing.",
+    "description": "Reference for IronPDF EmbedFilePath in C#: FilePath plus EmbedFileConfiguration, consumed by PdfDocument.SaveAsPdfA with PdfAVersions.PdfA3b.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing System.Collections.Generic;\n\n// Embed an XML invoice payload that already sits on disk next to the source HTML.\nvar xmlConfig = new EmbedFileConfiguration(EmbedFileType.xml)\n{\n    EmbedFileName  = \"invoice.xml\",\n    AFDesc         = \"Structured invoice data\",\n    AFRelationship = AFRelationship.Source\n};\n\nIEnumerable<EmbedFilePath> embeds = new[] { new EmbedFilePath(\"payloads/invoice.xml\", xmlConfig) };\n\nvar renderer = new ChromePdfRenderer();\nusing PdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Invoice</h1>\");\npdf.SaveAsPdfA(\"invoice-with-xml.pdf\", embeds, PdfAVersions.PdfA3b);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is EmbedFilePath located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EmbedFilePath is in the IronPdf namespace, shipped in IronPdf.dll. It is declared public sealed class EmbedFilePath : ValueType, IEquatable<EmbedFilePath>, so it behaves as a value-type wrapper. Construct one per on-disk payload and pass an IEnumerable<EmbedFilePath> to PdfDocument.SaveAsPdfA with PdfAVersions.PdfA3b."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between EmbedFilePath, EmbedFileByte, and EmbedFileStream?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All three are value-type wrappers in the IronPdf namespace that describe one embedded file for a PDF/A-3 document, and all three take the same EmbedFileConfiguration. They differ only in how the payload is supplied. EmbedFilePath takes a string FilePath and is the right choice when the file already sits on disk, which is the common case for ZUGFeRD or Factur-X XML payloads. EmbedFileByte takes a byte[] (passed in) and is used when the payload is generated in memory. EmbedFileStream takes a Stream and is used when the payload comes from a network response, an async pipeline, or any source that exposes a Stream. PdfDocument.SaveAsPdfA and PdfDocument.ConvertToPdfA each have a separate overload accepting an IEnumerable of each variant."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which PDF/A versions support embedded files when saving with EmbedFilePath?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Only PDF/A-3 (PdfAVersions.PdfA3a and PdfAVersions.PdfA3b) supports arbitrary embedded file attachments. PDF/A-1 and PDF/A-2 do not allow embedded files of arbitrary type, and PDF/A-4 also disallows the attachment shape that EmbedFilePath produces. Calls to SaveAsPdfA or ConvertToPdfA that pass an IEnumerable of EmbedFilePath must therefore use PdfAVersions.PdfA3b for the typical archival case."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you embed a ZUGFeRD or Factur-X XML invoice from disk in a PDF/A-3 document?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct an EmbedFileConfiguration with EmbedFileType.xml and set EmbedFileName to invoice.xml, AFRelationship to AFRelationship.Source, ConformanceLevel to ConformanceLevel.EN16931, SchemaNamespace to SchemaNamespace.facturX, SchemaPrefix to SchemaPrefix.fx, and PropertyVersion to PropertyVersion.v1. Construct an EmbedFilePath that wraps the on-disk XML path together with that configuration, then call PdfDocument.SaveAsPdfA passing the file name, an IEnumerable containing the EmbedFilePath, and PdfAVersions.PdfA3b. The output is a PDF/A-3b file with the XML embedded and the XMP metadata recorded."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,9 +225,30 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class EmbedFilePath : ValueType, IEquatable&lt;EmbedFilePath&gt;</code></pre>
   </div>
-  <h5 id="IronPdf_EmbedFilePath_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>currently only support 3 types of file; .xml, .pdf, and .png</p>
-</div>
+                    <!-- archetype-N:start EmbedFilePath treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>EmbedFilePath</code> is the file-path input variant of the embedded-file triad in IronPDF, the one to reach for when the file to embed in a PDF/A-3 document already sits on disk. It is a value-type wrapper that pairs a path on disk with an <code>EmbedFileConfiguration</code> describing how that file should be recorded inside a PDF/A-3 document. Each instance describes a single embedded payload; one or more instances are collected and passed to <code>PdfDocument.SaveAsPdfA</code> or <code>PdfDocument.ConvertToPdfA</code> to produce the final archival PDF.</p>
+<p>The path variant is the natural choice when the file to embed is already on disk, which is the common case for ZUGFeRD or Factur-X workflows that generate the structured XML invoice as a sibling of the rendered HTML. Other typical scenarios include archival pipelines that embed source spreadsheets next to a rendered report, regulatory PDFs that ship original CSV exports alongside the human-readable view, and compliance flows that need explicit <code>AFRelationship</code> tagging for auditors. Use <code>EmbedFileByte</code> when the payload is already in memory and <code>EmbedFileStream</code> when it comes from a network or async source.</p>
+<p>Construction is <code>public EmbedFilePath(string FilePath, EmbedFileConfiguration EmbedFileConfiguration)</code>. Both arguments are required. <code>FilePath</code> is the on-disk source path; <code>EmbedFileConfiguration</code> carries the in-PDF file name, the <code>AFRelationship</code> value, and the XMP metadata. Both arguments are also exposed as get/set properties of the same names, so an instance can be mutated after construction. The configured value is collected and passed to <code>PdfDocument.SaveAsPdfA(string FileName, IEnumerable&lt;EmbedFilePath&gt; EmbedFilePaths, PdfAVersions PdfAVersion, string CustomICC = null)</code>, with <code>PdfAVersions.PdfA3b</code> selected to produce a PDF/A-3b file with the embedded payload. For the surrounding save call, see the <a href="https://ironpdf.com/how-to/pdfa/">PDF/A export how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using System.Collections.Generic;
+
+// Embed an XML invoice payload that already sits on disk next to the source HTML.
+var xmlConfig = new EmbedFileConfiguration(EmbedFileType.xml)
+{
+    EmbedFileName  = &quot;invoice.xml&quot;,
+    AFDesc         = &quot;Structured invoice data&quot;,
+    AFRelationship = AFRelationship.Source
+};
+
+IEnumerable&lt;EmbedFilePath&gt; embeds = new[] { new EmbedFilePath(&quot;payloads/invoice.xml&quot;, xmlConfig) };
+
+var renderer = new ChromePdfRenderer();
+using PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Invoice&lt;/h1&gt;&quot;);
+pdf.SaveAsPdfA(&quot;invoice-with-xml.pdf&quot;, embeds, PdfAVersions.PdfA3b);</code></pre></div>
+<p>The <a href="https://ironpdf.com/tutorials/pdfa-archiving-csharp/">PDF/A archiving tutorial</a> details conformance levels and embedded-file rules in depth. The <a href="https://ironpdf.com/tutorials/csharp-invoice-processing/">invoice processing tutorial</a> follows the Factur-X workflow that reaches for this path variant when the XML sits on disk, and the <a href="https://ironpdf.com/examples/pdfa/">PDF/A code example</a> gives the minimum saving shape.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

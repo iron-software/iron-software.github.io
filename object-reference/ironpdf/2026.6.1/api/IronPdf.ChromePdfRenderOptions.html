@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ChromePdfRenderOptions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ChromePdfRenderOptions - IronPDF C# Render Options
+      v2 (human)     title:       ChromePdfRenderOptions: PDF Render Settings in C#
+      v1 (algorithm) description: ChromePdfRenderOptions is the IronPDF class for HTML-to-PDF render options in C#. Reference PaperSize, margins, headers, JavaScript, CSS, and bookmarks.
+      v2 (human)     description: Configure IronPDF HTML-to-PDF output in C# with the ChromePdfRenderOptions class. Covers PaperSize, margins, headers, JavaScript, CSS, and timeouts.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ChromePdfRenderOptions Class | IronPDF C# Settings</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ChromePdfRenderOptions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ChromePdfRenderOptions Class | IronPDF C# Settings">
+    <meta name="description" content="Reference for IronPDF ChromePdfRenderOptions in C#: PaperSize, margins, headers, JavaScript, CSS media type, and HTML-to-PDF rendering control.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ChromePdfRenderOptions Class | IronPDF C# Settings",
+    "name": "ChromePdfRenderOptions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.ChromePdfRenderOptions.html",
+    "abstract": "ChromePdfRenderOptions holds the per-render settings that ChromePdfRenderer applies in IronPDF. It controls paper size and orientation (PdfPaperSize, PdfPaperOrientation), margins, HTML and text headers and footers, CSS media type, JavaScript execution, WaitFor and Timeout, cookies, HTTP request headers, hyphenation, automatic bookmark generation, table of contents, and grayscale conversion. The object is held on ChromePdfRenderer.RenderingOptions and configures the next render call.",
+    "description": "Reference for IronPDF ChromePdfRenderOptions in C#: PaperSize, margins, headers, JavaScript, CSS media type, and HTML-to-PDF rendering control.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Rendering;\n\nvar renderer = new ChromePdfRenderer();\n\n// Page setup\nrenderer.RenderingOptions.PaperSize        = PdfPaperSize.A4;\nrenderer.RenderingOptions.PaperOrientation = PdfPaperOrientation.Portrait;\nrenderer.RenderingOptions.MarginTop        = 25;\nrenderer.RenderingOptions.MarginBottom     = 25;\nrenderer.RenderingOptions.MarginLeft       = 20;\nrenderer.RenderingOptions.MarginRight      = 20;\n\n// CSS and JavaScript behavior\nrenderer.RenderingOptions.CssMediaType     = PdfCssMediaType.Print;\nrenderer.RenderingOptions.EnableJavaScript = true;\nrenderer.RenderingOptions.Timeout          = 60_000; // milliseconds\n\n// HTML header on every page\nrenderer.RenderingOptions.HtmlHeader = new HtmlHeaderFooter\n{\n    HtmlFragment = \"<div style='text-align:center'>Quarterly Report</div>\",\n    MaxHeight    = 15\n};\n\nPdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Body</h1>\");\npdf.SaveAs(\"output.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is ChromePdfRenderOptions defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChromePdfRenderOptions is in the IronPdf namespace, shipped in IronPdf.dll. It derives from System.Object and implements IHeaderFooter and IMargins. The instance is held on ChromePdfRenderer.RenderingOptions and configures the next render call; a parameterless constructor and a Clone() method for independent snapshots are available."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ChromePdfRenderOptions and ChromePdfRenderer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChromePdfRenderer is the renderer that performs HTML-to-PDF conversion and returns a PdfDocument. ChromePdfRenderOptions is its per-render configuration: paper size, margins, headers and footers, JavaScript, CSS media type, and similar settings. The options object is held on the renderer's RenderingOptions property. Each ChromePdfRenderer has exactly one RenderingOptions instance; call RenderingOptions.Clone() to keep an independent snapshot."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set a custom page size in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For standard sizes (A4, Letter, Legal, and others), assign a PdfPaperSize value to RenderingOptions.PaperSize. For non-standard dimensions, call one of the four SetCustomPaperSize methods on RenderingOptions: SetCustomPaperSizeinMilimeters, SetCustomPaperSizeinCentimeters, SetCustomPaperSizeInInches, or SetCustomPaperSizeinPixelsOrPoints. The custom size persists across subsequent renders until reassigned."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you wait for JavaScript before rendering a PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Assign a WaitFor configuration to RenderingOptions.WaitFor. The WaitFor object supports a fixed delay, a network-idle threshold, or a wait until a CSS selector appears in the DOM. RenderingOptions.Timeout (milliseconds) bounds the total render time. Set RenderingOptions.EnableJavaScript to false to disable script execution entirely."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,6 +225,41 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ChromePdfRenderOptions : Object, IHeaderFooter, IMargins</code></pre>
   </div>
+                    <!-- archetype-N:start ChromePdfRenderOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>ChromePdfRenderOptions</code> is the per-render settings object assigned to <code>ChromePdfRenderer.RenderingOptions</code> and applied by <code>ChromePdfRenderer</code>. The class covers HTML-to-PDF output settings: paper size and orientation, margins, headers and footers, JavaScript execution and wait behavior, CSS media type, cookies, HTTP request headers, automatic bookmark generation, table of contents, and grayscale conversion.</p>
+<p>Because a single instance carries so many independent settings, most rendering work amounts to adjusting a handful of its properties and leaving the rest at their defaults. Use it to render to a specific paper size, control margins, attach HTML or text headers and footers, switch between screen and print CSS media, enable or disable JavaScript, bound long-running scripts with a timeout, inject cookies for authenticated URLs, generate a table of contents and bookmarks from HTML headings, or convert color output to grayscale.</p>
+<p>Configuration is read by reference from <code>ChromePdfRenderer.RenderingOptions</code>, so assignments take effect on the next render call. <code>PaperSize</code> accepts a <code>PdfPaperSize</code> value and <code>PaperOrientation</code> accepts <code>PdfPaperOrientation.Landscape</code> or <code>PdfPaperOrientation.Portrait</code>; for non-standard dimensions, four <code>SetCustomPaperSizeIn*</code> methods accept centimeters, millimeters, inches, or pixels. Margins are set with <code>MarginTop</code>, <code>MarginBottom</code>, <code>MarginLeft</code>, and <code>MarginRight</code> in millimeters. Headers and footers come in HTML form (<code>HtmlHeader</code>, <code>HtmlFooter</code> accept <code>HtmlHeaderFooter</code> instances) and text form (<code>TextHeader</code>, <code>TextFooter</code>). <code>CssMediaType</code> switches between <code>PdfCssMediaType.Print</code> and <code>PdfCssMediaType.Screen</code>. <code>EnableJavaScript</code>, <code>WaitFor</code>, and <code>Timeout</code> control script execution. <code>Clone()</code> returns a deep copy when a render needs its own independent options snapshot. Worked C# examples for each property group are in the <a href="https://ironpdf.com/how-to/rendering-options/">rendering options how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Rendering;
+
+var renderer = new ChromePdfRenderer();
+
+// Page setup
+renderer.RenderingOptions.PaperSize        = PdfPaperSize.A4;
+renderer.RenderingOptions.PaperOrientation = PdfPaperOrientation.Portrait;
+renderer.RenderingOptions.MarginTop        = 25;
+renderer.RenderingOptions.MarginBottom     = 25;
+renderer.RenderingOptions.MarginLeft       = 20;
+renderer.RenderingOptions.MarginRight      = 20;
+
+// CSS and JavaScript behavior
+renderer.RenderingOptions.CssMediaType     = PdfCssMediaType.Print;
+renderer.RenderingOptions.EnableJavaScript = true;
+renderer.RenderingOptions.Timeout          = 60_000; // milliseconds
+
+// HTML header on every page
+renderer.RenderingOptions.HtmlHeader = new HtmlHeaderFooter
+{
+    HtmlFragment = &quot;&lt;div style='text-align:center'&gt;Quarterly Report&lt;/div&gt;&quot;,
+    MaxHeight    = 15
+};
+
+PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Body&lt;/h1&gt;&quot;);
+pdf.SaveAs(&quot;output.pdf&quot;);</code></pre></div>
+<p>For specific scenarios, the <a href="https://ironpdf.com/how-to/custom-paper-size/">custom paper size guide</a> covers non-standard dimensions in C#. The <a href="https://ironpdf.com/how-to/custom-margins/">custom margins guide</a> covers the margin properties in depth. For HTML and text headers and footers, see <a href="https://ironpdf.com/how-to/headers-and-footers/">the headers and footers guide</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TextAnnotation
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextAnnotation Class - IronPDF C# API Reference
+      v2 (human)     title:       TextAnnotation: Sticky-Note PDF Annotations in C#
+      v1 (algorithm) description: TextAnnotation is the IronPDF class for sticky-note PDF annotations in C#. Reference Title, Contents, X, Y, Color, OpenByDefault, and Annotations.Add usage.
+      v2 (human)     description: Add interactive sticky-note annotations to PDFs in C# with the IronPDF TextAnnotation class. Configure title, contents, placement, color, and visibility.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextAnnotation Class | IronPDF C# Annotations</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TextAnnotation
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="TextAnnotation Class | IronPDF C# Annotations">
+    <meta name="description" content="Reference for IronPDF TextAnnotation in C#: PageIndex, Title, Contents, X, Y, Color, OpenByDefault, Hidden, Printable, and PdfDocument.Annotations.Add.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextAnnotation Class | IronPDF C# Annotations",
+    "name": "TextAnnotation class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Annotations.TextAnnotation.html",
+    "abstract": "TextAnnotation in IronPDF is the interactive sticky-note overlay you add to one page of a PDF document, one that stays editable in a downstream viewer. It derives from PdfClientAccessor and implements IAnnotation. Three constructors set the page index and optional Title and Contents, then properties X, Y, Width, Height, Rectangle, Color, Opacity, OpenByDefault, Hidden, Printable, ReadOnly, and Rotatable configure placement and visibility. Instances are attached to a document through pdf.Annotations.Add on the PdfAnnotationCollection returned by PdfDocument.Annotations. AnnotationIndex returns -1 until the annotation has been added.",
+    "description": "Reference for IronPDF TextAnnotation in C#: PageIndex, Title, Contents, X, Y, Color, OpenByDefault, Hidden, Printable, and PdfDocument.Annotations.Add.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Annotations;\nusing IronSoftware.Drawing;\n\nvar pdf = PdfDocument.FromFile(\"contract.pdf\");\n\n// Construct, configure, add, save. The TextAnnotation is the configuration\n// shape; pdf.Annotations.Add(...) is the gate that attaches it to the document.\nvar review = new TextAnnotation(pageIndex: 0, Title: \"Legal Review\", Contents: \"Verify clause 4.3 against the latest template.\")\n{\n    Subject = \"Approval blocker\",\n    X = 72,\n    Y = 720,\n    Width = 200,\n    Height = 60,\n    Color = Color.Yellow,\n    Opacity = 0.9,\n    OpenByDefault = true,\n    Printable = false\n};\n\npdf.Annotations.Add(review);\n\n// After Add, AnnotationIndex switches from -1 to the assigned slot:\n//   int assignedSlot = review.AnnotationIndex;\n\n// Remove every annotation from a specific page:\n//   pdf.Annotations.RemoveAllAnnotationsForPage(0);\n\npdf.SaveAs(\"contract-reviewed.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain TextAnnotation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextAnnotation is in the IronPdf.Annotations namespace, shipped in IronPdf.dll. It derives from PdfClientAccessor and implements the IAnnotation interface that the rest of the annotations API consumes. A configured instance is attached to a document through pdf.Annotations.Add on the PdfAnnotationCollection returned by PdfDocument.Annotations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between TextAnnotation and PdfAnnotation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextAnnotation is the write-side concrete class used to author a new sticky-note annotation and attach it to a PDF through pdf.Annotations.Add. PdfAnnotation is a separate abstract base class returned from the read side, specifically by PdfDocument.GetAnnotations(int) which returns List<PdfAnnotation>. TextAnnotation derives from PdfClientAccessor and implements IAnnotation; it does not inherit from PdfAnnotation. Use TextAnnotation when creating annotations, and inspect PdfAnnotation when enumerating annotations that already exist on a loaded document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a TextAnnotation and a stamp or watermark?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A TextAnnotation is an interactive overlay that PDF viewers render as an icon with a popup, and it remains editable, copyable, and removable inside the viewer. A stamp or watermark is flattened text or imagery written into the page content stream and cannot be toggled or edited by the viewer. Use TextAnnotation for review comments, reviewer feedback, and collaborative notes. Use the stamping or watermarking surface when the overlay should be a permanent part of the visible page."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is there an AnnotationIcon enum but no Icon property to set?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AnnotationIcon is a nested enumeration on TextAnnotation that lists the icon styles defined in the PDF specification, including Comment, Help, Insert, Key, NewParagraph, Note, and NoIcon. The current TextAnnotation property surface does not expose a setter that takes an AnnotationIcon value, so the icon style cannot be selected from C# at present. Viewer presentation is controlled through OpenByDefault for popup state, Hidden for off-screen storage, Printable for print inclusion, and ReadOnly for edit lock. Most viewers render a generic note icon by default."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -180,6 +251,44 @@ pdf.Annotations.Add(metadata);</code></pre><p> Annotations appear as icons that 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TextAnnotation : PdfClientAccessor, IAnnotation</code></pre>
   </div>
+                  <!-- archetype-N:start TextAnnotation treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Adding an interactive sticky-note annotation to a single page of a PDF runs through <code>TextAnnotation</code>, an overlay that stays editable, copyable, and removable inside a downstream PDF viewer. A configured <code>TextAnnotation</code> carries everything a PDF viewer needs to draw the collapsed icon and its expanded popup: page index, title and contents text, on-page placement, color and opacity, and the print and read-only flags.</p>
+<p>Annotations are the right primitive for review comments, reviewer feedback, collaborative markup, and any overlay that should stay editable inside a downstream PDF viewer rather than being flattened onto the page. The class encapsulates one annotation as a reusable configuration object: construct it, customize its property surface, and hand it to a <code>PdfDocument</code> for the actual write. Common workflows include contract review pipelines, automated audit notes added to generated reports, and metadata stamps attached to archived documents through the <code>Hidden</code> flag. These scenarios are demonstrated on a live document in the <a href="https://ironpdf.com/how-to/annotations/">annotations how-to</a>.</p>
+<p>Construct a <code>TextAnnotation</code> with one of the three constructors. The <code>(int PageIndex)</code> overload is the most explicit, the <code>(int PageIndex, string Title, string Contents)</code> overload sets the popup header and body in one step, and the <code>(string Title, string Contents)</code> overload defaults to the first page. Identity properties are <code>PageIndex</code>, <code>Title</code>, <code>Contents</code>, and the optional <code>Subject</code> subtitle. Placement is controlled by <code>X</code> and <code>Y</code> (points from the lower-left corner of the page, per the PDF coordinate system), <code>Width</code> and <code>Height</code>, or the combined <code>Rectangle</code> property typed as <code>IronSoftware.Drawing.Rectangle</code>. Appearance uses <code>Color</code> (typed as <code>IronSoftware.Drawing.Color</code>) and <code>Opacity</code> (0.0 to 1.0). Visibility flags <code>OpenByDefault</code>, <code>Hidden</code>, <code>Printable</code>, <code>ReadOnly</code>, and <code>Rotatable</code> control how viewers present the annotation, and the diagnostic <code>AnnotationIndex</code> returns -1 until the annotation has been added to a document via <code>pdf.Annotations.Add(...)</code> (the <code>Annotations</code> property returns a <code>PdfAnnotationCollection</code>). The <a href="https://ironpdf.com/examples/annotations/">annotations example</a> shows the full add-edit-remove surface in working code.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Annotations;
+using IronSoftware.Drawing;
+
+var pdf = PdfDocument.FromFile(&quot;contract.pdf&quot;);
+
+// Construct, configure, add, save. The TextAnnotation is the configuration
+// shape; pdf.Annotations.Add(...) is the gate that attaches it to the document.
+var review = new TextAnnotation(pageIndex: 0, Title: &quot;Legal Review&quot;, Contents: &quot;Verify clause 4.3 against the latest template.&quot;)
+{
+    Subject = &quot;Approval blocker&quot;,
+    X = 72,
+    Y = 720,
+    Width = 200,
+    Height = 60,
+    Color = Color.Yellow,
+    Opacity = 0.9,
+    OpenByDefault = true,
+    Printable = false
+};
+
+pdf.Annotations.Add(review);
+
+// After Add, AnnotationIndex switches from -1 to the assigned slot:
+//   int assignedSlot = review.AnnotationIndex;
+
+// Remove every annotation from a specific page:
+//   pdf.Annotations.RemoveAllAnnotationsForPage(0);
+
+pdf.SaveAs(&quot;contract-reviewed.pdf&quot;);</code></pre></div>
+<p>Reading existing notes through <code>PdfDocument.GetAnnotations</code> and removing them by page is covered in the <a href="https://ironpdf.com/how-to/annotations/">annotations how-to</a>. For annotations that link to external URLs or PDF destinations rather than carrying review text, see the sibling <a href="https://ironpdf.com/object-reference/api/IronPdf.Annotations.LinkAnnotation.html"><code>LinkAnnotation</code></a> class.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

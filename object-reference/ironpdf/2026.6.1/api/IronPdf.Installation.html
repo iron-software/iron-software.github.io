@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Installation
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Installation Class - IronPDF C# Runtime Config
+      v2 (human)     title:       Installation: Configure IronPDF Runtime in C#
+      v1 (algorithm) description: Installation is the IronPDF static class for runtime configuration in C#. Reference TempFolderPath, ChromeBrowserLimit, Initialize, and related properties.
+      v2 (human)     description: Configure IronPDF deployment, performance, and engine behavior in C# with the Installation static class. Covers TempFolderPath, Initialize, and ChromeBrowserLimit.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Installation Class | IronPDF C# Runtime Configuration</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Installation
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="Installation Class | IronPDF C# Runtime Configuration">
+    <meta name="description" content="Reference for the IronPDF Installation static class in C#: configure deployment paths, performance, GPU mode, and engine warm-up at startup.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Installation Class | IronPDF C# Runtime Configuration",
+    "name": "Installation class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Installation.html",
+    "abstract": "Installation configures the IronPDF runtime at application startup from C#. It exposes static properties for deployment paths (TempFolderPath, ChromeBrowserCachePath, CustomDeploymentDirectory), performance tuning (ChromeBrowserLimit, JobQueueWatchdogTimeout, ChromeGpuMode, SingleProcess), and behavior flags (EnableWebSecurity, AutomaticallyDownloadNativeBinaries, LinuxAndDockerDependenciesAutoConfig, SkipInitialization, SkipShutdown). Three static methods (Initialize, CleanupTempImages, ConnectToIronPdfHost) complete the surface. Configuration is set once at startup before any ChromePdfRenderer or PdfDocument call.",
+    "description": "Reference for the IronPDF Installation static class in C#: configure deployment paths, performance, GPU mode, and engine warm-up at startup.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\n// Configure at application startup, before any ChromePdfRenderer or PdfDocument call\nInstallation.TempFolderPath                    = @\"D:\\fast-ssd\\ironpdf-temp\";\nInstallation.ChromeBrowserLimit                = 4;\nInstallation.LinuxAndDockerDependenciesAutoConfig = true;\nInstallation.SendAnonymousAnalyticsAndCrashData    = false;\n\n// Apply the IronPDF license on the separate License class\nLicense.LicenseKey = \"YOUR-LICENSE-KEY\";\n\n// Pre-load the rendering engine so the first request does not pay the warm-up cost\nInstallation.Initialize();\n\n// First render is fast because Chromium is already initialized\nvar renderer = new ChromePdfRenderer();\nPdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Hello</h1>\");\npdf.SaveAs(\"output.pdf\");\n\n// Optional periodic cleanup of accumulated intermediate files\nInstallation.CleanupTempImages(TimeSpan.FromHours(24));"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain Installation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Installation is in the IronPdf namespace, shipped in IronPdf.dll. It is declared public static class, so every member is accessed through the type name with no instantiation. It is the type a developer configures at application startup to set deployment paths, performance limits, and engine behavior."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Installation and License in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Installation holds runtime deployment and performance configuration: paths (TempFolderPath, ChromeBrowserCachePath), concurrency (ChromeBrowserLimit, SingleProcess), GPU mode, and engine lifecycle (Initialize, SkipInitialization, SkipShutdown). License holds the IronPDF product key. Installation has no LicenseKey property; the license is set on the separate IronPdf.License class via License.LicenseKey before the first render."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you configure IronPDF in ASP.NET Core?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set Installation properties in Program.cs (or Startup.ConfigureServices for earlier ASP.NET Core versions) before the application starts serving requests. Assign TempFolderPath, ChromeBrowserLimit, and any behavior flags from appsettings.json or environment variables. Set License.LicenseKey, then call Installation.Initialize() to preload the rendering engine so the first request does not pay the warm-up cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should you call Installation.Initialize()?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Initialize() once during application startup, after setting deployment properties and the license. The method preloads the Chromium engine so the first render avoids the warm-up cost. For web applications, place the call at the end of startup configuration; for desktop or batch applications, before the first PDF operation. Skip the call when SkipInitialization is true."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -162,6 +233,35 @@ Installation.TempFolderPath = @&quot;/fast-ssd/temp&quot;;  // Fast storage</cod
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class Installation : Object</code></pre>
   </div>
+                  <!-- archetype-N:start Installation treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Use <code>Installation</code> when you need to configure IronPDF's runtime at application startup, before any <code>ChromePdfRenderer</code> or <code>PdfDocument</code> operation. It exposes static properties that control deployment paths, performance tuning, and engine behavior, plus three static methods (<code>Initialize</code>, <code>CleanupTempImages</code>, <code>ConnectToIronPdfHost</code>) that operate on the running process. Configuration is process-global.</p>
+<p>The class belongs at the very top of an IronPDF wiring sequence because the renderer and the underlying native engine read these properties at construction time. A production web service preloads Chromium with <code>Installation.Initialize()</code> so the first request does not pay the warm-up cost, points <code>TempFolderPath</code> at fast storage, and caps <code>ChromeBrowserLimit</code> to keep memory predictable. A Docker or Linux deployment sets <code>LinuxAndDockerDependenciesAutoConfig</code> so the engine handles its own native packages. A privacy-sensitive deployment opts out of <code>SendAnonymousAnalyticsAndCrashData</code>.</p>
+<p>Configuration falls into four functional groups. Path properties (<code>TempFolderPath</code>, <code>ChromeBrowserCachePath</code>, <code>CustomDeploymentDirectory</code>) tell IronPDF where to write intermediate files, cache the embedded Chromium data, and locate native binaries. Performance properties (<code>ChromeBrowserLimit</code>, <code>JobQueueWatchdogTimeout</code>, <code>ChromeGpuMode</code>, <code>SingleProcess</code>) tune concurrency, render timeouts, GPU acceleration, and process model. Behavior flags (<code>EnableWebSecurity</code>, <code>AutomaticallyDownloadNativeBinaries</code>, <code>LinuxAndDockerDependenciesAutoConfig</code>, <code>SkipInitialization</code>, <code>SkipShutdown</code>, <code>DebugJobQueue</code>) toggle high-level features. Read-only state (<code>IronPdfEngineVersion</code>, <code>ConnectionType</code>) reports on the active engine. Two utility methods complete the surface: <code>CleanupTempImages</code> removes accumulated intermediate files older than an optional <code>TimeSpan</code>, and <code>ConnectToIronPdfHost</code> attaches the process to an external IronPDF engine via an <code>IronPdfConnectionConfiguration</code>. Reach for the <a href="https://ironpdf.com/get-started/installation-overview/">installation overview guide</a> when deciding which of these setup choices a deployment needs.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+// Configure at application startup, before any ChromePdfRenderer or PdfDocument call
+Installation.TempFolderPath                    = @&quot;D:\fast-ssd\ironpdf-temp&quot;;
+Installation.ChromeBrowserLimit                = 4;
+Installation.LinuxAndDockerDependenciesAutoConfig = true;
+Installation.SendAnonymousAnalyticsAndCrashData    = false;
+
+// Apply the IronPDF license on the separate License class
+License.LicenseKey = &quot;YOUR-LICENSE-KEY&quot;;
+
+// Pre-load the rendering engine so the first request does not pay the warm-up cost
+Installation.Initialize();
+
+// First render is fast because Chromium is already initialized
+var renderer = new ChromePdfRenderer();
+PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Hello&lt;/h1&gt;&quot;);
+pdf.SaveAs(&quot;output.pdf&quot;);
+
+// Optional periodic cleanup of accumulated intermediate files
+Installation.CleanupTempImages(TimeSpan.FromHours(24));</code></pre></div>
+<p>For platform-specific setup, the <a href="https://ironpdf.com/get-started/linux/">Linux deployment guide</a> and the <a href="https://ironpdf.com/get-started/ironpdf-docker/">Docker deployment guide</a> cover the dependencies and path layout. The <a href="https://ironpdf.com/get-started/license-keys/">license keys guide</a> covers applying a license at startup, which is handled on the separate <code>License</code> class rather than on <code>Installation</code>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="fields">Fields
   </h3>
   

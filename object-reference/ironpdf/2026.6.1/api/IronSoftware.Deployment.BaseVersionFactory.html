@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BaseVersionFactory
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       BaseVersionFactory Class | IronPDF C# API Reference
+      v2 (human)     title:       BaseVersionFactory: IronPDF Deployment Version Binding
+      v1 (algorithm) description: IronPDF BaseVersionFactory abstract class reference in IronSoftware.Deployment. GetExpectedFileVersion, GetExpectedNuGetName, GetExpectedNuGetVersion.
+      v2 (human)     description: BaseVersionFactory is the internal IronPDF abstract base that derived factories use to report expected NuGet package name and version at deployment time.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>BaseVersionFactory | IronPDF C# Deployment Internals</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BaseVersionFactory
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="BaseVersionFactory | IronPDF C# Deployment Internals">
+    <meta name="description" content="IronPDF BaseVersionFactory: abstract class in IronSoftware.Deployment with GetExpectedFileVersion plus abstract GetExpectedNuGetName and GetExpectedNuGetVersion.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "BaseVersionFactory | IronPDF C# Deployment Internals",
+    "name": "BaseVersionFactory class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.Deployment.BaseVersionFactory.html",
+    "abstract": "IronPDF's deployment subsystem consults BaseVersionFactory to verify which native binary and NuGet package a build expects at runtime. It declares a `protected` parameterless constructor, two abstract methods `GetExpectedNuGetName()` and `GetExpectedNuGetVersion()` returning `string`, and one concrete method `GetExpectedFileVersion()` returning `System.Version`. The class is internal infrastructure: derived factories live inside the IronPdf assembly and are invoked by the deployment pipeline rather than by application code.",
+    "description": "IronPDF BaseVersionFactory: abstract class in IronSoftware.Deployment with GetExpectedFileVersion plus abstract GetExpectedNuGetName and GetExpectedNuGetVersion.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "// Illustrative shape only. The derived factories live inside IronPDF\n// and are constructed by the deployment subsystem, never by user code.\nusing System;\nusing IronSoftware.Deployment;\n\ninternal sealed class SampleDerivedFactory : BaseVersionFactory\n{\n    public override string GetExpectedNuGetName()    => \"IronPdf\";\n    public override string GetExpectedNuGetVersion() => \"2026.5.6\";\n    // GetExpectedFileVersion() inherited from BaseVersionFactory.\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is BaseVersionFactory located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BaseVersionFactory is in the IronSoftware.Deployment namespace, shipped in IronPdf.dll. It is a public abstract class deriving from System.Object, with a protected constructor so only derived factories inside the IronPdf assembly construct it. The deployment subsystem consults a derived factory to verify the expected native package version at runtime."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between BaseVersionFactory and SmartDeploymentBase?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both are abstract base classes in the IronSoftware.Deployment namespace, but they cover different concerns. BaseVersionFactory defines the version-binding contract: a derived factory reports the expected NuGet package name, NuGet version, and file version that the build was compiled against. SmartDeploymentBase defines the deployment-path contract: it holds the directory, assembly, and deployment config file used to locate native binaries at runtime. The two work together inside IronPDF's deployment pipeline but expose independent abstract surfaces."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does application code instantiate or derive from BaseVersionFactory?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The constructor is protected and the abstract methods are implemented by internal types inside the IronPdf assembly. Application code does not new it, derive from it, or call its methods directly. Awareness of the class is useful only when reading exception stack traces that originate inside IronSoftware.Deployment, typically during version mismatch diagnostics."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which methods are abstract on BaseVersionFactory?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GetExpectedNuGetName and GetExpectedNuGetVersion are both abstract and return string. Every derived factory must override them to report the package coordinates it was compiled against. GetExpectedFileVersion is concrete on the base, returns System.Version, and is inherited as-is unless a derived type explicitly overrides it."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -153,6 +224,25 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class BaseVersionFactory : Object, bnubqq</code></pre>
   </div>
+                    <!-- archetype-N:start BaseVersionFactory treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>BaseVersionFactory</code> is what IronPDF's deployment subsystem consults to discover which native package version a derived factory expects at runtime. It defines the abstract version-discovery contract that each derived factory satisfies, and exposes a <code>protected</code> parameterless constructor that restricts construction to those derived types. The class is internal infrastructure: application code does not instantiate it, derive from it, or call its methods directly, but recognizing the pattern helps when reading deployment exception stack traces.</p>
+<p><code>BaseVersionFactory</code> matters during version-binding diagnostics. When the IronPDF runtime resolves which native binary or NuGet payload should be loaded, it consults a derived factory for the expected file version and the expected NuGet package coordinates. If the resolved binaries on disk disagree with the factory's expectations, the surface error path includes the assembly version mismatch exception covered in the <a href="https://ironpdf.com/troubleshooting/ironpdf-assembly-version-mismatch-exception/">version mismatch troubleshooting guide</a>. None of this requires user code changes; the factory simply names the build's expectations so the diagnostic message can report the gap.</p>
+<p>The member surface is small and split across the abstract and concrete distinction. The two abstract methods, <code>GetExpectedNuGetName()</code> and <code>GetExpectedNuGetVersion()</code>, return <code>string</code> and define the contract every derived factory implements: which package and which version this build was compiled against. The single concrete method, <code>GetExpectedFileVersion()</code>, returns a <code>System.Version</code> and is supplied by the base. The <code>protected</code> constructor restricts construction to derived types inside the IronPDF assembly.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">// Illustrative shape only. The derived factories live inside IronPDF
+// and are constructed by the deployment subsystem, never by user code.
+using System;
+using IronSoftware.Deployment;
+
+internal sealed class SampleDerivedFactory : BaseVersionFactory
+{
+    public override string GetExpectedNuGetName()    =&gt; &quot;IronPdf&quot;;
+    public override string GetExpectedNuGetVersion() =&gt; &quot;2026.5.6&quot;;
+    // GetExpectedFileVersion() inherited from BaseVersionFactory.
+}</code></pre></div>
+<p>For the surrounding deployment topics application code actually configures, see the <a href="https://ironpdf.com/troubleshooting/ironpdf-runtimes-folder/">runtimes folder guide</a> and the <a href="https://ironpdf.com/get-started/installation-overview/">installation overview</a>. The deployment-denied path error is covered in the <a href="https://ironpdf.com/troubleshooting/access-to-the-path-global-ironsoftwaredeploymentglobal-is-denied/">global deployment path troubleshooting page</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

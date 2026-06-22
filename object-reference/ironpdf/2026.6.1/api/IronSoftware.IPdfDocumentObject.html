@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IPdfDocumentObject
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IPdfDocumentObject Interface - IronPDF C# API Reference
+      v2 (human)     title:       IPdfDocumentObject: PDF Object Contract in IronPDF
+      v1 (algorithm) description: IPdfDocumentObject is the IronPDF C# interface for PDF document-identity. Reference Client, implementors, and usage across DOM objects and form fields.
+      v2 (human)     description: Work polymorphically with PDF DOM objects, form fields, and fonts in C# through the IronPDF IPdfDocumentObject interface. Covers Client and implementors.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IPdfDocumentObject Interface | IronPDF C# Object Model</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IPdfDocumentObject
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IPdfDocumentObject Interface | IronPDF C# Object Model">
+    <meta name="description" content="Reference for the IronPDF IPdfDocumentObject interface: root document-identity contract for PDF objects in C#, with implementors and code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IPdfDocumentObject Interface | IronPDF C# Object Model",
+    "name": "IPdfDocumentObject interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.IPdfDocumentObject.html",
+    "abstract": "A single polymorphic boundary for inspecting, classifying, or routing any PDF object uniformly from C# without binding to a concrete kind is what IPdfDocumentObject provides in IronPDF. It declares the Client property of type IPdfClient. Three families implement it: PDF DOM objects (TextObject, ImageObject, PathObject, LineTextObject), form fields (TextFormField, CheckboxFormField, ComboboxFormField, RadioFormField, SignatureFormField, ImageFormField), and fonts (PdfFont, FontObject). It is also the base of IPdfTextObject, IPdfImageObject, IPdfPathObject, IPdfFontObject, and IFormField in the IronPDF C# API.",
+    "description": "Reference for the IronPDF IPdfDocumentObject interface: root document-identity contract for PDF objects in C#, with implementors and code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware;\n\nPdfDocument pdf = PdfDocument.FromFile(\"report.pdf\");\n\n// Every TextObject, ImageObject, PathObject, and form field that IronPDF\n// returns implements IPdfDocumentObject, so a single polymorphic helper\n// can accept any of them.\nforeach (TextObject text in pdf.Pages[0].ObjectModel.TextObjects)\n{\n    LogObject(text);\n}\n\nLogObject(pdf.Form.FindFormField(\"FullName\"));\n\nvoid LogObject(IPdfDocumentObject obj)\n{\n    System.Console.WriteLine($\"client present: {obj.Client != null}\");\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IPdfDocumentObject live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfDocumentObject is in the IronSoftware namespace (the bare namespace), shipped in IronPdf.dll. It extends IDocumentObject. It is the most widely implemented contract in IronPDF: PDF DOM objects, form fields, and fonts all carry it, so it is what a developer accepts to handle any IronPDF object uniformly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IPdfDocumentObject in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Three families of types implement IPdfDocumentObject. PDF DOM object types: TextObject, ImageObject, PathObject, and LineTextObject. Form field types: TextFormField, CheckboxFormField, ComboboxFormField, RadioFormField, SignatureFormField, and ImageFormField. Font types: PdfFont and FontObject. The contract is also inherited by IPdfTextObject, IPdfImageObject, IPdfPathObject, IPdfFontObject, IFormField, IFormFieldObject, and IFormFieldAnnotationObject."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What members does IPdfDocumentObject declare?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfDocumentObject declares a single property, Client, of type IPdfClient. The property is gettable and settable and carries the back-reference to the underlying PDF document client. All richer interfaces in the IronPDF object model extend IPdfDocumentObject to inherit this member, so concrete implementors expose Client alongside their type-specific surface."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IPdfDocumentObject and IDocumentObject?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfDocumentObject extends IDocumentObject. IDocumentObject is the broader base contract for any document object in the IronSoftware family; IPdfDocumentObject is the PDF-specific specialization and is the contract that IronPDF objects implement directly. Polymorphic code in IronPDF code paths should reference IPdfDocumentObject; IDocumentObject is rarely used directly in application code."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +216,33 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IPdfDocumentObject : IPdfDocumentObject, IDocumentObject</code></pre>
   </div>
+                <!-- archetype-N:start IPdfDocumentObject treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p><code>IPdfDocumentObject</code> is the contract you accept when a helper needs to inspect, classify, or route any IronPDF object back to the PDF it was read from or written into, without binding to a concrete kind. The contract declares one property, <code>Client</code> of type <code>IPdfClient</code>, which carries the back-reference to the underlying document client; every other API on the implementor comes through richer interfaces that build on top of this contract.</p>
+<p><code>IPdfDocumentObject</code> matters because it is the most widely implemented contract in the IronPDF surface. Three families of types implement it. PDF DOM object types implement it through the <code>IPdfTextObject</code>, <code>IPdfImageObject</code>, and <code>IPdfPathObject</code> interfaces: <code>TextObject</code>, <code>ImageObject</code>, <code>PathObject</code>, and <code>LineTextObject</code> all carry the contract. Form field types implement it through <a href="https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormField.html"><code>IFormField</code></a>: <code>TextFormField</code>, <code>CheckboxFormField</code>, <code>ComboboxFormField</code>, <code>RadioFormField</code>, <code>SignatureFormField</code>, and <code>ImageFormField</code> all carry the contract. Font types implement it through <code>IPdfFontObject</code>: <code>PdfFont</code> and <code>FontObject</code> both carry the contract. Polymorphic code that needs to inspect or route any kind of in-document object can accept <code>IPdfDocumentObject</code> and stay decoupled from the concrete kind.</p>
+<p>In practice the contract is almost always consumed through one of its richer descendants. Code that walks DOM objects starts from the page's <code>ObjectModel</code> property and processes <code>TextObject</code>, <code>ImageObject</code>, and <code>PathObject</code> instances; the <a href="https://ironpdf.com/how-to/access-pdf-dom-object/">PDF DOM object how-to</a> walks the canonical workflow. Code that fills form fields starts from <code>PdfDocument.Form.FindFormField</code> and works with the returned <code>IFormField</code>; the <a href="https://ironpdf.com/how-to/edit-forms/">edit PDF forms how-to</a> has a worked read-and-fill example. In both cases the <code>IPdfDocumentObject</code> surface is satisfied automatically by the implementor.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;report.pdf&quot;);
+
+// Every TextObject, ImageObject, PathObject, and form field that IronPDF
+// returns implements IPdfDocumentObject, so a single polymorphic helper
+// can accept any of them.
+foreach (TextObject text in pdf.Pages[0].ObjectModel.TextObjects)
+{
+    LogObject(text);
+}
+
+LogObject(pdf.Form.FindFormField(&quot;FullName&quot;));
+
+void LogObject(IPdfDocumentObject obj)
+{
+    System.Console.WriteLine($&quot;client present: {obj.Client != null}&quot;);
+}</code></pre></div>
+<p>Because <code>Client</code> is the only declared member, a parameter typed as <code>IPdfDocumentObject</code> is enough to log, tag, or dispatch an object but rarely enough to act on it. Once the kind is known, descend to <code>IPdfTextObject</code>, <code>IPdfImageObject</code>, <code>IPdfPathObject</code>, <code>IPdfFontObject</code>, or <code>IFormField</code> for the surface that operation needs.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class VirtualPaperLayoutManager
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       VirtualPaperLayoutManager Class - IronPDF C# API Reference
+      v2 (human)     title:       VirtualPaperLayoutManager: PaperFit Modes in IronPDF C#
+      v1 (algorithm) description: VirtualPaperLayoutManager class reference for IronPDF C#. The PaperFit strategy with UseChromeDefaultRendering, UseResponsiveCssRendering, and three more.
+      v2 (human)     description: Control how HTML fits onto PDF pages in C#. VirtualPaperLayoutManager is the PaperFit strategy behind ChromePdfRenderOptions in IronPDF.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>VirtualPaperLayoutManager | IronPDF PaperFit Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class VirtualPaperLayoutManager
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="VirtualPaperLayoutManager | IronPDF PaperFit Reference">
+    <meta name="description" content="IronPDF VirtualPaperLayoutManager reference: the PaperFit class on ChromePdfRenderOptions with five rendering modes for HTML to PDF layout.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "VirtualPaperLayoutManager | IronPDF PaperFit Reference",
+    "name": "VirtualPaperLayoutManager class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Engines.Chrome.VirtualPaperLayoutManager.html",
+    "abstract": "Controlling how HTML fits onto PDF pages runs through `VirtualPaperLayoutManager` in IronPDF, exposed as the five layout methods on `ChromePdfRenderOptions.PaperFit`: `UseChromeDefaultRendering`, `UseResponsiveCssRendering`, `UseScaledRendering`, `UseFitToPageRendering`, and `UseContinuousFeedRendering`. Each call overwrites the previously selected mode. Callers invoke it via `renderer.RenderingOptions.PaperFit.UseXxx(...)` rather than constructing it directly.",
+    "description": "IronPDF VirtualPaperLayoutManager reference: the PaperFit class on ChromePdfRenderOptions with five rendering modes for HTML to PDF layout.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\nChromePdfRenderer renderer = new ChromePdfRenderer();\n\n// Active configuration: responsive CSS with a 1280px virtual viewport.\nrenderer.RenderingOptions.PaperFit.UseResponsiveCssRendering(1280);\n\n// Alternatives (uncomment one; only the last call takes effect):\n// renderer.RenderingOptions.PaperFit.UseChromeDefaultRendering();\n// renderer.RenderingOptions.PaperFit.UseScaledRendering(120);\n// renderer.RenderingOptions.PaperFit.UseFitToPageRendering(1024);\n// renderer.RenderingOptions.PaperFit.UseContinuousFeedRendering(80, 5);\n\nPdfDocument pdf = renderer.RenderUrlAsPdf(\"https://example.com\");\npdf.SaveAs(\"layout-managed.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does VirtualPaperLayoutManager live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "VirtualPaperLayoutManager is in the IronPdf.Engines.Chrome namespace, shipped in IronPdf.dll. ChromePdfRenderOptions.PaperFit is a readonly field of type VirtualPaperLayoutManager: the field is the access point and the class is the strategy object holding the layout methods. C# code reaches the methods through renderer.RenderingOptions.PaperFit.UseChromeDefaultRendering and the other four Use methods, and never reassigns PaperFit or constructs a new VirtualPaperLayoutManager."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can more than one PaperFit mode be active at the same time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Only one mode may be selected per render. Each Use method on VirtualPaperLayoutManager overwrites the previous selection. If UseResponsiveCssRendering is called and then UseContinuousFeedRendering is called on the same instance, the continuous feed mode wins. Pick one mode and configure it once before calling RenderHtmlAsPdf or RenderUrlAsPdf."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should UseFitToPageRendering be chosen over UseResponsiveCssRendering?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "UseFitToPageRendering measures the rendered HTML width and scales it down so the content fits one sheet of paper wide. It suits wide tables, dashboards, and charts where horizontal overflow must be avoided. UseResponsiveCssRendering drives layout from a fixed virtual viewport width in pixels and lets CSS media queries decide the visual outcome. Use it for sites with responsive CSS designed for known breakpoints."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What units do UseContinuousFeedRendering width and margin use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both parameters are in millimeters. The width default is 80 millimeters with a 5 millimeter margin, which approximates a thermal receipt printer. UseFitToPageRendering and UseResponsiveCssRendering use pixels for their integer parameters. UseScaledRendering uses a percentage where 100 means no extra scaling."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,16 +222,29 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class VirtualPaperLayoutManager : Object</code></pre>
   </div>
-  <h5 id="IronPdf_Engines_Chrome_VirtualPaperLayoutManager_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Layout Modes:</strong>
-</p>
-<ul><li></li><li></li><li></li><li></li><li></li></ul>
-<p>
-<strong>Related Resources:</strong>
-</p>
-<ul><li></li><li></li></ul>
-</div>
+                  <!-- archetype-N:start VirtualPaperLayoutManager treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Reach for <code>VirtualPaperLayoutManager</code> to control how the Chrome engine fits rendered HTML onto the configured <code>PaperSize</code>, the strategy object behind the <code>PaperFit</code> field on <code>ChromePdfRenderOptions</code>. It owns the five layout methods that pick the fit behavior for a render. C# code never constructs it directly. Instead, callers reach an existing instance through <code>renderer.RenderingOptions.PaperFit</code> and invoke one of its <code>Use*</code> methods.</p>
+<p><code>VirtualPaperLayoutManager</code> exists because Chrome's native print pipeline only offers one layout style. Production PDF workflows need more: a responsive-CSS pass for modern dashboards, a fit-to-page scale for wide tables, a zoom percentage for legibility, and a continuous-feed mode for receipts and bills. The class exposes those four extras alongside the Chrome default in one place, so the choice of layout is a single method call rather than a tree of flags scattered across the renderer. Only one mode may be active per render, because each <code>Use*</code> method overwrites the previous selection.</p>
+<p>The five methods on <code>VirtualPaperLayoutManager</code>, grouped by purpose, are: <code>UseChromeDefaultRendering()</code> for browser-style print preview behavior, <code>UseResponsiveCssRendering(int ViewPortWidth = 1280)</code> for responsive layouts driven by a virtual viewport, <code>UseScaledRendering(int ZoomPercentage = 100)</code> for Chrome-default behavior with an extra zoom factor, <code>UseFitToPageRendering(int MinimumPixelWidth = 1)</code> for scaling wide content down to a single sheet width, and <code>UseContinuousFeedRendering(double width = 80, int margin = 5)</code> for single-page output sized in millimeters. The canonical call site is on the renderer's options object, never on a fresh instance. See the <a href="https://ironpdf.com/how-to/viewport-zoom/">viewport and zoom how-to</a> for side-by-side rendered output of each mode.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+ChromePdfRenderer renderer = new ChromePdfRenderer();
+
+// Active configuration: responsive CSS with a 1280px virtual viewport.
+renderer.RenderingOptions.PaperFit.UseResponsiveCssRendering(1280);
+
+// Alternatives (uncomment one; only the last call takes effect):
+// renderer.RenderingOptions.PaperFit.UseChromeDefaultRendering();
+// renderer.RenderingOptions.PaperFit.UseScaledRendering(120);
+// renderer.RenderingOptions.PaperFit.UseFitToPageRendering(1024);
+// renderer.RenderingOptions.PaperFit.UseContinuousFeedRendering(80, 5);
+
+PdfDocument pdf = renderer.RenderUrlAsPdf(&quot;https://example.com&quot;);
+pdf.SaveAs(&quot;layout-managed.pdf&quot;);</code></pre></div>
+<p>For the responsive case, pair <code>UseResponsiveCssRendering</code> with the <a href="https://ironpdf.com/how-to/html-to-pdf-responsive-css/">responsive CSS how-to</a>, which covers <code>CssMediaType</code> and print-versus-screen rules. For non-default sheet dimensions used alongside <code>PaperFit</code>, see the <a href="https://ironpdf.com/how-to/custom-paper-size/">custom paper size guide</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

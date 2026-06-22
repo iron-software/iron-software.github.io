@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Cleaner
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Cleaner Class - IronPDF C# PDF Sanitization Reference
+      v2 (human)     title:       Cleaner: Sanitize and Scan PDFs in C# with IronPDF
+      v1 (algorithm) description: Cleaner is the IronPDF static class for PDF sanitization in C#. Reference SanitizeWithBitmap, SanitizeWithSvg, and ScanPdf with YARA rules.
+      v2 (human)     description: Sanitize and scan untrusted PDFs in C# with the IronPDF Cleaner static class. Strip JavaScript, scan with YARA rules, and return a clean PdfDocument.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Cleaner Class | IronPDF C# PDF Sanitization API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Cleaner
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="Cleaner Class | IronPDF C# PDF Sanitization API">
+    <meta name="description" content="Reference for the IronPDF Cleaner static class in C#: SanitizeWithBitmap, SanitizeWithSvg, and ScanPdf for PDF threat detection and content stripping.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Cleaner Class | IronPDF C# PDF Sanitization API",
+    "name": "Cleaner class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Cleaner.html",
+    "abstract": "Sanitizing and threat-scanning PDFs in IronPDF is the job of Cleaner. It exposes a sanitize family (SanitizeWithBitmap and SanitizeWithSvg, accepting a PdfDocument, a file path, and an optional ChromePdfRenderOptions) that returns a clean PdfDocument with embedded JavaScript, scripts, form actions, and metadata stripped, and a scan family (ScanPdf, accepting a PdfDocument, byte array, or file path plus an optional YARA rule-file array) that returns a CleanerScanResult exposing IsDetected and Risks.",
+    "description": "Reference for the IronPDF Cleaner static class in C#: SanitizeWithBitmap, SanitizeWithSvg, and ScanPdf for PDF threat detection and content stripping.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\n// One-liner: load, sanitize with SVG, save the cleaned copy\nCleaner.SanitizeWithSvg(PdfDocument.FromFile(\"input.pdf\"))\n       .SaveAs(\"sanitized.pdf\");\n\n// Scan first, sanitize only when threats are detected\nCleanerScanResult result = Cleaner.ScanPdf(\"upload.pdf\");\nif (result.IsDetected)\n{\n    Console.WriteLine($\"Risks found: {result.Risks.Count}\");\n    Cleaner.SanitizeWithBitmap(\"upload.pdf\").SaveAs(\"upload.clean.pdf\");\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is Cleaner located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cleaner is in the IronPdf namespace, shipped in IronPdf.dll. It is a static class deriving from System.Object, so there is no constructor; call its members directly as Cleaner.SanitizeWithBitmap, Cleaner.SanitizeWithSvg, and Cleaner.ScanPdf to sanitize or threat-scan a PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between SanitizeWithBitmap and SanitizeWithSvg?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both methods on the Cleaner class strip embedded JavaScript and scripts by rendering the PDF through an intermediate image format and converting back. SanitizeWithBitmap is slower but maximally secure and produces a non-searchable PDF with the most consistent layout. SanitizeWithSvg is quicker and keeps the text searchable, with the trade-off that the layout may shift slightly. Choose bitmap for highly sensitive documents where searchability does not matter, and SVG for the common case where the cleaned PDF still needs to be searchable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Cleaner modify the original PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Every SanitizeWithBitmap and SanitizeWithSvg overload returns a new PdfDocument with the embedded scripts and metadata stripped, and the source file or PdfDocument is left untouched. ScanPdf is read-only by design and reports threats through the returned CleanerScanResult without altering the input. Persist the cleaned copy explicitly with SaveAs when the workflow needs to retain it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you use custom YARA rules with ScanPdf?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Each ScanPdf overload accepts an optional yaraFiles string array that holds paths to custom YARA rule files. When the array is supplied, it overrides the IronPDF default ruleset for that call. Use custom rules to add organization-specific detections, to track newly-published PDF vulnerability patterns, or to scope the scan more strictly than the bundled defaults."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +221,27 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class Cleaner : Object</code></pre>
   </div>
+                    <!-- archetype-N:start Cleaner treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Cleaner</code> sanitizes and threat-scans a PDF in IronPDF. The static class exposes two functional families: a sanitization family (<code>SanitizeWithBitmap</code> and <code>SanitizeWithSvg</code>, four overloads each) that returns a clean <code>PdfDocument</code> with embedded JavaScript, scripts, form actions, and metadata stripped, and a scan family (<code>ScanPdf</code>, three overloads) that returns a <code>CleanerScanResult</code> describing detected risks without modifying the input.</p>
+<p><code>Cleaner</code> is the standard tool for incoming-PDF security. The class earns its keep on upload endpoints that receive user-submitted PDFs, on archival pipelines that must guarantee no executable content before long-term storage, and on document-exchange workflows that handle files from untrusted senders. Sanitization works by rendering the original document to an intermediate image format (bitmap or SVG) and converting the result back to a fresh PDF, which discards every active component the original carried. Scanning is the lighter-weight assessment step that runs first when a workflow only wants to detect threats and route on the result.</p>
+<p>All three operations are static methods, called as <code>Cleaner.SanitizeWithBitmap(...)</code>, <code>Cleaner.SanitizeWithSvg(...)</code>, and <code>Cleaner.ScanPdf(...)</code>. Each overload accepts the PDF as a <code>PdfDocument</code>, a file path, or (for <code>ScanPdf</code>) a byte array, and the sanitize methods accept an optional <code>ChromePdfRenderOptions</code> for output margins, paper size, and orientation. The bitmap variants produce a non-searchable but maximally-secure result; the SVG variants produce a searchable PDF with slightly less layout fidelity. <code>ScanPdf</code> runs YARA rules against the PDF and returns a <code>CleanerScanResult</code> exposing <code>IsDetected</code> and <code>Risks</code>; passing a <code>yaraFiles</code> array overrides the bundled default ruleset with a custom one. The <a href="https://ironpdf.com/how-to/sanitize-pdf/">sanitize PDF how-to</a> has a worked example of the scan-then-sanitize sequence.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+// One-liner: load, sanitize with SVG, save the cleaned copy
+Cleaner.SanitizeWithSvg(PdfDocument.FromFile(&quot;input.pdf&quot;))
+       .SaveAs(&quot;sanitized.pdf&quot;);
+
+// Scan first, sanitize only when threats are detected
+CleanerScanResult result = Cleaner.ScanPdf(&quot;upload.pdf&quot;);
+if (result.IsDetected)
+{
+    Console.WriteLine($&quot;Risks found: {result.Risks.Count}&quot;);
+    Cleaner.SanitizeWithBitmap(&quot;upload.pdf&quot;).SaveAs(&quot;upload.clean.pdf&quot;);
+}</code></pre></div>
+<p>Custom YARA rule files and margin tuning through <code>ChromePdfRenderOptions</code> are both detailed in the <a href="https://ironpdf.com/how-to/sanitize-pdf/">sanitize PDF how-to</a>. The sibling type <code>CleanerScanResult</code> is documented separately and exposes <code>IsDetected</code> and <code>Risks</code> for use after <code>ScanPdf</code> returns.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

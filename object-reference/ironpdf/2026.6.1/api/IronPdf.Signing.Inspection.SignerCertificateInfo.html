@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class SignerCertificateInfo
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       SignerCertificateInfo Class - IronPDF C# API Reference
+      v2 (human)     title:       SignerCertificateInfo: Read PDF Signer Certs in C#
+      v1 (algorithm) description: SignerCertificateInfo is the IronPDF C# class returned by PdfDocument.GetVerifiedSignatures that exposes the X.509 certificate details of a PDF signer.
+      v2 (human)     description: Read the X.509 certificate details of a PDF signer in C# with the IronPDF SignerCertificateInfo class. Subject, Issuer, validity, thumbprint, and chain.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>SignerCertificateInfo | IronPDF C# Signature Inspection</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class SignerCertificateInfo
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="SignerCertificateInfo | IronPDF C# Signature Inspection">
+    <meta name="description" content="Reference for IronPDF SignerCertificateInfo in C#: SubjectDN, IssuerDN, NotBefore, NotAfter, Sha256Thumbprint, RawData, GetSubjectField, GetIssuerField.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "SignerCertificateInfo | IronPDF C# Signature Inspection",
+    "name": "SignerCertificateInfo class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Signing.Inspection.SignerCertificateInfo.html",
+    "abstract": "Reading the X.509 certificate details of a PDF signer in IronPDF runs through SignerCertificateInfo, returned by VerifiedSignature.SignerCertificate and VerifiedSignature.CertificateChain after a call to PdfDocument.GetVerifiedSignatures. It exposes the full SubjectDN and IssuerDN, the CA-assigned CertificateSerialNumber, the Subject DN SERIALNUMBER OID through SubjectSerialNumber, the convenience identity properties CommonName, Organization, Country, and Email, the NotBefore and NotAfter validity dates with the IsExpired snapshot and IsValidAt(DateTime) historical check, the Sha256Thumbprint for pinning, the DER-encoded RawData for X509Certificate2 interop, and arbitrary-field access through GetSubjectField and GetIssuerField. The class has no public constructor.",
+    "description": "Reference for IronPDF SignerCertificateInfo in C#: SubjectDN, IssuerDN, NotBefore, NotAfter, Sha256Thumbprint, RawData, GetSubjectField, GetIssuerField.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Signing.Inspection;\nusing System;\nusing System.Linq;\nusing System.Security.Cryptography.X509Certificates;\n\nusing var pdf = PdfDocument.FromFile(\"signed.pdf\");\n\n// Entry point: GetVerifiedSignatures returns List<VerifiedSignature>; the certificate\n// is reached through .SignerCertificate (one) or .CertificateChain (signer -> root).\nVerifiedSignature sig = pdf.GetVerifiedSignatures().First();\nSignerCertificateInfo cert = sig.SignerCertificate;\n\n// Identity, validity, and the two distinct serial numbers.\nConsole.WriteLine($\"{cert?.CommonName} ({cert?.Organization}, {cert?.Country}) <{cert?.Email}>\");\nConsole.WriteLine($\"National ID {cert?.SubjectSerialNumber}, cert serial {cert?.CertificateSerialNumber}\");\nConsole.WriteLine($\"Valid {cert?.NotBefore:u} -> {cert?.NotAfter:u}, valid at signing: {cert?.IsValidAt(sig.SigningDate)}\");\n\n// Pinning, interop, and arbitrary OID lookup (eIDAS organizationIdentifier).\nstring sha256 = cert?.Sha256Thumbprint;\nvar x509 = new X509Certificate2(cert.RawData);   // DER bytes, defensive copy on each access\nstring orgId = cert.GetSubjectField(\"2.5.4.97\");\n\n// Chain walk: signer -> intermediates -> root.\nforeach (var link in sig.CertificateChain)\n{\n    Console.WriteLine($\"  {link.CommonName} / issued by {link.GetIssuerField(\"CN\")}\");\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain SignerCertificateInfo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SignerCertificateInfo is in the IronPdf.Signing.Inspection namespace, shipped in IronPdf.dll. It derives from System.Object and has no public constructor: instances are populated by the inspection pipeline and reached through VerifiedSignature.SignerCertificate and VerifiedSignature.CertificateChain after a call to PdfDocument.GetVerifiedSignatures."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between SignerCertificateInfo and VerifiedSignature?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "VerifiedSignature is the per-signature envelope returned by PdfDocument.GetVerifiedSignatures. It carries the signature metadata such as SignerName, SigningDate, SigningReason, SigningLocation, the Status, the Valid flag, the Warnings collection, and references to the certificates. SignerCertificateInfo is the X.509 certificate detail object reached through VerifiedSignature.SignerCertificate (the single signing certificate) or VerifiedSignature.CertificateChain (the full IReadOnlyList from signer to root). One VerifiedSignature can reference several SignerCertificateInfo instances through the chain, and each entry exposes the same property surface."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between SignerCertificateInfo and PdfSignature?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfSignature is the write-side credential used to sign a PDF. It wraps a PFX or P12 certificate, an optional password, the timestamp server URL, and the signing metadata into an object passed to PdfDocument.Sign. SignerCertificateInfo is the read-side certificate detail object populated when a signed PDF is inspected through PdfDocument.GetVerifiedSignatures. PdfSignature configures the signature being applied; SignerCertificateInfo describes a certificate that was already used to sign. The two classes live in adjacent namespaces (IronPdf.Signing for the credential, IronPdf.Signing.Inspection for the inspection result) and do not share a base type."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between CertificateSerialNumber and SubjectSerialNumber?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CertificateSerialNumber is the certificate's own serial number assigned by the issuing Certificate Authority, returned as an uppercase hexadecimal string. It uniquely identifies the certificate within the scope of its issuer and is the value the CA publishes in revocation lists. SubjectSerialNumber is the SERIALNUMBER value embedded in the certificate's Subject DN at OID 2.5.4.5. It is typically a personal or organizational identifier such as a national ID, tax ID, or eIDAS qualified-certificate identifier. The two values come from different parts of the certificate and answer different questions: which certificate, versus which person or entity."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -161,6 +232,42 @@ For advanced scenarios requiring the full .NET certificate object:
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class SignerCertificateInfo : Object</code></pre>
   </div>
+                  <!-- archetype-N:start SignerCertificateInfo treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>SignerCertificateInfo</code> is the X.509 certificate detail you read back for whoever signed a PDF, after inspecting the document's signatures. It surfaces every field a verification workflow asks for: the Subject and Issuer Distinguished Names, the CA-assigned serial, the validity window, the SHA-256 thumbprint, the DER-encoded raw bytes, and a set of convenience properties for the common Subject DN attributes. The class is populated by the inspection pipeline; no public constructor is exposed.</p>
+<p>A <code>SignerCertificateInfo</code> is the natural target for any code that needs to answer compliance, audit, or trust questions about a signed PDF. Typical workflows include eIDAS-qualified signature checks that read the national identifier from the Subject DN, certificate pinning against a known-good thumbprint list, audit logging that records the full Issuer DN and validity period, and chain-of-trust validation that walks every intermediate up to the root. The same class also services interop with .NET cryptographic APIs through the DER <code>RawData</code> byte array.</p>
+<p>To use <code>SignerCertificateInfo</code>, call <code>PdfDocument.GetVerifiedSignatures()</code> on a loaded PDF, take a <code>VerifiedSignature</code> from the resulting list, and read <code>SignerCertificate</code> (one <code>SignerCertificateInfo</code>, the signer) or <code>CertificateChain</code> (<code>IReadOnlyList&lt;SignerCertificateInfo&gt;</code> ordered signer first, root last). The identity convenience properties <code>CommonName</code>, <code>Organization</code>, <code>Country</code>, <code>Email</code>, and <code>SubjectSerialNumber</code> answer the everyday &quot;who signed&quot; question. The identifiers <code>CertificateSerialNumber</code>, <code>SubjectDN</code>, and <code>IssuerDN</code> carry the full canonical strings. Validity is read through <code>NotBefore</code>, <code>NotAfter</code>, the snapshot <code>IsExpired</code>, and the historical check <code>IsValidAt(DateTime)</code>. Trust and interop are served by <code>Sha256Thumbprint</code> for pinning, <code>RawData</code> for <code>X509Certificate2</code> construction, and the arbitrary-field accessors <code>GetSubjectField(string)</code> and <code>GetIssuerField(string)</code>, which accept either short names (&quot;CN&quot;, &quot;O&quot;, &quot;C&quot;) or numeric OIDs (&quot;2.5.4.97&quot; for the eIDAS organizationIdentifier).</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Signing.Inspection;
+using System;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+
+using var pdf = PdfDocument.FromFile(&quot;signed.pdf&quot;);
+
+// Entry point: GetVerifiedSignatures returns List&lt;VerifiedSignature&gt;; the certificate
+// is reached through .SignerCertificate (one) or .CertificateChain (signer -&gt; root).
+VerifiedSignature sig = pdf.GetVerifiedSignatures().First();
+SignerCertificateInfo cert = sig.SignerCertificate;
+
+// Identity, validity, and the two distinct serial numbers.
+Console.WriteLine($&quot;{cert?.CommonName} ({cert?.Organization}, {cert?.Country}) &lt;{cert?.Email}&gt;&quot;);
+Console.WriteLine($&quot;National ID {cert?.SubjectSerialNumber}, cert serial {cert?.CertificateSerialNumber}&quot;);
+Console.WriteLine($&quot;Valid {cert?.NotBefore:u} -&gt; {cert?.NotAfter:u}, valid at signing: {cert?.IsValidAt(sig.SigningDate)}&quot;);
+
+// Pinning, interop, and arbitrary OID lookup (eIDAS organizationIdentifier).
+string sha256 = cert?.Sha256Thumbprint;
+var x509 = new X509Certificate2(cert.RawData);   // DER bytes, defensive copy on each access
+string orgId = cert.GetSubjectField(&quot;2.5.4.97&quot;);
+
+// Chain walk: signer -&gt; intermediates -&gt; root.
+foreach (var link in sig.CertificateChain)
+{
+    Console.WriteLine($&quot;  {link.CommonName} / issued by {link.GetIssuerField(&quot;CN&quot;)}&quot;);
+}</code></pre></div>
+<p>Every member is demonstrated in the <a href="https://ironpdf.com/how-to/verify-pdf-signatures/">verify PDF signatures how-to</a>. For the write-side counterpart (the credential consumed by <code>PdfDocument.Sign</code>), see the <a href="https://ironpdf.com/how-to/signing/">digital signatures how-to</a>. The <a href="https://ironpdf.com/tutorials/pdf-digital-signatures-csharp-guide/">digital signatures C# tutorial</a> gives the long-form compliance context. Common store, validity, and thumbprint errors are catalogued in the <a href="https://ironpdf.com/troubleshooting/digital-signatures/">digital signatures troubleshooting page</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

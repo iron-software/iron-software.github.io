@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class MailMergeTemplate
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       MailMergeTemplate Class - IronPDF C# API Reference
+      v2 (human)     title:       MailMergeTemplate: Word Mail Merge in C# IronPDF
+      v1 (algorithm) description: MailMergeTemplate is the IronPdf.DocX class wrapping mail-merge recipient data from DataSet, DataTable, or JSON. Pairs with DocxToPdfRenderer.
+      v2 (human)     description: Bind mail-merge recipient data from DataSet, DataTable, or JSON in C# with the IronPDF MailMergeTemplate class. Pairs with DocxToPdfRenderer.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>MailMergeTemplate Class | IronPDF C# Mail Merge</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class MailMergeTemplate
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="MailMergeTemplate Class | IronPDF C# Mail Merge">
+    <meta name="description" content="Reference for the IronPdf.DocX.MailMergeTemplate class in C#: DataSet, DataTable, and JSON constructors, create generic method, renderer pairing.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "MailMergeTemplate Class | IronPDF C# Mail Merge",
+    "name": "MailMergeTemplate class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.DocX.MailMergeTemplate.html",
+    "abstract": "When mail-merge recipient records already exist in ADO.NET or JSON form, MailMergeTemplate wraps them in IronPDF for use with DocxToPdfRenderer. It exposes three constructors that accept a System.Data.DataSet, a System.Data.DataTable, or a JSON string of recipient objects, plus a generic create method that binds a strongly-typed List of merge data to the template. The canonical mail-merge render path in IronPDF runs through DocxToPdfRenderer.RenderDocxMailMergeAsPdf, which accepts a List of recipients and a .docx or .dotx template path and returns one PdfDocument per recipient.",
+    "description": "Reference for the IronPdf.DocX.MailMergeTemplate class in C#: DataSet, DataTable, and JSON constructors, create generic method, renderer pairing.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.DocX;\nusing System.Collections.Generic;\nusing System.Data;\nusing System.Linq;\n\n// Adapter path: wrap recipient data that arrives as an ADO.NET DataTable.\nvar recipients = new DataTable();\nrecipients.Columns.Add(\"Recipients_Name\");\nrecipients.Columns.Add(\"Location\");\nrecipients.Rows.Add(\"Olivia Smith\", \"Iron Software Cafe, Chiang Mai\");\nvar template = new MailMergeTemplate(recipients);\n\n// Canonical render path: DocxToPdfRenderer takes the typed list directly.\nvar typed = new List<RecipientsDataModel> { /* recipient objects */ };\nvar renderer = new DocxToPdfRenderer();\nvar options = new DocxPdfRenderOptions { MailMergePrintAllInOnePdfDocument = true };\nIEnumerable<PdfDocument> pdfs = renderer.RenderDocxMailMergeAsPdf<RecipientsDataModel>(\n    typed, \"Party-invitation.dotx\", options);\npdfs.First().SaveAs(\"invitations.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does MailMergeTemplate live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MailMergeTemplate is in the IronPdf.DocX namespace, shipped in IronPdf.dll. It derives from System.Object. Use it as a recipient-data adapter upstream of DocxToPdfRenderer.RenderDocxMailMergeAsPdf when the source data arrives as a DataSet, a DataTable, or a JSON string."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between MailMergeTemplate and DocxToPdfRenderer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MailMergeTemplate is a recipient-data adapter in the IronPdf.DocX namespace. It wraps merge records that arrive as a DataSet, a DataTable, or a JSON string. DocxToPdfRenderer is the renderer in the IronPdf namespace that produces PdfDocument output from a Word template. The canonical mail-merge path calls RenderDocxMailMergeAsPdf directly on a DocxToPdfRenderer instance with a strongly-typed List of recipients, the .docx or .dotx template path, and an optional DocxPdfRenderOptions. Use MailMergeTemplate when the source data already exists as a DataSet, DataTable, or JSON payload and a typed list is not yet available."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the create method on MailMergeTemplate spelled in lowercase?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The create generic method is declared in lowercase on MailMergeTemplate as published in the IronPDF reference, which is the casing the C# compiler will accept. The method returns void, so it does not yield a PdfDocument by itself. To produce PDFs from a Word template, call RenderDocxMailMergeAsPdf on a DocxToPdfRenderer instance instead. Merge-field property names on the data model must match the field names in the Word template exactly and are case-sensitive."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which constructor should you choose for mail-merge recipient data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Choose the DataTable constructor when recipient data already lives in a single ADO.NET table from a SQL query or stored procedure result. Choose the DataSet constructor for master-detail relationships across multiple tables. Choose the string constructor when recipient data arrives as a JSON array from a REST endpoint or message queue. In all three cases, the next step in a complete workflow is to feed a typed List of the same records to DocxToPdfRenderer.RenderDocxMailMergeAsPdf along with the .docx or .dotx template path."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -159,16 +230,34 @@ recipients.Rows.Add(&quot;Jane Doe&quot;, &quot;jane@example.com&quot;);
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class MailMergeTemplate : Object</code></pre>
   </div>
-  <h5 id="IronPdf_DocX_MailMergeTemplate_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Data Source Options:</strong>
-</p>
-<ul><li></li><li></li><li></li><li></li></ul>
-<p>
-<strong>Related Resources:</strong>
-</p>
-<ul><li></li><li></li></ul>
-</div>
+                  <!-- archetype-N:start MailMergeTemplate treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>MailMergeTemplate</code> wraps the recipient records an IronPDF mail-merge operation consumes when that data already exists in ADO.NET or JSON form. It exposes three constructors that accept a <code>System.Data.DataSet</code>, a <code>System.Data.DataTable</code>, or a JSON string of recipient objects, and provides a generic <code>create&lt;TRecipientsDataModel&gt;</code> method that binds a strongly-typed <code>List&lt;T&gt;</code> of merge data to the template instance.</p>
+<p>Reach for it when a reporting pipeline reads merge data out of a <code>DataSet</code> returned by a stored procedure, when an ETL job hands off a <code>DataTable</code> of customer rows, or when a REST endpoint receives recipient payloads as a JSON array and a strongly-typed model is not yet available. The three constructors let the same downstream render code accept whichever shape the calling layer produces, which is why this class sits beside <code>DocxToPdfRenderer</code> rather than replacing it.</p>
+<p>The canonical end-to-end mail-merge path in IronPDF runs through <code>DocxToPdfRenderer.RenderDocxMailMergeAsPdf&lt;T&gt;</code>, which accepts a <code>List&lt;T&gt;</code> of recipients, a <code>.docx</code> or <code>.dotx</code> template path, and an optional <code>DocxPdfRenderOptions</code>. <code>MailMergeTemplate</code> is useful upstream of that call as an adapter when the source data is not already a generic list. Construct a <code>MailMergeTemplate</code> from the available shape (<code>DataSet</code>, <code>DataTable</code>, or JSON string), then hand the converted recipient list to the renderer. The <a href="https://ironpdf.com/how-to/docx-to-pdf/">DOCX to PDF how-to</a> demonstrates the <code>RecipientsDataModel</code> shape and the <code>MailMergePrintAllInOnePdfDocument</code> option on a working merge.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.DocX;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+
+// Adapter path: wrap recipient data that arrives as an ADO.NET DataTable.
+var recipients = new DataTable();
+recipients.Columns.Add(&quot;Recipients_Name&quot;);
+recipients.Columns.Add(&quot;Location&quot;);
+recipients.Rows.Add(&quot;Olivia Smith&quot;, &quot;Iron Software Cafe, Chiang Mai&quot;);
+var template = new MailMergeTemplate(recipients);
+
+// Canonical render path: DocxToPdfRenderer takes the typed list directly.
+var typed = new List&lt;RecipientsDataModel&gt; { /* recipient objects */ };
+var renderer = new DocxToPdfRenderer();
+var options = new DocxPdfRenderOptions { MailMergePrintAllInOnePdfDocument = true };
+IEnumerable&lt;PdfDocument&gt; pdfs = renderer.RenderDocxMailMergeAsPdf&lt;RecipientsDataModel&gt;(
+    typed, &quot;Party-invitation.dotx&quot;, options);
+pdfs.First().SaveAs(&quot;invitations.pdf&quot;);</code></pre></div>
+<p>For a minimal renderable demo project wired into a console app, the <a href="https://ironpdf.com/examples/docx-to-pdf/">DOCX to PDF example</a> wires the renderer into a runnable console app.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

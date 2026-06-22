@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class License
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       License Class - IronPDF C# Licensing Reference
+      v2 (human)     title:       License: Apply Your IronPDF License Key in C#
+      v1 (algorithm) description: License is the IronPDF static class for license keys in C#. Reference LicenseKey, IsLicensed, IsValidLicense, and DisableAppAnalytics.
+      v2 (human)     description: Apply IronPDF license keys in C# with the License static class. Covers LicenseKey, IsLicensed, Web.Config, appsettings.json, and trial key validation.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>License Class | IronPDF C# Licensing Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class License
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="License Class | IronPDF C# Licensing Reference">
+    <meta name="description" content="Reference for the IronPDF License static class in C#: apply LicenseKey at startup, verify IsLicensed, and configure via Web.Config or appsettings.json.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "License Class | IronPDF C# Licensing Reference",
+    "name": "License class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.License.html",
+    "abstract": "License applies your IronPDF product key at startup and confirms the running process is licensed. It exposes LicenseKey (assign the product key at startup), IsLicensed (verify the engine accepted the key), IsValidLicense (validate a candidate key without applying it), and DisableAppAnalytics (opt out of anonymized analytics). The same key value can be supplied directly in code, through Web.Config or App.Config appSettings, through appsettings.json in .NET Core, or through the IronPdf.LicenseKey environment variable.",
+    "description": "Reference for the IronPDF License static class in C#: apply LicenseKey at startup, verify IsLicensed, and configure via Web.Config or appsettings.json.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\n// Application startup, before the first IronPDF call\nLicense.LicenseKey = \"IRONPDF-YOUR-LICENSE-KEY\";\n\n// Optional: opt out of anonymized analytics\nLicense.DisableAppAnalytics();\n\n// Confirm the license was accepted\nif (!License.IsLicensed)\n{\n    throw new InvalidOperationException(\"IronPDF license key was not accepted.\");\n}\n\n// First render runs licensed and watermark-free\nvar renderer = new ChromePdfRenderer();\nPdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Hello</h1>\");\npdf.SaveAs(\"output.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is License located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "License is in the IronPdf namespace, shipped in IronPdf.dll. It is a static class that derives from Object. Apply License.LicenseKey at application startup, before the first ChromePdfRenderer or PdfDocument call, to license every render that follows."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between License and Installation in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "License holds the IronPDF product key and the analytics opt-out: LicenseKey, IsLicensed, IsValidLicense, and DisableAppAnalytics. Installation holds runtime deployment and performance configuration: paths, concurrency, GPU mode, engine lifecycle. Installation has no LicenseKey property; assignments go on the separate License class as License.LicenseKey before the first render."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you apply an IronPDF license key from appsettings.json or Web.Config?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the key name IronPdf.LicenseKey in all three locations. In Web.Config or App.Config, add <add key=\"IronPdf.LicenseKey\" value=\"...\"/> under <appSettings>. In appsettings.json, add a top-level IronPdf.LicenseKey entry with the key as the value. The same key name also works as an environment variable. IronPDF reads from the first source that resolves at startup."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does IsLicensed return false after assigning LicenseKey?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The most common cause is the assignment happening after the first IronPDF call. Apply License.LicenseKey at application startup, before any ChromePdfRenderer, PdfDocument, or other IronPDF API call. A typo, a key for a different Iron Software product, or an expired key will also cause IsLicensed to return false; License.IsValidLicense(candidate) confirms whether a string is recognized without committing to it."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -169,6 +240,32 @@ if (License.IsLicensed) {
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class License : Object</code></pre>
   </div>
+                  <!-- archetype-N:start License treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Use <code>License</code> to apply your IronPDF product key at startup, confirm the running process is licensed, validate a candidate key before committing to it, and opt out of anonymized analytics. The single property and three methods together cover applying a key, checking license status, pre-validating a candidate, and disabling analytics. A valid license unlocks production use and removes watermarks from rendered PDFs.</p>
+<p>The class belongs at the top of an application's wiring sequence next to <code>Installation</code>: <code>License.LicenseKey</code> accepts the product key, and the IronPDF engine reads it during the first render or <code>PdfDocument</code> operation. Assigning the key after that first call is the most common reason a process runs unlicensed. A development or trial environment can verify a candidate key with <code>License.IsValidLicense</code> before assignment, and a production deployment confirms <code>License.IsLicensed</code> returns true after startup.</p>
+<p>Set <code>License.LicenseKey</code> at application startup, before the first <code>ChromePdfRenderer</code> or <code>PdfDocument</code> call. For deployments that prefer external configuration, the same key value can be supplied through three alternative mechanisms, all using the conventional key name <code>IronPdf.LicenseKey</code>: a <code>Web.Config</code> or <code>App.Config</code> entry under <code>&lt;appSettings&gt;</code> (.NET Framework), an <code>IronPdf.LicenseKey</code> entry in <code>appsettings.json</code> (.NET Core and later), or an <code>IronPdf.LicenseKey</code> environment variable on the host. <code>License.IsLicensed</code> returns true after the engine accepts the key, and <code>License.IsValidLicense(candidate)</code> returns true when the candidate string is well-formed and recognized without applying it. <code>License.DisableAppAnalytics()</code> opts out of the anonymized analytics IronPDF reports by default. For obtaining, applying, and verifying a key, see the <a href="https://ironpdf.com/get-started/license-keys/">license keys getting-started guide</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+// Application startup, before the first IronPDF call
+License.LicenseKey = &quot;IRONPDF-YOUR-LICENSE-KEY&quot;;
+
+// Optional: opt out of anonymized analytics
+License.DisableAppAnalytics();
+
+// Confirm the license was accepted
+if (!License.IsLicensed)
+{
+    throw new InvalidOperationException(&quot;IronPDF license key was not accepted.&quot;);
+}
+
+// First render runs licensed and watermark-free
+var renderer = new ChromePdfRenderer();
+PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Hello&lt;/h1&gt;&quot;);
+pdf.SaveAs(&quot;output.pdf&quot;);</code></pre></div>
+<p>For configuration-based setup, the <a href="https://ironpdf.com/how-to/license-keys/">license keys how-to</a> covers the <code>Web.Config</code>, <code>appsettings.json</code>, and environment-variable patterns in depth. The <a href="https://ironpdf.com/troubleshooting/apply-a-license-key-in-ironpdf/">apply a license key troubleshooting guide</a> covers operational issues such as a key not being read at startup. For commercial information, the <a href="https://ironpdf.com/licensing/">IronPDF licensing page</a> covers trial keys, paid tiers, and renewals.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

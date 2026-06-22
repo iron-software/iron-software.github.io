@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PathObjectCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PathObjectCollection Class - IronPDF C# API Reference
+      v2 (human)     title:       PathObjectCollection: PDF Page Path Set in C#
+      v1 (algorithm) description: IronSoftware.PathObjectCollection class reference for C#: ObservableCollection of PathObject reached via PdfPage.ObjectModel.PathObjects.
+      v2 (human)     description: Iterate, count, and remove vector paths drawn on a PDF page from C# through the IronPDF PathObjectCollection on PdfPage.ObjectModel.PathObjects.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PathObjectCollection Class | IronPDF C# PDF DOM API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PathObjectCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PathObjectCollection Class | IronPDF C# PDF DOM API">
+    <meta name="description" content="PathObjectCollection is the IronPDF C# container of PathObject elements on PdfPage.ObjectModel: Add, Remove, RemoveAt, Clear, Count, indexer, ToJson.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PathObjectCollection Class | IronPDF C# PDF DOM API",
+    "name": "PathObjectCollection class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.PathObjectCollection.html",
+    "abstract": "`PathObjectCollection` gathers the `PathObject` vector elements drawn on a single PDF page so IronPDF can read, count, mutate, or remove them. Application code obtains instances by reading `PdfPage.ObjectModel.PathObjects`, where `ObjectModel` is typed `IPdfPageObjectModel`. The type is part of the `IronSoftware` namespace in `IronPdf.dll` and declared `public class PathObjectCollection : ObservableCollection<PathObject>, IPdfPathObjectCollection, IDocumentPathObjectCollection<PathObject>, IList<PathObject>, IJsonSerializable`. The class exposes direct members `IsReadOnly`, `Items`, `Add`, `Remove`, `RemoveAt`, `Clear`, `GetHashCode`, and `ToJson`, plus the inherited `Count`, integer indexer, `foreach`, and the `CollectionChanged` and `PropertyChanged` events from the `ObservableCollection<PathObject>` base for per-page path set inspection and mutation in C#.",
+    "description": "PathObjectCollection is the IronPDF C# container of PathObject elements on PdfPage.ObjectModel: Add, Remove, RemoveAt, Clear, Count, indexer, ToJson.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Pages;\nusing IronSoftware;\n\nPdfDocument pdf = PdfDocument.FromFile(\"diagram.pdf\");\n\nforeach (PdfPage page in pdf.Pages)\n{\n    PathObjectCollection paths = page.ObjectModel.PathObjects;\n\n    // Walk in reverse so RemoveAt does not shift the next index.\n    for (int i = paths.Count - 1; i >= 0; i--)\n    {\n        PathObject path = paths[i];\n\n        // Drop zero-length stroked paths left over from CAD export.\n        if (path.IsStroked && path.BoundingBox.Width == 0 && path.BoundingBox.Height == 0)\n        {\n            paths.RemoveAt(i);\n        }\n    }\n}\n\npdf.SaveAs(\"diagram.cleaned.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PathObjectCollection live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PathObjectCollection is in the IronSoftware namespace, shipped in IronPdf.dll. It is declared public class PathObjectCollection : ObservableCollection of PathObject, IPdfPathObjectCollection, IDocumentPathObjectCollection of PathObject, IList of PathObject, IJsonSerializable. Application code reads instances from PdfPage.ObjectModel.PathObjects rather than constructing them directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PathObjectCollection and IPdfPathObjectCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PathObjectCollection is the concrete class in the IronSoftware namespace that ships with IronPDF and derives from ObservableCollection of PathObject. IPdfPathObjectCollection is the matching interface contract in the same IronSoftware namespace, declared as a list of PathObject plus IJsonSerializable. PathObjectCollection is the only concrete IronPDF-shipped implementor of IPdfPathObjectCollection. Reference the interface at API boundaries when accepting any compatible path collection; reference the concrete PathObjectCollection class when reading PdfPage.ObjectModel.PathObjects directly because the page object model is declared with the concrete class as its generic argument and exposes the ObservableCollection events. Both surface the same Add, Remove, RemoveAt, Clear, indexer, and Count members. The sibling TextObjectCollection and ImageObjectCollection follow the same shape for their element types."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you obtain a PathObjectCollection in C# code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Load the PDF with PdfDocument.FromFile, select a page from pdf.Pages, then read page.ObjectModel.PathObjects. The returned value is typed as the concrete PathObjectCollection because IPdfPageObjectModel is declared IDocumentPageObjectModel of TextObjectCollection, PathObjectCollection, ImageObjectCollection. The same path returns a TextObjectCollection through ObjectModel.TextObjects and an ImageObjectCollection through ObjectModel.ImageObjects. Application code does not construct PathObjectCollection directly because the page DOM owns the instance and any mutations are written back to the loaded page when PdfDocument.SaveAs is called."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does removing paths in a forward loop skip entries?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PathObjectCollection is a list-backed observable container. Calling RemoveAt on index i shifts every later element down by one position, so a forward loop that increments i past the removed slot lands on the element that was originally two positions later and skips the one between. Iterate from Count - 1 down to 0 when removing multiple paths in a single pass. The same pattern applies to Remove on a forward foreach because the collection raises CollectionChanged and invalidates the enumerator."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -160,6 +231,38 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PathObjectCollection : ObservableCollection&lt;PathObject&gt;, IPdfPathObjectCollection, IDocumentPathObjectCollection&lt;PathObject&gt;, IEnumerable&lt;PathObject&gt;, IEnumerable, IList&lt;PathObject&gt;, ICollection&lt;PathObject&gt;, IJsonSerializable</code></pre>
   </div>
+                <!-- archetype-N:start PathObjectCollection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a page's vector marks need to be read, counted, mutated, or removed as a set, <code>PathObjectCollection</code> is the container that holds them. There is no public constructor; the page object model owns the instance and surfaces it at <code>PdfPage.ObjectModel.PathObjects</code>, where <code>ObjectModel</code> is typed <code>IPdfPageObjectModel</code> and exposes the path collection alongside its sibling <code>TextObjectCollection</code> and <code>ImageObjectCollection</code>.</p>
+<p>Typical scenarios for the collection include auditing path geometry per page across a multi-page diagram report, redacting unwanted strokes by index through <code>RemoveAt</code>, inserting a <code>PathObject</code> returned from <code>Clone()</code> back into the collection, recoloring fills on existing chart shapes in a brand-refresh job, JSON-serializing the full path set on a page for downstream tooling, and reacting to in-place edits through the <code>CollectionChanged</code> event inherited from <code>ObservableCollection&lt;PathObject&gt;</code>. Long-lived references can subscribe to change notifications instead of polling.</p>
+<p>The everyday surface groups into five buckets. Mutation members are <code>Add(PathObject)</code>, <code>Remove(PathObject)</code>, <code>RemoveAt(int)</code>, and <code>Clear()</code>. Iteration members are <code>Count</code> (inherited from <code>Collection&lt;T&gt;</code>), the integer indexer <code>this[int]</code> returning <code>PathObject</code>, and <code>foreach</code> over <code>IEnumerable&lt;PathObject&gt;</code>. State is <code>IsReadOnly</code> (always <code>false</code> in practice for the page-DOM container) and the protected <code>Items</code> backing list typed <code>IList&lt;PathObject&gt;</code>. Serialization is <code>ToJson()</code> and an overridden <code>GetHashCode()</code>. Observability comes from the <code>ObservableCollection&lt;PathObject&gt;</code> base, which raises <code>CollectionChanged</code> on add, remove, replace, move, and reset, and <code>PropertyChanged</code> on <code>Count</code> and indexer changes. One constraint that surprises in practice: when removing several paths in a single pass, iterate from <code>Count - 1</code> down to <code>0</code> so the index shift after each <code>RemoveAt</code> does not skip entries.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Pages;
+using IronSoftware;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;diagram.pdf&quot;);
+
+foreach (PdfPage page in pdf.Pages)
+{
+    PathObjectCollection paths = page.ObjectModel.PathObjects;
+
+    // Walk in reverse so RemoveAt does not shift the next index.
+    for (int i = paths.Count - 1; i &gt;= 0; i--)
+    {
+        PathObject path = paths[i];
+
+        // Drop zero-length stroked paths left over from CAD export.
+        if (path.IsStroked &amp;&amp; path.BoundingBox.Width == 0 &amp;&amp; path.BoundingBox.Height == 0)
+        {
+            paths.RemoveAt(i);
+        }
+    }
+}
+
+pdf.SaveAs(&quot;diagram.cleaned.pdf&quot;);</code></pre></div>
+<p>The <a href="/how-to/access-pdf-dom-object/">PDF DOM object guide</a> has a worked walk that reaches <code>PathObjects</code> alongside the <code>TextObjects</code> and <code>ImageObjects</code> accessors on the same page model. When the job also involves pulling text and image content out of the same documents, the <a href="/how-to/extract-text-and-images/">extract text and images how-to</a> documents the document-level read APIs.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

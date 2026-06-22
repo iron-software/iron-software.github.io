@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfFont
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfFont Class - IronPDF C# API Reference
+      v2 (human)     title:       PdfFont: Embed and Replace PDF Fonts in C#
+      v1 (algorithm) description: PdfFont is the IronPDF C# class for an individual font in a PdfDocument. Reference Name, Type, IsEmbedded, Embed, Unembed, and ReplaceWith.
+      v2 (human)     description: Inspect, embed, unembed, and replace a single PDF font in C# with IronPDF PdfFont. Obtain instances from PdfDocument.Fonts and call Embed for PDF/A.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfFont | IronPDF C# Fonts API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfFont
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfFont | IronPDF C# Fonts API">
+    <meta name="description" content="Reference for IronPDF PdfFont in C#: Name, Type, IsEmbedded, IsSubsetted, FontData, Embed, Unembed, and ReplaceWith on each element of PdfFontCollection.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfFont | IronPDF C# Fonts API",
+    "name": "PdfFont class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Fonts.PdfFont.html",
+    "abstract": "PdfFont in IronPDF represents a single font referenced inside a PdfDocument and lets callers inspect, embed, unembed, or replace it. It is obtained through PdfDocument.Fonts and the indexer, Find, or Add members of PdfFontCollection. It exposes the read-only identity properties Name, Type, IsEmbedded, and IsSubsetted, the mutating operations Embed, Unembed, and ReplaceWith, and the static helper IsValidStandardFont for the 14 standard PDF font names.",
+    "description": "Reference for IronPDF PdfFont in C#: Name, Type, IsEmbedded, IsSubsetted, FontData, Embed, Unembed, and ReplaceWith on each element of PdfFontCollection.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Fonts;\nusing System;\nusing System.IO;\n\nPdfDocument pdf = PdfDocument.FromFile(\"report.pdf\");\nPdfFontCollection fonts = pdf.Fonts;\n\n// Inspect every PdfFont the document references.\nforeach (PdfFont font in fonts)\n{\n    Console.WriteLine($\"{font.Name} ({font.Type}) embedded={font.IsEmbedded} subset={font.IsSubsetted}\");\n\n    // Embed any font that ships only by reference (PDF/A compliance).\n    if (!font.IsEmbedded)\n    {\n        font.Embed();\n    }\n}\n\nPdfFont helvetica = fonts[\"Helvetica\"];\nif (helvetica != null)\n{\n    byte[] customBytes = File.ReadAllBytes(\"Roboto-Regular.ttf\");\n    PdfFont replacement = helvetica.ReplaceWith(customBytes);\n    replacement.Embed();\n}\n\npdf.SaveAs(\"report-fonts-embedded.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain PdfFont?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfFont is in the IronPdf.Fonts namespace, shipped in IronPdf.dll. It derives from System.Object and implements IDocumentFontObject, IFont, IDocumentObject, and IPdfDocumentObject. Instances are obtained from the PdfFontCollection on PdfDocument.Fonts through enumeration, the string indexer, Find, or one of the Add overloads rather than constructed directly in most code."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfFont and PdfFontCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfFont is the individual font handle; PdfFontCollection is the container reached through PdfDocument.Fonts. PdfFontCollection derives from ObservableCollection<PdfFont> and exposes Add, Find, and a string indexer that look up or insert fonts in the document. PdfFont is the element returned from those members, and per-font operations such as Embed, Unembed, and ReplaceWith are invoked on the PdfFont rather than on the collection. Every PdfFont a caller works with is obtained from PdfFontCollection through enumeration, the indexer, Find, or one of the Add overloads."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you load a custom TrueType font onto a PdfDocument in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the .ttf or .otf file into a byte array, call Add on PdfDocument.Fonts with that byte array, and invoke Embed on the returned PdfFont. The Add(string) overload on PdfFontCollection is reserved for the 14 standard PDF font names (Courier, Helvetica, Times, Symbol, Dingbats and their style variants) and does not accept arbitrary font names. The standalone PdfFont constructor that takes a string also expects a standard PDF font name; use IsValidStandardFont to validate input before calling it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you embed every non-embedded font in a PDF for PDF/A compliance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open the document through PdfDocument.FromFile or another constructor, iterate PdfDocument.Fonts as a foreach over PdfFont, and call Embed on each PdfFont whose IsEmbedded property is false. The Embed method has an optional byte array parameter that supplies the font data when the original PDF references the font by name only. After embedding, save the result through SaveAs and the produced PDF will carry every font's byte stream inside the document."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -157,6 +228,43 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfFont : Object, IDocumentFontObject, IFont, IDocumentObject, IPdfDocumentObject</code></pre>
   </div>
+                  <!-- archetype-N:start PdfFont treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a single font referenced inside an <code>IronPdf.PdfDocument</code> is inspected, embedded, or replaced, that font is a <code>PdfFont</code>. Every font a caller inspects on an open document, every font added through <code>PdfFontCollection.Add</code>, and every font handed back from <code>PdfFontCollection.Find</code> or the string indexer is a <code>PdfFont</code> instance.</p>
+<p>Application code rarely constructs <code>PdfFont</code> directly. Instances arrive through <code>PdfDocument.Fonts</code>, which returns the live <code>PdfFontCollection</code> for that document, and then through enumeration, the indexer, <code>Find</code>, or one of the <code>Add</code> overloads on that collection. Each <code>PdfFont</code> answers questions about the font (its name, type, embedding state) and exposes a small set of mutating operations: <code>Embed</code> to bake the font's byte stream into the document for portability, <code>Unembed</code> to drop it, and <code>ReplaceWith</code> to swap the underlying glyph data while keeping references intact. Typical scenarios include preparing documents for PDF/A compliance, replacing display fonts in incoming third-party PDFs, and auditing fonts across batch document-processing pipelines.</p>
+<p>The identity surface is read-only and worth naming up front: <code>Name</code> carries the PostScript font name, <code>Type</code> returns a <code>FontType</code> value (<code>TrueType</code>, <code>Type0</code>, <code>Type1</code>, <code>Type3</code>, <code>CIDFontType0</code>, <code>CIDFontType2</code>, or <code>Unknown</code>), <code>IsEmbedded</code> reports whether the font's byte stream sits inside the document, and <code>IsSubsetted</code> reports whether the embedded copy carries only the glyphs the document actually uses. The mutating surface is <code>Embed(byte[] Data = null)</code> (the optional <code>Data</code> parameter accepts replacement bytes), <code>Unembed()</code>, and the two <code>ReplaceWith</code> overloads that take either raw font-file bytes or a standard font name. The lower-level properties <code>FontData</code>, <code>ObjNum</code>, <code>PageIndex</code>, <code>DescendantFontObjNum</code>, and <code>DocumentId</code> expose the underlying PDF object plumbing for advanced scenarios. The static helper <code>IsValidStandardFont(string fontName)</code> answers whether a name matches one of the 14 standard PDF fonts, and <a href="https://ironpdf.com/how-to/manage-fonts/">the manage fonts how-to</a> has a worked inspect-embed-replace example.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Fonts;
+using System;
+using System.IO;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;report.pdf&quot;);
+PdfFontCollection fonts = pdf.Fonts;
+
+// Inspect every PdfFont the document references.
+foreach (PdfFont font in fonts)
+{
+    Console.WriteLine($&quot;{font.Name} ({font.Type}) embedded={font.IsEmbedded} subset={font.IsSubsetted}&quot;);
+
+    // Embed any font that ships only by reference (PDF/A compliance).
+    if (!font.IsEmbedded)
+    {
+        font.Embed();
+    }
+}
+
+PdfFont helvetica = fonts[&quot;Helvetica&quot;];
+if (helvetica != null)
+{
+    byte[] customBytes = File.ReadAllBytes(&quot;Roboto-Regular.ttf&quot;);
+    PdfFont replacement = helvetica.ReplaceWith(customBytes);
+    replacement.Embed();
+}
+
+pdf.SaveAs(&quot;report-fonts-embedded.pdf&quot;);</code></pre></div>
+<p>For the HTML-side companion problem of getting fonts to load before render time, the <a href="https://ironpdf.com/how-to/webfonts-webicons/">web and icon fonts how-to</a> covers <code>@font-face</code> and <code>WaitFor.AllFontsLoaded</code>, and the <a href="https://ironpdf.com/troubleshooting/fonts/">fonts troubleshooting guide</a> handles missing-glyph and embedding edge cases.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ExtractionProgress
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ExtractionProgress Class | IronPDF C# API Reference
+      v2 (human)     title:       ExtractionProgress: Async PDF Extraction Progress in C#
+      v1 (algorithm) description: ExtractionProgress is the IronPDF C# progress payload for PdfExtractor.ExtractAsync. Reference CurrentPage, TotalPages, PercentComplete, TablesFound.
+      v2 (human)     description: Report PDF extraction progress in C# with the IronPDF ExtractionProgress class, delivered through IProgress to PdfExtractor.ExtractAsync.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ExtractionProgress Class | IronPDF C# Async Extraction</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ExtractionProgress
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ExtractionProgress Class | IronPDF C# Async Extraction">
+    <meta name="description" content="Reference for the IronPDF ExtractionProgress class in C#: read-only paging, status, and table-counter properties for async extraction.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,77 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ExtractionProgress Class | IronPDF C# Async Extraction",
+    "name": "ExtractionProgress class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.ExtractionProgress.html",
+    "abstract": "Reporting progress to the caller during asynchronous PDF extraction in IronPDF runs through ExtractionProgress. It is delivered through an IProgress<ExtractionProgress> reporter that the caller passes to PdfExtractor.ExtractAsync or PdfExtractor.ExtractPageAsync, and exposes five get-only properties: CurrentPage and TotalPages and PercentComplete for progress-bar UIs, CurrentOperation for stage logging, and TablesFound for live table-detection counters. Application code consumes the instance through a Progress<ExtractionProgress> lambda; the IronPDF runtime constructs and populates it.",
+    "description": "Reference for the IronPDF ExtractionProgress class in C#: read-only paging, status, and table-counter properties for async extraction.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using System;\nusing IronPdf;\nusing IronPdf.Extractions;\n\n// Pass an IProgress<ExtractionProgress> reporter to ExtractAsync.\n// The runtime populates ExtractionProgress and calls Report on each update.\nvar progress = new Progress<ExtractionProgress>(p =>\n{\n    Console.WriteLine($\"{p.CurrentOperation}: page {p.CurrentPage}/{p.TotalPages} \" +\n                      $\"({p.PercentComplete:F1}%), tables found: {p.TablesFound}\");\n});\n\nPdfExtractionResult result = await PdfExtractor.ExtractAsync(\n    \"large-report.pdf\",\n    options: null,\n    progress: progress);"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "// Single-page async with the same reporter shape.\nvar pageProgress = new Progress<ExtractionProgress>(p =>\n{\n    // Bind p.PercentComplete to a UI progress bar value (0.0 - 100.0).\n});\n\nPdfExtractionResult one = await PdfExtractor.ExtractPageAsync(\n    \"large-report.pdf\",\n    pageNumber: 12,\n    options: null,\n    progress: pageProgress);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is ExtractionProgress located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ExtractionProgress is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It derives from System.Object. The IronPDF runtime constructs it and reports it to the caller through the IProgress<ExtractionProgress> reporter passed to PdfExtractor.ExtractAsync."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ExtractionProgress and the ExportManager pipeline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ExtractionProgress is an extraction-side type, not an export-side type. It is reported by PdfExtractor.ExtractAsync and PdfExtractor.ExtractPageAsync through an IProgress<ExtractionProgress> reporter that the caller supplies. ExportManager.ExportResult, ExportManager.ExportTable, and ExportManager.ExportTables are all synchronous void methods that do not accept any IProgress parameter and therefore never produce ExtractionProgress updates. If progress is needed for the write step, the caller wraps the ExportManager call in its own task and reports completion through a separate channel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you set the properties on ExtractionProgress yourself?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Every property on ExtractionProgress is get-only: CurrentPage, TotalPages, PercentComplete, CurrentOperation, and TablesFound. The IronPDF runtime constructs the instance during async extraction and calls Report on the IProgress<ExtractionProgress> reporter the caller supplied. Application code reads the values inside the Progress<ExtractionProgress> callback and binds them to a UI or a log line. Calling new ExtractionProgress() in application code is not the canonical pattern and does not drive any extraction work on its own."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you drive a progress bar from ExtractionProgress in an ASP.NET Core endpoint?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct a Progress<ExtractionProgress> with a lambda that pushes PercentComplete to a SignalR client or a server-sent-events stream, then call PdfExtractor.ExtractAsync with the reporter passed as the progress argument. The reporter marshals updates back to the synchronization context that created it, so UI bindings stay on the correct thread without extra plumbing. CurrentOperation gives a human-readable stage label for the same UI, and TablesFound is the right metric when the document is table-heavy and the user wants live extraction counts rather than page progress."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +228,41 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ExtractionProgress : Object</code></pre>
   </div>
+                  <!-- archetype-N:start ExtractionProgress treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>ExtractionProgress</code> is what you receive during long-running async PDF extraction when you need to report progress to the caller. It is delivered through an <code>IProgress&lt;ExtractionProgress&gt;</code> reporter that the caller passes to the async overloads on <code>PdfExtractor</code>. Every property is get-only; the IronPDF runtime constructs instances and calls <code>Report()</code> on the supplied reporter as pages, tables, and stages complete. Application code consumes the instance, it does not populate one.</p>
+<p><code>ExtractionProgress</code> earns its keep on any extraction job large enough to need user feedback or stage logging. Typical scenarios are document-AI pipelines extracting from hundred-page reports where a progress bar keeps users patient, server-side batch jobs that log percent-complete to a job queue, and ASP.NET Core controllers that stream live status to the browser through SignalR or server-sent events. The reporter is the lightweight, allocation-free way to feed a UI without polling.</p>
+<p><code>ExtractionProgress</code> is wired up by passing an <code>IProgress&lt;ExtractionProgress&gt;</code> argument to <code>PdfExtractor.ExtractAsync(pdfPath, options, progress)</code> or <code>PdfExtractor.ExtractPageAsync(pdfPath, pageNumber, options, progress)</code>. The five read-only properties group into three purposes. The paging trio of <code>CurrentPage</code>, <code>TotalPages</code>, and <code>PercentComplete</code> (computed as <code>CurrentPage / TotalPages * 100</code>) drives progress-bar UIs directly. The status string <code>CurrentOperation</code> describes the stage the extractor is in and is the field to write into a log line. The counter <code>TablesFound</code> tracks how many tables the table detector has surfaced so far and is useful for live metrics on table-heavy documents. The synchronous <code>PdfExtractor.Extract</code> and <code>PdfExtractor.ExtractPage</code> overloads do not accept an <code>IProgress</code> reporter; only the async overloads do.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using System;
+using IronPdf;
+using IronPdf.Extractions;
+
+// Pass an IProgress&lt;ExtractionProgress&gt; reporter to ExtractAsync.
+// The runtime populates ExtractionProgress and calls Report on each update.
+var progress = new Progress&lt;ExtractionProgress&gt;(p =&gt;
+{
+    Console.WriteLine($&quot;{p.CurrentOperation}: page {p.CurrentPage}/{p.TotalPages} &quot; +
+                      $&quot;({p.PercentComplete:F1}%), tables found: {p.TablesFound}&quot;);
+});
+
+PdfExtractionResult result = await PdfExtractor.ExtractAsync(
+    &quot;large-report.pdf&quot;,
+    options: null,
+    progress: progress);</code></pre></div>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">// Single-page async with the same reporter shape.
+var pageProgress = new Progress&lt;ExtractionProgress&gt;(p =&gt;
+{
+    // Bind p.PercentComplete to a UI progress bar value (0.0 - 100.0).
+});
+
+PdfExtractionResult one = await PdfExtractor.ExtractPageAsync(
+    &quot;large-report.pdf&quot;,
+    pageNumber: 12,
+    options: null,
+    progress: pageProgress);</code></pre></div>
+<p>For the producer side that emits these updates, the <a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.PdfExtractor.html"><code>PdfExtractor</code></a> reference page covers every async overload. For the broader async pattern, the <a href="https://ironpdf.com/how-to/async/">async and multithreading how-to</a> shows the canonical <code>IProgress</code> plumbing, and the <a href="https://ironpdf.com/how-to/extract-text-and-images/">text and image extraction how-to</a> covers the upstream extraction workflow that long-running jobs draw from.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

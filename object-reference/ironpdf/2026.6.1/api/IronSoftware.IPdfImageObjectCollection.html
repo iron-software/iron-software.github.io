@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IPdfImageObjectCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IPdfImageObjectCollection Interface - IronPDF C# API
+      v2 (human)     title:       IPdfImageObjectCollection: PDF Image Set Contract in C#
+      v1 (algorithm) description: IronSoftware.IPdfImageObjectCollection interface reference for C#: IList of ImageObject plus IDocumentImageObjectCollection and IJsonSerializable.
+      v2 (human)     description: Accept any IronSoftware PDF image collection in C# with IPdfImageObjectCollection: IList of ImageObject, Add, RemoveAt, Count, indexer, foreach.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IPdfImageObjectCollection | IronSoftware C# PDF DOM</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IPdfImageObjectCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IPdfImageObjectCollection | IronSoftware C# PDF DOM">
+    <meta name="description" content="IPdfImageObjectCollection is the IronSoftware C# contract for a mutable PDF image list. Implemented by ImageObjectCollection over ImageObject elements.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IPdfImageObjectCollection | IronSoftware C# PDF DOM",
+    "name": "IPdfImageObjectCollection interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.IPdfImageObjectCollection.html",
+    "abstract": "`IPdfImageObjectCollection` abstracts any mutable PDF image-object collection at an API boundary in C# so IronPDF code accepts one without binding to a concrete container. The interface declares no direct members; its surface is the union of its base interfaces, exposing the integer indexer, `Add`, `Insert`, `Remove`, `RemoveAt`, `Clear`, `Contains`, `IndexOf`, `CopyTo`, `Count`, `IsReadOnly`, a typed enumerator, and `ToJson()` over `ImageObject` elements. The shipped IronPDF concrete implementor is `IronSoftware.ImageObjectCollection`; sibling contracts `IPdfTextObjectCollection` and `IPdfPathObjectCollection` follow the same shape over `TextObject` and `PathObject`.",
+    "description": "IPdfImageObjectCollection is the IronSoftware C# contract for a mutable PDF image list. Implemented by ImageObjectCollection over ImageObject elements.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware;\nusing System.Collections.Generic;\n\n// Accept the IronSoftware image-collection contract at the boundary - works\n// for any implementor of IPdfImageObjectCollection, including the shipped\n// ImageObjectCollection that Page.ObjectModel.ImageObjects returns.\nIReadOnlyList<int> ListImagePageIndexes(IPdfImageObjectCollection images)\n{\n    List<int> indexes = new List<int>(images.Count);\n\n    foreach (ImageObject image in images)\n    {\n        indexes.Add(image.PageIndex);\n    }\n\n    return indexes;\n}\n\n// Mutate the collection through the inherited IList<ImageObject> surface.\nvoid RemoveFirstImage(IPdfImageObjectCollection images)\n{\n    if (images.Count > 0)\n    {\n        images.RemoveAt(0);\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is IPdfImageObjectCollection defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfImageObjectCollection is in the IronSoftware namespace, shipped in IronPdf.dll. It derives from IDocumentImageObjectCollection<ImageObject>, IList<ImageObject>, ICollection<ImageObject>, IEnumerable<ImageObject>, and IJsonSerializable. The shipped concrete implementor is IronSoftware.ImageObjectCollection, which is what PdfPage.ObjectModel.ImageObjects returns over ImageObject elements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IPdfImageObjectCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The one shipped IronPDF concrete implementor on disk is IronSoftware.ImageObjectCollection, which derives from ObservableCollection of ImageObject and declares IPdfImageObjectCollection alongside the IList, ICollection, IEnumerable, and IJsonSerializable contracts. Application code can also supply its own implementor at an API boundary, which is useful when stubbing an image set in unit tests because the surface is the standard mutable list shape plus JSON serialization. Code typed as IPdfImageObjectCollection works against any implementor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IPdfImageObjectCollection and ImageObjectCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfImageObjectCollection is the IronSoftware-namespace interface contract for a mutable PDF image collection. ImageObjectCollection is the concrete IronPDF class in the same namespace; it derives from ObservableCollection of ImageObject and implements IPdfImageObjectCollection along with the IList, ICollection, IEnumerable, and IJsonSerializable base contracts. Reference IPdfImageObjectCollection at API boundaries where any compatible collection should be accepted; reference ImageObjectCollection when ObservableCollection change notifications or the concrete declared members (IsReadOnly, Items, Add, Clear, Remove, RemoveAt, ToJson, GetHashCode) are required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is PdfPage.ObjectModel.ImageObjects typed as IPdfImageObjectCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The page-level object model exposes its images as the concrete ImageObjectCollection because IPdfPageObjectModel is declared with ImageObjectCollection as one of its generic parameters. Code that walks pdf.Pages[i].ObjectModel.ImageObjects therefore works against ImageObjectCollection directly. The IPdfImageObjectCollection contract is the typed-parameter shape for helpers that should accept any image collection. The ExtractAllImages method on PdfDocument is a separate extraction API that returns a List of AnyBitmap and is not an IPdfImageObjectCollection."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -147,7 +218,42 @@
   </div>
   
   
-</article>
+            <!-- archetype-N:start IPdfImageObjectCollection treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>When code should take any PDF image collection inside a document without binding to one concrete container, <code>IPdfImageObjectCollection</code> is the contract it accepts, where each element is an <code>ImageObject</code>. The interface adds no members of its own; its usable surface is the union of the list, collection, and serialization interfaces it extends.</p>
+<p>The contract pairs with <code>ImageObjectCollection</code>, the one IronPDF-shipped concrete implementor on disk, which derives from <code>ObservableCollection&lt;ImageObject&gt;</code> and declares the same family alongside this interface. Application code can also supply its own implementor at an API boundary when stubbing an image set in unit tests, since the surface is the standard mutable list shape plus JSON serialization. Typical scenarios include passing a PDF image collection across a wrapper service that should accept any compatible source, iterating <code>ImageObject</code> elements polymorphically to read <code>BoundingBox</code>, <code>Scale</code>, or <code>Translate</code>, JSON-serializing a captured image set through <code>IJsonSerializable</code>, and supplying a test double of the image-collection surface without binding to the <code>ObservableCollection&lt;T&gt;</code> shape.</p>
+<p>The everyday surface is inherited. The <code>IList&lt;ImageObject&gt;</code> base contributes the integer indexer, <code>Add(ImageObject)</code>, <code>Insert(int, ImageObject)</code>, <code>Remove(ImageObject)</code>, <code>RemoveAt(int)</code>, <code>Clear()</code>, <code>IndexOf(ImageObject)</code>, <code>Contains(ImageObject)</code>, and <code>CopyTo(ImageObject[], int)</code>. <code>Count</code> and <code>IsReadOnly</code> come from <code>ICollection&lt;ImageObject&gt;</code>, the typed <code>GetEnumerator()</code> from <code>IEnumerable&lt;ImageObject&gt;</code> enables <code>foreach</code>, and <code>IJsonSerializable.ToJson()</code> rounds out the contract. Sibling collection contracts <code>IPdfTextObjectCollection</code> and <code>IPdfPathObjectCollection</code> follow the same shape over <code>TextObject</code> and <code>PathObject</code> respectively, so polymorphic helpers for the PDF DOM object model can be written once per element kind. The <a href="/how-to/access-pdf-dom-object/">PDF DOM object how-to</a> walks the canonical traversal pattern, accessing <code>ObjectModel.ImageObjects</code> on a <code>PdfPage</code> and mutating individual <code>ImageObject</code> properties.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware;
+using System.Collections.Generic;
+
+// Accept the IronSoftware image-collection contract at the boundary - works
+// for any implementor of IPdfImageObjectCollection, including the shipped
+// ImageObjectCollection that Page.ObjectModel.ImageObjects returns.
+IReadOnlyList&lt;int&gt; ListImagePageIndexes(IPdfImageObjectCollection images)
+{
+    List&lt;int&gt; indexes = new List&lt;int&gt;(images.Count);
+
+    foreach (ImageObject image in images)
+    {
+        indexes.Add(image.PageIndex);
+    }
+
+    return indexes;
+}
+
+// Mutate the collection through the inherited IList&lt;ImageObject&gt; surface.
+void RemoveFirstImage(IPdfImageObjectCollection images)
+{
+    if (images.Count &gt; 0)
+    {
+        images.RemoveAt(0);
+    }
+}</code></pre></div>
+<p>For end-to-end image workflows in IronPDF, see the <a href="/how-to/extract-text-and-images/">extract text and images how-to</a> for <code>ExtractAllImages</code> and per-page extraction, and the <a href="/how-to/access-pdf-dom-object/">PDF DOM object how-to</a> for traversing and mutating images through the object model.</p>
+  </div>
+  <!-- archetype-N:end -->
+  </article>
           </div>
            
           <div class="hidden-sm col-md-2" role="complementary">

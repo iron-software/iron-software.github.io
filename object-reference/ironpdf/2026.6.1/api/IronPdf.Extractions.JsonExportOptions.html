@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class JsonExportOptions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       JsonExportOptions Class - IronPDF C# API Reference
+      v2 (human)     title:       JsonExportOptions: Export PDF Tables to JSON in C#
+      v1 (algorithm) description: JsonExportOptions is the IronPDF C# class that selects JSON output for ExportManager.ExportTable, ExportTables, and ExportResult via type dispatch.
+      v2 (human)     description: Serialize extracted PDF tables to JSON in C# with IronPDF's JsonExportOptions: IncludeHeaders, IncludeEmptyRows, SpanMode, TextEncoding settings.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>JsonExportOptions Class | IronPDF C# Table Export</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class JsonExportOptions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="JsonExportOptions Class | IronPDF C# Table Export">
+    <meta name="description" content="IronPDF JsonExportOptions in C#: passes IncludeHeaders, IncludeEmptyRows, SpanMode, and TextEncoding to ExportManager for JSON table export.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "JsonExportOptions Class | IronPDF C# Table Export",
+    "name": "JsonExportOptions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.JsonExportOptions.html",
+    "abstract": "Use JsonExportOptions in IronPDF to serialize extracted PDF tables and extraction results as JSON from C#. It declares a parameterless constructor and inherits IncludeHeaders, IncludeEmptyRows, SpanMode, and TextEncoding. Instances are passed to ExportManager.ExportTable, ExportManager.ExportTables, or ExportConfiguration.TableOptions, where the runtime inspects the concrete options type to choose the JSON writer over the CSV, HTML, TXT, and XML siblings.",
+    "description": "IronPDF JsonExportOptions in C#: passes IncludeHeaders, IncludeEmptyRows, SpanMode, and TextEncoding to ExportManager for JSON table export.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using System.Collections.Generic;\nusing IronPdf;\nusing IronPdf.Extractions;\n\nPdfDocument pdf = PdfDocument.FromFile(\"invoice.pdf\");\nPdfExtractionResult result = new PdfExtractor().Extract(pdf);\nList<TableObject> tables = result.Tables;\n\nvar jsonOptions = new JsonExportOptions\n{\n    IncludeHeaders   = true,\n    IncludeEmptyRows = false,\n    SpanMode         = SpanHandlingMode.Repeat\n};\n\nExportManager.ExportTables(tables, \"tables.json\", jsonOptions);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is JsonExportOptions located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JsonExportOptions is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It derives directly from ExportOptionsBase, the same base shared by CsvExportOptions, HtmlExportOptions, TxtExportOptions, and XmlExportOptions. Pass an instance to ExportManager or ExportConfiguration.TableOptions to select JSON output for a table export."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between JsonExportOptions and the other export options classes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All five export options classes derive from ExportOptionsBase and share the same IncludeHeaders, IncludeEmptyRows, SpanMode, and TextEncoding properties. The concrete type is the format selector consumed by ExportManager. JsonExportOptions produces structured JSON records for downstream API consumption, JavaScript front ends, and NoSQL stores. CsvExportOptions produces delimited rows for spreadsheets and bulk import. HtmlExportOptions produces a browser-renderable table. TxtExportOptions produces a plain text dump and ignores SpanMode because plain text does not support cell spanning. XmlExportOptions produces a schema-friendly hierarchical document for systems that validate against an XSD. Pick the type that matches the consumer, then assign the shared properties on the instance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does TextEncoding do on a JSON export?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextEncoding is a System.Text.Encoding that sets the byte encoding of the written JSON file. The default is UTF8, which is the encoding most JSON parsers expect and the only one called out by RFC 8259 for interchange. Override TextEncoding when a downstream consumer requires UTF-16 or a code page, but be aware that switching encodings can produce a byte-order mark that some parsers reject. Keep the default unless a specific consumer mandates otherwise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you use JsonExportOptions with ExportConfiguration?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ExportConfiguration carries the per-result export settings used by ExportManager.ExportResult. Its TableOptions property is typed as ExportOptionsBase and accepts a JsonExportOptions instance directly. Set TableOptions to a configured JsonExportOptions, set ExportTables to true, set ExportText and SeparateFilePerTable as needed, and pass the configuration to ExportManager.ExportResult along with the PdfExtractionResult and an output path. The runtime then writes all extracted tables to JSON in one call."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -167,6 +238,30 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class JsonExportOptions : ExportOptionsBase</code></pre>
   </div>
+                  <!-- archetype-N:start JsonExportOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Serializing extracted PDF tables as JSON runs through <code>JsonExportOptions</code>: passing one to the IronPDF extraction pipeline tells it to write a <code>TableObject</code> or a <code>PdfExtractionResult</code> as JSON. It declares a single parameterless constructor, and all configurable settings come from the base class, which is the same pattern shared by <code>CsvExportOptions</code>, <code>HtmlExportOptions</code>, <code>TxtExportOptions</code>, and <code>XmlExportOptions</code>.</p>
+<p>Use <code>JsonExportOptions</code> when extracted tabular data needs to travel to a downstream API, a JavaScript front end, a NoSQL store, or any consumer that expects structured records rather than flat text. JSON is the right export choice for machine-to-machine handoff and for analytics pipelines that prefer typed values to delimited strings. Pick a sibling instead when the consumer is a spreadsheet (<code>CsvExportOptions</code>), a browser preview (<code>HtmlExportOptions</code>), a plain-text log (<code>TxtExportOptions</code>), or a schema-validated document store (<code>XmlExportOptions</code>).</p>
+<p><code>JsonExportOptions</code> is constructed with <code>new JsonExportOptions()</code> and passed to one of three static entry points on <code>IronPdf.Extractions.ExportManager</code>. The instance carries four inherited properties that shape the output: <code>IncludeHeaders</code> (default <code>true</code>) emits a header row for the JSON records, <code>IncludeEmptyRows</code> (default <code>false</code>) skips blank rows during serialization, <code>SpanMode</code> (default <code>SpanHandlingMode.Repeat</code>) controls how a cell that spans multiple rows or columns is materialized, and <code>TextEncoding</code> (default <code>UTF8</code>) sets the byte encoding of the written file. The runtime selects the JSON writer by inspecting the concrete options type, so passing a <code>JsonExportOptions</code> instance to any overload that accepts <code>ExportOptionsBase</code> produces JSON output.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using System.Collections.Generic;
+using IronPdf;
+using IronPdf.Extractions;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+PdfExtractionResult result = new PdfExtractor().Extract(pdf);
+List&lt;TableObject&gt; tables = result.Tables;
+
+var jsonOptions = new JsonExportOptions
+{
+    IncludeHeaders   = true,
+    IncludeEmptyRows = false,
+    SpanMode         = SpanHandlingMode.Repeat
+};
+
+ExportManager.ExportTables(tables, &quot;tables.json&quot;, jsonOptions);</code></pre></div>
+<p>The tables consumed here are produced by the workflow in the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a>. For lower-level reading of unstructured content, the <a href="https://ironpdf.com/how-to/csharp-parse-pdf/">parse PDFs in C# guide</a> complements the table-export path that <code>JsonExportOptions</code> participates in.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

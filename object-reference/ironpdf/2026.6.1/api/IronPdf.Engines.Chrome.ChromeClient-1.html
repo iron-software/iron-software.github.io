@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ChromeClient&lt;T&gt;
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ChromeClient<T> Class - IronPDF C# API Reference
+      v2 (human)     title:       ChromeClient<T>: IronPDF Chrome Engine Wrapper in C#
+      v1 (algorithm) description: ChromeClient<T> class reference for IronPDF C#: the generic Engines.Chrome wrapper with RenderPDFFromHTML, RenderPDFFromURI, AddStamp, and 12 more.
+      v2 (human)     description: Inside view of IronPDF's Chrome engine in C#. ChromeClient<T> is the generic wrapper that ChromePdfRenderer uses to queue native render calls.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ChromeClient&lt;T&gt; | IronPDF C# Engines.Chrome Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ChromeClient&lt;T&gt;
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ChromeClient&lt;T&gt; | IronPDF C# Engines.Chrome Reference">
+    <meta name="description" content="IronPDF ChromeClient&lt;T&gt; reference: generic Engines.Chrome class with render, stamp, cookie, and lifecycle methods. Used internally by ChromePdfRenderer.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ChromeClient<T> | IronPDF C# Engines.Chrome Reference",
+    "name": "ChromeClient-1 class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Engines.Chrome.ChromeClient-1.html",
+    "abstract": "IronPDF uses `ChromeClient<T>` to wrap the native Chrome rendering engine and queue calls through `IronSoftware.JobQueue.JobQueueManager`. The generic class is constrained `where T : ChromeDeploymentBase`. Its 15 members include the render methods `RenderPDFFromHTML`, `RenderPDFFromURI`, `RenderPDFFromFile`, `RenderPDFFromZIP`, and `RenderPDFFromImages`, post-render editing methods `AddHtmlHeadersAndFooters`, `AddStamp`, and `AddStamps`, plus context, measurement, and lifecycle methods. Reached indirectly by C# code through `ChromePdfRenderer`, which inherits from `ChromeClientAccessor`.",
+    "description": "IronPDF ChromeClient<T> reference: generic Engines.Chrome class with render, stamp, cookie, and lifecycle methods. Used internally by ChromePdfRenderer.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\n// Canonical path: end-user code uses ChromePdfRenderer.\n// ChromePdfRenderer inherits from ChromeClientAccessor and reaches\n// a ChromeClient<T> instance internally; direct construction is rare.\nChromePdfRenderer renderer = new ChromePdfRenderer();\nrenderer.RenderingOptions.MarginTop = 10;\nrenderer.RenderingOptions.MarginBottom = 10;\n\nPdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Hello from Chrome</h1>\");\npdf.SaveAs(\"chrome-client-output.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is ChromeClient located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChromeClient<T> is in the IronPdf.Engines.Chrome namespace, shipped in IronPdf.dll. It is declared public class ChromeClient<T> : Object, IChromeClient, IDisposable where T : ChromeDeploymentBase. The URL slug ChromeClient-1 is docfx's encoding of the single generic type parameter, not part of the class name. Application code reaches an instance indirectly through ChromePdfRenderer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ChromeClient, ChromePdfRenderer, and ChromeClientAccessor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChromeClient is the generic infrastructure class in IronPdf.Engines.Chrome that wraps the native Chrome engine and queues calls through IronSoftware.JobQueue.JobQueueManager. ChromeClientAccessor is the IronPdf namespace base class that exposes Chrome client implementations. ChromePdfRenderer inherits from ChromeClientAccessor and is the public renderer that C# application code actually uses. Calling RenderHtmlAsPdf on ChromePdfRenderer reaches a ChromeClient instance internally."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is ChromeClient different from PersistentThreadLocalChromeClient?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both classes live in IronPdf.Engines.Chrome and expose the same render and edit method surface. ChromeClient is generic with a single type parameter constrained to ChromeDeploymentBase, and its documented constructor takes an IronSoftware.Pdfium.IPdfClient. PersistentThreadLocalChromeClient is non-generic, has a parameterless constructor, and is intended for scenarios where a Chrome client must be kept alive on the calling thread across multiple render calls. Choose based on whether the deployment strategy or thread-local persistence matters to the caller."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is ChromeClient thread-safe?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Render and edit calls on ChromeClient are queued through IronSoftware.JobQueue.JobQueueManager, which serializes work to the native Chrome engine. The class implements IDisposable, and Dispose is declared virtual, so consumers must release the instance when done. For multithreaded applications, the recommended pattern is to use ChromePdfRenderer per the async and multithreading guidance rather than sharing a single ChromeClient across threads. PersistentThreadLocalChromeClient exists for thread-affine scenarios."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -170,9 +241,25 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="IronPdf_Engines_Chrome_ChromeClient_1_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>All HTML-to-PDF related logic should go here</p>
-</div>
+                    <!-- archetype-N:start ChromeClient-1 treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>ChromeClient&lt;T&gt;</code> is what IronPDF uses internally to wrap the native Chrome rendering engine and queue render requests through <code>IronSoftware.JobQueue.JobQueueManager</code>. The type parameter <code>T</code> (constrained <code>where T : ChromeDeploymentBase</code>) selects the deployment strategy that locates the Chrome native binary on disk. The URL slug shows <code>ChromeClient-1</code> because docfx encodes generic arity as a numeric suffix; the actual class is <code>ChromeClient&lt;T&gt;</code>.</p>
+<p>End-user C# code does not normally construct <code>ChromeClient&lt;T&gt;</code> directly. Application code calls <code>ChromePdfRenderer</code>, which inherits from <code>ChromeClientAccessor</code> and reaches a configured <code>ChromeClient</code> instance internally. The class is documented here so that consumers of the IronPDF source layout, integrators writing thin wrappers around the engine, and developers debugging <code>IronSoftware.JobQueue</code> queue behavior can map the renderer-level API to the underlying primitives. Typical reasons to look at this page include investigating thread-affinity questions, comparing local and remote deployment paths, and reading the exact shape of the engine's render-method signatures.</p>
+<p>The 15 members on <code>ChromeClient&lt;T&gt;</code>, grouped by purpose, are: render methods (<code>RenderPDFFromHTML</code>, <code>RenderPDFFromURI</code>, <code>RenderPDFFromFile</code>, <code>RenderPDFFromZIP</code>, <code>RenderPDFFromImages</code>), post-render editing (<code>AddHtmlHeadersAndFooters</code>, <code>AddStamp</code>, <code>AddStamps</code>), request context and measurement (<code>ApplyCookies</code>, <code>ClearCookies</code>, <code>MeasureHTML</code>, <code>ExtractImagesFromMultiFrameImageFormats</code>), and lifecycle (<code>Initialize</code>, <code>Dispose</code>, <code>Finalize</code>). The single documented constructor accepts an <code>IronSoftware.Pdfium.IPdfClient</code>. For the engine-level architecture context, see the <a href="https://ironpdf.com/how-to/ironpdf-2021-chrome-rendering-engine-eap/">Chrome rendering engine guide</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+// Canonical path: end-user code uses ChromePdfRenderer.
+// ChromePdfRenderer inherits from ChromeClientAccessor and reaches
+// a ChromeClient&lt;T&gt; instance internally; direct construction is rare.
+ChromePdfRenderer renderer = new ChromePdfRenderer();
+renderer.RenderingOptions.MarginTop = 10;
+renderer.RenderingOptions.MarginBottom = 10;
+
+PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Hello from Chrome&lt;/h1&gt;&quot;);
+pdf.SaveAs(&quot;chrome-client-output.pdf&quot;);</code></pre></div>
+<p>For deployment choices that determine the <code>T</code> type parameter at runtime, the <a href="https://ironpdf.com/get-started/ironpdfengine/">native versus remote engine guide</a> describes the in-process and out-of-process options. Multithreaded callers should read the <a href="https://ironpdf.com/how-to/async/">async and multithreading guide</a>, which explains how the <code>JobQueueManager</code> behind <code>ChromeClient&lt;T&gt;</code> serializes native calls.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

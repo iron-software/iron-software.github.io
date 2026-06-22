@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IAnnotation
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IAnnotation Interface - IronPDF C# API Reference
+      v2 (human)     title:       IAnnotation: PDF Annotation Contract in C#
+      v1 (algorithm) description: IAnnotation is the IronPDF write-side interface for PDF annotations in C#. Implemented by TextAnnotation and LinkAnnotation. Reference its members and usage.
+      v2 (human)     description: Work with PDF annotations polymorphically in C# through the IronPDF IAnnotation interface, implemented by TextAnnotation and LinkAnnotation.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IAnnotation Interface | IronPDF C# Annotations</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IAnnotation
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IAnnotation Interface | IronPDF C# Annotations">
+    <meta name="description" content="IAnnotation in IronPDF C#: the write-side annotation contract. Members PageIndex, Title, Contents, Hidden, X, Y. Implementors TextAnnotation, LinkAnnotation.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IAnnotation Interface | IronPDF C# Annotations",
+    "name": "IAnnotation interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Annotations.IAnnotation.html",
+    "abstract": "IAnnotation supplies the polymorphic write-side contract for adding annotations to a PDF in IronPDF. It is implemented by TextAnnotation for sticky-note review comments and by LinkAnnotation for clickable overlays. Shared members include PageIndex, Title, Contents, Hidden, X, Y, Width, Height, Rectangle, Color, AnnotationIndex, and DocumentId. Instances are attached to a document through pdf.Annotations.Add on the PdfAnnotationCollection returned by PdfDocument.Annotations, which derives from ObservableCollection of IAnnotation.",
+    "description": "IAnnotation in IronPDF C#: the write-side annotation contract. Members PageIndex, Title, Contents, Hidden, X, Y. Implementors TextAnnotation, LinkAnnotation.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Annotations;\n\n// IAnnotation is the polymorphic write-side contract.\n// Build a mixed list of sticky notes and links, then attach them through one entry point.\nList<IAnnotation> markup = new()\n{\n    new TextAnnotation(pageIndex: 0, Title: \"Legal Review\", Contents: \"Verify clause 4.3.\")\n    {\n        X = 72, Y = 720, Width = 200, Height = 60, Hidden = false\n    },\n    new LinkAnnotation(pageIndex: 0)\n    {\n        X = 72, Y = 640, Width = 200, Height = 20,\n        Title = \"Reference\", Contents = \"Linked source spec\"\n    }\n};\n\nvar pdf = PdfDocument.FromFile(\"contract.pdf\");\n\nforeach (IAnnotation note in markup)\n{\n    pdf.Annotations.Add(note);\n    // After Add, note.AnnotationIndex switches from -1 to its assigned slot.\n}\n\npdf.SaveAs(\"contract-marked-up.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IAnnotation live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IAnnotation is in the IronPdf.Annotations namespace, shipped in IronPdf.dll. It is declared as a standalone public interface with no parent interfaces. Concrete classes such as TextAnnotation and LinkAnnotation implement IAnnotation; they are what a developer builds and attaches through pdf.Annotations.Add on the PdfAnnotationCollection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IAnnotation in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Two concrete classes implement IAnnotation: TextAnnotation for interactive sticky-note review comments, and LinkAnnotation for clickable hyperlink overlays. Both derive from PdfClientAccessor and live in the IronPdf.Annotations namespace. Code typed against IAnnotation works uniformly across these implementors, with a downcast to the concrete type only required when type-specific configuration is needed. The PdfAnnotation hierarchy returned by PdfDocument.GetAnnotations is a separate read-side type family and does not implement this interface."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IAnnotation and PdfAnnotation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IAnnotation is a public interface on the write side of the annotation API, implemented by TextAnnotation and LinkAnnotation, and consumed by PdfAnnotationCollection. PdfAnnotation is a public abstract class on the read side, returned from PdfDocument.GetAnnotations as List of PdfAnnotation. The two hierarchies are separate. Use IAnnotation when building or accepting annotations to attach to a document. Inspect PdfAnnotation subclasses when enumerating annotations that already exist on a loaded PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you attach an IAnnotation to a PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call pdf.Annotations.Add(annotation) on the PdfDocument. The Annotations property is read-only and returns a PdfAnnotationCollection, which derives from ObservableCollection of IAnnotation, so Add accepts any IAnnotation implementor. Add accepts one annotation at a time; loop over a list to attach multiple. After Add, the AnnotationIndex property on the instance switches from -1 to the assigned slot inside the document. Save the document once after all annotations have been added rather than after each one."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +216,41 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IAnnotation</code></pre>
   </div>
+                  <!-- archetype-N:start IAnnotation treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p><code>IAnnotation</code> is the contract you build against when adding annotations to a PDF through the IronPDF write-side annotation API. It supplies the polymorphic surface used by the <code>PdfAnnotationCollection</code> exposed on every <code>PdfDocument</code>. Two concrete classes implement it: <code>TextAnnotation</code> for interactive sticky-note review comments, and <code>LinkAnnotation</code> for clickable hyperlink overlays. The read-side <code>PdfAnnotation</code> hierarchy returned by <code>PdfDocument.GetAnnotations</code> is a separate type family and does not implement this interface.</p>
+<p>Code typed against <code>IAnnotation</code> works uniformly across the write-side annotation types, which is the value it adds to application code. A document review pipeline can build a mixed list of sticky notes and inline links, pass them through generic helpers, and only downcast when type-specific configuration is needed. The interface is also the contract that drives <code>PdfAnnotationCollection</code>, which derives from <code>ObservableCollection&lt;IAnnotation&gt;</code>, so iteration, enumeration, and LINQ over <code>pdf.Annotations</code> all return <code>IAnnotation</code> instances rather than concrete annotation types. To see the implementors put to work on a live document, follow the <a href="https://ironpdf.com/how-to/annotations/">annotations how-to</a>.</p>
+<p>Most of the surface is shared positioning and visibility state. The members that carry everyday use of the contract are <code>PageIndex</code> (which page the annotation belongs to, get-only on the interface and therefore fixed at construction time on the implementor), <code>Title</code> (the popup header for sticky notes or the descriptive label for link annotations), <code>Contents</code> (the annotation body text), and <code>Hidden</code> (the visibility flag viewers honor when rendering the page). The placement quartet <code>X</code>, <code>Y</code>, <code>Width</code>, <code>Height</code> (or the combined <code>Rectangle</code>) controls on-page geometry, <code>Color</code> controls the icon tint where applicable, <code>AnnotationIndex</code> is the diagnostic slot that switches from -1 to the assigned index after the annotation is attached, and <code>DocumentId</code> is populated by IronPDF when the annotation joins a document. Attach any <code>IAnnotation</code> to a <code>PdfDocument</code> through <code>pdf.Annotations.Add(...)</code> on the <code>PdfAnnotationCollection</code> returned by the read-only <code>Annotations</code> property.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Annotations;
+
+// IAnnotation is the polymorphic write-side contract.
+// Build a mixed list of sticky notes and links, then attach them through one entry point.
+List&lt;IAnnotation&gt; markup = new()
+{
+    new TextAnnotation(pageIndex: 0, Title: &quot;Legal Review&quot;, Contents: &quot;Verify clause 4.3.&quot;)
+    {
+        X = 72, Y = 720, Width = 200, Height = 60, Hidden = false
+    },
+    new LinkAnnotation(pageIndex: 0)
+    {
+        X = 72, Y = 640, Width = 200, Height = 20,
+        Title = &quot;Reference&quot;, Contents = &quot;Linked source spec&quot;
+    }
+};
+
+var pdf = PdfDocument.FromFile(&quot;contract.pdf&quot;);
+
+foreach (IAnnotation note in markup)
+{
+    pdf.Annotations.Add(note);
+    // After Add, note.AnnotationIndex switches from -1 to its assigned slot.
+}
+
+pdf.SaveAs(&quot;contract-marked-up.pdf&quot;);</code></pre></div>
+<p>A runnable version of this pattern lives in the <a href="https://ironpdf.com/examples/annotations/">annotations example</a>. For details on the two concrete implementors, consult the <a href="https://ironpdf.com/object-reference/api/IronPdf.Annotations.TextAnnotation.html"><code>TextAnnotation</code></a> and <a href="https://ironpdf.com/object-reference/api/IronPdf.Annotations.LinkAnnotation.html"><code>LinkAnnotation</code></a> class references.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

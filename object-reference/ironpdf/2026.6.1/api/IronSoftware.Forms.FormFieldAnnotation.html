@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class FormFieldAnnotation
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       FormFieldAnnotation Class - IronPDF C# API Reference
+      v2 (human)     title:       FormFieldAnnotation: PDF Form Widgets in IronPDF C#
+      v1 (algorithm) description: FormFieldAnnotation is the IronPDF C# class for a PDF form field widget annotation. Reference its geometry, appearance state, and code examples.
+      v2 (human)     description: Inspect PDF form field widgets in C# through the IronPDF FormFieldAnnotation class. Covers AppearanceState, geometry, OnAppearance, and the parent FormField.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>FormFieldAnnotation Class | IronPDF C# Form Widgets</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class FormFieldAnnotation
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="FormFieldAnnotation Class | IronPDF C# Form Widgets">
+    <meta name="description" content="Reference for the IronPDF FormFieldAnnotation class: per-widget PDF form annotation in C# with X, Y, AppearanceState, OnAppearance, and FormField members.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "FormFieldAnnotation Class | IronPDF C# Form Widgets",
+    "name": "FormFieldAnnotation class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.Forms.FormFieldAnnotation.html",
+    "abstract": "FormFieldAnnotation represents a single on-page widget annotation belonging to a fillable PDF form field in IronPDF. It is the sole concrete implementor of IFormFieldAnnotation and inherits geometry (X, Y, Width, Height) from IFormFieldAnnotationObject. Key members include AnnotationFlags, AppearanceState, OnAppearance, Appearances, Javascript, FormField, PageIndex, and ObjNum. Instances are produced by the form-loading pipeline and accessed through the IFormField.Annotations collection.",
+    "description": "Reference for the IronPDF FormFieldAnnotation class: per-widget PDF form annotation in C# with X, Y, AppearanceState, OnAppearance, and FormField members.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware.Forms;\n\nPdfDocument pdf = PdfDocument.FromFile(\"application.pdf\");\n\n// Radio groups expose their option widgets as FormFieldAnnotation instances\n// through the IFormField.Annotations collection.\nIFormField shipping = pdf.Form.FindFormField(\"Shipping\");\nforeach (IFormFieldAnnotation widget in shipping.Annotations)\n{\n    // The runtime type of each entry is FormFieldAnnotation.\n    // AppearanceState identifies which radio option this widget represents.\n    System.Console.WriteLine(\n        $\"option={widget.AppearanceState} page={widget.PageIndex} \" +\n        $\"at ({widget.X},{widget.Y}) size ({widget.Width}x{widget.Height})\");\n}\n\n// Select the \"Express\" radio by assigning the parent field's Value.\nshipping.Value = \"Express\";\npdf.SaveAs(\"application-filled.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is FormFieldAnnotation defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FormFieldAnnotation is in the IronSoftware.Forms namespace, shipped in IronPdf.dll. It derives from System.Object and is the sole concrete implementor of IFormFieldAnnotation, inheriting geometry from IFormFieldAnnotationObject. Instances are produced by the form-loading pipeline and read from the IFormField.Annotations collection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between FormFieldAnnotation and IFormFieldAnnotation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IFormFieldAnnotation is the interface contract for a form field widget annotation; FormFieldAnnotation is the concrete class that implements it. FormFieldAnnotation is the sole concrete implementor in the IronSoftware.Forms namespace, so every entry in an IFormField.Annotations collection is a FormFieldAnnotation instance at runtime. Code that consumes annotations should accept the interface type; code that inspects or modifies them works against the concrete class through the interface."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between FormFieldAnnotation and the form-field classes such as TextFormField?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A form-field class such as TextFormField, CheckboxFormField, or RadioFormField represents a whole fillable field with a Name, a Value, and behavior. A FormFieldAnnotation represents one on-page widget belonging to that field. A single field can own multiple FormFieldAnnotation instances, which is how a radio button group exposes its per-option widgets. The form-field class is reached through PdfDocument.Form, and its widgets are read from its Annotations property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can FormFieldAnnotation be instantiated directly with new?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The class exposes a public parameterless constructor, but the canonical idiom is to obtain instances from a loaded form. The form-reading pipeline populates the IFormField.Annotations collection with FormFieldAnnotation instances that already have their geometry, appearance state, page index, and parent FormField wired up. Constructing one with new produces an unattached widget that has no parent field or document context."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -158,6 +229,34 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class FormFieldAnnotation : Object, IFormFieldAnnotation, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject</code></pre>
   </div>
+                  <!-- archetype-N:start FormFieldAnnotation treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>FormFieldAnnotation</code> is what you receive when you read a form field's <code>Annotations</code> collection and need the individual on-page widget that represents one instance of a fillable PDF form field in IronPDF. It inherits its geometry from <a href="https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormFieldAnnotationObject.html"><code>IFormFieldAnnotationObject</code></a>. <code>FormFieldAnnotation</code> is the sole concrete implementor of the annotation contract: every entry in a form field's <code>Annotations</code> collection is a <code>FormFieldAnnotation</code> instance at runtime.</p>
+<p>The class matters whenever a form must be inspected or edited per widget rather than per field. A single fillable field can place multiple widgets across pages, and a radio group surfaces its individual options through <code>Annotations</code>, where each <code>FormFieldAnnotation</code> carries the <code>AppearanceState</code> (such as <code>Yes</code> or <code>Off</code>) that identifies which option that widget represents. Layout audits, per-page rendering checks, appearance customization, and form-flattening pipelines all read from these widget objects.</p>
+<p>Members of <code>FormFieldAnnotation</code> fall into four functional buckets. Geometry comes from <code>IFormFieldAnnotationObject</code>: <code>X</code>, <code>Y</code>, <code>Width</code>, and <code>Height</code> are <code>double</code> get/set values in PDF user-space units. Appearance state is <code>AnnotationFlags</code> (a <code>PdfAnnotationFlags</code> value from <code>IronSoftware.Pdfium</code>), <code>Appearances</code> (read-only <code>List&lt;string&gt;</code> of named appearances the widget defines), <code>AppearanceState</code> (the active appearance name), and <code>OnAppearance</code> (the appearance shown when the widget is selected). Backreferences include <code>FormField</code> (the parent <code>IFormFieldObject</code>), <code>Client</code>, and <code>DocumentId</code>. Identity is <code>ObjNum</code> and <code>PageIndex</code>. The <code>Javascript</code> property holds an ECMAScript action the widget runs on user interaction, per ISO 21757-1:2020.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware.Forms;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;application.pdf&quot;);
+
+// Radio groups expose their option widgets as FormFieldAnnotation instances
+// through the IFormField.Annotations collection.
+IFormField shipping = pdf.Form.FindFormField(&quot;Shipping&quot;);
+foreach (IFormFieldAnnotation widget in shipping.Annotations)
+{
+    // The runtime type of each entry is FormFieldAnnotation.
+    // AppearanceState identifies which radio option this widget represents.
+    System.Console.WriteLine(
+        $&quot;option={widget.AppearanceState} page={widget.PageIndex} &quot; +
+        $&quot;at ({widget.X},{widget.Y}) size ({widget.Width}x{widget.Height})&quot;);
+}
+
+// Select the &quot;Express&quot; radio by assigning the parent field's Value.
+shipping.Value = &quot;Express&quot;;
+pdf.SaveAs(&quot;application-filled.pdf&quot;);</code></pre></div>
+<p>For the field-level workflow that produces these widget objects, see the <a href="https://ironpdf.com/how-to/edit-forms/">fill and edit PDF forms how-to</a>. For building forms from scratch in code, the <a href="https://ironpdf.com/how-to/create-forms/">create PDF forms how-to</a> is the entry point.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

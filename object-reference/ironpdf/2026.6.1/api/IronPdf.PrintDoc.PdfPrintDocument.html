@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfPrintDocument
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfPrintDocument Class - IronPDF C# API Reference
+      v2 (human)     title:       PdfPrintDocument: Print PDFs to a Printer in C#
+      v1 (algorithm) description: PdfPrintDocument is the IronPDF C# class that derives from System.Drawing.Printing.PrintDocument for advanced PDF printing with per-page events on Windows.
+      v2 (human)     description: Send PDFs to a physical printer in C# with PdfPrintDocument: per-page event hooks, PrintDialog and PrintPreviewDialog support, and form field flattening on Windows.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfPrintDocument Class | IronPDF C# PDF Printing</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfPrintDocument
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfPrintDocument Class | IronPDF C# PDF Printing">
+    <meta name="description" content="Reference for IronPDF PdfPrintDocument in C#: four-argument constructor, BeforePrintPage and BeforeQueryPageSettings events, FlattenDocument, Windows-only.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfPrintDocument Class | IronPDF C# PDF Printing",
+    "name": "PdfPrintDocument class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.PrintDoc.PdfPrintDocument.html",
+    "abstract": "PdfPrintDocument sends a PDF to a physical printer from C# on Windows in IronPDF, adding print-time control that the one-line PdfDocument.Print() call does not expose. It is constructed from a PdfDocument, a PdfPrintSettings, a PrinterSettings, and a PrintController. It exposes the FlattenDocument property, the BeforePrintPage and BeforeQueryPageSettings events, and protected virtual overrides OnBeforePrintPage, OnBeforeQueryPageSettings, OnBeginPrint, OnPrintPage, and OnQueryPageSettings. Instances integrate with PrintDialog and PrintPreviewDialog in Windows Forms.",
+    "description": "Reference for IronPDF PdfPrintDocument in C#: four-argument constructor, BeforePrintPage and BeforeQueryPageSettings events, FlattenDocument, Windows-only.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.PrintDoc;\nusing System.Drawing.Printing;\nusing System.Windows.Forms;\n\nusing var pdf = PdfDocument.FromFile(\"report.pdf\");\n\n// Four-argument constructor: PDF, layout settings (null = single page per sheet),\n// target printer, and print controller. FlattenDocument flattens form fields first.\nvar settings = new PdfPrintSettings(null);\nvar printerSettings = new PrinterSettings { PrinterName = \"HP LaserJet\" };\nvar printDoc = new PdfPrintDocument(pdf, settings, printerSettings, new StandardPrintController())\n{\n    FlattenDocument = true\n};\n\n// Optional per-page hook: e.PageSettings, e.Cancel, e.HasMorePages available here.\nprintDoc.BeforePrintPage += (sender, e) => { };\n\n// Send through a PrintDialog (or hand to PrintPreviewDialog for a preview).\nvar dialog = new PrintDialog { Document = printDoc };\nif (dialog.ShowDialog() == DialogResult.OK)\n{\n    printDoc.Print();\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is PdfPrintDocument located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfPrintDocument is in the IronPdf.PrintDoc namespace, shipped in IronPdf.dll. It derives from System.Drawing.Printing.PrintDocument, which is why it integrates with the Windows Forms print pipeline and is Windows-only. Construct it from a PdfDocument, a PdfPrintSettings, a PrinterSettings, and a PrintController to drive a print job with per-page control."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfPrintDocument and PdfDocument.Print()?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfDocument.Print() is the one-line call that sends a PDF to the default or named printer at 300 DPI; it covers the simple case and returns the number of pages printed. PdfPrintDocument is the granular-control class that derives from System.Drawing.Printing.PrintDocument and carries per-page event hooks, custom PrinterSettings, and a PrintController. Construct a PdfPrintDocument when an application needs print preview, per-page tray selection, BeforePrintPage handlers, or integration with PrintDialog. Use PdfDocument.Print() when one line suffices."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does PdfPrintDocument work on macOS or Linux?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. PdfPrintDocument derives from System.Drawing.Printing.PrintDocument, which is a Windows-only API surface; the entire System.Drawing.Printing namespace is documented as Windows-supported only. The same constraint applies to PdfDocument.Print and PdfDocument.GetPrintDocument. For cross-platform PDF printing, Iron Software publishes IronPrint as a separate library targeting Windows, macOS, Android, and iOS."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you show a print preview with PdfPrintDocument?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct the PdfPrintDocument with its four arguments, then assign the instance to the Document property of a System.Windows.Forms.PrintPreviewDialog and call ShowDialog. The preview dialog drives the PdfPrintDocument through the same pipeline as Print, raising BeforePrintPage and BeforeQueryPageSettings for each page. The same pattern works for System.Windows.Forms.PrintDialog when a print confirmation step is required before the job is sent."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -170,17 +241,39 @@ preview.ShowDialog();</code></pre></p><p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfPrintDocument : PrintDocument</code></pre>
   </div>
-  <h5 id="IronPdf_PrintDoc_PdfPrintDocument_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Key Features:</strong>
-</p>
-<ul><li></li><li></li><li></li><li></li><li></li></ul>
-<p> Windows only - requires System.Drawing assembly reference.</p>
-<p>
-<strong>Related Resources:</strong>
-</p>
-<ul><li></li></ul>
-</div>
+                  <!-- archetype-N:start PdfPrintDocument treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When the one-line <code>PdfDocument.Print()</code> call does not expose enough control over the print job, <code>PdfPrintDocument</code> sends an IronPDF document to a physical printer with print-time control. Application code constructs a <code>PdfPrintDocument</code> once per print job from a <code>PdfDocument</code>, a <code>PdfPrintSettings</code>, a <code>PrinterSettings</code>, and a <code>PrintController</code>, then drives it through the same Windows Forms print pipeline that consumes any other <code>PrintDocument</code>.</p>
+<p>The hooks it adds are per-page event handlers, custom paper or tray selection per page, integration with <code>PrintDialog</code> and <code>PrintPreviewDialog</code>, and multi-page-per-sheet layouts supplied through <code>PdfPrintSettings</code>. The class is Windows-only because <code>System.Drawing.Printing</code> is a Windows-only API surface; the same constraint is documented on <code>PdfDocument.Print</code> (&quot;only supported on: Windows&quot;). For one-line printing without the events surface, the <code>Print()</code> and <code>PrintToFile()</code> methods on <code>PdfDocument</code> remain the simpler path.</p>
+<p>To use <code>PdfPrintDocument</code>, construct it with the four required arguments, attach the <code>BeforePrintPage</code> or <code>BeforeQueryPageSettings</code> event handlers if per-page behavior is needed, and then call <code>Print()</code> on the instance (inherited from <code>PrintDocument</code>). For preview, assign the instance to the <code>Document</code> property of a <code>PrintDialog</code> or <code>PrintPreviewDialog</code>. The protected virtual <code>OnBeforePrintPage</code>, <code>OnBeforeQueryPageSettings</code>, <code>OnBeginPrint</code>, <code>OnPrintPage</code>, and <code>OnQueryPageSettings</code> methods are the override points for subclasses; the public <code>BeforePrintPage</code> and <code>BeforeQueryPageSettings</code> events are the subscribe-from-outside points for ordinary callers. The single property <code>FlattenDocument</code> controls whether form fields are flattened to static content before the pages are rasterized, which is the property to set when printing filled PDF forms. The <a href="https://ironpdf.com/how-to/print-pdf/">print to a physical printer how-to</a> contrasts the simple <code>Print()</code> path with the advanced <code>PdfPrintDocument</code> constructor.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.PrintDoc;
+using System.Drawing.Printing;
+using System.Windows.Forms;
+
+using var pdf = PdfDocument.FromFile(&quot;report.pdf&quot;);
+
+// Four-argument constructor: PDF, layout settings (null = single page per sheet),
+// target printer, and print controller. FlattenDocument flattens form fields first.
+var settings = new PdfPrintSettings(null);
+var printerSettings = new PrinterSettings { PrinterName = &quot;HP LaserJet&quot; };
+var printDoc = new PdfPrintDocument(pdf, settings, printerSettings, new StandardPrintController())
+{
+    FlattenDocument = true
+};
+
+// Optional per-page hook: e.PageSettings, e.Cancel, e.HasMorePages available here.
+printDoc.BeforePrintPage += (sender, e) =&gt; { };
+
+// Send through a PrintDialog (or hand to PrintPreviewDialog for a preview).
+var dialog = new PrintDialog { Document = printDoc };
+if (dialog.ShowDialog() == DialogResult.OK)
+{
+    printDoc.Print();
+}</code></pre></div>
+<p>Worked code for the four-argument constructor and the event handlers sits on the <a href="https://ironpdf.com/examples/paper-printing-pdfs/">paper printing PDFs examples</a> page. To target a UNC printer share from the <code>PrinterSettings.PrinterName</code> argument, see the <a href="https://ironpdf.com/troubleshooting/print-from-network-printer/">network printer troubleshooting guide</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

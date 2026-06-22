@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TextObject
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextObject Class - IronPDF C# API Reference
+      v2 (human)     title:       TextObject: Read PDF Text Runs in C# with IronPDF
+      v1 (algorithm) description: TextObject is the IronPDF C# class for one text run in a PDF. Reference Contents, BoundingBox, FontSize, FillColor, and the PdfPage.TextChunks path.
+      v2 (human)     description: Read text runs from existing PDFs in C# with IronPDF TextObject. Covers Contents, BoundingBox, FontSize, IsBold, and PdfPage.TextChunks enumeration.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextObject | IronPDF C# PDF DOM Text API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TextObject
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="TextObject | IronPDF C# PDF DOM Text API">
+    <meta name="description" content="Reference for IronPDF TextObject in C#: Contents, BoundingBox, FontSize, FillColor, and acquisition through PdfPage.TextChunks on each PdfPage.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextObject | IronPDF C# PDF DOM Text API",
+    "name": "TextObject class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.TextObject.html",
+    "abstract": "TextObject in IronPDF is the read-side handle for one text run on an existing PDF page, exposing its literal characters, page-space geometry, resolved font, and fill and stroke colors. Instances are obtained by enumerating IronPdf.Pages.PdfPage.TextChunks (typed as IPdfTextObjectCollection, backed by TextObjectCollection) and have no public constructor. Headline members include Contents (the text), BoundingBox (RectangleF position), FontSize, IsBold, IsItalic, FillColor, StrokeColor, RenderMode, the read-only Font, and the Clone, GetGlyphInfo, and ToJson methods. Paired with ImageObject and PathObject as the read-side PDF DOM triad.",
+    "description": "Reference for IronPDF TextObject in C#: Contents, BoundingBox, FontSize, FillColor, and acquisition through PdfPage.TextChunks on each PdfPage.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Pages;\nusing IronSoftware;\n\nPdfDocument pdf = PdfDocument.FromFile(\"invoice.pdf\");\n\nforeach (PdfPage page in pdf.Pages)\n{\n    // PdfPage.TextChunks returns IPdfTextObjectCollection (TextObjectCollection).\n    foreach (TextObject run in page.TextChunks)\n    {\n        string text = run.Contents;\n        System.Drawing.RectangleF box = run.BoundingBox;\n        float size = run.FontSize;\n        bool heading = run.IsBold && run.FontSize >= 14f;\n\n        System.Console.WriteLine(\n            $\"Page {run.PageIndex} \\\"{text}\\\" at {box} ({size}pt, bold={run.IsBold})\");\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TextObject live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextObject is in the IronSoftware namespace, shipped in IronPdf.dll. It derives from System.Object and implements IPdfTextObject, IPdfDocumentObject, IDocumentTextObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, and IJsonSerializable. Each instance is the read-side representation of one text run obtained from PdfPage.TextChunks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between TextObject, ImageObject, and PathObject?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextObject, ImageObject, and PathObject are the three read-side PDF DOM types that represent the three drawable content kinds inside a PDF page. TextObject is one text run with Contents, FontSize, and FillColor. ImageObject is one raster image with pixel data, width, and height. PathObject is one vector path with stroke, fill, and segment information. All three live in the IronSoftware namespace, all three carry geometry through BoundingBox and a Matrix, and all three are obtained by enumerating page-content collections on IronPdf.Pages.PdfPage rather than constructed directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the Matrix property on TextObject get-only?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextObject.Matrix is the resolved 2D transform of the text run computed from Scale, Rotation, and Translate, so it is exposed as get-only. To position a TextObject during read-side inspection, set the nullable X and Y properties. When both X and Y are assigned, the Matrix is auto-calculated from X, Y, Scale, and Rotation. BoundingBox is the most common geometry read because it is a RectangleF in page coordinates and does not require interpreting the transform."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read text runs from a PDF in an ASP.NET Core service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Load the source PDF into a PdfDocument inside the request handler, iterate PdfDocument.Pages, and enumerate each PdfPage.TextChunks to obtain TextObject instances. Read Contents for the literal characters, BoundingBox for the page-space position, and FontSize, IsBold, and FontObject for the resolved typography. The enumeration is synchronous and CPU-bound, so wrap the loop in Task.Run for long documents to avoid blocking the request thread. PdfDocument is IDisposable and should be disposed at the end of the request."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -165,6 +236,34 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TextObject : Object, IPdfTextObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentTextObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, IJsonSerializable</code></pre>
   </div>
+                    <!-- archetype-N:start TextObject treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When you need a single text run out of an existing PDF page, <code>TextObject</code> exposes its literal characters, its page-space geometry, the resolved font, and the fill and stroke colors that the renderer applied to that run. Each instance is the read-side PDF DOM type for one text run, and it gives structured access to the run details that the higher-level extraction facade flattens away.</p>
+<p><code>TextObject</code> is the type a caller works with when the higher-level <code>ExtractAllText</code> and <code>ExtractTextFromPage</code> string facade is too coarse. Typical scenarios include reading bounding-box positions to locate fields in a structured form, sampling <code>FontSize</code> and <code>IsBold</code> to classify headings during PDF analysis, and exporting per-glyph metrics through <code>GetGlyphInfo()</code> for downstream layout work. The type has no public constructor; a caller acquires instances only by enumerating the page-content collection described below.</p>
+<p>To obtain <code>TextObject</code> instances, open a <code>PdfDocument</code>, walk <code>PdfDocument.Pages</code> (typed as <code>PdfPagesCollection</code>), and enumerate <code>IronPdf.Pages.PdfPage.TextChunks</code> (typed as <code>IPdfTextObjectCollection</code>, backed by <code>TextObjectCollection</code>). The headline members fall into five groups: content (<code>Contents</code>, <code>ContentStart</code>, <code>PageIndex</code>), geometry (<code>BoundingBox</code> is the primary read shape; the nullable <code>X</code> and <code>Y</code> auto-fill the read-only <code>Matrix</code> from <code>Scale</code>, <code>Rotation</code>, and <code>Translate</code> when assigned together), typography (<code>FontSize</code>, <code>IsBold</code>, <code>IsItalic</code>, the read-only <code>Font</code>, and the assignable <code>FontObject</code>), color and render mode (<code>FillColor</code>, <code>StrokeColor</code>, <code>RenderMode</code> typed as <code>TextRenderModes</code>), and z-order (<code>ZOrder</code>, <code>ZPosition</code>). The three instance methods are <code>Clone()</code>, <code>GetGlyphInfo()</code> (returns <code>IDocumentCharCollection</code>), and <code>ToJson()</code>. The <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a> sets this surface in the context of a full extraction task.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Pages;
+using IronSoftware;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+
+foreach (PdfPage page in pdf.Pages)
+{
+    // PdfPage.TextChunks returns IPdfTextObjectCollection (TextObjectCollection).
+    foreach (TextObject run in page.TextChunks)
+    {
+        string text = run.Contents;
+        System.Drawing.RectangleF box = run.BoundingBox;
+        float size = run.FontSize;
+        bool heading = run.IsBold &amp;&amp; run.FontSize &gt;= 14f;
+
+        System.Console.WriteLine(
+            $&quot;Page {run.PageIndex} \&quot;{text}\&quot; at {box} ({size}pt, bold={run.IsBold})&quot;);
+    }
+}</code></pre></div>
+<p>For higher-level extraction without the DOM enumeration, the <a href="https://ironpdf.com/how-to/csharp-parse-pdf/">parse PDFs in C# how-to</a> covers the <code>ExtractAllText</code> and <code>ExtractTextFromPage</code> facade. For the inverse write-side task, the <a href="https://ironpdf.com/how-to/find-replace-text/">find and replace text in PDF how-to</a> covers <code>ReplaceTextOnAllPages</code> and <code>ReplaceTextOnPage</code>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="fields">Fields
   </h3>
   

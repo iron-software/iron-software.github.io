@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class HtmlFormatOptions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       HtmlFormatOptions Class - IronPDF C# API Reference
+      v2 (human)     title:       HtmlFormatOptions: Style PDF-to-HTML Output in C#
+      v1 (algorithm) description: HtmlFormatOptions is the IronPDF class that styles PDF-to-HTML output in C#. BackgroundColor, H1Color, H1FontSize, H1TextAlignment, PdfPageMargin.
+      v2 (human)     description: Style PDF-to-HTML output in C# with HtmlFormatOptions. Pass it to PdfDocument.SaveAsHtml or ToHtmlString to set background, H1 banner, and page margin.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>HtmlFormatOptions | IronPDF C# PDF-to-HTML</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class HtmlFormatOptions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="HtmlFormatOptions | IronPDF C# PDF-to-HTML">
+    <meta name="description" content="Reference for IronPDF HtmlFormatOptions in C#: BackgroundColor, H1Color, H1FontSize, H1TextAlignment, PdfPageMargin. Consumed by PdfDocument.SaveAsHtml.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "HtmlFormatOptions | IronPDF C# PDF-to-HTML",
+    "name": "HtmlFormatOptions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.HtmlFormatOptions.html",
+    "abstract": "The HTML output produced when a loaded PdfDocument is converted to a web document by SaveAsHtml or ToHtmlString in IronPDF is styled through HtmlFormatOptions. It exposes a parameterless constructor and five settable properties: BackgroundColor and PdfPageMargin shape the output canvas, while H1Color, H1FontSize, and H1TextAlignment style the optional title banner injected through the title parameter of the consuming method. Colour properties are typed as IronSoftware.Drawing.Color and the alignment property takes an IronPdf.TextAlignment value.",
+    "description": "Reference for IronPDF HtmlFormatOptions in C#: BackgroundColor, H1Color, H1FontSize, H1TextAlignment, PdfPageMargin. Consumed by PdfDocument.SaveAsHtml.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware.Drawing;\n\nPdfDocument pdf = PdfDocument.FromFile(\"annual-report.pdf\");\n\nHtmlFormatOptions formatOptions = new HtmlFormatOptions\n{\n    BackgroundColor = Color.White,\n    PdfPageMargin = 15,\n    H1Color = Color.Blue,\n    H1FontSize = 25,\n    H1TextAlignment = TextAlignment.Center\n};\n\npdf.SaveAsHtml(\"annual-report.html\", true, \"Annual Report 2026\",\n               htmlFormatOptions: formatOptions);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does HtmlFormatOptions live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HtmlFormatOptions is in the IronPdf namespace, shipped in IronPdf.dll. It derives from System.Object. It is passed as the optional htmlFormatOptions argument to PdfDocument.SaveAsHtml or PdfDocument.ToHtmlString to style PDF-to-HTML output."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does HtmlFormatOptions control HTML-to-PDF rendering?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. HtmlFormatOptions controls the reverse direction: PDF to HTML. It styles the HTML output produced by PdfDocument.SaveAsHtml and PdfDocument.ToHtmlString. HTML-to-PDF rendering is configured through ChromePdfRenderOptions on ChromePdfRenderer, which is a separate class in the IronPdf namespace."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do the H1Color, H1FontSize, and H1TextAlignment properties affect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "They style the H1 banner that SaveAsHtml and ToHtmlString inject at the start of the output document when the title parameter is supplied. They do not restyle the headings inside the original PDF content; those headings are converted to positioned HTML or SVG elements and retain the PDF source styling."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which methods accept an HtmlFormatOptions argument?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Two methods on PdfDocument accept HtmlFormatOptions as an optional last argument: SaveAsHtml, which writes the converted HTML to a file path, and ToHtmlString, which returns the converted HTML as a string. Both also accept a fullContentWidth flag, a title, and an IEnumerable of page indexes. If HtmlFormatOptions is omitted, default formatting is used."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +221,30 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class HtmlFormatOptions : Object</code></pre>
   </div>
+                    <!-- archetype-N:start HtmlFormatOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>HtmlFormatOptions</code> styles the HTML produced when a loaded PDF is rendered out to a web document through <code>PdfDocument.SaveAsHtml</code> or <code>PdfDocument.ToHtmlString</code> in IronPDF. It exposes a single parameterless constructor and has exactly five settable properties. The direction of conversion is PDF to HTML; this class has no effect on HTML-to-PDF rendering, which uses <code>ChromePdfRenderOptions</code>.</p>
+<p>Reach for <code>HtmlFormatOptions</code> when a PDF needs to be republished as a web page with a controlled visual style, for example to make archived reports searchable, to embed PDF content in a browser without a viewer plugin, or to expose document text to search engines and screen readers. The class also pairs with batch pipelines: construct one instance, configure it once, then pass the same <code>HtmlFormatOptions</code> reference into every <code>SaveAsHtml</code> call across a directory of input PDFs.</p>
+<p>The five properties split into two functional groups. Canvas properties shape the output page: <code>BackgroundColor</code> sets the HTML body background (typed as <code>IronSoftware.Drawing.Color</code>, not a CSS string), and <code>PdfPageMargin</code> sets the per-page margin in pixels with a default of 10. Title properties shape the H1 banner that <code>SaveAsHtml</code> and <code>ToHtmlString</code> inject when their <code>title</code> argument is supplied: <code>H1Color</code> takes an <code>IronSoftware.Drawing.Color</code>, <code>H1FontSize</code> is an integer in pixels with a default of 20, and <code>H1TextAlignment</code> accepts an <code>IronPdf.TextAlignment</code> value (default <code>Center</code>). The original PDF headings are preserved verbatim; the H1 properties style only the added title banner. When the <code>title</code> argument is omitted, no banner is injected and the three H1 properties have nothing to act on.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware.Drawing;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;annual-report.pdf&quot;);
+
+HtmlFormatOptions formatOptions = new HtmlFormatOptions
+{
+    BackgroundColor = Color.White,
+    PdfPageMargin = 15,
+    H1Color = Color.Blue,
+    H1FontSize = 25,
+    H1TextAlignment = TextAlignment.Center
+};
+
+pdf.SaveAsHtml(&quot;annual-report.html&quot;, true, &quot;Annual Report 2026&quot;,
+               htmlFormatOptions: formatOptions);</code></pre></div>
+<p>The <a href="https://ironpdf.com/how-to/pdf-to-html/">PDF to HTML how-to</a> demonstrates the conversion with these options applied, and the <a href="https://ironpdf.com/examples/pdf-to-html/">PDF to HTML code example</a> provides runnable code.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

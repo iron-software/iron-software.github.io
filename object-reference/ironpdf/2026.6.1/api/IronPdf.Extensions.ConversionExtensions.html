@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ConversionExtensions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ConversionExtensions Class - IronPDF C# API Reference
+      v2 (human)     title:       ConversionExtensions: Objects to PdfDocument in C#
+      v1 (algorithm) description: ConversionExtensions is the IronPDF C# static class whose ToPdf extension method converts a list of IBoundedPdfDocumentObject into a PdfDocument.
+      v2 (human)     description: Rebuild a PdfDocument from extracted text and image objects in C# using the IronPDF ConversionExtensions.ToPdf extension on a list of bounded objects.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ConversionExtensions | IronPDF C# ToPdf Extension</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ConversionExtensions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ConversionExtensions | IronPDF C# ToPdf Extension">
+    <meta name="description" content="Reference for IronPDF ConversionExtensions in C#: static ToPdf extension on List&lt;IBoundedPdfDocumentObject&gt; with parallel RectangleF bounds returning PdfDocument.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ConversionExtensions | IronPDF C# ToPdf Extension",
+    "name": "ConversionExtensions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extensions.ConversionExtensions.html",
+    "abstract": "ConversionExtensions is the IronPDF static class that turns a list of extracted bounded PDF objects back into a fresh PdfDocument from C# through its single ToPdf extension method on List<IronSoftware.Abstractions.Pdf.IBoundedPdfDocumentObject>. The method signature is public static PdfDocument ToPdf(this List<IBoundedPdfDocumentObject> objects, List<RectangleF> bounds), and it produces a fresh IronPdf.PdfDocument by laying out the supplied bounded objects (such as TextObject, LineTextObject, or ImageObject instances pulled from a PdfPage) at the parallel page-space rectangles in the bounds list. The canonical idiom is the extension-method call objects.ToPdf(bounds), which is the bridge from extracted PDF object graphs back into a saveable, signable PdfDocument.",
+    "description": "Reference for IronPDF ConversionExtensions in C#: static ToPdf extension on List<IBoundedPdfDocumentObject> with parallel RectangleF bounds returning PdfDocument.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using System.Collections.Generic;\nusing System.Drawing;\nusing IronPdf;\nusing IronSoftware.Abstractions.Pdf;\n\nusing PdfDocument source = new PdfDocument(\"source.pdf\");\nPdfPage sourcePage = source.Pages[0];\n\n// Collect text chunks and their parallel placements (bounds[i] positions objects[i]).\nList<IBoundedPdfDocumentObject> objects = new List<IBoundedPdfDocumentObject>();\nList<RectangleF> bounds = new List<RectangleF>();\nforeach (TextObject chunk in sourcePage.TextChunks)\n{\n    objects.Add(chunk);\n    bounds.Add(new RectangleF(chunk.X, chunk.Y, chunk.Width, chunk.Height));\n}\n\n// ToPdf is invoked through the C# extension-method syntax on the list.\nusing PdfDocument output = objects.ToPdf(bounds);\noutput.SaveAs(\"rebuilt.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ConversionExtensions live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ConversionExtensions is in the IronPdf.Extensions namespace, shipped in IronPdf.dll. It is declared public static class ConversionExtensions and derives from System.Object. As a static class it is never instantiated; its single ToPdf extension method is invoked on a List<IBoundedPdfDocumentObject> to build a new PdfDocument."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ConversionExtensions, PdfDocumentExtensions, and PdfSignatureExtensions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All three are public static extension-methods classes in the IronPDF assembly, but they hang methods off different receiver types and live in different namespaces. ConversionExtensions is in IronPdf.Extensions and extends List<IBoundedPdfDocumentObject> with a single ToPdf method that builds a new PdfDocument from extracted bounded objects. PdfDocumentExtensions is in IronPdf and extends IDocumentId with ToDocument, which materialises a remote IronPdfEngine handle into a local PdfDocument. PdfSignatureExtensions is in IronPdf.Signing and extends PdfSignature with SignPdfFile, which applies a digital signature to a file on disk. Each class is invoked through extension-method syntax on its receiver type and is never instantiated."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does ConversionExtensions.ToPdf expect in the two list arguments?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The first argument is a list of objects implementing IronSoftware.Abstractions.Pdf.IBoundedPdfDocumentObject. Concrete IronPDF types that implement this interface include TextObject (obtainable from PdfPage.TextChunks), LineTextObject (obtainable from PdfPage.Lines), and ImageObject. The second argument is a parallel list of System.Drawing.RectangleF values, indexed one-to-one with the objects list, so bounds[i] is the page-space rectangle that positions objects[i] on the produced page. The two lists must be the same length. The returned PdfDocument is a fresh managed instance that implements IDisposable and must be disposed by the caller."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you feed a PdfPage ObjectModel into ConversionExtensions.ToPdf?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open the source PDF with new PdfDocument(path), pick a page through the Pages collection, and read its ObjectModel, TextChunks, or Lines collection to obtain the bounded objects. Copy the items into a List<IBoundedPdfDocumentObject> and build a matching List<RectangleF> from each item's BoundingBox or X, Y, Width, Height surface. Call objects.ToPdf(bounds) to produce a new PdfDocument that arranges those items on a clean canvas. Wrap both source and result in using statements so the underlying handles are released."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +221,34 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class ConversionExtensions : Object</code></pre>
   </div>
+                  <!-- archetype-N:start ConversionExtensions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Turning a list of bounded PDF document objects into a fresh <code>IronPdf.PdfDocument</code> runs through <code>ConversionExtensions</code>. As a static class it is never instantiated and is rarely written by name in user code; its single method <code>ToPdf</code> is invoked through the C# extension-method syntax on any <code>List&lt;IBoundedPdfDocumentObject&gt;</code>.</p>
+<p>The intended use is the object-graph round trip. Real text and image objects extracted from a <code>PdfPage</code> (through <code>TextChunks</code>, <code>Lines</code>, or the broader <code>ObjectModel</code>) all implement the <code>IronSoftware.Abstractions.Pdf.IBoundedPdfDocumentObject</code> interface. <code>ToPdf</code> accepts a list of those objects together with a parallel list of <code>System.Drawing.RectangleF</code> values describing where each object should sit on the produced page, and returns a brand-new <code>PdfDocument</code> containing exactly that arrangement. The typical workflow is to pull a <code>TextObject</code> or <code>LineTextObject</code> out of a source PDF, optionally also pull an <code>ImageObject</code>, lay them out, and emit a clean output document for downstream signing, saving, or further editing.</p>
+<p>The class exposes one method, verified on the live reference page: <code>public static PdfDocument ToPdf(this List&lt;IBoundedPdfDocumentObject&gt; objects, List&lt;RectangleF&gt; bounds)</code>. The first parameter is the extension target and is bound through <code>this</code>, so the canonical call site reads <code>objects.ToPdf(bounds)</code> rather than the qualified form <code>ConversionExtensions.ToPdf(objects, bounds)</code>. The two lists are indexed in parallel: <code>bounds[i]</code> is the page-space rectangle that positions <code>objects[i]</code> on the produced page. The returned <code>PdfDocument</code> is a fresh managed instance that the caller owns and is responsible for disposing. For broader context on assembling and editing PDF object graphs, the <a href="https://ironpdf.com/how-to/access-pdf-dom-object/">PDF DOM object how-to</a> walks through <code>ObjectModel</code> access.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using System.Collections.Generic;
+using System.Drawing;
+using IronPdf;
+using IronSoftware.Abstractions.Pdf;
+
+using PdfDocument source = new PdfDocument(&quot;source.pdf&quot;);
+PdfPage sourcePage = source.Pages[0];
+
+// Collect text chunks and their parallel placements (bounds[i] positions objects[i]).
+List&lt;IBoundedPdfDocumentObject&gt; objects = new List&lt;IBoundedPdfDocumentObject&gt;();
+List&lt;RectangleF&gt; bounds = new List&lt;RectangleF&gt;();
+foreach (TextObject chunk in sourcePage.TextChunks)
+{
+    objects.Add(chunk);
+    bounds.Add(new RectangleF(chunk.X, chunk.Y, chunk.Width, chunk.Height));
+}
+
+// ToPdf is invoked through the C# extension-method syntax on the list.
+using PdfDocument output = objects.ToPdf(bounds);
+output.SaveAs(&quot;rebuilt.pdf&quot;);</code></pre></div>
+<p>For the upstream extraction step, the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a> covers <code>TextChunks</code>, <code>Lines</code>, and image retrieval. The <a href="https://ironpdf.com/examples/editing-pdfs/">editing PDFs examples page</a> shows broader manipulation patterns that feed lists of bounded objects into this extension.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

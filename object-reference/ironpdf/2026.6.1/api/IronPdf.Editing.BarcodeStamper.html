@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BarcodeStamper
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       BarcodeStamper Class - IronPDF C# Barcode Reference
+      v2 (human)     title:       BarcodeStamper: Stamp Barcodes and QR Codes in IronPDF C#
+      v1 (algorithm) description: BarcodeStamper is the IronPDF class for barcode and QR code stamping in C#. Reference Value, BarcodeType, Width, Height, and ApplyStamp usage.
+      v2 (human)     description: Stamp Code128, Code39, and QR codes on PDFs in C# with the IronPDF BarcodeStamper class. Configure data, encoding, dimensions, placement, and clickthrough.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>BarcodeStamper Class | IronPDF C# PDF Stamping</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BarcodeStamper
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="BarcodeStamper Class | IronPDF C# PDF Stamping">
+    <meta name="description" content="Reference for IronPDF BarcodeStamper in C#: Value, BarcodeType, BarcodeEncoding, Width, Height, HorizontalAlignment, VerticalAlignment, and ApplyStamp.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "BarcodeStamper Class | IronPDF C# PDF Stamping",
+    "name": "BarcodeStamper class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Editing.BarcodeStamper.html",
+    "abstract": "BarcodeStamper overlays a machine-readable barcode or QR code onto a PDF in IronPDF through PdfDocument.ApplyStamp. It carries the data string through the Value property, selects the symbology through the BarcodeType property of type BarcodeEncoding (Code128, Code39, or QRCode), sizes the rendered code through Width and Height integer pixel properties, and inherits placement, opacity, rotation, clickthrough Hyperlink, and layering from Stamper. Used for shipping labels, SKU and inventory codes, QR payment links, vCards, WiFi handoff codes, and asset tags on existing PDF documents.",
+    "description": "Reference for IronPDF BarcodeStamper in C#: Value, BarcodeType, BarcodeEncoding, Width, Height, HorizontalAlignment, VerticalAlignment, and ApplyStamp.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Editing;\n\nvar pdf = PdfDocument.FromFile(\"invoice.pdf\");\n\n// Construct a clickable payment QR, place it top-right, then apply and save.\nvar paymentQR = new BarcodeStamper(\n    \"https://pay.example.com/inv-12345\", BarcodeEncoding.QRCode, 120, 120)\n{\n    HorizontalAlignment = HorizontalAlignment.Right,\n    VerticalAlignment = VerticalAlignment.Top,\n    Hyperlink = \"https://pay.example.com/inv-12345\"\n};\n\n// ApplyStamp also has overloads for page targeting and async pipelines:\n//   pdf.ApplyStamp(paymentQR, 0);            // first page only\n//   await pdf.ApplyStampAsync(paymentQR);    // async pipeline\npdf.ApplyStamp(paymentQR).SaveAs(\"invoice-stamped.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does BarcodeStamper live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BarcodeStamper is in the IronPdf.Editing namespace, shipped in IronPdf.dll. It derives from Stamper, the base class it shares with TextStamper, HtmlStamper, and ImageStamper. A configured instance is passed to PdfDocument.ApplyStamp to write the barcode or QR code onto the document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between BarcodeStamper, ImageStamper, TextStamper, and HtmlStamper?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All four are Stamper subclasses in the IronPdf.Editing namespace and are applied through the same ApplyStamp method on PdfDocument. BarcodeStamper takes a data string plus a BarcodeEncoding value (Code128, Code39, or QRCode) and renders the code at scan resolution, suiting shipping labels, SKUs, QR payment links, and any payload that must be machine-readable. ImageStamper takes a raster image source and overlays it directly, suiting logos, signatures, and image watermarks that do not need to be decoded by a scanner. TextStamper takes a plain text string with font configuration, suiting page numbers, draft marks, and confidentiality watermarks. HtmlStamper takes a full HTML fragment with CSS, suiting branded headers, styled footers, and richly composed overlays. New code that needs a scannable barcode or QR code should construct a BarcodeStamper and pass it to ApplyStamp."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which barcode formats does BarcodeStamper support, and how do you generate the others?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BarcodeStamper renders the three values defined by BarcodeEncoding: QRCode (2D, default, up to 4,296 alphanumeric characters or 2,953 bytes of binary data, supports Kanji), Code128 (1D, high-density alphanumeric, the standard for shipping and inventory), and Code39 (1D, uppercase letters plus digits plus a small symbol set, common in automotive and defense). For DataMatrix, PDF417, EAN-13, UPC, ITF, Aztec, or any other symbology, generate the barcode as an image through the IronBarcode product, then overlay it with ImageStamper instead. The Add Barcodes in HTML to PDF example documents this fallback in worked code."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you make a QR code clickable inside a PDF reader?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the inherited Hyperlink property on the BarcodeStamper instance to the same URL the QR code visually encodes. The Hyperlink value attaches a PDF link annotation over the stamped region so viewers that support link navigation (most desktop and mobile PDF readers) can open the URL with a click or a tap, while phone cameras can still scan the visual QR code. For asynchronous pipelines such as ASP.NET Core controllers or background services, call ApplyStampAsync on the PdfDocument instead of ApplyStamp; ApplyStampAsync returns Task<PdfDocument> and can be awaited. A single BarcodeStamper instance is safe to reuse across requests because the class only holds configuration values."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -233,16 +304,32 @@ pdf.ApplyStamp(productCode);</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class BarcodeStamper : Stamper</code></pre>
   </div>
-  <h5 id="IronPdf_Editing_BarcodeStamper_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Supported Formats:</strong>
-</p>
-<ul><li></li><li></li><li></li></ul>
-<p>
-<strong>Related Resources:</strong>
-</p>
-<ul><li></li><li></li><li></li></ul>
-</div>
+                    <!-- archetype-N:start BarcodeStamper treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Overlaying a machine-readable barcode or QR code onto a PDF through <code>PdfDocument.ApplyStamp</code> is the job of <code>BarcodeStamper</code>. A configured <code>BarcodeStamper</code> carries the data to encode, the barcode symbology, and the rendered pixel dimensions, then is handed to <code>ApplyStamp</code> on a <code>PdfDocument</code> for the actual write. It shares the placement, opacity, rotation, and click-through properties of its sibling stampers <code>TextStamper</code>, <code>HtmlStamper</code>, and <code>ImageStamper</code>.</p>
+<p>Barcode stamping covers the overlay tasks where the payload has to be scannable: shipping and tracking numbers on packing slips, SKU and inventory codes on pick sheets, asset tags on equipment manuals, QR codes that deep-link to payment portals on invoices, and serial numbers on warranty forms. The class wraps each of these as a reusable configuration object, so a pipeline that stamps many documents constructs the <code>BarcodeStamper</code> once and reuses it across <code>ApplyStamp</code> calls against a single page, a list of pages, or every page.</p>
+<p>Construct a <code>BarcodeStamper</code> with <code>(string Value, BarcodeEncoding BarcodeType)</code> and let <code>Width</code> and <code>Height</code> default to 250 pixels each, or use the four-argument constructor <code>(string Value, BarcodeEncoding BarcodeType, int Width, int Height)</code> to size the bars at construction time. <code>Value</code> is the string to encode, <code>BarcodeType</code> selects between <code>BarcodeEncoding.QRCode</code> (the default), <code>BarcodeEncoding.Code128</code>, and <code>BarcodeEncoding.Code39</code>, and <code>Width</code> and <code>Height</code> are integer pixel sizes. The corner-placement controls most barcodes need, <code>HorizontalAlignment</code>, <code>VerticalAlignment</code>, <code>HorizontalOffset</code>, <code>VerticalOffset</code>, <code>Opacity</code>, and the <code>IsStampBehindContent</code> layering switch, all come from the <code>Stamper</code> base. The inherited <code>Hyperlink</code> property attaches a clickthrough URL on top of the stamped code, useful for QR codes that should also respond to a tap inside a PDF reader. Once configured, hand the instance to one of the <code>ApplyStamp</code> overloads on <code>PdfDocument</code>. The <a href="https://ironpdf.com/how-to/stamp-text-image/">stamp text and image how-to</a> has a dedicated barcode-stamping section.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Editing;
+
+var pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+
+// Construct a clickable payment QR, place it top-right, then apply and save.
+var paymentQR = new BarcodeStamper(
+    &quot;https://pay.example.com/inv-12345&quot;, BarcodeEncoding.QRCode, 120, 120)
+{
+    HorizontalAlignment = HorizontalAlignment.Right,
+    VerticalAlignment = VerticalAlignment.Top,
+    Hyperlink = &quot;https://pay.example.com/inv-12345&quot;
+};
+
+// ApplyStamp also has overloads for page targeting and async pipelines:
+//   pdf.ApplyStamp(paymentQR, 0);            // first page only
+//   await pdf.ApplyStampAsync(paymentQR);    // async pipeline
+pdf.ApplyStamp(paymentQR).SaveAs(&quot;invoice-stamped.pdf&quot;);</code></pre></div>
+<p>For barcode formats that <code>BarcodeEncoding</code> does not cover, the <a href="https://ironpdf.com/examples/barcode-htmltopdf/">Add Barcodes in HTML to PDF example</a> shows how to fall back to rendering a barcode through HTML or generating an image with IronBarcode and overlaying it with <code>ImageStamper</code>. To see how the placement, sizing, and layering properties carry over from the base class, reach for the <a href="https://ironpdf.com/how-to/stamp-text-image/">stamp text and image how-to</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

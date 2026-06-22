@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IPdfRenderOptions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IPdfRenderOptions Interface - IronPDF C# API Reference
+      v2 (human)     title:       IPdfRenderOptions: PDF Render Contract in C#
+      v1 (algorithm) description: IPdfRenderOptions is the IronPDF C# interface for PDF render configuration. Reference paper size, margins, headers, JavaScript, CSS, and implementors.
+      v2 (human)     description: Configure IronPDF C# PDF rendering through the IPdfRenderOptions interface. Implemented by ChromePdfRenderOptions and DocxPdfRenderOptions for shared options.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IPdfRenderOptions | IronPDF C# Render Options Contract</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IPdfRenderOptions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IPdfRenderOptions | IronPDF C# Render Options Contract">
+    <meta name="description" content="Reference for the IronPDF IPdfRenderOptions interface in C#: render options contract implemented by ChromePdfRenderOptions and DocxPdfRenderOptions.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IPdfRenderOptions | IronPDF C# Render Options Contract",
+    "name": "IPdfRenderOptions interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.IPdfRenderOptions.html",
+    "abstract": "Per-render configuration shared across format-specific renderers in C# is what IPdfRenderOptions exposes in IronPDF. It declares paper sizing through PaperSize (PdfPaperSize) and PaperOrientation, margins, HTML and text headers and footers, CSS media type, JavaScript execution, WaitFor and Timeout, viewport, DPI, JpegQuality, GrayScale, request context, and a Clone() method. Concrete implementors include ChromePdfRenderOptions for HTML, URL, Razor, and Markdown rendering, and DocxPdfRenderOptions for DOCX-to-PDF conversion.",
+    "description": "Reference for the IronPDF IPdfRenderOptions interface in C#: render options contract implemented by ChromePdfRenderOptions and DocxPdfRenderOptions.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\nvar renderer = new ChromePdfRenderer();\nChromePdfRenderOptions options = renderer.RenderingOptions;\n\n// The concrete options class is assigned to an IPdfRenderOptions parameter,\n// so shared helpers can read or set members declared on the interface.\nApplyStandardSettings(options);\n\nPdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Body</h1>\");\npdf.SaveAs(\"output.pdf\");\n\nvoid ApplyStandardSettings(IPdfRenderOptions target)\n{\n    target.PaperSize        = IronPdf.Rendering.PdfPaperSize.A4;\n    target.PaperOrientation = IronPdf.Rendering.PdfPaperOrientation.Portrait;\n    target.MarginTop        = 25;\n    target.MarginBottom     = 25;\n    target.EnableJavaScript = true;\n    target.Timeout          = 60;\n    target.GrayScale        = false;\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is IPdfRenderOptions defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfRenderOptions is in the IronPdf namespace, shipped in IronPdf.dll. It is the standalone master contract for per-render configuration with no base interface. Concrete implementors include ChromePdfRenderOptions for HTML, URL, Razor, and Markdown rendering and DocxPdfRenderOptions for DOCX-to-PDF conversion, both assigned to their renderer's RenderingOptions property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IPdfRenderOptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Two concrete render-options classes implement IPdfRenderOptions in IronPDF. ChromePdfRenderOptions is the options class for ChromePdfRenderer, which handles HTML strings, URLs, HTML files, Razor and CSHTML views, and Markdown. DocxPdfRenderOptions is the options class for DocxToPdfRenderer, which handles Microsoft Word DOCX files. Code that accepts IPdfRenderOptions can configure either renderer's options instance uniformly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which render-options class should you use for a given input format?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use ChromePdfRenderOptions when rendering HTML strings, URLs, HTML files, ASPX pages, Razor or CSHTML views, or Markdown through ChromePdfRenderer. Use DocxPdfRenderOptions when rendering DOCX files through DocxToPdfRenderer. Both classes implement IPdfRenderOptions, so shared configuration helpers can accept the interface and assign values that apply to either renderer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IPdfRenderOptions and ChromePdfRenderOptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfRenderOptions is the interface that defines the contract; ChromePdfRenderOptions is the concrete class assigned to ChromePdfRenderer.RenderingOptions. Reference the interface when writing code that should work uniformly across both render-options classes. Use ChromePdfRenderOptions directly when the configuration is specific to HTML, URL, or Markdown rendering, since the concrete class adds members beyond the shared contract."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -165,61 +236,36 @@ draftOptions.JpegQuality = 60;  // Lower quality for drafts</code></pre><p> Use 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IPdfRenderOptions</code></pre>
   </div>
-  <h5 id="IronPdf_IPdfRenderOptions_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Key Property Groups:</strong>
-</p>
-<ul><li></li><li></li><li></li><li></li><li></li></ul>
-<p>
-<strong>Advanced Configuration Patterns:</strong>
-</p>
-<pre><code>// Factory pattern for option presets:
-public static class RenderOptionsFactory {
- public static IPdfRenderOptions Invoice() => new ChromePdfRenderOptions {
-     PaperSize = PdfPaperSize.A4,
-     MarginTop = 10,
-     MarginBottom = 10,
-     MarginLeft = 10,
-     MarginRight = 10,
-     PrintHtmlBackgrounds = true
- };
-<p>public static IPdfRenderOptions Report() =&gt; new ChromePdfRenderOptions {
-PaperSize = PdfPaperSize.Letter,
-MarginTop = 25,
-MarginBottom = 25,
-FirstPageNumber = 1,
-HtmlFooter = new HtmlHeaderFooter {
-HtmlFragment = &quot;Page {page} of {total-pages}&quot;
-}
-};</p>
-<p>public static IPdfRenderOptions Poster() =&gt; new ChromePdfRenderOptions {
-PaperSize = PdfPaperSize.A1,
-PaperOrientation = PdfPaperOrientation.Portrait,
-MarginTop = 0,
-MarginBottom = 0,
-DPI = 300  // High resolution
-};
-}</p>
-<p>// Builder pattern for complex configurations:
-public class RenderOptionsBuilder {
-private IPdfRenderOptions _options = new ChromePdfRenderOptions();</p>
-<p>public RenderOptionsBuilder WithA4Paper() {
-_options.PaperSize = PdfPaperSize.A4;
-return this;
-}</p>
-<p>public RenderOptionsBuilder WithMargins(double mm) {
-_options.MarginTop = _options.MarginBottom =
-_options.MarginLeft = _options.MarginRight = mm;
-return this;
-}</p>
-<p>public RenderOptionsBuilder WithJavaScript(int delayMs = 1000) {
-_options.EnableJavaScript = true;
-_options.RenderDelay = delayMs;
-return this;
-}</p>
-<p>public IPdfRenderOptions Build() =&gt; _options;
-}</code></pre><p>
-</div>
+                <!-- archetype-N:start IPdfRenderOptions treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>When code should share render configuration across IronPDF's format-specific renderers without binding to one of them, <code>IPdfRenderOptions</code> is the contract it declares against. It declares the property and method surface that every render-options class exposes: paper sizing, margins, headers and footers, CSS and JavaScript behavior, viewport and zoom controls, request context, and a <code>Clone()</code> method for snapshotting an options instance. Concrete implementors include <a href="https://ironpdf.com/object-reference/api/IronPdf.ChromePdfRenderOptions.html"><code>ChromePdfRenderOptions</code></a> for HTML, URL, Razor, and Markdown rendering, and <a href="https://ironpdf.com/object-reference/api/IronPdf.DocxPdfRenderOptions.html"><code>DocxPdfRenderOptions</code></a> for DOCX-to-PDF conversion.</p>
+<p>The contract matters because IronPDF exposes a separate renderer class for each input format, and each renderer carries its own <code>RenderingOptions</code> instance. The interface lets application code declare a parameter or return type of <code>IPdfRenderOptions</code> and remain decoupled from the format-specific renderer, which is useful for shared configuration helpers, dependency-injected option providers, and code paths that copy or merge settings across renders.</p>
+<p>The declared surface is organized around six concerns. Page setup covers <code>PaperSize</code> (<code>PdfPaperSize</code>), <code>PaperOrientation</code> (<code>PdfPaperOrientation</code>), <code>CustomPaperWidth</code>, <code>CustomPaperHeight</code>, <code>ForcePaperSize</code>, <code>FitToPaperMode</code>, and <code>FitToPaperWidth</code>. Margins are set with <code>MarginTop</code>, <code>MarginBottom</code>, <code>MarginLeft</code>, <code>MarginRight</code>, and the related <code>UseMarginsOnHeaderAndFooter</code> and <code>ApplyMarginToHeaderAndFooter</code> flags. Headers and footers cover <code>HtmlHeader</code>, <code>HtmlFooter</code>, <code>TextHeader</code>, and <code>TextFooter</code>. Rendering controls cover <code>CssMediaType</code>, <code>CustomCssUrl</code>, <code>PrintHtmlBackgrounds</code>, <code>GrayScale</code>, <code>Zoom</code>, <code>DPI</code>, <code>JpegQuality</code>, <code>ViewPortWidth</code>, and <code>ViewPortHeight</code>. JavaScript and wait behavior cover <code>EnableJavaScript</code>, <code>Javascript</code>, <code>JavascriptMessageListener</code>, <code>WaitFor</code>, <code>Timeout</code>, and <code>RenderDelay</code>. Metadata and network cover <code>Title</code>, <code>FirstPageNumber</code>, <code>RequestContext</code>, and <code>CreatePdfFormsFromHtml</code>. Four <code>SetCustomPaperSize*</code> methods accept centimeters, inches, millimeters, or pixels and points, and <code>Clone()</code> returns a deep copy as <code>object</code>. These properties are demonstrated against a concrete options instance in the <a href="https://ironpdf.com/how-to/rendering-options/">rendering options how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+var renderer = new ChromePdfRenderer();
+ChromePdfRenderOptions options = renderer.RenderingOptions;
+
+// The concrete options class is assigned to an IPdfRenderOptions parameter,
+// so shared helpers can read or set members declared on the interface.
+ApplyStandardSettings(options);
+
+PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Body&lt;/h1&gt;&quot;);
+pdf.SaveAs(&quot;output.pdf&quot;);
+
+void ApplyStandardSettings(IPdfRenderOptions target)
+{
+    target.PaperSize        = IronPdf.Rendering.PdfPaperSize.A4;
+    target.PaperOrientation = IronPdf.Rendering.PdfPaperOrientation.Portrait;
+    target.MarginTop        = 25;
+    target.MarginBottom     = 25;
+    target.EnableJavaScript = true;
+    target.Timeout          = 60;
+    target.GrayScale        = false;
+}</code></pre></div>
+<p>For format-specific rendering, see the <a href="https://ironpdf.com/how-to/docx-to-pdf/">DOCX-to-PDF guide</a> for the DocxPdfRenderOptions path. When setting the shared header and footer members, reach for the <a href="https://ironpdf.com/how-to/headers-and-footers/">headers and footers guide</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

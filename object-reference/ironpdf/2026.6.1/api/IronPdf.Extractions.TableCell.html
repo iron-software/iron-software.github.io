@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TableCell
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TableCell Class - IronPDF C# API Reference
+      v2 (human)     title:       TableCell: Read PDF Table Cells in C# with IronPDF
+      v1 (algorithm) description: TableCell is the IronPDF C# class for one extracted PDF table cell. Reference Text, RowIndex, ColumnIndex, RowSpan, ColSpan, and SpanOriginCell.
+      v2 (human)     description: Read individual table cells from PDFs in C# with IronPDF TableCell. Covers Text, IsEmpty, RowIndex, ColumnIndex, merged-cell spans, and BoundingBox.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TableCell | IronPDF C# PDF Table Extraction API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TableCell
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="TableCell | IronPDF C# PDF Table Extraction API">
+    <meta name="description" content="Reference for IronPDF TableCell in C#: Text, RowIndex, ColumnIndex, RowSpan, ColSpan, IsSpanOrigin, SpanOriginCell, and access through TableRow.Cells.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TableCell | IronPDF C# PDF Table Extraction API",
+    "name": "TableCell class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.TableCell.html",
+    "abstract": "TableCell in IronPDF holds one cell of one recognized table on one page of a PDF, exposing its text, grid position, bounding box, and merged-cell spans. It groups the cell's content (Text, IsEmpty), grid position (RowIndex and ColumnIndex, both 0-based), page-space locator (BoundingBox as PdfRectangle), and merged-cell metadata (HasSpan, RowSpan, ColSpan, IsSpanOrigin, IsCoveredBySpan, SpanOriginCell) into one read-only container. Instances are reached through the result graph PdfExtractionResult.Tables, TableObject.DataRows, and TableRow.Cells, or directly through TableObject.GetCell and the TableRow indexer. TableCell is the leaf node of the IronPdf.Extractions table model triad with TableObject and TableRow.",
+    "description": "Reference for IronPDF TableCell in C#: Text, RowIndex, ColumnIndex, RowSpan, ColSpan, IsSpanOrigin, SpanOriginCell, and access through TableRow.Cells.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Extractions;\n\nPdfExtractionResult result = PdfExtractor.Extract(\"invoice.pdf\");\n\nforeach (TableObject table in result.Tables)\n{\n    foreach (TableRow row in table.DataRows)\n    {\n        foreach (TableCell cell in row.Cells)\n        {\n            if (cell.IsCoveredBySpan)\n            {\n                // Covered cells carry empty Text. Read the origin instead.\n                TableCell origin = cell.SpanOriginCell;\n                System.Console.WriteLine(\n                    $\"[{cell.RowIndex},{cell.ColumnIndex}] <- origin \" +\n                    $\"[{origin.RowIndex},{origin.ColumnIndex}] = {origin.Text}\");\n                continue;\n            }\n\n            System.Console.WriteLine(\n                $\"[{cell.RowIndex},{cell.ColumnIndex}] \" +\n                $\"rowspan={cell.RowSpan} colspan={cell.ColSpan} : {cell.Text}\");\n        }\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain TableCell?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TableCell is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It derives from System.Object and is the leaf data-transfer type of the table model. A public parameterless constructor exists for serialization round-trips, but in normal code a TableCell is obtained read-only through the result graph PdfExtractionResult.Tables, TableObject.DataRows, and TableRow.Cells after a call to PdfExtractor.Extract."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between TableObject, TableRow, and TableCell?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TableObject, TableRow, and TableCell are the three types that form the IronPdf.Extractions table model. TableObject is one entire recognized table on one PDF page, carrying HeaderRows and DataRows as List of TableRow plus locator metadata such as PageNumber and BoundingBox. TableRow is one row inside that table, exposing a Cells list of TableCell and an indexer that returns the cell at a given column. TableCell is the leaf type: one cell, carrying Text, IsEmpty, the 0-based RowIndex and ColumnIndex grid position, BoundingBox in page space, and the merged-cell flags RowSpan, ColSpan, HasSpan, IsSpanOrigin, IsCoveredBySpan, and SpanOriginCell. All three are produced together by PdfExtractor.Extract."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you handle merged cells when reading a PDF table in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TableCell exposes six members for merged cells. HasSpan is true when the cell participates in a horizontal or vertical merge. RowSpan and ColSpan give the height and width of the merged region in rows and columns, both 1 when the cell is not merged. IsSpanOrigin is true on the top-left cell of a merged region and that cell carries the actual Text. IsCoveredBySpan is true on the other cells of the region and those cells normally carry empty Text. SpanOriginCell on a covered cell back-references the origin cell so reader code can recover the merged value. The table-level TableObject.HasSpans rolls up whether any cell in the table has HasSpan true."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read one specific cell from a PDF table in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call PdfExtractor.Extract on the PDF path to get a PdfExtractionResult, locate the TableObject through Tables or GetTableByPageAndIndex with a 1-based page number and a 0-based table index, then call GetCell on the TableObject with the 0-based row and column indices. The call returns one TableCell whose Text property holds the cell content. If the cell is the covered half of a merged region, read SpanOriginCell.Text instead. For whole-row text without indexing each column, call GetCellText on the TableRow with the column index."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -152,6 +223,41 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TableCell : Object</code></pre>
   </div>
+                  <!-- archetype-N:start TableCell treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>TableCell</code> is the read-only container you reach for to get one cell from one recognized table on one page of a source PDF, including the cell's text, its position in the table grid, its bounding box in page space, and the merged-cell flags that describe horizontal and vertical spans. Each instance is reached through the result graph <code>PdfExtractionResult.Tables[].DataRows[].Cells[]</code> and is read-only across every property.</p>
+<p><code>TableCell</code> is the type a caller works with when the extraction goal needs cell-level precision: reading individual invoice line-item amounts, picking specific cells out of a financial statement, mapping merged column headers to data rows, or feeding a table grid into a spreadsheet or database with the original row and column coordinates preserved. Because every property is get-only, a <code>TableCell</code> returned from extraction reflects the recognizer's view of the cell and is safe to share across worker threads that only read.</p>
+<p>To obtain <code>TableCell</code> instances, call <code>PdfExtractor.Extract(pdfPath)</code> to receive a <code>PdfExtractionResult</code>, walk its <code>Tables</code> collection to reach the <code>TableObject</code> of interest, then enumerate the <code>DataRows</code> (or <code>HeaderRows</code>) and read the <code>Cells</code> list on each <code>TableRow</code>. For a known coordinate, <code>TableObject.GetCell(int row, int col)</code> returns one <code>TableCell</code> directly, and <code>TableRow</code> itself exposes an indexer that returns the cell at a given column. The headline members fall into four groups: content (<code>Text</code> and <code>IsEmpty</code>), grid position (<code>RowIndex</code> and <code>ColumnIndex</code>, both 0-based), page-space locator (<code>BoundingBox</code> as <code>PdfRectangle</code>), and the merged-cell vocabulary (<code>HasSpan</code>, <code>RowSpan</code>, <code>ColSpan</code>, <code>IsSpanOrigin</code>, <code>IsCoveredBySpan</code>, and <code>SpanOriginCell</code>, which on a covered cell back-references the top-left origin cell of the merged region). For where cell reads sit in a larger job, see the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Extractions;
+
+PdfExtractionResult result = PdfExtractor.Extract(&quot;invoice.pdf&quot;);
+
+foreach (TableObject table in result.Tables)
+{
+    foreach (TableRow row in table.DataRows)
+    {
+        foreach (TableCell cell in row.Cells)
+        {
+            if (cell.IsCoveredBySpan)
+            {
+                // Covered cells carry empty Text. Read the origin instead.
+                TableCell origin = cell.SpanOriginCell;
+                System.Console.WriteLine(
+                    $&quot;[{cell.RowIndex},{cell.ColumnIndex}] &lt;- origin &quot; +
+                    $&quot;[{origin.RowIndex},{origin.ColumnIndex}] = {origin.Text}&quot;);
+                continue;
+            }
+
+            System.Console.WriteLine(
+                $&quot;[{cell.RowIndex},{cell.ColumnIndex}] &quot; +
+                $&quot;rowspan={cell.RowSpan} colspan={cell.ColSpan} : {cell.Text}&quot;);
+        }
+    }
+}</code></pre></div>
+<p>For a single known cell, <code>TableObject.GetCell(int row, int col)</code> skips the row enumeration and returns the <code>TableCell</code> directly. When plain text is enough and the grid is not needed, the <a href="https://ironpdf.com/how-to/csharp-parse-pdf/">parse PDFs in C# how-to</a> shows the <code>ExtractAllText</code> and <code>ExtractTextFromPage</code> facade.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

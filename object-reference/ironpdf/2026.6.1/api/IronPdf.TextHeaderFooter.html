@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TextHeaderFooter
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextHeaderFooter Class - IronPDF C# API Reference
+      v2 (human)     title:       TextHeaderFooter: Text PDF Headers & Footers in C#
+      v1 (algorithm) description: TextHeaderFooter is the IronPdf class for plain-text PDF headers and footers. Reference its properties, merge fields, and C# code examples.
+      v2 (human)     description: Add plain-text PDF headers and footers in C# with the IronPDF TextHeaderFooter class. Covers LeftText, CenterText, RightText, and merge fields.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextHeaderFooter Class | IronPDF C# PDF Headers</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TextHeaderFooter
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="TextHeaderFooter Class | IronPDF C# PDF Headers">
+    <meta name="description" content="Reference for the IronPDF TextHeaderFooter class: plain-text headers and footers in C#, with properties, merge-field placeholders, and code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextHeaderFooter Class | IronPDF C# PDF Headers",
+    "name": "TextHeaderFooter class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.TextHeaderFooter.html",
+    "abstract": "Plain-text headers and footers on every page of a rendered PDF come from TextHeaderFooter in IronPDF. As the base type of HtmlHeaderFooter, it carries the LeftText, CenterText, and RightText slots, supports merge fields including {page} and {total-pages}, and exposes Font, FontSize, DrawDividerLine, and DrawDividerLineColor for typography and divider control. Instances are assigned to the TextHeader and TextFooter properties of a renderer's RenderingOptions in C# PDF generation.",
+    "description": "Reference for the IronPDF TextHeaderFooter class: plain-text headers and footers in C#, with properties, merge-field placeholders, and code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\nvar renderer = new ChromePdfRenderer();\n\n// Text header with a centered title and a divider line\nrenderer.RenderingOptions.TextHeader = new TextHeaderFooter\n{\n    CenterText = \"Quarterly Report {date}\",\n    DrawDividerLine = true,\n    Font = IronSoftware.Drawing.FontTypes.Helvetica,\n    FontSize = 12\n};\n\n// Text footer with page numbers on the right and a timestamp on the left\nrenderer.RenderingOptions.TextFooter = new TextHeaderFooter\n{\n    LeftText = \"{date} {time}\",\n    RightText = \"Page {page} of {total-pages}\",\n    FontSize = 10\n};\n\n// Reserve margin space so body content does not overlap the bands\nrenderer.RenderingOptions.MarginTop = 25;\nrenderer.RenderingOptions.MarginBottom = 25;\n\nPdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Hello World</h1>\");\npdf.SaveAs(\"output.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TextHeaderFooter live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextHeaderFooter is in the IronPdf namespace, shipped in IronPdf.dll. It is declared public class TextHeaderFooter deriving from System.Object and implementing ITextHeaderFooter and ICloneable, and it is the base type of HtmlHeaderFooter. Instances are assigned to the TextHeader and TextFooter properties of a renderer's RenderingOptions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between TextHeaderFooter and HtmlHeaderFooter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextHeaderFooter renders plain text in three slots (LeftText, CenterText, RightText) with shared font and divider settings, while HtmlHeaderFooter, which derives from TextHeaderFooter, accepts a full HTML snippet through its HtmlFragment property and supports images, inline CSS, and styled layout. Both are assigned to the renderer's RenderingOptions in IronPDF: TextHeader and TextFooter take a TextHeaderFooter, HtmlHeader and HtmlFooter take an HtmlHeaderFooter."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add page numbers to a text header or footer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Insert the {page} and {total-pages} merge fields into LeftText, CenterText, or RightText. They resolve automatically during rendering. Combine them in a single slot, for example RightText = \"Page {page} of {total-pages}\", to produce a standard pagination line."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which merge fields does TextHeaderFooter support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LeftText, CenterText, and RightText all support seven placeholders that resolve during rendering: {page}, {total-pages}, {url}, {date}, {time}, {html-title}, and {pdf-title}. Plain text outside the braces is printed verbatim."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -156,6 +227,41 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TextHeaderFooter : Object, ITextHeaderFooter, ICloneable</code></pre>
   </div>
+                  <!-- archetype-N:start TextHeaderFooter treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>TextHeaderFooter</code> prints a plain-text header or footer on every page of a rendered PDF. Assign an instance to the <code>TextHeader</code> and <code>TextFooter</code> properties of a renderer's <code>RenderingOptions</code>. The class carries three text slots that align to the left, center, and right of the page, plus typography and divider settings.</p>
+<p>The class suits documents where a single line of running text is enough: page numbers in a report footer, a document title across the top of every page, a timestamp on an invoice, or a URL stamp on a printed web page. Plain text renders without an HTML engine pass for the header band, which keeps output deterministic across platforms and avoids the styling drift that can appear when a fragment is composed with the body's CSS. When images, tables, or inline CSS are required, the derived <code>HtmlHeaderFooter</code> is the right choice.</p>
+<p>Seven properties cover the surface in three groups. The text slots <code>LeftText</code>, <code>CenterText</code>, and <code>RightText</code> hold the printed strings and accept the merge fields <code>{page}</code>, <code>{total-pages}</code>, <code>{url}</code>, <code>{date}</code>, <code>{time}</code>, <code>{html-title}</code>, and <code>{pdf-title}</code>, which resolve during rendering. The divider settings <code>DrawDividerLine</code> and <code>DrawDividerLineColor</code> draw a horizontal rule between the header or footer and the body. The typography settings <code>Font</code> (a <code>PdfFont</code>) and <code>FontSize</code> (in pixels) control the rendered text. The <a href="https://ironpdf.com/how-to/headers-and-footers/">headers and footers how-to guide</a> walks through the full configuration, and the <a href="https://ironpdf.com/examples/headers-and-footers/">text headers and footers example</a> provides a runnable script.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+var renderer = new ChromePdfRenderer();
+
+// Text header with a centered title and a divider line
+renderer.RenderingOptions.TextHeader = new TextHeaderFooter
+{
+    CenterText = &quot;Quarterly Report {date}&quot;,
+    DrawDividerLine = true,
+    Font = IronSoftware.Drawing.FontTypes.Helvetica,
+    FontSize = 12
+};
+
+// Text footer with page numbers on the right and a timestamp on the left
+renderer.RenderingOptions.TextFooter = new TextHeaderFooter
+{
+    LeftText = &quot;{date} {time}&quot;,
+    RightText = &quot;Page {page} of {total-pages}&quot;,
+    FontSize = 10
+};
+
+// Reserve margin space so body content does not overlap the bands
+renderer.RenderingOptions.MarginTop = 25;
+renderer.RenderingOptions.MarginBottom = 25;
+
+PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Hello World&lt;/h1&gt;&quot;);
+pdf.SaveAs(&quot;output.pdf&quot;);</code></pre></div>
+<p>For pagination work, the <a href="https://ironpdf.com/how-to/page-numbers/">page numbers how-to</a> covers how <code>{page}</code> and <code>{total-pages}</code> behave across appended sections, and the <a href="https://ironpdf.com/how-to/custom-margins/">custom margins guide</a> explains how <code>MarginTop</code> and <code>MarginBottom</code> reserve space so the body does not overlap the bands.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

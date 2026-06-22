@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfSecuritySettings
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfSecuritySettings - IronPDF C# API Reference
+      v2 (human)     title:       PdfSecuritySettings: PDF Passwords & Permissions in C#
+      v1 (algorithm) description: PdfSecuritySettings is the IronPDF class for PDF passwords, 128-bit encryption, and permissions in C#. Reference OwnerPassword, UserPassword, AllowUser* flags.
+      v2 (human)     description: Secure PDFs in C# with the IronPDF PdfSecuritySettings class: OwnerPassword, UserPassword, 128-bit encryption, edit and print permissions, read-only mode.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfSecuritySettings Class | IronPDF C# PDF Security</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfSecuritySettings
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfSecuritySettings Class | IronPDF C# PDF Security">
+    <meta name="description" content="Reference for IronPDF PdfSecuritySettings in C#: OwnerPassword, UserPassword, AllowUserEdits, AllowUserPrinting, MakePdfDocumentReadOnly, and permission flags.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfSecuritySettings Class | IronPDF C# PDF Security",
+    "name": "PdfSecuritySettings class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Security.PdfSecuritySettings.html",
+    "abstract": "When a PDF document needs encryption, passwords, and permissions, PdfSecuritySettings in IronPDF applies them, working from the instance obtained through PdfDocument.SecuritySettings. The class exposes OwnerPassword, UserPassword, AllowUserAnnotations, AllowUserCopyPasteContent, AllowUserCopyPasteContentForAccessibility, AllowUserEdits (PdfEditSecurity), AllowUserFormData, AllowUserPrinting (PdfPrintSecurity), MakePdfDocumentReadOnly, and RemovePasswordsAndEncryption. Assigning OwnerPassword or UserPassword enables 128-bit encryption.",
+    "description": "Reference for IronPDF PdfSecuritySettings in C#: OwnerPassword, UserPassword, AllowUserEdits, AllowUserPrinting, MakePdfDocumentReadOnly, and permission flags.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Security;\n\nusing var pdf = PdfDocument.FromFile(\"report.pdf\");\n\n// Passwords and 128-bit encryption (OwnerPassword unlocks the permission flags)\npdf.SecuritySettings.OwnerPassword = \"admin456\";\npdf.SecuritySettings.UserPassword  = \"read123\";\n\n// Content extraction permissions\npdf.SecuritySettings.AllowUserCopyPasteContent                 = false;\npdf.SecuritySettings.AllowUserCopyPasteContentForAccessibility = true;\npdf.SecuritySettings.AllowUserAnnotations                      = false;\npdf.SecuritySettings.AllowUserFormData                         = false;\n\n// Graded permissions: edits and printing\npdf.SecuritySettings.AllowUserEdits    = PdfEditSecurity.NoEdit;\npdf.SecuritySettings.AllowUserPrinting = PdfPrintSecurity.PrintLowQuality;\n\npdf.SaveAs(\"report-protected.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain PdfSecuritySettings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfSecuritySettings is in the IronPdf.Security namespace, shipped in IronPdf.dll. It derives from PdfClientAccessor and is obtained from a PdfDocument through its read-only SecuritySettings property. Assign values to its properties on an open PdfDocument, then call SaveAs to write the protected file."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfSecuritySettings, PdfEditSecurity, and PdfPrintSecurity?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfSecuritySettings is the container class held on PdfDocument.SecuritySettings; it carries every password, encryption, and permission setting for a PDF. PdfEditSecurity and PdfPrintSecurity are enumerations used as values for two of its properties: AllowUserEdits takes a PdfEditSecurity value (EditAll, EditPages, or NoEdit), and AllowUserPrinting takes a PdfPrintSecurity value (FullPrintRights, PrintLowQuality, or NoPrint). The boolean permission flags (AllowUserAnnotations, AllowUserCopyPasteContent, AllowUserFormData) are simple true/false properties on PdfSecuritySettings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are PdfSecuritySettings permission flags being ignored in the output PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Permission flags on PdfSecuritySettings only take effect when OwnerPassword is set to a non-empty string. The owner password is what cryptographically anchors the permission policy in the PDF; without it, PDF viewers are free to ignore the flags. Set pdf.SecuritySettings.OwnerPassword before assigning AllowUserCopyPasteContent, AllowUserAnnotations, AllowUserFormData, AllowUserEdits, or AllowUserPrinting, and then save the document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you make a PDF read-only with PdfSecuritySettings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call pdf.SecuritySettings.MakePdfDocumentReadOnly(ownerPassword) on an open PdfDocument. The method takes an owner password string, applies a restrictive permission policy in one call, and enables 128-bit encryption. To strip protection later, call pdf.SecuritySettings.RemovePasswordsAndEncryption(), which also removes digital signatures by default. For a granular read-only policy, set AllowUserEdits to PdfEditSecurity.NoEdit and assign OwnerPassword directly."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -153,37 +224,34 @@ Used via PdfDocument.SecuritySettings property.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfSecuritySettings : PdfClientAccessor</code></pre>
   </div>
-  <h5 id="IronPdf_Security_PdfSecuritySettings_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><security-levels>
-IronPDF provides bank-grade security features:
-- 128-bit AES encryption (industry standard)
-- User passwords (open/view access)
-- Owner passwords (permission control)
-- Granular permissions (print, copy, edit, annotate)
-- Compatible with Adobe Acrobat security model
-</security-levels>
-<example>
-<pre><code>using IronPdf;
-<p>// Basic password protection
-var pdf = PdfDocument.FromFile(&quot;sensitive.pdf&quot;);
-pdf.SecuritySettings.UserPassword = &quot;view123&quot;;     // Required to open
-pdf.SecuritySettings.OwnerPassword = &quot;admin456&quot;;   // Required to change settings
-pdf.SaveAs(&quot;protected.pdf&quot;);</p>
-<p>// Make completely read-only (government/legal use)
-var contract = PdfDocument.FromFile(&quot;contract.pdf&quot;);
-contract.SecuritySettings.MakePdfDocumentReadOnly(&quot;owner-secret&quot;);
-// Now: No copying, No printing, No editing, No annotations
-contract.SaveAs(&quot;final-contract.pdf&quot;);</p>
-<p>// Custom permissions (corporate policy)
-var report = PdfDocument.FromFile(&quot;quarterly-report.pdf&quot;);
-report.SecuritySettings.OwnerPassword = &quot;exec2024&quot;;
-report.SecuritySettings.AllowUserPrinting = PdfPrintSecurity.FullPrintRights;
-report.SecuritySettings.AllowUserCopyPasteContent = false;  // Prevent data leaks
-report.SecuritySettings.AllowUserEdits = PdfEditSecurity.NoEdit;
-report.SecuritySettings.AllowUserAnnotations = true;  // Allow comments
-report.SaveAs(&quot;q4-report-secure.pdf&quot;);</code></pre>
-</example><p>
-</div>
+                  <!-- archetype-N:start PdfSecuritySettings treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Reach for <code>PdfSecuritySettings</code> to protect a single PDF document with encryption, passwords, and permissions, working from the instance obtained through a <code>PdfDocument</code>'s read-only <code>SecuritySettings</code> property. The class covers the four facets of PDF protection: user and owner passwords with 128-bit encryption, content extraction permissions (copy, paste, accessibility), document interaction permissions (edits, form data, annotations), and printing rights.</p>
+<p>Use <code>PdfSecuritySettings</code> to protect PDF output for compliance, archival, and distribution workflows. Typical scenarios include locking generated invoices and contracts so end users can view and print but cannot edit or extract text, requiring a password to open confidential reports, generating read-only versions of long-form documents for external review, and removing protection from previously encrypted PDFs after authenticated processing. The settings persist with the saved PDF, so they apply to any viewer that honors the PDF specification.</p>
+<p>Configuration follows the <code>pdf.SecuritySettings.{Property} = value</code> idiom, applied to an open <code>PdfDocument</code> before saving. Password and encryption properties are <code>OwnerPassword</code> and <code>UserPassword</code> (assigning either enables 128-bit encryption). Boolean permission flags are <code>AllowUserAnnotations</code>, <code>AllowUserCopyPasteContent</code>, <code>AllowUserCopyPasteContentForAccessibility</code>, and <code>AllowUserFormData</code>. The two graded permissions are <code>AllowUserEdits</code> (takes a <code>PdfEditSecurity</code> value: <code>EditAll</code>, <code>EditPages</code>, or <code>NoEdit</code>) and <code>AllowUserPrinting</code> (takes a <code>PdfPrintSecurity</code> value: <code>FullPrintRights</code>, <code>PrintLowQuality</code>, or <code>NoPrint</code>). Two convenience methods cover common end states: <code>MakePdfDocumentReadOnly(string ownerPassword)</code> applies a strict read-only policy in one call, and <code>RemovePasswordsAndEncryption(bool removeSignatures = true)</code> strips all protection. Every permission flag except printing requires <code>OwnerPassword</code> to be set to a non-empty value before the restriction takes effect. The <a href="https://ironpdf.com/how-to/pdf-permissions-passwords/">PDF passwords and permissions how-to</a> demonstrates each property in a worked example.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Security;
+
+using var pdf = PdfDocument.FromFile(&quot;report.pdf&quot;);
+
+// Passwords and 128-bit encryption (OwnerPassword unlocks the permission flags)
+pdf.SecuritySettings.OwnerPassword = &quot;admin456&quot;;
+pdf.SecuritySettings.UserPassword  = &quot;read123&quot;;
+
+// Content extraction permissions
+pdf.SecuritySettings.AllowUserCopyPasteContent                 = false;
+pdf.SecuritySettings.AllowUserCopyPasteContentForAccessibility = true;
+pdf.SecuritySettings.AllowUserAnnotations                      = false;
+pdf.SecuritySettings.AllowUserFormData                         = false;
+
+// Graded permissions: edits and printing
+pdf.SecuritySettings.AllowUserEdits    = PdfEditSecurity.NoEdit;
+pdf.SecuritySettings.AllowUserPrinting = PdfPrintSecurity.PrintLowQuality;
+
+pdf.SaveAs(&quot;report-protected.pdf&quot;);</code></pre></div>
+<p>For deeper coverage, the <a href="https://ironpdf.com/tutorials/encrypt-pdf-csharp/">PDF encryption tutorial</a> explains 128-bit encryption in C#. The <a href="https://ironpdf.com/examples/security-and-metadata/">passwords, security, and metadata examples</a> page lists worked code for each property. To strip protection from existing files, see the <a href="https://ironpdf.com/examples/encryption-and-decryption/">encryption and decryption examples</a> page.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IPdfPageCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IPdfPageCollection Interface - IronPDF C# Reference
+      v2 (human)     title:       IPdfPageCollection: PDF Pages Contract in IronPDF C#
+      v1 (algorithm) description: IronPdf.Pages.IPdfPageCollection interface reference for C#. Indexer returning IPdfPage, Count, and enumeration over a PdfDocument.Pages collection.
+      v2 (human)     description: Accept any IronPDF page collection at an API boundary in C#: indexer, Count, and foreach over IPdfPage, implemented by PdfPagesCollection.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IPdfPageCollection Interface | IronPDF C# Pages API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IPdfPageCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IPdfPageCollection Interface | IronPDF C# Pages API">
+    <meta name="description" content="IPdfPageCollection is the IronPDF C# contract for PdfDocument.Pages: indexer to IPdfPage, Count, enumeration. Implemented by PdfPagesCollection.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IPdfPageCollection Interface | IronPDF C# Pages API",
+    "name": "IPdfPageCollection interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Pages.IPdfPageCollection.html",
+    "abstract": "`IPdfPageCollection` is the page-set handle a developer works through to index, count, and enumerate the pages of a PDF in C#, obtained from the `PdfDocument.Pages` property. The shipped concrete implementor is `PdfPagesCollection`. The inherited surface gives an indexer returning `IPdfPage`, a `Count`, and a typed enumerator for C# iteration; mutating operations live on the concrete `PdfPagesCollection` class.",
+    "description": "IPdfPageCollection is the IronPDF C# contract for PdfDocument.Pages: indexer to IPdfPage, Count, enumeration. Implemented by PdfPagesCollection.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Pages;\n\n// Accept the contract at the boundary - works for the real PdfPagesCollection\n// or any consumer-supplied test double.\nint CountTextPages(IPdfPageCollection pages)\n{\n    int total = pages.Count;\n    int withText = 0;\n\n    for (int i = 0; i < total; i++)\n    {\n        IPdfPage page = pages[i];\n        if (!string.IsNullOrWhiteSpace(page.Text))\n        {\n            withText++;\n        }\n    }\n\n    return withText;\n}\n\nPdfDocument pdf = PdfDocument.FromFile(\"report.pdf\");\nint textPages = CountTextPages(pdf.Pages);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain IPdfPageCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfPageCollection is in the IronPdf.Pages namespace, shipped in IronPdf.dll. It is declared public interface IPdfPageCollection : IDocumentPageCollection<IPdfPage>, IReadOnlyCollection<IPdfPage>, IEnumerable<IPdfPage>. The shipped concrete implementor is PdfPagesCollection, the type a developer receives from PdfDocument.Pages."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IPdfPageCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The concrete implementor shipped with IronPDF is PdfPagesCollection, returned by the PdfDocument.Pages property. Application code can also provide its own implementor, which is useful when faking the page collection in unit tests because the interface is small and read-only. Code typed as IPdfPageCollection works against both."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IPdfPageCollection and PdfPagesCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfPageCollection is the interface contract: indexer returning IPdfPage, Count, and enumeration. PdfPagesCollection is the concrete class returned by PdfDocument.Pages; it derives from ObservableCollection of IPdfPage and adds mutating members such as Add, Remove, RemoveAt, Clear, and RefreshPages. Reference the interface at API boundaries and the concrete class when those mutating members are required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you add or remove pages through IPdfPageCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The IPdfPageCollection surface is read-only because it derives from IReadOnlyCollection of IPdfPage. To add, remove, or clear pages, cast the value to PdfPagesCollection or call the document-level methods on PdfDocument such as Merge, InsertPdf, CopyPage, and RemovePage that operate on the underlying collection."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -147,7 +218,39 @@
   </div>
   
   
-</article>
+            <!-- archetype-N:start IPdfPageCollection treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>Indexing and enumerating the set of pages inside a PDF in IronPDF runs through <code>IPdfPageCollection</code>, the value <code>PdfDocument.Pages</code> returns. It carries no direct members of its own; its surface is the union of its base interfaces, which give code an indexer returning <code>IPdfPage</code>, a <code>Count</code>, and a typed enumerator.</p>
+<p>The concrete implementor shipped with IronPDF is <code>PdfPagesCollection</code>, returned by the <code>PdfDocument.Pages</code> property. Application code can also supply its own implementor when faking the collection for unit tests, since the contract is small and read-only. Reach for <code>IPdfPageCollection</code> when code at an API boundary needs to accept any page set without binding to the concrete type. Typical scenarios include iterating pages in an OCR pipeline, counting pages before a split, exposing a collection-shaped argument from a wrapper service, and stubbing the page list in tests that should not touch a real PDF.</p>
+<p>Three inherited members carry everyday use. The indexer <code>this[int index]</code> returns an <code>IPdfPage</code> and is the entry point for per-page work. The <code>Count</code> property comes from <code>IReadOnlyCollection&lt;IPdfPage&gt;</code> and reports the number of pages. The <code>GetEnumerator()</code> method enables <code>foreach</code> over <code>IPdfPage</code> values. Mutating operations such as <code>Add</code>, <code>Remove</code>, <code>RemoveAt</code>, and <code>Clear</code> live on the concrete <code>PdfPagesCollection</code> class through its <code>ObservableCollection&lt;IPdfPage&gt;</code> base; they are reachable by casting or by referencing the concrete type directly.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Pages;
+
+// Accept the contract at the boundary - works for the real PdfPagesCollection
+// or any consumer-supplied test double.
+int CountTextPages(IPdfPageCollection pages)
+{
+    int total = pages.Count;
+    int withText = 0;
+
+    for (int i = 0; i &lt; total; i++)
+    {
+        IPdfPage page = pages[i];
+        if (!string.IsNullOrWhiteSpace(page.Text))
+        {
+            withText++;
+        }
+    }
+
+    return withText;
+}
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;report.pdf&quot;);
+int textPages = CountTextPages(pdf.Pages);</code></pre></div>
+<p>For end-to-end page manipulation, the <a href="/how-to/add-copy-delete-pages-pdf/">add, copy, and delete pages how-to</a> walks through the document-level methods that mutate the underlying collection. For reading drawn-object content per page, see the <a href="/how-to/access-pdf-dom-object/">PDF DOM object guide</a> covering the <code>ObjectModel</code> surface reached through the indexer.</p>
+  </div>
+  <!-- archetype-N:end -->
+  </article>
           </div>
            
           <div class="hidden-sm col-md-2" role="complementary">

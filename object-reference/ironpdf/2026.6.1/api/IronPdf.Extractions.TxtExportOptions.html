@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TxtExportOptions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TxtExportOptions Class - IronPDF C# API Reference
+      v2 (human)     title:       TxtExportOptions: Export PDF Text in C# with IronPDF
+      v1 (algorithm) description: TxtExportOptions is the IronPDF C# class that selects plain-text output for ExportManager: TextEncoding, IncludeHeaders, IncludeEmptyRows, SpanMode inherited.
+      v2 (human)     description: Export extracted PDF content as plain text in C# with IronPDF's TxtExportOptions: configure encoding, header rows, and empty-row handling for downstream indexing.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TxtExportOptions Class | IronPDF C# Text Extraction</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TxtExportOptions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="TxtExportOptions Class | IronPDF C# Text Extraction">
+    <meta name="description" content="IronPDF TxtExportOptions in C#: passed to ExportManager for plain-text PDF extraction with TextEncoding, IncludeHeaders, IncludeEmptyRows from ExportOptionsBase.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TxtExportOptions Class | IronPDF C# Text Extraction",
+    "name": "TxtExportOptions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.TxtExportOptions.html",
+    "abstract": "TxtExportOptions in IronPDF is the plain-text format selector handed to ExportManager when the IronPdf.Extractions pipeline writes a PdfExtractionResult to disk as plain text. It adds no members of its own and is configured through the inherited TextEncoding (UTF8 default), IncludeHeaders, IncludeEmptyRows, and SpanMode properties. The TXT exporter ignores SpanMode and always behaves as SpanHandlingMode.Merge. Typical use is feeding extracted PDF content into full-text search indexes, retrieval-augmented generation prompts, and grep-style document triage.",
+    "description": "IronPDF TxtExportOptions in C#: passed to ExportManager for plain-text PDF extraction with TextEncoding, IncludeHeaders, IncludeEmptyRows from ExportOptionsBase.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Extractions;\nusing System.Text;\n\nPdfExtractionResult result = PdfExtractor.Extract(\"report.pdf\");\n\nvar txtOptions = new TxtExportOptions\n{\n    TextEncoding     = Encoding.UTF8,\n    IncludeHeaders   = true,\n    IncludeEmptyRows = false\n    // SpanMode is inherited but ignored by the TXT exporter (always Merge)\n};\n\nvar config = new ExportConfiguration\n{\n    ExportTables         = true,\n    ExportText           = true,\n    TableOptions         = txtOptions,\n    SeparateFilePerTable = true,\n    FileNamePattern      = \"table_{page}_{index}\"\n};\n\nExportManager.ExportResult(result, \"output\", config);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is TxtExportOptions located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TxtExportOptions is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It derives from ExportOptionsBase and adds no members of its own. Pass an instance to ExportManager to select plain-text output for a TableObject or PdfExtractionResult export."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between TxtExportOptions and the other export option classes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TxtExportOptions, CsvExportOptions, HtmlExportOptions, JsonExportOptions, and XmlExportOptions all derive from ExportOptionsBase and share the same TextEncoding, IncludeHeaders, IncludeEmptyRows, and SpanMode surface. The instance type tells ExportManager which output format to write: TxtExportOptions produces plain text with no markup, CsvExportOptions produces comma-separated tables with escape handling, HtmlExportOptions produces HTML markup, JsonExportOptions produces structured JSON, and XmlExportOptions produces XML. Pick TxtExportOptions when the downstream consumer is a full-text search index, a language model prompt, or any tool that expects unstructured text with no field delimiters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does setting SpanMode on TxtExportOptions have no effect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The TXT exporter does not support different span-handling strategies and always behaves as SpanHandlingMode.Merge regardless of the SpanMode value on the instance. Other values such as Repeat, Empty, and Annotate are accepted by the property setter but the exporter silently ignores them when writing plain text. Use CsvExportOptions or one of the structured-format option classes when distinguishing between merged, repeated, empty, or annotated rowspan and colspan cells matters. IncludeHeaders, IncludeEmptyRows, and TextEncoding still take effect on TXT output."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you build a full-text search index from extracted PDF text?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call PdfExtractor.Extract or PdfExtractor.ExtractAsync to produce a PdfExtractionResult, instantiate TxtExportOptions with the encoding the index expects (UTF8 by default), and pass it to ExportManager.ExportResult through an ExportConfiguration. Set SeparateFilePerTable to false when the index should treat each page as a single document, set IncludeEmptyRows to false to suppress whitespace-only lines, and point the output directory at the indexer's ingestion folder. Lucene, Elasticsearch, and OpenSearch ingest the resulting .txt files directly because there is no markup to strip."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -173,6 +244,38 @@ the TXT export always behaves as though <strong>SpanHandlingMode.Merge</strong> 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TxtExportOptions : ExportOptionsBase</code></pre>
   </div>
+                  <!-- archetype-N:start TxtExportOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>TxtExportOptions</code> selects the plain-text format for the IronPDF extraction pipeline when the output of a <code>TableObject</code> or <code>PdfExtractionResult</code> needs to land on disk as a plain <code>.txt</code> file. It is the plain-text format selector: hand an instance to <code>ExportManager.ExportTable</code>, <code>ExportManager.ExportTables</code>, or <code>ExportManager.ExportResult</code> and the exporter writes the extraction output as text using the inherited <code>TextEncoding</code>, <code>IncludeHeaders</code>, and <code>IncludeEmptyRows</code> settings. The class adds no members of its own.</p>
+<p>Use <code>TxtExportOptions</code> when the downstream consumer is a full-text search index, a log parser, a diff tool, a language model prompt, or any pipeline that expects unstructured plain text with no markup overhead. Typical scenarios include indexing scanned reports into Elasticsearch or Lucene, feeding extracted PDF content into a retrieval-augmented generation workflow, and producing human-readable text files for grep-style triage of large document batches. The class is the lightest-weight member of the export-options family because TXT carries no field separators, tag structure, or escape rules to configure.</p>
+<p>The constructor takes no arguments and configuration is by property assignment on the inherited surface. <code>TextEncoding</code> (default <code>Encoding.UTF8</code>) selects the byte encoding of the output file and is the most-touched property; switch to a different <code>System.Text.Encoding</code> instance when the consumer requires Latin-1, UTF-16, or a code-page-specific format. <code>IncludeHeaders</code> (default <code>true</code>) controls whether detected table-header rows appear as the first line of each table block in the text output. <code>IncludeEmptyRows</code> (default <code>false</code>) controls whether rows with no extracted content survive the export. <code>SpanMode</code> is inherited but has no effect on TXT output: the exporter always behaves as <code>SpanHandlingMode.Merge</code> regardless of the assigned value, so configure it on <code>CsvExportOptions</code> or <code>HtmlExportOptions</code> when that distinction matters. Step-by-step text and image extraction is shown in the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Extractions;
+using System.Text;
+
+PdfExtractionResult result = PdfExtractor.Extract(&quot;report.pdf&quot;);
+
+var txtOptions = new TxtExportOptions
+{
+    TextEncoding     = Encoding.UTF8,
+    IncludeHeaders   = true,
+    IncludeEmptyRows = false
+    // SpanMode is inherited but ignored by the TXT exporter (always Merge)
+};
+
+var config = new ExportConfiguration
+{
+    ExportTables         = true,
+    ExportText           = true,
+    TableOptions         = txtOptions,
+    SeparateFilePerTable = true,
+    FileNamePattern      = &quot;table_{page}_{index}&quot;
+};
+
+ExportManager.ExportResult(result, &quot;output&quot;, config);</code></pre></div>
+<p>For the parsing path that produces the <code>PdfExtractionResult</code> input, see the <a href="https://ironpdf.com/how-to/csharp-parse-pdf/">parse PDF in C# how-to</a>. The <a href="https://ironpdf.com/examples/reading-pdf-text/">reading PDF text example</a> shows the end-to-end pattern of extracting text content for downstream indexing.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

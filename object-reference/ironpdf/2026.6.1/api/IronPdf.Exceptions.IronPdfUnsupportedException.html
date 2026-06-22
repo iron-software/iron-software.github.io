@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class IronPdfUnsupportedException
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IronPdfUnsupportedException - IronPDF C# API Reference
+      v2 (human)     title:       IronPdfUnsupportedException: IronPDF Error Handling in C#
+      v1 (algorithm) description: IronPdfUnsupportedException is the IronPDF exception class for error handling in C#. Reference its members, declared values, and usage in PDF generation.
+      v2 (human)     description: IronPDF IronPdfUnsupportedException exception class reference for C#: thrown when attempting to use features not supported in the current...
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IronPdfUnsupportedException | IronPDF C# Error Handling</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class IronPdfUnsupportedException
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IronPdfUnsupportedException | IronPDF C# Error Handling">
+    <meta name="description" content="IronPdfUnsupportedException (Error Handling) in IronPDF for C#: thrown when attempting to use features not supported in the current... See members and usage.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,23 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="lite" data-sub-variant="exception">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "IronPdfUnsupportedException | IronPDF C# Error Handling",
+  "name": "IronPdfUnsupportedException exception | IronPDF C# API",
+  "url": "https://ironpdf.com/object-reference/api/IronPdf.Exceptions.IronPdfUnsupportedException.html",
+  "abstract": "The IronPdfUnsupportedException exception class in IronPDF lives in the IronPdf.Exceptions namespace, derived from Exception, representing the error raised when attempting to use features not supported in the current environment or configuration. Catch this exception at the boundary of the C# call that may raise it.",
+  "description": "IronPdfUnsupportedException (Error Handling) in IronPDF for C#: thrown when attempting to use features not supported in the current... See members and usage.",
+  "inLanguage": "en-US",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "IronPDF",
+    "url": "https://ironpdf.com/"
+  }
+}
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -167,59 +190,14 @@ if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) {
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class IronPdfUnsupportedException : Exception</code></pre>
   </div>
-  <h5 id="IronPdf_Exceptions_IronPdfUnsupportedException_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Common Scenarios:</strong>
-</p>
-<ul><li></li><li></li><li></li><li></li><li></li></ul>
-<p>
-<strong>Advanced Error Handling:</strong>
-</p>
-<pre><code>// Comprehensive error handling with logging:
-public async Task&lt;PdfDocument> ProcessPdfSafely(string path) {
- try {
-     var pdf = PdfDocument.FromFile(path);
-<pre><code> // Try advanced feature:
- try {
-     pdf.OptimizeForWeb();
- }
- catch (IronPdfUnsupportedException ex) {
-     _logger.LogWarning($&amp;quot;Web optimization not supported: {ex.Message}&amp;quot;);
-     // Continue without optimization
- }
-
- // Try platform-specific feature:
- if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
-     try {
-         pdf.Print();
-     }
-     catch (IronPdfUnsupportedException) {
-         _logger.LogInfo(&amp;quot;Direct printing not available&amp;quot;);
-     }
- }
-
- return pdf;
-</code></pre>
-<p>}
-catch (Exception ex) {
-_logger.LogError($&quot;PDF processing failed: {ex}&quot;);
-throw;
-}
-}</p>
-<p>// Feature detection pattern:
-public static class FeatureDetector {
-public static bool SupportsOCR() {
-try {
-// Test OCR capability
-var test = new PdfOcrReader();
-return true;
-}
-catch (IronPdfUnsupportedException) {
-return false;
-}
-}
-}</code></pre><p>
-</div>
+                      <!-- archetype-N:start IronPdfUnsupportedException treatment=lite sub_variant=exception -->
+  <div class="archetype-n-overview" data-treatment="lite" data-sub-variant="exception">
+<p>The <code>IronPdfUnsupportedException</code> class represents the error raised when attempting to use features not supported in the current environment or configuration.</p>
+<p>It lives in the <code>IronPdf.Exceptions</code> namespace and extends <code>Exception</code>. The runtime throws it when the corresponding operation fails: invalid input, an unsupported configuration, or an error returned by the underlying library component.</p>
+<p>Read the <code>Message</code> and <code>InnerException</code> properties to find the underlying cause.</p>
+<p>Consult the <a href="https://ironpdf.com/troubleshooting/unsupported-features/">unsupported features</a> for common platform-specific causes.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

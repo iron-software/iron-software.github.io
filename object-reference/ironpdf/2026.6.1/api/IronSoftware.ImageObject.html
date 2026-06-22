@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ImageObject
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ImageObject Class - IronPDF C# API Reference
+      v2 (human)     title:       ImageObject: Read PDF Images in IronPDF for C#
+      v1 (algorithm) description: IronSoftware.ImageObject class reference for C#. Properties BoundingBox, Image, Translate, Scale, Rotation, PageIndex via PdfPage.ObjectModel.ImageObjects.
+      v2 (human)     description: Inspect, translate, scale, and rotate images already embedded in a PDF page from C# through the IronPDF ImageObject class on PdfPage.ObjectModel.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ImageObject Class | IronPDF C# PDF DOM API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ImageObject
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ImageObject Class | IronPDF C# PDF DOM API">
+    <meta name="description" content="ImageObject in IronPDF gives C# code per-image access through PdfPage.ObjectModel.ImageObjects: BoundingBox, Image, Translate, Scale, Rotation.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ImageObject Class | IronPDF C# PDF DOM API",
+    "name": "ImageObject class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.ImageObject.html",
+    "abstract": "`ImageObject` represents a single image already drawn on a PDF page in IronPDF, ready to inspect, transform, or remove from C#. Application code obtains instances by reading `PdfPage.ObjectModel.ImageObjects`, the `ImageObjectCollection` derived from `ObservableCollection<ImageObject>`, rather than constructing them. The class exposes `BoundingBox`, `Image`, `ImageChanged`, `Translate`, `Scale`, `Rotation`, `Matrix`, `PageIndex`, `ObjNum`, `ZOrder`, `ZPosition`, plus the `Clone` and `ToJson` methods for per-image inspection and transformation in C#.",
+    "description": "ImageObject in IronPDF gives C# code per-image access through PdfPage.ObjectModel.ImageObjects: BoundingBox, Image, Translate, Scale, Rotation.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Pages;\nusing IronSoftware;\nusing System.Drawing;\n\nPdfDocument pdf = PdfDocument.FromFile(\"report.pdf\");\n\n// Walk every image on every page through the read-side DOM.\nforeach (PdfPage page in pdf.Pages)\n{\n    ImageObjectCollection images = page.ObjectModel.ImageObjects;\n\n    for (int i = images.Count - 1; i >= 0; i--)\n    {\n        ImageObject image = images[i];\n\n        // Inspect placement.\n        RectangleF box = image.BoundingBox;\n        uint pageIndex = image.PageIndex;\n\n        // Scale to 70 percent and nudge 10 points right, 5 up.\n        image.Scale = new PointF(0.7f, 0.7f);\n        image.Translate = new PointF(10f, 5f);\n\n        // Rotate upright (absolute degrees, pivot at bottom-left).\n        image.Rotation = 0;\n    }\n}\n\npdf.SaveAs(\"report-images-normalised.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is ImageObject defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ImageObject is in the IronSoftware namespace (the bare namespace, not IronPdf or IronSoftware.Pdfium), shipped in IronPdf.dll. It derives from System.Object and implements IPdfImageObject, IPdfDocumentObject, ITransformable, ICloneable, and IJsonSerializable. Application code obtains instances by reading PdfPage.ObjectModel.ImageObjects rather than constructing them, so an ImageObject is what a developer receives when walking the images on a page."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ImageObject, TextObject, and PathObject?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The three classes are the content kinds exposed by IPdfPageObjectModel on PdfPage.ObjectModel. ImageObject represents a raster image already embedded on the page and carries BoundingBox, Image, Translate, Scale, and Rotation. TextObject represents a drawn text run with content and font members. PathObject represents a vector shape with stroke and fill members. All three share the geometry, transform, page index, and serialization patterns through the IronSoftware.Abstractions interfaces."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does setting Rotation to 0 not leave the image alone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Rotation property is absolute, not relative. Assigning Rotation = 0 resets the image upright regardless of its current angle. The pivot is the bottom-left corner of the BoundingBox. Scale and Translate by contrast are relative to the position and size at the time the page was loaded. Setting Scale near zero is internally clamped to a safe minimum to prevent disappearing images."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you replace the pixels of an embedded image?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Assign a new IAnyImage instance to the Image property. The ImageChanged read-only property then reports true, and the change is written back to the page when PdfDocument.SaveAs is called. To keep the original placement, leave BoundingBox, Translate, Scale, and Rotation alone and only swap the Image payload."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -167,31 +238,44 @@ Transformations are applied immediately when a property is set.
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ImageObject : Object, IPdfImageObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentImageObject, IBoundedPdfDocumentObject, IBounded, ITransformable, ICloneable, IJsonSerializable</code></pre>
   </div>
-  <h5 id="IronSoftware_ImageObject_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Transformation Logic:</strong>
-</p>
-<ul><li>
-<strong>Scale &amp; Translate (Incremental):</strong>
-<p>
-These properties operate on a &quot;Last Value Applied&quot; basis relative to the object&apos;s original state.
-</p>
-<p>
-Setting <a class="xref" href="IronSoftware.ImageObject.html#IronSoftware_ImageObject_Scale">Scale</a> to (0.5, 0.5) twice will NOT result in a 0.25 scale. 
-</p>
-It effectively means &quot;Make the object 50% of its original size&quot;.
-<p>
-To shrink it further, you must calculate the new relative target (e.g., 0.25) and apply that.
-</p></li><li>
-<strong>Rotation (Absolute):</strong>
-<p>
-Rotation is always absolute. Setting <a class="xref" href="IronSoftware.ImageObject.html#IronSoftware_ImageObject_Rotation">Rotation</a> to 45 degrees sets the object to 45 degrees (Clockwise),
-</p>
-<p>
-regardless of its previous rotation. It does not add 45 degrees to the current angle.
-</p>
-</li></ul>
-</div>
+                  <!-- archetype-N:start ImageObject treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>ImageObject</code> is the read-side handle you receive when you walk the images already drawn on a PDF page in IronPDF. Rather than being constructed, instances arrive through the page DOM at <code>PdfPage.ObjectModel.ImageObjects</code>, an <code>ImageObjectCollection</code> derived from <code>ObservableCollection&lt;ImageObject&gt;</code>. The class is the image counterpart to <code>TextObject</code> and <code>PathObject</code>, the other two content kinds exposed by <code>IPdfPageObjectModel</code>.</p>
+<p>Reach for <code>ImageObject</code> when work needs to inspect, transform, or remove pictures that are already inside a PDF. Typical scenarios include auditing every image embedded across a multi-page report, rescaling oversized logos after merging documents from different sources, repositioning page art that landed off-grid, redacting images by removing them from the collection, and reading the underlying pixel data through the <code>Image</code> property for downstream processing. Because all transform writes mutate the loaded page in place, the change persists on the next <code>PdfDocument.SaveAs</code>.</p>
+<p>The surface groups into five buckets. Geometry is exposed as <code>BoundingBox</code> typed as <code>System.Drawing.RectangleF</code>. The transform members are <code>Translate</code> and <code>Scale</code> (both <code>PointF</code>, both relative to the loaded position and scale) and <code>Rotation</code> typed as <code>double</code>, which is absolute degrees with the pivot at the bounding box bottom-left. The composed transform is published read-only on <code>Matrix</code> as <code>MatrixStruct</code>. Pixel payload is the <code>Image</code> property typed <code>IAnyImage</code>, with <code>ImageChanged</code> flagging whether it has been reassigned. Identity and order are carried by <code>PageIndex</code>, <code>ObjNum</code>, <code>ZOrder</code> (<code>RelativeZOrder</code>), and <code>ZPosition</code>. Serialization is <code>Clone()</code> (returns <code>object</code> via <code>ICloneable</code>) and <code>ToJson()</code>. Two constraints from the property remarks matter in practice: setting <code>Scale</code> near zero is internally clamped to a safe minimum, and assigning <code>Rotation = 0</code> resets the image upright regardless of the current angle.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Pages;
+using IronSoftware;
+using System.Drawing;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;report.pdf&quot;);
+
+// Walk every image on every page through the read-side DOM.
+foreach (PdfPage page in pdf.Pages)
+{
+    ImageObjectCollection images = page.ObjectModel.ImageObjects;
+
+    for (int i = images.Count - 1; i &gt;= 0; i--)
+    {
+        ImageObject image = images[i];
+
+        // Inspect placement.
+        RectangleF box = image.BoundingBox;
+        uint pageIndex = image.PageIndex;
+
+        // Scale to 70 percent and nudge 10 points right, 5 up.
+        image.Scale = new PointF(0.7f, 0.7f);
+        image.Translate = new PointF(10f, 5f);
+
+        // Rotate upright (absolute degrees, pivot at bottom-left).
+        image.Rotation = 0;
+    }
+}
+
+pdf.SaveAs(&quot;report-images-normalised.pdf&quot;);</code></pre></div>
+<p>To see <code>TextObject</code>, <code>ImageObject</code>, and <code>PathObject</code> handled together in one traversal, the <a href="/how-to/access-pdf-dom-object/">PDF DOM object guide</a> has the worked example. To pull pixel data out of a document instead of mutating it, the <a href="/how-to/extract-text-and-images/">extract text and images how-to</a> covers the document-level extraction APIs. For page-level translation and scaling that complements per-object <code>Translate</code> and <code>Scale</code>, the <a href="/how-to/transform-pdf-pages/">transform PDF pages how-to</a> covers the page surface.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="fields">Fields
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PageMetadata
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PageMetadata Class | IronPDF C# Extraction API
+      v2 (human)     title:       PageMetadata: Per-Page Extraction Results in C#
+      v1 (algorithm) description: PageMetadata is the IronPDF DTO returned per page by PdfExtractor. Reference its PageNumber, PageBounds, TableCount, and WordCount properties.
+      v2 (human)     description: Read per-page extraction results in C# with PageMetadata. Exposes PageNumber, PageBounds, TableCount, and WordCount from PdfExtractor.Extract.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PageMetadata Class | IronPDF C# Extractions</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PageMetadata
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PageMetadata Class | IronPDF C# Extractions">
+    <meta name="description" content="Reference for the IronPDF PageMetadata class in C#: PageNumber, PageBounds, TableCount, and WordCount returned per page by PdfExtractor.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,77 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PageMetadata Class | IronPDF C# Extractions",
+    "name": "PageMetadata class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.PageMetadata.html",
+    "abstract": "PageMetadata is the per-page record a developer reads to pull page-level facts from a structured extraction result, one page at a time, in IronPDF. Part of the IronPdf.Extractions namespace, it exposes four read-only properties: PageNumber (1-based index), PageBounds (a PdfRectangle giving the physical page dimensions), TableCount (tables detected on this page), and WordCount (words extracted from this page). Instances are obtained from PdfExtractor.Extract through the parent DocumentMetadata.PageMetadata dictionary, which is keyed by 1-based page number; user code reads PageMetadata properties to branch on page-level facts and never constructs the class directly.",
+    "description": "Reference for the IronPDF PageMetadata class in C#: PageNumber, PageBounds, TableCount, and WordCount returned per page by PdfExtractor.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Extractions;\n\nPdfExtractionResult result = PdfExtractor.Extract(\"report.pdf\");\n\n// PageMetadata for page 1\nPageMetadata page1 = result.Metadata.PageMetadata[1];\n\nint    pageNumber = page1.PageNumber;   // 1\ndouble width      = page1.PageBounds.Width;\ndouble height     = page1.PageBounds.Height;\nint    tables     = page1.TableCount;\nint    words      = page1.WordCount;"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "// Iterate every page and report content density\nPdfExtractionResult result = PdfExtractor.Extract(\"report.pdf\");\n\nforeach (KeyValuePair<int, PageMetadata> entry in result.Metadata.PageMetadata)\n{\n    PageMetadata page = entry.Value;\n    Console.WriteLine($\"Page {page.PageNumber}: {page.WordCount} words, {page.TableCount} tables\");\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain PageMetadata?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PageMetadata is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It is a result DTO produced by the extraction pipeline, read through DocumentMetadata.PageMetadata as a dictionary keyed by 1-based page number after a PdfExtractor.Extract call."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PageMetadata and DocumentMetadata?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DocumentMetadata describes the document as a whole and exposes TotalPages and a roll-up TableCount across every page. PageMetadata describes one page and exposes PageNumber, PageBounds, TableCount for that page, and WordCount. The two classes are linked: DocumentMetadata owns a Dictionary<int, PageMetadata> property called PageMetadata, keyed by 1-based page number, so a single PdfExtractor.Extract call returns both the document-level totals and the per-page records together."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create a PageMetadata instance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PageMetadata is a result DTO, not a configuration object. All four properties are get-only and instances are produced by IronPDF's extraction pipeline, not by user code. Call PdfExtractor.Extract on a PDF path, then read result.Metadata.PageMetadata[pageNumber] to retrieve the PageMetadata for a specific page. The parameterless constructor exists but produces an empty record with no useful values."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read page width and height from PageMetadata?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PageMetadata.PageBounds returns a PdfRectangle from the underlying PdfPig core types, with Width and Height available as double values in PDF user-space units. Read PageBounds.Width and PageBounds.Height to compute aspect ratio, decide whether a page is portrait or landscape, or compute a content area before stamping. PageBounds is the only non-integer property on PageMetadata; PageNumber, TableCount, and WordCount are all int."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +228,35 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PageMetadata : Object</code></pre>
   </div>
+                  <!-- archetype-N:start PageMetadata treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Page-level facts about a single page after extracting a PDF with IronPDF live on <code>PageMetadata</code>. Each instance carries four read-only facts about a single page: which page it is, how big the page is, how many tables were found on it, and how many words were found on it. Instances are produced by <code>PdfExtractor.Extract</code>, exposed through <code>DocumentMetadata.PageMetadata</code> as a dictionary keyed by 1-based page number.</p>
+<p><code>PageMetadata</code> is useful any time downstream logic has to branch on page-level facts rather than on the document as a whole. Typical scenarios include reporting on which pages of a long contract actually contain tabular data, validating that an invoice page contains a non-zero word count before sending it to an LLM, and computing margins or content area from <code>PageBounds</code> before stamping or cropping. The class is a result DTO: every property is get-only, and code reads from instances rather than assigning to them.</p>
+<p><code>PageMetadata</code> exposes four members. <code>PageNumber</code> returns the 1-based page index used as the dictionary key on the parent <code>DocumentMetadata.PageMetadata</code>. <code>PageBounds</code> returns a <code>PdfRectangle</code> describing the physical dimensions of the page in PDF user-space units, suitable for computing aspect ratio or content area. <code>TableCount</code> returns the number of tables IronPDF's extractor detected on this page, useful for skipping pages with no tabular content. <code>WordCount</code> returns the number of words extracted from this page, useful as a cheap density signal for OCR fallback decisions. The canonical access pattern is to call <code>PdfExtractor.Extract</code>, read <code>.Metadata.PageMetadata</code>, and look up the page of interest. A worked extraction run appears in the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Extractions;
+
+PdfExtractionResult result = PdfExtractor.Extract(&quot;report.pdf&quot;);
+
+// PageMetadata for page 1
+PageMetadata page1 = result.Metadata.PageMetadata[1];
+
+int    pageNumber = page1.PageNumber;   // 1
+double width      = page1.PageBounds.Width;
+double height     = page1.PageBounds.Height;
+int    tables     = page1.TableCount;
+int    words      = page1.WordCount;</code></pre></div>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">// Iterate every page and report content density
+PdfExtractionResult result = PdfExtractor.Extract(&quot;report.pdf&quot;);
+
+foreach (KeyValuePair&lt;int, PageMetadata&gt; entry in result.Metadata.PageMetadata)
+{
+    PageMetadata page = entry.Value;
+    Console.WriteLine($&quot;Page {page.PageNumber}: {page.WordCount} words, {page.TableCount} tables&quot;);
+}</code></pre></div>
+<p>The document-level counterpart <a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.DocumentMetadata.html"><code>DocumentMetadata</code></a> carries <code>TotalPages</code> and a roll-up <code>TableCount</code> and owns the <code>Dictionary&lt;int, PageMetadata&gt;</code> from which these per-page instances are read. For the broader extraction workflow that produces both classes, see the <a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.PdfExtractor.html"><code>PdfExtractor</code></a> static class.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

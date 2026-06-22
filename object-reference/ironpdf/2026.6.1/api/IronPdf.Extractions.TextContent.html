@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TextContent
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextContent Class | IronPDF C# Extraction API
+      v2 (human)     title:       TextContent: Document Text from PDF Extraction in C#
+      v1 (algorithm) description: TextContent is the IronPDF class that holds extracted document text in C#. Reference GetText, GetTextByPage, GetTextByPageRange, PageTexts.
+      v2 (human)     description: Read document text, per-page text, and page-range text from a PDF extraction result in C# with the IronPDF TextContent class and its PageTexts map.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextContent Class | IronPDF C# Extractions Namespace</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TextContent
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="TextContent Class | IronPDF C# Extractions Namespace">
+    <meta name="description" content="Reference for the IronPDF TextContent class in C#: GetText, GetTextByPage, GetTextByPageRange, PageTexts dictionary, and RawText on Extractions.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,77 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextContent Class | IronPDF C# Extractions Namespace",
+    "name": "TextContent class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.TextContent.html",
+    "abstract": "TextContent in IronPDF pulls document text out of a PdfExtractionResult at whole-document, per-page, and page-range granularity. It exposes the methods GetText, GetTextByPage, and GetTextByPageRange for scoped string extraction together with the PageTexts dictionary that maps each 1-based page number to a PageText entry and the RawText property that concatenates every page. Callers reach a TextContent through PdfExtractor.Extract(path).Text and use it alongside the sibling DocumentMetadata for document-level counts and the per-page PageText for layout-aware coordinates.",
+    "description": "Reference for the IronPDF TextContent class in C#: GetText, GetTextByPage, GetTextByPageRange, PageTexts dictionary, and RawText on Extractions.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Extractions;\n\n// TextContent is the Text slice of a PdfExtractionResult\nPdfExtractionResult result = PdfExtractor.Extract(\"contract.pdf\");\nTextContent text           = result.Text;\n\nstring everything    = text.GetText();              // whole document\nstring firstPage     = text.GetTextByPage(1);       // 1-based\nstring middleSection = text.GetTextByPageRange(3, 8);"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "// Iterate per-page through the PageTexts dictionary\nforeach (KeyValuePair<int, PageText> pair in result.Text.PageTexts)\n{\n    PageText page = pair.Value;\n    Console.WriteLine($\"Page {page.PageNumber}: {page.Text.Length} chars\");\n\n    // PositionedLines exposes layout-aware (x, y, text) tuples\n    foreach ((double x, double y, string line) in page.PositionedLines)\n    {\n        // Use x/y for column or zone detection\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is TextContent defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextContent is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It derives from System.Object and is the document-level text carrier of an extraction result. A public parameterless constructor exists for tests and serialization, but in normal code a TextContent is reached read-only as PdfExtractor.Extract(path).Text."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between TextContent, PageText, and DocumentMetadata?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextContent is the document-level text slice of a PdfExtractionResult and exposes whole-document and page-scoped text accessors plus a PageTexts dictionary. PageText is the per-page leaf entry inside that dictionary and carries the page number, the page text, layout-aware PositionedLines, and the page bounds rectangle. DocumentMetadata is the document-level metadata slice reached as result.Metadata and carries counts such as TotalPages, TableCount, and the PageMetadata dictionary. Use TextContent for text, PageText for one page including coordinates, and DocumentMetadata for non-text document facts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does TextContent relate to the legacy PdfDocument.ExtractAllText method?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The PdfDocument instance method ExtractAllText returns a plain string of all text in an existing PdfDocument and predates the structured extraction API. TextContent is the newer text carrier obtained from PdfExtractor.Extract(path).Text and bundles the same flat string under GetText with additional accessors for per-page and page-range text plus the PageTexts dictionary. Choose ExtractAllText when only a string is needed from a loaded PdfDocument. Choose TextContent when downstream code consumes text alongside tables or document metadata in one extraction pass."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens when GetTextByPage is called with an out-of-range page number?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The GetTextByPage and GetTextByPageRange methods throw ArgumentOutOfRangeException. The conditions are pageNumber less than 1, pageNumber greater than the total number of pages, startPage less than 1, endPage less than 1, endPage less than startPage, and either bound exceeding the document length. Page numbers are 1-based throughout the IronPdf.Extractions API including the PageTexts dictionary keys. Validate the page count against DocumentMetadata.TotalPages from the same PdfExtractionResult before calling these accessors."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,16 +228,36 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TextContent : Object</code></pre>
   </div>
-  <h5 id="IronPdf_Extractions_TextContent_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-When table extraction is enabled, this class returns only the text that is
-outside detected table regions.
-</p>
-<p>
-If table extraction is disabled, all text on the page is returned (including text inside tables),
-because table boundaries are not available.
-</p>
-</div>
+                  <!-- archetype-N:start TextContent treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Document text at three granularities, the entire document, a single page, or a page range, comes out of a structured PDF extraction result through <code>TextContent</code>. It bundles the whole-document text, the per-page text broken out as a dictionary of <code>PageText</code> entries, and three scoped accessor methods. Callers obtain a <code>TextContent</code> from <code>PdfExtractor.Extract(pdfPath).Text</code> and read from it; the class is a data carrier, not a configurable component.</p>
+<p><code>TextContent</code> is useful when downstream code needs text at multiple granularities from the same extraction pass. Typical scenarios include AI ingestion pipelines that send the whole document to an LLM and then loop back to fetch a specific page for citation, search-indexing services that store both <code>RawText</code> for full-text search and the <code>PageTexts</code> dictionary for snippet generation, and reporting tools that pull only pages 3 through 8 of a multi-hundred-page contract.</p>
+<p><code>GetText()</code> returns the entire document text as one string. <code>GetTextByPage(int pageNumber)</code> returns the raw text for one 1-based page and throws <code>ArgumentOutOfRangeException</code> when the number is less than 1 or above the document length. <code>GetTextByPageRange(int startPage, int endPage)</code> returns text for an inclusive range and throws on the same out-of-bounds conditions plus when <code>endPage</code> is below <code>startPage</code>. The <code>PageTexts</code> property is a <code>Dictionary&lt;int, PageText&gt;</code> keyed by 1-based page number, where each <code>PageText</code> exposes its <code>PageNumber</code>, the page <code>Text</code>, and the <code>PositionedLines</code> coordinate list useful for layout-aware processing. The <code>RawText</code> property pre-concatenates every page into a single string and is equivalent to <code>GetText()</code> but cached as a property. Document-level facts that are not text, such as <code>TotalPages</code> or <code>TableCount</code>, live on the sibling <code>DocumentMetadata</code> reached via <code>result.Metadata</code>. The <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a> and the <a href="https://ironpdf.com/how-to/csharp-parse-pdf/">C# parse PDF how-to</a> show this text surface inside a complete extraction run.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Extractions;
+
+// TextContent is the Text slice of a PdfExtractionResult
+PdfExtractionResult result = PdfExtractor.Extract(&quot;contract.pdf&quot;);
+TextContent text           = result.Text;
+
+string everything    = text.GetText();              // whole document
+string firstPage     = text.GetTextByPage(1);       // 1-based
+string middleSection = text.GetTextByPageRange(3, 8);</code></pre></div>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">// Iterate per-page through the PageTexts dictionary
+foreach (KeyValuePair&lt;int, PageText&gt; pair in result.Text.PageTexts)
+{
+    PageText page = pair.Value;
+    Console.WriteLine($&quot;Page {page.PageNumber}: {page.Text.Length} chars&quot;);
+
+    // PositionedLines exposes layout-aware (x, y, text) tuples
+    foreach ((double x, double y, string line) in page.PositionedLines)
+    {
+        // Use x/y for column or zone detection
+    }
+}</code></pre></div>
+<p>For per-page detail beyond plain text (coordinates, page bounds), see the <a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.PageText.html"><code>PageText</code></a> reference. For document-level counts such as <code>TotalPages</code> and <code>TableCount</code>, see the <a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.DocumentMetadata.html"><code>DocumentMetadata</code></a> reference. To produce the <code>PdfExtractionResult</code> that carries this <code>TextContent</code>, the static entry point is the <a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.PdfExtractor.html"><code>PdfExtractor</code></a> class.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

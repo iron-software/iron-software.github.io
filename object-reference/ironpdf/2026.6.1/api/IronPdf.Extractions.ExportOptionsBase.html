@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ExportOptionsBase
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ExportOptionsBase Class - IronPDF C# API Reference
+      v2 (human)     title:       ExportOptionsBase: Export Extracted PDF Data in C#
+      v1 (algorithm) description: ExportOptionsBase is the IronPDF C# base class for export options. Configure IncludeHeaders, IncludeEmptyRows, SpanMode, and TextEncoding for CSV, HTML, JSON, TXT, and XML.
+      v2 (human)     description: Configure shared export options for IronPDF extraction results in C#. ExportOptionsBase is the base for CsvExportOptions, HtmlExportOptions, JsonExportOptions, TxtExportOptions, and XmlExportOptions.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ExportOptionsBase | IronPDF C# Extraction Export</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ExportOptionsBase
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ExportOptionsBase | IronPDF C# Extraction Export">
+    <meta name="description" content="Reference for IronPDF ExportOptionsBase in C#: IncludeHeaders, IncludeEmptyRows, SpanMode, TextEncoding, and the five format-specific subclasses used by ExportManager.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ExportOptionsBase | IronPDF C# Extraction Export",
+    "name": "ExportOptionsBase class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.ExportOptionsBase.html",
+    "abstract": "When the five format-specific export options pass shared output settings to ExportManager for writing extraction results to disk in IronPDF, those settings come from ExportOptionsBase. It carries IncludeHeaders, IncludeEmptyRows, SpanMode (a SpanHandlingMode of Repeat, Merge, Empty, or Annotate), and TextEncoding (a System.Text.Encoding, default UTF8). The runtime subclass is what selects the output writer: CsvExportOptions, HtmlExportOptions, JsonExportOptions, TxtExportOptions, or XmlExportOptions. The configured instance is passed to ExportManager.ExportTable or ExportConfiguration.TableOptions.",
+    "description": "Reference for IronPDF ExportOptionsBase in C#: IncludeHeaders, IncludeEmptyRows, SpanMode, TextEncoding, and the five format-specific subclasses used by ExportManager.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf.Extractions;\nusing System.Text;\n\nPdfExtractionResult result = new PdfExtractor().Extract(\"invoice.pdf\");\n\n// The shared base properties are set on the chosen concrete subclass.\n// The runtime type of the argument selects the writer (CsvExportOptions to CSV).\nvar csvOptions = new CsvExportOptions\n{\n    IncludeHeaders   = true,\n    IncludeEmptyRows = false,\n    SpanMode         = SpanHandlingMode.Repeat,\n    TextEncoding     = Encoding.UTF8,\n    CsvDelimiter     = \";\"\n};\n\nExportManager.ExportTable(result.Tables[0], \"table.csv\", csvOptions);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is ExportOptionsBase defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ExportOptionsBase is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It derives from System.Object and is the common base for CsvExportOptions, HtmlExportOptions, JsonExportOptions, TxtExportOptions, and XmlExportOptions, which carry the format that ExportManager writes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ExportOptionsBase and the five export options subclasses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ExportOptionsBase carries the four shared properties that every output format honors: IncludeHeaders, IncludeEmptyRows, SpanMode, and TextEncoding. The five subclasses select the writer and add format-specific properties. CsvExportOptions writes CSV and adds CsvDelimiter, CsvNewlineReplacement, and CsvQuoteStrings. HtmlExportOptions writes HTML. JsonExportOptions writes JSON. TxtExportOptions writes plain text. XmlExportOptions writes XML. ExportManager picks the writer from the runtime type of the ExportOptionsBase argument, so passing a CsvExportOptions produces CSV and passing an HtmlExportOptions produces HTML."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ExportOptionsBase and PdfExtractionOptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfExtractionOptions configures the extraction step on PdfExtractor and controls how text and tables are read out of the source PDF. ExportOptionsBase configures the export step on ExportManager and controls how the resulting PdfExtractionResult is written to disk. Use PdfExtractionOptions for table detection strategy and text extraction mode, and use one of the ExportOptionsBase subclasses for output file format and encoding."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does SpanMode have no effect when exporting to TXT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TxtExportOptions ignores SpanMode because plain text has no concept of merged cells. The TXT exporter always uses Merge-like behavior where only the origin cell of a rowspan or colspan contains the value and the other span positions are empty. SpanMode is honored by the CSV, HTML, JSON, and XML exporters where Repeat, Empty, Merge, and Annotate produce visibly different output."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -173,24 +244,31 @@ IncludeHeaders = true
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ExportOptionsBase : Object</code></pre>
   </div>
-  <h5 id="IronPdf_Extractions_ExportOptionsBase_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p><strong>Important Considerations:</strong></p>
-<p>
-<p><strong>Base Class:</strong> This class contains options common to all export formats.</p>
-</p>
-<p>
-<p><strong>Note:</strong> For format-specific options, use CsvExportOptions, HtmlExportOptions, etc.</p>
-</p>
-<strong>Related Documentation:</strong>
-<p>
-<p><strong>How-To Guide:</strong>
-<a href="https://ironpdf.com/how-to/export-extracted-pdf-data/">Configuring Export Options</a></p>
-</p>
-<p>
-<p><strong>API Reference:</strong>
-<a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.ExportOptionsBase.html/">Full API Documentation</a></p>
-</p>
-</div>
+                    <!-- archetype-N:start ExportOptionsBase treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>The output settings every export format shares in IronPDF, the ones that drive <code>ExportManager</code> as it writes tables and text from a <code>PdfExtractionResult</code> to disk, live on <code>ExportOptionsBase</code>. It is the polymorphic type that <code>ExportManager.ExportTable(TableObject, string, ExportOptionsBase)</code> accepts. The runtime export format is selected by the concrete subclass, so the choice of <code>CsvExportOptions</code>, <code>HtmlExportOptions</code>, <code>JsonExportOptions</code>, <code>TxtExportOptions</code>, or <code>XmlExportOptions</code> is what determines the output writer.</p>
+<p>Holding the cross-format knobs on one base means a pipeline can swap output formats by changing only the constructed subclass, leaving the shared property assignments untouched. Typical scenarios include exporting extracted tables to CSV for a data pipeline, writing the same extraction result to HTML for review, dumping plain TXT for diff tooling, or producing structured JSON and XML for downstream services. A team that standardizes header and encoding behavior once can apply it across every format leaf without duplicating configuration.</p>
+<p>Use <code>ExportOptionsBase</code> indirectly. Instantiate one of the five concrete subclasses, set the inherited properties, then pass the instance to <code>ExportManager.ExportTable(table, path, options)</code> or assign it to <code>ExportConfiguration.TableOptions</code> for <code>ExportManager.ExportResult(...)</code>. The inherited surface has four properties grouped by purpose. For row inclusion, <code>IncludeHeaders</code> defaults to <code>true</code> and <code>IncludeEmptyRows</code> defaults to <code>false</code>. For cell-span handling, <code>SpanMode</code> is a <code>SpanHandlingMode</code> value (<code>Repeat</code>, <code>Merge</code>, <code>Empty</code>, or <code>Annotate</code>) and defaults to <code>Repeat</code>; the TXT exporter ignores <code>SpanMode</code> because plain text cannot represent merged cells. For character encoding, <code>TextEncoding</code> is a <code>System.Text.Encoding</code> and defaults to <code>Encoding.UTF8</code>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf.Extractions;
+using System.Text;
+
+PdfExtractionResult result = new PdfExtractor().Extract(&quot;invoice.pdf&quot;);
+
+// The shared base properties are set on the chosen concrete subclass.
+// The runtime type of the argument selects the writer (CsvExportOptions to CSV).
+var csvOptions = new CsvExportOptions
+{
+    IncludeHeaders   = true,
+    IncludeEmptyRows = false,
+    SpanMode         = SpanHandlingMode.Repeat,
+    TextEncoding     = Encoding.UTF8,
+    CsvDelimiter     = &quot;;&quot;
+};
+
+ExportManager.ExportTable(result.Tables[0], &quot;table.csv&quot;, csvOptions);</code></pre></div>
+<p>The upstream <code>PdfExtractor</code> call that produces the <code>PdfExtractionResult</code> consumed here is shown in the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

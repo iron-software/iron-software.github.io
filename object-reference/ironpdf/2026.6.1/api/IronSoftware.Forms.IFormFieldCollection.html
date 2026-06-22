@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IFormFieldCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IFormFieldCollection - IronPDF C# API Reference
+      v2 (human)     title:       IFormFieldCollection: PDF Form Fields in IronPDF
+      v1 (algorithm) description: IFormFieldCollection is the IronPDF interface for the collection of PDF form fields on a document. Reference for FindFormField, SetFormFont, and members.
+      v2 (human)     description: Enumerate and fill PDF form fields in C# through the IronPDF IFormFieldCollection interface. Covers FindFormField, the indexer, Count, and pdf.Form.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IFormFieldCollection Interface | IronPDF C# Forms</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IFormFieldCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IFormFieldCollection Interface | IronPDF C# Forms">
+    <meta name="description" content="Reference for the IronPDF IFormFieldCollection interface: form field collection contract for PDF documents in C#, with implementor and code example.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IFormFieldCollection Interface | IronPDF C# Forms",
+    "name": "IFormFieldCollection interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormFieldCollection.html",
+    "abstract": "Reading, filling, removing, or auditing the fillable form fields on a PDF document from C# runs through IFormFieldCollection in IronPDF. Reached through the Form property on PdfDocument, it declares three IronPDF-specific methods: FindFormField for name-based lookup with fully-qualified and partial matching, SetFormFont for embedding a document-wide form font, and DisableFormFontFallback for suppressing automatic font fallback. The concrete implementor is FormFieldCollection in the IronSoftware namespace.",
+    "description": "Reference for the IronPDF IFormFieldCollection interface: form field collection contract for PDF documents in C#, with implementor and code example.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware.Forms;\n\nPdfDocument pdf = PdfDocument.FromFile(\"application.pdf\");\n\n// pdf.Form is the IFormFieldCollection for this document.\nIFormFieldCollection fields = pdf.Form;\n\n// Lookup by name returns IFormField. Partial matches are tried if the\n// fully-qualified name does not match exactly.\nIFormField nameField = fields.FindFormField(\"FullName\");\nif (nameField != null && !nameField.ReadOnly)\n{\n    nameField.Value = \"Jane Doe\";\n}\n\n// Enumeration uses the inherited IList<IFormField> surface.\nSystem.Console.WriteLine($\"field count: {fields.Count}\");\nforeach (IFormField field in fields)\n{\n    System.Console.WriteLine($\"{field.FullName} = {field.Value}\");\n}\n\npdf.SaveAs(\"application-filled.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain IFormFieldCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IFormFieldCollection is in the IronSoftware.Forms namespace, shipped in IronPdf.dll. It extends IList of IFormField, so fields are accessible by index, enumeration, or name. The concrete class FormFieldCollection in the IronSoftware namespace implements it, and an instance is what a developer receives from the Form property on a PdfDocument."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IFormFieldCollection in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The concrete class FormFieldCollection in the IronSoftware namespace implements IFormFieldCollection. It derives from ObservableCollection of IFormField and is reached through the Form property on a PdfDocument, so application code typically consumes the existing instance rather than constructing one."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IFormFieldCollection and FormFieldCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IFormFieldCollection is the interface contract in the IronSoftware.Forms namespace; FormFieldCollection is the concrete implementor in the IronSoftware namespace. The interface declares FindFormField, SetFormFont, DisableFormFontFallback, and the inherited IList of IFormField surface. The concrete class provides observable-collection behavior on top of that contract."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you look up a PDF form field by name?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Load the document with PdfDocument.FromFile, then call FindFormField on the Form property with the field name. The method tries a fully-qualified name match first and falls back to partial matches when no exact match exists. The return type is IFormField, so the same code path works for text, checkbox, radio, combo, signature, and image fields."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +216,38 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IFormFieldCollection : IList&lt;IFormField&gt;, ICollection&lt;IFormField&gt;, IEnumerable&lt;IFormField&gt;, IEnumerable</code></pre>
   </div>
+                <!-- archetype-N:start IFormFieldCollection treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p><code>IFormFieldCollection</code> is what you reach through the <code>Form</code> property on a <code>PdfDocument</code> whenever C# code needs to read, fill, remove, or audit the fillable form fields on a single document. Every form field on a loaded document is accessible by integer index, by enumeration, or by name, so application code rarely constructs the collection and instead consumes the instance the document already exposes.</p>
+<p>Filling a job application, auto-populating an invoice template, removing signature fields before archiving, and rendering audits that walk every field on the document are all expressed as lookups or iterations over this collection. Because the contract is shared between the interface and its concrete implementor, code written against <code>IFormFieldCollection</code> continues to work if the document type evolves.</p>
+<p>The headline members fall into two groups. The three IronPDF-specific methods are <a href="https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormField.html"><code>FindFormField</code></a>, which resolves a field by fully-qualified name and falls back to partial matches when no exact match exists, <a href="https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormFieldCollection.html"><code>SetFormFont</code></a>, which embeds a document-wide font used for subsequent fills, and <code>DisableFormFontFallback</code>, which suppresses the automatic fallback embed for non-ASCII values. The inherited <code>IList&lt;IFormField&gt;</code> surface adds the integer indexer, <code>Count</code>, <code>Add</code>, <code>Remove</code>, <code>Clear</code>, <code>Contains</code>, and <code>IndexOf</code> for direct collection manipulation. The concrete implementor is <a href="https://ironpdf.com/object-reference/api/IronSoftware.FormFieldCollection.html"><code>FormFieldCollection</code></a> in the <code>IronSoftware</code> namespace, an <code>ObservableCollection&lt;IFormField&gt;</code> subclass. Looking up and iterating fields through <code>pdf.Form</code> is demonstrated in the <a href="https://ironpdf.com/how-to/edit-forms/">fill and edit PDF forms how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware.Forms;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;application.pdf&quot;);
+
+// pdf.Form is the IFormFieldCollection for this document.
+IFormFieldCollection fields = pdf.Form;
+
+// Lookup by name returns IFormField. Partial matches are tried if the
+// fully-qualified name does not match exactly.
+IFormField nameField = fields.FindFormField(&quot;FullName&quot;);
+if (nameField != null &amp;&amp; !nameField.ReadOnly)
+{
+    nameField.Value = &quot;Jane Doe&quot;;
+}
+
+// Enumeration uses the inherited IList&lt;IFormField&gt; surface.
+System.Console.WriteLine($&quot;field count: {fields.Count}&quot;);
+foreach (IFormField field in fields)
+{
+    System.Console.WriteLine($&quot;{field.FullName} = {field.Value}&quot;);
+}
+
+pdf.SaveAs(&quot;application-filled.pdf&quot;);</code></pre></div>
+<p>For per-field manipulation through the same collection, see <a href="https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormField.html"><code>IFormField</code></a>. For building a fillable PDF before working with this collection, the <a href="https://ironpdf.com/how-to/create-forms/">create PDF forms how-to</a> is the entry point.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

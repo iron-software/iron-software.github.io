@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IMargins
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IMargins Interface - IronPDF C# API Reference
+      v2 (human)     title:       IMargins: PDF Page Margins in C# with IronPDF
+      v1 (algorithm) description: IMargins is the IronPDF C# interface for PDF page margins in millimeters. Reference MarginTop, MarginBottom, MarginLeft, MarginRight, and usage.
+      v2 (human)     description: Set top, bottom, left, and right PDF margins in C# through the IronPDF IMargins interface, implemented by ChromePdfRenderOptions in millimeters.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IMargins | IronPDF C# PDF Margin Contract</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IMargins
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IMargins | IronPDF C# PDF Margin Contract">
+    <meta name="description" content="Reference for the IronPDF IMargins interface: page-margin contract in C# with MarginTop, MarginBottom, MarginLeft, and MarginRight members.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IMargins | IronPDF C# PDF Margin Contract",
+    "name": "IMargins interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.IMargins.html",
+    "abstract": "IMargins exposes the four page margins for PDF rendering in IronPDF for reading and setting from C#. It declares four double properties measured in millimeters: MarginTop, MarginBottom, MarginLeft, and MarginRight, each defaulting to 25. ChromePdfRenderOptions implements this contract, so margin values are typically assigned through a ChromePdfRenderer's RenderingOptions property. A value of zero produces borderless output, and the same margins can be extended to headers and footers through the UseMarginsOnHeaderAndFooter setting.",
+    "description": "Reference for the IronPDF IMargins interface: page-margin contract in C# with MarginTop, MarginBottom, MarginLeft, and MarginRight members.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\nvar renderer = new ChromePdfRenderer();\n\n// ChromePdfRenderOptions implements IMargins, so the four members are\n// assigned directly on the rendering options instance.\nrenderer.RenderingOptions.MarginTop    = 25;\nrenderer.RenderingOptions.MarginBottom = 25;\nrenderer.RenderingOptions.MarginLeft   = 20;\nrenderer.RenderingOptions.MarginRight  = 20;\n\n// The interface itself can stand in as a parameter type for shared logic.\nApplyApaMargins(renderer.RenderingOptions);\n\nrenderer.RenderHtmlAsPdf(\"<h1>Report</h1>\")\n        .SaveAs(\"report.pdf\");\n\nstatic void ApplyApaMargins(IMargins target)\n{\n    target.MarginTop = target.MarginBottom = 25.4;\n    target.MarginLeft = target.MarginRight = 25.4;\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain IMargins?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IMargins is in the IronPdf namespace, shipped in IronPdf.dll. It declares no base interfaces of its own. ChromePdfRenderOptions implements it, so the margin values are what a developer assigns through ChromePdfRenderer.RenderingOptions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IMargins in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChromePdfRenderOptions is the concrete implementor of IMargins in current IronPDF builds. It is the rendering configuration object exposed by ChromePdfRenderer.RenderingOptions, so margin values are typically assigned as renderer.RenderingOptions.MarginTop, MarginBottom, MarginLeft, and MarginRight."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What units do MarginTop, MarginBottom, MarginLeft, and MarginRight use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All four properties are doubles measured in millimeters. The default value is 25 on every edge. Setting a property to zero produces borderless output suitable for commercial print workflows. Convert from inches by multiplying by 25.4."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you apply the same margins to PDF headers and footers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Assign ChromePdfRenderOptions.UseMarginsOnHeaderAndFooter to a value of the IronPdf.UseMargins type. The named values are None, Top, Bottom, Left, Right, TopAndBottom, LeftAndRight, and All. The default is LeftAndRight, so vertical margins do not apply to header and footer fragments unless explicitly enabled."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +216,36 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IMargins</code></pre>
   </div>
+                <!-- archetype-N:start IMargins treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>The four page margins on IronPDF render configuration are read and set through <code>IMargins</code>. It declares four <code>double</code> properties expressed in millimeters: <code>MarginTop</code>, <code>MarginBottom</code>, <code>MarginLeft</code>, and <code>MarginRight</code>. Each defaults to 25, and a value of zero is intended for borderless and commercial-print output. The concrete implementor in current IronPDF builds is <a href="https://ironpdf.com/object-reference/api/IronPdf.ChromePdfRenderOptions.html"><code>ChromePdfRenderOptions</code></a>, the configuration object attached to every <code>ChromePdfRenderer</code> instance.</p>
+<p>The contract exists so that any code path that needs to read or adjust the four margin values can do so through a stable, narrow surface. Margin assignment is the most common single configuration step in HTML-to-PDF rendering, with use cases including MLA or APA reports (1 inch on all sides), borderless print artwork (zero on all sides), and asymmetric letter layouts (wide top/bottom for letterhead, narrower sides). Treating the four properties as a contract means utility methods can validate or copy margin sets without binding to the entire rendering options surface.</p>
+<p>Group the four members by axis when applying values: <code>MarginTop</code> and <code>MarginBottom</code> set vertical insets, and <code>MarginLeft</code> and <code>MarginRight</code> set horizontal insets. Margin units are millimeters and stack with any <code>@page</code> or <code>margin</code> rules declared in the source HTML, so combined output may exceed either source on its own. The header and footer fragments use a separate scope: assign <code>ChromePdfRenderOptions.UseMarginsOnHeaderAndFooter</code> to a value of the <code>UseMargins</code> enum-like type (<code>None</code>, <code>Top</code>, <code>Bottom</code>, <code>Left</code>, <code>Right</code>, <code>TopAndBottom</code>, <code>LeftAndRight</code>, or <code>All</code>) to control which edges share the body margin values. The <a href="https://ironpdf.com/how-to/custom-margins/">custom margins how-to</a> has a worked C# example of assigning all four edges.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+var renderer = new ChromePdfRenderer();
+
+// ChromePdfRenderOptions implements IMargins, so the four members are
+// assigned directly on the rendering options instance.
+renderer.RenderingOptions.MarginTop    = 25;
+renderer.RenderingOptions.MarginBottom = 25;
+renderer.RenderingOptions.MarginLeft   = 20;
+renderer.RenderingOptions.MarginRight  = 20;
+
+// The interface itself can stand in as a parameter type for shared logic.
+ApplyApaMargins(renderer.RenderingOptions);
+
+renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Report&lt;/h1&gt;&quot;)
+        .SaveAs(&quot;report.pdf&quot;);
+
+static void ApplyApaMargins(IMargins target)
+{
+    target.MarginTop = target.MarginBottom = 25.4;
+    target.MarginLeft = target.MarginRight = 25.4;
+}</code></pre></div>
+<p>Because the surface is small, the contract is well suited to helper methods that copy, scale, or validate margin sets across multiple renderers. For the full configuration object that exposes these properties alongside paper size, headers, footers, and CSS media handling, see the <a href="https://ironpdf.com/how-to/rendering-options/">rendering options how-to</a> and the <a href="https://ironpdf.com/examples/ironpdf-set-custom-margins/">custom margins example</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

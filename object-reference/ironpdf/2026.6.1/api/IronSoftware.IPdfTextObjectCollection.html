@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IPdfTextObjectCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IPdfTextObjectCollection Interface - IronPDF C# API
+      v2 (human)     title:       IPdfTextObjectCollection: PdfPage.Lines Type in C#
+      v1 (algorithm) description: IPdfTextObjectCollection is the IronPDF C# interface returned by PdfPage.Lines and PdfPage.TextChunks. Reference inherited IList members and TextObjectCollection.
+      v2 (human)     description: Read or rewrite a PDF page's text DOM in C# with IronPDF IPdfTextObjectCollection, the IList<TextObject> contract returned by PdfPage.Lines and TextChunks.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IPdfTextObjectCollection | IronPDF C# Page Text DOM</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IPdfTextObjectCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IPdfTextObjectCollection | IronPDF C# Page Text DOM">
+    <meta name="description" content="Reference for IronPDF IPdfTextObjectCollection in C#: IList&lt;TextObject&gt; contract returned by PdfPage.Lines and TextChunks, implemented by TextObjectCollection.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IPdfTextObjectCollection | IronPDF C# Page Text DOM",
+    "name": "IPdfTextObjectCollection interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.IPdfTextObjectCollection.html",
+    "abstract": "IPdfTextObjectCollection exposes a PDF page's text DOM in C# as a list of IronSoftware.TextObject elements, returned by IronPdf.Pages.PdfPage.Lines and IronPdf.Pages.PdfPage.TextChunks for reading or rewriting. No members are declared directly on the interface itself. The everyday surface is inherited from IList<T> (the indexer this[int], Count, Contains, IndexOf, CopyTo), ICollection<T> (Add, Remove, RemoveAt, Clear, IsReadOnly), and IJsonSerializable (ToJson). The concrete implementor is IronSoftware.TextObjectCollection, an ObservableCollection<TextObject> that adds ToJson, IsReadOnly, and the Items property. Paired with IPdfImageObjectCollection and IPdfPathObjectCollection as the three page-DOM containers in the IronSoftware namespace.",
+    "description": "Reference for IronPDF IPdfTextObjectCollection in C#: IList<TextObject> contract returned by PdfPage.Lines and TextChunks, implemented by TextObjectCollection.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Pages;\nusing IronSoftware;\n\nPdfDocument pdf = PdfDocument.FromFile(\"invoice.pdf\");\n\nforeach (PdfPage page in pdf.Pages)\n{\n    IPdfTextObjectCollection lines = page.Lines;\n    System.Console.WriteLine($\"Page {page.PageNumber}: {lines.Count} lines\");\n\n    for (int i = 0; i < lines.Count; i++)\n    {\n        TextObject line = lines[i];\n        System.Console.WriteLine($\"  [{i}] \\\"{line.Contents}\\\" at {line.BoundingBox}\");\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IPdfTextObjectCollection live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfTextObjectCollection is in the IronSoftware namespace, shipped in IronPdf.dll. It extends IDocumentTextObjectCollection<TextObject>, IList<TextObject>, ICollection<TextObject>, IEnumerable<TextObject>, and IJsonSerializable. The concrete implementor is IronSoftware.TextObjectCollection, the type returned by PdfPage.Lines and PdfPage.TextChunks over TextObject elements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IPdfTextObjectCollection in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The concrete class IronSoftware.TextObjectCollection implements IPdfTextObjectCollection. TextObjectCollection extends ObservableCollection<TextObject> and adds the IsReadOnly and Items properties along with the Add(TextObject), Remove(TextObject), RemoveAt(Int32), Clear, GetHashCode, and ToJson methods. Instances flow out of the IronPDF page model rather than being constructed directly: IronPdf.Pages.PdfPage.Lines and IronPdf.Pages.PdfPage.TextChunks both return IPdfTextObjectCollection, with Lines providing per-visual-line grouping and TextChunks providing per-text-run granularity. Application code typically declares the variable as IPdfTextObjectCollection and casts to TextObjectCollection only when ObservableCollection change notifications are required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the collection returned by PdfPage.Lines a live view of the page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The IPdfTextObjectCollection returned by PdfPage.Lines is a freshly-grouped snapshot, not a live view of page state. The docfx remarks describe Lines as derived from TextChunks by grouping text objects that appear on the same visual line based on their vertical position, so each access re-runs the grouping over the current TextChunks. Mutating the returned collection through Add, Remove, or Clear modifies the snapshot, and another call to PdfPage.Lines on the same page returns a new collection that reflects the underlying TextChunks again. For round-trip edits, work through the write-side API such as ReplaceTextOnPage rather than mutating the snapshot."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you extract every text line on a page along with its position?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open the PDF through PdfDocument.FromFile, iterate PdfDocument.Pages to get each PdfPage, and read PdfPage.Lines to receive the IPdfTextObjectCollection for that page. Read the Count property to size any output buffer, then index into the collection or iterate it with foreach to receive TextObject elements. Each TextObject exposes Contents for the line text, BoundingBox for the page-space position, and PageIndex for the zero-based page index. When sub-line per-run geometry is required, read PdfPage.TextChunks instead, since Lines is derived from TextChunks by vertical-position grouping."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -147,7 +218,32 @@
   </div>
   
   
-</article>
+            <!-- archetype-N:start IPdfTextObjectCollection treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>Reading a page's text DOM as a list of <code>IronSoftware.TextObject</code> elements runs through <code>IPdfTextObjectCollection</code>, the value returned from <code>IronPdf.Pages.PdfPage.Lines</code> and <code>IronPdf.Pages.PdfPage.TextChunks</code>. Every list operation defined on <code>IList&lt;T&gt;</code> is available on instances returned from the IronPDF page model.</p>
+<p><code>IPdfTextObjectCollection</code> is the type a caller works with whenever code reads or rewrites the per-line or per-run text DOM of a page. Typical scenarios include enumerating each line on a page to reconstruct columns during PDF layout analysis, indexing into a specific line to read its <code>Contents</code> and <code>BoundingBox</code> during search-result highlighting, and counting text runs on a page before deciding whether to call <code>PdfExtractor</code> or to walk the DOM directly. The contract is paired with the concrete <code>IronSoftware.TextObjectCollection</code> (an <code>ObservableCollection&lt;TextObject&gt;</code> that implements this interface), and sits alongside <code>IPdfImageObjectCollection</code> and <code>IPdfPathObjectCollection</code> as the three page-DOM containers in the IronSoftware namespace.</p>
+<p>To consume <code>IPdfTextObjectCollection</code>, open a <code>PdfDocument</code>, enumerate <code>PdfDocument.Pages</code>, and access <code>PdfPage.Lines</code> for line-level grouping or <code>PdfPage.TextChunks</code> for per-run granularity. The contract carries no declarations of its own; every callable member is inherited from <code>IList&lt;TextObject&gt;</code> (the indexer <code>this[int]</code>, <code>Count</code>, <code>Contains</code>, <code>IndexOf</code>, <code>CopyTo</code>), <code>ICollection&lt;TextObject&gt;</code> (<code>Add</code>, <code>Remove</code>, <code>RemoveAt</code>, <code>Clear</code>, <code>IsReadOnly</code>), and <code>IJsonSerializable</code> (<code>ToJson</code>). The docfx remarks describe <code>PdfPage.Lines</code> as &quot;derived from <code>TextChunks</code> by grouping text objects that appear on the same visual line based on their vertical position&quot;, so each access returns a freshly-grouped collection rather than a live view of page state. For the surrounding extraction workflow, see the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Pages;
+using IronSoftware;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+
+foreach (PdfPage page in pdf.Pages)
+{
+    IPdfTextObjectCollection lines = page.Lines;
+    System.Console.WriteLine($&quot;Page {page.PageNumber}: {lines.Count} lines&quot;);
+
+    for (int i = 0; i &lt; lines.Count; i++)
+    {
+        TextObject line = lines[i];
+        System.Console.WriteLine($&quot;  [{i}] \&quot;{line.Contents}\&quot; at {line.BoundingBox}&quot;);
+    }
+}</code></pre></div>
+<p>Walking the sibling <code>IPdfImageObjectCollection</code> and <code>IPdfPathObjectCollection</code> containers in the same pass is shown in the <a href="https://ironpdf.com/how-to/access-pdf-dom-object/">access PDF DOM object how-to</a>. When the goal is editing text in place rather than enumerating the line collection, the <a href="https://ironpdf.com/how-to/find-replace-text/">find and replace text in PDF how-to</a> has worked <code>ReplaceTextOnAllPages</code> and <code>ReplaceTextOnPage</code> examples.</p>
+  </div>
+  <!-- archetype-N:end -->
+  </article>
           </div>
            
           <div class="hidden-sm col-md-2" role="complementary">

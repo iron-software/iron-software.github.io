@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class FontObject
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       FontObject Class | IronPDF C# IronSoftware API
+      v2 (human)     title:       FontObject: Read PDF Font Descriptors in C# / IronPDF
+      v1 (algorithm) description: FontObject is the IronPDF C# DTO that mirrors PDF font descriptors: FontName, FontFamily, IsEmbedded, IsCID, CapHeight, GlyphWidths, FontFile, and more.
+      v2 (human)     description: Inspect PDF font descriptors in C# with the IronPDF FontObject class: family, name, embedding, CID flags, bounding box, glyph widths, and raw font bytes.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>FontObject Class | IronPDF C# IPdfFontObject DTO</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class FontObject
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="FontObject Class | IronPDF C# IPdfFontObject DTO">
+    <meta name="description" content="Reference for IronPDF FontObject in C#: read-only IPdfFontObject implementor exposing the full PDF font-descriptor surface across the IronSoftware namespace.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "FontObject Class | IronPDF C# IPdfFontObject DTO",
+    "name": "FontObject class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.FontObject.html",
+    "abstract": "FontObject is the read-only descriptor DTO IronPDF hands back when you inspect a PDF's on-disk font dictionary in C#. It implements IPdfFontObject, IDocumentFontObject, IFont, and IJsonSerializable, and exposes the full PDF font-descriptor surface across identity (FontName, FontFamily, BaseFont), classification (SubType, IsCID, IsEmbedded, Flags, FontWeight), geometry (Ascent, Descent, CapHeight, XHeight, BBoxLeft, BBoxRight, BBoxTop, BBoxBottom, StemV, ItalicAngle), glyph widths (FirstChar, LastChar, Widths, GlyphWidths, DW), encoding and CID mapping (Encoding, ToUnicode, CidRegistry, CidOrdering, CidToGidMap, DescendantFonts), and raw bytes (FontFile, FontFileSubtype, FontData). FontObject sits underneath IronPdf.Fonts.PdfFont, which is the high-level element type returned by PdfDocument.Fonts and which carries the Embed, Unembed, and ReplaceWith action methods.",
+    "description": "Reference for IronPDF FontObject in C#: read-only IPdfFontObject implementor exposing the full PDF font-descriptor surface across the IronSoftware namespace.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware;\n\n// FontObject is consumed polymorphically through IPdfFontObject.\n// Read its descriptor surface; the class is a read-only DTO.\nvoid InspectFont(IPdfFontObject font)\n{\n    string family    = font.FontFamily;\n    string psName    = font.FontName;\n    string subType   = font.SubType;\n    bool   embedded  = font.IsEmbedded;\n    bool   cid       = font.IsCID;\n    float  cap       = font.CapHeight;\n    float  italic    = font.ItalicAngle;\n\n    Console.WriteLine($\"{family} / {psName} ({subType}) embedded={embedded} cid={cid}\");\n\n    // Cast to the concrete type when concrete-only members or\n    // serialisation are needed.\n    if (font is FontObject fo)\n    {\n        string json = fo.ToJson();\n        byte[] raw  = fo.FontFile;\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does FontObject live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FontObject is in the IronSoftware namespace, shipped in IronPdf.dll. It derives from System.Object and implements IPdfFontObject, IPdfDocumentObject, IDocumentFontObject, IFont, and IJsonSerializable. It is the read-only descriptor DTO that surfaces a PDF's on-disk font dictionary, sitting underneath the higher-level IronPdf.Fonts.PdfFont element type."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IronSoftware.FontObject and IronPdf.Fonts.PdfFont?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The two classes sit at different layers. IronSoftware.FontObject is a read-only descriptor DTO that mirrors the PDF font dictionary on disk and exposes the full PDF-font-descriptor surface: FontName, FontFamily, BaseFont, SubType, IsCID, IsEmbedded, Flags, FontWeight, the bounding-box and geometry fields, glyph widths, encoding, CID mapping, and the raw FontFile bytes. It implements IPdfFontObject and has no action methods beyond GetHashCode and ToJson. IronPdf.Fonts.PdfFont is the higher-level element type returned by iterating PdfDocument.Fonts and exposes a narrower property surface plus the action methods Embed, Unembed, and ReplaceWith. Application code that needs to modify a font in a PDF works with PdfFont. Application code that needs to inspect the full font-descriptor metadata works with FontObject."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you consume FontObject in C# code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Accept IPdfFontObject as the parameter or return type and read its get-only properties for portable code that works across every descriptor implementor. Cast to FontObject when concrete-only members such as ToJson or the FontFile and FontData byte arrays are required. There is no documented public constructor on FontObject; instances are produced by the IronPDF surface in the IronSoftware namespace and surfaced through IPdfFontObject. Every property on FontObject is get-only or has a protected setter, so the DTO is safe to pass through read-side code paths and audit logs without worrying about accidental mutation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does FontObject have Embed, Unembed, or ReplaceWith methods?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. FontObject is a read-only descriptor DTO with two documented methods, GetHashCode and ToJson. The Embed, Unembed, and ReplaceWith actions live on IronPdf.Fonts.PdfFont, the higher-level element type returned by PdfDocument.Fonts. Code that needs to embed, unembed, or replace a font in a PDF iterates PdfDocument.Fonts to obtain PdfFont instances and calls the action methods on those. FontObject is appropriate when the goal is to inspect font-descriptor metadata, serialise it to JSON, or read the raw font file bytes."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -160,6 +231,39 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class FontObject : Object, IPdfFontObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentFontObject, IFont, IJsonSerializable</code></pre>
   </div>
+                  <!-- archetype-N:start FontObject treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Inspecting a PDF's on-disk font dictionary at the descriptor level in IronPDF runs through <code>FontObject</code>. It carries the full PDF-font-descriptor surface: identity, classification, geometry, glyph widths, encoding, CID metadata, and the raw font file bytes, all as a read-only DTO. It sits underneath the higher-level <code>IronPdf.Fonts.PdfFont</code> element type that user code reaches through <code>PdfDocument.Fonts</code>.</p>
+<p><code>FontObject</code> matters for code that inspects fonts at the PDF-dictionary level rather than acting on them. Audit pipelines read <code>FontName</code>, <code>BaseFont</code>, <code>IsEmbedded</code>, and <code>IsCID</code> to verify that every PDF in a corpus carries the typography it claims. PDF/A and accessibility checkers walk <code>Flags</code>, <code>ItalicAngle</code>, <code>CapHeight</code>, <code>XHeight</code>, and <code>StemV</code> against expected ranges. Document forensics tools extract <code>FontFile</code> bytes for round-trip analysis. Polymorphic readers accept <code>IPdfFontObject</code> as a parameter so the same code path handles <code>FontObject</code> and any other descriptor implementor without binding to a single type.</p>
+<p>The property surface is wide and groups naturally by purpose. Identity is named by <code>FontName</code>, <code>FontFamily</code>, <code>BaseFont</code>, and <code>Name</code>. Classification covers <code>SubType</code>, <code>Type</code>, <code>IsCID</code>, <code>IsEmbedded</code>, <code>Flags</code>, <code>FontWeight</code>, and <code>FontStretch</code>. Geometry covers <code>Ascent</code>, <code>Descent</code>, <code>CapHeight</code>, <code>XHeight</code>, <code>ItalicAngle</code>, <code>BBoxLeft</code>, <code>BBoxRight</code>, <code>BBoxTop</code>, <code>BBoxBottom</code>, and <code>StemV</code>. Glyph data is reachable through <code>FirstChar</code>, <code>LastChar</code>, <code>Widths</code>, <code>GlyphWidths</code>, and <code>DW</code>. Encoding and CID mapping live on <code>Encoding</code>, <code>ToUnicode</code>, <code>CidRegistry</code>, <code>CidOrdering</code>, <code>CidSet</code>, <code>CidToGidMap</code>, and <code>DescendantFonts</code>. The raw font bytes are on <code>FontFile</code>, <code>FontFileSubtype</code>, and <code>FontData</code>. Two methods are documented: <code>GetHashCode()</code> and <code>ToJson()</code>, the latter serialising the descriptor to a JSON string. The <a href="https://ironpdf.com/how-to/manage-fonts/">manage fonts how-to</a> covers the action-side workflow that complements this descriptor surface.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware;
+
+// FontObject is consumed polymorphically through IPdfFontObject.
+// Read its descriptor surface; the class is a read-only DTO.
+void InspectFont(IPdfFontObject font)
+{
+    string family    = font.FontFamily;
+    string psName    = font.FontName;
+    string subType   = font.SubType;
+    bool   embedded  = font.IsEmbedded;
+    bool   cid       = font.IsCID;
+    float  cap       = font.CapHeight;
+    float  italic    = font.ItalicAngle;
+
+    Console.WriteLine($&quot;{family} / {psName} ({subType}) embedded={embedded} cid={cid}&quot;);
+
+    // Cast to the concrete type when concrete-only members or
+    // serialisation are needed.
+    if (font is FontObject fo)
+    {
+        string json = fo.ToJson();
+        byte[] raw  = fo.FontFile;
+    }
+}</code></pre></div>
+<p>For the action-side surface, see the <a href="https://ironpdf.com/object-reference/api/IronPdf.Fonts.PdfFont.html"><code>IronPdf.Fonts.PdfFont</code></a> reference page, which documents the <code>Embed</code>, <code>Unembed</code>, and <code>ReplaceWith</code> methods that drive the <a href="https://ironpdf.com/how-to/manage-fonts/">manage fonts how-to</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfDocument
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfDocument Class - IronPDF C# API Reference
+      v2 (human)     title:       PdfDocument: The Core IronPDF Class for C# PDFs
+      v1 (algorithm) description: Generate, load, edit, and save PDFs in C# through the IronPDF PdfDocument class. Reference its constructors, properties, methods, and code examples.
+      v2 (human)     description: Work with PDFs in C# through the IronPDF PdfDocument class: render, load, merge, fill forms, extract text, secure, and save with code examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfDocument Class | IronPDF C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfDocument
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfDocument Class | IronPDF C# API Reference">
+    <meta name="description" content="Reference for the IronPDF PdfDocument class in C#: load and render PDFs, edit forms and metadata, merge, secure, and save, with code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfDocument Class | IronPDF C# API Reference",
+    "name": "PdfDocument class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.PdfDocument.html",
+    "abstract": "Use PdfDocument in IronPDF to generate, edit, and save PDFs from C#. The class is the result of every render or load operation in the library: render HTML with ChromePdfRenderer to produce a PdfDocument, or open an existing file with a constructor that accepts a path, Stream, byte array, or Uri. From there the same instance covers form filling, metadata, watermarking, signing, redaction, merging, and saving. Instances hold unmanaged resources and must be disposed; they are not thread-safe.",
+    "description": "Reference for the IronPDF PdfDocument class in C#: load and render PDFs, edit forms and metadata, merge, secure, and save, with code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\nvar renderer = new ChromePdfRenderer();\nusing PdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Quarterly Report</h1>\");\n\npdf.MetaData.Title = \"Q4 Report\";\npdf.SaveAs(\"report.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PdfDocument live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfDocument is in the IronPdf namespace, shipped in IronPdf.dll. It derives from PdfClientAccessor and implements IDocumentId and IDisposable. Every render, load, edit, and save operation in the library produces or consumes a PdfDocument instance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you open an existing PDF file in C# with IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pass the file path to the PdfDocument constructor: new PdfDocument(\"file.pdf\"). Constructors are also available for Stream, byte array, and Uri sources. Encrypted PDFs accept a Password and OwnerPassword on the same constructor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does PdfDocument need to be disposed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. PdfDocument implements IDisposable and holds unmanaged resources. Wrap instances in a using statement or call Dispose() explicitly. Failing to dispose can leak memory and leave files locked."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is PdfDocument thread-safe?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. PdfDocument instances are not thread-safe. For parallel work, render or load multiple PdfDocument instances concurrently and manipulate each on a single thread."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -157,85 +228,21 @@ This is your PDF after rendering - now you can modify it, add security, extract 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfDocument : PdfClientAccessor, IDocumentId, IDisposable</code></pre>
   </div>
-  <h5 id="IronPdf_PdfDocument_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-PdfDocument is the result of any PDF generation in IronPDF. Once you have a PdfDocument,
-you can manipulate it in countless ways: add pages, remove pages, merge with other PDFs,
-add passwords, sign digitally, redact content, extract text, and much more.
-</p>
-<why-this-class>
-After rendering HTML to PDF, you don&apos;t just want to save it - you want to:
-- Merge multiple invoices into a batch
-- Add passwords and permissions for security
-- Extract text for indexing
-- Add watermarks or stamps
-- Sign documents digitally
-- Redact sensitive information
-This class provides all post-generation capabilities.
-</why-this-class>
-<memory-management>
-PdfDocument implements IDisposable. ALWAYS use &apos;using&apos; statements or call Dispose():
-using (var pdf = renderer.RenderHtmlAsPdf(html)) { pdf.SaveAs(&quot;file.pdf&quot;); }
-Failing to dispose causes memory leaks and locked files.
-</memory-management>
-<common-operations>
-- SaveAs() - Write to disk
-- Merge() - Combine multiple PDFs
-- Password - Add security
-- ExtractAllText() - Get text content
-- AddWatermark() - Brand your PDFs
-- Sign() - Digital signatures
-- Redact() - Remove sensitive content permanently
-</common-operations>
-<quick-example>
-<pre><code>using IronPdf;
-<p>// Generate and manipulate
-var pdf = ChromePdfRenderer.StaticRenderHtmlAsPdf(&quot;<h1>Invoice</h1>&quot;);
-pdf.Password = &quot;secret123&quot;;
-pdf.SaveAs(&quot;secured-invoice.pdf&quot;);
-pdf.Dispose(); // Or use 'using' statement</code></pre>
-</quick-example>
-<advanced-features><p>
-<ul>
-<li>Form filling and extraction</li>
-<li>Annotation management</li>
-<li>Page manipulation (rotate, crop, resize)</li>
-<li>Metadata editing</li>
-<li>OCR for scanned documents</li>
-<li>PDF/A conversion</li>
-<li>Compression and optimization
-</li></ul></advanced-features>
-<thread-safety>
-PdfDocument is NOT thread-safe. Use separate instances for concurrent operations.
-For parallel processing, generate PDFs in parallel but manipulate sequentially.
-</thread-safety>
+                      <!-- archetype-N:start PdfDocument treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PdfDocument</code> is the object you hold whenever you generate, edit, or save a PDF in IronPDF. Render an HTML string with <code>ChromePdfRenderer.RenderHtmlAsPdf</code> and you receive a <code>PdfDocument</code>. Open an existing file with a <code>PdfDocument</code> constructor and you receive a <code>PdfDocument</code>. A held <code>PdfDocument</code> covers every post-rendering task in the library: combining files, extracting text, adding watermarks, filling forms, applying passwords, signing, redacting, and saving to disk or to a byte array.</p>
+<p>The class plays two roles at once. It is the editing surface, exposing <code>Form</code>, <code>Pages</code>, <code>Bookmarks</code>, <code>Annotations</code>, <code>MetaData</code>, <code>Fonts</code>, and <code>Attachments</code> for content changes, and it is the output handle, exposing <code>SaveAs</code>, <code>BinaryData</code>, <code>BinaryDataIncremental</code>, and the static <code>Merge</code> method for writing results. Existing files enter through constructors that accept a file path, a <code>Stream</code>, a byte array, or a <code>Uri</code>, so loaded documents and freshly rendered ones expose an identical API. For combining or separating documents, the <a href="https://ironpdf.com/how-to/merge-or-split-pdfs/">merge or split PDFs how-to</a> has a worked example of both operations.</p>
+<p>Two patterns keep PDF generation correct. First, <code>PdfDocument</code> holds unmanaged resources and must be disposed. Wrap instances in a <code>using</code> statement or call <code>Dispose()</code> explicitly; skipping disposal leaks memory and can leave files locked. Second, an instance is not thread-safe. Render or load multiple <code>PdfDocument</code> instances in parallel, but manipulate each on a single thread. Most editing happens through the properties named above: set <code>MetaData.Title</code> to label a document, call <code>pdf.Form.FindFormField(name).Value = ...</code> to fill a field, and call <code>SaveAs</code> when finished.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
 
-</div>
-  <h5 id="IronPdf_PdfDocument_examples"><strong>Examples</strong></h5>
-  <pre><code>// Complete lifecycle example
-using IronPdf;
-
-// 1. Generate PDF
 var renderer = new ChromePdfRenderer();
-using (var pdf = renderer.RenderHtmlAsPdf(&quot;<h1>Report</h1>&quot;))
-{
- // 2. Manipulate
- pdf.AddWatermark(&quot;<h2 style="opacity:0.5">CONFIDENTIAL</h2>&quot;);
- pdf.Password = &quot;user123&quot;;
- pdf.OwnerPassword = &quot;owner456&quot;;
+using PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Quarterly Report&lt;/h1&gt;&quot;);
 
- // 3. Extract if needed
- string text = pdf.ExtractAllText();
-
- // 4. Save
- pdf.SaveAs(&quot;final-report.pdf&quot;);
-} // Automatically disposed
-
-// Merging example
-var merged = PdfDocument.Merge(pdf1, pdf2, pdf3);
-merged.SaveAs(&quot;combined.pdf&quot;);
-merged.Dispose();</code></pre>
-
+pdf.MetaData.Title = &quot;Q4 Report&quot;;
+pdf.SaveAs(&quot;report.pdf&quot;);</code></pre></div>
+<p>For the broader rendering workflow, the <a href="https://ironpdf.com/how-to/html-to-pdf/">HTML-to-PDF how-to</a> covers generation, the <a href="https://ironpdf.com/how-to/pdf-metadata/">PDF metadata guide</a> covers <code>MetaData</code> properties, and the <a href="https://ironpdf.com/troubleshooting/ironpdf-using/">troubleshooting note on disposal</a> explains when an explicit <code>using</code> is and is not required.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

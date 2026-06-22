@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IPdfTextObject
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IPdfTextObject Interface - IronPDF C# API Reference
+      v2 (human)     title:       IPdfTextObject: PDF Text Run Contract in C# with IronPDF
+      v1 (algorithm) description: IPdfTextObject is the IronPDF C# interface for one PDF text run. Implemented by TextObject and LineTextObject. Reference Contents, BoundingBox, FontSize.
+      v2 (human)     description: Consume PDF text runs polymorphically in C# with IronPDF IPdfTextObject. Implemented by TextObject and LineTextObject through PdfPage.TextChunks and Lines.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IPdfTextObject | IronPDF C# Text DOM Interface</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IPdfTextObject
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IPdfTextObject | IronPDF C# Text DOM Interface">
+    <meta name="description" content="Reference for IronPDF IPdfTextObject in C#: read-side contract implemented by TextObject and LineTextObject; inherited Contents, BoundingBox, FontSize, Clone.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IPdfTextObject | IronPDF C# Text DOM Interface",
+    "name": "IPdfTextObject interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.IPdfTextObject.html",
+    "abstract": "Auditing, classifying, or transforming one text run on a PDF page polymorphically in C# without binding to a concrete class runs through IPdfTextObject in IronPDF. It has no directly-declared members. Concrete implementors are IronSoftware.TextObject (returned from PdfPage.TextChunks) and IronPdf.Pages.LineTextObject (returned from PdfPage.Lines), both surfaced through IPdfTextObjectCollection. The inherited surface that carries everyday use includes Contents, BoundingBox, FontSize, IsBold, IsItalic, FillColor, StrokeColor, RenderMode, the read-only Matrix, and the Clone and ToJson methods. Paired with IPdfImageObject and IPdfPathObject as the read-side DOM contract triad.",
+    "description": "Reference for IronPDF IPdfTextObject in C#: read-side contract implemented by TextObject and LineTextObject; inherited Contents, BoundingBox, FontSize, Clone.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Pages;\nusing IronSoftware;\n\n// Polymorphic consumer: accepts IPdfTextObject so it works for both\n// TextObject (from PdfPage.TextChunks) and LineTextObject (from PdfPage.Lines).\nstatic bool LooksLikeHeading(IPdfTextObject run)\n{\n    return run.IsBold && run.FontSize >= 14f\n        && !string.IsNullOrWhiteSpace(run.Contents);\n}\n\nPdfDocument pdf = PdfDocument.FromFile(\"invoice.pdf\");\nforeach (PdfPage page in pdf.Pages)\n{\n    foreach (IPdfTextObject run in page.TextChunks)  // IPdfTextObjectCollection\n    {\n        if (LooksLikeHeading(run))\n        {\n            System.Console.WriteLine(\n                $\"Page {run.PageIndex} heading \\\"{run.Contents}\\\" at {run.BoundingBox}\");\n        }\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IPdfTextObject live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfTextObject is in the IronSoftware namespace, shipped in IronPdf.dll. It inherits from IPdfDocumentObject, IDocumentObject, IDocumentTextObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, and IJsonSerializable. Concrete implementors are IronSoftware.TextObject (returned from PdfPage.TextChunks) and IronPdf.Pages.LineTextObject (returned from PdfPage.Lines)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IPdfTextObject, IPdfImageObject, and IPdfPathObject?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfTextObject, IPdfImageObject, and IPdfPathObject are the three read-side PDF DOM contracts that describe the three drawable content kinds inside a PDF page. IPdfTextObject is the contract for one text run, implemented by TextObject and LineTextObject and obtained through PdfPage.TextChunks or PdfPage.Lines. IPdfImageObject is the contract for one raster image, implemented by ImageObject and obtained through the parallel image collection. IPdfPathObject is the contract for one vector path, implemented by PathObject and obtained through the parallel path collection. All three live in the IronSoftware namespace and inherit a common geometry surface through IBoundedPdfDocumentObject and ITransformable, which lets a single helper accept any of the three contracts when only position is needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IPdfTextObject and where do instances come from?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Two concrete classes implement IPdfTextObject in the IronPDF API. IronSoftware.TextObject is the base implementor and represents one text run; instances flow out of IronPdf.Pages.PdfPage.TextChunks. IronPdf.Pages.LineTextObject derives from TextObject and represents one visual line formed by grouping runs by vertical position; instances flow out of IronPdf.Pages.PdfPage.Lines. Both PdfPage.TextChunks and PdfPage.Lines are typed as IPdfTextObjectCollection (with element type TextObject), so a caller iterating either property receives IPdfTextObject and may downcast to LineTextObject when iterating Lines if line-specific behavior is required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are no members declared directly on IPdfTextObject?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfTextObject is an aggregating interface; its entire usable surface arrives from the inherited contracts IPdfDocumentObject, IDocumentTextObject, IBoundedPdfDocumentObject, ITransformable, IColored, ICloneable, and IJsonSerializable. The role of IPdfTextObject is to compose those contracts into one named boundary for the text-run case, so that helpers can accept IPdfTextObject and consume Contents, BoundingBox, FontSize, FillColor, Matrix, Clone, and ToJson uniformly. The paired collection IPdfTextObjectCollection types its element parameter as the concrete TextObject rather than IPdfTextObject, which lets iteration use the concrete reference type while parameters and return types stay at the interface."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -152,6 +223,38 @@
     <pre><code class="lang-csharp hljs">public interface IPdfTextObject : IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentTextObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, IJsonSerializable</code></pre>
   </div>
   
+              <!-- archetype-N:start IPdfTextObject treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p><code>IPdfTextObject</code> is what you receive for one text run when you enumerate <code>PdfPage.TextChunks</code> or <code>PdfPage.Lines</code> in IronPDF, supplying the uniform member surface that lets helpers audit, classify, or transform PDF text without binding to a concrete class. The interface itself adds no declarations; everything you call on it is aggregated from the inherited contracts named in its declaration.</p>
+<p>Two concrete classes implement <code>IPdfTextObject</code> in the IronPDF API. The base implementor is <code>IronSoftware.TextObject</code>, returned for one text run when enumerating <code>PdfPage.TextChunks</code>. The derived implementor is <code>IronPdf.Pages.LineTextObject</code>, returned for one visual line when enumerating <code>PdfPage.Lines</code> (the line-grouped view of the same underlying chunks). Both collections are typed as <code>IPdfTextObjectCollection</code> (element type <code>TextObject</code>), so a polymorphic consumer receives the interface and may operate on either concrete shape without a cast.</p>
+<p>The members that carry everyday use of this contract group into four buckets. Content and identity arrives from <code>IDocumentTextObject</code>: <code>Contents</code> (the literal characters), <code>PageIndex</code>, and <code>FontObject</code>. Geometry arrives from <code>IBoundedPdfDocumentObject</code> and <code>ITransformable</code>: <code>BoundingBox</code> (the primary <code>RectangleF</code> read shape), the read-only <code>Matrix</code>, nullable <code>X</code> and <code>Y</code>, <code>Scale</code>, <code>Translate</code>, and <code>Rotation</code>. Typography arrives alongside content: <code>FontSize</code>, <code>IsBold</code>, and <code>IsItalic</code>. Color and render arrive from <code>IColored</code>: <code>FillColor</code>, <code>StrokeColor</code>, and <code>RenderMode</code>. Two methods sit at the top level of the contract: <code>Clone()</code> from <code>ICloneable</code> and <code>ToJson()</code> from <code>IJsonSerializable</code>. The plumbing handle <code>Client</code> (an <code>IPdfClient</code>) comes in from <code>IPdfDocumentObject</code>. For the surrounding read-side workflow, the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a> has the worked example.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Pages;
+using IronSoftware;
+
+// Polymorphic consumer: accepts IPdfTextObject so it works for both
+// TextObject (from PdfPage.TextChunks) and LineTextObject (from PdfPage.Lines).
+static bool LooksLikeHeading(IPdfTextObject run)
+{
+    return run.IsBold &amp;&amp; run.FontSize &gt;= 14f
+        &amp;&amp; !string.IsNullOrWhiteSpace(run.Contents);
+}
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+foreach (PdfPage page in pdf.Pages)
+{
+    foreach (IPdfTextObject run in page.TextChunks)  // IPdfTextObjectCollection
+    {
+        if (LooksLikeHeading(run))
+        {
+            System.Console.WriteLine(
+                $&quot;Page {run.PageIndex} heading \&quot;{run.Contents}\&quot; at {run.BoundingBox}&quot;);
+        }
+    }
+}</code></pre></div>
+<p>The <a href="https://ironpdf.com/how-to/access-pdf-dom-object/">access PDF DOM object how-to</a> extends the same walk to images and vector paths through their parallel contracts. To edit text in place instead of reading it, the <a href="https://ironpdf.com/how-to/find-replace-text/">find and replace text how-to</a> demonstrates <code>ReplaceTextOnAllPages</code> and <code>ReplaceTextOnPage</code>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <div class="inheritance">
     <h3>Inherited members</h3>
     <div class="level">

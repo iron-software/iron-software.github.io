@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ICheckableFormField
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ICheckableFormField Interface - IronPDF C# API Reference
+      v2 (human)     title:       ICheckableFormField: PDF Checkboxes & Radios in C#
+      v1 (algorithm) description: ICheckableFormField is the IronPDF interface for selectable PDF form fields in C#. Members include SelectedIndex, Select, and Clear.
+      v2 (human)     description: Toggle PDF checkboxes and move radio-button selection in C# through the IronPDF ICheckableFormField interface. Covers Select, Clear, SelectedIndex.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ICheckableFormField Interface | IronPDF C# Forms</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ICheckableFormField
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ICheckableFormField Interface | IronPDF C# Forms">
+    <meta name="description" content="Reference for the IronPDF ICheckableFormField interface: SelectedIndex, Select, Clear, implementors CheckboxFormField and RadioFormField.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ICheckableFormField Interface | IronPDF C# Forms",
+    "name": "ICheckableFormField interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.Forms.ICheckableFormField.html",
+    "abstract": "ICheckableFormField toggles a checkbox or moves a radio-button selection on a fillable PDF form field that holds a discrete selection state in IronPDF. It extends IFormField and declares SelectedIndex, Select, and Clear on top of the inherited Choices, Value, and ReadOnly properties. Verified concrete implementors are CheckboxFormField and RadioFormField; both are returned as IFormField from FindFormField on the form-field collection and downcast to ICheckableFormField for unified selectable-field handling across checkbox and radio fields.",
+    "description": "Reference for the IronPDF ICheckableFormField interface: SelectedIndex, Select, Clear, implementors CheckboxFormField and RadioFormField.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware.Forms;\n\nPdfDocument pdf = PdfDocument.FromFile(\"application.pdf\");\n\n// Walk every form field and apply the selectable-field handler to checkboxes and radios.\nforeach (IFormField field in pdf.Form)\n{\n    if (field is ICheckableFormField selectable && !selectable.ReadOnly)\n    {\n        // Move to the second option when the field has more than one choice;\n        // clear it otherwise.\n        if (selectable.Choices != null && selectable.Choices.Count > 1)\n        {\n            selectable.Select(1);\n        }\n        else\n        {\n            selectable.Clear();\n        }\n    }\n}\n\npdf.SaveAs(\"application-updated.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain ICheckableFormField?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ICheckableFormField is in the IronSoftware.Forms namespace, shipped in IronPdf.dll. It extends IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, and IDocumentObject. Concrete form field classes such as CheckboxFormField and RadioFormField implement ICheckableFormField; they are returned as IFormField from the form-field collection and downcast to this contract for selectable-field handling."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements ICheckableFormField in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The verified concrete implementors of ICheckableFormField on the IronPDF reference are CheckboxFormField and RadioFormField. Both classes live in the IronSoftware.Forms namespace and both declare ICheckableFormField on their implements list, so code that accepts ICheckableFormField can drive a single PDF checkbox or one option inside a radio-button group without binding to either concrete type."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ICheckableFormField and ComboboxFormField, TextFormField, SignatureFormField, or ImageFormField?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ICheckableFormField is the IronPDF contract for PDF form fields that hold a discrete on or off state or a mutually-exclusive selection from a Choices list, which is why CheckboxFormField and RadioFormField implement it. ComboboxFormField is a drop-down selector that exposes a similar Choices list but is not declared as an ICheckableFormField on the reference page, so it does not advertise the unified Select, Clear, and SelectedIndex surface through that contract; assign to its Value or SelectedIndex directly on the concrete type. TextFormField holds free-form text, SignatureFormField holds a signature object, and ImageFormField holds image content, so none of those three have a discrete selection state to expose."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does Select on an ICheckableFormField throw an exception when called without an index?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Select method on ICheckableFormField is declared as Select(int index = -1), and the negative default signals that the caller did not pass an index. The method attempts to select the first option, but the docfx Exceptions table records that the call throws when no index is provided and the Choices list contains more than one selectable option. Always pass the explicit index when iterating fields whose Choices counts are not known to be a single option, or assign to the Value property using the on-value from Choices to avoid the ambiguity."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -204,6 +275,38 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface ICheckableFormField : IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject</code></pre>
   </div>
+                  <!-- archetype-N:start ICheckableFormField treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>When code needs to toggle a checkbox or move a radio-button selection on a fillable PDF form field that holds a discrete selection state, <code>ICheckableFormField</code> is the contract it casts to. It adds three members that describe selecting, clearing, and querying which option in the field is currently chosen. The contract sits above the four base form-field interfaces, so an <code>ICheckableFormField</code> reference also exposes the data and annotation surface every form field carries.</p>
+<p>The payoff is polymorphism across the two selectable field types without binding to either concrete class. Verified concrete implementors are <code>CheckboxFormField</code> (a single on or off toggle) and <code>RadioFormField</code> (one option in a mutually-exclusive radio group). A typical workflow loads a PDF, walks its form fields, type-tests each field against <code>ICheckableFormField</code>, and routes the selectable fields to a common clear-or-select handler while text, signature, and image fields take other code paths.</p>
+<p>The three members declared directly on <code>ICheckableFormField</code> are the entire reason the contract exists. <code>SelectedIndex</code> is an <code>int</code> that reads or writes the current index into the inherited <code>Choices</code> list. <code>Select(int index = -1)</code> sets the field to the option at the supplied index and returns the chosen value as a <code>string</code>; calling it without an index on a field whose <code>Choices</code> list contains more than one option throws an exception, so always pass the explicit index when the option set is not known to be singleton. <code>Clear()</code> removes any selected value and returns the field to its empty state. Inherited members worth knowing when working through this contract are <code>Choices</code> (the option set), <code>Value</code> (the current selection as a string), and <code>ReadOnly</code> (check before mutating). For a worked clear-and-select pass over a loaded form, see the <a href="https://ironpdf.com/how-to/edit-forms/">edit PDF forms how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware.Forms;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;application.pdf&quot;);
+
+// Walk every form field and apply the selectable-field handler to checkboxes and radios.
+foreach (IFormField field in pdf.Form)
+{
+    if (field is ICheckableFormField selectable &amp;&amp; !selectable.ReadOnly)
+    {
+        // Move to the second option when the field has more than one choice;
+        // clear it otherwise.
+        if (selectable.Choices != null &amp;&amp; selectable.Choices.Count &gt; 1)
+        {
+            selectable.Select(1);
+        }
+        else
+        {
+            selectable.Clear();
+        }
+    }
+}
+
+pdf.SaveAs(&quot;application-updated.pdf&quot;);</code></pre></div>
+<p>For the concrete classes that implement this contract, see the <a href="https://ironpdf.com/object-reference/api/IronSoftware.Forms.CheckboxFormField.html">CheckboxFormField reference</a> and the <a href="https://ironpdf.com/object-reference/api/IronSoftware.Forms.RadioFormField.html">RadioFormField reference</a>. For the constructor path used when authoring selectable fields from scratch rather than editing an existing PDF, see the <a href="https://ironpdf.com/how-to/create-forms/">create PDF forms how-to</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

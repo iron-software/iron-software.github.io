@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfCustomMetadataProperties
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfCustomMetadataProperties Class - IronPDF C# API
+      v2 (human)     title:       PdfCustomMetadataProperties: Custom PDF Metadata in C#
+      v1 (algorithm) description: PdfCustomMetadataProperties is the IronPDF C# class for arbitrary application-defined key/value PDF metadata reached via PdfMetaData.CustomProperties.
+      v2 (human)     description: Add, edit, and remove custom PDF metadata keys in C# with IronPDF PdfCustomMetadataProperties: indexer access, Add, and Remove on pdf.MetaData.CustomProperties.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfCustomMetadataProperties | IronPDF C# PDF Custom Keys</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfCustomMetadataProperties
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfCustomMetadataProperties | IronPDF C# PDF Custom Keys">
+    <meta name="description" content="Reference for IronPDF PdfCustomMetadataProperties in C#: Add, Remove, and the string indexer for custom PDF metadata key/value pairs beyond standard XMP fields.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfCustomMetadataProperties | IronPDF C# PDF Custom Keys",
+    "name": "PdfCustomMetadataProperties class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.MetaData.PdfCustomMetadataProperties.html",
+    "abstract": "PdfCustomMetadataProperties in IronPDF is the accessor that attaches, reads, updates, and removes arbitrary application-defined key/value metadata pairs on a PDF. Obtained through the PdfMetaData.CustomProperties property on any PdfDocument, it exposes Add for attaching a new key, the Item string indexer for reading and updating an existing key with bracket syntax, and Remove for deleting a key by name with a bool return indicating whether the property existed. PdfCustomMetadataProperties is a sibling of PdfMetaData, which carries the standard XMP document-information fields; custom properties cover everything beyond that standard set.",
+    "description": "Reference for IronPDF PdfCustomMetadataProperties in C#: Add, Remove, and the string indexer for custom PDF metadata key/value pairs beyond standard XMP fields.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.MetaData;\n\nvar renderer = new ChromePdfRenderer();\nusing PdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Invoice</h1>\");\n\nPdfCustomMetadataProperties customProperties = pdf.MetaData.CustomProperties;\n\n// Add a new custom property\ncustomProperties.Add(\"DocumentId\", \"DOC-2026-Q4-0001\");\ncustomProperties.Add(\"ReviewStatus\", \"Approved\");\n\n// Edit an existing custom property through the string indexer\ncustomProperties[\"ReviewStatus\"] = \"Final\";\n\n// Remove a custom property by key; returns true if the key existed\nbool removed = customProperties.Remove(\"DocumentId\");\n\npdf.SaveAs(\"invoice-with-custom-metadata.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PdfCustomMetadataProperties live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfCustomMetadataProperties is in the IronPdf.MetaData namespace, shipped in IronPdf.dll. It is declared public class PdfCustomMetadataProperties. It has no public constructor; instances are always reached through the PdfMetaData.CustomProperties property on a PdfDocument, which is how application code attaches custom key/value metadata to a PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfCustomMetadataProperties, PdfMetaData, and DocumentMetadata?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The three classes serve different jobs. IronPdf.MetaData.PdfCustomMetadataProperties carries arbitrary application-defined key/value pairs and is reached through PdfMetaData.CustomProperties. IronPdf.MetaData.PdfMetaData is the read/write accessor for the standard PDF document-information fields on PdfDocument.MetaData: Title, Author, Subject, Keywords, Creator, Producer, CreationDate, and ModifiedDate. IronPdf.Extractions.DocumentMetadata is a separate read-only DTO returned by the extractor pipeline on PdfExtractionResult.Metadata reporting document shape: TotalPages, TableCount, and per-page PageMetadata. Code that needs custom application fields uses PdfCustomMetadataProperties. Code that needs standard XMP fields uses PdfMetaData. Code that needs extraction statistics uses DocumentMetadata."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do PdfCustomMetadataProperties values not appear in Adobe Acrobat document properties?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most PDF viewer software displays only the standard XMP document-information fields in its document properties dialog: Title, Author, Subject, Keywords, Creator, Producer, and the date fields. Custom keys written through PdfCustomMetadataProperties are stored in the PDF document-information dictionary but viewers typically do not surface them in the UI. The values are present in the file and can be read back through pdf.MetaData.CustomProperties or through a PDF inspection tool that exposes the full dictionary. PdfCustomMetadataProperties does not have a public constructor either; instances are always reached through pdf.MetaData.CustomProperties."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add, edit, and remove a custom property through PdfCustomMetadataProperties in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Obtain the PdfCustomMetadataProperties instance from pdf.MetaData.CustomProperties after rendering or loading a PDF. Call Add with a name and value to attach a new property, for example customProperties.Add(\"DocumentId\", \"DOC-2026-Q4-0001\"). Update an existing key by assigning through the string indexer, for example customProperties[\"DocumentId\"] = \"DOC-2026-Q4-0002\". Delete a key by calling Remove with the property name; Remove returns true if the property was removed and false if the key did not exist. Save the PDF afterwards through pdf.SaveAs for the changes to persist to the file."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +221,33 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfCustomMetadataProperties : Object</code></pre>
   </div>
+                  <!-- archetype-N:start PdfCustomMetadataProperties treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Arbitrary application-defined key/value pairs on a PDF, the ones beyond the standard document-information fields, are attached, read, and removed through <code>PdfCustomMetadataProperties</code>. It is reached through the <code>PdfMetaData.CustomProperties</code> property on any <code>PdfDocument</code> instance. It is a sibling of <code>PdfMetaData</code>, which carries the standard XMP document-information fields; <code>PdfCustomMetadataProperties</code> carries everything else, including the custom keys business applications use for document IDs, workflow state, and downstream routing.</p>
+<p>Reach for the class on workflows that attach application-specific information to a PDF. Document management systems store a stable <code>DocumentId</code> so the file can be matched back to its source record after round-tripping through email or external review. Compliance pipelines record <code>ReviewStatus</code>, <code>ApprovedBy</code>, and <code>Classification</code> for audit. Integration layers store correlation tokens that downstream consumers use to route documents into queues. The <a href="https://ironpdf.com/how-to/metadata/">PDF metadata how-to</a> has a dedicated section on adding, editing, and removing custom fields.</p>
+<p>The surface is small. Call <code>Add(string name, string value)</code> to attach a new key/value pair (the docfx note states any non-string value should be converted to a string before storage). Read or update an existing key through the <code>Item[string]</code> indexer using bracket syntax (<code>customProperties[&quot;DocumentId&quot;]</code>). Call <code>Remove(string name)</code> to delete a key, which returns <code>true</code> if a property was removed and <code>false</code> if the key was not present. The reference page documents no public constructor; instances are always reached through <code>pdf.MetaData.CustomProperties</code>. As an alternative bulk path, <code>PdfMetaData.SetMetaDataDictionary</code> on the parent class accepts any <code>Dictionary&lt;string, string&gt;</code> and treats every non-standard key as a custom property in one call, which is the form the docfx remarks recommend for Docker and gRPC pipelines.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.MetaData;
+
+var renderer = new ChromePdfRenderer();
+using PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Invoice&lt;/h1&gt;&quot;);
+
+PdfCustomMetadataProperties customProperties = pdf.MetaData.CustomProperties;
+
+// Add a new custom property
+customProperties.Add(&quot;DocumentId&quot;, &quot;DOC-2026-Q4-0001&quot;);
+customProperties.Add(&quot;ReviewStatus&quot;, &quot;Approved&quot;);
+
+// Edit an existing custom property through the string indexer
+customProperties[&quot;ReviewStatus&quot;] = &quot;Final&quot;;
+
+// Remove a custom property by key; returns true if the key existed
+bool removed = customProperties.Remove(&quot;DocumentId&quot;);
+
+pdf.SaveAs(&quot;invoice-with-custom-metadata.pdf&quot;);</code></pre></div>
+<p>For follow-on workflows, the <a href="https://ironpdf.com/how-to/metadata/">metadata how-to</a> walks through the add, edit, and remove flow in context, and the <a href="https://ironpdf.com/troubleshooting/metadata-visibility/">metadata visibility troubleshooting note</a> explains why custom properties often do not appear in the standard PDF viewer document properties dialog even when they were written successfully.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

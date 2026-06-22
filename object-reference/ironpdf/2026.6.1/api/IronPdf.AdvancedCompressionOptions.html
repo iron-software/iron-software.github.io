@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AdvancedCompressionOptions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       AdvancedCompressionOptions - IronPDF C# API
+      v2 (human)     title:       AdvancedCompressionOptions: Compress PDFs in C#
+      v1 (algorithm) description: AdvancedCompressionOptions is the IronPDF C# class for PdfDocument.CompressAndSaveAs: TargetImageDpi, JpegQuality, CompressionLevel, ObjectStreams.
+      v2 (human)     description: Compress PDFs in C# with IronPDF's AdvancedCompressionOptions: tune image DPI, JPEG quality, Flate level, and object-stream layout in one configured object.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>AdvancedCompressionOptions | IronPDF C# Compression</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AdvancedCompressionOptions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="AdvancedCompressionOptions | IronPDF C# Compression">
+    <meta name="description" content="IronPDF AdvancedCompressionOptions in C#: configures PdfDocument.CompressAndSaveAs with image downsampling, JPEG re-encoding, and stream compression knobs.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "AdvancedCompressionOptions | IronPDF C# Compression",
+    "name": "AdvancedCompressionOptions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.AdvancedCompressionOptions.html",
+    "abstract": "Reducing PDF file size on IronPDF's current-recommended compression path runs through AdvancedCompressionOptions, the settings object consumed by PdfDocument.CompressAndSaveAs. It exposes TargetImageDpi, JpegQuality, HighQualityImageSubsampling, OptimizeImagesMinArea, OptimizeImagesMinWidth, OptimizeImagesMinHeight, CompressionLevel, CompressStreams, RecompressFlate, DecodeGeneralizedStreams, CoalesceContents, ObjectStreams, RemoveUnreferencedResources, and RemoveStructureTree. The object is instantiated with a parameterless constructor and passed to PdfDocument.CompressAndSaveAs. It supersedes the older CompressionOptions class consumed by the deprecated Compress method.",
+    "description": "IronPDF AdvancedCompressionOptions in C#: configures PdfDocument.CompressAndSaveAs with image downsampling, JPEG re-encoding, and stream compression knobs.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\nPdfDocument pdf = PdfDocument.FromFile(\"input.pdf\");\n\nvar options = new AdvancedCompressionOptions\n{\n    TargetImageDpi              = 150,    // default; downsample images above 150 dpi\n    JpegQuality                 = 75,     // re-encode images at quality 75\n    HighQualityImageSubsampling = true,   // 4:4:4 chroma for better color\n    CompressionLevel            = 9,      // maximum zlib level\n    CompressStreams             = true,\n    RecompressFlate             = true,\n    ObjectStreams               = ObjectStreamMode.Generate,\n    RemoveUnreferencedResources = true,\n    RemoveStructureTree         = false   // preserve text selection and accessibility\n};\n\npdf.CompressAndSaveAs(\"compressed.pdf\", options);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain AdvancedCompressionOptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AdvancedCompressionOptions is in the IronPdf namespace, shipped in IronPdf.dll. It derives from System.Object. You instantiate it with a parameterless constructor and pass it to PdfDocument.CompressAndSaveAs to reduce PDF file size."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between AdvancedCompressionOptions and CompressionOptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AdvancedCompressionOptions is the broader, current-recommended options class consumed by PdfDocument.CompressAndSaveAs and exposes twelve properties: TargetImageDpi, JpegQuality, HighQualityImageSubsampling, OptimizeImagesMinArea, OptimizeImagesMinWidth, OptimizeImagesMinHeight, CompressionLevel, CompressStreams, RecompressFlate, DecodeGeneralizedStreams, CoalesceContents, ObjectStreams, RemoveUnreferencedResources, and RemoveStructureTree. CompressionOptions is the older options class consumed by PdfDocument.Compress and exposes five settings: CompressImages, JpegQuality, ShrinkImages, HighQualityImageSubsampling, and RemoveStructureTree. The Compress(CompressionOptions) method is marked deprecated and will be removed in a future version, so new code should use AdvancedCompressionOptions with CompressAndSaveAs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the same JpegQuality value sometimes produce different artifacts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JpegQuality re-encoding takes one of two paths depending on TargetImageDpi. When TargetImageDpi is set, including the default value of 150, each image is downsampled to that DPI and re-encoded at the chosen JpegQuality, and the separate image optimization pass is skipped to avoid double JPEG encoding. When TargetImageDpi is null, no downsampling occurs and image optimization re-encodes images at the chosen JpegQuality without changing pixel dimensions. The two paths can produce visibly different artifacts at the same quality value. Decide up front whether the goal is resolution reduction or quality-only reduction, then set TargetImageDpi accordingly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a point of diminishing returns on CompressionLevel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CompressionLevel accepts integers from 0 to 9 and defaults to 9. Levels above 6 show diminishing returns in practice. Level 9 is typically only a few percent smaller than level 6 but takes noticeably longer, so a level of 6 is a reasonable balance for batch pipelines that compress many documents under a time budget. Level 0 stores content without compression and is only useful for producing human-readable PDFs for inspection or diffing. CompressionLevel has no effect when CompressStreams is false."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,21 +221,32 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class AdvancedCompressionOptions : Object</code></pre>
   </div>
-  <h5 id="IronPdf_AdvancedCompressionOptions_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>Recommended starting points:</p>
-<pre><code>// Web/email â€” strongest size reduction
-new AdvancedCompressionOptions {
-    JpegQuality = 70,
-    TargetImageDpi = 150,
-    RemoveStructureTree = true
+                    <!-- archetype-N:start AdvancedCompressionOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>AdvancedCompressionOptions</code> configures IronPDF's current-recommended compression pipeline, consumed by <code>PdfDocument.CompressAndSaveAs(string, AdvancedCompressionOptions)</code> and the static byte-array and stream overloads. A parameterless constructor gives you an instance whose twelve properties cover image downsampling, JPEG re-encoding, Flate stream tuning, object-stream layout, and structural cleanup. It is the broader successor to the older <code>CompressionOptions</code> configuration.</p>
+<p>Use <code>AdvancedCompressionOptions</code> for any new compression code in IronPDF, since <code>PdfDocument.Compress(CompressionOptions)</code> is marked deprecated and slated for removal. Typical scenarios are post-render size reduction for Chrome-engine output with embedded photos, batch shrinking of scan-heavy PDFs whose embedded bitmaps exceed display resolution, in-memory compression of byte arrays for HTTP responses or cloud-function output, and producing email-attachment-sized copies of report documents without persisting the source PDF.</p>
+<p>The twelve properties fall into three groups. For image re-encoding and downsampling, <code>TargetImageDpi</code> (<code>Nullable&lt;int&gt;</code>, default <code>150</code>) is the headline knob that downsamples images above the threshold and dominates size reduction for photo-heavy or Chrome-rendered PDFs, while <code>JpegQuality</code> (<code>Nullable&lt;int&gt;</code>, 1-100, default <code>null</code>) sets the re-encoding quality and <code>OptimizeImagesMinArea</code>, <code>OptimizeImagesMinWidth</code>, and <code>OptimizeImagesMinHeight</code> exclude small assets like logos and signatures from re-encoding. <code>HighQualityImageSubsampling</code> (default <code>true</code>) selects 4:4:4 chroma subsampling versus 4:1:1. For stream compression, <code>CompressStreams</code> (default <code>true</code>), <code>CompressionLevel</code> (0-9, default <code>9</code>), <code>RecompressFlate</code> (default <code>true</code>), <code>DecodeGeneralizedStreams</code> (default <code>true</code>), and <code>CoalesceContents</code> (default <code>true</code>) control how content streams are deflated and merged, while <code>ObjectStreams</code> of type <a href="https://ironpdf.com/object-reference/api/IronPdf.ObjectStreamMode.html">ObjectStreamMode</a> (default <code>Generate</code>) controls the cross-reference layout. For structural cleanup, <code>RemoveUnreferencedResources</code> (default <code>true</code>) drops orphan objects and <code>RemoveStructureTree</code> strips the logical-layout tree at the cost of accessibility. The <a href="https://ironpdf.com/how-to/pdf-compression/">PDF compression how-to</a> shows where each of these settings earns its keep on a real document.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;input.pdf&quot;);
+
+var options = new AdvancedCompressionOptions
+{
+    TargetImageDpi              = 150,    // default; downsample images above 150 dpi
+    JpegQuality                 = 75,     // re-encode images at quality 75
+    HighQualityImageSubsampling = true,   // 4:4:4 chroma for better color
+    CompressionLevel            = 9,      // maximum zlib level
+    CompressStreams             = true,
+    RecompressFlate             = true,
+    ObjectStreams               = ObjectStreamMode.Generate,
+    RemoveUnreferencedResources = true,
+    RemoveStructureTree         = false   // preserve text selection and accessibility
 };
 
-// Print quality
-new AdvancedCompressionOptions {
-    JpegQuality = 90,
-    TargetImageDpi = 300
-};</code></pre>
-</div>
+pdf.CompressAndSaveAs(&quot;compressed.pdf&quot;, options);</code></pre></div>
+<p>The <a href="https://ironpdf.com/examples/pdf-compression/">PDF compression example</a> reports the realized file-size deltas for these settings. When migrating off the deprecated <code>Compress(CompressionOptions)</code> path, the <a href="https://ironpdf.com/how-to/pdf-compression/">PDF compression how-to</a> names the current and legacy APIs side by side.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

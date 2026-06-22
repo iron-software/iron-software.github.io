@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TextFormField
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextFormField Class - IronPDF C# API Reference
+      v2 (human)     title:       TextFormField: PDF Text Fields in IronPDF for .NET
+      v1 (algorithm) description: TextFormField is the IronPDF class for PDF text fields in C#. Reference its constructor, Value, IsMultiline, IsPassword, MaxLength, and SetDefaultFont.
+      v2 (human)     description: Fill or add PDF text fields in C# through the IronPDF TextFormField class. Covers single-line, multi-line, password, and file-select input fields.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextFormField Class | IronPDF C# PDF Forms</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TextFormField
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="TextFormField Class | IronPDF C# PDF Forms">
+    <meta name="description" content="Reference for the IronPDF TextFormField class in C#: the IFormField implementor for text input, with constructor, key properties, and code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextFormField Class | IronPDF C# PDF Forms",
+    "name": "TextFormField class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.Forms.TextFormField.html",
+    "abstract": "Reading or filling a fillable text input field in a PDF document runs through TextFormField in IronPDF, including single-line text boxes, multi-line text areas, password fields, file-select fields, and rich-text fields. It implements IFormField, IFormFieldObject, and IFormFieldAnnotationObject. Key members include the Value property for reading and writing the field's text, IsMultiline and IsPassword for input behavior, MaxLength for character limits, ReadOnly for write protection, and the SetDefaultFont method for applying a font to the field and its annotations.",
+    "description": "Reference for the IronPDF TextFormField class in C#: the IFormField implementor for text input, with constructor, key properties, and code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware.Forms;\n\n// Fill an existing text field. FindFormField returns IFormField; cast to\n// TextFormField when text-specific properties such as IsMultiline, IsPassword,\n// or MaxLength are needed.\nPdfDocument pdf = PdfDocument.FromFile(\"application.pdf\");\n\nif (pdf.Form.FindFormField(\"FullName\") is TextFormField nameField && !nameField.ReadOnly)\n{\n    nameField.Value = \"Jane Doe\";\n}\n\npdf.SaveAs(\"application-filled.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain TextFormField?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextFormField is in the IronSoftware.Forms namespace, shipped in IronPdf.dll. It derives from System.Object and implements IFormField, IFormFieldObject, IFormFieldAnnotationObject, and IPdfDocumentObject. As the most common IFormField implementor, it is the type FindFormField returns when a fillable form field holds text."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between TextFormField and IFormField?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IFormField is the interface contract shared by every fillable PDF form field type. TextFormField is the concrete implementation for text input fields specifically, including single-line text boxes, multi-line text areas, password fields, and file-select fields. FindFormField on the form collection returns IFormField. Cast the result to TextFormField when text-specific properties such as IsMultiline, IsPassword, MaxLength, or RichText are needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create a TextFormField programmatically?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct a new TextFormField with the seven-parameter constructor that takes the field name, initial value, zero-based page index, and the X, Y, width, and height of the field rectangle in PDF user-space units. Pass the instance to the Form.Add method on the target PdfDocument and save the document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between TextFormField and ComboboxFormField?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextFormField accepts free-form text input from the user. ComboboxFormField presents a list of predefined options that the user selects from, with optional free-form text depending on the combo-box configuration. Both implement IFormField and share identity, geometry, and appearance members, but the user-input behavior differs."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -159,6 +230,28 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TextFormField : Object, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject</code></pre>
   </div>
+                  <!-- archetype-N:start TextFormField treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>TextFormField</code> is the text input field you read or fill in a fillable PDF form: single-line text boxes, multi-line text areas, password fields, file-select fields, and rich-text fields. It is the most common implementor of <a href="https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormField.html"><code>IFormField</code></a>, the contract returned when reading fields from a loaded PDF.</p>
+<p><code>TextFormField</code> matters when an application reads an <code>IFormField</code> from a loaded PDF and needs text-specific behavior that the interface does not expose. The canonical workflow uses <code>FindFormField</code> to locate a field by name, sets <code>Value</code> to fill it, and saves the document. The class is also used directly when adding a new text field to a PDF programmatically without an HTML source, in which case the seven-parameter constructor places the field at an explicit page index and rectangle.</p>
+<p>Headline members fall into clear groups. Identity and state are <code>Name</code>, <code>FullName</code>, <code>Value</code>, <code>ReadOnly</code>, <code>FormType</code>, and <code>Type</code> (which returns a <code>PdfFormFieldType</code>). Text-input behavior is <code>IsMultiline</code> for text areas, <code>IsPassword</code> for obscured input, <code>MaxLength</code> for character limits, <code>IsRichText</code> plus <code>RichText</code> for formatted content, <code>IsFileSelect</code> for file-path fields, and <code>DisableSpellCheck</code>. Annotation geometry is <code>X</code>, <code>Y</code>, <code>Width</code>, <code>Height</code>, <code>PageIndex</code>, and the underlying <code>Annotations</code> list. Appearance is controlled by <code>DefaultAppearance</code> and the <code>SetDefaultFont(string FontName, int FontSize, Color FontColor)</code> method, which applies a font to the field and its annotations and may be overridden by per-annotation fonts. Form-level flag bits are exposed through <code>FormFlags</code> of type <code>PdfFormFieldFlags</code>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware.Forms;
+
+// Fill an existing text field. FindFormField returns IFormField; cast to
+// TextFormField when text-specific properties such as IsMultiline, IsPassword,
+// or MaxLength are needed.
+PdfDocument pdf = PdfDocument.FromFile(&quot;application.pdf&quot;);
+
+if (pdf.Form.FindFormField(&quot;FullName&quot;) is TextFormField nameField &amp;&amp; !nameField.ReadOnly)
+{
+    nameField.Value = &quot;Jane Doe&quot;;
+}
+
+pdf.SaveAs(&quot;application-filled.pdf&quot;);</code></pre></div>
+<p>Adding a brand-new text box from scratch follows the constructor-and-<code>Add</code> path covered in the <a href="https://ironpdf.com/how-to/create-forms/">create PDF forms how-to</a>, which builds text boxes, checkboxes, and signatures together. Reading and filling existing fields by name is shown in the <a href="https://ironpdf.com/how-to/edit-forms/">fill and edit PDF forms how-to</a>. For the collection that owns these fields and exposes <code>FindFormField</code>, see <a href="https://ironpdf.com/object-reference/api/IronSoftware.FormFieldCollection.html"><code>FormFieldCollection</code></a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

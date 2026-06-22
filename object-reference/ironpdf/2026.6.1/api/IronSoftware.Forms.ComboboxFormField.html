@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ComboboxFormField
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ComboboxFormField Class - IronPDF C# API Reference
+      v2 (human)     title:       ComboboxFormField: PDF Dropdown Form Fields in C#
+      v1 (algorithm) description: ComboboxFormField is the IronPDF class for dropdown and list-box PDF form fields in C#. Reference Choices, Value, IsDropDown, and AllowMultipleSelections.
+      v2 (human)     description: Read and fill PDF dropdown and list-box form fields in C# with the IronPDF ComboboxFormField class. Enumerate Choices, assign Value, save the PDF.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ComboboxFormField | IronPDF C# Form Fields</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ComboboxFormField
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ComboboxFormField | IronPDF C# Form Fields">
+    <meta name="description" content="Reference for the IronPDF ComboboxFormField class: Choices, Value, IsDropDown, AllowMultipleSelections, AllowCustomOption, and SetDefaultFont in C#.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ComboboxFormField | IronPDF C# Form Fields",
+    "name": "ComboboxFormField class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.Forms.ComboboxFormField.html",
+    "abstract": "ComboboxFormField reads and fills a dropdown or list-box form field on a PDF from C# in IronPDF. It is the concrete runtime type returned from FormFieldCollection.FindFormField for a combo field, carrying both the choice surface and the visual surface that distinguish a combo from the other concrete form field types. Key members are Choices (the List<string> of options), Value (the selected option), IsDropDown (dropdown versus list-box visual), AllowMultipleSelections, AllowCustomOption, MaxLength, FormFlags, plus the inherited Name, FullName, ReadOnly, placement properties, and SetDefaultFont method for per-field font configuration.",
+    "description": "Reference for the IronPDF ComboboxFormField class: Choices, Value, IsDropDown, AllowMultipleSelections, AllowCustomOption, and SetDefaultFont in C#.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware.Forms;\n\nvar pdf = PdfDocument.FromFile(\"application.pdf\");\n\n// FindFormField returns IFormField. Cast to ComboboxFormField to read\n// the combo-specific surface (Choices, IsDropDown, AllowMultipleSelections).\nvar priority = pdf.Form.FindFormField(\"priority\") as ComboboxFormField;\nif (priority != null && !priority.ReadOnly)\n{\n    // Enumerate the available options the PDF author defined.\n    foreach (string option in priority.Choices)\n    {\n        Console.WriteLine(option);\n    }\n\n    // Assign the selected option. With AllowCustomOption = true, Value\n    // may be any string; otherwise it must match an entry in Choices.\n    priority.Value = \"Low\";\n\n    // For multi-selection lists, Value is still a single string; the\n    // selected entries are delimited per the PDF's AcroForm convention:\n    //   priority.AllowMultipleSelections = true;\n    //   priority.Value = \"Low\";\n}\n\npdf.SaveAs(\"application-filled.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain ComboboxFormField?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ComboboxFormField is in the IronSoftware.Forms namespace, shipped in IronPdf.dll. It derives from Object and implements IFormField, IFormFieldObject, IFormFieldAnnotationObject, and IPdfDocumentObject. It is the concrete runtime type returned from FormFieldCollection.FindFormField when the named field is a dropdown or a list box."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read the available options versus the currently selected option in a combo box form field?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Choices property is the List<string> of every option the PDF author defined for the combo box; iterate it to enumerate or display the available options. The Value property is the currently selected option as a string. Read Choices when populating a UI or validating input, and read Value when extracting the user's selection. Assigning to Value selects an option; the assignment must match an entry in Choices unless AllowCustomOption is true."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a dropdown and a list box in ComboboxFormField?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IronPDF models both shapes as the same ComboboxFormField class. The IsDropDown boolean property selects between the two visual forms. When IsDropDown is true the viewer renders a dropdown that opens on click. When IsDropDown is false the viewer renders a scrollable list box that shows several options at once. There is no separate ListBoxFormField class to look for, and the choice surface and selection semantics are identical across both shapes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does AllowMultipleSelections affect the Value property?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AllowMultipleSelections permits the user to pick more than one entry from Choices, which IronPDF still exposes through the single Value string property. The selected entries are concatenated per the AcroForm convention of the underlying PDF, so reading Value gives the joined selection rather than a string array. List-box style combos with IsDropDown set to false are the common host for AllowMultipleSelections. Assigning Value still validates against Choices unless AllowCustomOption is true."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -159,6 +230,41 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ComboboxFormField : Object, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject</code></pre>
   </div>
+                  <!-- archetype-N:start ComboboxFormField treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>ComboboxFormField</code> is what you receive when you read a dropdown or list-box field from a PDF form in IronPDF, the surface you enumerate options or set a selection through. A configured instance carries both the choice surface (<code>Choices</code>, <code>Value</code>, <code>AllowMultipleSelections</code>, <code>AllowCustomOption</code>) and the visual surface (<code>IsDropDown</code>, <code>DefaultAppearance</code>, <code>RichText</code>) that distinguish a combo from the other concrete form field types.</p>
+<p>The class is the natural read or write surface when filling a PDF form whose template includes a priority selector, a country picker, a department list, or any other constrained-vocabulary field. It is also the type to reach for when the form was authored in Acrobat as a list box rather than a dropdown, because IronPDF models both shapes as one class differentiated by the <code>IsDropDown</code> flag. Enumerating choices and writing a selection is demonstrated in the <a href="https://ironpdf.com/how-to/edit-forms/">fill and edit PDF forms how-to</a>, while authoring a new combo box from scratch belongs to the <a href="https://ironpdf.com/how-to/create-forms/">create PDF forms how-to</a>.</p>
+<p><code>FindFormField</code> returns the field as <a href="https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormField.html"><code>IFormField</code></a>, which carries <code>Name</code>, <code>FullName</code>, <code>Value</code>, <code>ReadOnly</code>, and the placement properties through its three extended interfaces. To reach the combo-specific surface, cast to <code>ComboboxFormField</code>. The salient members fall into four groups. Selection: <code>Choices</code> (the <code>List&lt;string&gt;</code> of available options, get and set) and <code>Value</code> (the currently selected option as a string). Behavior toggles: <code>IsDropDown</code> selects the dropdown versus list-box visual, <code>AllowMultipleSelections</code> permits more than one option, and <code>AllowCustomOption</code> lets the user type a value outside <code>Choices</code>. Identity and gating: inherited <code>Name</code>, <code>FullName</code>, <code>ReadOnly</code>, plus the read-only <code>FormType</code> and <code>Type</code> (<code>PdfFormFieldType</code>) and the writable <code>FormFlags</code> (<code>PdfFormFieldFlags</code>). Appearance: <code>MaxLength</code>, <code>DefaultAppearance</code>, <code>RichText</code>, and the <code>SetDefaultFont(string FontName, int FontSize, Color FontColor)</code> method that sets the per-field font.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware.Forms;
+
+var pdf = PdfDocument.FromFile(&quot;application.pdf&quot;);
+
+// FindFormField returns IFormField. Cast to ComboboxFormField to read
+// the combo-specific surface (Choices, IsDropDown, AllowMultipleSelections).
+var priority = pdf.Form.FindFormField(&quot;priority&quot;) as ComboboxFormField;
+if (priority != null &amp;&amp; !priority.ReadOnly)
+{
+    // Enumerate the available options the PDF author defined.
+    foreach (string option in priority.Choices)
+    {
+        Console.WriteLine(option);
+    }
+
+    // Assign the selected option. With AllowCustomOption = true, Value
+    // may be any string; otherwise it must match an entry in Choices.
+    priority.Value = &quot;Low&quot;;
+
+    // For multi-selection lists, Value is still a single string; the
+    // selected entries are delimited per the PDF's AcroForm convention:
+    //   priority.AllowMultipleSelections = true;
+    //   priority.Value = &quot;Low&quot;;
+}
+
+pdf.SaveAs(&quot;application-filled.pdf&quot;);</code></pre></div>
+<p>For a broader pass through every concrete form field type, see the <a href="https://ironpdf.com/how-to/edit-forms/">fill and edit PDF forms how-to</a>. For working examples of reading form data programmatically, see the <a href="https://ironpdf.com/examples/form-data/">PDF form data example</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CustomHyphenationDefinitions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       CustomHyphenationDefinitions - IronPDF C# API
+      v2 (human)     title:       CustomHyphenationDefinitions: TeX Hyphenation in C#
+      v1 (algorithm) description: CustomHyphenationDefinitions is the IronPDF C# class for ChromePdfRenderOptions.CustomHyphenation: PatternSource and ExceptionSource TeX file paths.
+      v2 (human)     description: Apply TeX hyphenation patterns in IronPDF C# PDF rendering by pointing CustomHyphenationDefinitions at local or remote pattern and exception files.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>CustomHyphenationDefinitions | IronPDF C# Rendering</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CustomHyphenationDefinitions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="CustomHyphenationDefinitions | IronPDF C# Rendering">
+    <meta name="description" content="IronPDF CustomHyphenationDefinitions in C#: configures ChromePdfRenderOptions.CustomHyphenation with PatternSource and ExceptionSource TeX files.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "CustomHyphenationDefinitions | IronPDF C# Rendering",
+    "name": "CustomHyphenationDefinitions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.CustomHyphenationDefinitions.html",
+    "abstract": "When HTML-to-PDF rendering needs language-aware line breaking from C#, CustomHyphenationDefinitions supplies the TeX-format pattern and exception sources that IronPDF's Chromium engine consults. It exposes a parameterless constructor and two string properties, PatternSource and ExceptionSource, that accept local file paths or HTTP and HTTPS URLs. The configured instance is assigned to ChromePdfRenderOptions.CustomHyphenation on a ChromePdfRenderer, and patterns are cached in memory after first load keyed by the exact source values.",
+    "description": "IronPDF CustomHyphenationDefinitions in C#: configures ChromePdfRenderOptions.CustomHyphenation with PatternSource and ExceptionSource TeX files.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\nvar renderer = new ChromePdfRenderer();\n\nrenderer.RenderingOptions.CustomHyphenation = new CustomHyphenationDefinitions\n{\n    PatternSource   = \"https://raw.githubusercontent.com/hyphenation/tex-hyphen/master/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/hyph-en-us.pat.txt\",\n    ExceptionSource = \"https://raw.githubusercontent.com/hyphenation/tex-hyphen/master/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/hyph-en-us.hyp.txt\"\n};\n\nvar html = \"<div style='text-align:justify; hyphens:auto; width:120px;'>Supercalifragilisticexpialidocious</div>\";\nvar pdf  = renderer.RenderHtmlAsPdf(html);\npdf.SaveAs(\"hyphenated.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is CustomHyphenationDefinitions defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CustomHyphenationDefinitions is in the IronPdf namespace, shipped in IronPdf.dll. It derives from System.Object. A configured instance is assigned to ChromePdfRenderOptions.CustomHyphenation on a ChromePdfRenderer so the Chromium engine applies the supplied TeX patterns during HTML-to-PDF rendering."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between CustomHyphenationDefinitions and PdfHyphenationLanguage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfHyphenationLanguage is an enum with four members, None, EnglishUS, EnglishBritish, and Russian, that selects one of the built-in hyphenation presets through the ChromePdfRenderOptions.HyphenationLanguage property. CustomHyphenationDefinitions is a class that points at arbitrary TeX-format pattern and exception files through the ChromePdfRenderOptions.CustomHyphenation property, which extends the engine to any language with a published TeX pattern file. When both are configured on the same options object, CustomHyphenation takes precedence over HyphenationLanguage. Use the enum for English and Russian shortcuts and the class for any other language or for custom-tuned patterns."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if the pattern file cannot be loaded?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Errors during pattern loading are logged but do not throw exceptions. The render operation continues without hyphenation rather than failing. If a HyphenationLanguage value is also configured, the renderer falls back to that built-in preset. Pattern data is cached in memory keyed by the PatternSource and ExceptionSource values, so a failed first load persists across every subsequent render that references the same source string. Pre-validate pattern files and confirm network reachability of remote URLs during application startup or deployment rather than at render time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does a GitHub URL for the pattern file return an HTML page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PatternSource must point at the raw text content of the pattern file. A standard GitHub URL of the form https://github.com/hyphenation/tex-hyphen/blob/master/... returns the GitHub page wrapper, which is HTML, and pattern validation rejects it. Use the raw.githubusercontent.com form of the URL, or click the Raw button on the GitHub file view to obtain the correct URL. Remote sources also have to respect a 5 MB size limit, a 10 second timeout, and an SSRF block on private and localhost addresses."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,49 +222,27 @@ Sources can be local file paths or HTTP/HTTPS URLs.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class CustomHyphenationDefinitions : Object</code></pre>
   </div>
-  <h5 id="IronPdf_CustomHyphenationDefinitions_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Local File Requirements:</strong>
-</p>
-<ul><li></li><li></li></ul>
-<p>
-<strong>URL Requirements:</strong>
-</p>
-<ul><li></li><li></li><li></li><li></li></ul>
-<p>
-<strong>Finding Pattern Files:</strong>
-</p>
-<p>Pre-built hyphenation pattern files for many languages are available at:</p>
-<p>https://github.com/hyphenation/tex-hyphen/tree/master/hyph-utf8/tex/generic/hyph-utf8/patterns/txt</p>
-<p>
-<strong>File Content Requirements:</strong>
-</p>
-<p>
-Pattern and exception files must contain <em>only</em> valid hyphenation pattern text.
-</p>
-<p>
-The presence of comments, metadata, headers, or any non-pattern
-content (such as TeX directives,
-</p>
-<p>
-encoding notes, or descriptive text) is not supported and will cause
-hyphenation integration to fail.
-</p>
-<p>
-<strong>Examples:</strong>
-</p>
-<pre><code>// Local file
-PatternSource = &quot;patterns/hyph-en-us.pat.txt&quot;
-<p>// Remote URL - Use the raw content URL, not the GitHub page URL
-// âœ“ Correct (raw text):
-PatternSource = &quot;https://raw.githubusercontent.com/hyphenation/tex-hyphen/master/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/hyph-en-us.pat.txt&quot;</p>
-<p>// âœ— Incorrect (HTML page):
-// PatternSource = &quot;https://github.com/hyphenation/tex-hyphen/blob/master/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/hyph-en-us.pat.txt&quot;</p>
-<p>// For exception files
-ExceptionSource = &quot;https://raw.githubusercontent.com/hyphenation/tex-hyphen/master/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/hyph-en-us.hyp.txt&quot;</code></pre><p>
-<p>
-<strong>Note:</strong> When using GitHub URLs, click the &quot;Raw&quot; button to get the correct URL that points to the actual text content.</p>
-</div>
+                    <!-- archetype-N:start CustomHyphenationDefinitions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>A pair of TeX-format hyphenation files that the Chromium engine consults during HTML-to-PDF rendering is supplied to IronPDF through <code>CustomHyphenationDefinitions</code>. It exposes a parameterless constructor with two <code>string</code> properties that hold either local file paths or <code>http</code>/<code>https</code> URLs to a patterns file and an optional exceptions file.</p>
+<p>Use <code>CustomHyphenationDefinitions</code> when the built-in <code>PdfHyphenationLanguage</code> enum on <code>ChromePdfRenderOptions.HyphenationLanguage</code> does not cover the language being rendered. The enum currently exposes only <code>EnglishUS</code>, <code>EnglishBritish</code>, and <code>Russian</code>. Custom definitions cover the rest, including French, German, Spanish, Italian, Polish, and the dozens of additional locales published as TeX pattern files by the tex-hyphen project. The class is also the right path when a project wants to ship its own tuned patterns for narrow-column invoices, legal contracts, or multilingual reports where <code>hyphens: auto</code> produces awkward breaks under the default rules.</p>
+<p>Configuration is by property assignment. <code>PatternSource</code> is required and accepts the path or URL of the pattern file (for example <code>hyph-en-us.pat.txt</code>). <code>ExceptionSource</code> is optional and points at the matching exceptions file (for example <code>hyph-en-us.hyp.txt</code>). The configured object is assigned to <code>ChromePdfRenderOptions.CustomHyphenation</code> on a <code>ChromePdfRenderer</code> and the renderer reads the pattern data the first time <code>RenderHtmlAsPdf</code> runs. After that first load the patterns are cached in memory by the exact string value of the two source properties, so multiple renderers pointing at the same paths share the same compiled patterns. The hyphenation rules only fire on HTML elements that carry the CSS <code>hyphens: auto</code> declaration. The <a href="https://ironpdf.com/how-to/custom-hyphenation/">custom hyphenation how-to</a> demonstrates both the remote-URL and local-file workflows, along with the constraints on file size, content type, and SSRF protections for private IPs.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+var renderer = new ChromePdfRenderer();
+
+renderer.RenderingOptions.CustomHyphenation = new CustomHyphenationDefinitions
+{
+    PatternSource   = &quot;https://raw.githubusercontent.com/hyphenation/tex-hyphen/master/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/hyph-en-us.pat.txt&quot;,
+    ExceptionSource = &quot;https://raw.githubusercontent.com/hyphenation/tex-hyphen/master/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/hyph-en-us.hyp.txt&quot;
+};
+
+var html = &quot;&lt;div style='text-align:justify; hyphens:auto; width:120px;'&gt;Supercalifragilisticexpialidocious&lt;/div&gt;&quot;;
+var pdf  = renderer.RenderHtmlAsPdf(html);
+pdf.SaveAs(&quot;hyphenated.pdf&quot;);</code></pre></div>
+<p>For the precedence rules between custom definitions and the built-in language presets, see the <a href="https://ironpdf.com/object-reference/api/IronPdf.PdfHyphenationLanguage.html"><code>PdfHyphenationLanguage</code> enum reference</a>. Other settings on the same options object are documented in the <a href="https://ironpdf.com/object-reference/api/IronPdf.ChromePdfRenderOptions.html"><code>ChromePdfRenderOptions</code> reference</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

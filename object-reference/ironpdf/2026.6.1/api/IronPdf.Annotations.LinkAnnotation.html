@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class LinkAnnotation
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       LinkAnnotation Class - IronPDF C# API Reference
+      v2 (human)     title:       LinkAnnotation: Clickable PDF Page Links in C#
+      v1 (algorithm) description: LinkAnnotation is the IronPDF class for clickable in-document PDF link annotations in C#. Reference DestinationPageIndex, DestinationType, X, Y, and usage.
+      v2 (human)     description: Add clickable page-to-page navigation links to PDFs in C# with the IronPDF LinkAnnotation class. Build tables of contents, cross-references, and footnotes.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>LinkAnnotation Class | IronPDF C# Annotations</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class LinkAnnotation
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="LinkAnnotation Class | IronPDF C# Annotations">
+    <meta name="description" content="Reference for IronPDF LinkAnnotation in C#: PageIndex, DestinationPageIndex, DestinationType, X, Y, Width, Height, and pdf.Annotations.Add usage.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "LinkAnnotation Class | IronPDF C# Annotations",
+    "name": "LinkAnnotation class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Annotations.LinkAnnotation.html",
+    "abstract": "Use LinkAnnotation in IronPDF to add a clickable region to a PDF page that navigates to another page in the same document when a viewer activates it. Part of the IronPdf.Annotations namespace, it derives from PdfClientAccessor and implements IAnnotation. Two constructors set the source page and destination page index. Properties X, Y, Width, Height, and Rectangle position the clickable region; DestinationPageIndex, DestinationType (a BookmarkDestinations enum value such as Page, PageY, or PageZoom), DestinationTop, DestinationLeft, DestinationRight, DestinationBottom, and DestinationZoom describe the destination view; Title, Contents, Color, and Hidden carry the shared IAnnotation surface. Instances are attached to a document through pdf.Annotations.Add on the PdfAnnotationCollection returned by PdfDocument.Annotations.",
+    "description": "Reference for IronPDF LinkAnnotation in C#: PageIndex, DestinationPageIndex, DestinationType, X, Y, Width, Height, and pdf.Annotations.Add usage.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Annotations;\nusing IronPdf.Bookmarks;\n\nvar pdf = PdfDocument.FromFile(\"manual.pdf\");\n\n// Simple page jump from page 0 to page 5 (default DestinationType = Page).\nvar link = new LinkAnnotation(pageIndex: 0, destinationPageIndex: 5)\n{\n    X = 72, Y = 700,\n    Width = 200, Height = 20,\n    Contents = \"Chapter 1 - Introduction\"\n};\npdf.Annotations.Add(link);\n\nvar tocLink = new LinkAnnotation(0, 3, \"Section 3.2 - Advanced Configuration\")\n{\n    X = 72, Y = 640,\n    Width = 300, Height = 16,\n    Title = \"Advanced Configuration\",\n    DestinationType = BookmarkDestinations.PageZoom,\n    DestinationTop = 720,    // scroll near the top of page 3\n    DestinationLeft = 0,\n    DestinationZoom = 125    // 125% zoom; 0 = inherit current zoom\n};\npdf.Annotations.Add(tocLink);\n\npdf.SaveAs(\"manual-with-links.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does LinkAnnotation live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LinkAnnotation is in the IronPdf.Annotations namespace, shipped in IronPdf.dll. It derives from PdfClientAccessor and implements the IAnnotation interface that the rest of the annotations API consumes. Attach a configured instance to a document through pdf.Annotations.Add on the PdfAnnotationCollection returned by PdfDocument.Annotations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between LinkAnnotation and PdfLinkAnnotation in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LinkAnnotation and PdfLinkAnnotation are two different types in the same IronPdf.Annotations namespace, on two different sides of the annotation API. LinkAnnotation is the write-side concrete class used to author a new clickable link and attach it to a PDF through pdf.Annotations.Add. It derives from PdfClientAccessor and implements IAnnotation. PdfLinkAnnotation is the read-side class returned when enumerating links that already exist on a loaded PDF. It derives from the abstract base PdfAnnotation and does not implement IAnnotation. The two are unrelated by inheritance and share only the word Link in their names. Use LinkAnnotation when creating links, and inspect PdfLinkAnnotation when reading links from a loaded document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between LinkAnnotation and TextAnnotation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LinkAnnotation and TextAnnotation are the two concrete classes that implement the IAnnotation interface. LinkAnnotation creates a clickable region that navigates to another page when activated and carries a destination-page surface including DestinationPageIndex, DestinationType, and the destination coordinates. TextAnnotation creates a sticky-note style review comment with a popup that shows Title and Contents and does not carry any destination properties. Use LinkAnnotation for in-document navigation including tables of contents and cross-references. Use TextAnnotation for review comments, reviewer feedback, and collaborative markup."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does my LinkAnnotation not show a clickable region after I add it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The X and Y properties on LinkAnnotation default to -1, which means a freshly constructed instance has no defined clickable region until X, Y, Width, and Height are set explicitly (or the combined Rectangle property is assigned). The Y property defines the bottom edge of the clickable region in PDF coordinates, where the origin is at the bottom-left of the page and 72 points equal one inch. When anchoring a link over existing text returned from PdfPage.TextChunks, set Y to BoundingBox.Bottom and Height to the absolute difference between BoundingBox.Top and BoundingBox.Bottom. Setting Y to BoundingBox.Top will place the clickable region above the text rather than over it."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -178,6 +249,42 @@ for Height.
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class LinkAnnotation : PdfClientAccessor, IAnnotation</code></pre>
   </div>
+                  <!-- archetype-N:start LinkAnnotation treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Adding a clickable region to a PDF page that navigates to another page in the same document when a viewer activates it runs through <code>LinkAnnotation</code>. A configured <code>LinkAnnotation</code> carries the source-page placement of the clickable area and the destination-page coordinates, fit mode, and zoom level that the viewer applies when the user clicks through.</p>
+<p>Use <code>LinkAnnotation</code> to build internal navigation: custom tables of contents, chapter cross-references, footnote jumps, glossary back-links, and any in-document hyperlink that should remain editable inside a downstream PDF viewer rather than being painted onto the page. The class is the standard IronPDF primitive for this work, sitting alongside the bookmark outline tree as a second navigation mechanism. For the parallel outline-based approach to in-document navigation, compare the <a href="https://ironpdf.com/how-to/bookmarks/">bookmarks how-to</a>.</p>
+<p>Construct a <code>LinkAnnotation</code> with <code>(int pageIndex, int destinationPageIndex)</code> for a simple jump, or with <code>(int pageIndex, int destinationPageIndex, string contents)</code> to attach descriptive text. The source-side placement is <code>X</code>, <code>Y</code>, <code>Width</code>, <code>Height</code>, or the combined <code>Rectangle</code> (PDF coordinates, with <code>Y</code> measured from the bottom edge of the page; <code>X</code> and <code>Y</code> default to -1 until set). The destination-side surface is the link-specific contribution: <code>DestinationPageIndex</code> is the target page, <code>DestinationType</code> is a <code>BookmarkDestinations</code> value that selects the fit mode (<code>Page</code> fits the whole page, <code>PageY</code> scrolls to a vertical position, <code>PageZoom</code> controls position and zoom together), and <code>DestinationTop</code>, <code>DestinationLeft</code>, <code>DestinationRight</code>, <code>DestinationBottom</code>, and <code>DestinationZoom</code> supply the coordinates the selected fit mode needs. Shared <code>IAnnotation</code> members <code>Title</code>, <code>Contents</code>, <code>Color</code> (border color), <code>Hidden</code>, and the diagnostic <code>AnnotationIndex</code> (-1 until the annotation is added) round out the surface. Attach the configured instance to a document through <code>pdf.Annotations.Add(...)</code> on the <code>PdfAnnotationCollection</code> returned by <code>PdfDocument.Annotations</code>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Annotations;
+using IronPdf.Bookmarks;
+
+var pdf = PdfDocument.FromFile(&quot;manual.pdf&quot;);
+
+// Simple page jump from page 0 to page 5 (default DestinationType = Page).
+var link = new LinkAnnotation(pageIndex: 0, destinationPageIndex: 5)
+{
+    X = 72, Y = 700,
+    Width = 200, Height = 20,
+    Contents = &quot;Chapter 1 - Introduction&quot;
+};
+pdf.Annotations.Add(link);
+
+var tocLink = new LinkAnnotation(0, 3, &quot;Section 3.2 - Advanced Configuration&quot;)
+{
+    X = 72, Y = 640,
+    Width = 300, Height = 16,
+    Title = &quot;Advanced Configuration&quot;,
+    DestinationType = BookmarkDestinations.PageZoom,
+    DestinationTop = 720,    // scroll near the top of page 3
+    DestinationLeft = 0,
+    DestinationZoom = 125    // 125% zoom; 0 = inherit current zoom
+};
+pdf.Annotations.Add(tocLink);
+
+pdf.SaveAs(&quot;manual-with-links.pdf&quot;);</code></pre></div>
+<p>Adding and removing links on a live document is demonstrated in the <a href="https://ironpdf.com/how-to/annotations/">annotations how-to</a>, with a runnable project in the <a href="https://ironpdf.com/examples/annotations/">annotations example</a>. For sticky-note review comments rather than navigation overlays, see the sibling <a href="https://ironpdf.com/object-reference/api/IronPdf.Annotations.TextAnnotation.html"><code>TextAnnotation</code></a> class.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class VerifiedSignature
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       VerifiedSignature Class - IronPDF C# API Reference
+      v2 (human)     title:       VerifiedSignature: Inspect Signed PDFs in C# with IronPDF
+      v1 (algorithm) description: VerifiedSignature is the IronPDF C# class returned by PdfDocument.GetVerifiedSignatures with status, signer identity, signing date, and the cert chain.
+      v2 (human)     description: Inspect digital signatures inside a PDF in C# with the IronPDF VerifiedSignature class. Check signature status, signer identity, signing date, and chain.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>VerifiedSignature Class | IronPDF C# Signature Inspection</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class VerifiedSignature
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="VerifiedSignature Class | IronPDF C# Signature Inspection">
+    <meta name="description" content="Reference for IronPDF VerifiedSignature in C#: Status, Valid, Warnings, SignerName, SignerCertificate, CertificateChain, and signing metadata properties.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "VerifiedSignature Class | IronPDF C# Signature Inspection",
+    "name": "VerifiedSignature class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Signing.Inspection.VerifiedSignature.html",
+    "abstract": "When each digital signature found inside a PDF is inspected through PdfDocument.GetVerifiedSignatures, VerifiedSignature in IronPDF reports the result: the verification verdict (Status of type SignatureStatus, the boolean Valid, and the Warnings list), the signer identity (SignerName, SignerCertificate of type SignerCertificateInfo, and CertificateChain as an IReadOnlyList of SignerCertificateInfo), the signing metadata (SigningDate, SigningReason, SigningLocation, SigningContact), and the PDF-internal SignatureName and Filter. It is the read-side counterpart to the write-side IronPdf.Signing.PdfSignature credential.",
+    "description": "Reference for IronPDF VerifiedSignature in C#: Status, Valid, Warnings, SignerName, SignerCertificate, CertificateChain, and signing metadata properties.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Signing.Inspection;\n\n// Enumerate signatures, then branch on Status. Each VerifiedSignature is a\n// read-only result; this class has no public constructor.\nvar pdf = PdfDocument.FromFile(\"signed-contract.pdf\");\n\nforeach (VerifiedSignature sig in pdf.GetVerifiedSignatures())\n{\n    if (sig.Status == SignatureStatus.Valid || sig.Status == SignatureStatus.ValidWithWarnings)\n    {\n        Console.WriteLine($\"OK: {sig.SignerName} signed on {sig.SigningDate:u}\");\n        string nationalId = sig.SignerCertificate?.SubjectSerialNumber;\n        int chainDepth = sig.CertificateChain.Count;\n        foreach (string w in sig.Warnings) Console.WriteLine($\"Warning: {w}\");\n    }\n    else // Indeterminate or Invalid\n    {\n        throw new SecurityException($\"Signature {sig.SignatureName} failed: {sig.Status}\");\n    }\n}\n\n// Fast yes/no without iterating: PdfDocument.VerifyPdfSignaturesInFile(\"signed-contract.pdf\").\n// Pass detectIncrementalTampering: true to GetVerifiedSignatures to catch shadow attacks."
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is VerifiedSignature defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "VerifiedSignature is in the IronPdf.Signing.Inspection namespace, shipped in IronPdf.dll. It has no public constructor; instances are produced only by PdfDocument.GetVerifiedSignatures, which returns a List<VerifiedSignature> with one read-only entry per signature in the document. It is the read-side counterpart to the write-side PdfSignature credential in IronPdf.Signing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between VerifiedSignature and SignerCertificateInfo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "VerifiedSignature is the signature-level inspection result. It carries the verification verdict (Status, Valid, Warnings) and the signing context (SignerName, SigningDate, SigningReason, SigningLocation, SigningContact, SignatureName, Filter). One VerifiedSignature is produced per signature in the PDF. SignerCertificateInfo is the certificate-level detail for one X.509 certificate. It exposes the full Subject and Issuer Distinguished Names, validity dates, the SHA-256 thumbprint, the raw DER bytes, and convenience properties like CommonName, Organization, Country, and Email. A VerifiedSignature has one SignerCertificate of type SignerCertificateInfo plus a CertificateChain that is an IReadOnlyList of SignerCertificateInfo from signer to root. Both classes live in IronPdf.Signing.Inspection. They are the read-side of the signing API; the write-side counterparts are PdfSignature and PdfSignatureImage in IronPdf.Signing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you iterate multiple signatures and map the status to a pass or fail decision?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GetVerifiedSignatures returns a List of VerifiedSignature, so a foreach loop covers every signature in the PDF, and every property on each returned object is get-only. Inside the loop, switch on the Status property of type SignatureStatus. The four enum values are Valid (cryptographic integrity and trust both confirmed), ValidWithWarnings (signature is valid but the Warnings list contains advisory messages such as a weak hash algorithm or a near-expiry certificate), Indeterminate (verification could not complete, typically because the trust chain or revocation data was unreachable), and Invalid (signature is broken or the document has been altered after signing). For a hard pass or fail gate, accept only Valid; for a more permissive workflow, accept Valid plus ValidWithWarnings while logging the Warnings list to the audit trail. SigningDate is a non-nullable DateTime, which differs from PdfSignature.SignatureDate on the write side; a missing or unparseable signing date surfaces as the default DateTime value, so code that branches on signing time should compare against DateTime.MinValue rather than relying on a null."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should you use VerifyPdfSignatures instead of GetVerifiedSignatures?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "VerifyPdfSignatures on PdfDocument is the fast yes-or-no check. It returns true only if every signature in the PDF is valid and untampered, and it is the right call when application code needs nothing more than a boolean gate. VerifyPdfSignaturesInFile is the static file-only variant that does not require loading the full PdfDocument into memory, useful for batch pre-screening. GetVerifiedSignatures is the inspection path that returns the full VerifiedSignature collection so application code can read signer identity, certificate detail, signing metadata, and the per-signature Warnings list. All three accept an optional detectIncrementalTampering parameter that performs revision-level analysis to catch shadow attacks where PDF objects are silently redefined between signing rounds, at the cost of additional processing time."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +221,38 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class VerifiedSignature : Object</code></pre>
   </div>
+                <!-- archetype-N:start VerifiedSignature treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>The verification verdict, signer identity, signing context, and full certificate chain for every digital signature inside a PDF arrive through <code>VerifiedSignature</code>, bundled into a single read-only result for an audit, compliance, or workflow gate. Instances are not constructed by application code; they are produced by <code>PdfDocument.GetVerifiedSignatures</code>, which returns a <code>List&lt;VerifiedSignature&gt;</code> covering every signature in the document in the order it was applied.</p>
+<p><code>VerifiedSignature</code> is the type to reach for whenever a service must do more than ask &quot;is this PDF signed correctly?&quot;. Use it for compliance pipelines that log the signer's national ID, e-invoicing platforms that branch on signature status, contract systems that pin a trusted certificate thumbprint, eIDAS verifiers that walk the chain to a known root CA, and any read-side workflow that needs structured access to who signed a document, when, where, why, and with what credential.</p>
+<p>Application code obtains a <code>VerifiedSignature</code> by calling <code>PdfDocument.GetVerifiedSignatures(detectIncrementalTampering: false)</code> after loading a PDF. The headline members are the verdict: <code>Status</code> (a <code>SignatureStatus</code> enum with values <code>Valid</code>, <code>ValidWithWarnings</code>, <code>Indeterminate</code>, and <code>Invalid</code>), the boolean <code>Valid</code> shortcut, and the <code>Warnings</code> list of verification messages. The identity members are <code>SignerName</code>, <code>SignerCertificate</code> (a <code>SignerCertificateInfo</code> with full X.509 detail), and <code>CertificateChain</code> (an <code>IReadOnlyList&lt;SignerCertificateInfo&gt;</code> from signer to root CA). The context members <code>SigningDate</code>, <code>SigningReason</code>, <code>SigningLocation</code>, and <code>SigningContact</code> reflect the signing metadata that was captured at signing time. The PDF-internal members <code>SignatureName</code> (the form-field /T key) and <code>Filter</code> (the <code>/Filter</code> value, for example <code>Adobe.PPKLite</code>) are diagnostic. For per-property walkthroughs and certificate inspection, the <a href="https://ironpdf.com/how-to/verify-pdf-signatures/">verify PDF signatures how-to</a> is the canonical reference.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Signing.Inspection;
+
+// Enumerate signatures, then branch on Status. Each VerifiedSignature is a
+// read-only result; this class has no public constructor.
+var pdf = PdfDocument.FromFile(&quot;signed-contract.pdf&quot;);
+
+foreach (VerifiedSignature sig in pdf.GetVerifiedSignatures())
+{
+    if (sig.Status == SignatureStatus.Valid || sig.Status == SignatureStatus.ValidWithWarnings)
+    {
+        Console.WriteLine($&quot;OK: {sig.SignerName} signed on {sig.SigningDate:u}&quot;);
+        string nationalId = sig.SignerCertificate?.SubjectSerialNumber;
+        int chainDepth = sig.CertificateChain.Count;
+        foreach (string w in sig.Warnings) Console.WriteLine($&quot;Warning: {w}&quot;);
+    }
+    else // Indeterminate or Invalid
+    {
+        throw new SecurityException($&quot;Signature {sig.SignatureName} failed: {sig.Status}&quot;);
+    }
+}
+
+// Fast yes/no without iterating: PdfDocument.VerifyPdfSignaturesInFile(&quot;signed-contract.pdf&quot;).
+// Pass detectIncrementalTampering: true to GetVerifiedSignatures to catch shadow attacks.</code></pre></div>
+<p>For the write-side workflow that produces the signatures this class inspects, see the <a href="https://ironpdf.com/how-to/signing/">digital signatures how-to</a>. Common verification errors, certificate trust failures, and timestamp issues are catalogued in the <a href="https://ironpdf.com/troubleshooting/digital-signatures/">digital signatures troubleshooting page</a>. For an end-to-end walkthrough that covers multi-party workflows and timestamp servers, the <a href="https://ironpdf.com/tutorials/pdf-digital-signatures-csharp-guide/">digital signatures C# guide</a> is the long-form companion.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class LineTextObject
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       LineTextObject Class - IronPDF C# API Reference
+      v2 (human)     title:       LineTextObject: Per-Line PDF Text DTO in C# with IronPDF
+      v1 (algorithm) description: LineTextObject is the IronPDF C# class for one visual line on a PDF page. Reference Contents, BoundingBox, PageIndex, and the PdfPage.Lines path.
+      v2 (human)     description: Read PDF text line by line in C# with IronPDF LineTextObject. Covers Contents, BoundingBox, PageIndex, FontSize, and PdfPage.Lines enumeration.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>LineTextObject | IronPDF C# PdfPage.Lines DOM Type</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class LineTextObject
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="LineTextObject | IronPDF C# PdfPage.Lines DOM Type">
+    <meta name="description" content="Reference for IronPDF LineTextObject in C#: derived from TextObject, obtained from PdfPage.Lines, exposes Contents, BoundingBox, and PageIndex.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "LineTextObject | IronPDF C# PdfPage.Lines DOM Type",
+    "name": "LineTextObject class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Pages.LineTextObject.html",
+    "abstract": "When code reads one visual line of text from a PDF page at a time, each line arrives as a LineTextObject in IronPDF. Each instance is formed by grouping text runs that share a vertical position and carries the joined line text, its bounding box, and its typography. Part of the IronPdf.Pages namespace, it derives from the base TextObject and implements IPdfTextObject, IDocumentTextObject, IBoundedPdfDocumentObject, ITransformable, IColored, ICloneable, and IJsonSerializable, with no public constructor. Instances are obtained by enumerating IronPdf.Pages.PdfPage.Lines (typed as IPdfTextObjectCollection) on each page of a PdfDocument. Headline members inherited from TextObject include Contents (the joined line text), BoundingBox (line-level position), PageIndex, FontSize, IsBold, IsItalic, FillColor, the read-only Font, and the Clone and GetGlyphInfo methods. The only declared member, ToJson, currently throws NotImplementedException. Paired with TextObject and PageText as the three text granularities in the IronPDF API.",
+    "description": "Reference for IronPDF LineTextObject in C#: derived from TextObject, obtained from PdfPage.Lines, exposes Contents, BoundingBox, and PageIndex.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Pages;\nusing IronSoftware;\n\nusing PdfDocument pdf = PdfDocument.FromFile(\"invoice.pdf\");\n\nforeach (PdfPage page in pdf.Pages)\n{\n    // PdfPage.Lines returns IPdfTextObjectCollection grouped from TextChunks.\n    foreach (LineTextObject line in page.Lines)\n    {\n        string text = line.Contents;\n        System.Drawing.RectangleF box = line.BoundingBox;\n        bool heading = line.IsBold && line.FontSize >= 14f;\n\n        System.Console.WriteLine(\n            $\"Page {line.PageIndex} y={box.Top:F1}: \\\"{text}\\\" ({line.FontSize}pt)\");\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does LineTextObject live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LineTextObject is in the IronPdf.Pages namespace, shipped in IronPdf.dll. It derives from IronSoftware.TextObject and implements IPdfTextObject, IPdfDocumentObject, IDocumentTextObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, and IJsonSerializable. Instances are obtained by enumerating PdfPage.Lines rather than constructed directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between LineTextObject, TextObject, and PageText?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LineTextObject, TextObject, and PageText are the three text DTOs in the IronPDF API, each at a different granularity and in a different namespace. TextObject is the base class in the IronSoftware namespace and represents one text run (a contiguous span of glyphs that share a font and a transform). LineTextObject lives in IronPdf.Pages, derives from TextObject, and represents one visual line formed by grouping text runs by vertical position. PageText lives in IronPdf.Extractions and represents one whole page of aggregated text returned by PdfExtractor.Extract. TextObject is obtained by enumerating PdfPage.TextChunks. LineTextObject is obtained by enumerating PdfPage.Lines. PageText is obtained by indexing TextContent.PageTexts on a PdfExtractionResult."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the ToJson method on LineTextObject throw NotImplementedException?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ToJson method declared on LineTextObject is documented to throw System.NotImplementedException in the current release. The exception is the documented behavior, not a transient failure. For line-level read tasks, work with the inherited TextObject members (Contents, BoundingBox, PageIndex, FontSize, IsBold, FillColor) directly rather than relying on a JSON serialization round trip. The Lines collection is derived from TextChunks at access time, so PdfPage.TextChunks still exposes the underlying per-run TextObject instances when sub-line geometry, glyph metrics through GetGlyphInfo, or per-run color is required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read text line by line from a PDF in an ASP.NET Core service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Load the source PDF into a PdfDocument inside the request handler, iterate PdfDocument.Pages, cast each page to IronPdf.Pages.PdfPage, and enumerate PdfPage.Lines to obtain LineTextObject instances. Read Contents for the line text, BoundingBox for the page-space position, FontSize and IsBold for typography classification, and PageIndex for the zero-based page index. The enumeration is synchronous and CPU-bound, so wrap the loop in Task.Run for long documents to avoid blocking the request thread. PdfDocument is IDisposable and should be disposed at the end of the request."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -272,12 +343,33 @@ Console.WriteLine($&quot;Position: ({line.BoundingBox.Left}, {line.BoundingBox.T
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class LineTextObject : TextObject, IPdfTextObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentTextObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, IJsonSerializable</code></pre>
   </div>
-  <h5 id="IronPdf_Pages_LineTextObject_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Key Properties:</strong>
-</p>
-<ul><li></li><li></li><li></li></ul>
-</div>
+                  <!-- archetype-N:start LineTextObject treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>LineTextObject</code> is what you receive for each visual line when you read text off a PDF page, formed by grouping text runs that share a vertical position. Each instance exposes the joined line text, the line-level bounding box, the page index, and the resolved typography that the renderer applied to the constituent runs.</p>
+<p><code>LineTextObject</code> is the type a caller works with when the per-run granularity of <code>TextObject</code> is too fine and the whole-page granularity of <code>IronPdf.Extractions.PageText</code> is too coarse. Typical scenarios include reading line-level positions to reconstruct columns during PDF layout analysis, classifying lines as headings or body by <code>FontSize</code> and <code>IsBold</code>, and stepping through pages line by line to drive verbatim quotation in search results. There is no public constructor; instances flow out of the page-content enumeration described below.</p>
+<p>To obtain <code>LineTextObject</code> instances, open a <code>PdfDocument</code>, walk <code>PdfDocument.Pages</code> (typed as <code>PdfPagesCollection</code>), cast each page to <code>IronPdf.Pages.PdfPage</code>, and enumerate <code>PdfPage.Lines</code> (typed as <code>IPdfTextObjectCollection</code>). The docfx remarks describe <code>PdfPage.Lines</code> as &quot;derived from <code>TextChunks</code> by grouping text objects that appear on the same visual line based on their vertical position&quot;, so the underlying runs remain available through <code>PdfPage.TextChunks</code> when sub-line geometry is required. The only member declared on <code>LineTextObject</code> itself is <code>ToJson()</code>, currently documented to throw <code>System.NotImplementedException</code>. The headline members for everyday use are inherited from <code>TextObject</code>: content (<code>Contents</code>, <code>PageIndex</code>), geometry (<code>BoundingBox</code> as the primary read shape; the read-only <code>Matrix</code> resolved from <code>Scale</code>, <code>Rotation</code>, and <code>Translate</code>; nullable <code>X</code> and <code>Y</code>), typography (<code>FontSize</code>, <code>IsBold</code>, <code>IsItalic</code>, the read-only <code>Font</code>, the assignable <code>FontObject</code>), color (<code>FillColor</code>, <code>StrokeColor</code>, <code>RenderMode</code>), and z-order (<code>ZOrder</code>, <code>ZPosition</code>). The instance methods <code>Clone()</code> and <code>GetGlyphInfo()</code> (returns <code>IDocumentCharCollection</code>) are also inherited. The <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a> shows the surrounding text-read workflow step by step.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Pages;
+using IronSoftware;
+
+using PdfDocument pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+
+foreach (PdfPage page in pdf.Pages)
+{
+    // PdfPage.Lines returns IPdfTextObjectCollection grouped from TextChunks.
+    foreach (LineTextObject line in page.Lines)
+    {
+        string text = line.Contents;
+        System.Drawing.RectangleF box = line.BoundingBox;
+        bool heading = line.IsBold &amp;&amp; line.FontSize &gt;= 14f;
+
+        System.Console.WriteLine(
+            $&quot;Page {line.PageIndex} y={box.Top:F1}: \&quot;{text}\&quot; ({line.FontSize}pt)&quot;);
+    }
+}</code></pre></div>
+<p>For the broader read-side DOM walk that also reaches images and vector paths, see the <a href="https://ironpdf.com/how-to/access-pdf-dom-object/">access PDF DOM object how-to</a>. For the inverse write-side task of editing text in place, reach for the <a href="https://ironpdf.com/how-to/find-replace-text/">find and replace text in PDF how-to</a> and its <code>ReplaceTextOnAllPages</code> and <code>ReplaceTextOnPage</code> examples.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

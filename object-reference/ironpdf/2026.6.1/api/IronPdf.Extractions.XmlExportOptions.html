@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class XmlExportOptions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       XmlExportOptions Class - IronPDF C# API Reference
+      v2 (human)     title:       XmlExportOptions: Export PDF Tables to XML in C#
+      v1 (algorithm) description: XmlExportOptions is the IronPDF C# class that selects XML output for ExportManager.ExportTable, ExportTables, and ExportResult via type dispatch.
+      v2 (human)     description: Serialize extracted PDF tables to XML in C# with IronPDF's XmlExportOptions: XmlIncludeSchema, XmlPrettyPrint, IncludeHeaders, SpanMode, TextEncoding.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>XmlExportOptions Class | IronPDF C# Table Export</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class XmlExportOptions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="XmlExportOptions Class | IronPDF C# Table Export">
+    <meta name="description" content="IronPDF XmlExportOptions in C#: XmlIncludeSchema and XmlPrettyPrint plus inherited IncludeHeaders, SpanMode, TextEncoding control XML table export.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "XmlExportOptions Class | IronPDF C# Table Export",
+    "name": "XmlExportOptions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.XmlExportOptions.html",
+    "abstract": "When extracted PDF tables and extraction results are serialized as XML in IronPDF, XmlExportOptions selects the XML writer by type dispatch. It declares a parameterless constructor and two XML-specific properties, XmlIncludeSchema and XmlPrettyPrint, on top of the inherited IncludeHeaders, IncludeEmptyRows, SpanMode, and TextEncoding. Instances are passed to ExportManager.ExportTable, ExportManager.ExportTables, or ExportConfiguration.TableOptions, where the runtime inspects the concrete options type to choose the XML writer over the CSV, HTML, JSON, and TXT siblings.",
+    "description": "IronPDF XmlExportOptions in C#: XmlIncludeSchema and XmlPrettyPrint plus inherited IncludeHeaders, SpanMode, TextEncoding control XML table export.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using System.Collections.Generic;\nusing IronPdf;\nusing IronPdf.Extractions;\n\nPdfDocument pdf = PdfDocument.FromFile(\"invoice.pdf\");\nPdfExtractionResult result = new PdfExtractor().Extract(pdf);\nList<TableObject> tables = result.Tables;\n\nvar xmlOptions = new XmlExportOptions\n{\n    XmlIncludeSchema = true,\n    XmlPrettyPrint   = true,\n    IncludeHeaders   = true,\n    IncludeEmptyRows = false,\n    SpanMode         = SpanHandlingMode.Repeat\n};\n\nExportManager.ExportTables(tables, \"tables.xml\", xmlOptions);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is XmlExportOptions defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "XmlExportOptions is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It derives from ExportOptionsBase. Pass an instance to ExportManager to select XML output for a TableObject or PdfExtractionResult export; the runtime inspects the concrete options type to choose the XML writer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between XmlExportOptions and the other export options classes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All five export options classes derive from ExportOptionsBase and share the same IncludeHeaders, IncludeEmptyRows, SpanMode, and TextEncoding properties. The concrete type is the format selector consumed by ExportManager. XmlExportOptions is the only sibling that adds class-declared properties of its own, XmlIncludeSchema and XmlPrettyPrint, which control schema emission and indented output. XmlExportOptions produces a hierarchical document suited to XSD validation, SOAP endpoints, and legacy enterprise integrations. CsvExportOptions produces delimited rows for spreadsheets. HtmlExportOptions produces a browser-renderable table. JsonExportOptions produces structured records for APIs and JavaScript consumers. TxtExportOptions produces a plain text dump and ignores SpanMode because plain text does not support cell spanning. Pick the type that matches the consumer, then assign the shared and format-specific properties on the instance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do XmlIncludeSchema and XmlPrettyPrint do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "XmlIncludeSchema is a boolean that controls whether an XML schema declaration is emitted alongside the data. It defaults to false, which produces a compact data-only document. Set it to true when the downstream consumer needs a schema for validation or tooling support. XmlPrettyPrint is a boolean that controls indentation and line breaks in the written file. It defaults to true, which produces a human-readable layout suitable for inspection and version control diffs. Set it to false to minimize bytes when the consumer is a parser that does not care about whitespace."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you use XmlExportOptions with ExportConfiguration?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ExportConfiguration carries the per-result export settings used by ExportManager.ExportResult. Its TableOptions property is typed as ExportOptionsBase and accepts an XmlExportOptions instance directly. Set TableOptions to a configured XmlExportOptions, set ExportTables to true, set ExportText and SeparateFilePerTable as needed, and pass the configuration to ExportManager.ExportResult along with the PdfExtractionResult and an output path. The runtime then writes all extracted tables to XML in one call, applying both the XML-specific properties and the inherited shared properties."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -177,20 +248,32 @@ XmlPrettyPrint = true
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class XmlExportOptions : ExportOptionsBase</code></pre>
   </div>
-  <h5 id="IronPdf_Extractions_XmlExportOptions_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p><strong>Important Considerations:</strong></p>
-<p>
-<p><strong>Pretty Print:</strong> Improves readability but increases file size.</p>
-</p>
-<p>
-<p><strong>Note:</strong> Schema inclusion is useful for validation but not always necessary.</p>
-</p>
-<strong>Related Documentation:</strong>
-<p>
-<p><strong>How-To Guide:</strong>
-<a href="https://ironpdf.com/how-to/export-extracted-pdf-data/">XML Export Guide</a></p>
-</p>
-</div>
+                  <!-- archetype-N:start XmlExportOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>XmlExportOptions</code> serializes a <code>TableObject</code> or a <code>PdfExtractionResult</code> as XML when handed to the IronPDF extraction pipeline, acting as the type-dispatch marker that selects the XML writer. As the fifth concrete sibling in the export-options family, it differs from <code>CsvExportOptions</code>, <code>HtmlExportOptions</code>, <code>JsonExportOptions</code>, and <code>TxtExportOptions</code>, which add nothing beyond a parameterless constructor, because <code>XmlExportOptions</code> declares two XML-specific boolean properties on top of the inherited surface.</p>
+<p>Use <code>XmlExportOptions</code> when extracted tabular data needs to travel to a system that validates against an XSD, a SOAP endpoint, a legacy enterprise integration bus, a configuration store that consumes XML, or any consumer that prefers hierarchical markup to flat records. XML is the right export choice when schema enforcement, namespace scoping, or human-readable indentation matters more than raw byte size. Pick a sibling instead for spreadsheet import (<code>CsvExportOptions</code>), browser preview (<code>HtmlExportOptions</code>), API and JavaScript consumers (<code>JsonExportOptions</code>), or plain text logs (<code>TxtExportOptions</code>).</p>
+<p><code>XmlExportOptions</code> is constructed with <code>new XmlExportOptions()</code> and passed to one of three static entry points on <code>IronPdf.Extractions.ExportManager</code>. The two class-declared properties shape the XML payload: <code>XmlIncludeSchema</code> (default <code>false</code>) controls whether an XML schema declaration is emitted alongside the data, and <code>XmlPrettyPrint</code> (default <code>true</code>) toggles indented output against a compact single-stream form. Four inherited properties carry the cross-format behavior: <code>IncludeHeaders</code> (default <code>true</code>) emits a header row for the records, <code>IncludeEmptyRows</code> (default <code>false</code>) skips blank rows, <code>SpanMode</code> (default <code>SpanHandlingMode.Repeat</code>) controls how a cell that spans multiple rows or columns is materialized, and <code>TextEncoding</code> (default <code>UTF8</code>) sets the byte encoding of the written file. The runtime selects the XML writer by inspecting the concrete options type, so passing an <code>XmlExportOptions</code> instance to any overload that accepts <code>ExportOptionsBase</code> produces XML output.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using System.Collections.Generic;
+using IronPdf;
+using IronPdf.Extractions;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+PdfExtractionResult result = new PdfExtractor().Extract(pdf);
+List&lt;TableObject&gt; tables = result.Tables;
+
+var xmlOptions = new XmlExportOptions
+{
+    XmlIncludeSchema = true,
+    XmlPrettyPrint   = true,
+    IncludeHeaders   = true,
+    IncludeEmptyRows = false,
+    SpanMode         = SpanHandlingMode.Repeat
+};
+
+ExportManager.ExportTables(tables, &quot;tables.xml&quot;, xmlOptions);</code></pre></div>
+<p>To produce the tables this class serializes, work through the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a>. When the source content is unstructured rather than tabular, the <a href="https://ironpdf.com/how-to/csharp-parse-pdf/">parse PDFs in C# guide</a> sits alongside the table-export path that <code>XmlExportOptions</code> participates in.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

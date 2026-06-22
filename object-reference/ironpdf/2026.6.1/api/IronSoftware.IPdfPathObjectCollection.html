@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IPdfPathObjectCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IPdfPathObjectCollection Interface - IronPDF C# API
+      v2 (human)     title:       IPdfPathObjectCollection: PDF Path Set Contract in C#
+      v1 (algorithm) description: IronSoftware.IPdfPathObjectCollection interface reference for C#: IList of PathObject, IJsonSerializable, implemented by PathObjectCollection.
+      v2 (human)     description: Accept any IronSoftware PDF path collection in C# with IPdfPathObjectCollection: IList of PathObject, Count, RemoveAt, foreach, JSON support.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IPdfPathObjectCollection | IronSoftware C# Paths API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IPdfPathObjectCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IPdfPathObjectCollection | IronSoftware C# Paths API">
+    <meta name="description" content="IPdfPathObjectCollection is the IronSoftware C# contract for a mutable PDF path list reached via pdf.Pages[i].ObjectModel.PathObjects.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IPdfPathObjectCollection | IronSoftware C# Paths API",
+    "name": "IPdfPathObjectCollection interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.IPdfPathObjectCollection.html",
+    "abstract": "When code walks, audits, or redacts the vector paths on a PDF page in C#, `IPdfPathObjectCollection` is the boundary contract it accepts so it never binds to one concrete container. The interface declares no direct members; its surface is the union of its base interfaces, exposing an integer indexer over `PathObject` plus `Count`, `Add`, `Insert`, `Remove`, `RemoveAt`, `Clear`, `IndexOf`, `Contains`, `CopyTo`, and a typed enumerator. The shipped concrete implementor is `PathObjectCollection`, an `ObservableCollection<PathObject>` reached from `pdf.Pages[i].ObjectModel.PathObjects`.",
+    "description": "IPdfPathObjectCollection is the IronSoftware C# contract for a mutable PDF path list reached via pdf.Pages[i].ObjectModel.PathObjects.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware;\n\nPdfDocument pdf = PdfDocument.FromFile(\"invoice.pdf\");\n\n// Accept the IronSoftware path collection contract at the boundary.\nint RedactZeroLengthStrokes(IPdfPathObjectCollection paths)\n{\n    int removed = 0;\n\n    // Walk back-to-front so RemoveAt indices stay valid.\n    for (int i = paths.Count - 1; i >= 0; i--)\n    {\n        PathObject path = paths[i];\n        if (path.IsStroked && path.BoundingBox.Width == 0 && path.BoundingBox.Height == 0)\n        {\n            paths.RemoveAt(i);\n            removed++;\n        }\n    }\n\n    return removed;\n}\n\nforeach (var page in pdf.Pages)\n{\n    RedactZeroLengthStrokes(page.ObjectModel.PathObjects);\n}\n\npdf.SaveAs(\"invoice.cleaned.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is IPdfPathObjectCollection located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfPathObjectCollection is in the IronSoftware namespace, shipped in IronPdf.dll. It derives from IDocumentPathObjectCollection<PathObject>, IList<PathObject>, ICollection<PathObject>, IEnumerable<PathObject>, and IJsonSerializable. The shipped concrete implementor is IronSoftware.PathObjectCollection, an ObservableCollection<PathObject> reached from pdf.Pages[i].ObjectModel.PathObjects."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IPdfPathObjectCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The shipped concrete implementor of IPdfPathObjectCollection is IronSoftware.PathObjectCollection, which derives from ObservableCollection of PathObject. Application code reaches it from pdf.Pages[i].ObjectModel.PathObjects. Application code can also supply its own implementor at API boundaries, which is useful when stubbing a path set in unit tests because the surface is the standard IList shape plus IJsonSerializable. Code typed as IPdfPathObjectCollection works against either."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IPdfPathObjectCollection and PathObjectCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfPathObjectCollection is the IronSoftware namespace contract for a mutable PathObject list. PathObjectCollection is the shipped concrete class in the same namespace that derives from ObservableCollection of PathObject and implements the interface. PathObjectCollection adds an IsReadOnly property and the CollectionChanged and PropertyChanged events from ObservableCollection on top of the interface surface. Reference IPdfPathObjectCollection at API boundaries when callers do not need observable change notifications; use PathObjectCollection directly when subscribing to those events."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does adding or removing items raise change notifications?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The IPdfPathObjectCollection contract itself does not require change notifications. It defines only the IList of PathObject surface plus IJsonSerializable. The shipped concrete PathObjectCollection derives from ObservableCollection of PathObject, so calls to Add, Insert, Remove, RemoveAt, and Clear raise CollectionChanged and any indexer set raises PropertyChanged. Application code that needs those events must reference the concrete type or cast from the interface."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -147,7 +218,45 @@
   </div>
   
   
-</article>
+            <!-- archetype-N:start IPdfPathObjectCollection treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p><code>IPdfPathObjectCollection</code> gathers the vector paths on a PDF page so code can walk them through a document's object model without binding to one concrete container, where each element is a <code>PathObject</code>. The contract adds nothing beyond what its base interfaces already expose, so the entire usable surface is the list shape over a single <code>PathObject</code> element type.</p>
+<p>The shipped concrete implementor is <code>PathObjectCollection</code>, which derives from <code>ObservableCollection&lt;PathObject&gt;</code> and is reached from <code>pdf.Pages[i].ObjectModel.PathObjects</code>. Application code can also supply its own implementor at API boundaries when stubbing a path set in unit tests, since the surface is the standard list shape plus JSON serialization. Typical scenarios include auditing every vector mark on a page for layout-driven redaction, removing specific strokes by index in a redaction or simplification pipeline, recoloring fills on existing diagrams in a brand-refresh job, and JSON-serializing the path set across a service boundary through <code>IJsonSerializable</code>. The same shape applies to the sibling <code>IPdfImageObjectCollection</code> and <code>IPdfTextObjectCollection</code> contracts reached from <code>ObjectModel.ImageObjects</code> and <code>ObjectModel.TextObjects</code>, so DOM-walking code can be parameterized over all three.</p>
+<p>The everyday surface is inherited. The <code>IList&lt;PathObject&gt;</code> indexer returns a single <code>PathObject</code> for a given integer index; <code>Count</code> comes from <code>ICollection&lt;PathObject&gt;</code>; <code>Add(PathObject)</code>, <code>Insert(int, PathObject)</code>, <code>Remove(PathObject)</code>, <code>RemoveAt(int)</code>, <code>Clear</code>, <code>IndexOf(PathObject)</code>, <code>Contains(PathObject)</code>, and <code>CopyTo(PathObject[], int)</code> come from <code>IList&lt;T&gt;</code> and <code>ICollection&lt;T&gt;</code>. The typed <code>GetEnumerator()</code> from <code>IEnumerable&lt;PathObject&gt;</code> enables <code>foreach</code> directly over the contract. The <a href="/how-to/access-pdf-dom-object/">PDF DOM how-to</a> walks through the canonical traversal pattern across <code>TextObjects</code>, <code>ImageObjects</code>, and <code>PathObjects</code> and demonstrates <code>RemoveAt(i)</code> as the documented idiom for removing a found object.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+
+// Accept the IronSoftware path collection contract at the boundary.
+int RedactZeroLengthStrokes(IPdfPathObjectCollection paths)
+{
+    int removed = 0;
+
+    // Walk back-to-front so RemoveAt indices stay valid.
+    for (int i = paths.Count - 1; i &gt;= 0; i--)
+    {
+        PathObject path = paths[i];
+        if (path.IsStroked &amp;&amp; path.BoundingBox.Width == 0 &amp;&amp; path.BoundingBox.Height == 0)
+        {
+            paths.RemoveAt(i);
+            removed++;
+        }
+    }
+
+    return removed;
+}
+
+foreach (var page in pdf.Pages)
+{
+    RedactZeroLengthStrokes(page.ObjectModel.PathObjects);
+}
+
+pdf.SaveAs(&quot;invoice.cleaned.pdf&quot;);</code></pre></div>
+<p>For a worked traversal that reaches <code>ObjectModel.PathObjects</code> alongside the parallel <code>TextObjects</code> and <code>ImageObjects</code> accessors and demonstrates <code>RemoveAt</code>-based redaction, reach for the <a href="/how-to/access-pdf-dom-object/">PDF DOM how-to</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
+  </article>
           </div>
            
           <div class="hidden-sm col-md-2" role="complementary">

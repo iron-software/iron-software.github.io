@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfPagesCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfPagesCollection Class - IronPDF C# API Reference
+      v2 (human)     title:       PdfPagesCollection: PDF Pages Collection in IronPDF C#
+      v1 (algorithm) description: IronPdf.Pages.PdfPagesCollection class reference for C#. Indexer, Count, Add, Remove, RemoveAt, Clear, RefreshPages on the PdfDocument.Pages collection.
+      v2 (human)     description: Index, iterate, add, and remove pages on PdfDocument.Pages in C# using IronPDF PdfPagesCollection, the concrete IPdfPageCollection implementor.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfPagesCollection Class | IronPDF C# Pages API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfPagesCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfPagesCollection Class | IronPDF C# Pages API">
+    <meta name="description" content="PdfPagesCollection in IronPDF is the ObservableCollection&lt;IPdfPage&gt; returned by PdfDocument.Pages: Count, indexer, Add, Remove, RemoveAt, RefreshPages.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfPagesCollection Class | IronPDF C# Pages API",
+    "name": "PdfPagesCollection class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Pages.PdfPagesCollection.html",
+    "abstract": "`PdfPagesCollection` enumerates, counts, and rearranges the pages of an open `PdfDocument` in IronPDF, working through the collection returned by `PdfDocument.Pages`. The class exposes the inherited indexer, `Count`, and `IEnumerable<IPdfPage>` for read access; declares `Add`, `Remove`, `RemoveAt`, and `Clear` for structural edits; and provides `RefreshPages` for re-syncing the collection after document-level mutations in C#.",
+    "description": "PdfPagesCollection in IronPDF is the ObservableCollection<IPdfPage> returned by PdfDocument.Pages: Count, indexer, Add, Remove, RemoveAt, RefreshPages.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Pages;\n\nusing PdfDocument pdf = PdfDocument.FromFile(\"report.pdf\");\n\n// Cache the collection per the PdfDocument.Pages remarks, then read and iterate.\nPdfPagesCollection pages = pdf.Pages;\nint total = pages.Count;\nforeach (IPdfPage page in pages)\n{\n    System.Console.WriteLine($\"Page {page.PageIndex}: {page.Width}x{page.Height}\");\n}\n\n// Structural edits declared directly on PdfPagesCollection.\npages.RemoveAt(total - 1);\npages.Add(new PdfPage(210, 297));\n\n// Re-sync after a document-level mutation, then save.\npdf.RemovePage(0);\npdf.Pages.RefreshPages();\npdf.SaveAs(\"report-edited.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is PdfPagesCollection located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfPagesCollection is in the IronPdf.Pages namespace, shipped in IronPdf.dll. It derives from ObservableCollection<IPdfPage> and implements IPdfPageCollection, IDocumentPageCollection<IPdfPage>, IReadOnlyCollection<IPdfPage>, and IEnumerable<IPdfPage>. Application code obtains an instance through the read-only PdfDocument.Pages property to enumerate or edit the document's pages."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfPagesCollection and IPdfPageCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfPageCollection is the interface contract in IronPdf.Pages; PdfPagesCollection is the concrete class returned by PdfDocument.Pages. The concrete class adds the ObservableCollection<IPdfPage> base, the Add, Remove, RemoveAt, Clear, and RefreshPages methods, and emits CollectionChanged notifications. Reference IPdfPageCollection in method signatures that should accept any implementor; use PdfPagesCollection when ObservableCollection behavior is required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does PdfPagesCollection have CopyPage or RemovePage methods?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. CopyPage, CopyPages, InsertPdf, Merge, RemovePage, and RemovePages are declared on PdfDocument, not on PdfPagesCollection. The collection itself only exposes Add, Remove, RemoveAt, and Clear for structural edits, plus the inherited ObservableCollection<IPdfPage> indexer and Count. After calling document-level mutators on PdfDocument, call RefreshPages on the collection to re-sync."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add or remove a page from PdfDocument.Pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To append a detached page, construct a PdfPage with width and height in millimetres and call Add on the collection. To delete a page by index, call RemoveAt. To delete by reference, call Remove with the IPdfPage or PdfPage instance. Clear empties the collection. For document-level operations such as copying pages between PDFs, use the PdfDocument methods and then call RefreshPages on the collection."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -173,17 +244,35 @@ int totalPages = pdf.Pages.Count;</code></pre></p><p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfPagesCollection : ObservableCollection&lt;IPdfPage&gt;, IPdfPageCollection, IDocumentPageCollection&lt;IPdfPage&gt;, IReadOnlyCollection&lt;IPdfPage&gt;, IEnumerable&lt;IPdfPage&gt;, IEnumerable</code></pre>
   </div>
-  <h5 id="IronPdf_Pages_PdfPagesCollection_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Key Operations:</strong>
-</p>
-<ul><li></li><li></li><li></li><li></li></ul>
-<p> Page indexes are zero-based (Page 1 = Index 0).</p>
-<p>
-<strong>Related Resources:</strong>
-</p>
-<ul><li></li><li></li></ul>
-</div>
+                  <!-- archetype-N:start PdfPagesCollection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PdfPagesCollection</code> is the collection of pages you work through whenever you enumerate, count, or rearrange the pages inside an open <code>PdfDocument</code>, returned by <code>PdfDocument.Pages</code>. It exposes the document's pages for indexed access, iteration, and structural editing while emitting <code>CollectionChanged</code> notifications inherited from <code>ObservableCollection&lt;IPdfPage&gt;</code>.</p>
+<p>Typical scenarios include reading <code>Count</code> before splitting a multipage PDF into single-page files, iterating <code>pdf.Pages</code> to apply a transform to each page, removing watermark pages parsed in from a third-party source, and synchronising the in-memory collection with the underlying PDF after a batched edit. The class has no public constructor in the docfx reference; instances are always reached through the read-only <code>PdfDocument.Pages</code> property.</p>
+<p>The salient surface groups into three buckets. Read access comes from the inherited indexer <code>this[int]</code>, the inherited <code>Count</code>, and the <code>IEnumerable&lt;IPdfPage&gt;</code> contract that powers <code>foreach</code>. The indexer return type is <code>IPdfPage</code>, so a cast to <code>PdfPage</code> is required to reach the per-page mutation methods <code>Resize</code>, <code>Extend</code>, and <code>Transform</code>. Structural edits live on <code>Add(PdfPage)</code>, <code>Remove(IPdfPage)</code>, <code>Remove(PdfPage)</code>, <code>RemoveAt(int)</code>, and <code>Clear()</code>. Housekeeping uses <code>RefreshPages()</code> to re-read the underlying document after operations such as <code>PdfDocument.Merge</code>, <code>CopyPage</code>, or <code>RemovePage</code> have mutated the file from outside the collection. Methods that copy or splice pages across documents (<code>CopyPage</code>, <code>CopyPages</code>, <code>InsertPdf</code>, <code>RemovePage</code>, <code>Merge</code>) live on <code>PdfDocument</code>, not on the collection itself.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Pages;
+
+using PdfDocument pdf = PdfDocument.FromFile(&quot;report.pdf&quot;);
+
+// Cache the collection per the PdfDocument.Pages remarks, then read and iterate.
+PdfPagesCollection pages = pdf.Pages;
+int total = pages.Count;
+foreach (IPdfPage page in pages)
+{
+    System.Console.WriteLine($&quot;Page {page.PageIndex}: {page.Width}x{page.Height}&quot;);
+}
+
+// Structural edits declared directly on PdfPagesCollection.
+pages.RemoveAt(total - 1);
+pages.Add(new PdfPage(210, 297));
+
+// Re-sync after a document-level mutation, then save.
+pdf.RemovePage(0);
+pdf.Pages.RefreshPages();
+pdf.SaveAs(&quot;report-edited.pdf&quot;);</code></pre></div>
+<p>For the broader page-manipulation workflow including the document-level <code>CopyPage</code> and <code>RemovePage</code> helpers, see the <a href="/how-to/add-copy-delete-pages-pdf/">add, copy, and delete PDF pages how-to</a>. The <a href="/how-to/transform-pdf-pages/">transform PDF pages how-to</a> has a worked example of per-page transforms applied through the <code>pdf.Pages[i]</code> indexer. To iterate <code>Count</code> for a per-page export, see the <a href="/how-to/split-multipage-pdf/">split multipage PDF guide</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

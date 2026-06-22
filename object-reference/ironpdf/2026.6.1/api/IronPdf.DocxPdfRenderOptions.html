@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DocxPdfRenderOptions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       DocxPdfRenderOptions Class - IronPDF C# API Reference
+      v2 (human)     title:       DocxPdfRenderOptions: Word-to-PDF Settings in C#
+      v1 (algorithm) description: DocxPdfRenderOptions is the IronPDF class for DOCX-to-PDF render options in C#. Reference PaperSize, margins, MailMerge, custom paper size methods.
+      v2 (human)     description: Configure IronPDF Word-to-PDF output in C# with the DocxPdfRenderOptions class. PaperSize, margins, mail merge, grayscale, and custom paper sizes.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>DocxPdfRenderOptions Class | IronPDF C# DOCX Options</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DocxPdfRenderOptions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="DocxPdfRenderOptions Class | IronPDF C# DOCX Options">
+    <meta name="description" content="Reference for IronPDF DocxPdfRenderOptions in C#: PaperSize, margins, MailMergePrintAllInOnePdfDocument, custom paper size methods, and timeouts.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "DocxPdfRenderOptions Class | IronPDF C# DOCX Options",
+    "name": "DocxPdfRenderOptions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.DocxPdfRenderOptions.html",
+    "abstract": "When Word-to-PDF rendering in IronPDF needs paper size, margins, or mail-merge behavior tuned from C#, DocxPdfRenderOptions holds those settings on DocxToPdfRenderer.RenderingOptions. It covers page setup (PaperSize as PdfPaperSize, PaperOrientation as PdfPaperOrientation, ForcePaperSize, FirstPageNumber), margins (MarginTop, MarginBottom, MarginLeft, MarginRight in millimeters), output style (GrayScale, PrintHtmlBackgrounds, InputEncoding), and mail-merge behavior (MailMergePrintAllInOnePdfDocument). Custom paper sizes are set through SetCustomPaperSizeinCentimeters, SetCustomPaperSizeinMilimeters, SetCustomPaperSizeInInches, and SetCustomPaperSizeinPixelsOrPoints. Timeout bounds conversion in seconds (default 60).",
+    "description": "Reference for IronPDF DocxPdfRenderOptions in C#: PaperSize, margins, MailMergePrintAllInOnePdfDocument, custom paper size methods, and timeouts.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Rendering;\n\nvar renderer = new DocxToPdfRenderer();\n\n// Renderer-wide configuration on RenderingOptions\nrenderer.RenderingOptions.PaperSize        = PdfPaperSize.Letter;\nrenderer.RenderingOptions.PaperOrientation = PdfPaperOrientation.Portrait;\nrenderer.RenderingOptions.MarginTop        = 20;\nrenderer.RenderingOptions.MarginBottom     = 20;\nrenderer.RenderingOptions.MarginLeft       = 15;\nrenderer.RenderingOptions.MarginRight      = 15;\nrenderer.RenderingOptions.GrayScale        = false;\nrenderer.RenderingOptions.Timeout          = 120; // seconds\n\nPdfDocument pdf = renderer.RenderDocxAsPdf(\"contract.docx\");\npdf.SaveAs(\"contract.pdf\");\n\n// Per-call options for a single mail-merge run: one combined PDF, custom paper\nvar mergeOptions = new DocxPdfRenderOptions\n{\n    MailMergePrintAllInOnePdfDocument = true,\n    PaperOrientation                  = PdfPaperOrientation.Landscape\n};\nmergeOptions.SetCustomPaperSizeInInches(8.5, 14); // Legal-equivalent dimensions\n\nIEnumerable<PdfDocument> invitations = renderer.RenderDocxMailMergeAsPdf<RecipientsDataModel>(recipients, \"Party-invitation.dotx\", mergeOptions);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is DocxPdfRenderOptions defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DocxPdfRenderOptions is in the IronPdf namespace, shipped in IronPdf.dll. It derives from System.Object. It is the configuration object held on DocxToPdfRenderer.RenderingOptions and is also accepted as an optional last argument to every render overload for per-call overrides."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between DocxPdfRenderOptions and DocxToPdfRenderer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DocxToPdfRenderer is the renderer that performs Word-to-PDF conversion and returns a PdfDocument from RenderDocxAsPdf or RenderDocxMailMergeAsPdf. DocxPdfRenderOptions is its per-render configuration: paper size, orientation, margins, mail-merge mode, grayscale, timeout, and input encoding. The options object is held on the renderer's RenderingOptions property and is also accepted as an optional last argument to every render overload for per-call overrides."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Timeout property on DocxPdfRenderOptions in milliseconds or seconds?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Timeout on DocxPdfRenderOptions is in seconds, with a default of 60. This differs from ChromePdfRenderOptions.Timeout on the HTML-to-PDF renderer, which is in milliseconds. Increase Timeout for complex .docx files with many embedded images or extensive formatting; a value of 300 allows five minutes for very large documents."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set a custom paper size for DOCX-to-PDF conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For standard sizes, assign a PdfPaperSize value to RenderingOptions.PaperSize such as PdfPaperSize.A4 or PdfPaperSize.Letter. For non-standard dimensions, call one of four methods on RenderingOptions: SetCustomPaperSizeinCentimeters, SetCustomPaperSizeinMilimeters, SetCustomPaperSizeInInches, or SetCustomPaperSizeinPixelsOrPoints. The pixels-or-points overload accepts an optional DPI parameter that defaults to 96. The custom size persists across subsequent renders until reassigned."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,33 +221,41 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class DocxPdfRenderOptions : Object</code></pre>
   </div>
-  <h5 id="IronPdf_DocxPdfRenderOptions_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Common Configurations:</strong>
-</p>
-<pre><code>// Legal documents with specific margins:
-var legalOptions = new DocxPdfRenderOptions {
- PaperSize = PdfPaperSize.Legal,
- MarginTop = 25.4,    // 1 inch
- MarginBottom = 25.4,
- MarginLeft = 25.4,
- MarginRight = 25.4,
- DPI = 300  // High quality for archival
+                    <!-- archetype-N:start DocxPdfRenderOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>DocxPdfRenderOptions</code> configures Word-to-PDF rendering in IronPDF as the type held on <code>DocxToPdfRenderer.RenderingOptions</code>. The surface covers paper size and orientation, page margins, mail-merge output mode, custom paper-size methods in four unit systems, input encoding, grayscale output, and a conversion timeout.</p>
+<p>Reach for it when an application needs Letter or Legal paper instead of the default A4, narrower margins than the 25 mm default, landscape orientation for wide tables, grayscale output for printing, or one-PDF-per-recipient versus combined-PDF behavior on a mail-merge run. The class is also the place where a longer <code>Timeout</code> is set for complex <code>.docx</code> files with many embedded images.</p>
+<p>A renderer-wide configuration is typically set on <code>DocxToPdfRenderer.RenderingOptions</code> once and reused across calls. Page setup uses <code>PaperSize</code> (a <code>PdfPaperSize</code> value), <code>PaperOrientation</code> (a <code>PdfPaperOrientation</code> value), <code>ForcePaperSize</code>, and <code>FirstPageNumber</code>. For non-standard dimensions, four methods accept custom sizes in different units: <code>SetCustomPaperSizeinCentimeters</code>, <code>SetCustomPaperSizeinMilimeters</code>, <code>SetCustomPaperSizeInInches</code>, and <code>SetCustomPaperSizeinPixelsOrPoints</code>. Margins are set as millimeter doubles on <code>MarginTop</code>, <code>MarginBottom</code>, <code>MarginLeft</code>, and <code>MarginRight</code>. Output style is controlled by <code>GrayScale</code>, <code>PrintHtmlBackgrounds</code>, and <code>InputEncoding</code>. <code>MailMergePrintAllInOnePdfDocument</code> switches a mail-merge run between one combined <code>PdfDocument</code> and a per-recipient sequence. <code>Timeout</code> bounds the conversion in **seconds** (default 60). Each <code>RenderDocxAsPdf</code> and <code>RenderDocxMailMergeAsPdf</code> overload also accepts a standalone <code>DocxPdfRenderOptions</code> argument that overrides the renderer's options for that single call. The mail-merge configuration is shown step by step in the <a href="https://ironpdf.com/how-to/docx-to-pdf/">DOCX to PDF how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Rendering;
+
+var renderer = new DocxToPdfRenderer();
+
+// Renderer-wide configuration on RenderingOptions
+renderer.RenderingOptions.PaperSize        = PdfPaperSize.Letter;
+renderer.RenderingOptions.PaperOrientation = PdfPaperOrientation.Portrait;
+renderer.RenderingOptions.MarginTop        = 20;
+renderer.RenderingOptions.MarginBottom     = 20;
+renderer.RenderingOptions.MarginLeft       = 15;
+renderer.RenderingOptions.MarginRight      = 15;
+renderer.RenderingOptions.GrayScale        = false;
+renderer.RenderingOptions.Timeout          = 120; // seconds
+
+PdfDocument pdf = renderer.RenderDocxAsPdf(&quot;contract.docx&quot;);
+pdf.SaveAs(&quot;contract.pdf&quot;);
+
+// Per-call options for a single mail-merge run: one combined PDF, custom paper
+var mergeOptions = new DocxPdfRenderOptions
+{
+    MailMergePrintAllInOnePdfDocument = true,
+    PaperOrientation                  = PdfPaperOrientation.Landscape
 };
-<p>// Presentation handouts:
-var handoutOptions = new DocxPdfRenderOptions {
-PaperSize = PdfPaperSize.A4,
-PaperOrientation = PdfPaperOrientation.Landscape,
-MarginTop = 15,
-MarginBottom = 15,
-GrayScale = true  // Save toner for printing
-};</p>
-<p>// eBook format:
-var ebookOptions = new DocxPdfRenderOptions();
-ebookOptions.SetCustomPaperSizeinMilimeters(120, 190);  // Kindle size
-ebookOptions.MarginTop = 5;
-ebookOptions.MarginBottom = 5;</code></pre><p>
-</div>
+mergeOptions.SetCustomPaperSizeInInches(8.5, 14); // Legal-equivalent dimensions
+
+IEnumerable&lt;PdfDocument&gt; invitations = renderer.RenderDocxMailMergeAsPdf&lt;RecipientsDataModel&gt;(recipients, &quot;Party-invitation.dotx&quot;, mergeOptions);</code></pre></div>
+<p>For non-standard page dimensions, the <a href="https://ironpdf.com/how-to/custom-paper-size/">custom paper size guide</a> explains the four <code>SetCustomPaperSize</code> overloads in depth. For tighter or wider page edges, the <a href="https://ironpdf.com/how-to/custom-margins/">custom margins guide</a> covers the four margin properties.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

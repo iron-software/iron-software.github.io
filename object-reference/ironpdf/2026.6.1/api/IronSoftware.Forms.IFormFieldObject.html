@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IFormFieldObject
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IFormFieldObject Interface - IronPDF C# API Reference
+      v2 (human)     title:       IFormFieldObject: PDF Form Field Data in IronPDF
+      v1 (algorithm) description: IFormFieldObject is the IronPDF interface that defines the data members of PDF form fields: Name, Value, FormType, MaxLength, ReadOnly, and more.
+      v2 (human)     description: Read and write PDF form field data in C# through the IronPDF IFormFieldObject interface. Covers Value, Name, FullName, Choices, and ReadOnly.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IFormFieldObject Interface | IronPDF C# Forms</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IFormFieldObject
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IFormFieldObject Interface | IronPDF C# Forms">
+    <meta name="description" content="Reference for the IronPDF IFormFieldObject interface: data-member contract for PDF form fields in C#, with implementors and code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IFormFieldObject Interface | IronPDF C# Forms",
+    "name": "IFormFieldObject interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormFieldObject.html",
+    "abstract": "IFormFieldObject identifies a fillable PDF form field and carries its current value for reading and writing from C# in IronPDF. It declares Name, FullName, Value, FormType, MaxLength, ReadOnly, Choices, Annotations, and related properties. It is composed into IFormField alongside IFormFieldAnnotationObject and IPdfDocumentObject, so concrete field classes including TextFormField, CheckboxFormField, ComboboxFormField, RadioFormField, SignatureFormField, and ImageFormField inherit its surface and expose it through FindFormField on FormFieldCollection.",
+    "description": "Reference for the IronPDF IFormFieldObject interface: data-member contract for PDF form fields in C#, with implementors and code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware.Forms;\n\nPdfDocument pdf = PdfDocument.FromFile(\"application.pdf\");\n\n// FindFormField returns IFormField, which inherits the IFormFieldObject surface.\nIFormField field = pdf.Form.FindFormField(\"FullName\");\n\nif (field != null && !field.ReadOnly)\n{\n    // Identity, state, and type discovery, all from IFormFieldObject.\n    string id = field.FullName;\n    string kind = field.FormType;\n\n    if (field.MaxLength == 0 || \"Jane Doe\".Length <= field.MaxLength)\n    {\n        field.Value = \"Jane Doe\";\n    }\n}\n\npdf.SaveAs(\"application-filled.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IFormFieldObject live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IFormFieldObject is in the IronSoftware.Forms namespace, shipped in IronPdf.dll. It is one of three contracts composed into IFormField, alongside IFormFieldAnnotationObject (geometry) and IPdfDocumentObject (document identity). Concrete classes such as TextFormField and SignatureFormField implement IFormField and so inherit the IFormFieldObject data surface a developer reads and writes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IFormFieldObject in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every concrete form field class implements IFormFieldObject by inheritance through IFormField. Those classes are TextFormField, CheckboxFormField, ComboboxFormField, RadioFormField, SignatureFormField, and ImageFormField. They are returned as IFormField from the form field collection, so the IFormFieldObject data members are accessed through that reference."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IFormFieldObject, IFormFieldAnnotationObject, and IFormField?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IFormFieldObject defines the data members of a form field: Name, FullName, Value, FormType, MaxLength, ReadOnly, Choices, and related properties. IFormFieldAnnotationObject defines on-page geometry such as X, Y, Width, and Height. IFormField composes both contracts together with IPdfDocumentObject and adds the SetDefaultFont method. Concrete form field classes implement IFormField, not IFormFieldObject directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read or write IFormFieldObject properties on a loaded PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call PdfDocument.FromFile to load the document, then call FindFormField on the Form collection with the field name. The returned IFormField exposes every IFormFieldObject property: read Name or FullName to identify the field, check ReadOnly before assigning Value, and consult Choices to enumerate valid options on combo-box and radio fields."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +222,35 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IFormFieldObject : IPdfDocumentObject, IPdfDocumentObject, IDocumentObject</code></pre>
   </div>
+                <!-- archetype-N:start IFormFieldObject treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>Reading a fillable PDF form field's name or writing its value in IronPDF, independent of where the field sits on the page, runs through <code>IFormFieldObject</code>. It declares the property surface that identifies a field and carries its current value. The contract is one of three composed into <a href="https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormField.html"><code>IFormField</code></a>; the other two, <code>IFormFieldAnnotationObject</code> and <code>IPdfDocumentObject</code>, cover geometry and document identity respectively.</p>
+<p>This interface matters because every concrete form field that IronPDF exposes inherits its data members from <code>IFormFieldObject</code>. <code>TextFormField</code>, <code>CheckboxFormField</code>, <code>ComboboxFormField</code>, <code>RadioFormField</code>, <code>SignatureFormField</code>, and <code>ImageFormField</code> all implement <code>IFormField</code>, which means they pick up the <code>IFormFieldObject</code> surface by inheritance. Code that reads field names, writes values, or audits form state can rely on these properties without casting to a concrete type.</p>
+<p>The headline data members fall into three groups. For identity, read <code>Name</code> (the local field name) or <code>FullName</code> (the dotted, fully-qualified name); both are settable but <code>FullName</code> is usually the form-design identifier. For state, assign <code>Value</code> to fill a text, choice, or checkbox field, check <code>ReadOnly</code> first, and respect <code>MaxLength</code> for text fields. For type discovery, inspect <code>FormType</code> (string label) or <code>Type</code> (the <code>PdfFormFieldType</code> enum), and use <code>Choices</code> to enumerate valid options on combo-box and radio fields. Reading a name and writing a value on a loaded document is demonstrated in the <a href="https://ironpdf.com/how-to/edit-forms/">edit PDF forms how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware.Forms;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;application.pdf&quot;);
+
+// FindFormField returns IFormField, which inherits the IFormFieldObject surface.
+IFormField field = pdf.Form.FindFormField(&quot;FullName&quot;);
+
+if (field != null &amp;&amp; !field.ReadOnly)
+{
+    // Identity, state, and type discovery, all from IFormFieldObject.
+    string id = field.FullName;
+    string kind = field.FormType;
+
+    if (field.MaxLength == 0 || &quot;Jane Doe&quot;.Length &lt;= field.MaxLength)
+    {
+        field.Value = &quot;Jane Doe&quot;;
+    }
+}
+
+pdf.SaveAs(&quot;application-filled.pdf&quot;);</code></pre></div>
+<p>Splitting these data members onto a distinct contract lets IronPDF expose the same field-level surface across multiple consumer types without forcing every consumer to handle annotation geometry. For building fillable PDFs from scratch with these same data members, see the <a href="https://ironpdf.com/how-to/create-forms/">create PDF forms how-to</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

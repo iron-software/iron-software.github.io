@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ExportManager
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ExportManager Class - IronPDF C# API Reference
+      v2 (human)     title:       ExportManager: Export PDF Tables and Text in C#
+      v1 (algorithm) description: ExportManager is the IronPDF static class for exporting extracted PDF tables and text to CSV, HTML, JSON, TXT, and XML files in C#.
+      v2 (human)     description: Export PDF tables and text to CSV, HTML, JSON, TXT, or XML with the IronPDF ExportManager static class in C#. Pair with PdfExtractor for full pipelines.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ExportManager Class | IronPDF C# Extractions API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ExportManager
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ExportManager Class | IronPDF C# Extractions API">
+    <meta name="description" content="Reference for the IronPDF ExportManager static class in C#: ExportResult, ExportTable, ExportTables, and ExportConfiguration for tabular and text export.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,77 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ExportManager Class | IronPDF C# Extractions API",
+    "name": "ExportManager class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.ExportManager.html",
+    "abstract": "Extracted PDF tables and text reach disk in IronPDF through ExportManager, the file-writing entry point of the extraction pipeline. It exposes a result-level family (ExportResult, taking a PdfExtractionResult, an output directory, and an ExportConfiguration) and a table-level family (ExportTable and ExportTables, two overloads each, taking a TableObject or List of TableObject plus an ExportFormat enum or an ExportOptionsBase subclass: CsvExportOptions, HtmlExportOptions, JsonExportOptions, TxtExportOptions, or XmlExportOptions). All methods are static and return void, writing to a supplied path.",
+    "description": "Reference for the IronPDF ExportManager static class in C#: ExportResult, ExportTable, ExportTables, and ExportConfiguration for tabular and text export.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf.Extractions;\n\n// Result-level: extract everything, then export tables + text to a directory.\nPdfExtractionResult result = PdfExtractor.Extract(\"statements.pdf\");\n\nExportManager.ExportResult(\n    result,\n    @\"C:\\out\\statements\",\n    new ExportConfiguration\n    {\n        ExportTables = true,\n        ExportText = true,\n        SeparateFilePerTable = true,\n        FileNamePattern = \"{document}_{page}_{index}\",\n        TableOptions = new CsvExportOptions { CsvDelimiter = \",\", CsvQuoteStrings = true }\n    });"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "// Table-level: write a single table with format-specific options.\nTableObject firstTable = result.Tables[0];\n\nExportManager.ExportTable(\n    firstTable,\n    @\"C:\\out\\table.html\",\n    new HtmlExportOptions { HtmlIncludeStyles = true, HtmlResponsive = true });\n\n// Or use the format-only overload for the default JSON shape:\nExportManager.ExportTables(result.Tables, @\"C:\\out\\tables.json\", ExportFormat.Json);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ExportManager live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ExportManager is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It is a static class derived from System.Object, so its members are called as ExportManager.ExportResult, ExportManager.ExportTable, and ExportManager.ExportTables without instantiation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ExportManager and PdfExtractor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfExtractor and ExportManager are the two halves of the IronPdf.Extractions pipeline and run in sequence rather than in parallel. PdfExtractor.Extract reads a PDF from disk and returns a PdfExtractionResult exposing Tables, Text, and Metadata. ExportManager then takes that result, or one of its TableObject entries, and writes it to disk in CSV, HTML, JSON, TXT, or XML. PdfExtractor is the read step; ExportManager is the write step. Most pipelines call them back to back."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does ExportManager return the exported content as a stream or byte array?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Every Export method returns void and writes to a file path or directory supplied by the caller. ExportResult expects an output directory and creates the files inside it according to the ExportConfiguration FileNamePattern and SeparateFilePerTable flag. ExportTable and ExportTables expect a single output path. To work with the exported content in memory, read the file back from disk after the call returns."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should you pass an ExportFormat instead of an ExportOptionsBase?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the ExportFormat enum overload of ExportTable or ExportTables when the default settings for the target format are acceptable, for example a comma-delimited CSV with no quoting customization or a JSON file with the default schema. Use the ExportOptionsBase overload when the export needs tuning, for example a semicolon delimiter and quoted strings in CSV, or styled and responsive HTML tables. The format is inferred from the concrete options subclass at runtime."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -174,30 +251,40 @@ ExportManager.ExportResult(result, &quot;output&quot;, config);</code></pre><p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class ExportManager : Object</code></pre>
   </div>
-  <h5 id="IronPdf_Extractions_ExportManager_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p><strong>Important Considerations:</strong></p>
-<p>
-<p><strong>Format Selection:</strong> The export format is automatically determined by the type of ExportOptions provided (CsvExportOptions â†’ CSV, HtmlExportOptions â†’ HTML, etc.).</p>
-</p>
-<p>
-<p><strong>Default Exporter:</strong> If ExportOptionsBase is passed without a specific type, TxtExporter is used by default.</p>
-</p>
-<p>
-<p><strong>Type Safety:</strong> Using format-specific options (CsvExportOptions, HtmlExportOptions, etc.) ensures you only see relevant configuration options.</p>
-</p>
-<p>
-<p><strong>Directory Creation:</strong> ExportManager automatically creates output directories if they don't exist.</p>
-</p>
-<strong>Related Documentation:</strong>
-<p>
-<p><strong>How-To Guide:</strong>
-<a href="https://ironpdf.com/how-to/export-extracted-pdf-data/">Exporting Extracted Data</a></p>
-</p>
-<p>
-<p><strong>API Reference:</strong>
-<a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.ExportManager.html/">Full API Documentation</a></p>
-</p>
-</div>
+                    <!-- archetype-N:start ExportManager treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>ExportManager</code> writes extracted PDF content to disk, serving as the file-writing entry point of the IronPDF extraction pipeline. It exposes five static <code>void</code> methods across two functional families: a result-level family (<code>ExportResult</code>) that writes an entire <code>PdfExtractionResult</code> to a directory, and a table-level family (<code>ExportTable</code> and <code>ExportTables</code>, two overloads each) that writes a single <code>TableObject</code> or a list of tables to a target path. The supported formats are CSV, HTML, JSON, TXT, and XML.</p>
+<p><code>ExportManager</code> runs after extraction completes. A typical pipeline calls <code>PdfExtractor.Extract</code> on a PDF path to obtain a <code>PdfExtractionResult</code>, then hands that result to <code>ExportManager.ExportResult</code> with an <code>ExportConfiguration</code> describing what to write and where. The class earns its keep in data-pipeline jobs that ingest invoices, statements, and reports as PDFs and emit structured CSV or JSON for downstream loaders, in archival workflows that need an HTML preview alongside the raw PDF, and in audit exports that capture both tables and prose text into a single directory.</p>
+<p>All five operations are static, called as <code>ExportManager.ExportResult(...)</code>, <code>ExportManager.ExportTable(...)</code>, and <code>ExportManager.ExportTables(...)</code>. The <code>ExportResult</code> overload accepts an <code>ExportConfiguration</code> whose <code>ExportTables</code> and <code>ExportText</code> flags choose which content to emit, whose <code>FileNamePattern</code> controls the on-disk naming, whose <code>SeparateFilePerTable</code> decides whether to fan multiple tables into multiple files, and whose <code>TableOptions</code> carries a concrete <code>ExportOptionsBase</code> subclass (<code>CsvExportOptions</code>, <code>HtmlExportOptions</code>, <code>JsonExportOptions</code>, <code>TxtExportOptions</code>, or <code>XmlExportOptions</code>). The <code>ExportTable</code> and <code>ExportTables</code> overloads each come in two shapes: the format-only variant takes an <code>ExportFormat</code> enum value and uses defaults, while the options variant takes an <code>ExportOptionsBase</code> subclass and infers the format from its concrete type.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf.Extractions;
+
+// Result-level: extract everything, then export tables + text to a directory.
+PdfExtractionResult result = PdfExtractor.Extract(&quot;statements.pdf&quot;);
+
+ExportManager.ExportResult(
+    result,
+    @&quot;C:\out\statements&quot;,
+    new ExportConfiguration
+    {
+        ExportTables = true,
+        ExportText = true,
+        SeparateFilePerTable = true,
+        FileNamePattern = &quot;{document}_{page}_{index}&quot;,
+        TableOptions = new CsvExportOptions { CsvDelimiter = &quot;,&quot;, CsvQuoteStrings = true }
+    });</code></pre></div>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">// Table-level: write a single table with format-specific options.
+TableObject firstTable = result.Tables[0];
+
+ExportManager.ExportTable(
+    firstTable,
+    @&quot;C:\out\table.html&quot;,
+    new HtmlExportOptions { HtmlIncludeStyles = true, HtmlResponsive = true });
+
+// Or use the format-only overload for the default JSON shape:
+ExportManager.ExportTables(result.Tables, @&quot;C:\out\tables.json&quot;, ExportFormat.Json);</code></pre></div>
+<p>For the upstream extraction step that produces the <code>PdfExtractionResult</code> consumed here, the <a href="https://ironpdf.com/how-to/extract-text-and-images/">text and image extraction how-to</a> is the canonical reference. The companion <a href="https://ironpdf.com/how-to/csharp-parse-pdf/">PDF parsing tutorial</a> covers the broader read-side workflow that surrounds the extract-then-export sequence.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

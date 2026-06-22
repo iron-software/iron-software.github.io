@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfPrintMultiplePages
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfPrintMultiplePages Class - IronPDF C# API Reference
+      v2 (human)     title:       PdfPrintMultiplePages: N-up PDF Print Layout in C#
+      v1 (algorithm) description: PdfPrintMultiplePages is the IronPDF C# class that carries N-up layout for physical PDF printing. Reference for Column, Row, Orientation, Margin.
+      v2 (human)     description: Print multiple PDF pages on one physical sheet in C# with PdfPrintMultiplePages: configure 2-up, 4-up, 6-up layouts for IronPDF physical printing on Windows.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfPrintMultiplePages Class | IronPDF C# Printing</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfPrintMultiplePages
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfPrintMultiplePages Class | IronPDF C# Printing">
+    <meta name="description" content="Reference for IronPDF PdfPrintMultiplePages in C#: column-first constructor, read-only Column, Row, Orientation, and Margin; passed to PdfPrintSettings.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfPrintMultiplePages Class | IronPDF C# Printing",
+    "name": "PdfPrintMultiplePages class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.PrintDoc.PdfPrintMultiplePages.html",
+    "abstract": "PdfPrintMultiplePages is the N-up layout descriptor IronPDF uses for physical printing, tiling several source PDF pages onto one physical sheet. This immutable value object exposes a single four-argument constructor PdfPrintMultiplePages(int column, int row, PdfPaperOrientation orientation, float margin) and four read-only properties Column, Row, Orientation, and Margin. A configured instance is the sole argument to the PdfPrintSettings constructor, which is in turn passed to a PdfPrintDocument to produce 2-up, 4-up, or 6-up sheets on a Windows physical printer.",
+    "description": "Reference for IronPDF PdfPrintMultiplePages in C#: column-first constructor, read-only Column, Row, Orientation, and Margin; passed to PdfPrintSettings.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.PrintDoc;\nusing IronPdf.Rendering;\nusing System.Drawing.Printing;\n\nusing var pdf = PdfDocument.FromFile(\"report.pdf\");\n\n// 4-up: 2 columns x 2 rows, portrait, 5-unit gutter. Argument order is column first.\nvar fourUp = new PdfPrintMultiplePages(column: 2, row: 2, orientation: PdfPaperOrientation.Portrait, margin: 5f);\n\n// Wrap the layout in PdfPrintSettings (the sole ctor argument), then build the print job.\nvar printSettings = new PdfPrintSettings(fourUp);\nvar printerSettings = new PrinterSettings { PrinterName = \"HP LaserJet\" };\nvar controller = new StandardPrintController();\nvar printDoc = new PdfPrintDocument(pdf, printSettings, printerSettings, controller);\n\nprintDoc.Print();   // inherited from System.Drawing.Printing.PrintDocument"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is PdfPrintMultiplePages located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfPrintMultiplePages is in the IronPdf.PrintDoc namespace, shipped in IronPdf.dll. It is declared public class PdfPrintMultiplePages and derives from System.Object. The immutable value describes an N-up layout and is the sole argument to the PdfPrintSettings constructor, which in turn is passed to a PdfPrintDocument to print the tiled pages."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfPrintMultiplePages and PdfPrintSettings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfPrintMultiplePages is the immutable value object that describes the N-up layout itself: how many columns, how many rows, which orientation, and the inter-page margin. PdfPrintSettings is the thin wrapper that carries one PdfPrintMultiplePages instance through its read-only MultiplePages property. The reason the two classes exist separately is that PdfPrintSettings is the type accepted by the PdfPrintDocument constructor, while PdfPrintMultiplePages is the type accepted by the PdfPrintSettings constructor. Construct a PdfPrintMultiplePages, wrap it in PdfPrintSettings, then hand the settings to a PdfPrintDocument."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is PdfPrintMultiplePages related to PdfPrintDocument?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfPrintMultiplePages reaches a PdfPrintDocument transitively. The PdfPrintMultiplePages value is the sole argument to the PdfPrintSettings constructor, and that PdfPrintSettings is the second positional argument to the PdfPrintDocument constructor. PdfPrintDocument is the runtime print-job class that derives from System.Drawing.Printing.PrintDocument and actually sends the layout-arranged PDF pages to the Windows print spooler when its inherited Print method is called."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can the layout be changed after construction?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. PdfPrintMultiplePages is immutable: Column, Row, Orientation, and Margin are all declared with only a getter and are fixed at the moment the constructor returns. To change the N-up layout for a different print job, construct a new PdfPrintMultiplePages with the desired values and pass it through a new PdfPrintSettings. The constructor also validates inputs; column or row less than 1, or a negative margin, throws ArgumentOutOfRangeException."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -160,13 +231,31 @@ pdf.Print(settings);</code></pre></p><p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfPrintMultiplePages : Object</code></pre>
   </div>
-  <h5 id="IronPdf_PrintDoc_PdfPrintMultiplePages_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p> Use landscape orientation for 2-up and 6-up layouts for better readability.</p>
-<p>
-<strong>Related Resources:</strong>
-</p>
-<ul><li></li></ul>
-</div>
+                  <!-- archetype-N:start PdfPrintMultiplePages treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Describing how source PDF pages are tiled onto one physical sheet for N-up physical printing in IronPDF runs through <code>PdfPrintMultiplePages</code>: the column count, the row count, the paper <code>Orientation</code>, and the inter-page <code>Margin</code> in device units. It is an immutable value type with four read-only properties and a single constructor. The configured instance is the sole argument to the <code>PdfPrintSettings</code> constructor, and that <code>PdfPrintSettings</code> becomes the second argument to a <code>PdfPrintDocument</code>.</p>
+<p>Use <code>PdfPrintMultiplePages</code> when an application sends a PDF to a physical printer and needs 2-up, 4-up, or 6-up layout to save paper, produce handouts, or generate draft proof sheets. The class itself has no system dependencies and can be constructed on any platform, but the entire downstream consumer chain (<code>PdfPrintSettings</code>, then <code>PdfPrintDocument</code>, which derives from <code>System.Drawing.Printing.PrintDocument</code>) is Windows-only. The same constraint is documented on <code>PdfDocument.Print</code> (<code>only supported on: 'Windows'</code>).</p>
+<p>To use <code>PdfPrintMultiplePages</code>, call the four-argument constructor <code>PdfPrintMultiplePages(int column, int row, PdfPaperOrientation orientation, float margin)</code>. The argument order is column first, then row: <code>new PdfPrintMultiplePages(2, 1, PdfPaperOrientation.Landscape, 5f)</code> produces a 2-up side-by-side layout on landscape paper. Both <code>column</code> and <code>row</code> must be at least 1 and <code>margin</code> must be non-negative, otherwise the constructor throws <code>ArgumentOutOfRangeException</code>. The four properties <code>Column</code>, <code>Row</code>, <code>Orientation</code>, and <code>Margin</code> are getter-only, so reconfiguring the layout requires constructing a new <code>PdfPrintMultiplePages</code> rather than mutating an existing instance. Wrap the configured instance in a <code>PdfPrintSettings</code>, hand the settings to a <code>PdfPrintDocument</code>, and call <code>Print</code> on the print document to send the N-up sheets to the spooler. The <a href="https://ironpdf.com/how-to/print-pdf/">print to a physical printer how-to</a> covers the simpler one-line <code>PdfDocument.Print()</code> path before reaching for the N-up trio.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.PrintDoc;
+using IronPdf.Rendering;
+using System.Drawing.Printing;
+
+using var pdf = PdfDocument.FromFile(&quot;report.pdf&quot;);
+
+// 4-up: 2 columns x 2 rows, portrait, 5-unit gutter. Argument order is column first.
+var fourUp = new PdfPrintMultiplePages(column: 2, row: 2, orientation: PdfPaperOrientation.Portrait, margin: 5f);
+
+// Wrap the layout in PdfPrintSettings (the sole ctor argument), then build the print job.
+var printSettings = new PdfPrintSettings(fourUp);
+var printerSettings = new PrinterSettings { PrinterName = &quot;HP LaserJet&quot; };
+var controller = new StandardPrintController();
+var printDoc = new PdfPrintDocument(pdf, printSettings, printerSettings, controller);
+
+printDoc.Print();   // inherited from System.Drawing.Printing.PrintDocument</code></pre></div>
+<p>The <a href="https://ironpdf.com/object-reference/api/IronPdf.PrintDoc.PdfPrintDocument.html">PdfPrintDocument class reference</a> describes the runtime print-job object that consumes the configured settings. Worked code with event handlers and dialog integration sits on the <a href="https://ironpdf.com/examples/paper-printing-pdfs/">paper printing PDFs examples</a> page. For UNC printer share targeting on <code>PrinterSettings.PrinterName</code> alongside the N-up layout, see the <a href="https://ironpdf.com/troubleshooting/print-from-network-printer/">network printer troubleshooting guide</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

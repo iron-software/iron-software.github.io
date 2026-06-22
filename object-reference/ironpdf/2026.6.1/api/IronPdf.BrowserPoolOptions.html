@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BrowserPoolOptions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       BrowserPoolOptions Class - IronPDF C# Pool Config
+      v2 (human)     title:       BrowserPoolOptions: Tune the IronPDF Tab Pool in C#
+      v1 (algorithm) description: BrowserPoolOptions is the IronPDF class for the process-level Chrome tab pool in C#. Reference Enabled, MaxIdleTabs, and IdleTimeoutSeconds.
+      v2 (human)     description: Tune the IronPDF Chrome tab pool in C# with BrowserPoolOptions. Configure Enabled, MaxIdleTabs, and IdleTimeoutSeconds for warm-tab reuse across renders.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>BrowserPoolOptions | IronPDF C# Browser Pool Settings</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BrowserPoolOptions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="BrowserPoolOptions | IronPDF C# Browser Pool Settings">
+    <meta name="description" content="Reference for the IronPDF BrowserPoolOptions class in C#: Enabled, MaxIdleTabs, IdleTimeoutSeconds, and the process-level Chrome tab pool.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "BrowserPoolOptions | IronPDF C# Browser Pool Settings",
+    "name": "BrowserPoolOptions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.BrowserPoolOptions.html",
+    "abstract": "BrowserPoolOptions configures the process-level Chrome tab pool in IronPDF that reuses warm browser tabs across renders to eliminate subprocess startup latency. It is held read-only on ChromePdfRenderOptions.BrowserPool and exposes three properties (Enabled, MaxIdleTabs, IdleTimeoutSeconds) plus a ToString diagnostic. A single pool instance is shared across every ChromePdfRenderer in the application. Defaults are tuned for typical web traffic; tighten MaxIdleTabs and IdleTimeoutSeconds for memory-constrained containers, raise them for sustained high throughput.",
+    "description": "Reference for the IronPDF BrowserPoolOptions class in C#: Enabled, MaxIdleTabs, IdleTimeoutSeconds, and the process-level Chrome tab pool.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\n// Configure the process-wide tab pool through the held instance on\n// ChromePdfRenderer.RenderingOptions.BrowserPool (get-only property).\n// One ChromePdfRenderer is enough, since the pool is process-level.\nvar renderer = new ChromePdfRenderer();\n\n// Tune the shared pool for a memory-constrained container.\nrenderer.RenderingOptions.BrowserPool.Enabled            = true;\nrenderer.RenderingOptions.BrowserPool.MaxIdleTabs        = 1;\nrenderer.RenderingOptions.BrowserPool.IdleTimeoutSeconds = 15;\n\nPdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Invoice</h1>\");\npdf.SaveAs(\"invoice.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does BrowserPoolOptions live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BrowserPoolOptions is in the IronPdf namespace, shipped in IronPdf.dll. It derives from System.Object. The live instance is held read-only on ChromePdfRenderOptions.BrowserPool, so the canonical way to configure the pool is renderer.RenderingOptions.BrowserPool.Property = value rather than constructing one with new."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between BrowserPoolOptions and PersistentThreadLocalChromeClient?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BrowserPoolOptions is a process-level performance configuration that controls a shared pool of reusable Chrome tabs across every ChromePdfRenderer instance. Its properties are Enabled, MaxIdleTabs, and IdleTimeoutSeconds. PersistentThreadLocalChromeClient is a macOS thread-affinity mechanism that pins the CEF initialize call and every subsequent render call to the same operating-system thread within one engine. The pool reduces subprocess startup latency on every platform; the thread-local client solves a macOS threading constraint. They configure independently."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between BrowserPoolOptions.MaxIdleTabs and Installation.ChromeBrowserLimit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChromeBrowserLimit on the Installation static class caps the total number of concurrent Chrome browsers the engine will create under load. MaxIdleTabs on BrowserPoolOptions caps how many idle browser tabs the pool keeps alive after a render finishes, ready for the next request. ChromeBrowserLimit governs peak concurrency; MaxIdleTabs governs warm-tab retention. The defaults work together: MaxIdleTabs defaults to Environment.ProcessorCount divided by two, clamped between 1 and 4, while ChromeBrowserLimit defaults higher to allow burst concurrency."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does setting BrowserPool on one renderer affect all renderers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tab pool is process-level. The BrowserPool property on ChromePdfRenderOptions is a get-only reference to a single BrowserPoolOptions instance shared by every ChromePdfRenderer in the application. Assigning renderer.RenderingOptions.BrowserPool.Enabled or .MaxIdleTabs updates that shared instance and changes pool behavior for all subsequent renders. Creating a new BrowserPoolOptions with the new keyword produces a detached object that does not affect the live pool."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -156,16 +227,28 @@ in the application.
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class BrowserPoolOptions : Object</code></pre>
   </div>
-  <h5 id="IronPdf_BrowserPoolOptions_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Usage:</strong>
-</p>
-<pre><code>// Configure before any render calls
+                    <!-- archetype-N:start BrowserPoolOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Reuse of warm browser tabs across renders, which eliminates Chromium subprocess startup latency, is tuned through <code>BrowserPoolOptions</code> on the **process-level** Chrome tab pool. The small surface (three properties and one diagnostic method) is held read-only on <code>ChromePdfRenderOptions.BrowserPool</code>. A single pool instance is shared across every <code>ChromePdfRenderer</code> in the application, so any setting written through one renderer takes effect for all subsequent renders.</p>
+<p>Pool tuning matters most for server-side and high-throughput workloads. A web service rendering invoices on every request benefits from keeping <code>Enabled</code> at its default <code>true</code> so each request reuses a warm tab and skips the per-render subprocess startup cost. A memory-constrained container or Azure Basic tier deployment tightens <code>MaxIdleTabs</code> and shortens <code>IdleTimeoutSeconds</code> to reclaim memory between bursts. A batch pipeline lengthens the idle timeout so a long-running queue keeps tabs warm between jobs. A debug or single-shot console application disables the pool entirely to release Chromium memory at process exit.</p>
+<p>The three properties fall into clear functional roles. <code>Enabled</code> (bool, default <code>true</code>) is the master switch: setting it to <code>false</code> makes every render create and tear down a fresh browser tab. <code>MaxIdleTabs</code> (int, default <code>Environment.ProcessorCount / 2</code> clamped between 1 and 4) caps how many warm tabs the pool keeps in memory; each idle tab holds approximately 50 to 100 MB of renderer-process RAM, so this is the main memory-versus-latency dial. <code>IdleTimeoutSeconds</code> (int, default 30, minimum 5) controls how long an idle tab survives before the background cleaner destroys it; raise it for sustained traffic, lower it for sporadic load. <code>ToString()</code> returns a diagnostic summary of the current configuration. The <a href="https://ironpdf.com/how-to/async/">async and multithreading guide</a> covers how the pool interacts with parallel rendering.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+// Configure the process-wide tab pool through the held instance on
+// ChromePdfRenderer.RenderingOptions.BrowserPool (get-only property).
+// One ChromePdfRenderer is enough, since the pool is process-level.
 var renderer = new ChromePdfRenderer();
-renderer.RenderingOptions.BrowserPool.Enabled = true;
-renderer.RenderingOptions.BrowserPool.MaxIdleTabs = 2;
-renderer.RenderingOptions.BrowserPool.IdleTimeoutSeconds = 30;</code></pre>
-</div>
+
+// Tune the shared pool for a memory-constrained container.
+renderer.RenderingOptions.BrowserPool.Enabled            = true;
+renderer.RenderingOptions.BrowserPool.MaxIdleTabs        = 1;
+renderer.RenderingOptions.BrowserPool.IdleTimeoutSeconds = 15;
+
+PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Invoice&lt;/h1&gt;&quot;);
+pdf.SaveAs(&quot;invoice.pdf&quot;);</code></pre></div>
+<p>For a fuller deployment picture, reach for the <a href="https://ironpdf.com/get-started/installation-overview/">installation overview</a> when wiring up process-wide setup. The <a href="https://ironpdf.com/examples/parallel/">parallel PDF generation example</a> reports the throughput change the warm-tab pool delivers under load, and the <a href="https://ironpdf.com/examples/threading/">multi-threaded generation example</a> has runnable code for concurrent rendering.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

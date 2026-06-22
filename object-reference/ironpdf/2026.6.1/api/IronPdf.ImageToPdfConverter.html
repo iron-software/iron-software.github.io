@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ImageToPdfConverter
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ImageToPdfConverter Class - IronPDF C# API Reference
+      v2 (human)     title:       ImageToPdfConverter: Convert Images to PDF in C#
+      v1 (algorithm) description: ImageToPdfConverter is the IronPDF static class for converting PNG, JPG, BMP, GIF, TIFF, SVG and bitmap inputs to PDF in C#. Members and overload reference.
+      v2 (human)     description: Convert single or multiple images to PDF in C# with IronPDF's ImageToPdfConverter. Supports file paths, in-memory bitmaps, and ImageBehavior placement.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ImageToPdfConverter Class | IronPDF C# Image to PDF</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ImageToPdfConverter
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ImageToPdfConverter Class | IronPDF C# Image to PDF">
+    <meta name="description" content="Reference for IronPDF ImageToPdfConverter in C#: four static ImageToPdf overloads, ImageBehavior placement, ChromePdfRenderOptions, and AnyBitmap input.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ImageToPdfConverter Class | IronPDF C# Image to PDF",
+    "name": "ImageToPdfConverter class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.ImageToPdfConverter.html",
+    "abstract": "Use ImageToPdfConverter in IronPDF to build a new PDF document from one or more images in C#. It exposes four static ImageToPdf overloads that accept a file path, a sequence of file paths, an IronSoftware.Drawing.AnyBitmap, or a sequence of bitmaps, together with an ImageBehavior placement value and an optional ChromePdfRenderOptions, and returns a PdfDocument. Supported inputs include PNG, JPG, GIF, BMP, TIFF, SVG, WebP, and AVIF, with placement choices covering centred, fit-to-page, crop-to-image, and corner anchoring.",
+    "description": "Reference for IronPDF ImageToPdfConverter in C#: four static ImageToPdf overloads, ImageBehavior placement, ChromePdfRenderOptions, and AnyBitmap input.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Imaging;\n\n// Single image to single-page PDF\nPdfDocument single = ImageToPdfConverter.ImageToPdf(\n    \"scan.png\",\n    ImageBehavior.CenteredOnPage);\nsingle.SaveAs(\"scan.pdf\");\n\n// Multiple images to a multi-page PDF, one page per image\nstring[] pages = { \"page1.png\", \"page2.jpg\", \"page3.tiff\" };\nPdfDocument album = ImageToPdfConverter.ImageToPdf(\n    pages,\n    ImageBehavior.FitToPageAndMaintainAspectRatio);\nalbum.SaveAs(\"album.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ImageToPdfConverter live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ImageToPdfConverter is in the IronPdf namespace, shipped in IronPdf.dll. It is declared public static class and has no constructors, so every member is a static ImageToPdf overload called through the type name, for example ImageToPdfConverter.ImageToPdf(path, ImageBehavior.CenteredOnPage). When using the AnyBitmap overloads, wrap the bitmap in a using statement so it is disposed after conversion; AnyBitmap holds native image resources and leaks otherwise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ImageToPdfConverter and adding images to a PDF with RenderHtmlAsPdf?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ImageToPdfConverter creates a brand-new PDF where each input image becomes its own page, with placement controlled by the ImageBehavior enum. It is the right tool for scan digitisation, photo albums, and certificate exports where the image is the document. Adding images to a PDF through RenderHtmlAsPdf works the other way around: an HTML page with an img tag (or a Base64 data URI) is rendered to a PDF, so the image sits inside an HTML layout alongside text, headers, tables, and CSS. For stamping an image onto an already-rendered PdfDocument, use ImageStamper plus ApplyStamp instead."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you call ImageToPdfConverter from an ASP.NET Core async pipeline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ImageToPdf overloads are synchronous and CPU-bound. Wrap the call in Task.Run inside a controller action or background service, then continue the async pipeline against the returned PdfDocument, whose SaveAs and SaveAsAsync methods can be awaited. A single PdfDocument result is safe to write to a memory stream and return as a FileResult or to upload to blob storage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the output PDF much larger than the source images?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The dominant driver is the ImageBehavior choice combined with the source image DPI. FitToPage and FitToPageAndMaintainAspectRatio scale the image to the configured paper size, so a 300 DPI scan ends up resampled to a larger pixel grid before encoding. Using CropPage preserves the original image pixels and the page is sized to match, which is usually smallest. Reducing source DPI before conversion or passing a ChromePdfRenderOptions with a smaller PaperSize is the standard fix."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -165,6 +236,29 @@ using (var bitmap = AnyBitmap.FromFile(&quot;scan.png&quot;)) {
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class ImageToPdfConverter : Object</code></pre>
   </div>
+                  <!-- archetype-N:start ImageToPdfConverter treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>ImageToPdfConverter</code> builds a brand-new PDF document from one or more raster or vector images. Every member is a static method called through the type name, with no instantiation. Each of its four <code>ImageToPdf</code> overloads accepts a single image or a collection of images, an <code>ImageBehavior</code> placement value, and an optional <code>ChromePdfRenderOptions</code> for page setup, and returns a <code>PdfDocument</code> ready to save, edit, or stream.</p>
+<p>Image-to-PDF conversion shows up in scan digitisation, photo album generation, certificate and signage exports, multi-page TIFF flattening, and any pipeline that captures an image programmatically (chart, screenshot, generated graphic) and needs a PDF wrapper around it. <code>ImageToPdfConverter</code> covers all of these in a single call: supported inputs include PNG, JPG, GIF, BMP, TIFF (single and multi-frame), SVG, WebP, AVIF, ICO, and the related extensions listed in the per-overload <code>NotSupportedException</code> remarks. Vector SVG inputs are rasterised at output resolution, so they keep their crispness regardless of paper size.</p>
+<p>Choose the overload that matches the input. <code>ImageToPdf(string, ImageBehavior, ChromePdfRenderOptions)</code> takes a single file path and produces a one-page PDF. <code>ImageToPdf(IEnumerable&lt;string&gt;, ImageBehavior, ChromePdfRenderOptions)</code> takes a sequence of file paths and produces one page per image in input order. The two bitmap overloads take <code>IronSoftware.Drawing.AnyBitmap</code> (or an <code>IEnumerable&lt;AnyBitmap&gt;</code>) for already-loaded or programmatically-generated images, avoiding a file round-trip. The <code>ImageBehavior</code> enum is the placement dial: <code>CenteredOnPage</code> is the default visual, <code>FitToPage</code> and <code>FitToPageAndMaintainAspectRatio</code> scale to standard paper, <code>CropPage</code> sizes the page to the image exactly (useful for scans and certificates), and the four corner values anchor the image to a corner of the page. Pass a <code>ChromePdfRenderOptions</code> instance to override paper size or margins. Each overload is shown with a runnable snippet in the <a href="https://ironpdf.com/how-to/image-to-pdf/">image-to-PDF how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Imaging;
+
+// Single image to single-page PDF
+PdfDocument single = ImageToPdfConverter.ImageToPdf(
+    &quot;scan.png&quot;,
+    ImageBehavior.CenteredOnPage);
+single.SaveAs(&quot;scan.pdf&quot;);
+
+// Multiple images to a multi-page PDF, one page per image
+string[] pages = { &quot;page1.png&quot;, &quot;page2.jpg&quot;, &quot;page3.tiff&quot; };
+PdfDocument album = ImageToPdfConverter.ImageToPdf(
+    pages,
+    ImageBehavior.FitToPageAndMaintainAspectRatio);
+album.SaveAs(&quot;album.pdf&quot;);</code></pre></div>
+<p>For the working code example with full output, see the <a href="https://ironpdf.com/examples/image-to-pdf/">image-to-PDF C# example</a>. If the resulting PDF is larger than expected, the <a href="https://ironpdf.com/troubleshooting/imagetopdf-file-size/">ImageToPDF file-size troubleshooting guide</a> covers DPI, resampling, and <code>ImageBehavior</code> choices that drive output size.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

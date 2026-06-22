@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfAttachmentCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfAttachmentCollection Class - IronPDF C# API
+      v2 (human)     title:       PdfAttachmentCollection: PDF Attachments in C#
+      v1 (algorithm) description: PdfAttachmentCollection is the IronPDF C# collection on PdfDocument.Attachments. Reference AddAttachment, the indexer, enumeration, and RemoveAttachment.
+      v2 (human)     description: Add, retrieve, enumerate, and remove PDF file attachments in C# with IronPDF PdfAttachmentCollection accessed through PdfDocument.Attachments.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfAttachmentCollection | IronPDF C# Attachments</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfAttachmentCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfAttachmentCollection | IronPDF C# Attachments">
+    <meta name="description" content="Reference for IronPDF PdfAttachmentCollection in C#: AddAttachment, indexer, GetEnumerator, RemoveAttachment, and PdfDocument.Attachments access.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,77 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfAttachmentCollection | IronPDF C# Attachments",
+    "name": "PdfAttachmentCollection class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.PdfAttachmentCollection.html",
+    "abstract": "Managing the files embedded inside a PDF runs through PdfAttachmentCollection in IronPDF, the live collection on PdfDocument.Attachments that adds, reads, enumerates, and removes them. It exposes AddAttachment(string, byte[]) which returns the new PdfAttachment, an integer indexer that retrieves an attachment by zero-based position, GetEnumerator for foreach iteration, and RemoveAttachment(PdfAttachment) for deletion. The collection is sorted alphabetically by attachment name on every mutation, so indexes are stable only between calls. PdfAttachmentCollection is the general-purpose attachment surface used regardless of PDF version, distinct from the EmbedFile family used only for PDF/A-3 embedded files.",
+    "description": "Reference for IronPDF PdfAttachmentCollection in C#: AddAttachment, indexer, GetEnumerator, RemoveAttachment, and PdfDocument.Attachments access.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing System.IO;\n\n// Obtain the PdfAttachmentCollection through PdfDocument.Attachments.\nPdfDocument pdf = PdfDocument.FromFile(\"invoice.pdf\");\nPdfAttachmentCollection attachments = pdf.Attachments;\n\n// Add a new attachment; the returned PdfAttachment is the same instance the collection now holds.\nbyte[] receiptBytes = File.ReadAllBytes(\"receipt.xlsx\");\nPdfAttachment added = attachments.AddAttachment(\"receipt.xlsx\", receiptBytes);\n\n// Retrieve by zero-based indexer, then enumerate every attachment.\nPdfAttachment first = attachments[0];\nforeach (PdfAttachment attachment in attachments)\n{\n    File.WriteAllBytes(attachment.Name, attachment.Data);\n}\n\npdf.SaveAs(\"invoice-with-receipts.pdf\");"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "// Remove a specific attachment by reference; alphabetical sort means remaining indexes may shift.\nPdfAttachment target = pdf.Attachments[0];\npdf.Attachments.RemoveAttachment(target);\npdf.SaveAs(\"invoice-trimmed.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain PdfAttachmentCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfAttachmentCollection is in the IronPdf namespace, shipped in IronPdf.dll. It derives from PdfClientAccessor and implements IEnumerable<PdfAttachment> and IEnumerable. Instances are obtained from the PdfDocument.Attachments property, which is how application code reaches the files embedded inside a PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfAttachmentCollection and EmbedFileConfiguration with EmbedFilePath, EmbedFileByte, and EmbedFileStream?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfAttachmentCollection is the general-purpose attachment collection accessed through PdfDocument.Attachments on any PDF regardless of version. Adding a file calls AddAttachment with a name and a byte array and returns a PdfAttachment that exposes Name, Data, and Index. The EmbedFile family (EmbedFileConfiguration, EmbedFilePath, EmbedFileByte, EmbedFileStream) is a separate API used only when producing a PDF/A-3 archival document such as a ZUGFeRD invoice. Those types are passed to PdfDocument.SaveAsPdfA together with PdfAVersions.PdfA3b and carry PDF/A-3 specific metadata such as AFRelationship and ConformanceLevel. Use PdfAttachmentCollection for ordinary embedded files, and the EmbedFile family for PDF/A-3 conformant output. PdfAttachmentCollection is also distinct from PdfAnnotationCollection, which lives in the IronPdf.Annotations namespace and manages annotation objects such as text notes or highlights rather than file attachments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the index of an attachment change after AddAttachment or RemoveAttachment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfAttachmentCollection sorts its members alphabetically by attachment name on every mutation. After AddAttachment or RemoveAttachment the position of any other attachment in the collection may shift, so the integer index returned by the indexer or read from PdfAttachment.Index is a snapshot of the current state only. To identify a specific attachment across mutations, hold the PdfAttachment reference returned from AddAttachment or located by Name comparison. PdfAttachmentCollection itself does not expose a Count property; Count, Any, and FirstOrDefault are LINQ extension methods available because the collection implements IEnumerable of PdfAttachment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you extract every attachment to disk from an existing PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open the source PDF through PdfDocument.FromFile or another constructor, then enumerate PdfDocument.Attachments with a foreach over PdfAttachment. Write each attachment to disk by passing PdfAttachment.Name as the destination filename and PdfAttachment.Data as the byte payload to File.WriteAllBytes. Because the PdfAttachmentCollection sorts alphabetically, the enumeration order matches the order the names sort in. The Name property already carries the original extension, so no further filename manipulation is required."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -169,16 +246,37 @@ pdf.Attachments.RemoveAttachment(pdf.Attachments[0]);</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfAttachmentCollection : PdfClientAccessor, IEnumerable&lt;PdfAttachment&gt;, IEnumerable</code></pre>
   </div>
-  <h5 id="IronPdf_PdfAttachmentCollection_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-Attachments are automatically sorted alphabetically (case-sensitive) by the PDF library.
-This means attachment indexes may change after adding new files.
-</p>
-<p>
-<strong>Related Resources:</strong>
-</p>
-<ul><li></li></ul>
-</div>
+                  <!-- archetype-N:start PdfAttachmentCollection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PdfAttachmentCollection</code> adds, reads, enumerates, and removes the supporting files embedded inside a generated or loaded PDF. The collection supports four operations on the attached files inside a PDF: adding a new file, retrieving one by zero-based index, enumerating every attachment, and removing a specific one. The collection is automatically sorted alphabetically by attachment name on every mutation, so any cached integer position can shift after an add or remove call.</p>
+<p>Application code reaches the collection through <code>PdfDocument.Attachments</code> (a get-only property typed as <code>PdfAttachmentCollection</code>); there is no public constructor. Typical scenarios include attaching supporting Excel reports or receipt files to generated invoices, extracting embedded payloads from incoming PDFs, replacing an outdated supplementary file while keeping the document otherwise intact, and inventorying every attachment during batch document-processing.</p>
+<p>The headline method is <code>AddAttachment(string name, byte[] data)</code>, which embeds a file and returns the newly created <code>PdfAttachment</code> for further use, such as reading its data back or passing it to a later removal call. The integer indexer <code>this[int index]</code> retrieves one attachment by position and throws <code>ArgumentOutOfRangeException</code> on invalid input. <code>GetEnumerator()</code> powers <code>foreach</code> over <code>PdfAttachment</code> items. <code>RemoveAttachment(PdfAttachment attachment)</code> deletes an attachment by reference, obtained from either the indexer or enumeration. Add, list, and remove are demonstrated step by step in the <a href="https://ironpdf.com/how-to/add-remove-attachments/">add and remove attachments how-to</a>, and the <a href="https://ironpdf.com/examples/csharp-add-attachment-to-pdf/">add attachment to PDF example</a> provides a runnable embedding snippet.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using System.IO;
+
+// Obtain the PdfAttachmentCollection through PdfDocument.Attachments.
+PdfDocument pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+PdfAttachmentCollection attachments = pdf.Attachments;
+
+// Add a new attachment; the returned PdfAttachment is the same instance the collection now holds.
+byte[] receiptBytes = File.ReadAllBytes(&quot;receipt.xlsx&quot;);
+PdfAttachment added = attachments.AddAttachment(&quot;receipt.xlsx&quot;, receiptBytes);
+
+// Retrieve by zero-based indexer, then enumerate every attachment.
+PdfAttachment first = attachments[0];
+foreach (PdfAttachment attachment in attachments)
+{
+    File.WriteAllBytes(attachment.Name, attachment.Data);
+}
+
+pdf.SaveAs(&quot;invoice-with-receipts.pdf&quot;);</code></pre></div>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">// Remove a specific attachment by reference; alphabetical sort means remaining indexes may shift.
+PdfAttachment target = pdf.Attachments[0];
+pdf.Attachments.RemoveAttachment(target);
+pdf.SaveAs(&quot;invoice-trimmed.pdf&quot;);</code></pre></div>
+<p>For the canonical lifecycle including <code>RemoveAttachment</code> patterns and PDF/A-3 ZUGFeRD invoice attachments, see the <a href="https://ironpdf.com/how-to/add-remove-attachments/">add and remove attachments how-to</a> again, paired with the <a href="https://ironpdf.com/examples/csharp-add-attachment-to-pdf/">add attachment example</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

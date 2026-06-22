@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class HtmlStamper
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       HtmlStamper Class - IronPDF C# HTML Stamping Reference
+      v2 (human)     title:       HtmlStamper: Stamp HTML on PDFs in IronPDF C#
+      v1 (algorithm) description: HtmlStamper is the IronPDF class for HTML stamping in C#. Reference Html, HtmlBaseUrl, CssMediaType, alignment, opacity, and ApplyStamp usage.
+      v2 (human)     description: Stamp HTML watermarks, branded headers, and styled footers on PDFs in C# with the IronPDF HtmlStamper class. Configure CSS, base URL, alignment, and opacity.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>HtmlStamper Class | IronPDF C# PDF Stamping</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class HtmlStamper
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="HtmlStamper Class | IronPDF C# PDF Stamping">
+    <meta name="description" content="Reference for IronPDF HtmlStamper in C#: Html, HtmlBaseUrl, CssMediaType, HorizontalAlignment, VerticalAlignment, Opacity, Rotation, and ApplyStamp overloads.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "HtmlStamper Class | IronPDF C# PDF Stamping",
+    "name": "HtmlStamper class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Editing.HtmlStamper.html",
+    "abstract": "When an HTML-rendered overlay must be applied to a PDF through PdfDocument.ApplyStamp in IronPDF, HtmlStamper holds that overlay. It carries the HTML fragment through the inherited Html property, resolves external CSS, JavaScript, and image references through HtmlBaseUrl, selects between screen and print stylesheets through CssMediaType, and exposes placement, opacity, rotation, and layering inherited from Stamper. Used for branded headers and footers, styled watermarks, logo overlays, and any stamp that needs the full CSS authoring surface of an HTML page.",
+    "description": "Reference for IronPDF HtmlStamper in C#: Html, HtmlBaseUrl, CssMediaType, HorizontalAlignment, VerticalAlignment, Opacity, Rotation, and ApplyStamp overloads.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Editing;\n\nvar pdf = PdfDocument.FromFile(\"invoice.pdf\");\n\n// A branded header fragment, with baseUrl resolving the relative logo path.\nvar header = new HtmlStamper(\n    \"<table style='width:100%'><tr><td><img src='logo.png' width='80'/></td>\" +\n    \"<td style='text-align:right'>Invoice #2026-0517</td></tr></table>\",\n    new Uri(@\"C:\\branding\\\"))\n{\n    VerticalAlignment = VerticalAlignment.Top,\n    HorizontalAlignment = HorizontalAlignment.Center\n};\n\n// ApplyStamp also targets specific pages or runs async:\n//   pdf.ApplyStamp(header, 0);             // first page only\n//   await pdf.ApplyStampAsync(header);     // async pipeline\npdf.ApplyStamp(header).SaveAs(\"invoice-stamped.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does HtmlStamper live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HtmlStamper is in the IronPdf.Editing namespace, shipped in IronPdf.dll. It derives from Stamper, the base it shares with TextStamper, ImageStamper, and BarcodeStamper, and is applied to a PDF through the ApplyStamp method on PdfDocument."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between HtmlStamper, TextStamper, and ImageStamper?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All three are Stamper subclasses in the IronPdf.Editing namespace and are applied through the same ApplyStamp method on PdfDocument. HtmlStamper takes a full HTML fragment and renders it with CSS, JavaScript, and external resources, suiting branded headers, footers, tables, and styled watermarks. TextStamper takes a plain text string with font family, size, color, weight, and alignment, suiting simple watermarks, page numbers, and approval marks. ImageStamper takes a raster image file or stream and overlays it directly, suiting logos and signature graphics. HtmlStamper is also distinct from the legacy ApplyWatermark method on PdfDocument, which takes an HTML string plus a PagePosition enum and lacks the full property surface. New code should construct an HtmlStamper and pass it to ApplyStamp."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do my external images and CSS not render in an HtmlStamper?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set HtmlBaseUrl to a Uri that points at the directory containing the referenced files, or construct the HtmlStamper with the (string html, Uri baseUrl) overload. Without a base URL the renderer cannot resolve relative paths like logo.png or style.css, and the stamp draws with broken references. For paths relative to the executing assembly, assign HtmlBaseUrl to new Uri(System.Reflection.Assembly.GetEntryAssembly().Location). Note that anchor tags inside the stamped HTML are not preserved as clickable links by the stamping pipeline. Use the inherited Hyperlink property on the HtmlStamper instance to attach a clickthrough URL to the stamped element."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you apply several HtmlStampers to one PDF efficiently?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Build an array or list of Stamper instances, including any mix of HtmlStamper, TextStamper, ImageStamper, and BarcodeStamper objects, and pass it to ApplyMultipleStamps on the PdfDocument. The overloads accept either an IEnumerable of zero-based page indexes or a single page index to target specific pages. ApplyMultipleStamps composes all stamps in one rendering pass and is documented as faster than calling ApplyStamp in a loop. The method returns the PdfDocument for fluent chaining with SaveAs."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -233,6 +304,33 @@ pdf.ApplyStamp(logo);</code></pre><p> Supports full HTML5/CSS3/JavaScript render
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class HtmlStamper : Stamper</code></pre>
   </div>
+                    <!-- archetype-N:start HtmlStamper treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Use <code>HtmlStamper</code> when an HTML-rendered overlay needs to be applied to a PDF through <code>PdfDocument.ApplyStamp</code>. It inherits positioning, opacity, rotation, and sizing properties shared with <code>TextStamper</code>, <code>ImageStamper</code>, and <code>BarcodeStamper</code>. A configured <code>HtmlStamper</code> carries a full HTML fragment with CSS, images, and JavaScript, resolves external resources through its base URL, and is then handed to <code>ApplyStamp</code> on a <code>PdfDocument</code> for the actual write.</p>
+<p>HTML stamping covers the overlay tasks that plain text and raster images cannot express: branded headers and footers with logos and tables, multi-column running footers, styled watermarks with gradients or rotated text, dynamic content that depends on the host page CSS, and any overlay that needs the same authoring fidelity as the rest of an HTML-to-PDF pipeline. The class wraps each of these as a reusable configuration object so the same stamp can be applied to a single page, a list of pages, or every page of a document. Pipelines that stamp many documents construct the <code>HtmlStamper</code> once and reuse it across <code>ApplyStamp</code> calls.</p>
+<p>Construct an <code>HtmlStamper</code> with the <code>(string html)</code> constructor, or use <code>(string html, Uri baseUrl)</code> when the fragment references external CSS, JavaScript, or images. The inherited <code>Html</code> property holds the HTML fragment and is also settable on the parameterless constructor. <code>HtmlBaseUrl</code> resolves relative URLs in that fragment, and <code>CssMediaType</code> selects between <code>PdfCssMediaType.Screen</code> (default) and <code>PdfCssMediaType.Print</code> for which stylesheet block the renderer honours. The alignment, offset, <code>Opacity</code>, <code>Rotation</code>, and <code>IsStampBehindContent</code> properties that decide where the fragment lands and whether it sits in front of or behind the page are all defined on the <code>Stamper</code> base. Once configured, hand the instance to one of the <code>ApplyStamp</code> overloads on <code>PdfDocument</code>. The dedicated HTML-stamping section of the <a href="https://ironpdf.com/how-to/stamp-text-image/">stamp text and image how-to</a> builds this overlay from scratch.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Editing;
+
+var pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+
+// A branded header fragment, with baseUrl resolving the relative logo path.
+var header = new HtmlStamper(
+    &quot;&lt;table style='width:100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;img src='logo.png' width='80'/&gt;&lt;/td&gt;&quot; +
+    &quot;&lt;td style='text-align:right'&gt;Invoice #2026-0517&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&quot;,
+    new Uri(@&quot;C:\branding\&quot;))
+{
+    VerticalAlignment = VerticalAlignment.Top,
+    HorizontalAlignment = HorizontalAlignment.Center
+};
+
+// ApplyStamp also targets specific pages or runs async:
+//   pdf.ApplyStamp(header, 0);             // first page only
+//   await pdf.ApplyStampAsync(header);     // async pipeline
+pdf.ApplyStamp(header).SaveAs(&quot;invoice-stamped.pdf&quot;);</code></pre></div>
+<p>For lightweight text overlays that do not need CSS or layered DOM, the <a href="https://ironpdf.com/how-to/stamp-text-image/">stamp text and image how-to</a> shows when to switch from <code>HtmlStamper</code> to the simpler <code>TextStamper</code> shape. For a styled watermark worked through opacity and rotation settings, see the <a href="https://ironpdf.com/examples/pdf-watermarking/">PDF watermarking example</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class RadioFormField
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       RadioFormField Class - IronPDF C# API Reference
+      v2 (human)     title:       RadioFormField: Fill PDF Radio Buttons in C#
+      v1 (algorithm) description: RadioFormField is the IronPDF C# class for PDF radio button groups. Reference its Value, Choices, Select, Clear members with verified C# code.
+      v2 (human)     description: Fill, read, and clear PDF radio button groups in C# using the IronPDF RadioFormField class. Covers Choices, Value, Select(int), and Clear().
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>RadioFormField Class | IronPDF C# Form Fields</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class RadioFormField
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="RadioFormField Class | IronPDF C# Form Fields">
+    <meta name="description" content="Reference for IronPDF RadioFormField: the concrete IFormField implementor for PDF radio groups in C#, with Choices, Value, and Select examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "RadioFormField Class | IronPDF C# Form Fields",
+    "name": "RadioFormField class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.Forms.RadioFormField.html",
+    "abstract": "RadioFormField is the fillable form field IronPDF uses to fill, read, and clear a PDF radio-button group from C#, treating the group as a single field. The group's options are exposed through Choices and Annotations, the current selection through Value and SelectedIndex. Set Value to an option label or call Select(int) by zero-based index to fill the group, or call Clear to deselect. Instances are obtained by calling FindFormField on a PdfDocument.Form collection and casting the returned IFormField to RadioFormField.",
+    "description": "Reference for IronPDF RadioFormField: the concrete IFormField implementor for PDF radio groups in C#, with Choices, Value, and Select examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware.Forms;\n\nPdfDocument pdf = PdfDocument.FromFile(\"application.pdf\");\n\n// FindFormField returns IFormField; cast to RadioFormField to reach Choices,\n// Select, Clear, and the radio-specific Value semantics.\nif (pdf.Form.FindFormField(\"traveltype\") is RadioFormField travel)\n{\n    // Inspect the available option labels for this group\n    foreach (string choice in travel.Choices)\n    {\n        Console.WriteLine(choice);\n    }\n\n    // Select by label, the canonical idiom\n    travel.Value = \"Airplane\";\n\n    // Or select by zero-based index instead of by label\n    // travel.Select(1);\n\n    // Clear the group (no button selected)\n    // travel.Clear();\n}\n\npdf.SaveAs(\"application-filled.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does RadioFormField live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RadioFormField is in the IronSoftware.Forms namespace, shipped in IronPdf.dll. It is declared public class RadioFormField and implements ICheckableFormField, IFormField, IFormFieldObject, and IFormFieldAnnotationObject. Obtain an instance by calling FindFormField on a PdfDocument.Form collection and casting the returned IFormField to RadioFormField to fill or read the group."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is each radio button a separate form field in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. A radio button group is one RadioFormField, and each visible button in the group is an annotation inside that field. Iterate RadioFormField.Annotations to inspect per-button geometry, and use Choices to enumerate the available option labels for the group."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read or set the selected option in a radio group?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cast the IFormField returned by FindFormField to RadioFormField. Assign a label from Choices to Value to set the selection by label, or call Select(int index) to set by zero-based index. To read the current selection, read Value or SelectedIndex. To deselect the group, call Clear or assign RadioFormField.OffValue to Value."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does Select throw an exception on a radio group?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Calling Select() without an index argument throws when the group has more than one selectable option, because there is no single default to select. Pass an explicit zero-based index, for example Select(0), to pick a specific button."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -159,6 +230,40 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class RadioFormField : Object, ICheckableFormField, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject</code></pre>
   </div>
+                  <!-- archetype-N:start RadioFormField treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Filling, reading, or clearing a single radio-button group in a fillable PDF form runs through <code>RadioFormField</code>, where the group itself is the form field and each visible button is an option inside it. The constructor takes a name, an initial value, a zero-based page index, and the four coordinate doubles needed to place the group on the page.</p>
+<p>Working with radio groups in PDF forms is unusual because a group of three radio buttons is one field with three annotations, not three separate fields. <code>RadioFormField</code> reflects that structure: <code>Choices</code> lists the available option strings, <code>Annotations</code> exposes the per-button geometry, <code>Value</code> reads or writes the currently selected option by its string value, and <code>SelectedIndex</code> reads or writes by zero-based index. Set <code>Value</code> to <code>RadioFormField.OffValue</code> to clear the group, or call <code>Clear()</code> for the same effect through the <code>ICheckableFormField</code> contract.</p>
+<p>Most instances are obtained from a loaded <code>PdfDocument</code> rather than constructed. Call <code>FindFormField</code> on the form collection with the group's field name and cast the returned <code>IFormField</code> to <code>RadioFormField</code> to reach the radio-specific surface. <code>Value</code> assignment is the canonical fill idiom and matches how the edit-forms how-to demonstrates radio handling. The geometry and identity properties (<code>X</code>, <code>Y</code>, <code>Width</code>, <code>Height</code>, <code>PageIndex</code>, <code>Name</code>, <code>FullName</code>, <code>MaxLength</code>, <code>ReadOnly</code>, <code>FormFlags</code>, <code>RichText</code>) come from the inherited interfaces and behave the same as every other concrete form field type. <code>Select(int)</code> returns the value at the selected index and throws when called with no argument on a group that has more than one option.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware.Forms;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;application.pdf&quot;);
+
+// FindFormField returns IFormField; cast to RadioFormField to reach Choices,
+// Select, Clear, and the radio-specific Value semantics.
+if (pdf.Form.FindFormField(&quot;traveltype&quot;) is RadioFormField travel)
+{
+    // Inspect the available option labels for this group
+    foreach (string choice in travel.Choices)
+    {
+        Console.WriteLine(choice);
+    }
+
+    // Select by label, the canonical idiom
+    travel.Value = &quot;Airplane&quot;;
+
+    // Or select by zero-based index instead of by label
+    // travel.Select(1);
+
+    // Clear the group (no button selected)
+    // travel.Clear();
+}
+
+pdf.SaveAs(&quot;application-filled.pdf&quot;);</code></pre></div>
+<p>Selecting and clearing options across the surrounding text, checkbox, and combo fields is demonstrated in the <a href="https://ironpdf.com/how-to/edit-forms/">fill and edit PDF forms how-to</a>. Building a PDF with radio groups from scratch in C# or from HTML belongs to the <a href="https://ironpdf.com/how-to/create-forms/">create PDF forms guide</a>. The <code>IFormField</code> interface page documents the unified contract that lets the same code path read or fill every concrete field type a PDF can contain.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

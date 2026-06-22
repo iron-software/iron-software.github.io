@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PathSegment
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PathSegment Class - IronPDF C# API Reference
+      v2 (human)     title:       PathSegment: Read PDF Path Operators in C# with IronPDF
+      v1 (algorithm) description: IronSoftware.PathSegment class reference for C#. Properties Type, Coordinate, IsClose, SeparateFromPrevious for vector path operators inside PathObject.Points.
+      v2 (human)     description: Inspect individual drawing operators inside a PDF vector path in C#: move, line, curve, and close segments via IronPDF PathSegment under PathObject.Points.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PathSegment Class | IronPDF C# PDF DOM API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PathSegment
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PathSegment Class | IronPDF C# PDF DOM API">
+    <meta name="description" content="PathSegment in IronPDF is the leaf element of PathObject.Points: Type, Coordinate, IsClose, SeparateFromPrevious describe each path command in C#.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PathSegment Class | IronPDF C# PDF DOM API",
+    "name": "PathSegment class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.PathSegment.html",
+    "abstract": "`PathSegment` in IronPDF is the leaf element a caller reads when walking the individual drawing operators inside a PDF vector path. It represents a single operator populating the `IReadOnlyCollection<IPdfPathSegment>` exposed as `PathObject.Points`. The type is a `public class` in the `IronSoftware` namespace that implements `IronSoftware.Abstractions.Pdf.IPdfPathSegment` and `IronSoftware.Abstractions.IPathSegment`. The class declares four properties: `Type` of `IronSoftware.Abstractions.PathSegmentTypes` selecting the operator (move, line, curve, close), `Coordinate` of `System.Drawing.PointF` carrying one operand, and the boolean flags `IsClose` and `SeparateFromPrevious` that mark sub-path closes and sub-path restarts. Application code obtains instances by enumerating `PathObject.Points`, not by constructing them directly.",
+    "description": "PathSegment in IronPDF is the leaf element of PathObject.Points: Type, Coordinate, IsClose, SeparateFromPrevious describe each path command in C#.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware;\nusing IronSoftware.Abstractions.Pdf;\n\nPdfDocument pdf = PdfDocument.FromFile(\"invoice.pdf\");\n\nforeach (var page in pdf.Pages)\n{\n    foreach (PathObject path in page.ObjectModel.PathObjects)\n    {\n        // Walk every operator inside the path.\n        foreach (IPdfPathSegment segment in path.Points)\n        {\n            var op       = segment.Type;\n            var point    = segment.Coordinate;\n            bool closes  = segment.IsClose;\n            bool restart = segment.SeparateFromPrevious;\n\n            // Example: detect a horizontal underline as two segments\n            // at the same Y with no sub-path restart between them.\n        }\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PathSegment live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PathSegment is in the IronSoftware namespace, shipped in IronPdf.dll. It is declared public class PathSegment : Object, IPdfPathSegment, IPathSegment. Instances are obtained by enumerating PathObject.Points, where the collection is typed IReadOnlyCollection of IPdfPathSegment and PathSegment is the runtime implementation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PathSegment and PathObject?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PathObject is the container that represents one complete vector path drawn on a PDF page, with its own fill, stroke, bounding box, and transform. PathSegment is the leaf element inside that container. A single PathObject owns a Points collection of IPdfPathSegment instances, and PathSegment is the concrete class that implements that interface. PathObject answers questions about the whole shape; PathSegment answers questions about each individual move, line, curve, or close operator inside it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does PathSegment relate to PathObjectCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PathObjectCollection is the page-level collection returned by PdfPage.ObjectModel.PathObjects and holds PathObject instances, one per vector path on the page. PathSegment instances live one level deeper, inside the Points property of each PathObject. The granularity ladder is PdfPage to ObjectModel to PathObjectCollection to PathObject to Points to PathSegment. PathObjectCollection never contains PathSegment directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does a Bezier curve use multiple PathSegment instances?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each PathSegment carries exactly one Coordinate of type System.Drawing.PointF, so multi-control operators such as cubic Bezier curves are expressed as a sequence of consecutive PathSegment instances rather than as one segment with several control points. The Type property on each segment names which role that point plays in the wider command. To reconstruct the original drawing operator, read consecutive segments together and use the Type values to interpret the sequence."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -155,6 +226,37 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PathSegment : Object, IPdfPathSegment, IPathSegment</code></pre>
   </div>
+                <!-- archetype-N:start PathSegment treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Walking the individual drawing operators inside a <code>PathObject.Points</code> collection runs through <code>PathSegment</code>. Each instance stands for one operator in a vector path on a PDF page, such as a move, a straight line, the next control point of a Bezier curve, or a sub-path close. The <code>Points</code> collection on <code>PathObject</code> is typed as <code>IReadOnlyCollection&lt;IPdfPathSegment&gt;</code>, where <code>PathSegment</code> is the runtime implementation.</p>
+<p>Reach for <code>PathSegment</code> when application code needs to walk the actual geometry of a vector mark rather than treat the path as an opaque rectangle. Typical scenarios include classifying a path as a horizontal underline versus an arbitrary polyline, reconstructing the original drawing commands for round-trip serialization, computing tight (non-axis-aligned) hit regions for stamp detection, and exporting path data to formats that need per-operator information such as SVG. The bounding box, fill, and stroke summary live on <code>PathObject</code>; per-operator structure lives on <code>PathSegment</code>.</p>
+<p>The four-property surface groups into three salience buckets. **Operator** is the <code>Type</code> property, an <code>IronSoftware.Abstractions.PathSegmentTypes</code> enum value that names what command this segment represents (move, line, curve, and so on). **Operand** is the single <code>Coordinate</code> property of type <code>System.Drawing.PointF</code> that carries one point of data; multi-control commands such as cubic Bezier curves are expressed as a sequence of consecutive <code>PathSegment</code> instances rather than as one segment with several control points. **Composition flags** are the boolean <code>IsClose</code>, which marks the segment as a sub-path close (the equivalent of the <code>Z</code> operator in SVG path syntax), and <code>SeparateFromPrevious</code>, which signals that this segment begins a new sub-path rather than continuing the previous one. The class declares a single parameterless constructor; application code obtains instances by enumerating <code>PathObject.Points</code> rather than constructing them directly.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware;
+using IronSoftware.Abstractions.Pdf;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+
+foreach (var page in pdf.Pages)
+{
+    foreach (PathObject path in page.ObjectModel.PathObjects)
+    {
+        // Walk every operator inside the path.
+        foreach (IPdfPathSegment segment in path.Points)
+        {
+            var op       = segment.Type;
+            var point    = segment.Coordinate;
+            bool closes  = segment.IsClose;
+            bool restart = segment.SeparateFromPrevious;
+
+            // Example: detect a horizontal underline as two segments
+            // at the same Y with no sub-path restart between them.
+        }
+    }
+}</code></pre></div>
+<p>The <a href="/how-to/access-pdf-dom-object/">PDF DOM object how-to</a> walks the full path from <code>PdfPage.ObjectModel</code> down to <code>PathSegment</code> through <code>PathObject.Points</code>. The vector content that later reads back as <code>PathSegment</code> instances is produced on the write side, shown in the <a href="/how-to/draw-line-and-rectangle/">draw lines and rectangles how-to</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

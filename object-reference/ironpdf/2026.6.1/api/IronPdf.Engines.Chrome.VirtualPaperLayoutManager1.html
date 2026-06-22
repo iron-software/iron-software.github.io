@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class VirtualPaperLayoutManager1
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       VirtualPaperLayoutManager<T> Class - IronPDF C# Reference
+      v2 (human)     title:       VirtualPaperLayoutManager<T>: Generic PaperFit Strategy in C#
+      v1 (algorithm) description: VirtualPaperLayoutManager<T> class reference for IronPDF C#. Generic-arity-1 form of the PaperFit layout strategy with five Use rendering methods.
+      v2 (human)     description: Reference for the generic VirtualPaperLayoutManager<T> in IronPDF C#. The non-generic sibling returned by ChromePdfRenderOptions.PaperFit is the call site.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>VirtualPaperLayoutManager&lt;T&gt; | IronPDF Chrome Engine API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class VirtualPaperLayoutManager1
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="VirtualPaperLayoutManager&lt;T&gt; | IronPDF Chrome Engine API">
+    <meta name="description" content="IronPDF VirtualPaperLayoutManager&lt;T&gt; generic class reference. Same five Use rendering methods as the non-generic PaperFit strategy on Chrome render options.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "VirtualPaperLayoutManager<T> | IronPDF Chrome Engine API",
+    "name": "VirtualPaperLayoutManager1 class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Engines.Chrome.VirtualPaperLayoutManager1.html",
+    "abstract": "`VirtualPaperLayoutManager<T>` in IronPDF is the generic-arity-1 form of the Chrome layout strategy that controls how HTML fits onto PDF paper. The trailing `1` in the URL is docfx's generic arity suffix; the real declaration is `VirtualPaperLayoutManager<T>` in the `IronPdf.Engines.Chrome` namespace. The five layout methods `UseChromeDefaultRendering`, `UseResponsiveCssRendering`, `UseScaledRendering`, `UseFitToPageRendering`, and `UseContinuousFeedRendering` match the non-generic sibling exactly. Application code reaches the concrete instance through `ChromePdfRenderOptions.PaperFit` rather than this generic form.",
+    "description": "IronPDF VirtualPaperLayoutManager<T> generic class reference. Same five Use rendering methods as the non-generic PaperFit strategy on Chrome render options.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Engines.Chrome;\n\nChromePdfRenderer renderer = new ChromePdfRenderer();\n\n// Canonical idiom: reach the concrete non-generic strategy via PaperFit\n// (the generic VirtualPaperLayoutManager<T> form on this page closes to it).\nrenderer.RenderingOptions.PaperFit.UseResponsiveCssRendering(1280);\n\n// Alternatives (uncomment one; only the last call takes effect):\n// renderer.RenderingOptions.PaperFit.UseChromeDefaultRendering();\n// renderer.RenderingOptions.PaperFit.UseScaledRendering(120);\n// renderer.RenderingOptions.PaperFit.UseFitToPageRendering(1024);\n// renderer.RenderingOptions.PaperFit.UseContinuousFeedRendering(80, 5);\n\nPdfDocument pdf = renderer.RenderUrlAsPdf(\"https://example.com\");\npdf.SaveAs(\"layout-managed.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is VirtualPaperLayoutManager<T> defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "VirtualPaperLayoutManager<T> is in the IronPdf.Engines.Chrome namespace, shipped in IronPdf.dll. The trailing 1 in the URL IronPdf.Engines.Chrome.VirtualPaperLayoutManager1.html is docfx's generic arity decoration, not part of the class name; the real declaration is public class VirtualPaperLayoutManager<T>. Application code reaches the concrete non-generic VirtualPaperLayoutManager through ChromePdfRenderOptions.PaperFit rather than this generic form."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between VirtualPaperLayoutManager<T> and VirtualPaperLayoutManager?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "VirtualPaperLayoutManager<T> is the generic-arity-1 form of the class. VirtualPaperLayoutManager (no type parameter) is the non-generic concrete form returned by ChromePdfRenderOptions.PaperFit. Both pages document the same five Use rendering methods with identical signatures, because both compile down to the same surface. The `1` suffix in the URL IronPdf.Engines.Chrome.VirtualPaperLayoutManager1.html is docfx's generic arity decoration. Application code in IronPDF C# accesses the non-generic concrete instance via renderer.RenderingOptions.PaperFit and never type-parameterizes the layout strategy directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the page heading show a trailing 1 after the class name?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The `1` is the generic type parameter arity, not part of the class name. docfx 2.58 strips angle brackets in HTML page titles and replaces them with the parameter count. The real declaration is public class VirtualPaperLayoutManager<T>. The same convention appears in the data-uid identifiers on the page, such as IronPdf.Engines.Chrome.VirtualPaperLayoutManager1.UseChromeDefaultRendering, where the 1 still represents the type-parameter count."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can more than one PaperFit mode be active at the same time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Only one mode may be selected per render. Each Use method on VirtualPaperLayoutManager<T> overwrites the previous selection, the same as on the non-generic sibling. If UseResponsiveCssRendering is called and then UseContinuousFeedRendering is called on the same instance, the continuous feed mode wins. Pick one mode and configure it once before calling RenderHtmlAsPdf or RenderUrlAsPdf."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +220,31 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class VirtualPaperLayoutManager1 : Object</code></pre>
   </div>
+                  <!-- archetype-N:start VirtualPaperLayoutManager1 treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Reach for <code>VirtualPaperLayoutManager&lt;T&gt;</code> to understand how the Chrome engine fits rendered HTML onto the configured paper through the layout strategy this generic form documents. This page is the generic-arity-1 form of that strategy class: the trailing <code>1</code> in the page filename and headings is docfx's generic-parameter arity suffix, mirrored in the data-uid <code>IronPdf.Engines.Chrome.VirtualPaperLayoutManager1</code>, and the real declaration is <code>public class VirtualPaperLayoutManager&lt;T&gt;</code>. It is the generic shape behind the concrete non-generic <code>VirtualPaperLayoutManager</code> returned by <code>ChromePdfRenderOptions.PaperFit</code>, which is where application code actually selects a layout mode. Real code rarely interacts with this generic form directly.</p>
+<p>This page exists because the IronPDF assembly exposes a generic-arity-1 closure of the layout strategy that docfx renders as a separate type. The five method names and signatures match the non-generic sibling exactly, since both surfaces compile down to the same set of <code>Use*</code> calls. Production C# code accessing <code>PaperFit</code> lands on the non-generic concrete instance through <code>renderer.RenderingOptions.PaperFit</code>, so the canonical idiom is the same regardless of which page a search engine surfaces. Reach the generic form only when working against a closed type that explicitly type-parameterizes layout strategy, which is uncommon in standard IronPDF usage.</p>
+<p>The method surface is identical to the non-generic sibling: <code>UseChromeDefaultRendering()</code> for browser-style print preview, <code>UseResponsiveCssRendering(int ViewPortWidth = 1280)</code> for layouts driven by a virtual viewport, <code>UseScaledRendering(int ZoomPercentage = 100)</code> for an extra zoom factor over the Chrome default, <code>UseFitToPageRendering(int MinimumPixelWidth = 1)</code> for scaling wide content down to a single sheet width, and <code>UseContinuousFeedRendering(double width = 80, int margin = 5)</code> for single-page output sized in millimeters. Only one mode may be active per render, because each <code>Use*</code> call overwrites the previous selection. Because the recommended call site for real applications is the non-generic concrete instance held by <code>PaperFit</code>, the <a href="https://ironpdf.com/how-to/viewport-zoom/">viewport and zoom how-to</a> documents these modes against that concrete type.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Engines.Chrome;
+
+ChromePdfRenderer renderer = new ChromePdfRenderer();
+
+// Canonical idiom: reach the concrete non-generic strategy via PaperFit
+// (the generic VirtualPaperLayoutManager&lt;T&gt; form on this page closes to it).
+renderer.RenderingOptions.PaperFit.UseResponsiveCssRendering(1280);
+
+// Alternatives (uncomment one; only the last call takes effect):
+// renderer.RenderingOptions.PaperFit.UseChromeDefaultRendering();
+// renderer.RenderingOptions.PaperFit.UseScaledRendering(120);
+// renderer.RenderingOptions.PaperFit.UseFitToPageRendering(1024);
+// renderer.RenderingOptions.PaperFit.UseContinuousFeedRendering(80, 5);
+
+PdfDocument pdf = renderer.RenderUrlAsPdf(&quot;https://example.com&quot;);
+pdf.SaveAs(&quot;layout-managed.pdf&quot;);</code></pre></div>
+<p>For non-default sheet dimensions used alongside <code>PaperFit</code>, see the <a href="https://ironpdf.com/how-to/custom-paper-size/">custom paper size guide</a>. The <a href="https://ironpdf.com/how-to/html-to-pdf-responsive-css/">responsive CSS how-to</a> pairs <code>UseResponsiveCssRendering</code> with <code>CssMediaType</code> for print-versus-screen control.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

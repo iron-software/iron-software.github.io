@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Logger
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Logger Class - IronPDF C# Logging Reference
+      v2 (human)     title:       Logger: Configure IronPDF Logging in C#
+      v1 (algorithm) description: Logger is the IronPDF static class for global C# logging. Reference LoggingMode, LogFilePath, CustomLogger, and the MessageLogged event.
+      v2 (human)     description: Configure IronPDF logging in C# with the Logger static class. Covers LoggingMode, LogFilePath, CustomLogger, MessageLogged, Serilog and NLog bridges.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Logger Class | IronPDF C# Logging Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Logger
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="Logger Class | IronPDF C# Logging Reference">
+    <meta name="description" content="Reference for the IronPDF Logger static class in C#: configure LoggingMode, LogFilePath, CustomLogger, MessageLogged, and custom logging bridges.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Logger Class | IronPDF C# Logging Reference",
+    "name": "Logger class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Logging.Logger.html",
+    "abstract": "Use Logger in IronPDF to configure how the library emits diagnostic and trace output across an application. It exposes three static properties (LoggingMode taking values from the nested Logger.LoggingModes enumeration; LogFilePath for the file sink; CustomLogger for a Microsoft.Extensions.Logging.ILogger bridge) plus the MessageLogged event for live forwarding. Configuration is set once at startup before any ChromePdfRenderer or PdfDocument call.",
+    "description": "Reference for the IronPDF Logger static class in C#: configure LoggingMode, LogFilePath, CustomLogger, MessageLogged, and custom logging bridges.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Logging;\n\n// Configure at application startup, before the first render call\nLogger.LoggingMode = Logger.LoggingModes.All;\nLogger.LogFilePath = @\"C:\\logs\\ironpdf.log\";\n\n// Forward live log lines into the application's existing logger\nLogger.MessageLogged += line => Console.WriteLine($\"IronPDF: {line}\");\n\n// Bridge into a Microsoft.Extensions.Logging.ILogger when one is available\nLogger.CustomLogger = applicationLogger;\n\nvar renderer = new ChromePdfRenderer();\nPdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Hello</h1>\");\npdf.SaveAs(\"output.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Logger live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Logger is in the IronPdf.Logging namespace, shipped in IronPdf.dll. It is a static class that derives from Object, so configuration is process-global and read by the renderer and the native engine during initialization. Set Logger.LoggingMode once at startup before the first render call."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you enable logging in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set Logger.LoggingMode at application startup before the first render call. Logger.LoggingModes.File writes to disk at the path assigned to Logger.LogFilePath; Console and DebugOutputWindow write to runtime sinks; All emits to every configured target. Configuration is process-global and applies to every ChromePdfRenderer instance that follows."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you bridge IronPDF logging into Serilog, NLog, or log4net?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set Logger.LoggingMode to Logger.LoggingModes.Custom (or .All) and assign a Microsoft.Extensions.Logging.ILogger instance to Logger.CustomLogger. IronPDF then routes its log output through the assigned ILogger, which Serilog, NLog, and log4net adapters all expose. The custom logging how-to covers the configuration steps."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you forward IronPDF log lines into your application logger live?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Subscribe to the Logger.MessageLogged event, which raises Action<string> for every line the renderer emits. The handler can forward, filter, or transform messages in real time. MessageLogged is independent of LoggingMode and fires alongside any configured sink."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,9 +221,30 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class Logger : Object</code></pre>
   </div>
-  <h5 id="IronPdf_Logging_Logger_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>The properties of this class redirect to <span class="xref">IronSoftware.Logger</span></p>
-</div>
+                  <!-- archetype-N:start Logger treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Diagnostic and trace output across an entire IronPDF application is configured through <code>Logger</code>. Set the three static configuration properties (<code>LoggingMode</code>, <code>LogFilePath</code>, <code>CustomLogger</code>) and subscribe to the <code>MessageLogged</code> event for live message capture. Configuration is process-global, so an assignment applies to every <code>ChromePdfRenderer</code> and <code>PdfDocument</code> operation that follows.</p>
+<p>Logging is normally set once at process startup, before the first render call, because the renderer and the underlying native engine read the configuration during initialization. The class belongs at the top of an application's IronPDF wiring: a server-side render pipeline routes <code>Logger.MessageLogged</code> into the application's normal logging sink, a long-running service writes to <code>Logger.LogFilePath</code> for post-mortem analysis, and a unit test plugs a fake into <code>Logger.CustomLogger</code> to assert what the renderer emitted.</p>
+<p>The configuration centers on three static properties. <code>Logger.LoggingMode</code> takes a value from the nested <code>Logger.LoggingModes</code> enumeration: <code>None</code> disables logging, <code>File</code> writes to disk at <code>Logger.LogFilePath</code>, <code>Console</code> writes to standard output, <code>DebugOutputWindow</code> writes through <code>System.Diagnostics.Debug</code>, <code>Custom</code> routes through <code>Logger.CustomLogger</code>, and <code>All</code> emits to every configured target. <code>Logger.CustomLogger</code> accepts a <code>Microsoft.Extensions.Logging.ILogger</code> instance and is the bridge into Serilog, NLog, log4net, or any sink the application already uses. The <code>MessageLogged</code> event raises <code>Action&lt;string&gt;</code> for every line the renderer emits, so a handler can forward, filter, or transform messages live. <code>Logger.ClearLogFiles</code> removes the file at <code>LogFilePath</code>. For wiring IronPDF into common .NET logging frameworks, the <a href="https://ironpdf.com/how-to/custom-logging/">custom logging how-to</a> has worked Serilog and NLog bridges.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Logging;
+
+// Configure at application startup, before the first render call
+Logger.LoggingMode = Logger.LoggingModes.All;
+Logger.LogFilePath = @&quot;C:\logs\ironpdf.log&quot;;
+
+// Forward live log lines into the application's existing logger
+Logger.MessageLogged += line =&gt; Console.WriteLine($&quot;IronPDF: {line}&quot;);
+
+// Bridge into a Microsoft.Extensions.Logging.ILogger when one is available
+Logger.CustomLogger = applicationLogger;
+
+var renderer = new ChromePdfRenderer();
+PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Hello&lt;/h1&gt;&quot;);
+pdf.SaveAs(&quot;output.pdf&quot;);</code></pre></div>
+<p>For cloud environments where log capture needs extra wiring, the <a href="https://ironpdf.com/troubleshooting/aws-log-files/">AWS log files troubleshooting guide</a> and <a href="https://ironpdf.com/troubleshooting/azure-log-files/">Azure log files troubleshooting guide</a> cover capturing IronPDF logs alongside the host runtime.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

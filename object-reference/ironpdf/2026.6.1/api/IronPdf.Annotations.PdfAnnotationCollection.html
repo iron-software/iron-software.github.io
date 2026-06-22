@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfAnnotationCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfAnnotationCollection - IronPDF C# API Reference
+      v2 (human)     title:       PdfAnnotationCollection: PDF Annotations in C#
+      v1 (algorithm) description: PdfAnnotationCollection is the IronPDF write-side annotation container in C#, derived from ObservableCollection of IAnnotation. Add, Remove, Clear members.
+      v2 (human)     description: Manage PDF annotations in C# through the PdfAnnotationCollection on PdfDocument.Annotations: add, iterate, and remove sticky notes and link overlays.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfAnnotationCollection | IronPDF C# Annotations</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfAnnotationCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfAnnotationCollection | IronPDF C# Annotations">
+    <meta name="description" content="PdfAnnotationCollection in IronPDF C#: the write-side collection on PdfDocument.Annotations. Inherits Add, Clear; adds RemoveAllAnnotationsForPage.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfAnnotationCollection | IronPDF C# Annotations",
+    "name": "PdfAnnotationCollection class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Annotations.PdfAnnotationCollection.html",
+    "abstract": "PdfAnnotationCollection holds the write-side annotations on a PDF so IronPDF can attach, edit, or remove them in bulk. It is declared public class PdfAnnotationCollection : ObservableCollection of IAnnotation in the IronPdf.Annotations namespace. Instances are obtained through the read-only PdfDocument.Annotations property and mutated with the inherited Add, Remove, RemoveAt, Insert, and Clear members along with the Count and indexer accessors and the CollectionChanged event. The class itself adds RemoveAllAnnotationsForPage for page-scoped bulk removal and a protected ClearItems override that runs under the inherited public Clear method.",
+    "description": "PdfAnnotationCollection in IronPDF C#: the write-side collection on PdfDocument.Annotations. Inherits Add, Clear; adds RemoveAllAnnotationsForPage.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Annotations;\n\nPdfDocument pdf = PdfDocument.FromFile(\"contract.pdf\");\n\n// Obtain the collection through the read-only Annotations property.\nPdfAnnotationCollection annotations = pdf.Annotations;\n\n// Add: inherited from ObservableCollection<IAnnotation>.\nannotations.Add(new TextAnnotation(pageIndex: 0)\n{\n    Title = \"Legal Review\",\n    Contents = \"Verify clause 4.3.\",\n    X = 72, Y = 720, Width = 200, Height = 60\n});\n\n// Inspect the current set.\nConsole.WriteLine($\"Total annotations: {annotations.Count}\");\nforeach (IAnnotation note in annotations)\n{\n    Console.WriteLine($\"Page {note.PageIndex}: {note.Title}\");\n}\n\n// Remove all annotations on page 2 (index 1) via the class-specific method.\nannotations.RemoveAllAnnotationsForPage(1);\n\n// Clear everything via the inherited public method\n// (this routes through the protected ClearItems override).\n// annotations.Clear();\n\npdf.SaveAs(\"contract-reviewed.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is PdfAnnotationCollection located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfAnnotationCollection is in the IronPdf.Annotations namespace, shipped in IronPdf.dll. It is declared public class PdfAnnotationCollection : ObservableCollection of IAnnotation. Obtain the single instance per document through the read-only PdfDocument.Annotations property; application code does not construct it directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfAnnotationCollection and PdfDocument.GetAnnotations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfAnnotationCollection is the write-side mutable collection returned by the PdfDocument.Annotations property. It derives from ObservableCollection of IAnnotation and accepts every IAnnotation implementor including TextAnnotation and LinkAnnotation. The PdfDocument.GetAnnotations method takes a page index and returns a separate List of PdfAnnotation, which is the read-side abstract hierarchy used to enumerate annotations already on a loaded document. Use the Annotations collection to add, edit, or remove annotations. Use GetAnnotations to inspect the structural detail of existing annotations on a specific page."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you clear all annotations from a document?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call the inherited Clear method on the collection. ClearItems exists as a protected override on PdfAnnotationCollection and is not callable from application code. The public entry point is the Clear method inherited from the base Collection of T, which routes through the protected ClearItems override so each annotation is removed through the IronPDF interop layer. The Annotations property itself has no setter, so the collection instance is fixed for the document's lifetime, but its contents are fully mutable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you remove every annotation on one page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call RemoveAllAnnotationsForPage on the collection and pass the zero-based page index. The first page is index 0, the second is index 1, and so on. The method is defined on PdfAnnotationCollection itself rather than inherited from the base, and it removes every annotation whose PageIndex matches the supplied index. To clear annotations across a range of pages, loop over the page indices and call the method once per page. After all removals are queued, save the document once to persist the changes."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -172,16 +243,45 @@ pdf.Annotations.Clear();</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfAnnotationCollection : ObservableCollection&lt;IAnnotation&gt;</code></pre>
   </div>
-  <h5 id="IronPdf_Annotations_PdfAnnotationCollection_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Supported Operations:</strong>
-</p>
-<ul><li></li><li></li><li></li><li></li></ul>
-<p>
-<strong>Related Resources:</strong>
-</p>
-<ul><li></li><li></li></ul>
-</div>
+                  <!-- archetype-N:start PdfAnnotationCollection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Attaching, editing, or removing the annotations on a PDF in bulk goes through <code>PdfAnnotationCollection</code>, the write-side annotation API. Obtain it through the read-only <code>Annotations</code> property on <code>PdfDocument</code>. Because it derives from <code>ObservableCollection&lt;IAnnotation&gt;</code>, most of its everyday surface is inherited: <code>Add</code>, <code>Remove</code>, <code>RemoveAt</code>, <code>Insert</code>, <code>Clear</code>, <code>Count</code>, the indexer, and the <code>CollectionChanged</code> event all come from the base. The class itself adds one user-facing method and one protected override on top of that base.</p>
+<p>Code obtains the collection once per document through <code>pdf.Annotations</code>, then mutates it across the document lifetime. The collection is the typed entry point that accepts every concrete <code>IAnnotation</code> implementor: <code>TextAnnotation</code> for sticky-note review comments and <code>LinkAnnotation</code> for clickable overlays. Changes flow through to the underlying PDF without a separate sync call, so a save after the last mutation persists every queued addition and removal. Worked examples of each mutation appear in the <a href="https://ironpdf.com/how-to/annotations/">annotations how-to</a>.</p>
+<p>The headline members split cleanly by origin. From <code>ObservableCollection&lt;IAnnotation&gt;</code>, <code>Add(IAnnotation)</code> attaches a new annotation, <code>Remove(IAnnotation)</code> and <code>RemoveAt(int)</code> detach an existing one, the indexer and <code>Count</code> expose the current set for iteration, and <code>CollectionChanged</code> fires whenever the membership shifts. From <code>PdfAnnotationCollection</code> itself, <code>RemoveAllAnnotationsForPage(int pageIndex)</code> clears every annotation on a single page using zero-based indexing. <code>ClearItems()</code> is a <code>protected override</code>; the user-facing way to clear the entire collection is the public <code>Clear()</code> method on the base, which routes through this override internally. The disambiguation worth keeping in mind: this collection holds the write-side <code>IAnnotation</code> items consumed by the rendering pipeline, while <code>PdfDocument.GetAnnotations(int)</code> returns the parallel read-side hierarchy as <code>List&lt;PdfAnnotation&gt;</code>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Annotations;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;contract.pdf&quot;);
+
+// Obtain the collection through the read-only Annotations property.
+PdfAnnotationCollection annotations = pdf.Annotations;
+
+// Add: inherited from ObservableCollection&lt;IAnnotation&gt;.
+annotations.Add(new TextAnnotation(pageIndex: 0)
+{
+    Title = &quot;Legal Review&quot;,
+    Contents = &quot;Verify clause 4.3.&quot;,
+    X = 72, Y = 720, Width = 200, Height = 60
+});
+
+// Inspect the current set.
+Console.WriteLine($&quot;Total annotations: {annotations.Count}&quot;);
+foreach (IAnnotation note in annotations)
+{
+    Console.WriteLine($&quot;Page {note.PageIndex}: {note.Title}&quot;);
+}
+
+// Remove all annotations on page 2 (index 1) via the class-specific method.
+annotations.RemoveAllAnnotationsForPage(1);
+
+// Clear everything via the inherited public method
+// (this routes through the protected ClearItems override).
+// annotations.Clear();
+
+pdf.SaveAs(&quot;contract-reviewed.pdf&quot;);</code></pre></div>
+<p>A complete runnable project lives in the <a href="https://ironpdf.com/examples/annotations/">annotations example</a>. For the items this collection holds, consult the <a href="https://ironpdf.com/object-reference/api/IronPdf.Annotations.IAnnotation.html"><code>IAnnotation</code></a> interface reference and its two implementors.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

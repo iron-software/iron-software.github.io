@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IFormField
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IFormField Interface - IronPDF C# API Reference
+      v2 (human)     title:       IFormField: PDF Form Fields in IronPDF for .NET
+      v1 (algorithm) description: Fill, read, and audit PDF form fields uniformly in C# through IronPDF's IFormField interface. Covers inherited properties, named implementors, and code examples.
+      v2 (human)     description: Work with PDF form fields uniformly in C# through the IronPDF IFormField interface. Covers inherited properties, SetDefaultFont, and form filling.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IFormField Interface | IronPDF C# Form Fields</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IFormField
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IFormField Interface | IronPDF C# Form Fields">
+    <meta name="description" content="Reference for the IronPDF IFormField interface: the unified contract for PDF form fields in C#, with implementors, members, and code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IFormField Interface | IronPDF C# Form Fields",
+    "name": "IFormField interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormField.html",
+    "abstract": "Use IFormField in IronPDF to fill, read, or audit fields in an existing PDF form from C#. Returned by FindFormField on PdfDocument.Form, the interface gives a uniform surface across every form field type (text inputs, checkboxes, radio buttons, combo boxes, signature fields, and image fields) implemented by concrete classes such as TextFormField, SignatureFormField, and ImageFormField. Most members are inherited; the interface itself adds the SetDefaultFont method.",
+    "description": "Reference for the IronPDF IFormField interface: the unified contract for PDF form fields in C#, with implementors, members, and code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\n// Load an existing PDF that contains form fields\nPdfDocument pdf = PdfDocument.FromFile(\"application.pdf\");\n\n// FindFormField returns IFormField regardless of the underlying concrete type,\n// so the same code path works for text, checkbox, radio, combo, signature,\n// and image form fields.\nIFormField nameField = pdf.Form.FindFormField(\"FullName\");\nif (nameField != null && !nameField.ReadOnly)\n{\n    nameField.Value = \"Jane Doe\";\n}\n\npdf.SaveAs(\"application-filled.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is IFormField located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IFormField is in the IronSoftware.Forms namespace, shipped in IronPdf.dll. It extends IFormFieldObject, IFormFieldAnnotationObject, and IPdfDocumentObject. Concrete form field classes such as TextFormField and SignatureFormField implement IFormField; they are what a developer receives from PdfDocument.Form.FindFormField."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IFormField in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Concrete form field classes including TextFormField, SignatureFormField, ImageFormField, and the checkbox, radio, and combo-box field types implement IFormField. They are returned as IFormField from the form field collection and can be cast to their concrete type when type-specific behavior is needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get an IFormField from a PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Load the document with a PdfDocument constructor, then call FindFormField on the form collection with the field's name. The method returns IFormField regardless of the underlying concrete type, with fully-qualified name matching tried before partial matches."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IFormField and IFormFieldObject?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IFormFieldObject defines the data of a form field: Name, Value, FormFlags, MaxLength, and related properties. IFormField extends it with annotation geometry (X, Y, Width, Height) and adds the SetDefaultFont method. Concrete form field classes implement IFormField, not IFormFieldObject directly."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -202,6 +273,29 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IFormField : IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject</code></pre>
   </div>
+                    <!-- archetype-N:start IFormField treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p><code>IFormField</code> is what you receive when you read fields from an existing PDF form in IronPDF. Whether the field is a text input, a checkbox, a radio button, a combo box, a signature field, or an image field, the library returns it through this interface so the same code path can fill, read, or audit any field type. Cast to the concrete class (<code>TextFormField</code>, <code>SignatureFormField</code>, <code>ImageFormField</code>, and the checkbox, radio, and combo-box field types) only when type-specific behavior is needed, such as toggling a radio-button selection or inspecting choice lists on a combo-box field.</p>
+<p>The interface sits on the editing side of the workflow. After loading a PDF, the form field collection on <code>PdfDocument.Form</code> exposes every field as <code>IFormField</code>. <code>FindFormField</code> returns one <code>IFormField</code> for a given name, and iterating the collection yields <code>IFormField</code> items, which is what keeps a single code path viable whether the field holds text, a choice, or a signature. Finding fields by name and assigning their values is shown step by step in the <a href="https://ironpdf.com/how-to/edit-forms/">edit PDF forms how-to</a>.</p>
+<p>Most of the useful surface is inherited from parent contracts including <a href="https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormFieldObject.html"><code>IFormFieldObject</code></a>. Three members carry the everyday usage: read <code>Name</code> or <code>FullName</code> to identify a field, check <code>ReadOnly</code> before assigning, and set <code>Value</code> to fill it. The interface itself declares one method, <code>SetDefaultFont(string FontName, int FontSize, Color FontColor)</code>, which sets the font for the field and any associated annotations; fonts applied to specific annotations override this setting.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+// Load an existing PDF that contains form fields
+PdfDocument pdf = PdfDocument.FromFile(&quot;application.pdf&quot;);
+
+// FindFormField returns IFormField regardless of the underlying concrete type,
+// so the same code path works for text, checkbox, radio, combo, signature,
+// and image form fields.
+IFormField nameField = pdf.Form.FindFormField(&quot;FullName&quot;);
+if (nameField != null &amp;&amp; !nameField.ReadOnly)
+{
+    nameField.Value = &quot;Jane Doe&quot;;
+}
+
+pdf.SaveAs(&quot;application-filled.pdf&quot;);</code></pre></div>
+<p>For collection-wide operations on the same fields, such as enumeration, removal, and bulk font configuration through <code>SetFormFont</code> and <code>DisableFormFontFallback</code>, see <a href="https://ironpdf.com/object-reference/api/IronSoftware.FormFieldCollection.html"><code>FormFieldCollection</code></a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

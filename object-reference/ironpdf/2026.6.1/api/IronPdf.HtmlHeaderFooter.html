@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class HtmlHeaderFooter
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       HtmlHeaderFooter Class - IronPDF C# API Reference
+      v2 (human)     title:       HtmlHeaderFooter: HTML PDF Headers & Footers in C#
+      v1 (algorithm) description: Render HTML-based headers and footers in C# PDFs using IronPDF's HtmlHeaderFooter. Covers HtmlFragment, BaseUrl, MaxHeight, merge fields, and code examples.
+      v2 (human)     description: Render branded PDF headers and footers in C# with the IronPDF HtmlHeaderFooter class. Covers HtmlFragment, BaseUrl, MaxHeight, and merge fields.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>HtmlHeaderFooter Class | IronPDF C# PDF Headers</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class HtmlHeaderFooter
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="HtmlHeaderFooter Class | IronPDF C# PDF Headers">
+    <meta name="description" content="Reference for the IronPDF HtmlHeaderFooter class: HTML headers and footers in C#, with properties, merge-field placeholders, and code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "HtmlHeaderFooter Class | IronPDF C# PDF Headers",
+    "name": "HtmlHeaderFooter class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.HtmlHeaderFooter.html",
+    "abstract": "Use HtmlHeaderFooter in IronPDF to render branded headers and footers (with images, styled text, and dynamic merge fields such as {page} and {total-pages}) on every page of a generated PDF. Assign an instance to a ChromePdfRenderer's RenderingOptions.HtmlHeader or HtmlFooter property; the fragment renders as a standalone HTML document with optional access to the main document's styles, sized to a millimeter MaxHeight or fit automatically with the FragmentHeight constant.",
+    "description": "Reference for the IronPDF HtmlHeaderFooter class: HTML headers and footers in C#, with properties, merge-field placeholders, and code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\nvar renderer = new ChromePdfRenderer();\n\n// HTML header with a logo, resolved against BaseUrl\nrenderer.RenderingOptions.HtmlHeader = new HtmlHeaderFooter\n{\n    MaxHeight = 20, // millimeters\n    HtmlFragment = \"<img src='logo.png' style='height:15mm'>\",\n    BaseUrl = \"https://ironpdf.com/assets/\"\n};\n\n// HTML footer with page numbers and a divider line\nrenderer.RenderingOptions.HtmlFooter = new HtmlHeaderFooter\n{\n    MaxHeight = 15,\n    HtmlFragment = \"<div style='text-align:center'>{page} of {total-pages}</div>\",\n    DrawDividerLine = true\n};\n\n// Reserve margin space so body content does not overlap the header and footer\nrenderer.RenderingOptions.MarginTop = 25;\nrenderer.RenderingOptions.MarginBottom = 25;\n\nPdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Hello World</h1>\");\npdf.SaveAs(\"output.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does HtmlHeaderFooter live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HtmlHeaderFooter is in the IronPdf namespace, shipped in IronPdf.dll. It derives from TextHeaderFooter and is assigned to the HtmlHeader or HtmlFooter property of a ChromePdfRenderer's RenderingOptions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between HtmlHeaderFooter and TextHeaderFooter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextHeaderFooter renders plain left, center, and right text, while HtmlHeaderFooter accepts a full HTML snippet through HtmlFragment, allowing images, inline CSS, and styled layout. Both are assigned to the renderer's RenderingOptions in IronPDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does an HTML footer not stretch to the full page width?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The fragment renders as a standalone document with its own default margins. Set explicit width and margin styles inside HtmlFragment, and use MaxHeight together with the page margins so the footer occupies the intended area."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add page numbers to an HTML header or footer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Insert the {page} and {total-pages} merge fields into HtmlFragment. They resolve automatically during rendering in IronPDF."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -180,6 +251,40 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class HtmlHeaderFooter : TextHeaderFooter, ITextHeaderFooter, ICloneable</code></pre>
   </div>
+                    <!-- archetype-N:start HtmlHeaderFooter treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Use <code>HtmlHeaderFooter</code> when a PDF needs branded headers or footers with images, styled text, or page numbers. Set its <code>HtmlFragment</code> property to an HTML snippet and assign the instance to <code>RenderingOptions.HtmlHeader</code> or <code>RenderingOptions.HtmlFooter</code> on a renderer; that snippet then prints at the top or bottom of every page in the rendered PDF, with merge fields such as <code>{page}</code> and <code>{total-pages}</code> resolving automatically at render time.</p>
+<p>The class fits the rendering side of the workflow. Before calling <code>RenderHtmlAsPdf</code> or one of its sibling methods on a <code>ChromePdfRenderer</code>, assign an <code>HtmlHeaderFooter</code> to either <code>RenderingOptions.HtmlHeader</code> or <code>RenderingOptions.HtmlFooter</code>. The fragment renders as a standalone HTML document with its own styles, so header and footer formatting stays independent of the body content. Set <code>LoadStylesAndCSSFromMainHtmlDocument</code> to <code>true</code> when the header or footer needs to share the main document's <code>STYLE</code> and <code>LINK</code> tags; that option applies to HTML rendering methods only and is unavailable in Docker.</p>
+<p>Three properties carry most usage. <code>HtmlFragment</code> holds the markup and supports the merge fields <code>{page}</code>, <code>{total-pages}</code>, <code>{url}</code>, <code>{date}</code>, <code>{time}</code>, <code>{html-title}</code>, and <code>{pdf-title}</code>, which resolve during rendering. <code>BaseUrl</code> sets the root that relative image and stylesheet paths resolve against. <code>MaxHeight</code>, measured in millimeters, reserves vertical space; assigning the <code>FragmentHeight</code> constant lets the renderer size the page margin to fit the fragment automatically. The <a href="https://ironpdf.com/how-to/headers-and-footers/">C# headers and footers how-to guide</a> demonstrates these settings on a branded document, and the <a href="https://ironpdf.com/examples/html-headers-and-footers/">HTML headers and footers example</a> provides runnable code.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+var renderer = new ChromePdfRenderer();
+
+// HTML header with a logo, resolved against BaseUrl
+renderer.RenderingOptions.HtmlHeader = new HtmlHeaderFooter
+{
+    MaxHeight = 20, // millimeters
+    HtmlFragment = &quot;&lt;img src='logo.png' style='height:15mm'&gt;&quot;,
+    BaseUrl = &quot;https://ironpdf.com/assets/&quot;
+};
+
+// HTML footer with page numbers and a divider line
+renderer.RenderingOptions.HtmlFooter = new HtmlHeaderFooter
+{
+    MaxHeight = 15,
+    HtmlFragment = &quot;&lt;div style='text-align:center'&gt;{page} of {total-pages}&lt;/div&gt;&quot;,
+    DrawDividerLine = true
+};
+
+// Reserve margin space so body content does not overlap the header and footer
+renderer.RenderingOptions.MarginTop = 25;
+renderer.RenderingOptions.MarginBottom = 25;
+
+PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Hello World&lt;/h1&gt;&quot;);
+pdf.SaveAs(&quot;output.pdf&quot;);</code></pre></div>
+<p>For pagination patterns, the <a href="https://ironpdf.com/how-to/page-numbers/">add page numbers tutorial</a> shows how the <code>{page}</code> and <code>{total-pages}</code> fields behave across sections, and the <a href="https://ironpdf.com/how-to/custom-margins/">custom margins guide</a> explains how <code>MarginTop</code> and <code>MarginBottom</code> reserve space so the body does not overlap the header and footer.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

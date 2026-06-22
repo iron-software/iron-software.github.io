@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CompressionOptions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       CompressionOptions Class - IronPDF C# API Reference
+      v2 (human)     title:       CompressionOptions: Shrink PDF File Size in C#
+      v1 (algorithm) description: CompressionOptions is the IronPDF C# class for PdfDocument.Compress: CompressImages, JpegQuality, ShrinkImages, HighQualityImageSubsampling, RemoveStructureTree.
+      v2 (human)     description: Reduce PDF file size in C# with IronPDF's CompressionOptions: tune JPEG quality, shrink embedded images, and control structure-tree retention.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>CompressionOptions Class | IronPDF C# Compression</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CompressionOptions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="CompressionOptions Class | IronPDF C# Compression">
+    <meta name="description" content="IronPDF CompressionOptions in C#: configures PdfDocument.Compress with JpegQuality, ShrinkImages, image subsampling, and structure-tree removal.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "CompressionOptions Class | IronPDF C# Compression",
+    "name": "CompressionOptions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.CompressionOptions.html",
+    "abstract": "CompressionOptions tunes the settings consumed by PdfDocument.Compress to reduce PDF file size after rendering in IronPDF. It exposes CompressImages, JpegQuality (1-100), ShrinkImages, HighQualityImageSubsampling, and RemoveStructureTree. The object is instantiated with a parameterless constructor and passed to PdfDocument.Compress. For new code, AdvancedCompressionOptions with PdfDocument.CompressAndSaveAs is the current-recommended path.",
+    "description": "IronPDF CompressionOptions in C#: configures PdfDocument.Compress with JpegQuality, ShrinkImages, image subsampling, and structure-tree removal.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\nPdfDocument pdf = PdfDocument.FromFile(\"input.pdf\");\n\nvar options = new CompressionOptions\n{\n    CompressImages              = true,\n    JpegQuality                 = 85,\n    ShrinkImages                = true,\n    HighQualityImageSubsampling = true,\n    RemoveStructureTree         = false  // preserve text selection and accessibility\n};\n\npdf.Compress(options);\npdf.SaveAs(\"compressed.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is CompressionOptions located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CompressionOptions is in the IronPdf namespace, shipped in IronPdf.dll. It derives from System.Object. It is instantiated with a parameterless constructor and passed to PdfDocument.Compress to reduce the file size of an in-memory PDF before saving."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between CompressionOptions and AdvancedCompressionOptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CompressionOptions is the original options class consumed by PdfDocument.Compress and exposes five settings: CompressImages, JpegQuality, ShrinkImages, HighQualityImageSubsampling, and RemoveStructureTree. AdvancedCompressionOptions is the broader, current-recommended options class consumed by PdfDocument.CompressAndSaveAs and adds TargetImageDpi, ObjectStreams, CompressionLevel, CompressStreams, RecompressFlate, CoalesceContents, OptimizeImagesMinArea, OptimizeImagesMinWidth, OptimizeImagesMinHeight, RemoveUnreferencedResources, and DecodeGeneralizedStreams alongside the overlapping JpegQuality, HighQualityImageSubsampling, and RemoveStructureTree settings. The Compress(CompressionOptions) method is marked deprecated in favor of CompressAndSaveAs for new development."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does RemoveStructureTree break PDF accessibility?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Setting RemoveStructureTree to true strips the document structure tree that stores logical layout information such as headings, paragraphs, and reading order. This reduces file size, sometimes substantially for Chrome-engine output with extensive tables, but it degrades accessibility for screen readers and can affect text-selection quality in complex layouts. Keep RemoveStructureTree set to false for archival copies, accessibility-sensitive distribution, and any PDF that will be reflowed by assistive technology."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What JpegQuality value should you use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JpegQuality accepts an integer from 1 to 100 and defaults to 90. Use 95 for archival output that should be visually lossless, 85 for general-purpose documents where minor artifacts are acceptable, 70 for balanced web distribution, and 50 to 60 for aggressive email or upload-size targets where visible artifacts are tolerable. The setting only takes effect when CompressImages is true; otherwise embedded images keep their original encoding."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -181,16 +252,29 @@ pdf.Compress(archiveOptions);</code></pre></p><p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class CompressionOptions : Object</code></pre>
   </div>
-  <h5 id="IronPdf_CompressionOptions_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Compression Trade-offs:</strong>
-</p>
-<ul><li></li><li></li><li></li></ul>
-<p>
-<strong>Related Resources:</strong>
-</p>
-<ul><li></li><li></li></ul>
-</div>
+                    <!-- archetype-N:start CompressionOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Use <code>CompressionOptions</code> to tune how <code>PdfDocument.Compress(CompressionOptions)</code> shrinks the file size of an in-memory PDF. It exposes a parameterless constructor along with four boolean and integer toggles that control image re-encoding and structural cleanup before the document is saved.</p>
+<p>Use <code>CompressionOptions</code> when an existing IronPDF workflow already calls <code>PdfDocument.Compress</code> and the goal is to tune image quality, image resolution, JPEG chroma subsampling, or structure-tree removal in a single configured object. Typical scenarios are post-render size reduction before emailing a generated PDF, batch shrinking of report pipelines, and stripping accessibility metadata for short-lived web previews. <code>IronPdf.AdvancedCompressionOptions</code> is the broader, current-recommended options class for new code; see the disambiguation entry below.</p>
+<p>The constructor takes no arguments, and configuration is by property assignment. <code>CompressImages</code> (default <code>true</code>) enables JPEG re-encoding of embedded images. <code>JpegQuality</code> (1-100, default 90) sets the encoding quality applied when <code>CompressImages</code> is on; 85 is a balanced general-purpose value and 60 is aggressive for email-scale documents. <code>ShrinkImages</code> (default <code>true</code>) scales source bitmaps down to their displayed size in the PDF, which dominates size reduction for documents that embed large source photos. <code>HighQualityImageSubsampling</code> (default <code>true</code>) selects 4:4:4 chroma subsampling for better color fidelity; setting it <code>false</code> switches to 4:1:1 for smaller files. <code>RemoveStructureTree</code> strips the logical-layout tree, which trades accessibility and text-selection quality for further size reduction. The <a href="https://ironpdf.com/how-to/pdf-compression/">PDF compression how-to</a> places these settings next to the current-recommended API on a real document.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;input.pdf&quot;);
+
+var options = new CompressionOptions
+{
+    CompressImages              = true,
+    JpegQuality                 = 85,
+    ShrinkImages                = true,
+    HighQualityImageSubsampling = true,
+    RemoveStructureTree         = false  // preserve text selection and accessibility
+};
+
+pdf.Compress(options);
+pdf.SaveAs(&quot;compressed.pdf&quot;);</code></pre></div>
+<p>For new projects, the <a href="https://ironpdf.com/examples/pdf-compression/">PDF compression example</a> demonstrates the <code>CompressAndSaveAs</code> call that supersedes <code>Compress(CompressionOptions)</code>. The <a href="https://ironpdf.com/how-to/pdf-compression/">PDF compression how-to</a> maps the JPEG quality and structure-tree parameters this class exposes onto that newer call.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

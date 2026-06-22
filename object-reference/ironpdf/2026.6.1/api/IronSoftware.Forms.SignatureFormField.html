@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class SignatureFormField
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       SignatureFormField Class - IronPDF C# API Reference
+      v2 (human)     title:       SignatureFormField: PDF Signature Placeholders in C#
+      v1 (algorithm) description: SignatureFormField is the IronPDF C# class for PDF signature form fields. Reference its constructor, properties, FormFieldCollection.Add usage, and code examples.
+      v2 (human)     description: Add a clickable signature placeholder to a PDF in C# with the IronPDF SignatureFormField class. End-users apply their own digital signature in a PDF viewer.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>SignatureFormField Class | IronPDF C# PDF Forms</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class SignatureFormField
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="SignatureFormField Class | IronPDF C# PDF Forms">
+    <meta name="description" content="Reference for IronPDF SignatureFormField in C#: constructor, Name, PageIndex, X, Y, Width, Height, FormFlags, and how to add it through PdfDocument.Form.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "SignatureFormField Class | IronPDF C# PDF Forms",
+    "name": "SignatureFormField class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.Forms.SignatureFormField.html",
+    "abstract": "SignatureFormField is the empty signature placeholder IronPDF adds to a PDF form for an end-user to fill, distinct from the cryptographic credential PdfSignature and the visible mark PdfSignatureImage. It implements IFormField, IFormFieldObject, IFormFieldAnnotationObject, and IPdfDocumentObject; exposes a single constructor taking a name, zero-based page index, and four PDF-point coordinates; carries Name, FullName, PageIndex, X, Y, Width, Height, ReadOnly, FormFlags, FormType, and Value; and is added to a document through pdf.Form on PdfDocument, where end-users fill it in a PDF viewer.",
+    "description": "Reference for IronPDF SignatureFormField in C#: constructor, Name, PageIndex, X, Y, Width, Height, FormFlags, and how to add it through PdfDocument.Form.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware.Forms;\n\n// Render or load any PDF that should carry a signature placeholder.\nvar renderer = new ChromePdfRenderer();\nPdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Please sign below</h1>\");\n\n// Configure the placeholder. Coordinates are PDF points with the origin\n// at the bottom-left of the page. PageIndex is zero-based.\nstring name = \"ClientSignature\";\nuint pageIndex = 0;\ndouble x = 100, y = 600, width = 300, height = 100;\n\nvar signatureField = new SignatureFormField(name, pageIndex, x, y, width, height);\n\n// pdf.Form is a FormFieldCollection (ObservableCollection<IFormField>),\n// so Add accepts any concrete IFormField implementation.\npdf.Form.Add(signatureField);\n\npdf.SaveAs(\"contract-unsigned.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is SignatureFormField defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SignatureFormField is in the IronSoftware.Forms namespace, shipped in IronPdf.dll. It derives from System.Object and implements IFormField, IFormFieldObject, IFormFieldAnnotationObject, and IPdfDocumentObject. Because it satisfies IFormField, an instance is added to a document through the FormFieldCollection returned by PdfDocument.Form."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between SignatureFormField, PdfSignature, and PdfSignatureImage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The three classes serve different roles in a PDF signing workflow and live in two namespaces. SignatureFormField, in IronSoftware.Forms, is the empty signature placeholder embedded in a PDF form. It defines the on-page rectangle and field name that a PDF viewer renders as a click-to-sign prompt, and it is filled by an end-user with their own digital identity. PdfSignature, in IronPdf.Signing, is the cryptographic credential built from a PKCS#12 certificate and a password, consumed by PdfDocument.Sign to apply a server-side tamper-evident signature across the whole document. PdfSignatureImage, also in IronPdf.Signing, is the visible appearance assigned to a PdfSignature through its SignatureImage property and drawn on the page at signing time. A typical interactive flow uses SignatureFormField to mark where someone else will sign. A typical server-side flow uses PdfSignature together with an optional PdfSignatureImage to sign and lock the document in one pass."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does SetDefaultFont throw NotImplementedException on SignatureFormField?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SignatureFormField implements the IFormField contract, which requires a SetDefaultFont method, but signature fields do not carry text styled by a default font. The method is declared for interface compatibility and throws NotImplementedException with the message that signature form fields do not support setting of default font. Set the geometry through the constructor coordinates and the position properties X, Y, Width, Height, and PageIndex instead. The PDF coordinate system uses points with the origin at the bottom-left of the page, so a Letter page is 612 by 792 points and an inch is 72 points."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a SignatureFormField be signed server-side instead of by an end-user?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A SignatureFormField is the interactive placeholder pattern, intended to be filled by a human in a PDF viewer. To sign a document server-side, skip the form field and apply a PdfSignature directly through PdfDocument.Sign. The Sign overload accepts a PdfSignature built from a PFX certificate plus an optional PdfSignatureImage for the visible mark, and it writes one cryptographic signature across the entire document. The PDF signing how-to walks through the certificate-based and visual-stamp paths in full, and the HSM signing guide covers the same surface backed by a hardware security module."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -158,6 +229,34 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class SignatureFormField : Object, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject</code></pre>
   </div>
+                  <!-- archetype-N:start SignatureFormField treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>An unfilled signature placeholder on a PDF form (a clickable rectangle that prompts an end-user to apply their own digital signature when the document is opened in a PDF viewer) comes from <code>SignatureFormField</code>. A single public constructor accepts a field name, a zero-based page index, and four coordinates that fix the on-page rectangle in PDF points.</p>
+<p>Reach for <code>SignatureFormField</code> when a document must be sent out for signature rather than signed inline by the server, for example contract drafts mailed to external counterparties, internal approval forms that route through several stakeholders, or compliance attestations gathered through Adobe Acrobat. The class produces the empty signature box that the viewer renders as a &quot;Click to sign&quot; prompt. The cryptographic act of filling that box with a real digital signature happens on the end-user's device with their private key, and the resulting signed file can be verified afterwards through IronPDF's verification API.</p>
+<p>Build a <code>SignatureFormField</code> by passing its name, the target page, and the bottom-left x and y coordinates with the width and height, then add it to the document through <code>pdf.Form.Add(...)</code>. The <code>pdf.Form</code> property exposes a <code>FormFieldCollection</code> that inherits <code>Add</code> from <code>ObservableCollection&lt;IFormField&gt;</code>, so any <code>IFormField</code> implementation goes through the same path. After insertion, <code>Name</code> is the partial identifier the form uses to reference the field, <code>FullName</code> is the fully-qualified path, <code>PageIndex</code> is the zero-based page, <code>X</code>, <code>Y</code>, <code>Width</code>, and <code>Height</code> carry the geometry, and <code>ReadOnly</code> plus <code>FormFlags</code> control end-user interaction. Inspection-only members include <code>FormType</code>, <code>ObjType</code>, and the <code>PdfFormFieldType</code> enum returned by <code>Type</code>. The inherited <code>SetDefaultFont</code> method is declared because <code>IFormField</code> requires it but is not supported on signature fields and throws <code>NotImplementedException</code>. Reading and writing the field types that do carry editable content is shown in the <a href="https://ironpdf.com/how-to/edit-forms/">fill and edit forms how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware.Forms;
+
+// Render or load any PDF that should carry a signature placeholder.
+var renderer = new ChromePdfRenderer();
+PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Please sign below&lt;/h1&gt;&quot;);
+
+// Configure the placeholder. Coordinates are PDF points with the origin
+// at the bottom-left of the page. PageIndex is zero-based.
+string name = &quot;ClientSignature&quot;;
+uint pageIndex = 0;
+double x = 100, y = 600, width = 300, height = 100;
+
+var signatureField = new SignatureFormField(name, pageIndex, x, y, width, height);
+
+// pdf.Form is a FormFieldCollection (ObservableCollection&lt;IFormField&gt;),
+// so Add accepts any concrete IFormField implementation.
+pdf.Form.Add(signatureField);
+
+pdf.SaveAs(&quot;contract-unsigned.pdf&quot;);</code></pre></div>
+<p>For the broader signing workflow, including timestamping and permissions, see the <a href="https://ironpdf.com/how-to/signing/">PDF signing how-to</a>. The <a href="https://ironpdf.com/how-to/create-forms/">create PDF forms guide</a> covers the full set of form field types alongside <code>SignatureFormField</code>. To verify a signature that an end-user has applied to a returned document, the <a href="https://ironpdf.com/how-to/verify-pdf-signatures/">verify PDF signatures guide</a> shows the reader-side API.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

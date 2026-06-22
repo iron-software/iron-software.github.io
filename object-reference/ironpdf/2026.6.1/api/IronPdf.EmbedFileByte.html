@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class EmbedFileByte
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       EmbedFileByte Class - IronPDF C# API Reference
+      v2 (human)     title:       EmbedFileByte: Embed byte[] in PDF/A-3 in C#
+      v1 (algorithm) description: EmbedFileByte is the IronPDF C# class that wraps a byte[] plus EmbedFileConfiguration for PDF/A-3 embedded files via PdfDocument.SaveAsPdfA.
+      v2 (human)     description: Embed an in-memory byte[] payload (XML, PDF, or PNG) inside a PDF/A-3 document in C# with IronPDF EmbedFileByte. Use for ZUGFeRD and Factur-X invoices.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>EmbedFileByte | IronPDF C# PDF/A-3 byte[] Embed</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class EmbedFileByte
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="EmbedFileByte | IronPDF C# PDF/A-3 byte[] Embed">
+    <meta name="description" content="Reference for IronPDF EmbedFileByte in C#: constructor, FileBytes, EmbedFileConfiguration, PDF/A-3b embedded-file workflows, and ZUGFeRD pipelines.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "EmbedFileByte | IronPDF C# PDF/A-3 byte[] Embed",
+    "name": "EmbedFileByte class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.EmbedFileByte.html",
+    "abstract": "EmbedFileByte is the wrapper you build when the payload for a PDF/A-3 attachment already lives in memory as a byte[] in C#, pairing those bytes with an EmbedFileConfiguration. It exposes FileBytes and EmbedFileConfiguration properties, value-based equality through Equals and GetHashCode, and a Deconstruct method for tuple-style unpacking. Each instance is collected into an IEnumerable<EmbedFileByte> and passed to PdfDocument.SaveAsPdfA or ConvertToPdfA with PdfAVersions.PdfA3b. EmbedFileByte is the byte-array variant of the EmbedFilePath and EmbedFileStream triad and is the canonical choice for ZUGFeRD and Factur-X service pipelines.",
+    "description": "Reference for IronPDF EmbedFileByte in C#: constructor, FileBytes, EmbedFileConfiguration, PDF/A-3b embedded-file workflows, and ZUGFeRD pipelines.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing System.Collections.Generic;\n\n// Embed a generated ZUGFeRD XML invoice that already lives in memory as a byte[].\nvar xmlConfig = new EmbedFileConfiguration(EmbedFileType.xml)\n{\n    EmbedFileName  = \"invoice.xml\",\n    AFDesc         = \"ZUGFeRD structured invoice data\",\n    AFRelationship = AFRelationship.Source\n};\n\nbyte[] xmlBytes = invoiceService.GenerateZugferdXml(orderId);\nIEnumerable<EmbedFileByte> embeds = new[] { new EmbedFileByte(in xmlBytes, xmlConfig) };\n\nvar renderer = new ChromePdfRenderer();\nusing PdfDocument pdf = renderer.RenderHtmlAsPdf(invoiceHtml);\npdf.SaveAsPdfA(\"invoice-with-xml.pdf\", embeds, PdfAVersions.PdfA3b);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does EmbedFileByte live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EmbedFileByte is in the IronPdf namespace, shipped in IronPdf.dll. It is declared public sealed class EmbedFileByte : ValueType, IEquatable<EmbedFileByte>, so it behaves as a value-type wrapper. Construct one per in-memory payload and pass an IEnumerable<EmbedFileByte> to PdfDocument.SaveAsPdfA with PdfAVersions.PdfA3b."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between EmbedFileByte, EmbedFilePath, and EmbedFileStream?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All three are wrapper types in the IronPdf namespace that pair a single payload with an EmbedFileConfiguration for PDF/A-3 embedded files. EmbedFileByte takes a byte[] and is used when the payload is already in memory, for example a generated ZUGFeRD XML invoice or a downloaded image buffer. EmbedFilePath takes a file path string and is used when the payload exists on disk. EmbedFileStream takes a Stream and is used when the payload is being read from a network response, a database BLOB reader, or any other forward-only source. The three are interchangeable input variants; SaveAsPdfA accepts IEnumerable of any one of them with PdfAVersions.PdfA3b."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which file types and PDF/A versions does EmbedFileByte support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EmbedFileByte only supports payloads whose EmbedFileType is one of EmbedFileType.xml, EmbedFileType.pdf, or EmbedFileType.png. The wrapping EmbedFileConfiguration is constructed with that EmbedFileType. Embedded files are only valid in PDF/A-3, so the SaveAsPdfA call must use PdfAVersions.PdfA3b. PDF/A-1, PDF/A-2, and PDF/A-4 do not allow this kind of embedded payload."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you embed an in-memory XML invoice as a PDF/A-3 attachment in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct an EmbedFileConfiguration with EmbedFileType.xml and set EmbedFileName, AFDesc, AFRelationship, ConformanceLevel, SchemaNamespace, SchemaPrefix, and PropertyVersion. Pass the invoice byte[] and the configuration to the EmbedFileByte constructor. Collect the EmbedFileByte instance into an IEnumerable, render the human-readable invoice with ChromePdfRenderer, and call PdfDocument.SaveAsPdfA together with PdfAVersions.PdfA3b. The output is a PDF/A-3b document with the XML payload embedded and the configured XMP metadata recorded in the document catalog."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,9 +225,31 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class EmbedFileByte : ValueType, IEquatable&lt;EmbedFileByte&gt;</code></pre>
   </div>
-  <h5 id="IronPdf_EmbedFileByte_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>currently only support 3 types of file; .xml, .pdf, and .png</p>
-</div>
+                    <!-- archetype-N:start EmbedFileByte treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Embedding an in-memory <code>byte[]</code> payload inside a PDF/A-3 document in IronPDF runs through <code>EmbedFileByte</code>, which pairs the bytes with an <code>EmbedFileConfiguration</code>. Construct one per attached file. Each instance carries the raw bytes for one attachment (XML, PDF, or PNG payload) plus the metadata that describes how PDF/A-3 should record that attachment in the document catalog.</p>
+<p>The byte-array variant is the right choice when the source data already exists in memory: a ZUGFeRD or Factur-X XML invoice produced by a generator class, a PDF receipt downloaded from object storage into a buffer, or a PNG signature image captured from a web form. Service-style pipelines that stream payloads through ASP.NET Core, Azure Functions, or background workers usually have the file as a <code>byte[]</code> rather than a path on disk, and <code>EmbedFileByte</code> removes the round-trip through the file system.</p>
+<p>Construction is through the single constructor <code>EmbedFileByte(in byte[] FileBytes, EmbedFileConfiguration EmbedFileConfiguration)</code>. The <code>FileBytes</code> property holds the payload bytes and the <code>EmbedFileConfiguration</code> property holds the per-file metadata (file name, AFRelationship, XMP fields). Equality is value-based through <code>Equals(EmbedFileByte)</code>, <code>Equals(object)</code>, <code>GetHashCode</code>, and the <code>==</code> and <code>!=</code> operators, and <code>Deconstruct(out byte[], out EmbedFileConfiguration)</code> supports tuple-style unpacking. Build one instance per attachment, collect them into an <code>IEnumerable&lt;EmbedFileByte&gt;</code>, and pass the collection to <code>PdfDocument.SaveAsPdfA(...)</code> with <code>PdfAVersions.PdfA3b</code>. The <a href="https://ironpdf.com/how-to/pdfa/">PDF/A export how-to</a> has a worked example of the in-memory save shape.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using System.Collections.Generic;
+
+// Embed a generated ZUGFeRD XML invoice that already lives in memory as a byte[].
+var xmlConfig = new EmbedFileConfiguration(EmbedFileType.xml)
+{
+    EmbedFileName  = &quot;invoice.xml&quot;,
+    AFDesc         = &quot;ZUGFeRD structured invoice data&quot;,
+    AFRelationship = AFRelationship.Source
+};
+
+byte[] xmlBytes = invoiceService.GenerateZugferdXml(orderId);
+IEnumerable&lt;EmbedFileByte&gt; embeds = new[] { new EmbedFileByte(in xmlBytes, xmlConfig) };
+
+var renderer = new ChromePdfRenderer();
+using PdfDocument pdf = renderer.RenderHtmlAsPdf(invoiceHtml);
+pdf.SaveAsPdfA(&quot;invoice-with-xml.pdf&quot;, embeds, PdfAVersions.PdfA3b);</code></pre></div>
+<p>The <a href="https://ironpdf.com/tutorials/csharp-invoice-processing/">invoice processing tutorial</a> follows the ZUGFeRD and Factur-X service pipeline that <code>EmbedFileByte</code> was designed for. For conformance-level detail, reach for the <a href="https://ironpdf.com/tutorials/pdfa-archiving-csharp/">PDF/A archiving tutorial</a>, and the <a href="https://ironpdf.com/examples/pdfa/">PDF/A example</a> gives the minimum saving shape.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PathObject
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PathObject Class - IronPDF C# API Reference
+      v2 (human)     title:       PathObject: Read PDF Vector Paths in C# with IronPDF
+      v1 (algorithm) description: IronSoftware.PathObject class reference for C#. Properties Points, BoundingBox, FillColor, StrokeColor, Translate, Scale, Rotation, and Clone/ToJson methods.
+      v2 (human)     description: Read vector paths drawn on a PDF page in C#: inspect geometry, fill, stroke, and placement of lines, rectangles, and curves with IronPDF PathObject.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PathObject Class | IronPDF C# PDF DOM API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PathObject
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PathObject Class | IronPDF C# PDF DOM API">
+    <meta name="description" content="PathObject in IronPDF exposes the read-side DOM for vector marks: Points, BoundingBox, FillColor, StrokeColor, Translate, Scale, Rotation through Pages.ObjectModel.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PathObject Class | IronPDF C# PDF DOM API",
+    "name": "PathObject class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.PathObject.html",
+    "abstract": "Vector marks already drawn on a PDF page, with their stroke, fill, placement, and transform, are read back through `PathObject` in IronPDF. Application code obtains instances by enumerating `PdfPage.ObjectModel.PathObjects`. The type is part of the `IronSoftware` namespace and implements `IPdfPathObject`, `IPdfDocumentObject`, `IDocumentPathObject`, `IBoundedPdfDocumentObject`, `ITransformable`, `IColored`, `ICloneable`, and `IJsonSerializable`. The class exposes `Points`, `BoundingBox`, `FillMode`, `IsStroked`, `FillColor`, `StrokeColor`, `PageIndex`, `Translate`, `Scale`, `Rotation`, `Matrix`, `AnchorOrigin`, `AnchorStyle`, `ZOrder`, `ZPosition`, `Client`, `DocumentId`, `ObjNum`, plus the `Clone` and `ToJson` methods for vector path inspection and mutation in C#.",
+    "description": "PathObject in IronPDF exposes the read-side DOM for vector marks: Points, BoundingBox, FillColor, StrokeColor, Translate, Scale, Rotation through Pages.ObjectModel.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware;\nusing System.Linq;\n\nPdfDocument pdf = PdfDocument.FromFile(\"invoice.pdf\");\n\n// Walk every path on every page.\nforeach (var page in pdf.Pages)\n{\n    PathObjectCollection paths = page.ObjectModel.PathObjects;\n\n    foreach (PathObject path in paths)\n    {\n        var bounds = path.BoundingBox;\n        bool stroked = path.IsStroked;\n        var fill = path.FillColor;\n        int segmentCount = path.Points.Count;\n\n        // Recolor any stroked path that sits in the footer band.\n        if (stroked && bounds.Top > 700f)\n        {\n            path.StrokeColor = System.Drawing.Color.DarkRed;\n        }\n\n        // Nudge the shape 5pt right and 3pt up.\n        path.Translate = new System.Drawing.PointF(5f, -3f);\n    }\n}\n\npdf.SaveAs(\"invoice-recolored.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PathObject live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PathObject is in the IronSoftware namespace, shipped in IronPdf.dll. It is declared public class PathObject : Object, IPdfPathObject, IPdfDocumentObject, IDocumentPathObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, IDocumentLayoutFriendly, IJsonSerializable. Instances are enumerated from pdf.Pages[i].ObjectModel.PathObjects rather than constructed directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PathObject and DrawLine or DrawRectangle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PathObject is the read-side DOM type that describes a vector path already drawn on a PDF page. It is enumerated from page.ObjectModel.PathObjects and exposes geometry, fill, stroke, and transform state. DrawLine and DrawRectangle are write-side methods on PdfPage that create new vector marks. Use DrawLine and DrawRectangle to add content, and PathObject to inspect or modify content that is already there."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does PathObject relate to ImageObject and TextObject?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All three are sibling types on PdfPage.ObjectModel and represent the three kinds of drawn content on a PDF page. ImageObject covers rasters, TextObject covers glyphs, and PathObject covers vector marks such as lines, polygons, rectangles, and Bezier curves. Each is enumerated through its own collection on the same page object model, and each carries its own geometry and transform properties."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is in the Points collection on a PathObject?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Points is an IReadOnlyCollection of IPdfPathSegment, not an IReadOnlyCollection of points. Each segment in the collection represents a path command such as a move, a straight line, or a Bezier curve, with the operands needed to reconstruct that command. The BoundingBox property gives an axis-aligned RectangleF that already covers the union of those segments for quick hit testing without iterating Points."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -165,6 +236,44 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PathObject : Object, IPdfPathObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentPathObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, IDocumentLayoutFriendly, IJsonSerializable</code></pre>
   </div>
+                <!-- archetype-N:start PathObject treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PathObject</code> describes a single vector path already drawn on a PDF page, accessed through <code>pdf.Pages[i].ObjectModel.PathObjects</code> and ready for inspection or modification. Each instance describes a single line, polygon, rectangle, or Bezier curve already present in the document, along with its stroke and fill state, page placement, and transform. It is a read-side handle on what a previous renderer already drew.</p>
+<p>Reach for <code>PathObject</code> when application code needs to inspect or modify those existing vector marks. Typical scenarios include auditing the geometry of stamped signatures, locating boxes and underlines for layout-driven redaction, recoloring fills on existing diagrams in a brand-refresh pipeline, and detecting whether a page already contains specific shapes before adding more. The write-side counterpart is <code>PdfPage.DrawLine</code> and <code>PdfPage.DrawRectangle</code>, which create vector content that subsequent <code>PathObject</code> reads can then see. Because the appearance and transform properties are settable, edits made to a <code>PathObject</code> during a walk are written back to the page when the document is saved.</p>
+<p>The 20-property surface groups into four salience buckets. **Geometry** is <code>Points</code> (an <code>IReadOnlyCollection&lt;IPdfPathSegment&gt;</code> describing the actual path commands), <code>BoundingBox</code> as a <code>RectangleF</code>, and <code>FillMode</code> as <code>PathFillModes</code>. **Appearance** is <code>IsStroked</code>, <code>FillColor</code>, <code>StrokeColor</code>, and the corresponding 32-bit <code>FillColorValue</code> and <code>StrokeColorValue</code> projections. **Placement and transform** are <code>PageIndex</code>, <code>Translate</code>, <code>Scale</code>, <code>Rotation</code>, the get-only <code>Matrix</code> projection, <code>AnchorOrigin</code>, <code>AnchorStyle</code>, <code>ZOrder</code>, and <code>ZPosition</code>. **Plumbing** is <code>Client</code>, <code>DocumentId</code>, and <code>ObjNum</code>. The two methods are <code>Clone</code> for deep copy and <code>ToJson</code> for serialization.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware;
+using System.Linq;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+
+// Walk every path on every page.
+foreach (var page in pdf.Pages)
+{
+    PathObjectCollection paths = page.ObjectModel.PathObjects;
+
+    foreach (PathObject path in paths)
+    {
+        var bounds = path.BoundingBox;
+        bool stroked = path.IsStroked;
+        var fill = path.FillColor;
+        int segmentCount = path.Points.Count;
+
+        // Recolor any stroked path that sits in the footer band.
+        if (stroked &amp;&amp; bounds.Top &gt; 700f)
+        {
+            path.StrokeColor = System.Drawing.Color.DarkRed;
+        }
+
+        // Nudge the shape 5pt right and 3pt up.
+        path.Translate = new System.Drawing.PointF(5f, -3f);
+    }
+}
+
+pdf.SaveAs(&quot;invoice-recolored.pdf&quot;);</code></pre></div>
+<p>The <a href="/how-to/access-pdf-dom-object/">PDF DOM object how-to</a> has a worked traversal that visits <code>PathObject</code>, <code>ImageObject</code>, and <code>TextObject</code> together. When the task is drawing new vector marks instead of reading existing ones, the <a href="/how-to/draw-line-and-rectangle/">draw lines and rectangles how-to</a> demonstrates the write-side <code>DrawLine</code> and <code>DrawRectangle</code> API.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="fields">Fields
   </h3>
   

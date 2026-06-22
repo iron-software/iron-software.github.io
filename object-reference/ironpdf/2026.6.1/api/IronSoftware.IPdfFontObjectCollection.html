@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IPdfFontObjectCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IPdfFontObjectCollection Interface - IronPDF C# API
+      v2 (human)     title:       IPdfFontObjectCollection: PDF Font Set Contract in C#
+      v1 (algorithm) description: IronSoftware.IPdfFontObjectCollection interface reference for C#: dual IList of FontObject and IDocumentFontObject, plus IJsonSerializable.
+      v2 (human)     description: Accept any IronSoftware PDF font collection in C# with IPdfFontObjectCollection: dual IList over FontObject, Add, indexer, Count, foreach support.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IPdfFontObjectCollection | IronSoftware C# Fonts API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IPdfFontObjectCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="IPdfFontObjectCollection | IronSoftware C# Fonts API">
+    <meta name="description" content="IPdfFontObjectCollection is the IronSoftware C# contract for a mutable PDF font list: IList of FontObject, IList of IDocumentFontObject, IJsonSerializable.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IPdfFontObjectCollection | IronSoftware C# Fonts API",
+    "name": "IPdfFontObjectCollection interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.IPdfFontObjectCollection.html",
+    "abstract": "Accepting any compatible PDF font collection at an API boundary in C# without binding to one product's concrete container runs through `IPdfFontObjectCollection` in IronPDF. The interface declares no direct members; its surface is the union of its base interfaces, exposing a dual-typed indexer and `Add` over the same items as either `FontObject` or `IDocumentFontObject`, alongside `Count`, `Insert`, `Remove`, `Clear`, `IndexOf`, `Contains`, `CopyTo`, and a typed enumerator. The canonical concrete element is `IronSoftware.FontObject`; the IronPDF-shipped `PdfDocument.Fonts` property returns the separate `IronPdf.Fonts.PdfFontCollection` hierarchy.",
+    "description": "IPdfFontObjectCollection is the IronSoftware C# contract for a mutable PDF font list: IList of FontObject, IList of IDocumentFontObject, IJsonSerializable.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronSoftware;\nusing System.Collections.Generic;\n\n// Accept the IronSoftware font contract at the boundary - works for any\n// implementor of IPdfFontObjectCollection regardless of host product.\nIReadOnlyList<string> ListFontNames(IPdfFontObjectCollection fonts)\n{\n    List<string> names = new List<string>(fonts.Count);\n\n    // Iterate via the FontObject element view.\n    foreach (FontObject font in (IEnumerable<FontObject>)fonts)\n    {\n        names.Add(font.BaseFont);\n    }\n\n    return names;\n}\n\n// Add a new FontObject through the IList<FontObject> surface.\nvoid AppendFont(IPdfFontObjectCollection fonts, FontObject incoming)\n{\n    fonts.Add(incoming);\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is IPdfFontObjectCollection located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfFontObjectCollection is in the IronSoftware namespace, shipped in IronPdf.dll. It derives from IDocumentFontObjectCollection, IList<IDocumentFontObject>, IList<FontObject>, and IJsonSerializable. The canonical concrete element is IronSoftware.FontObject, the type a developer iterates when reading the fonts referenced inside a document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IPdfFontObjectCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfFontObjectCollection is part of the IronSoftware abstractions layer shared across Iron Software document products. The canonical element type is FontObject, defined in the same IronSoftware namespace and implementing the matching IPdfFontObject and IDocumentFontObject element contracts. Application code can also supply its own implementor at API boundaries, which is useful when stubbing a font set in unit tests because the surface is the standard IList shape plus IJsonSerializable. Code typed as IPdfFontObjectCollection works against any implementor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IPdfFontObjectCollection and PdfFontCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfFontObjectCollection lives in the IronSoftware namespace and is the unified abstractions contract for a mutable font list whose elements are FontObject or IDocumentFontObject. IronPdf.Fonts.PdfFontCollection is a separate concrete class in the IronPdf.Fonts namespace that derives from ObservableCollection of IronPdf.Fonts.PdfFont; it is what PdfDocument.Fonts returns. The two hierarchies use different element types (FontObject vs PdfFont) and do not share a base. Reference IPdfFontObjectCollection at cross-product API boundaries and PdfFontCollection when working directly with PdfDocument.Fonts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does IPdfFontObjectCollection inherit from two IList types?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfFontObjectCollection inherits from IList<IDocumentFontObject> and from IList<FontObject> so the same underlying items can be reached as either the abstraction view or the concrete view without a cast. A foreach over the collection picks up whichever element type the local reference is declared as. The Add, Insert, Remove, Clear, IndexOf, Contains, CopyTo, Count, and indexer members come from those base IList and ICollection interfaces; IPdfFontObjectCollection itself declares no direct members. IJsonSerializable is inherited so an instance can be serialized to JSON across product boundaries."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -147,7 +218,38 @@
   </div>
   
   
-</article>
+            <!-- archetype-N:start IPdfFontObjectCollection treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>A product-neutral handle on any IronSoftware PDF font collection, with each element reachable as either a <code>FontObject</code> concrete or an <code>IDocumentFontObject</code> abstraction over the same item, is what <code>IPdfFontObjectCollection</code> provides. The interface declares nothing on its own: everything a caller invokes is inherited from the list and serialization contracts it composes.</p>
+<p>The contract belongs to the unified IronSoftware abstractions layer that several Iron Software document products share, with <code>FontObject</code> as the canonical concrete element. Application code can also supply its own implementor at an API boundary when stubbing a font set in unit tests, since the surface is the standard list shape plus JSON serialization. Typical scenarios include passing a font collection across a wrapper service that should accept any compatible source, JSON-serializing a font set through <code>IJsonSerializable</code>, and consuming a font list polymorphically without binding to one product's concrete container. Note that the IronPDF-shipped <code>PdfDocument.Fonts</code> property returns <code>IronPdf.Fonts.PdfFontCollection</code>, a separate hierarchy that traffics in <code>IronPdf.Fonts.PdfFont</code>, so callers working with <code>IPdfFontObjectCollection</code> are working with the IronSoftware shape, not with the IronPdf.Fonts container.</p>
+<p>The everyday surface is inherited. Each base <code>IList&lt;T&gt;</code> contributes an integer indexer (one returning <code>IDocumentFontObject</code>, one returning <code>FontObject</code>), an <code>Add(T)</code> overload, an <code>Insert(int, T)</code>, a <code>Remove(T)</code>, a <code>Clear</code>, a <code>Contains(T)</code>, an <code>IndexOf(T)</code>, and <code>CopyTo(T[], int)</code>. The shared <code>Count</code> comes from <code>ICollection&lt;T&gt;</code>. The typed <code>GetEnumerator()</code> from <code>IEnumerable&lt;T&gt;</code> enables <code>foreach</code> over either element view of the same items. The <a href="/how-to/manage-fonts/">font management how-to</a> walks through the day-to-day add, embed, replace, and unembed operations on the IronPdf.Fonts side; the patterns translate when working with <code>IPdfFontObjectCollection</code> typed boundaries.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronSoftware;
+using System.Collections.Generic;
+
+// Accept the IronSoftware font contract at the boundary - works for any
+// implementor of IPdfFontObjectCollection regardless of host product.
+IReadOnlyList&lt;string&gt; ListFontNames(IPdfFontObjectCollection fonts)
+{
+    List&lt;string&gt; names = new List&lt;string&gt;(fonts.Count);
+
+    // Iterate via the FontObject element view.
+    foreach (FontObject font in (IEnumerable&lt;FontObject&gt;)fonts)
+    {
+        names.Add(font.BaseFont);
+    }
+
+    return names;
+}
+
+// Add a new FontObject through the IList&lt;FontObject&gt; surface.
+void AppendFont(IPdfFontObjectCollection fonts, FontObject incoming)
+{
+    fonts.Add(incoming);
+}</code></pre></div>
+<p>For end-to-end font workflows on the IronPDF side of the API, see the <a href="/how-to/manage-fonts/">manage fonts how-to</a>, which covers <code>Add</code>, <code>Embed</code>, <code>Find</code>, <code>Unembed</code>, and <code>ReplaceWith</code> on <code>IronPdf.Fonts.PdfFontCollection</code> and <code>IronPdf.Fonts.PdfFont</code>.</p>
+  </div>
+  <!-- archetype-N:end -->
+  </article>
           </div>
            
           <div class="hidden-sm col-md-2" role="complementary">

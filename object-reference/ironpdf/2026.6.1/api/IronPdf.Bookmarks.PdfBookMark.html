@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfBookMark
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfBookMark Class - IronPDF C# API Reference
+      v2 (human)     title:       PdfBookMark: PDF outline entries in C# / IronPDF
+      v1 (algorithm) description: PdfBookMark class in IronPdf.Bookmarks: properties Text, PageIndex, Children, Siblings, NextBookmark for PDF outline navigation in C#.
+      v2 (human)     description: Inspect or build PDF outline entries in C# with PdfBookMark. Read Text and PageIndex, walk Children and Siblings, or insert new entries inline.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfBookMark Class | IronPDF C# Bookmarks API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfBookMark
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfBookMark Class | IronPDF C# Bookmarks API">
+    <meta name="description" content="PdfBookMark represents one entry in a PDF's outline panel. Properties include Text, PageIndex, Children, Siblings, NextBookmark, DestinationType.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,77 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfBookMark Class | IronPDF C# Bookmarks API",
+    "name": "PdfBookMark class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Bookmarks.PdfBookMark.html",
+    "abstract": "When a PDF's outline (the bookmark panel readers see in Acrobat or Edge) is read or built, each entry is a `PdfBookMark` in IronPDF. Each instance carries display `Text`, a zero-based `PageIndex` destination, navigation links `Children`, `Siblings`, `NextBookmark`, `PreviousBookmark`, and `Parent`, a virtual `DestinationType` of type `BookmarkDestinations`, and `InsertBookMarkAfter` / `InsertBookMarkBefore` methods. Instances are obtained from `PdfDocument.Bookmarks` rather than constructed directly.",
+    "description": "PdfBookMark represents one entry in a PDF's outline panel. Properties include Text, PageIndex, Children, Siblings, NextBookmark, DestinationType.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Bookmarks;\n\nvar pdf = new PdfDocument(\"report.pdf\");\n\n// Build a two-level outline.\nIPdfBookmark chapter = pdf.Bookmarks.AddBookMarkAtEnd(\"Chapter 1: Overview\", 0);\nchapter.Children.AddBookMarkAtEnd(\"1.1 Summary\", 1);\nchapter.Children.AddBookMarkAtEnd(\"1.2 Method\",  3);\n\npdf.Bookmarks.AddBookMarkAtEnd(\"Chapter 2: Results\", 8);\n\npdf.SaveAs(\"bookmarked.pdf\");"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "// Walk an existing outline and rewrite the labels.\nvar pdf = new PdfDocument(\"incoming.pdf\");\n\nforeach (PdfBookMark entry in pdf.Bookmarks.GetAllBookmarks())\n{\n    entry.Text = entry.Text.Trim();           // mutable\n    int destinationPage = entry.PageIndex;    // mutable, zero-based\n    int childCount      = entry.Children.Count;\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is PdfBookMark located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfBookMark is in the IronPdf.Bookmarks namespace, shipped in IronPdf.dll. It is declared public class PdfBookMark : Object, IPdfBookmark. It has no public constructor; instances are obtained from the PdfDocument.Bookmarks collection through AddBookMarkAtEnd, AddBookMarkAtStart, GetAllBookmarks, or sibling and child navigation properties."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfBookMark and PdfBookMarkCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfBookMark represents one entry in a PDF's outline (a single chapter or section title), while PdfBookMarkCollection is the container that holds entries at one level of the tree. PdfDocument.Bookmarks exposes the top-level collection; each PdfBookMark exposes its own Children collection for nested entries. Use the collection to add or remove entries with AddBookMarkAtEnd, AddBookMarkAtStart, and RemoveBookMark. Use the entry to read or update Text and PageIndex on a specific outline node."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is PageIndex zero-based?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfBookMark follows IronPDF's PDF page convention where the first physical page is index 0, the second is index 1, and so on. A bookmark labeled Chapter 1 that points to the first page should set PageIndex to 0. Only bookmarks created from page indices are supported; bookmarks imported from PDFs that reference non-page targets will report a PageIndex of -1."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the DestinationType property tell you?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DestinationType returns a BookmarkDestinations value describing how the original PDF specified the destination, for example Page for a simple jump-to-page entry. Bookmarks added through AddBookMarkAtEnd or AddBookMarkAtStart default to Page. The property is read-only on PdfBookMark; the geometric hints Top, Left, Right, Bottom, and Zoom that accompany richer destination types are also read-only."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -164,16 +241,36 @@ chapter1.InsertBookMarkAfter(&quot;1.1a Quick Start&quot;, 1);</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfBookMark : Object, IPdfBookmark</code></pre>
   </div>
-  <h5 id="IronPdf_Bookmarks_PdfBookMark_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Key Properties:</strong>
-</p>
-<ul><li></li><li></li><li></li><li></li></ul>
-<p>
-<strong>Standards:</strong>
-</p>
-<ul><li></li><li></li></ul>
-</div>
+                  <!-- archetype-N:start PdfBookMark treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>One entry in the bookmark panel that PDF readers (Adobe Acrobat, Edge, Chrome) display alongside the page view is modeled by <code>PdfBookMark</code>, whether the goal is reading or building the outline tree. It carries the display text, the destination page, the parent-child links that build hierarchical chapters and sections, and the geometric hints (<code>Top</code>, <code>Left</code>, <code>Right</code>, <code>Bottom</code>, <code>Zoom</code>) that determine where a reader scrolls to after the user clicks.</p>
+<p>Application code reaches for <code>PdfBookMark</code> instances in two situations. The first is building an outline from scratch while writing a PDF, where each <code>AddBookMarkAtEnd</code> call on the document's bookmark collection returns an <code>IPdfBookmark</code> whose <code>Children</code> property is the handle for nested sub-entries. The second is auditing or restructuring an existing PDF's table of contents by walking <code>GetAllBookmarks()</code> and inspecting <code>Text</code>, <code>PageIndex</code>, and the sibling chain.</p>
+<p><code>PdfBookMark</code> has no public constructor; instances arrive through <code>PdfDocument.Bookmarks</code>. The headline mutable properties are <code>Text</code> (the label readers see) and <code>PageIndex</code> (the zero-based destination, where page 1 is index 0). The headline read-only navigation properties are <code>Children</code> and <code>Siblings</code>, both returning <code>IPdfBookMarkCollection</code>, plus <code>NextBookmark</code>, <code>PreviousBookmark</code>, and <code>Parent</code> returning <code>IPdfBookmark</code>. The virtual <code>DestinationType</code> returns a <code>BookmarkDestinations</code> value (default <code>Page</code>) describing the navigation mode the entry was created with. Two instance methods, <code>InsertBookMarkAfter(string, int)</code> and <code>InsertBookMarkBefore(string, int)</code>, splice new siblings around the current entry without going back to the parent collection.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Bookmarks;
+
+var pdf = new PdfDocument(&quot;report.pdf&quot;);
+
+// Build a two-level outline.
+IPdfBookmark chapter = pdf.Bookmarks.AddBookMarkAtEnd(&quot;Chapter 1: Overview&quot;, 0);
+chapter.Children.AddBookMarkAtEnd(&quot;1.1 Summary&quot;, 1);
+chapter.Children.AddBookMarkAtEnd(&quot;1.2 Method&quot;,  3);
+
+pdf.Bookmarks.AddBookMarkAtEnd(&quot;Chapter 2: Results&quot;, 8);
+
+pdf.SaveAs(&quot;bookmarked.pdf&quot;);</code></pre></div>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">// Walk an existing outline and rewrite the labels.
+var pdf = new PdfDocument(&quot;incoming.pdf&quot;);
+
+foreach (PdfBookMark entry in pdf.Bookmarks.GetAllBookmarks())
+{
+    entry.Text = entry.Text.Trim();           // mutable
+    int destinationPage = entry.PageIndex;    // mutable, zero-based
+    int childCount      = entry.Children.Count;
+}</code></pre></div>
+<p>Building single-layer and multi-layer outlines is shown step by step in the <a href="/how-to/bookmarks/">PDF bookmarks how-to</a>. The matching <a href="/examples/bookmarks/">bookmarks code example</a> shows a runnable project. When the goal is a clickable index page rather than a sidebar outline, the <a href="/how-to/table-of-contents/">table-of-contents how-to</a> covers in-document TOC rendering. Iterating the outline tree itself is the <code>PdfBookMarkCollection</code> page's territory.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfExtractionOptions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfExtractionOptions Class | IronPDF C# API
+      v2 (human)     title:       PdfExtractionOptions: Tune PDF Extraction in C#
+      v1 (algorithm) description: PdfExtractionOptions is the IronPDF C# config for PdfExtractor: TextMode, TableStrategy, EnableTextExtraction, EnableTableExtraction, Password, tolerances.
+      v2 (human)     description: Tune PDF text and table extraction in C# with IronPDF PdfExtractionOptions. Set TextMode, TableStrategy, tolerances, and passwords before PdfExtractor.Extract.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfExtractionOptions | IronPDF C# Extractions</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfExtractionOptions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfExtractionOptions | IronPDF C# Extractions">
+    <meta name="description" content="Reference for IronPDF PdfExtractionOptions in C#: TextMode, TableStrategy, EnableTextExtraction, EnableTableExtraction, Password, OwnerPassword, and tolerances.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfExtractionOptions | IronPDF C# Extractions",
+    "name": "PdfExtractionOptions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.PdfExtractionOptions.html",
+    "abstract": "When the default extraction behavior does not fit a source PDF, PdfExtractionOptions in IronPDF controls how that PDF is read into a PdfExtractionResult by every PdfExtractor overload. It exposes the toggles EnableTextExtraction and EnableTableExtraction (both default true), the algorithm selectors TextMode (TextExtractionMode enum, default PositionBased), TableStrategy (TableDetectionStrategy enum, default Hybrid), and UseFirstRowAsHeader, the text-layout and table-geometry tolerances (LineHeightGroupingTolerance, WordBoundaryJitterTolerance, WordOverlapTolerance, ColumnDetectionSensitivity, ColumnGapMultiplier, CellMergeThreshold, CellWordInclusionTolerance, TableBoundaryExpansion, TableDeduplicationTolerance), and the Password and OwnerPassword strings for encrypted PDFs.",
+    "description": "Reference for IronPDF PdfExtractionOptions in C#: TextMode, TableStrategy, EnableTextExtraction, EnableTableExtraction, Password, OwnerPassword, and tolerances.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Extractions;\n\n// Build a single configuration and reuse it across many PdfExtractor calls.\nvar options = new PdfExtractionOptions\n{\n    EnableTextExtraction  = true,\n    EnableTableExtraction = true,\n    TextMode              = TextExtractionMode.Stream,        // PositionBased | Stream\n    TableStrategy         = TableDetectionStrategy.Hybrid,    // Hybrid | Nurminen | Spreadsheet\n    UseFirstRowAsHeader   = true,\n    TableBoundaryExpansion = 8.0,                             // capture edge rows on noisy scans\n    Password              = \"user-password\"                   // null for unprotected PDFs\n};\n\nPdfExtractionResult result = PdfExtractor.Extract(\"invoice.pdf\", options);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain PdfExtractionOptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfExtractionOptions is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It is declared public class PdfExtractionOptions with a single default constructor. Construct it with new, set its properties, and pass it to any PdfExtractor overload to tune how a PDF is read into a PdfExtractionResult."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfExtractionOptions and ExportConfiguration?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfExtractionOptions configures the EXTRACTION stage. It is consumed by PdfExtractor.Extract and its overloads to control how a PDF file is read into a PdfExtractionResult: text mode, table detection strategy, geometric tolerances, and passwords. ExportConfiguration configures the EXPORT stage. It is consumed by ExportManager.ExportResult to control how that PdfExtractionResult is written to disk in CSV, JSON, HTML, TXT, or XML. The two are sequential and distinct: PdfExtractionOptions first to extract, ExportConfiguration second to export."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you extract text and tables from a password-protected PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the Password property on PdfExtractionOptions to the user password required to open the document, and set OwnerPassword if the PDF carries owner-level restrictions that need to be bypassed for the extraction (such as printing or copying restrictions). Pass the populated options to any PdfExtractor overload. Both passwords default to null; for an unprotected PDF the properties can be left as null and the file opens normally."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which property controls table detection accuracy on noisy or scanned PDFs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Table detection is governed by TableStrategy and four geometric tolerances. TableStrategy selects the algorithm: Hybrid (the default and best general choice), Nurminen for text-flow-based detection, or Spreadsheet for clearly ruled tables. CellMergeThreshold controls how close cell edges must be to merge, CellWordInclusionTolerance expands cell boundaries to catch near-edge words, TableBoundaryExpansion captures content at the outer table edges including bottom rows, and TableDeduplicationTolerance suppresses duplicate detections of the same table. Higher tolerance values are more forgiving for noisy scans; lower values are stricter for clean digital PDFs."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -168,24 +239,30 @@ var result = PdfExtractor.Extract(&quot;document.pdf&quot;, options);</code></pr
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfExtractionOptions : Object</code></pre>
   </div>
-  <h5 id="IronPdf_Extractions_PdfExtractionOptions_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p><strong>Important Considerations:</strong></p>
-<p>
-<p><strong>Text Mode Selection:</strong> Stream mode is preferred for multi-column layouts, while PositionBased works better for single-column documents.</p>
-</p>
-<p>
-<p><strong>Note:</strong> Table detection strategies have different strengths; Nurminen for bordered tables, Spreadsheet for borderless tables, and Hybrid for best overall results.</p>
-</p>
-<strong>Related Documentation:</strong>
-<p>
-<p><strong>How-To Guide:</strong>
-<a href="https://ironpdf.com/how-to/text-and-table-extraction-pdf/">Configuring PDF Extraction</a></p>
-</p>
-<p>
-<p><strong>API Reference:</strong>
-<a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.PdfExtractionOptions.html/">Full API Documentation</a></p>
-</p>
-</div>
+                  <!-- archetype-N:start PdfExtractionOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PdfExtractionOptions</code> tunes how a PDF is read into a <code>PdfExtractionResult</code> by every <code>PdfExtractor</code> overload (<code>Extract</code>, <code>ExtractAsync</code>, <code>ExtractPage</code>, <code>ExtractPageAsync</code>, <code>ExtractPages</code>, and <code>ExtractTable</code>). It is the EXTRACTION-stage configuration in IronPDF's two-stage extract-then-export pipeline. It does not control how extracted data is written to disk; that role belongs to <code>ExportConfiguration</code>, which is consumed by <code>ExportManager.ExportResult</code> after extraction completes.</p>
+<p><code>PdfExtractionOptions</code> is useful whenever the defaults do not fit the source PDF. Typical scenarios include invoice and receipt processing where table boundaries need to expand to catch bottom-row totals, multi-column reports where <code>TextMode</code> should switch to <code>Stream</code> for natural reading order, scanned documents with mild coordinate jitter that need looser tolerances, and password-protected archives that require a <code>Password</code> (or <code>OwnerPassword</code>) to open at all. Build one instance, then reuse it across many <code>PdfExtractor</code> calls; it holds no per-document state.</p>
+<p><code>PdfExtractionOptions</code> has a single default constructor and is populated through property initializers. The 14 properties group into five buckets. The on/off toggles <code>EnableTableExtraction</code> (default <code>true</code>) and <code>EnableTextExtraction</code> (default <code>true</code>) gate the two extraction passes. The algorithm selectors <code>TableStrategy</code> (a <code>TableDetectionStrategy</code> enum; default <code>Hybrid</code>, alternatives <code>Nurminen</code> and <code>Spreadsheet</code>), <code>TextMode</code> (a <code>TextExtractionMode</code> enum; default <code>PositionBased</code>, alternative <code>Stream</code>), and <code>UseFirstRowAsHeader</code> (default <code>false</code>) choose the extraction algorithm. The text-layout tolerances (<code>LineHeightGroupingTolerance</code>, <code>WordBoundaryJitterTolerance</code>, <code>WordOverlapTolerance</code>, <code>ColumnDetectionSensitivity</code>, <code>ColumnGapMultiplier</code>) shape how words are joined into lines and columns. The table-geometry tolerances (<code>CellMergeThreshold</code>, <code>CellWordInclusionTolerance</code>, <code>TableBoundaryExpansion</code>, <code>TableDeduplicationTolerance</code>) shape how cells and table boundaries are detected. The encryption pair <code>Password</code> and <code>OwnerPassword</code> unlocks user-encrypted and owner-restricted PDFs respectively. Page range is intentionally NOT a property on this class; the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a> shows where extraction fits a broader pipeline, and call-site overloads such as <code>PdfExtractor.ExtractPage</code> and <code>PdfExtractor.ExtractPages(startPage, endPage)</code> control which pages are read.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Extractions;
+
+// Build a single configuration and reuse it across many PdfExtractor calls.
+var options = new PdfExtractionOptions
+{
+    EnableTextExtraction  = true,
+    EnableTableExtraction = true,
+    TextMode              = TextExtractionMode.Stream,        // PositionBased | Stream
+    TableStrategy         = TableDetectionStrategy.Hybrid,    // Hybrid | Nurminen | Spreadsheet
+    UseFirstRowAsHeader   = true,
+    TableBoundaryExpansion = 8.0,                             // capture edge rows on noisy scans
+    Password              = &quot;user-password&quot;                   // null for unprotected PDFs
+};
+
+PdfExtractionResult result = PdfExtractor.Extract(&quot;invoice.pdf&quot;, options);</code></pre></div>
+<p>For the export half of the pipeline, see <a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.ExportConfiguration.html"><code>ExportConfiguration</code></a> and the <a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.PdfExtractor.html"><code>PdfExtractor</code> static class</a>. The <a href="https://ironpdf.com/how-to/csharp-parse-pdf/">parse PDFs in C# how-to</a> covers the legacy single-call text extraction API that this options class supersedes for table-heavy and multi-column workloads.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

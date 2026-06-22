@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfSignatureImage
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfSignatureImage Class - IronPDF C# Signing Reference
+      v2 (human)     title:       PdfSignatureImage: Visible Signature Stamp in IronPDF C#
+      v1 (algorithm) description: PdfSignatureImage is the IronPDF C# class for the visible stamp on a digital signature. Reference Image, PageIndex, Rectangle, and constructors.
+      v2 (human)     description: Embed a logo or handwritten signature stamp alongside a digital signature on a PDF in C# with the IronPDF PdfSignatureImage class. PNG, JPEG, byte[] supported.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfSignatureImage Class | IronPDF C# PDF Signing</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfSignatureImage
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfSignatureImage Class | IronPDF C# PDF Signing">
+    <meta name="description" content="Reference for IronPDF PdfSignatureImage in C#: AnyBitmap, byte[], and file-path constructors, plus Image, PageIndex, and Rectangle properties for stamp placement.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfSignatureImage Class | IronPDF C# PDF Signing",
+    "name": "PdfSignatureImage class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Signing.PdfSignatureImage.html",
+    "abstract": "PdfSignatureImage adds a visible stamp to a digitally signed PDF page in IronPDF, distinct from the cryptographic credential held by PdfSignature. It offers three constructors accepting an AnyBitmap, a byte[], or a file path together with a zero-based page index and an IronSoftware.Drawing.Rectangle, and exposes Image, PageIndex, and Rectangle properties. An instance is assigned to PdfSignature.SignatureImage and written by PdfDocument.Sign, embedding a logo or handwritten-signature graphic alongside the cryptographic signature in the signed revision.",
+    "description": "Reference for IronPDF PdfSignatureImage in C#: AnyBitmap, byte[], and file-path constructors, plus Image, PageIndex, and Rectangle properties for stamp placement.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Signing;\nusing IronSoftware.Drawing;\n\nvar signature = new PdfSignature(\"IronSoftware.pfx\", \"123456\")\n{\n    SigningReason = \"Approved for release\",\n    SignatureDate = DateTime.Now\n};\n\n// Build the visible stamp: Rectangle is x, y, width, height in PDF points with the\n// origin at the bottom-left. Byte[] and AnyBitmap constructors exist for off-disk images.\nvar stampArea = new Rectangle(350, 750, 200, 100);\nsignature.SignatureImage = new PdfSignatureImage(\"assets/handwritten.png\", 0, stampArea);\n\n// PdfDocument.Sign writes the cryptographic signature and the visible image together.\nusing var pdf = PdfDocument.FromFile(\"invoice.pdf\");\npdf.Sign(signature);\npdf.SaveAs(\"invoice-signed.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain PdfSignatureImage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfSignatureImage is in the IronPdf.Signing namespace, shipped in IronPdf.dll. It derives from System.Object. Construct it from an AnyBitmap, a byte[], or a file path, assign it to the SignatureImage property of a PdfSignature, and PdfDocument.Sign writes the visible stamp into the signed PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfSignatureImage and PdfSignature?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfSignature is the cryptographic credential. It carries the X509 certificate, the signing date, reason, location, contact, timestamp URL, hash algorithm, and the permission flags that control what can change after signing. PdfSignatureImage is the visible stamp that draws on the page. It carries the bitmap, the zero-based page index, and the placement rectangle. The two are joined by the SignatureImage property on PdfSignature, which is of type PdfSignatureImage and is null until assigned. Both travel through one call to PdfDocument.Sign, and the visible image is embedded inside the same signed revision as the cryptographic signature. A PdfSignature without a PdfSignatureImage still produces a valid digital signature with no visible mark on the page. A PdfSignatureImage without a PdfSignature has no effect because PdfDocument.Sign is the only path that writes it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the signature image appear in the wrong place on the page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rectangle uses the PDF coordinate system, which has its origin at the bottom-left of the page and measures in points. One inch is 72 points, so a Letter-size page is 612 points wide and 792 points tall. The Rectangle(x, y, width, height) constructor places the bottom-left corner of the stamp at (x, y) and extends up and to the right by width and height. To place a 200 by 100 stamp near the top-right of a Letter page, use Rectangle(350, 750, 200, 100). The PageIndex property is zero-based, so the first page is 0. The visible image is embedded only when PdfDocument.Sign is called with the parent PdfSignature, so the image will not appear if the signature is built but never applied."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does PdfSignatureImage work with a hardware security module?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The visible image is independent of where the private key lives. When the cryptographic side is built from a PKCS#11 hardware security module, the resulting PdfSignature still exposes the SignatureImage property of type PdfSignatureImage, and the same construct-and-assign idiom applies. The HSM provides the signing key, IronPDF composes the visible stamp through PdfSignatureImage, and PdfDocument.Sign writes both into the document in one pass. The full HSM workflow is covered in the HSM signing how-to."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +221,33 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfSignatureImage : Object</code></pre>
   </div>
+                  <!-- archetype-N:start PdfSignatureImage treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>The visible stamp on a signed PDF page (a logo, scanned signature, or seal shown alongside the cryptographic credential that authenticates it) is carried by <code>PdfSignatureImage</code>. It exposes three constructors that accept an <code>AnyBitmap</code>, a <code>byte[]</code>, or a file path, and stores three settable properties for the bitmap itself, the zero-based target page, and the placement rectangle. An instance is assigned to the <code>SignatureImage</code> property of a <code>PdfSignature</code> and then written to the document by <code>PdfDocument.Sign</code>.</p>
+<p>Reach for <code>PdfSignatureImage</code> whenever a signed document needs a visual mark beside the cryptographic signature: a company logo on a countersigned contract, a scanned handwritten signature on an invoice, or a notary stamp on a legal exhibit. The class is the carrier shape for that image; the surrounding <code>PdfSignature</code> carries the certificate, signing reason, location, contact, and timestamp. The two travel together through one <code>Sign</code> call and the visible image is embedded inside the signed revision, so any change to the page after signing invalidates both.</p>
+<p>Pick a constructor by where the image lives. The <code>(string path, int pageIndex, Rectangle rectangle)</code> overload reads a PNG, JPEG, GIF, BMP, TIFF, or WebP file from disk. The <code>(byte[] bytes, int page_index, Rectangle rectangle)</code> overload accepts raw image bytes from a database or HTTP response. The <code>(AnyBitmap bitmap, int page_index, Rectangle rectangle)</code> overload accepts an already-decoded <code>AnyBitmap</code> from <code>IronSoftware.Drawing</code>, suiting images generated in memory or shared with <code>IronOCR</code> or <code>IronBarCode</code>. <code>PageIndex</code> is zero-based, and <code>Rectangle</code> is the <code>IronSoftware.Drawing.Rectangle</code> value type constructed as <code>Rectangle(x, y, width, height)</code> in PDF points (1 inch is 72 points), with the origin at the bottom-left of the page. The convenience methods <code>LoadSignatureImageFromFile</code> and <code>LoadSignatureImageFromStream</code> on <code>PdfSignature</code> are wrappers that build a <code>PdfSignatureImage</code> and assign it for you.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Signing;
+using IronSoftware.Drawing;
+
+var signature = new PdfSignature(&quot;IronSoftware.pfx&quot;, &quot;123456&quot;)
+{
+    SigningReason = &quot;Approved for release&quot;,
+    SignatureDate = DateTime.Now
+};
+
+// Build the visible stamp: Rectangle is x, y, width, height in PDF points with the
+// origin at the bottom-left. Byte[] and AnyBitmap constructors exist for off-disk images.
+var stampArea = new Rectangle(350, 750, 200, 100);
+signature.SignatureImage = new PdfSignatureImage(&quot;assets/handwritten.png&quot;, 0, stampArea);
+
+// PdfDocument.Sign writes the cryptographic signature and the visible image together.
+using var pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+pdf.Sign(signature);
+pdf.SaveAs(&quot;invoice-signed.pdf&quot;);</code></pre></div>
+<p>For the signing workflow that adds timestamping, signing reason, and permissions around the visible stamp, see the <a href="https://ironpdf.com/how-to/signing/">PDF signing how-to</a>. A runnable project is on the <a href="https://ironpdf.com/examples/digitally-sign-a-pdf/">digitally sign a PDF example</a> page. The same <code>SignatureImage</code> surface applies when the certificate is held in a hardware module, as the <a href="https://ironpdf.com/how-to/signing-pdf-with-hsm/">HSM signing how-to</a> shows.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

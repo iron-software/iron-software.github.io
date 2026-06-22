@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfMetaData
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfMetaData Class - IronPDF C# API Reference
+      v2 (human)     title:       PdfMetaData: Set Title, Author, Keywords in C# PDFs
+      v1 (algorithm) description: PdfMetaData is the IronPDF C# class that exposes Title, Author, Subject, Keywords, Creator, Producer, and date fields on every PdfDocument instance.
+      v2 (human)     description: Set and read PDF metadata in C# through PdfDocument.MetaData with IronPDF: Title, Author, Subject, Keywords, dates, and custom properties with code examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfMetaData Class | IronPDF C# PDF Metadata API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfMetaData
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfMetaData Class | IronPDF C# PDF Metadata API">
+    <meta name="description" content="Reference for IronPDF PdfMetaData in C#: Title, Author, Subject, Keywords, Creator, Producer, CreationDate, ModifiedDate, CustomProperties, and dictionary methods.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfMetaData Class | IronPDF C# PDF Metadata API",
+    "name": "PdfMetaData class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.MetaData.PdfMetaData.html",
+    "abstract": "Use PdfMetaData in IronPDF to stamp and read the standard PDF document information fields on a PdfDocument. Obtained through the PdfDocument.MetaData property, it exposes Title, Author, Subject, Keywords, Creator, and Producer as string properties, CreationDate and ModifiedDate as DateTime properties in Local Time, and CustomProperties as a PdfCustomMetadataProperties accessor for application-defined key/value pairs. Bulk operations are available through GetMetaDataDictionary, Keys, RemoveMetaDataKey, and SetMetaDataDictionary, the last of which is the recommended path for Docker and gRPC pipelines.",
+    "description": "Reference for IronPDF PdfMetaData in C#: Title, Author, Subject, Keywords, Creator, Producer, CreationDate, ModifiedDate, CustomProperties, and dictionary methods.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing System;\n\nvar renderer = new ChromePdfRenderer();\nusing PdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Quarterly Report</h1>\");\n\npdf.MetaData.Title        = \"Q4 Financial Report\";\npdf.MetaData.Author       = \"Finance Team\";\npdf.MetaData.Subject      = \"Quarterly financial results\";\npdf.MetaData.Keywords     = \"finance, quarterly, 2026\";\npdf.MetaData.Creator      = \"Reporting Service\";\npdf.MetaData.Producer     = \"IronPDF\";\npdf.MetaData.CreationDate = DateTime.Now;\npdf.MetaData.ModifiedDate = DateTime.Now;\n\n// Application-defined fields use CustomProperties (PdfCustomMetadataProperties).\npdf.MetaData.CustomProperties.Add(\"DocumentId\", \"DOC-2026-Q4-0001\");\n\npdf.SaveAs(\"q4-report.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PdfMetaData live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfMetaData is in the IronPdf.MetaData namespace, shipped in IronPdf.dll. It is declared public class PdfMetaData. It has no public constructor; instances are obtained through the PdfDocument.MetaData property after rendering or loading a PDF, then read or assigned through its properties."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfMetaData and PdfCustomMetadataProperties?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfMetaData carries the standard PDF document information fields defined by the PDF specification: Title, Author, Subject, Keywords, Creator, Producer, CreationDate, and ModifiedDate. PdfCustomMetadataProperties carries arbitrary application-defined key/value pairs that go beyond the standard set, for example DocumentId, BusinessUnit, or ReviewStatus. PdfMetaData exposes PdfCustomMetadataProperties through its CustomProperties property, so application code reaches both surfaces from the same pdf.MetaData entry point."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are PdfMetaData CreationDate and ModifiedDate in UTC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. CreationDate and ModifiedDate on PdfMetaData are documented as Local Time DateTime values. To convert to UTC, call ToUniversalTime() on the returned DateTime. To write a UTC value, convert to Local Time before assigning, or assign the Local Time DateTime directly and rely on the consuming reader to interpret it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you stamp Title, Author, and Keywords on a generated PDF in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Render the source through ChromePdfRenderer to obtain a PdfDocument, then assign to pdf.MetaData.Title, pdf.MetaData.Author, and pdf.MetaData.Keywords on the returned PdfMetaData. Save the file with SaveAs. The values written through PdfMetaData appear in the document properties dialog of any PDF reader and in operating-system file previewers that read the PDF document information dictionary."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +222,33 @@ Dates, Keywords, Title and Subject</p><p>Implemented in <a class="xref" href="Ir
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfMetaData : Object</code></pre>
   </div>
+                  <!-- archetype-N:start PdfMetaData treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>The standard PDF document information fields, title, author, subject, keywords, and dates, are stamped and read through <code>PdfMetaData</code> on a <code>PdfDocument</code> in IronPDF. It is obtained through the <code>PdfDocument.MetaData</code> property rather than constructed directly. Each property maps to one of the PDF specification's document information entries, so changes made through <code>PdfMetaData</code> propagate to the saved file and appear in any PDF reader's document properties dialog.</p>
+<p>The class is reached on every workflow that needs to stamp identity, ownership, or searchability information into a generated or modified PDF. Document management systems set <code>Title</code>, <code>Author</code>, and <code>Subject</code> so files surface correctly in SharePoint, search indexes, and operating-system previewers. Compliance pipelines record <code>Creator</code> and <code>Producer</code> for audit trails. Archival workflows write <code>CreationDate</code> and <code>ModifiedDate</code> for chronology. The <a href="https://ironpdf.com/how-to/metadata/">PDF metadata how-to</a> shows the read-and-stamp idiom on a rendered document.</p>
+<p>Identification strings on the class are <code>Title</code>, <code>Author</code>, <code>Subject</code>, <code>Keywords</code>, <code>Creator</code>, and <code>Producer</code>, each a <code>string</code> getter/setter. Date fields are <code>CreationDate</code> and <code>ModifiedDate</code>, both <code>DateTime</code> in Local Time; call <code>ToUniversalTime()</code> for UTC. Application-defined fields live under the <code>CustomProperties</code> property, which returns a <code>PdfCustomMetadataProperties</code> indexable by key. For bulk operations, <code>GetMetaDataDictionary()</code> returns the current snapshot, <code>Keys()</code> lists available keys, <code>RemoveMetaDataKey(string)</code> clears a single key, and <code>SetMetaDataDictionary(Dictionary&lt;string, string&gt;)</code> overwrites the whole set in one call (the docfx remarks recommend this dictionary form for Docker and gRPC deployments). The canonical idiom is to render or load a <code>PdfDocument</code>, assign to <code>pdf.MetaData.*</code>, and save.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using System;
+
+var renderer = new ChromePdfRenderer();
+using PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Quarterly Report&lt;/h1&gt;&quot;);
+
+pdf.MetaData.Title        = &quot;Q4 Financial Report&quot;;
+pdf.MetaData.Author       = &quot;Finance Team&quot;;
+pdf.MetaData.Subject      = &quot;Quarterly financial results&quot;;
+pdf.MetaData.Keywords     = &quot;finance, quarterly, 2026&quot;;
+pdf.MetaData.Creator      = &quot;Reporting Service&quot;;
+pdf.MetaData.Producer     = &quot;IronPDF&quot;;
+pdf.MetaData.CreationDate = DateTime.Now;
+pdf.MetaData.ModifiedDate = DateTime.Now;
+
+// Application-defined fields use CustomProperties (PdfCustomMetadataProperties).
+pdf.MetaData.CustomProperties.Add(&quot;DocumentId&quot;, &quot;DOC-2026-Q4-0001&quot;);
+
+pdf.SaveAs(&quot;q4-report.pdf&quot;);</code></pre></div>
+<p>For follow-on workflows, the <a href="https://ironpdf.com/how-to/metadata/">metadata how-to</a> covers reading existing values and the custom-property surface, and the <a href="https://ironpdf.com/troubleshooting/metadata-visibility/">metadata visibility troubleshooting note</a> explains how reader software, file-system previewers, and PDF security settings interact when metadata appears blank or hidden.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

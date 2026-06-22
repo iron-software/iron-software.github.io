@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ExceptionHelper
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ExceptionHelper Class - IronPDF C# Exceptions API
+      v2 (human)     title:       ExceptionHelper: Format IronPDF Exception Messages
+      v1 (algorithm) description: IronPDF ExceptionHelper static class in C#. Reference its single Message method that composes IronSoftware.Exceptions message text and help URLs.
+      v2 (human)     description: ExceptionHelper composes the message text on raised IronPDF exceptions. Static method Message takes summary, helpUrl, issueCode, and issueDetail.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ExceptionHelper Class | IronPDF C# Exception Format</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ExceptionHelper
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ExceptionHelper Class | IronPDF C# Exception Format">
+    <meta name="description" content="Reference for IronPDF ExceptionHelper in C#: static Message method, IronSoftware.Exceptions namespace, composed help URL and issue-code format.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ExceptionHelper Class | IronPDF C# Exception Format",
+    "name": "ExceptionHelper class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.Exceptions.ExceptionHelper.html",
+    "abstract": "`ExceptionHelper` composes the message string attached to raised IronPDF exceptions, the text application code reads when catching them in C#. It exposes a single static method, `Message(string message, string helpUrl, string issueCode = null, string issueDetail = null)`, returning a `string`. The composed text contains a summary, a help URL into the IronPDF troubleshooting catalog, an optional issue code, and an optional issue detail. Application code typically reads the composed text through the caught exception's `Message` property rather than calling `ExceptionHelper` directly.",
+    "description": "Reference for IronPDF ExceptionHelper in C#: static Message method, IronSoftware.Exceptions namespace, composed help URL and issue-code format.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronSoftware.Exceptions;\n\n// ExceptionHelper composes the Message string that IronPDF attaches to its\n// exception types. Application code typically reads the composed string from\n// the caught exception's Message property, not by calling this method.\nstring composed = ExceptionHelper.Message(\n    message: \"Error while generating PDF from HTML\",\n    helpUrl: \"https://ironpdf.com/troubleshooting/ironpdf-native-exception/\",\n    issueCode: \"IRONPDF-NATIVE-EXCEPTION\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is ExceptionHelper defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ExceptionHelper is in the IronSoftware.Exceptions namespace, shipped in IronPdf.dll. It is declared public static class ExceptionHelper and derives from System.Object. As a static class it has no constructors and cannot be instantiated; every call uses ExceptionHelper.Message directly to compose the message text attached to a raised exception."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ExceptionHelper and IronPdfNativeException?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ExceptionHelper is a static formatter that composes message strings; IronPdfNativeException is one of the exception types whose Message property carries that composed text. ExceptionHelper lives in IronSoftware.Exceptions and exposes a single static Message method. IronPdfNativeException lives in IronPdf.Exceptions, derives from System.Exception, and is the type raised when the embedded native engine fails. The composed string from ExceptionHelper.Message is what application code reads when catching IronPdfNativeException, IronPdfInputException, LicensingException, or any of the IronSoftwareDeployment exceptions in the same namespace family."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should application code call ExceptionHelper directly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. ExceptionHelper is internal infrastructure that IronPDF calls when constructing raised exceptions. Application code reads the composed result through the standard Exception.Message property of the caught exception. The class is exposed in the public API surface for completeness and for parsing scenarios where an integrator wants to extract the help URL or issue code from a raised exception's Message in a structured way."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is ExceptionHelper.Message thread-safe?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. ExceptionHelper is a static class with a single static method that takes only string parameters and holds no shared state. Calling Message from multiple threads concurrently is safe. The method is a pure formatter: given the same four arguments, it returns the same composed string on every call."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +220,23 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class ExceptionHelper : Object</code></pre>
   </div>
+                  <!-- archetype-N:start ExceptionHelper treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>ExceptionHelper</code> is what composes the message text attached to raised IronPDF exceptions, the internal string-composition utility behind the format you read when catching them. Application code that catches IronPDF exceptions reads the result of this composition through the standard <code>Exception.Message</code> property and rarely calls <code>ExceptionHelper</code> directly.</p>
+<p><code>ExceptionHelper</code> matters when reading exception messages produced by IronPDF, because every message in the <code>IronSoftware.Exceptions</code> namespace family follows the same composed format: a human-readable summary, a help URL pointing into the troubleshooting catalog, an optional issue code such as <code>IRONPDF-NATIVE-EXCEPTION</code>, and an optional issue detail. Recognising the format makes it possible to parse a raised exception's <code>Message</code> for the help link and the issue code without bespoke regex, and makes log lines such as the one in the <a href="https://ironpdf.com/troubleshooting/ironpdf-native-exception/">IronPDF native exception troubleshooting guide</a> immediately searchable against the support catalog.</p>
+<p>The full API surface of <code>ExceptionHelper</code> is a single static method. <code>ExceptionHelper.Message(string message, string helpUrl, string issueCode = null, string issueDetail = null)</code> returns a <code>string</code>. The first two parameters are required; the trailing <code>issueCode</code> and <code>issueDetail</code> parameters default to <code>null</code> and are appended only when non-null. The method is a pure formatter, takes no state, and is thread-safe by virtue of the static signature and the lack of any shared field. Because the class is static, it has no constructors and cannot be instantiated, and every call uses <code>ExceptionHelper.Message(...)</code> directly.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronSoftware.Exceptions;
+
+// ExceptionHelper composes the Message string that IronPDF attaches to its
+// exception types. Application code typically reads the composed string from
+// the caught exception's Message property, not by calling this method.
+string composed = ExceptionHelper.Message(
+    message: &quot;Error while generating PDF from HTML&quot;,
+    helpUrl: &quot;https://ironpdf.com/troubleshooting/ironpdf-native-exception/&quot;,
+    issueCode: &quot;IRONPDF-NATIVE-EXCEPTION&quot;);</code></pre></div>
+<p>For the canonical raised exception type that surfaces the composed text, see the <a href="https://ironpdf.com/troubleshooting/ironpdf-native-exception/">IronPDF native exception troubleshooting guide</a>. When a raised IronPDF exception cannot be resolved from the help URL alone, the <a href="https://ironpdf.com/troubleshooting/engineering-request-pdf/">engineering support request guide</a> lists the log files to attach.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

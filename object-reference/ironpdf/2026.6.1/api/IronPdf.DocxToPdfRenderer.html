@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DocxToPdfRenderer
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       DocxToPdfRenderer Class - IronPDF C# API Reference
+      v2 (human)     title:       DocxToPdfRenderer: Convert Word to PDF in C#
+      v1 (algorithm) description: DocxToPdfRenderer is the IronPDF class for Word to PDF in C#. Reference RenderDocxAsPdf, RenderDocxMailMergeAsPdf, RenderingOptions, and async APIs.
+      v2 (human)     description: Convert Microsoft Word .docx files to PDF in C# with the IronPDF DocxToPdfRenderer class. File, byte-array, stream, and mail-merge render methods.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>DocxToPdfRenderer Class | IronPDF C# Word to PDF</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DocxToPdfRenderer
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="DocxToPdfRenderer Class | IronPDF C# Word to PDF">
+    <meta name="description" content="Reference for the IronPDF DocxToPdfRenderer class in C#: RenderDocxAsPdf overloads, RenderDocxMailMergeAsPdf, RenderingOptions, and code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "DocxToPdfRenderer Class | IronPDF C# Word to PDF",
+    "name": "DocxToPdfRenderer class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.DocxToPdfRenderer.html",
+    "abstract": "DocxToPdfRenderer converts Microsoft Word .docx files to PDF from C# in IronPDF, the companion converter to ChromePdfRenderer. It exposes RenderDocxAsPdf overloads that accept a file path, a byte array, or a Stream, plus an async RenderDocxAsPdfAsync, each returning a PdfDocument. RenderDocxMailMergeAsPdf is a generic method that takes a List of recipient records and a .docx or .dotx template and returns one PdfDocument per recipient. Configuration is centralized on the RenderingOptions property of type DocxPdfRenderOptions, covering PaperSize, MarginTop, MarginBottom, PaperOrientation, and MailMergePrintAllInOnePdfDocument.",
+    "description": "Reference for the IronPDF DocxToPdfRenderer class in C#: RenderDocxAsPdf overloads, RenderDocxMailMergeAsPdf, RenderingOptions, and code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing System.Collections.Generic;\nusing System.Linq;\n\nvar renderer = new DocxToPdfRenderer();\n\n// Configure shared options once on the renderer\nrenderer.RenderingOptions.PaperSize  = PdfPaperSize.Letter;\nrenderer.RenderingOptions.MarginTop  = 20;\nrenderer.RenderingOptions.MarginBottom = 20;\n\n// One-line conversion from a file path\nPdfDocument pdf = renderer.RenderDocxAsPdf(\"contract.docx\");\npdf.SaveAs(\"contract.pdf\");\n\n// Mail merge: one PDF per recipient, combined into one document\nvar options = new DocxPdfRenderOptions { MailMergePrintAllInOnePdfDocument = true };\nIEnumerable<PdfDocument> merged = renderer.RenderDocxMailMergeAsPdf<RecipientsDataModel>(\n    recipients,\n    \"Party-invitation.dotx\",\n    options);\nmerged.First().SaveAs(\"invitations.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does DocxToPdfRenderer live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DocxToPdfRenderer is in the IronPdf namespace, shipped in IronPdf.dll. It derives from System.Object. It is the Word-to-PDF entry point: every RenderDocxAsPdf and RenderDocxMailMergeAsPdf call produces a PdfDocument from a .docx or .dotx source."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between DocxToPdfRenderer and ChromePdfRenderer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DocxToPdfRenderer converts Microsoft Word .docx files to PDF directly, preserving Word styles, tables, headers, and embedded images. ChromePdfRenderer converts HTML, URLs, Markdown, and RTF to PDF through a Chromium engine. Use DocxToPdfRenderer when the source is a Word document, and ChromePdfRenderer when the source is HTML, a web page, or Markdown."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between DocxToPdfRenderer and MailMergeTemplate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DocxToPdfRenderer is the renderer in the IronPdf namespace that produces PdfDocument output from a Word document. MailMergeTemplate is a separate class in the IronPdf.DocX namespace that represents a parsed mail-merge template. For most mail-merge workflows, call RenderDocxMailMergeAsPdf directly on a DocxToPdfRenderer instance; it accepts the template path and the recipient list in one call."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does DocxToPdfRenderer support the legacy .doc format?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DocxToPdfRenderer accepts the Office Open XML format only, which covers .docx and .dotx files produced by Word 2007 or later. Legacy .doc files must be re-saved as .docx in Word before conversion. .dotx templates are accepted by the mail-merge methods, where merge field names in the template must match the property names on the recipient data model exactly and are case-sensitive."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -169,6 +240,36 @@ using (var stream = uploadedFile.OpenReadStream()) {
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class DocxToPdfRenderer : Object</code></pre>
   </div>
+                    <!-- archetype-N:start DocxToPdfRenderer treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>A <code>PdfDocument</code> rendered from a Microsoft Word <code>.docx</code> file in IronPDF comes out of <code>DocxToPdfRenderer</code>, through render methods that accept file paths, byte arrays, or streams. Configuration is centralized on the <code>RenderingOptions</code> property, a <code>DocxPdfRenderOptions</code> instance covering paper size, margins, orientation, and mail-merge behavior.</p>
+<p><code>DocxToPdfRenderer</code> is the companion to <code>ChromePdfRenderer</code> for projects that already produce Word output and need a PDF copy without re-authoring the document in HTML. Reach for it when an application ingests <code>.docx</code> uploads from users, pulls Word documents out of a database or blob store, or generates personalized invitations and statements with merge fields. Output preserves Word styles, tables, headers, footers, and embedded images directly, with no intermediate HTML pass.</p>
+<p>A typical flow constructs a <code>DocxToPdfRenderer</code>, sets options on <code>RenderingOptions</code>, and calls one of three <code>RenderDocxAsPdf</code> overloads: <code>RenderDocxAsPdf(string)</code> for a file path, <code>RenderDocxAsPdf(byte[])</code> for in-memory bytes, and <code>RenderDocxAsPdf(Stream)</code> for ASP.NET uploads or cloud-storage streams. <code>RenderDocxAsPdfAsync</code> returns <code>Task&lt;PdfDocument&gt;</code> for async pipelines. The <code>RenderDocxMailMergeAsPdf&lt;TRecipientsDataModel&gt;</code> generic method takes a <code>List&lt;T&gt;</code> of recipient records and a <code>.docx</code> or <code>.dotx</code> template, and returns one <code>PdfDocument</code> per recipient (or a single combined document when <code>DocxPdfRenderOptions.MailMergePrintAllInOnePdfDocument</code> is <code>true</code>). The file, byte-array, and mail-merge paths each have a worked example in the <a href="https://ironpdf.com/how-to/docx-to-pdf/">DOCX to PDF how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using System.Collections.Generic;
+using System.Linq;
+
+var renderer = new DocxToPdfRenderer();
+
+// Configure shared options once on the renderer
+renderer.RenderingOptions.PaperSize  = PdfPaperSize.Letter;
+renderer.RenderingOptions.MarginTop  = 20;
+renderer.RenderingOptions.MarginBottom = 20;
+
+// One-line conversion from a file path
+PdfDocument pdf = renderer.RenderDocxAsPdf(&quot;contract.docx&quot;);
+pdf.SaveAs(&quot;contract.pdf&quot;);
+
+// Mail merge: one PDF per recipient, combined into one document
+var options = new DocxPdfRenderOptions { MailMergePrintAllInOnePdfDocument = true };
+IEnumerable&lt;PdfDocument&gt; merged = renderer.RenderDocxMailMergeAsPdf&lt;RecipientsDataModel&gt;(
+    recipients,
+    &quot;Party-invitation.dotx&quot;,
+    options);
+merged.First().SaveAs(&quot;invitations.pdf&quot;);</code></pre></div>
+<p>For the end-to-end walkthrough including the mail-merge data model, see the <a href="https://ironpdf.com/how-to/docx-to-pdf/">DOCX to PDF guide</a>. For a minimal one-line conversion sample wired into a console project, the <a href="https://ironpdf.com/examples/docx-to-pdf/">DOCX to PDF example</a> shows the same renderer inside a runnable demo.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

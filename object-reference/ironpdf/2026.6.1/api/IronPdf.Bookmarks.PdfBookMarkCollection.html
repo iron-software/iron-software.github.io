@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfBookMarkCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfBookMarkCollection Class - IronPDF C# API
+      v2 (human)     title:       PdfBookMarkCollection: PDF Outlines in C#
+      v1 (algorithm) description: PdfBookMarkCollection is the IronPDF C# class for PDF outline bookmarks. Add, insert, remove, and traverse via PdfDocument.Bookmarks and Children.
+      v2 (human)     description: Build and edit PDF document outlines in C# with IronPDF PdfBookMarkCollection. AddBookMarkAtEnd, InsertBookMarkAfter, RemoveBookMark, GetAllBookmarks.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfBookMarkCollection | IronPDF C# Bookmarks</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfBookMarkCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfBookMarkCollection | IronPDF C# Bookmarks">
+    <meta name="description" content="Reference for IronPDF PdfBookMarkCollection in C#: AddBookMarkAtEnd, Children nesting, GetAllBookmarks, Count, FirstBookmark, LastBookmark.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfBookMarkCollection | IronPDF C# Bookmarks",
+    "name": "PdfBookMarkCollection class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Bookmarks.PdfBookMarkCollection.html",
+    "abstract": "Building, editing, and walking the outline entries that appear in a PDF reader's bookmark sidebar runs through PdfBookMarkCollection in IronPDF. Obtained from PdfDocument.Bookmarks for the root outline and from PdfBookMark.Children for any nested level, it exposes AddBookMarkAtEnd, AddBookMarkAtStart, InsertBookMarkAfter, InsertBookMarkBefore, RemoveBookMark, RemoveBookMarkAt, GetAllBookmarks, GetBookmarkAfter, GetBookmarkBefore, and the Count, FirstBookmark, LastBookmark, and Parent properties for building and traversing the hierarchical document outline.",
+    "description": "Reference for IronPDF PdfBookMarkCollection in C#: AddBookMarkAtEnd, Children nesting, GetAllBookmarks, Count, FirstBookmark, LastBookmark.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Bookmarks;\n\nPdfDocument pdf = PdfDocument.FromFile(\"manual.pdf\");\nPdfBookMarkCollection outline = pdf.Bookmarks;\n\n// Add a top-level chapter, then nest sections under it through Children\n// (Children is itself a PdfBookMarkCollection, so nesting is recursive).\nIPdfBookmark intro = outline.AddBookMarkAtEnd(\"Introduction\", 0);\nintro.Children.AddBookMarkAtEnd(\"Welcome\", 0);\nintro.Children.AddBookMarkAtEnd(\"Getting Started\", 2);\n\npdf.SaveAs(\"manual_with_outline.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is PdfBookMarkCollection defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfBookMarkCollection is in the IronPdf.Bookmarks namespace, shipped in IronPdf.dll. It derives from PdfClientAccessor and implements IPdfBookMarkCollection, IEnumerable<IPdfBookmark>, and IEnumerable. Instances are obtained from PdfDocument.Bookmarks for the root outline and from PdfBookMark.Children for any nested level rather than constructed directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfBookMarkCollection and PdfBookMark?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfBookMarkCollection is the container that holds outline entries at one level of the tree, while PdfBookMark (exposed through the IPdfBookmark interface) is a single bookmark entry. PdfDocument.Bookmarks returns the root PdfBookMarkCollection. Each individual bookmark exposes a Children property that is itself a PdfBookMarkCollection, which is how nesting works. Add, remove, and traverse with PdfBookMarkCollection methods; read or change a bookmark's text and target page through the IPdfBookmark interface on the element."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create nested bookmarks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Add a top-level bookmark by calling AddBookMarkAtEnd or AddBookMarkAtStart on PdfDocument.Bookmarks. The returned IPdfBookmark exposes a Children property, which is itself a PdfBookMarkCollection. Call AddBookMarkAtEnd or AddBookMarkAtStart on Children to add a nested bookmark under that parent. The same approach works recursively for deeper levels. There is no separate AddSubBookMark method; nesting is always done by adding into the parent's Children collection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add a bookmark to a PDF document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Load or render a PdfDocument, then call AddBookMarkAtEnd or AddBookMarkAtStart on its Bookmarks property. Both methods take the display text and a zero-based page index and return the newly added IPdfBookmark. For precise placement among existing siblings use InsertBookMarkAfter or InsertBookMarkBefore. Save the document with SaveAs to persist the outline."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -175,16 +246,27 @@ Console.WriteLine($&quot;{bm.Text} â†’ Page {bm.PageIndex + 1}&quot;);</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfBookMarkCollection : PdfClientAccessor, IEnumerable&lt;IPdfBookmark&gt;, IEnumerable, IPdfBookMarkCollection</code></pre>
   </div>
-  <h5 id="IronPdf_Bookmarks_PdfBookMarkCollection_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Key Methods:</strong>
-</p>
-<ul><li></li><li></li><li></li><li></li><li></li><li></li></ul>
-<p>
-<strong>Standards:</strong>
-</p>
-<ul><li></li><li></li></ul>
-</div>
+                  <!-- archetype-N:start PdfBookMarkCollection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When the outline entries that appear in a PDF reader's bookmark sidebar need to be built, edited, or walked, <code>PdfBookMarkCollection</code> is the container that holds them. It is the type returned by both <code>PdfDocument.Bookmarks</code> and <code>PdfBookMark.Children</code>. Because <code>Children</code> is itself a <code>PdfBookMarkCollection</code>, the same set of mutation and traversal members works at every level of the outline tree.</p>
+<p>Typical scenarios include generating a table of contents from rendered HTML, attaching chapter and subsection bookmarks to a merged report, removing stale bookmarks from an archival document, and iterating every bookmark across the full hierarchy to rebuild navigation metadata.</p>
+<p>Instances are obtained from a <code>PdfDocument</code>, never constructed directly. Top-level bookmarks are added with <code>AddBookMarkAtEnd(string text, int pageIndex)</code> or <code>AddBookMarkAtStart(string text, int pageIndex)</code>; both return the newly added <code>IPdfBookmark</code>. Nested bookmarks are added by calling the same methods on the returned bookmark's <code>Children</code> collection. Precise placement uses <code>InsertBookMarkAfter</code> and <code>InsertBookMarkBefore</code>, which take an existing sibling as the anchor. Editing uses <code>RemoveBookMark(IPdfBookmark)</code> for a known reference and <code>RemoveBookMarkAt(int index)</code> for positional removal. Traversal exposes <code>GetAllBookmarks()</code> for a flat recursive list, <code>GetBookmarkAfter</code> and <code>GetBookmarkBefore</code> for sibling navigation, and <code>Count</code> / <code>FirstBookmark</code> / <code>LastBookmark</code> / <code>Parent</code> for inspection. The <a href="https://ironpdf.com/how-to/bookmarks/">bookmarks how-to</a> has worked examples of both single-layer and multi-layer outlines.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Bookmarks;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;manual.pdf&quot;);
+PdfBookMarkCollection outline = pdf.Bookmarks;
+
+// Add a top-level chapter, then nest sections under it through Children
+// (Children is itself a PdfBookMarkCollection, so nesting is recursive).
+IPdfBookmark intro = outline.AddBookMarkAtEnd(&quot;Introduction&quot;, 0);
+intro.Children.AddBookMarkAtEnd(&quot;Welcome&quot;, 0);
+intro.Children.AddBookMarkAtEnd(&quot;Getting Started&quot;, 2);
+
+pdf.SaveAs(&quot;manual_with_outline.pdf&quot;);</code></pre></div>
+<p>For worked snippets, see the <a href="https://ironpdf.com/examples/bookmarks/">bookmarks examples</a>. The element returned by each <code>Add*</code> call is documented on the <a href="https://ironpdf.com/object-reference/api/IronPdf.Bookmarks.PdfBookMark.html"><code>PdfBookMark</code> reference</a>. For the broader feature context, the <a href="https://ironpdf.com/features/organize/">organize PDFs feature</a> page lists outlines alongside merge, split, and page operations.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

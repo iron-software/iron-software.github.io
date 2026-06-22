@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfPage
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfPage Class - IronPDF C# API Reference
+      v2 (human)     title:       PdfPage: Per-Page PDF Access in IronPDF for C#
+      v1 (algorithm) description: IronPdf.Pages.PdfPage class reference for C#. Properties Width, Height, PageRotation, Text, ObjectModel and methods Resize, Extend, Transform.
+      v2 (human)     description: Read text, dimensions, and rotation from a single PDF page in C#, then resize, extend, or transform its content with IronPDF PdfPage.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfPage Class | IronPDF C# Pages API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfPage
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfPage Class | IronPDF C# Pages API">
+    <meta name="description" content="PdfPage in IronPDF gives C# code per-page access through PdfDocument.Pages: Width, Height, PageRotation, Text, Resize, Extend, Transform.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfPage Class | IronPDF C# Pages API",
+    "name": "PdfPage class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Pages.PdfPage.html",
+    "abstract": "When work happens at page granularity rather than document granularity, `PdfPage` is what reads and edits the single PDF page in IronPDF. Application code obtains instances by indexing `PdfDocument.Pages` and casting to `PdfPage`. The class exposes `Width`, `Height`, `PrintWidth`, `PrintHeight`, `PageRotation`, `PageIndex`, `Text`, `Characters`, `Lines`, `TextChunks`, and `ObjectModel`, along with the mutation methods `Resize`, `Extend`, and `Transform` for per-page edits in C#.",
+    "description": "PdfPage in IronPDF gives C# code per-page access through PdfDocument.Pages: Width, Height, PageRotation, Text, Resize, Extend, Transform.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Pages;\nusing IronPdf.Rendering;\nusing IronPdf.Editing;\n\nusing PdfDocument pdf = PdfDocument.FromFile(\"report.pdf\");\n\n// Index the cached collection and cast to PdfPage for the mutation surface.\nPdfPage first = pdf.Pages[0] as PdfPage;\n\n// Read dimensions and rotation.\ndouble widthMm = first.Width;\nPdfPageRotation rotation = first.PageRotation;\n\n// Resize page bounds (A4), rotate, then translate content without changing bounds.\nfirst.Resize(210, 297, MeasurementUnit.Millimeter);\nfirst.PageRotation = PdfPageRotation.Clockwise90;\nfirst.Transform(5, -5, 1.0, 1.0);\n\npdf.SaveAs(\"report-page0.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PdfPage live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfPage is in the IronPdf.Pages namespace, shipped in IronPdf.dll. It is declared public class PdfPage : PdfClientAccessor, IPdfPage, IDocumentPage<IPdfPageObjectModel>, IPageContainer. Application code obtains instances by indexing the PdfPagesCollection on PdfDocument.Pages and casting to PdfPage rather than constructing them in most workflows."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfPage and IPdfPage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPdfPage is the abstraction returned by the PdfPagesCollection indexer and used in IPageContainer signatures. PdfPage is the concrete implementation that adds the Resize, Extend, and Transform mutation methods plus the PdfClientAccessor base. Cast the indexed value to PdfPage when full surface access is needed: var page = pdf.Pages[0] as PdfPage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does setting Width or Height on a PdfPage resize the content?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Assigning Width or Height changes the page bounds in millimetres but leaves content unchanged. To resize bounds with an explicit measurement unit, call Resize. To extend bounds in one or more directions while leaving content positioned where it was, call Extend. To move or scale the content without touching the bounds, call Transform."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you extract text from a single page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Text property on the PdfPage instance for the page's raw text content. For positioned glyphs use Characters, for line groupings use Lines, and for font-uniform spans use TextChunks. The full drawn-object DOM is available through ObjectModel."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -173,16 +244,34 @@ page.Transform(5, -5, 1.0, 1.0);  // Move content 5mm right, 5mm down</code></pr
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfPage : PdfClientAccessor, IPdfPage, IDocumentPage&lt;IPdfPageObjectModel&gt;, IPageContainer</code></pre>
   </div>
-  <h5 id="IronPdf_Pages_PdfPage_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Key Properties:</strong>
-</p>
-<ul><li></li><li></li><li></li><li></li><li></li></ul>
-<p>
-<strong>Related Resources:</strong>
-</p>
-<ul><li></li><li></li></ul>
-</div>
+                  <!-- archetype-N:start PdfPage treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PdfPage</code> exposes a single page of an open document, obtained by indexing the <code>PdfPagesCollection</code> on <code>PdfDocument.Pages</code>. It carries the page dimensions, rotation, content streams, and DOM, plus three mutation methods that rewrite the page in place inside the parent document.</p>
+<p>Reach for <code>PdfPage</code> when work happens at page granularity rather than document granularity. Typical scenarios include extracting text from a specific page of an OCR pipeline output, rotating scanned pages that arrived sideways, resizing mixed-source pages so a merged report has a consistent paper size, and translating or scaling content after merging two documents with different bounding boxes. The constructor <code>new PdfPage(width, height)</code> creates a detached page in millimetres that can later be added to a <code>PdfPagesCollection</code>.</p>
+<p>The salient surface groups into four buckets. Dimensions are exposed as <code>Width</code> and <code>Height</code> in millimetres (both settable, which resizes the page bounds) and as the read-only <code>PrintWidth</code> and <code>PrintHeight</code> in printer points. Content lives behind <code>Text</code> for raw text, <code>Characters</code> for positioned glyphs, <code>Lines</code> for line-level positions, <code>TextChunks</code> for font-uniform spans, and <code>ObjectModel</code> for the full PDFium-backed DOM. Orientation lives on the settable <code>PageRotation</code> property typed as <code>IronPdf.Rendering.PdfPageRotation</code> (values <code>None</code>, <code>Clockwise90</code>, <code>Clockwise180</code>, <code>Clockwise270</code>). The mutation methods <code>Resize</code>, <code>Extend</code>, and <code>Transform</code> cover three different intents that are easy to confuse, so the choice matters.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Pages;
+using IronPdf.Rendering;
+using IronPdf.Editing;
+
+using PdfDocument pdf = PdfDocument.FromFile(&quot;report.pdf&quot;);
+
+// Index the cached collection and cast to PdfPage for the mutation surface.
+PdfPage first = pdf.Pages[0] as PdfPage;
+
+// Read dimensions and rotation.
+double widthMm = first.Width;
+PdfPageRotation rotation = first.PageRotation;
+
+// Resize page bounds (A4), rotate, then translate content without changing bounds.
+first.Resize(210, 297, MeasurementUnit.Millimeter);
+first.PageRotation = PdfPageRotation.Clockwise90;
+first.Transform(5, -5, 1.0, 1.0);
+
+pdf.SaveAs(&quot;report-page0.pdf&quot;);</code></pre></div>
+<p>For per-page content transformations, the <a href="/how-to/transform-pdf-pages/">transform PDF pages how-to</a> has worked examples of translation and scaling. To read or rewrite drawn objects rather than text, the <a href="/how-to/access-pdf-dom-object/">PDF DOM object guide</a> walks through the <code>ObjectModel</code> surface. For orientation and rotation specifically, see the <a href="/how-to/page-orientation-rotation/">orientation and rotation how-to</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

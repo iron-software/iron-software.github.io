@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfExtractor
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfExtractor Class | IronPDF C# PDF Extraction API
+      v2 (human)     title:       PdfExtractor: Extract Text and Tables from PDFs in C#
+      v1 (algorithm) description: PdfExtractor is the IronPDF static class for structured PDF extraction in C#. Reference Extract, ExtractPage, ExtractPages, and ExtractTable.
+      v2 (human)     description: Extract text, tables, and metadata from PDFs in C# with the IronPDF PdfExtractor static class. Returns PdfExtractionResult ready for ExportManager.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfExtractor Static Class | IronPDF C# Extractions</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfExtractor
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfExtractor Static Class | IronPDF C# Extractions">
+    <meta name="description" content="Reference for the IronPDF PdfExtractor static class in C#: Extract, ExtractAsync, ExtractPage, ExtractPages, and ExtractTable for structured PDF data.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,77 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfExtractor Static Class | IronPDF C# Extractions",
+    "name": "PdfExtractor class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.PdfExtractor.html",
+    "abstract": "Pulling structured text, tables, and document metadata out of a PDF in one call runs through PdfExtractor in IronPDF. It exposes whole-document methods (Extract and ExtractAsync), page-scoped methods (ExtractPage, ExtractPageAsync, ExtractPages), and a table-scoped method (ExtractTable) that read a PDF path and return either a PdfExtractionResult carrying FullText, Tables, Text, and Metadata, or a single TableObject. Async overloads accept an IProgress<ExtractionProgress> reporter and every overload accepts an optional PdfExtractionOptions; the result is handed to the sibling ExportManager to write CSV, JSON, HTML, TXT, or XML files.",
+    "description": "Reference for the IronPDF PdfExtractor static class in C#: Extract, ExtractAsync, ExtractPage, ExtractPages, and ExtractTable for structured PDF data.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Extractions;\n\n// Extract the whole document and read the structured result\nPdfExtractionResult result = PdfExtractor.Extract(\"invoice.pdf\");\n\nstring allText           = result.FullText;\nList<TableObject> tables = result.Tables;\nDocumentMetadata meta    = result.Metadata;\n\n// Pull tables from page 2 only\nList<TableObject> page2Tables = result.GetTablesByPage(2);"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "// Extract then export: PdfExtractor produces, ExportManager writes the files\nPdfExtractionResult res = PdfExtractor.Extract(\"report.pdf\");\n\n// Hand the result to ExportManager to write CSV, JSON, HTML, TXT and XML\nExportManager.ExportResult(res, \"out/\", new ExportConfiguration());\n\n// Or export a single table directly\nTableObject summary = PdfExtractor.ExtractTable(\"report.pdf\", pageNumber: 1, tableIndex: 0);\nExportManager.ExportTable(summary, \"out/summary.csv\", ExportFormat.Csv);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is PdfExtractor located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfExtractor is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It is declared public static class PdfExtractor. As a static class it has no instance to construct; every operation is called as PdfExtractor.Method(pdfPath, ...) and returns a PdfExtractionResult or a TableObject."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfExtractor and ExportManager?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfExtractor reads a PDF file and produces a PdfExtractionResult that holds the extracted text, tables, and metadata in memory. ExportManager takes that PdfExtractionResult (or a single TableObject) and writes the data to disk in CSV, JSON, HTML, TXT, or XML format. The two static classes are designed to be used in sequence: PdfExtractor.Extract first, then ExportManager.ExportResult to persist. PdfExtractor never writes files on its own and ExportManager never reads PDFs on its own."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does PdfExtractor relate to the older PdfDocument.ExtractAllText method?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The PdfDocument instance methods ExtractAllText, ExtractTextFromPage, and ExtractAllImages return raw text or image bytes from an existing PdfDocument. PdfExtractor is the newer static API for structured extraction and returns a PdfExtractionResult that bundles the full text together with detected tables and document metadata in one object. Use the PdfDocument methods when only a flat text or image stream is needed. Use PdfExtractor when downstream code has to consume tables or page-scoped data."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you extract a single table without scanning the whole document?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call PdfExtractor.ExtractTable with the PDF path, the 1-based page number, and the 0-based table index on that page to receive a single TableObject directly. The TableObject exposes HeaderRows and DataRows as List of TableRow, so the caller can iterate cells without paging through the rest of the document. Pair this with ExportManager.ExportTable to write that one table to CSV in a single call."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -169,24 +246,35 @@ var table = PdfExtractor.ExtractTable(&quot;document.pdf&quot;, 5, 0);</code></p
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class PdfExtractor : Object</code></pre>
   </div>
-  <h5 id="IronPdf_Extractions_PdfExtractor_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p><strong>Important Considerations:</strong></p>
-<p>
-<p><strong>Performance:</strong> For large documents, consider using the async methods to avoid blocking the UI thread.</p>
-</p>
-<p>
-<p><strong>Note:</strong> The ExtractTable method will throw an exception if the specified table index doesn't exist on the page.</p>
-</p>
-<strong>Related Documentation:</strong>
-<p>
-<p><strong>How-To Guide:</strong>
-<a href="https://ironpdf.com/how-to/text-and-table-extraction-pdf/">Getting Started with PDF Extraction</a></p>
-</p>
-<p>
-<p><strong>API Reference:</strong>
-<a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.PdfExtractor.html/">Full API Documentation</a></p>
-</p>
-</div>
+                  <!-- archetype-N:start PdfExtractor treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PdfExtractor</code> is the entry point a caller reaches for structured text, tables, and document metadata out of a PDF rather than a flat text dump. It turns a file path into a <code>PdfExtractionResult</code> carrying full text, page-by-page text, detected tables, and document metadata in a single object. It is the newer companion to the legacy <code>PdfDocument.ExtractAllText()</code> API and the recommended surface for any workflow that needs tables or per-page detail.</p>
+<p><code>PdfExtractor</code> is useful when downstream code has to act on structure, not on a string. Typical scenarios include invoice and receipt processing where line-item tables need to flow into accounting systems, document-AI pipelines that feed text plus table context to an LLM for question answering, and reporting tools that load PDF tables into CSV or Excel. The class also supports large-document workflows through its async overloads, which accept an <code>IProgress&lt;ExtractionProgress&gt;</code> reporter for UI updates during long extractions.</p>
+<p>All operations are static methods called as <code>PdfExtractor.Method(pdfPath, ...)</code>, with no instance to construct. The method family groups into three buckets. The whole-document methods <code>Extract</code> and <code>ExtractAsync</code> walk every page and return a complete <code>PdfExtractionResult</code>. The page-scoped methods <code>ExtractPage</code>, <code>ExtractPageAsync</code>, and <code>ExtractPages(startPage, endPage)</code> narrow the scan to a single page or a range, using 1-based page numbers. The table-scoped method <code>ExtractTable(pdfPath, pageNumber, tableIndex)</code> returns one <code>TableObject</code> directly when the caller already knows which table is wanted. Every overload accepts an optional <code>PdfExtractionOptions</code> for tuning table detection strategy and text extraction mode, and falls back to documented defaults when the parameter is null. For worked examples, see the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a> and the <a href="https://ironpdf.com/how-to/csharp-parse-pdf/">C# parse PDF how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Extractions;
+
+// Extract the whole document and read the structured result
+PdfExtractionResult result = PdfExtractor.Extract(&quot;invoice.pdf&quot;);
+
+string allText           = result.FullText;
+List&lt;TableObject&gt; tables = result.Tables;
+DocumentMetadata meta    = result.Metadata;
+
+// Pull tables from page 2 only
+List&lt;TableObject&gt; page2Tables = result.GetTablesByPage(2);</code></pre></div>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">// Extract then export: PdfExtractor produces, ExportManager writes the files
+PdfExtractionResult res = PdfExtractor.Extract(&quot;report.pdf&quot;);
+
+// Hand the result to ExportManager to write CSV, JSON, HTML, TXT and XML
+ExportManager.ExportResult(res, &quot;out/&quot;, new ExportConfiguration());
+
+// Or export a single table directly
+TableObject summary = PdfExtractor.ExtractTable(&quot;report.pdf&quot;, pageNumber: 1, tableIndex: 0);
+ExportManager.ExportTable(summary, &quot;out/summary.csv&quot;, ExportFormat.Csv);</code></pre></div>
+<p>The sibling <a href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.ExportManager.html"><code>ExportManager</code></a> takes the <code>PdfExtractionResult</code> produced here and writes it to disk in CSV, JSON, HTML, TXT, or XML. For configuring detection thresholds and text-extraction mode, see <code>PdfExtractionOptions</code>, and for the broader text-extraction workflow on existing <code>PdfDocument</code> instances, the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a> covers the legacy <code>ExtractAllText</code> family.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

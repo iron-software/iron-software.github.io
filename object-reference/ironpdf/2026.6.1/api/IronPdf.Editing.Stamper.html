@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Stamper
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Stamper Class - IronPDF C# PDF Stamping Reference
+      v2 (human)     title:       Stamper: The Base Class for PDF Stamps in IronPDF C#
+      v1 (algorithm) description: Stamper is the abstract IronPDF base class for PDF stamps in C#. Reference inherited alignment, offset, opacity, rotation, sizing, and ApplyStamp usage.
+      v2 (human)     description: The IronPDF Stamper class defines the shared placement, opacity, rotation, and sizing surface inherited by TextStamper, HtmlStamper, ImageStamper, and BarcodeStamper.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Stamper Class | IronPDF C# PDF Stamping API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Stamper
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="Stamper Class | IronPDF C# PDF Stamping API">
+    <meta name="description" content="Reference for IronPDF Stamper in C#: HorizontalAlignment, VerticalAlignment, Opacity, Rotation, IsStampBehindContent, Scale, and ApplyStamp parameter usage.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Stamper Class | IronPDF C# PDF Stamping API",
+    "name": "Stamper class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Editing.Stamper.html",
+    "abstract": "Configuring the shared placement, sizing, opacity, and rotation surface that every PDF stamp inherits runs through Stamper in IronPDF, after which a concrete subclass (TextStamper, HtmlStamper, ImageStamper, or BarcodeStamper) is applied to a document. It is the abstract base type for PDF stamping, defining the shared configuration surface for placement (HorizontalAlignment, VerticalAlignment, HorizontalOffset, VerticalOffset), sizing (MaxWidth, MaxHeight, MinWidth, MinHeight, Scale), visual styling (Opacity from 0 to 100, Rotation from 0 to 360 degrees clockwise, IsStampBehindContent, IsStampAnnotation), and runtime behaviour (Timeout, WaitFor, Hyperlink, Html). PdfDocument.ApplyStamp and ApplyMultipleStamps accept the Stamper base type, allowing any subclass to plug into the same configuration and dispatch contract.",
+    "description": "Reference for IronPDF Stamper in C#: HorizontalAlignment, VerticalAlignment, Opacity, Rotation, IsStampBehindContent, Scale, and ApplyStamp parameter usage.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Editing;\n\n// Configure the SHARED Stamper surface in one helper, then pass any\n// concrete subclass through. ApplyStamp takes the base type, so the\n// same configuration code applies to every stamper kind.\nstatic T ConfigureWatermark<T>(T stamp) where T : Stamper\n{\n    stamp.HorizontalAlignment = HorizontalAlignment.Center;\n    stamp.VerticalAlignment = VerticalAlignment.Middle;\n    stamp.Opacity = 30;             // int 0 to 100, not float 0 to 1\n    stamp.Rotation = -45;           // degrees, clockwise positive\n    stamp.IsStampBehindContent = true;\n    return stamp;\n}\n\nvar pdf = PdfDocument.FromFile(\"contract.pdf\");\n\n// Each concrete subclass plugs into the same Stamper parameter slot:\npdf.ApplyStamp(ConfigureWatermark(new TextStamper(\"CONFIDENTIAL\")));\npdf.ApplyStamp(ConfigureWatermark(new ImageStamper(\"watermark.png\")))\n   .SaveAs(\"contract-stamped.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Stamper live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Stamper is in the IronPdf.Editing namespace, shipped in IronPdf.dll. It is a public abstract class deriving from System.Object and is the base type of the four concrete stampers TextStamper, HtmlStamper, ImageStamper, and BarcodeStamper. The base type appears in method signatures such as PdfDocument.ApplyStamp(Stamper) and ApplyMultipleStamps, while application code constructs one of the subclasses."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When do you reference the Stamper class instead of a concrete subclass?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Stamper is an abstract class and cannot be instantiated directly. Application code constructs one of the four concrete subclasses (TextStamper, HtmlStamper, ImageStamper, or BarcodeStamper) and configures the inherited properties on that instance. The base Stamper type appears in method signatures: PdfDocument.ApplyStamp takes a Stamper parameter, ApplyStampAsync takes a Stamper parameter, ApplyMultipleStamps takes an IEnumerable of Stamper, and generic helpers that configure shared placement or opacity also accept Stamper or a generic constraint of T where T is Stamper. Reading the Stamper reference page is useful when looking up the shared inherited members; instantiating happens at the subclass."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Stamper and the legacy ApplyWatermark method?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Stamper and its subclasses are consumed by ApplyStamp and ApplyMultipleStamps on PdfDocument, which expose the full configuration surface (alignment grid, offsets, opacity, rotation, scale, sizing bounds, layering, hyperlink, timeout, wait conditions, annotation flag). ApplyWatermark is a legacy convenience method on PdfDocument that takes only an HTML string and a PagePosition enum and applies the same watermark to every page. ApplyWatermark predates the Stamper hierarchy and does not give access to the inherited Stamper properties. New code should construct a concrete Stamper subclass and call ApplyStamp."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there constraints on Stamper property values that are easy to miss?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Three constraints surprise callers. Opacity is an integer from 0 to 100, not a floating-point alpha from 0 to 1; setting Opacity = 0.5 compiles only because the integer type rounds and the stamp draws nearly invisible. Rotation is an integer from 0 to 360 measured clockwise, so a typical 45-degree watermark tilt uses Rotation = -45 or Rotation = 315. The inherited Html property is declared with a set-only accessor on Stamper itself, so assigning HTML on a Stamper-typed reference is supported but reading it back is not; if the HTML payload is needed for inspection, hold a typed HtmlStamper reference instead. Scale is a percentage with a default of 100, not a unit ratio of 1.0."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,6 +225,36 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class Stamper : Object</code></pre>
   </div>
+                  <!-- archetype-N:start Stamper treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Stamper</code> defines the shared placement, sizing, opacity, rotation, and layering surface that every IronPDF stamp inherits. Callers instantiate one of its four concrete subclasses (<code>TextStamper</code>, <code>HtmlStamper</code>, <code>ImageStamper</code>, <code>BarcodeStamper</code>) directly. The <code>Stamper</code> type itself is what <code>PdfDocument.ApplyStamp</code> accepts as a parameter, so every stamp configuration in IronPDF ultimately flows through the inherited members declared on this class.</p>
+<p><code>Stamper</code> matters because the family of stamping operations shares one configuration contract: where the stamp goes on the page, how large it is allowed to be, how transparent it draws, how it rotates, whether it sits in front of or behind the existing content, and how long the renderer waits for it. Centralising those properties on the base class keeps watermarks, headers, footers, signatures, logos, page numbers, and barcodes consistent. It also lets <code>ApplyMultipleStamps</code> accept a heterogeneous list of stamp types in a single rendering pass.</p>
+<p>The inherited surface falls into four groups. Placement is controlled by <code>HorizontalAlignment</code> and <code>VerticalAlignment</code> selecting a cell of the 3x3 grid, with <code>HorizontalOffset</code> and <code>VerticalOffset</code> (each of type <code>Length</code>) nudging from that anchor. Sizing is bounded by <code>MaxWidth</code>, <code>MaxHeight</code>, <code>MinWidth</code>, <code>MinHeight</code>, and percentage-scaled by <code>Scale</code> (default 100). Visual styling uses <code>Opacity</code> (integer 0 to 100), <code>Rotation</code> (integer 0 to 360 clockwise), <code>IsStampBehindContent</code> (the watermark-versus-stamp layering switch), and <code>IsStampAnnotation</code> (set to true to emit a PDF annotation stamp). Runtime behaviour is governed by <code>Timeout</code> in seconds (default 60), <code>WaitFor</code> for renderer event waits, <code>Hyperlink</code> for a click target, and the set-only <code>Html</code> property used by <code>HtmlStamper</code>. The static helper <code>AntiClockwiseRotateAlignment</code> rotates an alignment pair when the page itself has been rotated through a <code>PdfPageRotation</code>. Code creates a concrete subclass, configures its inherited properties, and passes it through <code>PdfDocument.ApplyStamp</code> or <code>ApplyMultipleStamps</code>. The <a href="https://ironpdf.com/how-to/stamp-text-image/">stamp text and image how-to</a> walks through each subclass in turn.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Editing;
+
+// Configure the SHARED Stamper surface in one helper, then pass any
+// concrete subclass through. ApplyStamp takes the base type, so the
+// same configuration code applies to every stamper kind.
+static T ConfigureWatermark&lt;T&gt;(T stamp) where T : Stamper
+{
+    stamp.HorizontalAlignment = HorizontalAlignment.Center;
+    stamp.VerticalAlignment = VerticalAlignment.Middle;
+    stamp.Opacity = 30;             // int 0 to 100, not float 0 to 1
+    stamp.Rotation = -45;           // degrees, clockwise positive
+    stamp.IsStampBehindContent = true;
+    return stamp;
+}
+
+var pdf = PdfDocument.FromFile(&quot;contract.pdf&quot;);
+
+// Each concrete subclass plugs into the same Stamper parameter slot:
+pdf.ApplyStamp(ConfigureWatermark(new TextStamper(&quot;CONFIDENTIAL&quot;)));
+pdf.ApplyStamp(ConfigureWatermark(new ImageStamper(&quot;watermark.png&quot;)))
+   .SaveAs(&quot;contract-stamped.pdf&quot;);</code></pre></div>
+<p>For background overlays driven by the inherited <code>IsStampBehindContent</code> flag, the <a href="https://ironpdf.com/how-to/background-foreground/">backgrounds and foregrounds how-to</a> shows the watermarking idiom in working code. The <a href="https://ironpdf.com/examples/pdf-watermarking/">PDF watermarking example</a> puts the inherited opacity, rotation, and placement properties to work on a concrete subclass.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

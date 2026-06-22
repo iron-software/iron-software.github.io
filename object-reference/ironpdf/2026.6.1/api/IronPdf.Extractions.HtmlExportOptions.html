@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class HtmlExportOptions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       HtmlExportOptions Class - IronPDF C# API Reference
+      v2 (human)     title:       HtmlExportOptions: Export PDF Tables to HTML in C#
+      v1 (algorithm) description: HtmlExportOptions is the IronPDF class that styles HTML output from PDF table extraction in C#. HtmlIncludeStyles, HtmlResponsive, HtmlTableClass.
+      v2 (human)     description: Export PDF tables to styled HTML in C# with HtmlExportOptions. Pass it to ExportManager.ExportTable to control inline CSS, responsiveness, and CSS class.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>HtmlExportOptions | IronPDF C# Extractions</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class HtmlExportOptions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="HtmlExportOptions | IronPDF C# Extractions">
+    <meta name="description" content="Reference for IronPDF HtmlExportOptions in C#: HtmlIncludeStyles, HtmlResponsive, HtmlTableClass. Consumed by ExportManager.ExportTable and ExportTables.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "HtmlExportOptions | IronPDF C# Extractions",
+    "name": "HtmlExportOptions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.HtmlExportOptions.html",
+    "abstract": "HtmlExportOptions controls the HTML markup produced when a TableObject extracted from a PDF is written out by ExportManager.ExportTable or ExportTables in IronPDF. It exposes a parameterless constructor and three HTML-specific settable properties: HtmlIncludeStyles toggles inline CSS, HtmlResponsive wraps the table for mobile layout, and HtmlTableClass sets the CSS class on the table element. Four inherited properties (SpanMode, IncludeHeaders, IncludeEmptyRows, TextEncoding) shape the underlying table semantics. The options type itself selects the output format inside ExportManager.",
+    "description": "Reference for IronPDF HtmlExportOptions in C#: HtmlIncludeStyles, HtmlResponsive, HtmlTableClass. Consumed by ExportManager.ExportTable and ExportTables.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Extractions;\n\nPdfExtractionResult result = PdfExtractor.Extract(\"financial-report.pdf\");\nTableObject table = result.Tables[0];\n\nHtmlExportOptions htmlOptions = new HtmlExportOptions\n{\n    HtmlIncludeStyles = true,\n    HtmlResponsive = true,\n    HtmlTableClass = \"report-table\",\n    IncludeHeaders = true,\n    SpanMode = SpanHandlingMode.Repeat\n};\n\nExportManager.ExportTable(table, \"report-table.html\", htmlOptions);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is HtmlExportOptions defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HtmlExportOptions is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It derives from ExportOptionsBase and adds the HtmlIncludeStyles, HtmlResponsive, and HtmlTableClass properties. Passing it to ExportManager.ExportTable or ExportTables selects HTML output."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between HtmlExportOptions and HtmlFormatOptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HtmlExportOptions in the IronPdf.Extractions namespace configures HTML output produced by ExportManager when serializing TableObject values extracted from a PDF. HtmlFormatOptions in the IronPdf namespace configures HTML output produced by PdfDocument.SaveAsHtml or ToHtmlString when converting an entire PDF document to HTML. They are different classes for different code paths: HtmlExportOptions targets the extract-then-export pipeline, HtmlFormatOptions targets the whole-document conversion pipeline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does ExportManager know to write HTML when given HtmlExportOptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ExportManager.ExportTable and ExportManager.ExportTables accept ExportOptionsBase as their options parameter and infer the output format from the runtime type. Passing an instance of HtmlExportOptions selects HTML output. Passing CsvExportOptions, JsonExportOptions, TxtExportOptions, or XmlExportOptions selects the matching format. No separate ExportFormat argument is needed in that overload."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which methods accept an HtmlExportOptions argument?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Two static methods on ExportManager accept HtmlExportOptions through their ExportOptionsBase parameter: ExportTable, which writes a single TableObject to a file path, and ExportTables, which writes a List of TableObject values to a file path. A configured HtmlExportOptions instance can be reused across every call in a batch to keep styling consistent across the exported HTML files."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -178,20 +249,30 @@ HtmlTableClass = &quot;custom-table&quot;
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class HtmlExportOptions : ExportOptionsBase</code></pre>
   </div>
-  <h5 id="IronPdf_Extractions_HtmlExportOptions_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p><strong>Important Considerations:</strong></p>
-<p>
-<p><strong>Responsive Design:</strong> Makes tables mobile-friendly with automatic wrapping.</p>
-</p>
-<p>
-<p><strong>Note:</strong> Custom CSS classes allow integration with existing stylesheets.</p>
-</p>
-<strong>Related Documentation:</strong>
-<p>
-<p><strong>How-To Guide:</strong>
-<a href="https://ironpdf.com/how-to/export-extracted-pdf-data/">HTML Export Guide</a></p>
-</p>
-</div>
+                    <!-- archetype-N:start HtmlExportOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a <code>TableObject</code> extracted from a PDF must be serialized to an HTML file through <code>ExportManager.ExportTable</code> or <code>ExportManager.ExportTables</code>, <code>HtmlExportOptions</code> shapes that markup in IronPDF. It exposes a single parameterless constructor and adds three HTML-specific properties on top of the four inherited table-semantics properties. The options type itself selects the output format inside <code>ExportManager</code>; passing a <code>HtmlExportOptions</code> instance writes HTML, while passing a sibling such as <code>CsvExportOptions</code> or <code>JsonExportOptions</code> writes CSV or JSON.</p>
+<p>Reach for <code>HtmlExportOptions</code> when an extraction pipeline needs to surface tabular content from a PDF as styled HTML, for example to feed a reporting dashboard, to embed extracted tables in a CMS, or to publish PDF tables on a web page with responsive layout on mobile. A single configured instance is the canonical way to keep export styling consistent across every table emitted by a batch run.</p>
+<p>The three HTML-specific properties shape the markup directly. <code>HtmlIncludeStyles</code> controls whether inline CSS is emitted alongside the table (default <code>true</code>). <code>HtmlResponsive</code> wraps the output so the table reflows on narrow viewports (default <code>true</code>). <code>HtmlTableClass</code> sets the CSS class attribute applied to the <code>&lt;table&gt;</code> element (default <code>&quot;exported-table&quot;</code>), which lets a downstream site stylesheet target the output. Four properties inherited from <code>ExportOptionsBase</code> shape the table semantics that feed into the markup: <code>SpanMode</code> controls how rowspan and colspan cells are rendered (a <code>SpanHandlingMode</code> value, default <code>Repeat</code>), <code>IncludeHeaders</code> toggles the header row (default <code>true</code>), <code>IncludeEmptyRows</code> toggles blank rows (default <code>false</code>), and <code>TextEncoding</code> sets the file encoding (default UTF-8).</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Extractions;
+
+PdfExtractionResult result = PdfExtractor.Extract(&quot;financial-report.pdf&quot;);
+TableObject table = result.Tables[0];
+
+HtmlExportOptions htmlOptions = new HtmlExportOptions
+{
+    HtmlIncludeStyles = true,
+    HtmlResponsive = true,
+    HtmlTableClass = &quot;report-table&quot;,
+    IncludeHeaders = true,
+    SpanMode = SpanHandlingMode.Repeat
+};
+
+ExportManager.ExportTable(table, &quot;report-table.html&quot;, htmlOptions);</code></pre></div>
+<p>The table-extraction step that feeds these <code>TableObject</code> values is documented in the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a>. For the separate whole-document PDF-to-HTML conversion path, which uses <code>HtmlFormatOptions</code> and <code>PdfDocument.SaveAsHtml</code>, see the <a href="https://ironpdf.com/how-to/pdf-to-html/">PDF to HTML how-to</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TableRow
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TableRow Class - IronPDF C# API Reference
+      v2 (human)     title:       TableRow: Extracted PDF Table Rows in C# with IronPDF
+      v1 (algorithm) description: TableRow is the IronPDF C# class for one row of an extracted PDF table. Reference Cells, Item[Int32], GetCellText, RowIndex, CellCount, Height.
+      v2 (human)     description: Read recognized table rows from PDFs in C# with IronPDF TableRow. Covers Cells of TableCell, the column indexer, GetCellText, RowIndex, and Height.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TableRow | IronPDF C# PDF Table Extraction API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TableRow
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="TableRow | IronPDF C# PDF Table Extraction API">
+    <meta name="description" content="Reference for IronPDF TableRow in C#: Cells, the Item[Int32] indexer, GetCellText, RowIndex, CellCount, and acquisition through TableObject.DataRows.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TableRow | IronPDF C# PDF Table Extraction API",
+    "name": "TableRow class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.TableRow.html",
+    "abstract": "One row of a recognized table extracted from a PDF, along with its cells, column indexer, row index, cell count, and height, is delivered through TableRow in IronPDF. It groups the row's cell list (Cells, typed as List of TableCell), the column indexer (Item[Int32] returning a TableCell at a 0-based column), the row's 0-based RowIndex within the parent table, the CellCount, and the Height in PDF points into one read-only container. Instances are obtained from a parent TableObject's DataRows or HeaderRows collection, or through TableObject.GetRow, after calling PdfExtractor.Extract. The single instance method is GetCellText(int) which returns the plain string at one column. Paired with TableObject and TableCell as the IronPdf.Extractions table model triad.",
+    "description": "Reference for IronPDF TableRow in C#: Cells, the Item[Int32] indexer, GetCellText, RowIndex, CellCount, and acquisition through TableObject.DataRows.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Extractions;\nusing System.Collections.Generic;\n\nPdfExtractionResult result = PdfExtractor.Extract(\"invoice.pdf\");\n\nforeach (TableObject table in result.Tables)\n{\n    foreach (TableRow row in table.DataRows)\n    {\n        // Indexer returns the TableCell at the given 0-based column.\n        TableCell firstCell = row[0];\n\n        // GetCellText returns just the string at the given column.\n        string sku = row.GetCellText(0);\n        string description = row.GetCellText(1);\n\n        System.Console.WriteLine(\n            $\"Row {row.RowIndex}: {row.CellCount} cells, \" +\n            $\"height {row.Height} pt -> {sku} | {description}\");\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is TableRow located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TableRow is in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It derives from System.Object and is the data-transfer type for one row of a recognized table. A public parameterless constructor exists for serialization round-trips, but in normal code a TableRow is obtained read-only from a parent TableObject's DataRows or HeaderRows collection, or through TableObject.GetRow, after a call to PdfExtractor.Extract."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between TableObject, TableRow, and TableCell?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TableObject, TableRow, and TableCell are the three types that form the IronPdf.Extractions table model. TableObject is one entire recognized table from a PDF page, carrying HeaderRows and DataRows as List of TableRow plus locator metadata such as PageNumber and BoundingBox. TableRow is one row inside that table, exposing a Cells list of TableCell, an Item[Int32] indexer that returns the cell at a given 0-based column, a 0-based RowIndex, a CellCount, and a Height in PDF points. TableCell is one cell, carrying the cell text, its row and column indices, and the row-span and column-span values for merged cells. In the result graph, every TableRow lives at PdfExtractionResult.Tables[].DataRows[] or PdfExtractionResult.Tables[].HeaderRows[] after a call to PdfExtractor.Extract."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you extract line items from an invoice PDF in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call PdfExtractor.Extract on the invoice path to receive a PdfExtractionResult, iterate result.Tables for each TableObject the recognizer finds, and walk the DataRows collection for body rows skipping HeaderRows. For each TableRow, call GetCellText with the 0-based column index of each field, such as SKU, description, quantity, and amount, or use the Item[Int32] indexer to get the underlying TableCell when row-span or column-span values are needed. The RowIndex property identifies the row's position within the parent table for logging and reconciliation, and CellCount and Height help detect malformed or empty rows during validation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read one specific column from a TableRow?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pass the 0-based column index to either the Item[Int32] indexer or the GetCellText method on the TableRow instance. The indexer expression row[2] returns the TableCell at column 2, which exposes the cell Text plus span metadata such as RowSpan and ColSpan; the call row.GetCellText(2) returns the cell text as a plain string in one step. Both members read from the same Cells list and are safe to call concurrently from threads that only read. To enumerate every column in order without an index, iterate the Cells property directly as a List of TableCell."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +222,36 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TableRow : Object</code></pre>
   </div>
+                  <!-- archetype-N:start TableRow treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When you walk one row inside a recognized table extracted from a PDF, <code>TableRow</code> provides the row's cell list, column indexer, row index within the parent table, cell count, and row height as a single read-only container. Each instance corresponds to one row of one <code>TableObject</code> produced by the <code>PdfExtractor</code> pipeline and is normally obtained from that parent rather than constructed directly.</p>
+<p><code>TableRow</code> is the type a caller works with when iterating the structured rows of an extracted table: walking the line items of an invoice, pulling each row of a quarterly financial table, or feeding row-shaped records into an ETL pipeline that loads PDF tables into a database or a spreadsheet. Every property is get-only, so a <code>TableRow</code> returned from extraction reflects the recognizer's view of that row and is safe to share across worker threads that only read.</p>
+<p>To obtain <code>TableRow</code> instances, call <code>PdfExtractor.Extract(pdfPath)</code> to receive a <code>PdfExtractionResult</code>, read its <code>Tables</code> property to enumerate each <code>TableObject</code>, then iterate either <code>DataRows</code> (typed as <code>List&lt;TableRow&gt;</code>) for body rows or <code>HeaderRows</code> for column headers. <code>TableObject.GetRow(int rowIndex)</code> returns a single row and throws <code>ArgumentOutOfRangeException</code> on a bad index. The headline members are the row payload first: <code>Cells</code> (typed as <code>List&lt;TableCell&gt;</code>) for the full ordered cell list, the <code>Item[Int32]</code> indexer for direct column access where <code>row[0]</code> returns the first <code>TableCell</code>, and <code>GetCellText(int columnIndex)</code> for the plain string at one column. The locator and metric members are <code>RowIndex</code> (0-based position inside the parent table), <code>CellCount</code> (number of cells in the row), and <code>Height</code> (row height in PDF points). The <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a> places row iteration inside an end-to-end extraction example.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Extractions;
+using System.Collections.Generic;
+
+PdfExtractionResult result = PdfExtractor.Extract(&quot;invoice.pdf&quot;);
+
+foreach (TableObject table in result.Tables)
+{
+    foreach (TableRow row in table.DataRows)
+    {
+        // Indexer returns the TableCell at the given 0-based column.
+        TableCell firstCell = row[0];
+
+        // GetCellText returns just the string at the given column.
+        string sku = row.GetCellText(0);
+        string description = row.GetCellText(1);
+
+        System.Console.WriteLine(
+            $&quot;Row {row.RowIndex}: {row.CellCount} cells, &quot; +
+            $&quot;height {row.Height} pt -&gt; {sku} | {description}&quot;);
+    }
+}</code></pre></div>
+<p>If row structure is irrelevant and only the text matters, reach for the <code>ExtractAllText</code> and <code>ExtractTextFromPage</code> facade shown in the <a href="https://ironpdf.com/how-to/csharp-parse-pdf/">parse PDFs in C# how-to</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

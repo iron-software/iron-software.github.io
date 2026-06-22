@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfSignatureExtensions
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfSignatureExtensions Class - IronPDF C# Reference
+      v2 (human)     title:       PdfSignatureExtensions: Sign PDF Files in C# IronPDF
+      v1 (algorithm) description: PdfSignatureExtensions is the IronPDF C# static class whose SignPdfFile extension method digitally signs a PDF on disk with a configured PdfSignature.
+      v2 (human)     description: Sign existing PDF files on disk in C# with IronPDF. The PdfSignatureExtensions.SignPdfFile extension method takes a PdfSignature and signs in a single call.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfSignatureExtensions | IronPDF C# Signing API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfSignatureExtensions
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfSignatureExtensions | IronPDF C# Signing API">
+    <meta name="description" content="Reference for IronPDF PdfSignatureExtensions in C#: the SignPdfFile extension method on PdfSignature for file-on-disk digital signing with optional passwords.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfSignatureExtensions | IronPDF C# Signing API",
+    "name": "PdfSignatureExtensions class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Signing.PdfSignatureExtensions.html",
+    "abstract": "When an existing PDF on disk needs signing in a single call, PdfSignatureExtensions in IronPDF supplies one C# extension method, SignPdfFile, on the PdfSignature value class. The method signature is public static bool SignPdfFile(this PdfSignature signature, string pdfFilePath, bool removeOldSignatures = false, string userPassword = null, string ownerPassword = null), and it loads the PDF at pdfFilePath, applies the configured signature, and saves the result back to the same path, returning true on success. The canonical idiom is the extension-method call pdfSignature.SignPdfFile(path), which is the file-on-disk counterpart to the in-memory PdfDocument.Sign(PdfSignature, SignaturePermissions) path. Optional userPassword and ownerPassword arguments unlock an encrypted source, and removeOldSignatures strips invalid or expired prior signatures before applying the new one.",
+    "description": "Reference for IronPDF PdfSignatureExtensions in C#: the SignPdfFile extension method on PdfSignature for file-on-disk digital signing with optional passwords.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Signing;\n\n// Construct the credential once, then reuse it across a directory of PDFs.\n// SignPdfFile loads each file via extension-method syntax, signs it, and saves\n// back to the same path. Optional userPassword/ownerPassword unlock encrypted sources.\nvar signature = new PdfSignature(\"certificate.pfx\", \"password\");\n\nforeach (var path in Directory.GetFiles(\"contracts\", \"*.pdf\"))\n{\n    signature.SignPdfFile(path, removeOldSignatures: true);\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain PdfSignatureExtensions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfSignatureExtensions is in the IronPdf.Signing namespace, shipped in IronPdf.dll. It is declared public static class PdfSignatureExtensions and derives from System.Object. It cannot be instantiated; it supplies one extension method, SignPdfFile, on the PdfSignature value class, so any configured PdfSignature gains a one-call file-on-disk signing verb."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfSignatureExtensions and PdfSignature?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfSignatureExtensions is a static class in the IronPdf.Signing namespace that supplies one extension method, SignPdfFile, on the PdfSignature value class. It cannot be instantiated and holds no state of its own. PdfSignature is the configured cryptographic credential. It wraps the PFX or P12 certificate, the password, the timestamp server URL, the signing reason, contact, and location, and the optional visual appearance. The two classes work together: a developer constructs a PdfSignature once, then calls SignPdfFile on that instance through extension-method syntax. The canonical call site reads pdfSignature.SignPdfFile(path), which the C# compiler rewrites to the qualified form PdfSignatureExtensions.SignPdfFile(pdfSignature, path)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does PdfSignatureExtensions.SignPdfFile overwrite the input file?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. SignPdfFile loads the PDF at pdfFilePath, applies the signature, and saves the result back to the same path. There is no separate output parameter. Callers that need to keep the original unsigned document should copy the file before calling SignPdfFile. The removeOldSignatures parameter defaults to false; setting it to true strips any existing digital signatures before the new one is written, which is required for documents whose prior signatures are invalid or expired. The userPassword and ownerPassword parameters default to null and are only supplied when the source PDF is encrypted. The method returns true on success."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can PdfSignatureExtensions sign with a hardware security module?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The SignPdfFile extension method consumes a PdfSignature, which wraps a software-resident PKCS#12 credential. For HSM-backed signing where the private key never leaves the device, IronPDF exposes a separate path through PdfDocument.SignAndSave that accepts an IHsmSigner implementation. The PKCS#11 driver loads the device, and the visual appearance is supplied as a PdfSignatureImage. Code that needs hardware signing should bypass PdfSignatureExtensions and the PdfSignature value class entirely and use the IHsmSigner-based pipeline. The hardware-security-module guide walks through the Pkcs11SignatureFactory and IHsmSigner surface end to end."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -153,12 +224,26 @@ signature.SignPdfFile(&quot;document.pdf&quot;, removeOldSignatures: true);</cod
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class PdfSignatureExtensions : Object</code></pre>
   </div>
-  <h5 id="IronPdf_Signing_PdfSignatureExtensions_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Related Resources:</strong>
-</p>
-<ul><li></li><li></li></ul>
-</div>
+                  <!-- archetype-N:start PdfSignatureExtensions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PdfSignatureExtensions</code> signs an existing PDF on disk in a single call from a configured <code>PdfSignature</code> credential. As a static class it is never instantiated; its single method is called through the C# extension-method syntax on a <code>PdfSignature</code> instance. The receiver type is <code>PdfSignature</code>, which means any configured signing credential automatically gains the file-signing verb.</p>
+<p>The intended use is batch and pipeline signing where the PDFs already exist on disk and only need a signature stamped onto them. Typical scenarios include nightly contract sealing, regulatory archival, signing a directory of generated invoices, and any workflow that prefers the file-overwrite shape over the in-memory <code>PdfDocument.Sign</code> path. The same configured <code>PdfSignature</code> credential can be reused across many calls, which keeps the certificate decoded once and amortised across a folder of documents.</p>
+<p>The class exposes one method, verified on the live reference page: <code>public static bool SignPdfFile(this PdfSignature signature, string pdfFilePath, bool removeOldSignatures = false, string userPassword = null, string ownerPassword = null)</code>. The first parameter is the extension target and is bound through <code>this</code>, so the canonical call site reads <code>pdfSignature.SignPdfFile(&quot;contract.pdf&quot;)</code> rather than the qualified static form. The remaining parameters group naturally: <code>pdfFilePath</code> is the target, <code>removeOldSignatures</code> controls whether existing signatures are stripped before the new one is applied (required for documents with invalid or expired signatures), and <code>userPassword</code> and <code>ownerPassword</code> unlock an encrypted source. The method loads the PDF, signs it, saves it back to the same path, and returns <code>true</code> on success. The <a href="https://ironpdf.com/how-to/signing/">signing PDFs how-to</a> opens with the exact one-liner this class enables.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Signing;
+
+// Construct the credential once, then reuse it across a directory of PDFs.
+// SignPdfFile loads each file via extension-method syntax, signs it, and saves
+// back to the same path. Optional userPassword/ownerPassword unlock encrypted sources.
+var signature = new PdfSignature(&quot;certificate.pfx&quot;, &quot;password&quot;);
+
+foreach (var path in Directory.GetFiles(&quot;contracts&quot;, &quot;*.pdf&quot;))
+{
+    signature.SignPdfFile(path, removeOldSignatures: true);
+}</code></pre></div>
+<p>Visual signature placement, certificate loading, and timestamping are covered in the <a href="https://ironpdf.com/tutorials/pdf-digital-signatures-csharp-guide/">digital signatures C# guide</a>, with runnable code on the <a href="https://ironpdf.com/examples/digitally-sign-a-pdf/">digitally sign a PDF example</a> page. When the private key lives in a hardware module, the <a href="https://ironpdf.com/how-to/signing-pdf-with-hsm/">signing PDFs with HSM guide</a> takes a different API path. The <a href="https://ironpdf.com/troubleshooting/digital-signatures/">digital signatures troubleshooting page</a> catalogues common certificate, store, and timestamp errors.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

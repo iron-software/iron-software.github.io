@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CidGlyphWidths
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       CidGlyphWidths Class | IronPDF C# IronSoftware API
+      v2 (human)     title:       CidGlyphWidths: Read CID Font Width Rows in C# / IronPDF
+      v1 (algorithm) description: CidGlyphWidths is the IronPDF C# DTO that holds one entry of a PDF CID font width table: IsArray, Values, ValuesList. Implements ICidGlyphWidths.
+      v2 (human)     description: Inspect CID font glyph widths in C# with the IronPDF CidGlyphWidths class: read IsArray, Values, and ValuesList through the FontObject font descriptor.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>CidGlyphWidths Class | IronPDF C# ICidGlyphWidths DTO</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CidGlyphWidths
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="CidGlyphWidths Class | IronPDF C# ICidGlyphWidths DTO">
+    <meta name="description" content="Reference for IronPDF CidGlyphWidths in C#: read-only ICidGlyphWidths implementor for PDF CID font width rows in the IronSoftware namespace.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "CidGlyphWidths Class | IronPDF C# ICidGlyphWidths DTO",
+    "name": "CidGlyphWidths class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.CidGlyphWidths.html",
+    "abstract": "Reading one entry of a PDF CID font's W glyph-width table as a read-only data row runs through CidGlyphWidths in IronPDF. It exposes three properties: IsArray (the shape discriminator that distinguishes single-value rows from array-of-width rows), Values (an IReadOnlyList<float> exposed through the ICidGlyphWidths interface contract), and ValuesList (a float[] array reachable on the concrete class). CidGlyphWidths has no documented public constructor and no documented methods or events. Instances reach application code through FontObject.GlyphWidths (IReadOnlyList<ICidGlyphWidths>) and FontObject.GlyphWidthsList (List<CidGlyphWidths>), typically while walking the font-descriptor surface of a PDF document during PDF/A audit, internationalization checking, or font-forensics workflows.",
+    "description": "Reference for IronPDF CidGlyphWidths in C#: read-only ICidGlyphWidths implementor for PDF CID font width rows in the IronSoftware namespace.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware;\n\n// Consume CidGlyphWidths read-only through the ICidGlyphWidths interface\n// from the IReadOnlyList<ICidGlyphWidths> owned by FontObject.\nvoid InspectCidWidths(FontObject font)\n{\n    foreach (ICidGlyphWidths row in font.GlyphWidths)\n    {\n        // IsArray true: Values holds widths for a CID range. False: one width.\n        IReadOnlyList<float> widths = row.Values;\n        Console.WriteLine($\"{(row.IsArray ? \"array\" : \"scalar\")} row: {widths.Count} value(s)\");\n    }\n\n    // FontObject.GlyphWidthsList exposes the same rows as concrete CidGlyphWidths,\n    // whose ValuesList property returns the widths as a float[].\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is CidGlyphWidths located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CidGlyphWidths is in the IronSoftware namespace, shipped in IronPdf.dll. It is declared public class CidGlyphWidths : Object, ICidGlyphWidths. No public constructor is documented; instances are produced by the IronPDF font-extraction surface and reach application code through FontObject.GlyphWidths and FontObject.GlyphWidthsList."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IronSoftware.CidGlyphWidths and IronSoftware.ICidGlyphWidths?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ICidGlyphWidths is the interface contract; CidGlyphWidths is the concrete class that implements it. The interface declares two get-only properties, IsArray and Values, and is the recommended parameter or return type for portable code that walks a font's glyph-width table. The concrete CidGlyphWidths class implements those two properties and adds a third, ValuesList, which is a float array reachable only when code holds a reference to the concrete type. Application code typically iterates IReadOnlyList<ICidGlyphWidths> through the interface and downcasts to CidGlyphWidths only when the array-backed ValuesList is required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When does C# application code encounter CidGlyphWidths?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CidGlyphWidths is rarely instantiated directly. The typical entry point is FontObject, the read-only descriptor DTO that IronPDF surfaces for every font in a PDF. FontObject exposes GlyphWidths as IReadOnlyList<ICidGlyphWidths> and GlyphWidthsList as List<CidGlyphWidths>. Code that audits a PDF's CID-keyed fonts iterates one of those lists, reads IsArray to determine row shape, and reads Values for the width data. There is no documented public constructor on CidGlyphWidths, so instances are always produced by the IronPDF font-extraction surface rather than constructed by application code."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CidGlyphWidths have any methods or a public constructor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. CidGlyphWidths exposes three properties, IsArray, Values, and ValuesList, all with get accessors and protected setters, so the DTO is effectively read-only from application code. No public constructor is documented on the reference page, and no methods or events are documented. The class is designed for read-side consumption: walk the list owned by FontObject, branch on IsArray, and read Values. For polymorphic code paths that should work across any future implementor, accept ICidGlyphWidths as the parameter type rather than the concrete CidGlyphWidths."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,6 +225,31 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class CidGlyphWidths : Object, ICidGlyphWidths</code></pre>
   </div>
+                  <!-- archetype-N:start CidGlyphWidths treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>CidGlyphWidths</code> is what you read when you inspect one entry of a PDF CID font's glyph-width table in IronPDF. It is the read-only data row composed into the broader font-descriptor surface as the element type of <code>FontObject.GlyphWidths</code> (an <code>IReadOnlyList&lt;ICidGlyphWidths&gt;</code>) and <code>FontObject.GlyphWidthsList</code> (a <code>List&lt;CidGlyphWidths&gt;</code>). In PDF specification terms, the class carries one row of the W array that maps character identifiers to glyph widths for CJK and other CID-keyed fonts.</p>
+<p><code>CidGlyphWidths</code> matters for code that inspects CID-keyed fonts at the dictionary level. PDF/A audit pipelines walk every entry on a <code>FontObject</code> and confirm that each CID range carries the expected width values before clearing a document for archival. Internationalization checkers verify that a CJK PDF's width table is well-formed against the embedded font program. Font forensics tools extract width rows for round-trip comparison against the original CFF or TrueType source. Polymorphic readers accept <code>ICidGlyphWidths</code> so the same loop handles a <code>CidGlyphWidths</code> row and any future implementor.</p>
+<p>The surface is intentionally narrow. <code>IsArray</code> is the shape discriminator: when true, the row carries an array of widths to apply across a CID range; when false, the row carries a single width value. <code>Values</code> is the data, exposed through the <code>ICidGlyphWidths</code> contract as an <code>IReadOnlyList&lt;float&gt;</code>. <code>ValuesList</code> is the concrete-class equivalent, typed as a <code>float[]</code>, and is reachable only when code holds a reference to the concrete <code>CidGlyphWidths</code>. The reference page documents no constructor, no methods, and no events; the font-extraction layer fills these rows and hands them up through <a href="https://ironpdf.com/object-reference/api/IronSoftware.FontObject.html"><code>FontObject.GlyphWidths</code></a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware;
+
+// Consume CidGlyphWidths read-only through the ICidGlyphWidths interface
+// from the IReadOnlyList&lt;ICidGlyphWidths&gt; owned by FontObject.
+void InspectCidWidths(FontObject font)
+{
+    foreach (ICidGlyphWidths row in font.GlyphWidths)
+    {
+        // IsArray true: Values holds widths for a CID range. False: one width.
+        IReadOnlyList&lt;float&gt; widths = row.Values;
+        Console.WriteLine($&quot;{(row.IsArray ? &quot;array&quot; : &quot;scalar&quot;)} row: {widths.Count} value(s)&quot;);
+    }
+
+    // FontObject.GlyphWidthsList exposes the same rows as concrete CidGlyphWidths,
+    // whose ValuesList property returns the widths as a float[].
+}</code></pre></div>
+<p>For the action-side font workflow that complements this descriptor surface, see the <a href="https://ironpdf.com/how-to/manage-fonts/">manage fonts how-to</a>. For consistency problems in rendered output, the <a href="https://ironpdf.com/troubleshooting/fonts/">fonts troubleshooting page</a> covers the embedding and substitution behaviors that determine whether a CID width row is honored at render time. The paired interface contract is documented at <a href="https://ironpdf.com/object-reference/api/IronSoftware.ICidGlyphWidths.html"><code>ICidGlyphWidths</code></a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

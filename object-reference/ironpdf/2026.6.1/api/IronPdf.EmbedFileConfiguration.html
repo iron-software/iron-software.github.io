@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class EmbedFileConfiguration
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       EmbedFileConfiguration Class - IronPDF C# API
+      v2 (human)     title:       EmbedFileConfiguration: PDF/A-3 Attachments in C#
+      v1 (algorithm) description: EmbedFileConfiguration is the IronPDF C# class for PDF/A-3 embedded files. Configure file name, AFRelationship, ZUGFeRD/Factur-X XMP, and SaveAsPdfA.
+      v2 (human)     description: Configure embedded file attachments for PDF/A-3 documents in C# with IronPDF EmbedFileConfiguration. Covers file name, AFRelationship, and ZUGFeRD XMP.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>EmbedFileConfiguration | IronPDF C# PDF/A-3</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class EmbedFileConfiguration
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="EmbedFileConfiguration | IronPDF C# PDF/A-3">
+    <meta name="description" content="Reference for IronPDF EmbedFileConfiguration in C#: EmbedFileType, EmbedFileName, AFRelationship, ConformanceLevel, and PDF/A-3 attachments.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "EmbedFileConfiguration | IronPDF C# PDF/A-3",
+    "name": "EmbedFileConfiguration class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.EmbedFileConfiguration.html",
+    "abstract": "The per-file PDF/A-3 attachment metadata in IronPDF (file name, associated-file description, relationship, and ZUGFeRD or Factur-X XMP fields) lives on EmbedFileConfiguration in C#. Constructed from an EmbedFileType (pdf, png, or xml), it carries EmbedFileName, AFDesc, AFRelationship, ConformanceLevel, SchemaNamespace, SchemaPrefix, and PropertyVersion. Each configured instance is wrapped in EmbedFilePath, EmbedFileByte, or EmbedFileStream and the collection is passed to PdfDocument.SaveAsPdfA or ConvertToPdfA with PdfAVersions.PdfA3b to produce a compliant archival PDF.",
+    "description": "Reference for IronPDF EmbedFileConfiguration in C#: EmbedFileType, EmbedFileName, AFRelationship, ConformanceLevel, and PDF/A-3 attachments.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing System.Collections.Generic;\n\n// Describe one XML payload, including the ZUGFeRD/Factur-X XMP defaults.\nvar xmlConfig = new EmbedFileConfiguration(EmbedFileType.xml)\n{\n    EmbedFileName    = \"invoice.xml\",\n    AFDesc           = \"Structured invoice data\",\n    AFRelationship   = AFRelationship.Source,\n    ConformanceLevel = ConformanceLevel.EN16931,\n    SchemaNamespace  = SchemaNamespace.facturX,\n    SchemaPrefix     = SchemaPrefix.fx,\n    PropertyVersion  = PropertyVersion.v1\n};\n\n// The configuration is wrapped in a path/byte/stream variant before saving.\nIEnumerable<EmbedFilePath> embeds = new[] { new EmbedFilePath(\"invoice.xml\", xmlConfig) };\n\nvar renderer = new ChromePdfRenderer();\nusing PdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h1>Invoice</h1>\");\npdf.SaveAsPdfA(\"invoice-with-xml.pdf\", embeds, PdfAVersions.PdfA3b);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does EmbedFileConfiguration live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EmbedFileConfiguration is in the IronPdf namespace, shipped in IronPdf.dll. It derives from System.Object. A configured instance is wrapped in an EmbedFilePath, EmbedFileByte, or EmbedFileStream and passed to PdfDocument.SaveAsPdfA or ConvertToPdfA with PdfAVersions.PdfA3b to describe one embedded payload."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between EmbedFileConfiguration and PdfDocument.Attachments?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EmbedFileConfiguration is the per-file metadata object used when producing a PDF/A-3 document with embedded files. It is wrapped in an EmbedFilePath, EmbedFileByte, or EmbedFileStream and passed to PdfDocument.SaveAsPdfA or ConvertToPdfA. PdfDocument.Attachments is a separate collection on a regular PdfDocument that calls AddAttachment and RemoveAttachment for non-PDF/A attachments. Use EmbedFileConfiguration only for PDF/A-3 archival output; use Attachments for ordinary PDF file attachments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which PDF/A versions support embedded files in IronPDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Only PDF/A-3 (PdfAVersions.PdfA3a and PdfAVersions.PdfA3b) supports embedded file attachments. PDF/A-1 and PDF/A-2 do not allow embedded files of arbitrary type, and PDF/A-4 also disallows embedded attachments in IronPDF. Calling SaveAsPdfA with an EmbedFilePath, EmbedFileByte, or EmbedFileStream collection requires PdfAVersions.PdfA3b."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you configure a ZUGFeRD or Factur-X attachment with EmbedFileConfiguration?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct EmbedFileConfiguration with EmbedFileType.xml, then set the four XMP fields: ConformanceLevel (for example ConformanceLevel.EN16931 or ConformanceLevel.XRECHNUNG), SchemaNamespace (such as SchemaNamespace.facturX or SchemaNamespace.Zugferd1), SchemaPrefix (such as SchemaPrefix.fx or SchemaPrefix.rsm), and PropertyVersion (such as PropertyVersion.v1 or PropertyVersion.v1p0). Set AFRelationship to AFRelationship.Source for the primary invoice payload or AFRelationship.Supplement for a supporting document."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -152,6 +223,35 @@ when converting <a class="xref" href="IronPdf.PdfDocument.html">PdfDocument</a> 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class EmbedFileConfiguration : Object</code></pre>
   </div>
+                    <!-- archetype-N:start EmbedFileConfiguration treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a single file attachment must be described for embedding inside a PDF/A-3 document in IronPDF, <code>EmbedFileConfiguration</code> holds that description. It carries the metadata that PDF/A-3 requires for each embedded payload: the file name written into the PDF, the associated-file description, the relationship of the attachment to the host document, and the XMP-extension fields that identify ZUGFeRD or Factur-X invoice attachments.</p>
+<p>The class is the per-file companion to <code>EmbedFilePath</code>, <code>EmbedFileByte</code>, and <code>EmbedFileStream</code>. Each of those three wrapper structs takes a path, byte array, or stream plus one <code>EmbedFileConfiguration</code> in its constructor. Typical scenarios include e-invoicing pipelines that ship a ZUGFeRD or Factur-X XML payload alongside the human-readable invoice PDF, archival workflows that embed source spreadsheets next to the rendered report, and compliance flows that need explicit AFRelationship values for auditing.</p>
+<p>Construction is mandatory through <code>EmbedFileConfiguration(EmbedFileType embedFileType)</code>; the <code>EmbedFileType</code> property is get-only and only the values <code>EmbedFileType.pdf</code>, <code>EmbedFileType.png</code>, and <code>EmbedFileType.xml</code> are defined. Assign <code>EmbedFileName</code> to set the in-PDF filename, <code>AFDesc</code> for the human description, and <code>AFRelationship</code> to one of <code>Source</code>, <code>Data</code>, <code>Alternative</code>, <code>Supplement</code>, or <code>Unspecified</code>. For ZUGFeRD or Factur-X XML attachments, set <code>ConformanceLevel</code>, <code>SchemaNamespace</code>, <code>SchemaPrefix</code>, and <code>PropertyVersion</code>; defaults are <code>ConformanceLevel.EN16931</code>, <code>SchemaNamespace.facturX</code>, <code>SchemaPrefix.fx</code>, and <code>PropertyVersion.v1</code>. The configured object is then wrapped in an <code>EmbedFilePath</code>, <code>EmbedFileByte</code>, or <code>EmbedFileStream</code> and the collection is passed to <code>PdfDocument.SaveAsPdfA(...)</code> with <code>PdfAVersions.PdfA3b</code>. The <a href="https://ironpdf.com/how-to/pdfa/">PDF/A export how-to</a> has a worked example of the surrounding save call.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using System.Collections.Generic;
+
+// Describe one XML payload, including the ZUGFeRD/Factur-X XMP defaults.
+var xmlConfig = new EmbedFileConfiguration(EmbedFileType.xml)
+{
+    EmbedFileName    = &quot;invoice.xml&quot;,
+    AFDesc           = &quot;Structured invoice data&quot;,
+    AFRelationship   = AFRelationship.Source,
+    ConformanceLevel = ConformanceLevel.EN16931,
+    SchemaNamespace  = SchemaNamespace.facturX,
+    SchemaPrefix     = SchemaPrefix.fx,
+    PropertyVersion  = PropertyVersion.v1
+};
+
+// The configuration is wrapped in a path/byte/stream variant before saving.
+IEnumerable&lt;EmbedFilePath&gt; embeds = new[] { new EmbedFilePath(&quot;invoice.xml&quot;, xmlConfig) };
+
+var renderer = new ChromePdfRenderer();
+using PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Invoice&lt;/h1&gt;&quot;);
+pdf.SaveAsPdfA(&quot;invoice-with-xml.pdf&quot;, embeds, PdfAVersions.PdfA3b);</code></pre></div>
+<p>The <a href="https://ironpdf.com/product-updates/milestones-pdf-a3-zugferd/">PDF/A-3 and ZUGFeRD milestone</a> explains the e-invoicing context that the XMP defaults target. For conformance levels and attachment rules, reach for the <a href="https://ironpdf.com/tutorials/pdfa-archiving-csharp/">PDF/A archiving tutorial</a>, and the <a href="https://ironpdf.com/examples/pdfa/">PDF/A example</a> shows the minimum saving shape.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

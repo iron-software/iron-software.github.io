@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ImageObjectCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ImageObjectCollection Class - IronPDF C# API Reference
+      v2 (human)     title:       ImageObjectCollection: PDF Page Image Set in C#
+      v1 (algorithm) description: IronSoftware.ImageObjectCollection class reference for C#: ObservableCollection of ImageObject reached via PdfPage.ObjectModel.ImageObjects.
+      v2 (human)     description: Iterate, count, and remove images embedded in a PDF page from C# through the IronPDF ImageObjectCollection on PdfPage.ObjectModel.ImageObjects.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ImageObjectCollection Class | IronPDF C# PDF DOM API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ImageObjectCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ImageObjectCollection Class | IronPDF C# PDF DOM API">
+    <meta name="description" content="ImageObjectCollection is the IronPDF C# container of ImageObject elements on PdfPage.ObjectModel: Add, Remove, RemoveAt, Clear, Count, indexer, ToJson.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ImageObjectCollection Class | IronPDF C# PDF DOM API",
+    "name": "ImageObjectCollection class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.ImageObjectCollection.html",
+    "abstract": "The set of `ImageObject` instances drawn on a single PDF page is read, counted, mutated, or removed from C# through `ImageObjectCollection` in IronPDF. Application code obtains instances by reading `PdfPage.ObjectModel.ImageObjects`, where `ObjectModel` is typed `IPdfPageObjectModel`, rather than constructing them. The class exposes direct members `IsReadOnly`, `Items`, `Add`, `Remove`, `RemoveAt`, `Clear`, `GetHashCode`, and `ToJson`, plus the inherited `Count`, integer indexer, `foreach`, and the `CollectionChanged` and `PropertyChanged` events from the `ObservableCollection<ImageObject>` base for per-page image set inspection and mutation in C#.",
+    "description": "ImageObjectCollection is the IronPDF C# container of ImageObject elements on PdfPage.ObjectModel: Add, Remove, RemoveAt, Clear, Count, indexer, ToJson.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Pages;\nusing IronSoftware;\nusing System.Drawing;\n\nPdfDocument pdf = PdfDocument.FromFile(\"report.pdf\");\n\nforeach (PdfPage page in pdf.Pages)\n{\n    ImageObjectCollection images = page.ObjectModel.ImageObjects;\n\n    // Walk in reverse so RemoveAt does not shift the next index.\n    for (int i = images.Count - 1; i >= 0; i--)\n    {\n        ImageObject image = images[i];\n        RectangleF box = image.BoundingBox;\n\n        // Drop oversized banner images.\n        if (box.Width > 500f && box.Height > 200f)\n        {\n            images.RemoveAt(i);\n        }\n    }\n}\n\npdf.SaveAs(\"report-trimmed.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is ImageObjectCollection defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ImageObjectCollection is in the IronSoftware namespace (the bare namespace, not IronPdf or IronSoftware.Pdfium), shipped in IronPdf.dll. It derives from ObservableCollection of ImageObject and implements IPdfImageObjectCollection, IDocumentImageObjectCollection of ImageObject, IList of ImageObject, and IJsonSerializable. Application code reads PdfPage.ObjectModel.ImageObjects rather than constructing it, so the collection is what a developer receives when accessing the images on a page."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ImageObjectCollection and IPdfImageObjectCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ImageObjectCollection is the concrete class in the IronSoftware namespace that ships with IronPDF and derives from ObservableCollection of ImageObject. IPdfImageObjectCollection is the matching interface contract in the same IronSoftware namespace, declared as a list of ImageObject plus IJsonSerializable. ImageObjectCollection is the only concrete IronPDF-shipped implementor of IPdfImageObjectCollection. Reference the interface at API boundaries when accepting any compatible image collection; reference the class when reading PdfPage.ObjectModel.ImageObjects directly. Both surface the same Add, Remove, RemoveAt, Clear, indexer, and Count members."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does removing images in a forward loop skip entries?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ImageObjectCollection is a list-backed observable container. Calling RemoveAt on index i shifts every later element down by one position, so a forward loop that increments i past the removed slot lands on the element that was originally two positions later and skips the one between. Iterate from Count - 1 down to 0 when removing multiple images in a single pass. The same pattern applies to Remove on a forward foreach because the collection raises CollectionChanged and invalidates the enumerator."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you observe changes to the image set on a page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ImageObjectCollection derives from ObservableCollection of ImageObject, which raises CollectionChanged on add, remove, replace, move, and reset, and PropertyChanged on Count and the indexer. Hold a reference to page.ObjectModel.ImageObjects and subscribe to either event. This is useful in editor-style applications that maintain a sidebar of page images and need to refresh when the underlying DOM mutates. The events fire synchronously inside the mutating call."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -160,6 +231,40 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ImageObjectCollection : ObservableCollection&lt;ImageObject&gt;, IPdfImageObjectCollection, IDocumentImageObjectCollection&lt;ImageObject&gt;, IEnumerable&lt;ImageObject&gt;, IEnumerable, IList&lt;ImageObject&gt;, ICollection&lt;ImageObject&gt;, IJsonSerializable</code></pre>
   </div>
+                  <!-- archetype-N:start ImageObjectCollection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Reading, counting, mutating, or removing the <code>ImageObject</code> instances drawn on a single PDF page runs through <code>ImageObjectCollection</code>, the container <code>PdfPage.ObjectModel.ImageObjects</code> hands back. There is no public constructor; the page object model owns the collection and surfaces it through that property, where <code>ObjectModel</code> is typed <code>IPdfPageObjectModel</code> and exposes the image set alongside its sibling <code>TextObjectCollection</code> and <code>PathObjectCollection</code>.</p>
+<p>Reach for <code>ImageObjectCollection</code> whenever work needs to read, count, mutate, or remove the set of images already embedded on a page. Typical scenarios include auditing image density per page across a multi-page report, redacting images by index through <code>RemoveAt</code>, inserting or appending a new <code>ImageObject</code> returned from a clone, JSON-serializing the full image set on a page for downstream tooling, and reacting to in-place edits through the <code>CollectionChanged</code> event inherited from <code>ObservableCollection&lt;ImageObject&gt;</code>. Because the collection is observable, code that holds a long-lived reference can subscribe to change notifications instead of polling.</p>
+<p>The everyday surface groups into five buckets. Mutation members are <code>Add(ImageObject)</code>, <code>Remove(ImageObject)</code>, <code>RemoveAt(int)</code>, and <code>Clear()</code>. Iteration members are <code>Count</code> (inherited from <code>Collection&lt;T&gt;</code>), the integer indexer <code>this[int]</code> returning <code>ImageObject</code>, and <code>foreach</code> over <code>IEnumerable&lt;ImageObject&gt;</code>. State is <code>IsReadOnly</code> (always <code>false</code> in practice for the page-DOM container) and the protected <code>Items</code> backing list typed <code>IList&lt;ImageObject&gt;</code>. Serialization is <code>ToJson()</code> and an overridden <code>GetHashCode()</code>. Observability comes from the <code>ObservableCollection&lt;ImageObject&gt;</code> base, which raises <code>CollectionChanged</code> on add, remove, replace, move, and reset, and <code>PropertyChanged</code> on <code>Count</code> and indexer changes. One constraint that surprises in practice: when removing several images in a single pass, iterate from <code>Count - 1</code> down to <code>0</code> so the index shift after each <code>RemoveAt</code> does not skip entries. The <a href="/how-to/access-pdf-dom-object/">PDF DOM object guide</a> is the canonical walkthrough of the surface.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Pages;
+using IronSoftware;
+using System.Drawing;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;report.pdf&quot;);
+
+foreach (PdfPage page in pdf.Pages)
+{
+    ImageObjectCollection images = page.ObjectModel.ImageObjects;
+
+    // Walk in reverse so RemoveAt does not shift the next index.
+    for (int i = images.Count - 1; i &gt;= 0; i--)
+    {
+        ImageObject image = images[i];
+        RectangleF box = image.BoundingBox;
+
+        // Drop oversized banner images.
+        if (box.Width &gt; 500f &amp;&amp; box.Height &gt; 200f)
+        {
+            images.RemoveAt(i);
+        }
+    }
+}
+
+pdf.SaveAs(&quot;report-trimmed.pdf&quot;);</code></pre></div>
+<p>Reach for the <a href="/how-to/access-pdf-dom-object/">PDF DOM object guide</a> when a task needs to traverse and edit the text, image, and path collections on a page in concert. To pull pixel data out of every image instead of removing them, the <a href="/how-to/extract-text-and-images/">extract text and images how-to</a> covers the document-level read APIs.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

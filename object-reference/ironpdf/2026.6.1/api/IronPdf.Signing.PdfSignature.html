@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfSignature
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfSignature Class - IronPDF C# PDF Signing Reference
+      v2 (human)     title:       PdfSignature: Digitally Sign PDFs in C# with IronPDF
+      v1 (algorithm) description: PdfSignature is the IronPDF C# class that wraps a PFX or P12 certificate, password, and metadata for digitally signing PDFs through PdfDocument.Sign.
+      v2 (human)     description: Digitally sign PDF documents in C# with the IronPDF PdfSignature class. Load a PFX or X509Certificate2, set reason and location, sign, and save.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfSignature Class | IronPDF C# Digital Signatures</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfSignature
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfSignature Class | IronPDF C# Digital Signatures">
+    <meta name="description" content="Reference for IronPDF PdfSignature in C#: constructors for PFX, byte array, and X509Certificate2; metadata, timestamping, and PdfDocument.Sign usage.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfSignature Class | IronPDF C# Digital Signatures",
+    "name": "PdfSignature class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Signing.PdfSignature.html",
+    "abstract": "Digitally signing a PDF in IronPDF runs through PdfSignature, which wraps a PKCS#12 (.pfx or .p12) certificate, an optional password, and the signing metadata into a single object consumed by PdfDocument.Sign to produce a tamper-evident PDF. Part of the IronPdf.Signing namespace, it offers three constructors (file path, byte array, X509Certificate2) and the static FromBase64 factory; carries SigningContact, SigningLocation, SigningReason, ContactInformation, SignatureDate, TimeStampUrl, TimestampHashAlgorithm, and a SignatureImage of type PdfSignatureImage; and exposes LoadSignatureImageFromFile and LoadSignatureImageFromStream for the visual appearance. The SignPdfFile extension method offers a one-liner sign-and-save path.",
+    "description": "Reference for IronPDF PdfSignature in C#: constructors for PFX, byte array, and X509Certificate2; metadata, timestamping, and PdfDocument.Sign usage.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Signing;\nusing System;\n\nusing var pdf = PdfDocument.FromFile(\"invoice.pdf\");\n\n// PdfSignature is the credential; Sign() on PdfDocument is the verb that writes it.\nvar signature = new PdfSignature(\"IronSoftware.pfx\", \"secret\", \"http://timestamp.digicert.com\")\n{\n    SigningContact = \"accounts@example.com\",\n    SigningLocation = \"London, UK\",\n    SigningReason = \"Invoice approval\",\n    SignatureDate = DateTime.UtcNow,\n    TimestampHashAlgorithm = TimestampHashAlgorithms.SHA256\n};\n\npdf.Sign(signature, SignaturePermissions.NoChangesAllowed);\npdf.SaveAs(\"invoice-signed.pdf\");\n\n// Other credential sources: PdfSignature(byte[], password),\n// PdfSignature(X509Certificate2 with X509KeyStorageFlags.Exportable), or PdfSignature.FromBase64(...)."
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain PdfSignature?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfSignature is in the IronPdf.Signing namespace, shipped in IronPdf.dll. It derives from System.Object. Construct it from a PFX or P12 certificate, set the signing metadata, and hand it to PdfDocument.Sign to digitally sign a document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfSignature and PdfSignatureImage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfSignature is the cryptographic credential and metadata. It wraps the PFX or P12 certificate, the password, the timestamp server URL, the signing reason, contact, and location, and is consumed by PdfDocument.Sign to produce the tamper-evident signature. PdfSignatureImage is the visible appearance of the signature on the page, holding the bitmap, the zero-based page index, and the rectangle that positions the visual mark. A PdfSignature has a SignatureImage property of type PdfSignatureImage, so the visible mark is attached to the credential. Both classes live in the IronPdf.Signing namespace, and a typical signing call configures both."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does loading the PFX certificate fail with a key not exportable error?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When constructing a PdfSignature from an existing X509Certificate2 instance, the certificate must be loaded with X509KeyStorageFlags.Exportable. The underlying signing pipeline needs to read the private key out of the certificate, and the default flags mark the key as non-exportable. Pass X509KeyStorageFlags.Exportable to the X509Certificate2 constructor, then hand the loaded certificate to the PdfSignature(X509Certificate2) overload. The PdfSignature(string, string) and PdfSignature(byte[], string) constructors handle this internally and do not require the flag."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can PdfSignature sign with a hardware security module?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. PdfSignature wraps a software-resident PKCS#12 credential. For HSM-backed signing where the private key never leaves the hardware, IronPDF exposes a separate path through PdfDocument.SignAndSave that accepts an IHsmSigner implementation. The PKCS#11 driver loads the device, and the visual appearance is supplied as a PdfSignatureImage. The HSM signing guide walks through the Pkcs11SignatureFactory and IHsmSigner surface end to end."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +222,35 @@ PDF. This protecting it from alteration, Also PKCS11 converted to 12.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfSignature : Object</code></pre>
   </div>
+                  <!-- archetype-N:start PdfSignature treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PdfSignature</code> is the configured cryptographic credential that <code>PdfDocument.Sign</code> consumes to digitally sign a PDF. It wraps a PKCS#12 certificate (<code>.pfx</code> or <code>.p12</code>), an optional password, and a bundle of signature metadata into a single reusable object. Three constructor paths cover the common credential sources: a file path on disk, a raw certificate byte array, and an existing <code>X509Certificate2</code> instance loaded from .NET cryptographic APIs. A <code>PdfSignature</code> configured once can sign many documents.</p>
+<p>A <code>PdfSignature</code> is required whenever an application produces tamper-evident PDFs that must survive an audit, a regulator review, or a contract execution flow. Typical scenarios include invoice and statement issuance, contract countersigning, regulatory filings, healthcare records, and any pipeline that must prove the document has not been altered since signing. The class also carries the human-readable metadata that appears in a viewer's signature panel, so the same object captures both the cryptographic proof and the signing context.</p>
+<p>To use <code>PdfSignature</code>, construct it from one of the three constructors, set the metadata properties relevant to the workflow, and hand the instance to <code>PdfDocument.Sign(PdfSignature, SignaturePermissions)</code>. The identity properties <code>SigningContact</code>, <code>SigningLocation</code>, <code>SigningReason</code>, and <code>ContactInformation</code> populate the signature panel. The timestamp properties <code>SignatureDate</code>, <code>TimeStampUrl</code>, and <code>TimestampHashAlgorithm</code> (a <code>TimestampHashAlgorithms</code> enum value) control when the signature is dated and which RFC 3161 server stamps it. The visual property <code>SignatureImage</code> (a <code>PdfSignatureImage</code> instance) and the helpers <code>LoadSignatureImageFromFile</code> and <code>LoadSignatureImageFromStream</code> attach a rendered appearance to the signed region. The static <code>FromBase64</code> factory wraps a base-64 encoded certificate when the credential is shipped in configuration. The <a href="https://ironpdf.com/how-to/signing/">digital signatures how-to</a> has a worked example for each credential path.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Signing;
+using System;
+
+using var pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+
+// PdfSignature is the credential; Sign() on PdfDocument is the verb that writes it.
+var signature = new PdfSignature(&quot;IronSoftware.pfx&quot;, &quot;secret&quot;, &quot;http://timestamp.digicert.com&quot;)
+{
+    SigningContact = &quot;accounts@example.com&quot;,
+    SigningLocation = &quot;London, UK&quot;,
+    SigningReason = &quot;Invoice approval&quot;,
+    SignatureDate = DateTime.UtcNow,
+    TimestampHashAlgorithm = TimestampHashAlgorithms.SHA256
+};
+
+pdf.Sign(signature, SignaturePermissions.NoChangesAllowed);
+pdf.SaveAs(&quot;invoice-signed.pdf&quot;);
+
+// Other credential sources: PdfSignature(byte[], password),
+// PdfSignature(X509Certificate2 with X509KeyStorageFlags.Exportable), or PdfSignature.FromBase64(...).</code></pre></div>
+<p>For the in-context tutorial with X509 details, see the <a href="https://ironpdf.com/tutorials/pdf-digital-signatures-csharp-guide/">digital signatures C# guide</a>. The <a href="https://ironpdf.com/examples/digitally-sign-a-pdf/">digitally sign a PDF example</a> covers visual signature placement using <code>PdfSignatureImage</code>. For hardware-backed signing where the private key never leaves the device, see the <a href="https://ironpdf.com/how-to/signing-pdf-with-hsm/">signing PDFs with HSM guide</a>. Common store, password, and timestamp errors are catalogued in the <a href="https://ironpdf.com/troubleshooting/digital-signatures/">digital signatures troubleshooting page</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

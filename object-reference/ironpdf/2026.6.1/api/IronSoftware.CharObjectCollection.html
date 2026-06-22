@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CharObjectCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       CharObjectCollection Class - IronPDF C# API Reference
+      v2 (human)     title:       CharObjectCollection: PDF Glyph Collection in C#
+      v1 (algorithm) description: CharObjectCollection is the IronPDF C# class behind PdfPage.Characters and TextObject.GetGlyphInfo. Reference Count, indexer, Add, Insert, IndexOf.
+      v2 (human)     description: Read per-glyph data from PDFs in C# with IronPDF CharObjectCollection. The IList<IDocumentCharacter> returned by PdfPage.Characters and GetGlyphInfo.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>CharObjectCollection | IronPDF C# Glyph List API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CharObjectCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="CharObjectCollection | IronPDF C# Glyph List API">
+    <meta name="description" content="Reference for IronPDF CharObjectCollection in C#: concrete glyph-level implementor of IDocumentCharCollection returned from PdfPage.Characters.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "CharObjectCollection | IronPDF C# Glyph List API",
+    "name": "CharObjectCollection class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.CharObjectCollection.html",
+    "abstract": "The finest-grained per-glyph surface of a PDF page or text run arrives as CharObjectCollection in IronPDF, received at runtime from IronPdf.Pages.PdfPage.Characters and from IronSoftware.TextObject.GetGlyphInfo(). It is the concrete glyph-level IList<IDocumentCharacter> implementor of IDocumentCharCollection. The element type is the IDocumentCharacter interface in IronSoftware.Abstractions.Pdf. Declared members are the Count and IsReadOnly read-only properties, the IDocumentCharacter indexer, and the Add, Insert, Remove, RemoveAt, Clear, Contains, IndexOf, CopyTo, GetEnumerator, and GetHashCode methods that form the IList<IDocumentCharacter> surface. Sibling of TextObjectCollection at one level deeper in the IronPDF read-side text DOM.",
+    "description": "Reference for IronPDF CharObjectCollection in C#: concrete glyph-level implementor of IDocumentCharCollection returned from PdfPage.Characters.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Pages;\nusing IronSoftware;\nusing IronSoftware.Abstractions.Pdf;\n\nPdfPage page = PdfDocument.FromFile(\"invoice.pdf\").Pages[0];\n\n// Page-level path: page.Characters returns every glyph on the page.\n// Chunk-level path below scopes glyphs to one TextObject run.\nforeach (TextObject run in page.TextChunks)\n{\n    // Both paths are statically typed as the IDocumentCharCollection contract.\n    IDocumentCharCollection runChars = run.GetGlyphInfo();\n    foreach (IDocumentCharacter glyph in runChars)\n    {\n        // Read glyph metrics through the IDocumentCharacter contract.\n    }\n\n    // Cast to the concrete type only when the indexer or IsReadOnly is required.\n    if (runChars is CharObjectCollection concrete && !concrete.IsReadOnly)\n    {\n        IDocumentCharacter first = concrete[concrete.Count - 1];\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is CharObjectCollection located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CharObjectCollection is in the IronSoftware namespace, shipped in IronPdf.dll. It derives from System.Object and implements IDocumentCharCollection, IList<IDocumentCharacter>, ICollection<IDocumentCharacter>, IEnumerable<IDocumentCharacter>, and IEnumerable. No public constructor is documented; instances are obtained from PdfPage.Characters and TextObject.GetGlyphInfo()."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between CharObjectCollection and TextObjectCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CharObjectCollection and TextObjectCollection sit at two different levels of the IronPDF text DOM. TextObjectCollection holds TextObject entries that each represent one text run (a sequence of characters with a uniform font, size, and color) and is returned from PdfPage.TextChunks and PdfPage.Lines. CharObjectCollection holds IDocumentCharacter entries that each represent one glyph and is returned from PdfPage.Characters (every glyph on the page) and from TextObject.GetGlyphInfo() (every glyph inside one chunk). CharObjectCollection lives one level deeper: a page has many TextObjects, and each TextObject contains many IDocumentCharacter glyphs. Both collections implement IList<T>, but the element types are different (TextObject vs IDocumentCharacter) and the parent collection interfaces are different (IPdfTextObjectCollection vs IDocumentCharCollection)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does CharObjectCollection have no CollectionChanged event?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CharObjectCollection derives directly from System.Object and implements IList<IDocumentCharacter> by hand rather than deriving from ObservableCollection<T>. This is a deliberate difference from TextObjectCollection, which derives from ObservableCollection<TextObject> and inherits the CollectionChanged event and the Move method. Code that needs INotifyCollectionChanged on the glyph stream has to wrap the CharObjectCollection in an ObservableCollection<IDocumentCharacter> manually before binding it to a WPF or MAUI view. The element type is the IDocumentCharacter interface, not a concrete class, so each entry is reached through the interface contract."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read per-character font and position data for typography work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open the source PDF through PdfDocument.FromFile, iterate PdfDocument.Pages, and read PdfPage.Characters to obtain the IDocumentCharCollection of glyphs for the page at once. Enumerate the collection with foreach to receive one IDocumentCharacter per glyph through the interface contract. For glyphs scoped to one text run rather than the whole page, enumerate PdfPage.TextChunks for TextObject runs and call GetGlyphInfo() on the chosen run; the result is the same IDocumentCharCollection contract backed by CharObjectCollection at runtime. The same shape is used by code that draws overlays at exact glyph positions through the IronPDF drawing API."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -157,6 +228,38 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class CharObjectCollection : Object, IDocumentCharCollection, IList&lt;IDocumentCharacter&gt;, ICollection&lt;IDocumentCharacter&gt;, IEnumerable&lt;IDocumentCharacter&gt;, IEnumerable</code></pre>
   </div>
+                  <!-- archetype-N:start CharObjectCollection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>CharObjectCollection</code> is what IronPDF returns at runtime when code reads the per-character surface of a PDF page or text run: the concrete glyph-level <code>IList&lt;IDocumentCharacter&gt;</code> implementor of <code>IDocumentCharCollection</code>. The element type is the interface <code>IronSoftware.Abstractions.Pdf.IDocumentCharacter</code>, so consuming code reads each glyph through the interface contract rather than a concrete glyph class.</p>
+<p>Glyph-level access matters when a higher-level text run hides what a job needs: each entry carries the positioning data and font metrics that a chunk-level <code>TextObject</code> reports only in aggregate. Typical scenarios include pixel-perfect drawing of overlays through the <a href="https://ironpdf.com/how-to/draw-text-and-bitmap/">draw text and bitmap how-to</a>, custom-font kerning analysis, and per-character bounding-box hit testing against existing page content. No public constructor is documented on the reference page.</p>
+<p>To obtain a <code>CharObjectCollection</code>, two acquisition paths are available. The page-level path reads <code>IronPdf.Pages.PdfPage.Characters</code> for every glyph on the page at once. The chunk-level path enumerates <code>PdfPage.TextChunks</code> for <code>TextObject</code> runs and then calls <code>TextObject.GetGlyphInfo()</code> on the run of interest. Both properties are statically typed as <code>IDocumentCharCollection</code>, so consuming code reads through the interface contract by default. The declared members on <code>CharObjectCollection</code> itself group into enumeration (<code>Count</code>, the <code>IDocumentCharacter this[int]</code> indexer, <code>GetEnumerator()</code>), random access (<code>IndexOf(IDocumentCharacter)</code>, <code>Contains(IDocumentCharacter)</code>), mutation (<code>Add(IDocumentCharacter)</code>, <code>Insert(int, IDocumentCharacter)</code>, <code>Remove(IDocumentCharacter)</code>, <code>RemoveAt(int)</code>, <code>Clear()</code>), bulk copy (<code>CopyTo(IDocumentCharacter[], int)</code>), and state (<code>IsReadOnly</code> is read-only on this type). The <a href="https://ironpdf.com/how-to/access-pdf-dom-object/">access PDF DOM object how-to</a> covers the surrounding workflow and names <code>GetGlyphInfo</code> directly.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Pages;
+using IronSoftware;
+using IronSoftware.Abstractions.Pdf;
+
+PdfPage page = PdfDocument.FromFile(&quot;invoice.pdf&quot;).Pages[0];
+
+// Page-level path: page.Characters returns every glyph on the page.
+// Chunk-level path below scopes glyphs to one TextObject run.
+foreach (TextObject run in page.TextChunks)
+{
+    // Both paths are statically typed as the IDocumentCharCollection contract.
+    IDocumentCharCollection runChars = run.GetGlyphInfo();
+    foreach (IDocumentCharacter glyph in runChars)
+    {
+        // Read glyph metrics through the IDocumentCharacter contract.
+    }
+
+    // Cast to the concrete type only when the indexer or IsReadOnly is required.
+    if (runChars is CharObjectCollection concrete &amp;&amp; !concrete.IsReadOnly)
+    {
+        IDocumentCharacter first = concrete[concrete.Count - 1];
+    }
+}</code></pre></div>
+<p>For the chunk-level companion that holds the parent <code>TextObject</code> runs themselves, see the <a href="https://ironpdf.com/how-to/extract-text-and-images/">extract text and images how-to</a> which covers <code>PdfPage.TextChunks</code> and the line-level <code>PdfPage.Lines</code> surface in the same DOM family.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

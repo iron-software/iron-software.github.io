@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class EmbedFileStream
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       EmbedFileStream Class - IronPDF C# API Reference
+      v2 (human)     title:       EmbedFileStream: Stream PDF/A-3 Embeds in C#
+      v1 (algorithm) description: EmbedFileStream is the IronPDF C# class wrapping a Stream and EmbedFileConfiguration for PDF/A-3 embedded files. Used by PdfDocument.ConvertToPdfA.
+      v2 (human)     description: Embed in-memory streams as PDF/A-3 attachments in C# with IronPDF EmbedFileStream. Pairs a System.IO.Stream with EmbedFileConfiguration for SaveAsPdfA.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>EmbedFileStream | IronPDF C# PDF/A-3 Streams</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class EmbedFileStream
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="EmbedFileStream | IronPDF C# PDF/A-3 Streams">
+    <meta name="description" content="Reference for IronPDF EmbedFileStream in C#: constructor, FileStream and EmbedFileConfiguration properties, and use with PdfDocument.ConvertToPdfA.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "EmbedFileStream | IronPDF C# PDF/A-3 Streams",
+    "name": "EmbedFileStream class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.EmbedFileStream.html",
+    "abstract": "When the file to embed in a PDF/A-3 document never touches disk and arrives as a System.IO.Stream in C#, EmbedFileStream pairs that stream with an EmbedFileConfiguration in IronPDF. Constructed via EmbedFileStream(Stream FileStream, EmbedFileConfiguration EmbedFileConfiguration) and exposing both arguments as get/set properties, instances are collected into an IEnumerable<EmbedFileStream> and passed to PdfDocument.ConvertToPdfA or PdfDocument.SaveAsPdfA with PdfAVersions.PdfA3b. Only file types xml, pdf, and png are supported.",
+    "description": "Reference for IronPDF EmbedFileStream in C#: constructor, FileStream and EmbedFileConfiguration properties, and use with PdfDocument.ConvertToPdfA.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing System.Collections.Generic;\nusing System.IO;\n\nPdfDocument pdf = new PdfDocument(\"invoice.pdf\");\n\n// Embed an XML payload that arrives as a Stream and never touches disk.\n// The caller owns the Stream, so dispose it after the save with using.\nusing Stream xmlStream = new MemoryStream(File.ReadAllBytes(\"invoice.xml\"));\nvar xmlConfig = new EmbedFileConfiguration(EmbedFileType.xml)\n{\n    EmbedFileName  = \"invoice.xml\",\n    AFRelationship = AFRelationship.Source\n};\n\nIEnumerable<EmbedFileStream> embeds = new[] { new EmbedFileStream(xmlStream, xmlConfig) };\npdf.ConvertToPdfA(embeds, PdfAVersions.PdfA3b).SaveAs(\"invoice-pdfa3b.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What namespace is EmbedFileStream defined in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EmbedFileStream is in the IronPdf namespace, shipped in IronPdf.dll. It is declared public sealed class EmbedFileStream : ValueType, IEquatable<EmbedFileStream>, so it behaves as a value-type wrapper. Construct one per stream payload and pass an IEnumerable<EmbedFileStream> to PdfDocument.ConvertToPdfA or SaveAsPdfA with PdfAVersions.PdfA3b."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between EmbedFileStream, EmbedFileByte, and EmbedFilePath?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All three are sealed value-type wrappers in the IronPdf namespace that pair an embedded payload with an EmbedFileConfiguration for PDF/A-3 output. EmbedFilePath takes a string file path and is used when the file already exists on disk. EmbedFileByte takes a byte[] and is used when the bytes are already materialized in memory. EmbedFileStream takes a System.IO.Stream and is used when the payload is produced or consumed as a stream, such as a serialized XML invoice or an HTTP response body. They are interchangeable from the PdfDocument side: ConvertToPdfA and SaveAsPdfA have overloads accepting IEnumerable of each."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does IronPDF take ownership of the Stream passed to EmbedFileStream?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The Stream stored on the FileStream property is read by IronPDF during the ConvertToPdfA or SaveAsPdfA call, but the caller retains ownership and is responsible for disposing the Stream after the save returns. Wrap each stream in a using statement around the conversion call. The Stream should also be positioned at zero before the save; a MemoryStream that was written to but not seeked back to position zero will produce an empty embedded file."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which PDF/A versions and file types are supported by EmbedFileStream?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Embedded files are only supported in PDF/A-3 (PdfAVersions.PdfA3a and PdfAVersions.PdfA3b). PDF/A-1, PDF/A-2, and PDF/A-4 do not allow arbitrary embedded files in IronPDF. The EmbedFileStream constructor remarks restrict the supported file types to three EmbedFileType values: pdf, png, and xml. Use the xml file type for ZUGFeRD and Factur-X invoice attachments."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,9 +225,31 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class EmbedFileStream : ValueType, IEquatable&lt;EmbedFileStream&gt;</code></pre>
   </div>
-  <h5 id="IronPdf_EmbedFileStream_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>currently only support 3 types of file; .xml, .pdf, and .png</p>
-</div>
+                    <!-- archetype-N:start EmbedFileStream treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>EmbedFileStream</code> wraps an open <code>System.IO.Stream</code> so its contents can be embedded inside a PDF/A-3 document in IronPDF, pairing the stream with an <code>EmbedFileConfiguration</code> that carries the per-file PDF/A metadata. It is a value-type wrapper with operator overloads and a <code>Deconstruct</code> method. The constructor only accepts files whose <code>EmbedFileType</code> is <code>xml</code>, <code>pdf</code>, or <code>png</code>.</p>
+<p><code>EmbedFileStream</code> is the right choice when the file to embed never touches disk: an XML invoice serialized from an in-memory object graph, a PNG composed by <code>System.Drawing</code>, an attachment that arrives as the body of an HTTP response, or a BLOB read out of a database column. Use the <code>EmbedFilePath</code> wrapper for files already on disk and <code>EmbedFileByte</code> when bytes are already materialized as a <code>byte[]</code>. Common scenarios include ZUGFeRD and Factur-X e-invoicing pipelines, in-process archival flows, and document services that stream attachments through ASP.NET Core handlers.</p>
+<p>Construction is through the single non-default constructor <code>EmbedFileStream(Stream FileStream, EmbedFileConfiguration EmbedFileConfiguration)</code>, and both arguments are exposed afterwards through the <code>FileStream</code> and <code>EmbedFileConfiguration</code> get/set properties. The configured object is added to an <code>IEnumerable&lt;EmbedFileStream&gt;</code> and handed to <code>PdfDocument.ConvertToPdfA(IEnumerable&lt;EmbedFileStream&gt;, PdfAVersions, string)</code> or <code>PdfDocument.SaveAsPdfA(string, IEnumerable&lt;EmbedFileStream&gt;, PdfAVersions, string)</code>, with <code>PdfAVersions.PdfA3b</code> as the required version. Each stream is read at save time, so it must be positioned at zero before the call; a <code>MemoryStream</code> that was written to but never rewound embeds an empty file. IronPDF does not take ownership of the stream, so the caller disposes it once the save returns. The <a href="https://ironpdf.com/how-to/pdfa/">PDF/A export how-to</a> has a worked example that includes the <code>EmbedFileConfiguration</code> setup.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using System.Collections.Generic;
+using System.IO;
+
+PdfDocument pdf = new PdfDocument(&quot;invoice.pdf&quot;);
+
+// Embed an XML payload that arrives as a Stream and never touches disk.
+// The caller owns the Stream, so dispose it after the save with using.
+using Stream xmlStream = new MemoryStream(File.ReadAllBytes(&quot;invoice.xml&quot;));
+var xmlConfig = new EmbedFileConfiguration(EmbedFileType.xml)
+{
+    EmbedFileName  = &quot;invoice.xml&quot;,
+    AFRelationship = AFRelationship.Source
+};
+
+IEnumerable&lt;EmbedFileStream&gt; embeds = new[] { new EmbedFileStream(xmlStream, xmlConfig) };
+pdf.ConvertToPdfA(embeds, PdfAVersions.PdfA3b).SaveAs(&quot;invoice-pdfa3b.pdf&quot;);</code></pre></div>
+<p>For conformance levels and stream-based attachments, see the <a href="https://ironpdf.com/tutorials/pdfa-archiving-csharp/">PDF/A archiving tutorial</a>. The <a href="https://ironpdf.com/examples/pdfa/">PDF/A example</a> gives the minimum saving shape, and the <a href="https://ironpdf.com/product-updates/milestones-pdf-a3-zugferd/">PDF/A-3 and ZUGFeRD milestone</a> explains the e-invoicing context behind the XMP defaults.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

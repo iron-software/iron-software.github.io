@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Length
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Length Class - IronPDF C# API Reference
+      v2 (human)     title:       Length: Measurement Values in IronPDF C#
+      v1 (algorithm) description: Length is the IronPDF C# class wrapping a measurement value and its unit. Reference Value, Unit, DPI, and the ToCentimeter, ToInch, ToMillimeter conversions.
+      v2 (human)     description: Work with measurement values in IronPDF C# through the Length class. Convert between millimeters, inches, centimeters, pixels, and points on a single instance.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Length Class | IronPDF C# Measurement Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Length
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="Length Class | IronPDF C# Measurement Reference">
+    <meta name="description" content="Reference for the IronPDF Length class in C#: Value, Unit, DPI properties and the ToCentimeter, ToInch, ToMillimeter, ToPixel, ToPoints conversion methods.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Length Class | IronPDF C# Measurement Reference",
+    "name": "Length class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Editing.Length.html",
+    "abstract": "A numeric measurement paired with its unit and convertible between units in C# is what Length wraps in IronPDF. It holds Value (double), Unit (MeasurementUnit field constant from Centimeter, Inch, Millimeter, Percentage, Pixel, or Points), and DPI (integer, default 96). Five conversion methods (ToCentimeter, ToInch, ToMillimeter, ToPixel, ToPoints) return the measurement in the requested unit. Length instances are most often obtained from the PdfPaperSizeConverter.ToMillimeters extension method.",
+    "description": "Reference for the IronPDF Length class in C#: Value, Unit, DPI properties and the ToCentimeter, ToInch, ToMillimeter, ToPixel, ToPoints conversion methods.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Editing;\nusing IronPdf.Rendering;\n\n// Canonical entry point: get Length values from a standard paper size\n(Length width, Length height) = PdfPaperSizeConverter.ToMillimeters(PdfPaperSize.A4);\n\ndouble widthInInches = width.ToInch();\ndouble heightInPixels = height.ToPixel();\ndouble heightInPoints = height.ToPoints();\n\n// Direct construction for a fixed measurement\nLength margin = new Length(value: 12.7, unit: MeasurementUnit.Millimeter, dpi: 96);\ndouble marginInInches = margin.ToInch();"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain Length?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Length is in the IronPdf.Editing namespace, shipped in IronPdf.dll. It is a plain instantiable class. Length instances are most often obtained from the PdfPaperSizeConverter.ToMillimeters extension, which returns width and height as a tuple of Length values."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Length and MeasurementUnit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Length is an instantiable class that holds a numeric value together with the unit it is expressed in and a DPI for pixel conversions. MeasurementUnit is a field-constant class in the same IronPdf.Editing namespace whose values (Centimeter, Inch, Millimeter, Percentage, Pixel, Points) are assigned to the Unit property of a Length. A Length instance therefore composes a double and a MeasurementUnit; MeasurementUnit on its own is just the unit label."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get the width and height of a standard paper size in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call PdfPaperSizeConverter.ToMillimeters on a PdfPaperSize enum value to receive a ValueTuple of two Length instances, one for width and one for height. Each Length carries the dimension in millimeters and can be reprojected into centimeters, inches, pixels, or points by calling the corresponding conversion method on the instance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is the refValue argument required on a Length conversion method?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "refValue is required only when the Unit of the Length is MeasurementUnit.Percentage. A percentage has no absolute size on its own, so the conversion methods need a reference dimension in the target unit to compute the result. For every other Unit value, refValue can be left as null and the conversion uses the stored Value and DPI."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +221,28 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Length : Object</code></pre>
   </div>
+                <!-- archetype-N:start Length treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Length</code> carries a numeric measurement together with the unit it is expressed in and converts it between units. It is the return type for any IronPDF API that hands back a measured dimension, most prominently the extension method that converts a <code>PdfPaperSize</code> enum value into its width and height.</p>
+<p><code>Length</code> matters whenever code needs to read a dimension out of IronPDF and then reuse the same value in a different unit. The standard pattern is to call <code>PdfPaperSizeConverter.ToMillimeters(PdfPaperSize.A4)</code>, receive a <code>(Length, Length)</code> tuple for width and height, then call <code>.ToInch()</code> or <code>.ToPixel()</code> on each element to feed the value into print logic, viewport math, or a custom layout calculation. Constructing a <code>Length</code> directly is also supported when an application needs to pin a fixed measurement at startup and convert from it on demand.</p>
+<p>A <code>Length</code> instance holds three pieces of state. The <code>Value</code> property is the raw <code>double</code>. The <code>Unit</code> property is a <code>MeasurementUnit</code> field constant (<code>MeasurementUnit.Centimeter</code>, <code>Inch</code>, <code>Millimeter</code>, <code>Percentage</code>, <code>Pixel</code>, or <code>Points</code>). The <code>DPI</code> property is the integer dots-per-inch used when converting to or from <code>Pixel</code>, defaulting to 96. Five conversion methods read the instance and return a <code>double</code> in the requested unit: <code>ToCentimeter</code>, <code>ToInch</code>, <code>ToMillimeter</code>, <code>ToPixel</code>, and <code>ToPoints</code>. Each conversion method accepts an optional <code>refValue</code> argument that is required only when <code>Unit</code> is <code>MeasurementUnit.Percentage</code>, since a percentage has no absolute size until a reference dimension is supplied. The <a href="https://ironpdf.com/how-to/custom-paper-size/">custom paper size how-to</a> has a worked example of the <code>ToMillimeters</code> extension feeding <code>Length</code> values into a custom-dimensioned render call.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Editing;
+using IronPdf.Rendering;
+
+// Canonical entry point: get Length values from a standard paper size
+(Length width, Length height) = PdfPaperSizeConverter.ToMillimeters(PdfPaperSize.A4);
+
+double widthInInches = width.ToInch();
+double heightInPixels = height.ToPixel();
+double heightInPoints = height.ToPoints();
+
+// Direct construction for a fixed measurement
+Length margin = new Length(value: 12.7, unit: MeasurementUnit.Millimeter, dpi: 96);
+double marginInInches = margin.ToInch();</code></pre></div>
+<p>For dimensions expressed as a percentage, pass a reference value to the conversion method so the result has an absolute size. The <a href="https://ironpdf.com/how-to/custom-margins/">custom margins how-to</a> covers the related millimeter-based margin configuration where the dimensions are taken as plain <code>double</code> values rather than <code>Length</code> instances.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

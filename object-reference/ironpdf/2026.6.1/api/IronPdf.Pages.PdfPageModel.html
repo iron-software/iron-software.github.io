@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfPageModel
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfPageModel Class - IronPDF C# API Reference
+      v2 (human)     title:       PdfPageModel: PDF Page Content DOM in C# with IronPDF
+      v1 (algorithm) description: IronPdf.Pages.PdfPageModel class reference for C#. Properties TextObjects, ImageObjects, PathObjects, BoundingBox, PageIndex; method ToJson.
+      v2 (human)     description: Walk a PDF page's text, image, and vector content in C# through the PdfPageModel DOM accessed via PdfPage.ObjectModel in IronPDF.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfPageModel Class | IronPDF C# Page DOM API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfPageModel
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfPageModel Class | IronPDF C# Page DOM API">
+    <meta name="description" content="PdfPageModel in IronPDF exposes per-page content as typed TextObjects, ImageObjects, and PathObjects collections plus ToJson serialisation.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfPageModel Class | IronPDF C# Page DOM API",
+    "name": "PdfPageModel class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Pages.PdfPageModel.html",
+    "abstract": "A single PDF page's text, image, and vector content (as the strongly-typed collections `TextObjects`, `ImageObjects`, and `PathObjects`, plus the page metadata properties `BoundingBox` and `PageIndex` and the `ToJson()` method for serialising the whole page DOM in C#) is surfaced through `PdfPageModel` in IronPDF. Application code obtains instances by casting the `ObjectModel` property of a `PdfPage` to `PdfPageModel`.",
+    "description": "PdfPageModel in IronPDF exposes per-page content as typed TextObjects, ImageObjects, and PathObjects collections plus ToJson serialisation.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Pages;\n\nusing PdfDocument pdf = PdfDocument.FromFile(\"invoice.pdf\");\n\n// PdfDocument.Pages indexer returns IPdfPage; cast to PdfPage to reach ObjectModel,\n// then cast the IPdfPageObjectModel to PdfPageModel for the typed collections.\nPdfPage page = pdf.Pages[0] as PdfPage;\nPdfPageModel model = page.ObjectModel as PdfPageModel;\n\n// Inspect the content DOM: each text run carries Contents, FontName, FontSize, BoundingBox.\nforeach (var text in model.TextObjects)\n{\n    var box = text.BoundingBox;\n}\n\n// Page metadata and JSON export.\nSystem.Drawing.RectangleF pageBox = model.BoundingBox;\nstring dom = model.ToJson();"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain PdfPageModel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfPageModel is in the IronPdf.Pages namespace, shipped in IronPdf.dll. It derives from PdfClientAccessor and implements IPdfPageObjectModel, IDocumentPageObjectModel<TextObjectCollection, PathObjectCollection, ImageObjectCollection>, IBounded, and IJsonSerializable. Application code obtains an instance by casting the ObjectModel property of a PdfPage to PdfPageModel to walk the page content."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfPageModel, PdfPage, and IPdfPage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfPage is the per-page handle returned by indexing PdfDocument.Pages and is the class that carries the mutation methods Resize, Extend, and Transform. IPdfPage is the interface PdfPage implements and is the static return type of the PdfPagesCollection indexer. PdfPageModel is the concrete content DOM exposed through the ObjectModel property on a PdfPage, implementing IPdfPageObjectModel and providing the TextObjects, ImageObjects, and PathObjects collections plus ToJson serialisation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do changes to items in TextObjects or ImageObjects affect the saved PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The collections returned by PdfPageModel are live views over the page DOM, not detached snapshots. Setting properties such as Color, Scale, or Translation on a TextObject or ImageObject updates the live page through the shared PdfClientAccessor, and the changes are written to disk when SaveAs is called on the parent PdfDocument."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you serialise a PDF page DOM to JSON?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call the ToJson method on the PdfPageModel instance. The method returns a string containing the serialised DOM and is intended for downstream tooling, audit pipelines, or persistence. The class implements IJsonSerializable, which is the contract the method fulfils."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -174,16 +245,33 @@ string json = pageModel.ToJson();</code></pre></p><p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfPageModel : PdfClientAccessor, IPdfPageObjectModel, IDocumentPageObjectModel&lt;TextObjectCollection, PathObjectCollection, ImageObjectCollection&gt;, IBounded, IJsonSerializable</code></pre>
   </div>
-  <h5 id="IronPdf_Pages_PdfPageModel_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<strong>Key Properties:</strong>
-</p>
-<ul><li></li><li></li><li></li><li></li></ul>
-<p>
-<strong>Standards:</strong>
-</p>
-<ul><li></li><li></li></ul>
-</div>
+                    <!-- archetype-N:start PdfPageModel treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Walking a single PDF page's content (its text runs, raster images, and vector paths with their bounding boxes) runs through <code>PdfPageModel</code>, returned by the <code>ObjectModel</code> property on a <code>PdfPage</code>. Where <code>PdfPage</code> is the page handle that resizes, rotates, and transforms the page itself, <code>PdfPageModel</code> is the structured view of what the page contains.</p>
+<p>Reach for <code>PdfPageModel</code> when work happens at content granularity rather than page granularity. Typical scenarios include locating each text run with its font and position for redaction or highlighting, enumerating embedded images for export or replacement, inspecting vector paths to find borders or annotation overlays, capturing the page bounding box for layout decisions, and serialising the entire page DOM to JSON for downstream analysis or audit pipelines. No public constructor is documented; the class is obtained by accessing the <code>ObjectModel</code> property and casting to the concrete type when the strongly-typed collection surface is needed.</p>
+<p>The salient surface groups into three buckets. The three content collections are <code>TextObjects</code> (a <code>TextObjectCollection</code> of positioned text runs with font, size, and bounding box per item), <code>ImageObjects</code> (an <code>ImageObjectCollection</code> of embedded raster images with position and dimensions), and <code>PathObjects</code> (a <code>PathObjectCollection</code> of vector shapes including lines, rectangles, and bezier curves). Page-level metadata lives on <code>BoundingBox</code> (a settable <code>System.Drawing.RectangleF</code> describing the page bounds in points) and <code>PageIndex</code> (read-only <code>uint</code>). The single <code>ToJson()</code> method serialises the whole DOM to a string for tooling or audit pipelines.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Pages;
+
+using PdfDocument pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+
+// PdfDocument.Pages indexer returns IPdfPage; cast to PdfPage to reach ObjectModel,
+// then cast the IPdfPageObjectModel to PdfPageModel for the typed collections.
+PdfPage page = pdf.Pages[0] as PdfPage;
+PdfPageModel model = page.ObjectModel as PdfPageModel;
+
+// Inspect the content DOM: each text run carries Contents, FontName, FontSize, BoundingBox.
+foreach (var text in model.TextObjects)
+{
+    var box = text.BoundingBox;
+}
+
+// Page metadata and JSON export.
+System.Drawing.RectangleF pageBox = model.BoundingBox;
+string dom = model.ToJson();</code></pre></div>
+<p>For DOM walks that read, modify, and remove content elements, the <a href="/how-to/access-pdf-dom-object/">PDF DOM object guide</a> has a worked example of each operation. For simpler whole-page text retrieval without the typed collections, see the <a href="/how-to/extract-text-and-images/">extract text and images how-to</a>. When page-level operations such as resize and rotate sit alongside DOM access, reach for the <a href="/how-to/add-copy-delete-pages-pdf/">add, copy and delete pages tutorial</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

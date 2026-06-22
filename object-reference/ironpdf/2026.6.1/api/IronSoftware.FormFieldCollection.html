@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class FormFieldCollection
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       FormFieldCollection Class - IronPDF C# API Reference
+      v2 (human)     title:       FormFieldCollection: PDF Form Fields in IronPDF
+      v1 (algorithm) description: FormFieldCollection is the IronPDF class returned by PdfDocument.Form for PDF form fields. Reference its members, methods, and C# code examples.
+      v2 (human)     description: Fill and edit PDF form fields in C# through the IronPDF FormFieldCollection class. Covers FindFormField, Add, Remove, and document-wide form fonts.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>FormFieldCollection Class | IronPDF C# Forms</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class FormFieldCollection
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="FormFieldCollection Class | IronPDF C# Forms">
+    <meta name="description" content="Reference for the IronPDF FormFieldCollection class: the observable form-field collection returned by PdfDocument.Form, with members and a C# example.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "FormFieldCollection Class | IronPDF C# Forms",
+    "name": "FormFieldCollection class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.FormFieldCollection.html",
+    "abstract": "When application code needs to locate, mutate, or font-tune the fillable PDF form fields on an IronPDF document, FormFieldCollection is the container returned by the read-only PdfDocument.Form property. It is the concrete, observable container of those fields, derives from ObservableCollection of IFormField, and implements IFormFieldCollection (in the IronSoftware.Forms subnamespace), IList, ICollection, and IEnumerable. Members include FindFormField, Add, Remove, RemoveAt, Clear, IsReadOnly, SetFormFont, and DisableFormFontFallback for locating, mutating, and font-tuning the form-field set on a loaded or generated document.",
+    "description": "Reference for the IronPDF FormFieldCollection class: the observable form-field collection returned by PdfDocument.Form, with members and a C# example.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware.Forms;\n\nPdfDocument pdf = PdfDocument.FromFile(\"application.pdf\");\n\n// PdfDocument.Form returns the concrete FormFieldCollection.\nFormFieldCollection fields = pdf.Form;\n\n// Lookup is by name; fully-qualified matches win, partial matches fall back.\nIFormField nameField = fields.FindFormField(\"applicant.fullName\");\nnameField.Value = \"Jane Doe\";\n\n// Optional: register a document-wide font so non-ASCII fills are not\n// auto-embedded with a fallback face.\n// fields.SetFormFont(\"Helvetica\", File.ReadAllBytes(\"Helvetica.ttf\"));\n\n// Collection-level mutators are inherited from ObservableCollection<IFormField>.\nIFormField stale = fields.FindFormField(\"legacyConsent\");\nif (stale != null) fields.Remove(stale);\n\npdf.SaveAs(\"application-filled.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does FormFieldCollection live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FormFieldCollection is in the IronSoftware namespace, shipped in IronPdf.dll. It derives from ObservableCollection of IFormField and implements IFormFieldCollection, which itself lives in the IronSoftware.Forms subnamespace. It is returned by the read-only PdfDocument.Form property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between FormFieldCollection and IFormFieldCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FormFieldCollection is the concrete class in the IronSoftware namespace that derives from ObservableCollection of IFormField. IFormFieldCollection is the interface it implements, declared in the IronSoftware.Forms subnamespace. The two types live in different namespaces, which is unusual: the concrete class is in the assembly's shared parent namespace while the contract is grouped with the other forms types. Because PdfDocument.Form returns the concrete type, application code rarely needs to reference the interface directly. The interface itself declares only DisableFormFontFallback, FindFormField, and SetFormFont; everything else on the concrete class, including Add, Remove, RemoveAt, Clear, IsReadOnly, and the indexer, is inherited from ObservableCollection of IFormField."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does FindFormField match field names?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FindFormField first tries to match a fully-qualified field name. If no fully-qualified match is found, it falls back to partial name matches. This matters for PDFs that group fields under a common prefix, such as applicant.fullName: calling FindFormField with the full dotted name returns the exact field, while calling it with just fullName matches by suffix if no fully-qualified field of that name exists."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set a document-wide font for form fills?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call SetFormFont on the collection with a PDF font name and the raw TrueType or OpenType bytes. When set, the rendering engine stops the automatic fallback embed for form values that contain non-ASCII characters and uses the registered font instead. Passing null or empty bytes activates name-only mode, which requires the named font to already be embedded in the document. DisableFormFontFallback offers the reverse option: suppress the automatic fallback without registering any replacement, which adds zero bytes to the document."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -158,6 +229,35 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class FormFieldCollection : ObservableCollection&lt;IFormField&gt;, IFormFieldCollection, IList&lt;IFormField&gt;, ICollection&lt;IFormField&gt;, IEnumerable&lt;IFormField&gt;, IEnumerable</code></pre>
   </div>
+                  <!-- archetype-N:start FormFieldCollection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>The fillable form fields on an IronPDF document are reached through <code>FormFieldCollection</code>, the value returned by the read-only <code>PdfDocument.Form</code> property. It is the concrete, observable container of those fields. The interface it implements, <a href="https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormFieldCollection.html"><code>IFormFieldCollection</code></a>, lives in the <code>IronSoftware.Forms</code> subnamespace, so prose that mentions both types must qualify them.</p>
+<p><code>FormFieldCollection</code> matters whenever application code touches fillable PDF forms in IronPDF. Filling an existing form, removing or adding fields on a generated document, flattening forms before distribution, and embedding a document-wide font for non-ASCII fills are all routed through this collection. Because the property <code>PdfDocument.Form</code> returns the concrete <code>FormFieldCollection</code>, downstream code can call collection-level mutators directly without casting from the interface.</p>
+<p>The headline surface groups into four buckets. Lookup and iteration: <code>FindFormField(string)</code> returns an <code>IFormField</code> by name (the implementation tries the fully-qualified name first, then falls back to partial matches), and the standard <code>IList&lt;IFormField&gt;</code> indexer plus <code>IEnumerable&lt;IFormField&gt;</code> iteration are inherited from the <code>ObservableCollection&lt;IFormField&gt;</code> base. Mutation: <code>Add(IFormField)</code>, <code>Remove(IFormField)</code>, <code>RemoveAt(int)</code>, and <code>Clear()</code> operate on the field set. Font control: <code>SetFormFont(string fontName, byte[] fontData, bool forceEmbed = false)</code> registers a document-wide font for subsequent fills, and <code>DisableFormFontFallback()</code> suppresses the automatic fallback embed for non-ASCII values without registering any replacement font. State: the read-only <code>IsReadOnly</code> property reports whether the collection is mutable. The canonical idiom for fills is documented in the <a href="https://ironpdf.com/how-to/edit-forms/">fill and edit PDF forms how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware.Forms;
+
+PdfDocument pdf = PdfDocument.FromFile(&quot;application.pdf&quot;);
+
+// PdfDocument.Form returns the concrete FormFieldCollection.
+FormFieldCollection fields = pdf.Form;
+
+// Lookup is by name; fully-qualified matches win, partial matches fall back.
+IFormField nameField = fields.FindFormField(&quot;applicant.fullName&quot;);
+nameField.Value = &quot;Jane Doe&quot;;
+
+// Optional: register a document-wide font so non-ASCII fills are not
+// auto-embedded with a fallback face.
+// fields.SetFormFont(&quot;Helvetica&quot;, File.ReadAllBytes(&quot;Helvetica.ttf&quot;));
+
+// Collection-level mutators are inherited from ObservableCollection&lt;IFormField&gt;.
+IFormField stale = fields.FindFormField(&quot;legacyConsent&quot;);
+if (stale != null) fields.Remove(stale);
+
+pdf.SaveAs(&quot;application-filled.pdf&quot;);</code></pre></div>
+<p>For building forms from scratch through HTML or programmatic construction, see the <a href="https://ironpdf.com/how-to/create-forms/">create PDF forms how-to</a>. For the field-level contract returned by <code>FindFormField</code>, see <a href="https://ironpdf.com/object-reference/api/IronSoftware.Forms.IFormField.html"><code>IFormField</code></a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

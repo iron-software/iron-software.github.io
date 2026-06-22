@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfTextAnnotation
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfTextAnnotation Class - IronPDF C# API Reference
+      v2 (human)     title:       PdfTextAnnotation: Read PDF Sticky Notes in C#
+      v1 (algorithm) description: PdfTextAnnotation is the IronPDF read-side class for PDF sticky-note annotations in C#. Reference State, Contents, Hidden, and GetAnnotations usage.
+      v2 (human)     description: Read sticky-note annotations from an existing PDF in C# with the IronPDF PdfTextAnnotation class. Inspect State, Contents, Color, Rectangle, and Hidden.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfTextAnnotation Class | IronPDF C# Annotations</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfTextAnnotation
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfTextAnnotation Class | IronPDF C# Annotations">
+    <meta name="description" content="Reference for IronPDF PdfTextAnnotation in C#: State, inherited Contents, Name, Rectangle, Color, Hidden, and PdfDocument.GetAnnotations(int).">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfTextAnnotation Class | IronPDF C# Annotations",
+    "name": "PdfTextAnnotation class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Annotations.PdfTextAnnotation.html",
+    "abstract": "Inspecting a sticky-note text annotation already attached to a PDF page runs through PdfTextAnnotation in IronPDF. Instances are obtained from PdfDocument.GetAnnotations(int), which returns List<PdfAnnotation>, alongside the sibling read-side types PdfFreeTextAnnotation and PdfLinkAnnotation. The own property is State (marked, unmarked, accepted, rejected, cancelled, completed, or none) and inherited members include Type, Rectangle, Color, Contents, Name, and the lone writable Hidden flag.",
+    "description": "Reference for IronPDF PdfTextAnnotation in C#: State, inherited Contents, Name, Rectangle, Color, Hidden, and PdfDocument.GetAnnotations(int).",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronPdf.Annotations;\n\nvar pdf = PdfDocument.FromFile(\"reviewed.pdf\");\n\n// Read-side workflow: enumerate annotations already on the document.\nforeach (PdfAnnotation annotation in pdf.GetAnnotations(0))\n{\n    if (annotation is PdfTextAnnotation stickyNote)\n    {\n        // Every property except Hidden is read-only on the read side.\n        Console.WriteLine($\"Note '{stickyNote.Name}' state={stickyNote.State}\");\n        Console.WriteLine($\"  popup body: {stickyNote.Contents}\");\n\n        // Hidden is the lone get;set; on the read-side hierarchy.\n        // Use it to suppress an annotation without removing the underlying object:\n        //   stickyNote.Hidden = true;\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PdfTextAnnotation live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfTextAnnotation is in the IronPdf.Annotations namespace, shipped in IronPdf.dll. It derives from the abstract PdfAnnotation base alongside PdfFreeTextAnnotation and PdfLinkAnnotation. Instances are obtained from PdfDocument.GetAnnotations(int), which returns List<PdfAnnotation>, so pattern-match the result to read a sticky-note annotation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfTextAnnotation and TextAnnotation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfTextAnnotation is the read-side concrete class returned from PdfDocument.GetAnnotations(int) when enumerating annotations already attached to a loaded PDF. TextAnnotation is the write-side class used to author a new sticky-note annotation and attach it to a document through pdf.Annotations.Add. They live in the same IronPdf.Annotations namespace but in separate hierarchies: PdfTextAnnotation derives from the abstract PdfAnnotation base, while TextAnnotation derives from PdfClientAccessor and implements IAnnotation. Use PdfTextAnnotation when inspecting existing annotations, and TextAnnotation when creating new ones."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfTextAnnotation and PdfFreeTextAnnotation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both are read-side subclasses of PdfAnnotation returned by PdfDocument.GetAnnotations(int), and they represent the two PDF annotation flavors that carry user-authored text. PdfTextAnnotation is the sticky-note variant: a collapsed icon that expands into a popup body when clicked, with a review State value. PdfFreeTextAnnotation is the always-visible variant: a floating text box rendered directly on the page with an Appearance string controlling its visual style. Pattern-match against the inherited Type property which will be PdfAnnotationType.Text or PdfAnnotationType.FreeText respectively."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are most PdfTextAnnotation properties read-only?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfTextAnnotation models an annotation that already exists on disk, so its identity (Name, Rectangle, Color, Contents, State, Type) is set when the document loads and exposed as get-only properties. The single exception is the inherited Hidden flag, which has both get and set accessors so callers can suppress an annotation from view without removing it from the document. To edit the body text or move an annotation, use the write-side TextAnnotation class and replace the annotation through pdf.Annotations rather than mutating the read-side instance. State strings follow the PDF specification: marked, unmarked, accepted, rejected, cancelled, completed, or none."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -172,6 +243,33 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfTextAnnotation : PdfAnnotation</code></pre>
   </div>
+                  <!-- archetype-N:start PdfTextAnnotation treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a sticky-note text annotation is already attached to a page of an existing PDF, <code>PdfTextAnnotation</code> is what you inspect it through. It is one of three concrete types that <code>PdfDocument.GetAnnotations(int)</code> materializes from a loaded document, alongside <code>PdfFreeTextAnnotation</code> and <code>PdfLinkAnnotation</code>. A <code>PdfTextAnnotation</code> instance carries the data a PDF viewer uses to draw the collapsed icon and its expanded popup body, captured as immutable property values plus the single writable <code>Hidden</code> visibility flag.</p>
+<p>This is the type to reach for when inspecting annotations that already exist on a PDF rather than authoring new ones. Typical use cases include review pipelines that summarize every reviewer comment across a contract, archival workflows that strip or hide annotations before publishing a clean copy, and audit tools that report on the review state of each note. The <code>State</code> property surfaces the standard PDF review markers (marked, unmarked, accepted, rejected, cancelled, completed, or none), which makes the class the entry point for review-status reporting. Reading annotations back off a document is demonstrated in the <a href="https://ironpdf.com/how-to/annotations/">annotations how-to</a>.</p>
+<p>Obtain a <code>PdfTextAnnotation</code> from <code>PdfDocument.GetAnnotations(int)</code>, which returns <code>List&lt;PdfAnnotation&gt;</code>. Pattern-match each entry for the read-side type that matches the inherited <code>Type</code> property. The own property is <code>State</code> (a string, get-only). Inherited from <code>PdfAnnotation</code> are <code>Type</code> (a <code>PdfAnnotationType</code>, which will be <code>PdfAnnotationType.Text</code> for this subclass), <code>Rectangle</code> (typed <code>IronSoftware.Drawing.Rectangle</code>), <code>Color</code> (typed <code>IronSoftware.Drawing.Color</code>), <code>Contents</code> (the popup body text), <code>Name</code> (the unique per-page identifier), and <code>Hidden</code> (the only mutable property on the entire read-side hierarchy). The single declared constructor takes the full read-side payload (<code>Rectangle</code>, <code>Color</code>, <code>name</code>, <code>contents</code>, <code>state</code>, <code>hidden</code>) and exists primarily for the deserializer; application code rarely calls it directly.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronPdf.Annotations;
+
+var pdf = PdfDocument.FromFile(&quot;reviewed.pdf&quot;);
+
+// Read-side workflow: enumerate annotations already on the document.
+foreach (PdfAnnotation annotation in pdf.GetAnnotations(0))
+{
+    if (annotation is PdfTextAnnotation stickyNote)
+    {
+        // Every property except Hidden is read-only on the read side.
+        Console.WriteLine($&quot;Note '{stickyNote.Name}' state={stickyNote.State}&quot;);
+        Console.WriteLine($&quot;  popup body: {stickyNote.Contents}&quot;);
+
+        // Hidden is the lone get;set; on the read-side hierarchy.
+        // Use it to suppress an annotation without removing the underlying object:
+        //   stickyNote.Hidden = true;
+    }
+}</code></pre></div>
+<p>For authoring brand-new sticky-note annotations rather than inspecting existing ones, use the paired write-side <a href="https://ironpdf.com/object-reference/api/IronPdf.Annotations.TextAnnotation.html"><code>TextAnnotation</code></a> class and the <a href="https://ironpdf.com/how-to/annotations/"><code>pdf.Annotations.Add</code> workflow</a>. For the always-visible free-text box variant of an existing annotation, see the sibling <a href="https://ironpdf.com/object-reference/api/IronPdf.Annotations.PdfFreeTextAnnotation.html"><code>PdfFreeTextAnnotation</code></a> class.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

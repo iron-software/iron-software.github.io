@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ChromePdfRenderer
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ChromePdfRenderer Class - IronPDF C# API Reference
+      v2 (human)     title:       ChromePdfRenderer: HTML to PDF in C# with IronPDF
+      v1 (algorithm) description: ChromePdfRenderer is the IronPDF class for HTML to PDF in C#. Reference its constructor, RenderingOptions, render methods, and code examples.
+      v2 (human)     description: Convert HTML, URLs, Markdown, and RTF to PDF in C# with the IronPDF ChromePdfRenderer class. Covers RenderingOptions, render methods, and async APIs.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ChromePdfRenderer Class | IronPDF C# HTML to PDF</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ChromePdfRenderer
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ChromePdfRenderer Class | IronPDF C# HTML to PDF">
+    <meta name="description" content="Reference for the IronPDF ChromePdfRenderer class in C#: render HTML strings, files, URLs, and Markdown to PDF, with RenderingOptions and code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ChromePdfRenderer Class | IronPDF C# HTML to PDF",
+    "name": "ChromePdfRenderer class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.ChromePdfRenderer.html",
+    "abstract": "A PDF rendered from HTML, URLs, Markdown, or RTF comes out of ChromePdfRenderer in IronPDF through a Chromium-driven rendering engine. It exposes RenderHtmlAsPdf, RenderHtmlFileAsPdf, RenderUrlAsPdf, RenderMarkdownStringAsPdf, and RenderRtfStringAsPdf along with their async counterparts, each returning a PdfDocument. Configuration is centralized on the RenderingOptions property of type ChromePdfRenderOptions, covering paper size, margins, JavaScript, CSS media type, and wait behavior. LoginCredentials and ApplyCookies cover URL-side authentication for protected pages.",
+    "description": "Reference for the IronPDF ChromePdfRenderer class in C#: render HTML strings, files, URLs, and Markdown to PDF, with RenderingOptions and code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\nvar renderer = new ChromePdfRenderer();\n\n// Configure rendering before any render call\nrenderer.RenderingOptions.PaperSize    = PdfPaperSize.A4;\nrenderer.RenderingOptions.MarginTop    = 25;\nrenderer.RenderingOptions.MarginBottom = 25;\nrenderer.RenderingOptions.CssMediaType = PdfCssMediaType.Print;\n\n// Render from an HTML string\nPdfDocument fromString = renderer.RenderHtmlAsPdf(\"<h1>Invoice</h1><p>Body</p>\");\n\n// Render a remote URL (async)\nPdfDocument fromUrl = await renderer.RenderUrlAsPdfAsync(new Uri(\"https://example.com/report\"));\n\nfromString.SaveAs(\"invoice.pdf\");\nfromUrl.SaveAs(\"report.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which namespace and assembly contain ChromePdfRenderer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChromePdfRenderer is in the IronPdf namespace, shipped in IronPdf.dll. It derives from ChromeClientAccessor. Construct it directly, configure its RenderingOptions property, then call a render method such as RenderHtmlAsPdf or RenderUrlAsPdf to produce a PdfDocument."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ChromePdfRenderer and ChromePdfRenderOptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChromePdfRenderer is the renderer that performs the conversion and returns a PdfDocument. ChromePdfRenderOptions holds the configuration applied to that render: paper size, margins, JavaScript, CSS media type, and wait behavior. The renderer reads its options from the RenderingOptions property, which is a ChromePdfRenderOptions instance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you wait for JavaScript to finish before rendering a PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Configure the WaitFor property on RenderingOptions to delay the snapshot until JavaScript completes. The WaitFor object supports fixed delays, network-idle waits, and waits for a CSS selector to appear. EnableJavaScript on the same options controls whether scripts run at all."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you render a URL that requires authentication?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the LoginCredentials property on ChromePdfRenderer with NetworkUsername and NetworkPassword for HTTP basic authentication, or call ApplyCookies with the URL and a Dictionary of cookies before invoking RenderUrlAsPdf. Cookie-based authentication is the right path when the server uses session cookies."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -156,72 +227,32 @@ Unlike competitors using webkit or custom parsers, IronPDF renders exactly what 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ChromePdfRenderer : ChromeClientAccessor, IExtensibleRenderer</code></pre>
   </div>
-  <h5 id="IronPdf_ChromePdfRenderer_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-ChromePdfRenderer transforms your HTML, CSS, and JavaScript into PDFs that look exactly as they do in Chrome browser.
-Perfect for invoices, reports, certificates, and any document that needs consistent professional formatting.
-</p>
-<competitive-advantages>
-IronPDF uses a custom-optimized Chrome engine specifically built for PDF generation.
-Unlike generic Chrome automation tools like Playwright or Puppeteer, our engine:
-- Renders exactly as displayed on screen (true WYSIWYG)
-- Provides Section 508 accessibility compliance
-- Supports PDF/A and PDF/UA standards for archival and accessibility
-- Includes upcoming PDF 2.0 compliance
-- Optimized specifically for PDF generation, not general browser automation
-</competitive-advantages>
-<use-case>
-- Invoice generation: <a href="https://ironpdf.com/examples/invoice-pdf/">https://ironpdf.com/examples/invoice-pdf/</a>
-- Report creation: <a href="https://ironpdf.com/examples/report-generation/">https://ironpdf.com/examples/report-generation/</a>
-- Web archiving: <a href="https://ironpdf.com/examples/url-to-pdf/">https://ironpdf.com/examples/url-to-pdf/</a>
-- Certificate generation: <a href="https://ironpdf.com/examples/certificate-pdf/">https://ironpdf.com/examples/certificate-pdf/</a>
-- Documentation conversion: <a href="https://ironpdf.com/examples/markdown-to-pdf/">https://ironpdf.com/examples/markdown-to-pdf/</a></use-case>
-<performance>
-Single page: ~200ms | Multi-page document: scales linearly | Large documents: use async methods
-Chrome engine starts once and stays warm for multiple renders - much faster than process-per-PDF solutions.
-</performance>
-<why-ironpdf>
-- True Chrome rendering: Not a webkit wrapper or incomplete implementation
-- Zero dependencies: No need to install Chrome, wkhtmltopdf, or external tools
-- Cross-platform consistency: Same rendering on Windows, Linux, macOS, Docker, Azure, AWS
-- JavaScript support: Full V8 engine execution, not just static HTML
-- Memory efficient: Streaming support for large documents
-</why-ironpdf>
-<common-errors>
-- Assets not loading: Set BaseUrl parameter for relative paths
-- JavaScript not running: Adjust RenderingOptions.JavascriptDelay
-- Fonts missing in Docker: Install font packages in container
-- Memory issues: Always dispose PdfDocument objects when done
-</common-errors>
-<quick-example>
-<pre><code>using IronPdf;
-<p>// Your first PDF in 2 lines
-var renderer = new ChromePdfRenderer();
-renderer.RenderHtmlAsPdf(&quot;<h1>Hello World</h1>&quot;).SaveAs(&quot;output.pdf&quot;);</code></pre>
-</quick-example>
-<advanced-example><p>
-<pre><code>using IronPdf;
+                    <!-- archetype-N:start ChromePdfRenderer treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>ChromePdfRenderer</code> converts HTML, URLs, Markdown, and RTF to PDF in IronPDF as the primary HTML-to-PDF entry point. Its methods all return a <code>PdfDocument</code>. The single configuration object is <code>RenderingOptions</code>, a <code>ChromePdfRenderOptions</code> instance that controls paper size, margins, viewport, JavaScript execution, CSS media type, and the render-wait behavior. The constructor is parameterless, and one renderer instance can be reused across many render calls.</p>
+<p><code>ChromePdfRenderer</code> drives a Chromium-based rendering engine, so layout and CSS behavior match what a modern browser produces. Reach for it when an application generates PDFs from server-rendered HTML, Razor or cshtml views, dynamic dashboards, or remote URLs, and when the output needs CSS3, JavaScript, web fonts, or modern HTML support.</p>
+<p>A typical flow constructs a <code>ChromePdfRenderer</code>, sets the document-specific options on <code>RenderingOptions</code>, and then calls one of the Render methods. The render surface covers <code>RenderHtmlAsPdf</code> for an HTML string, <code>RenderHtmlFileAsPdf</code> for a path on disk, <code>RenderUrlAsPdf</code> for an HTTP or HTTPS endpoint, and <code>RenderMarkdownStringAsPdf</code> for Markdown. Each has an <code>Async</code> counterpart that returns <code>Task&lt;PdfDocument&gt;</code>. <code>ApplyCookies</code> lets the renderer carry cookies on URL requests, and <code>LoginCredentials</code> carries HTTP basic credentials. The <a href="https://ironpdf.com/how-to/rendering-options/">rendering options how-to</a> covers paper size, margins, headers, and the other settings on <code>ChromePdfRenderOptions</code>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
 
 var renderer = new ChromePdfRenderer();
-renderer.RenderingOptions.PaperSize = PdfPaperSize.A4;
-renderer.RenderingOptions.MarginTop = 20;  // millimeters
 
-// For advanced configurations see:
-// https://ironpdf.com/examples/using-html-to-create-a-pdf/</code></pre>
-</advanced-example>
-<beginner-note>
-New to PDF generation? Start with RenderHtmlAsPdf(string) - it&apos;s the simplest way to convert HTML to PDF.
-Just pass your HTML string and save the result. No complex setup required!
-</beginner-note>
-<thread-safety>
-ChromePdfRenderer is thread-safe for rendering operations.
-Multiple threads can share a single renderer instance for better performance.
-</thread-safety>
-<memory-considerations>
-Always use &apos;using&apos; statements with PdfDocument objects:
-using (var pdf = renderer.RenderHtmlAsPdf(html)) { pdf.SaveAs(&quot;file.pdf&quot;); }
-</memory-considerations>
-</div>
+// Configure rendering before any render call
+renderer.RenderingOptions.PaperSize    = PdfPaperSize.A4;
+renderer.RenderingOptions.MarginTop    = 25;
+renderer.RenderingOptions.MarginBottom = 25;
+renderer.RenderingOptions.CssMediaType = PdfCssMediaType.Print;
+
+// Render from an HTML string
+PdfDocument fromString = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Invoice&lt;/h1&gt;&lt;p&gt;Body&lt;/p&gt;&quot;);
+
+// Render a remote URL (async)
+PdfDocument fromUrl = await renderer.RenderUrlAsPdfAsync(new Uri(&quot;https://example.com/report&quot;));
+
+fromString.SaveAs(&quot;invoice.pdf&quot;);
+fromUrl.SaveAs(&quot;report.pdf&quot;);</code></pre></div>
+<p>For the two most common entry points, see the <a href="https://ironpdf.com/how-to/html-string-to-pdf/">HTML string to PDF guide</a> and the <a href="https://ironpdf.com/how-to/url-to-pdf/">URL to PDF guide</a>. For an ASP.NET Core integration that wires the renderer into a Web API endpoint, the <a href="https://ironpdf.com/examples/net-core-html-to-pdf/">.NET Core HTML to PDF example</a> shows the same flow inside a controller.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

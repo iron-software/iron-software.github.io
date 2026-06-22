@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AspxToPdf
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       AspxToPdf Class - IronPDF C# ASP.NET Web Forms Reference
+      v2 (human)     title:       AspxToPdf: ASPX Page to PDF in IronPDF C#
+      v1 (algorithm) description: AspxToPdf is the IronPDF static class for ASP.NET Web Forms PDF conversion in C#. Reference RenderThisPageAsPdf, FileBehavior, and Page_Load usage.
+      v2 (human)     description: Convert any ASPX page to PDF in one line of C# from Page_Load with the IronPDF AspxToPdf class. Covers FileBehavior, filename, and render options.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>AspxToPdf Class | IronPDF C# ASP.NET Web Forms</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AspxToPdf
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="AspxToPdf Class | IronPDF C# ASP.NET Web Forms">
+    <meta name="description" content="Reference for IronPDF AspxToPdf in C#: static RenderThisPageAsPdf overloads, FileBehavior.Attachment/InBrowser, ChromePdfRenderOptions, .NET Framework only.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "AspxToPdf Class | IronPDF C# ASP.NET Web Forms",
+    "name": "AspxToPdf class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.AspxToPdf.html",
+    "abstract": "Converting an ASP.NET Web Forms page to PDF from inside its Page_Load event is the job of AspxToPdf in IronPDF. It exposes two static overloads of RenderThisPageAsPdf: one that accepts an AspxToPdf.FileBehavior (Attachment or InBrowser), an optional filename, and an optional ChromePdfRenderOptions; one that accepts an Action<PdfDocument> callback for post-render edits. The class is for .NET Framework only; .NET Core and .NET 5+ applications render through ChromePdfRenderer.",
+    "description": "Reference for IronPDF AspxToPdf in C#: static RenderThisPageAsPdf overloads, FileBehavior.Attachment/InBrowser, ChromePdfRenderOptions, .NET Framework only.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing System;\nusing System.Web.UI;\n\npublic partial class Invoice : Page\n{\n    protected void Page_Load(object sender, EventArgs e)\n    {\n        // Send this ASPX page to the browser as a downloaded PDF attachment.\n        AspxToPdf.RenderThisPageAsPdf(\n            AspxToPdf.FileBehavior.Attachment,\n            $\"Invoice_{DateTime.Now:yyyyMMdd}.pdf\");\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does AspxToPdf live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AspxToPdf is in the IronPdf namespace and is a static class deriving from System.Object. It ships in the separate IronPdf.Extensions.ASPX NuGet package on top of the main IronPdf.dll assembly. Call its static RenderThisPageAsPdf members from an ASPX Page_Load event to convert the page to PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between AspxToPdf and ChromePdfRenderer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AspxToPdf is a static helper specific to ASP.NET Web Forms that converts the currently-executing ASPX page to PDF from its own Page_Load event, replacing the HTML response with a PDF response. ChromePdfRenderer is the general-purpose renderer that converts arbitrary HTML, URLs, or files to PDF from any .NET application. AspxToPdf is for legacy Web Forms only; new ASP.NET Core, MVC, and Razor Pages applications use ChromePdfRenderer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does AspxToPdf work on .NET Core or .NET 5+?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. AspxToPdf depends on ASP.NET Web Forms, which exists only on .NET Framework. The class ships in the separate IronPdf.Extensions.ASPX NuGet package on top of the main IronPdf package. For .NET Core, .NET 5, .NET 6, and later, use ChromePdfRenderer with MVC or Razor Pages instead."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where should RenderThisPageAsPdf be called from?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call RenderThisPageAsPdf from the Page_Load event handler of the ASPX code-behind, before any server controls write to the response stream. The call short-circuits the normal HTML response and writes the PDF in its place. Calling it later in the page lifecycle can produce a corrupted response because part of the HTML may have already been flushed to the browser."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -171,6 +242,28 @@ protected void Page_Load(object sender, EventArgs e) {
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class AspxToPdf : Object</code></pre>
   </div>
+                    <!-- archetype-N:start AspxToPdf treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When an ASP.NET Web Forms page needs to convert itself to PDF from inside its own <code>Page_Load</code> event, <code>AspxToPdf</code> does the work. Application code calls its static members directly without instantiation: a single line in <code>Page_Load</code> substitutes a PDF response for the usual HTML response, with optional control over filename, browser behavior, and rendering options.</p>
+<p>This entry point exists for legacy ASP.NET Web Forms applications that already render pages with server controls and code-behind. Typical uses are server-rendered invoices, account statements, tickets, and management reports where the existing ASPX markup is the canonical document layout. The class is for .NET Framework only; .NET Core and .NET 5+ applications use MVC or Razor Pages and should render through <code>ChromePdfRenderer</code> instead. The class ships in the separate <code>IronPdf.Extensions.ASPX</code> NuGet package on top of the main <code>IronPdf</code> package.</p>
+<p>Two static overloads of <code>RenderThisPageAsPdf</code> cover the common cases. The first overload accepts an <code>AspxToPdf.FileBehavior</code> (a nested enum-shaped type with <code>Attachment</code> and <code>InBrowser</code> members), an optional PDF filename, and an optional <code>ChromePdfRenderOptions</code> instance for paper size, margins, headers, and footers. The second overload accepts an <code>Action&lt;PdfDocument&gt;</code> callback that hands the rendered <code>PdfDocument</code> back to application code before the HTTP response is written, allowing further edits, signing, or persistence. Both overloads must be called early in <code>Page_Load</code>, before any server controls write to the response stream, since the call short-circuits the HTML response. The <a href="https://ironpdf.com/how-to/aspx-to-pdf/">ASPX to PDF how-to guide</a> has a worked example of each overload on a server-rendered invoice page.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using System;
+using System.Web.UI;
+
+public partial class Invoice : Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        // Send this ASPX page to the browser as a downloaded PDF attachment.
+        AspxToPdf.RenderThisPageAsPdf(
+            AspxToPdf.FileBehavior.Attachment,
+            $&quot;Invoice_{DateTime.Now:yyyyMMdd}.pdf&quot;);
+    }
+}</code></pre></div>
+<p>The <a href="https://ironpdf.com/examples/aspx-to-pdf-settings/">ASPX to PDF settings example</a> shows the options-shaped overload applied to a real invoice page. For the broader framework picture, reach for the <a href="https://ironpdf.com/get-started/installation-overview/">installation overview</a> when adding the <code>IronPdf.Extensions.ASPX</code> package and confirming the .NET Framework constraint that distinguishes this class from <code>ChromePdfRenderer</code>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

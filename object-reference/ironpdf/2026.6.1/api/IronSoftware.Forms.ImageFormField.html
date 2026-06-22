@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ImageFormField
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ImageFormField Class - IronPDF C# API Reference
+      v2 (human)     title:       ImageFormField: PDF Image Upload Fields in C#
+      v1 (algorithm) description: ImageFormField is the IronPDF class for image upload placeholders in PDF forms. Reference its constructor, properties, and pdf.Form.Add usage in C#.
+      v2 (human)     description: Add image-upload form fields to PDFs in C# with the IronPDF ImageFormField class. Define name, page, and placement; users supply the image in Acrobat.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ImageFormField Class | IronPDF C# PDF Forms</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ImageFormField
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="ImageFormField Class | IronPDF C# PDF Forms">
+    <meta name="description" content="Reference for IronPDF ImageFormField in C#: constructor parameters, Name, PageIndex, X, Y, Width, Height, ReadOnly, and PdfDocument.Form.Add usage.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ImageFormField Class | IronPDF C# PDF Forms",
+    "name": "ImageFormField class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.Forms.ImageFormField.html",
+    "abstract": "A click-to-select image placeholder on a PDF form, where the end user supplies the image inside a PDF viewer such as Adobe Acrobat, is added from C# through ImageFormField in IronPDF. A six-parameter constructor takes the field name, page index, and X, Y, Width, Height geometry. The field is attached to a document through pdf.Form.Add on the FormFieldCollection returned by PdfDocument.Form, and round-tripped through FindFormField for later edits. It implements IFormField, IFormFieldObject, IFormFieldAnnotationObject, and IPdfDocumentObject.",
+    "description": "Reference for IronPDF ImageFormField in C#: constructor parameters, Name, PageIndex, X, Y, Width, Height, ReadOnly, and PdfDocument.Form.Add usage.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware.Forms;\n\nChromePdfRenderer renderer = new ChromePdfRenderer();\nPdfDocument pdf = renderer.RenderHtmlAsPdf(\"<h2>Employment Application</h2>\");\n\n// Construct the image placeholder: name, page index, then X/Y/Width/Height\n// in PDF user-space points from the lower-left corner of the page.\nImageFormField photoField = new ImageFormField(\n    name: \"ApplicantPhoto\",\n    page_index: 0,\n    x: 400,\n    y: 600,\n    width: 150,\n    height: 200);\n\n// pdf.Form is a FormFieldCollection; Add accepts any IFormField.\npdf.Form.Add(photoField);\n\n// Later, locate the field for further edits or removal.\n// FindFormField returns IFormField; cast back to ImageFormField for\n// type-specific access:\n//   var found = pdf.Form.FindFormField(\"ApplicantPhoto\") as ImageFormField;\n//   pdf.Form.Remove(found);\n\npdf.SaveAs(\"application.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is ImageFormField located in the IronPDF object model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ImageFormField is in the IronSoftware.Forms namespace, shipped in IronPdf.dll. It derives from System.Object and implements IFormField, IFormFieldObject, IFormFieldAnnotationObject, and IPdfDocumentObject. It is one of the concrete form-field classes a developer attaches to a document through pdf.Form.Add."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set an image value on a PDF form image field?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An ImageFormField is a click-to-select placeholder, so the image value is supplied by the end user inside an interactive PDF viewer such as Adobe Acrobat at form-fill time. The ImageFormField class itself does not expose a byte array, Stream, file path, or AnyBitmap property for the image content; it carries only the field name, page index, placement geometry, and form flags. To programmatically place an image onto a PDF from C# code, use ImageStamper or the AnyBitmap-based stamping API instead of a form field, since stampers flatten the image into the page content and produce a non-interactive overlay."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does SetDefaultFont work on ImageFormField?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The SetDefaultFont(string FontName, int FontSize, Color FontColor) method is declared on ImageFormField because it is part of the shared form-field surface, but calling it throws NotImplementedException with the condition 'Image form fields do not support setting of default font'. Font configuration is meaningful only for text-bearing field types such as TextFormField and ComboboxFormField. Skip SetDefaultFont when working with image fields and rely on the field's placement properties for visual control."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the image field not appear when opening the PDF in a web browser?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Web-browser PDF viewers generally do not render the interactive image-upload widget that the PDF specification defines for image form fields. The widget will appear and be functional in Adobe Acrobat and other full-featured PDF viewers that support the image-field type. To test an ImageFormField after construction, open the saved PDF in Adobe Acrobat and confirm the placeholder region presents the file-selection dialog when clicked."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -159,6 +230,40 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ImageFormField : Object, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject</code></pre>
   </div>
+                  <!-- archetype-N:start ImageFormField treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Use <code>ImageFormField</code> when a PDF form needs a click-to-select image placeholder: a fillable region that a viewer prompts the end user to populate with a photograph, scan, or signature image at form-fill time. The class describes the field's name, page placement, geometry, and PDF form metadata; the image content itself is supplied by the user inside a PDF viewer that supports interactive forms, such as Adobe Acrobat.</p>
+<p><code>ImageFormField</code> is the right primitive for ID photo upload, signature capture, stamp insertion, headshot fields on application templates, and any workflow where the document author defines a placeholder region but the final image arrives from the form filler rather than from server-side code. The class encapsulates one image field as a reusable configuration object that is constructed once with the placement parameters and then attached to a <code>PdfDocument</code> for the write. Common scenarios include onboarding paperwork, KYC application forms, and printable templates that ship empty and are completed inside Acrobat.</p>
+<p>Construct an <code>ImageFormField</code> with the single six-parameter constructor <code>(string name, uint page_index, double x, double y, double width, double height)</code>. The <code>name</code> becomes the field's <code>Name</code> and round-trips through <code>FullName</code> for nested-form access. Placement is fixed by the <code>X</code>, <code>Y</code>, <code>Width</code>, and <code>Height</code> properties in PDF user-space points, and the field is bound to a specific page through <code>PageIndex</code>. Read-side identity is exposed through <code>FormType</code> and the strongly-typed <code>Type</code> (a <code>PdfFormFieldType</code>), and the standard form-field flags ride on <code>FormFlags</code> (typed as <code>PdfFormFieldFlags</code>) and the boolean <code>ReadOnly</code>. Once configured, attach the field to a document with <code>pdf.Form.Add(imageField)</code> on the <code>FormFieldCollection</code> returned by <code>PdfDocument.Form</code>. Constructing an image placeholder and attaching it has a worked example in the image-forms section of the <a href="https://ironpdf.com/how-to/create-forms/">create PDF forms how-to</a>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware.Forms;
+
+ChromePdfRenderer renderer = new ChromePdfRenderer();
+PdfDocument pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h2&gt;Employment Application&lt;/h2&gt;&quot;);
+
+// Construct the image placeholder: name, page index, then X/Y/Width/Height
+// in PDF user-space points from the lower-left corner of the page.
+ImageFormField photoField = new ImageFormField(
+    name: &quot;ApplicantPhoto&quot;,
+    page_index: 0,
+    x: 400,
+    y: 600,
+    width: 150,
+    height: 200);
+
+// pdf.Form is a FormFieldCollection; Add accepts any IFormField.
+pdf.Form.Add(photoField);
+
+// Later, locate the field for further edits or removal.
+// FindFormField returns IFormField; cast back to ImageFormField for
+// type-specific access:
+//   var found = pdf.Form.FindFormField(&quot;ApplicantPhoto&quot;) as ImageFormField;
+//   pdf.Form.Remove(found);
+
+pdf.SaveAs(&quot;application.pdf&quot;);</code></pre></div>
+<p>The output PDF must be opened in a viewer that supports interactive image forms; web-browser PDF viewers will display the document but not the image-upload widget. The full authoring surface for text inputs, checkboxes, radio groups, comboboxes, and signature fields sits alongside image fields in the <a href="https://ironpdf.com/how-to/create-forms/">create PDF forms how-to</a>. To locate, reposition, or remove a field after the document is built, turn to the <a href="https://ironpdf.com/how-to/edit-forms/">edit PDF forms how-to</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

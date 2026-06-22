@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfPaperSizeConverter
-   | C# PDF Library Documentation | IronPDF </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfPaperSizeConverter Class - IronPDF C# API
+      v2 (human)     title:       PdfPaperSizeConverter: Paper Size to mm in C#
+      v1 (algorithm) description: PdfPaperSizeConverter is the IronPDF C# static class whose ToMillimeters extension converts a PdfPaperSize enum value to width and height as Length.
+      v2 (human)     description: Get the width and height in millimetres of any standard PDF paper size in C# through the IronPDF PdfPaperSizeConverter.ToMillimeters extension method.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfPaperSizeConverter | IronPDF C# ToMillimeters</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfPaperSizeConverter
-   | C# PDF Library Documentation | IronPDF ">
+    <meta name="title" content="PdfPaperSizeConverter | IronPDF C# ToMillimeters">
+    <meta name="description" content="Reference for IronPDF PdfPaperSizeConverter in C#: static ToMillimeters extension on PdfPaperSize returning a ValueTuple of two Length instances in millimetres.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,71 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfPaperSizeConverter | IronPDF C# ToMillimeters",
+    "name": "PdfPaperSizeConverter class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Rendering.PdfPaperSizeConverter.html",
+    "abstract": "Getting the physical width and height in millimetres of any standard paper size runs through PdfPaperSizeConverter in IronPDF, via one C# extension method, ToMillimeters, on the PdfPaperSize enum. The verified signature is public static (Length, Length) ToMillimeters(this PdfPaperSize paperSize), and the method returns a System.ValueTuple of two IronPdf.Editing.Length instances whose tuple fields are width and height, both expressed in millimetres. The canonical idiom is the extension call PdfPaperSize.A4.ToMillimeters(), and the returned Length values can be reprojected through ToInch, ToCentimeter, ToPixel, or ToPoints for downstream layout or viewport calculations.",
+    "description": "Reference for IronPDF PdfPaperSizeConverter in C#: static ToMillimeters extension on PdfPaperSize returning a ValueTuple of two Length instances in millimetres.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf.Rendering;\n\n// Canonical idiom: extension-method syntax on the enum value.\n// Tuple fields are lowercase width and height; both Length instances are in millimetres.\ndouble a4WidthInMm = PdfPaperSize.A4.ToMillimeters().width.ToMillimeter();\ndouble a4WidthInPixels = PdfPaperSize.A4.ToMillimeters().width.ToPixel();\ndouble a4HeightInCentimeters = PdfPaperSize.A4.ToMillimeters().height.ToCentimeter();\ndouble a4HeightInPoints = PdfPaperSize.A4.ToMillimeters().height.ToPoints();"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PdfPaperSizeConverter live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfPaperSizeConverter is in the IronPdf.Rendering namespace, shipped in IronPdf.dll. It is declared public static class PdfPaperSizeConverter, derives from System.Object, and has no constructor. It supplies a single extension method, ToMillimeters, on the PdfPaperSize enum, so the converter is invoked through extension-method syntax to get a paper size's physical dimensions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PdfPaperSizeConverter, PdfPaperSize, and Length?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The three types form a single pipeline. PdfPaperSize is an enum in IronPdf.Rendering whose named values (A4, Letter, Legal, Tabloid, and so on) identify standard paper sizes. PdfPaperSizeConverter is the public static class in the same namespace that supplies the single extension method ToMillimeters on PdfPaperSize. Length is a class in IronPdf.Editing that wraps a numeric measurement and its unit and exposes ToInch, ToCentimeter, ToPixel, and ToPoints. The pipeline reads as enum input, converter bridge, Length output. PdfPaperSizeConverter itself is never instantiated and is rarely written by name in user code, because the extension-method syntax hangs the call directly off the enum value."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does PdfPaperSizeConverter only return millimetres, and how do you get other units?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The class exposes one method, ToMillimeters, and that method always returns dimensions in millimetres. There is no ToInches or ToPixels overload on PdfPaperSizeConverter itself. Other units are obtained by taking the Length elements of the returned ValueTuple and calling a conversion method on each. The pattern is PdfPaperSize.A4.ToMillimeters().width.ToPixel() for the width in pixels, or .height.ToInch() for the height in inches. The tuple field names are lowercase width and height, and both Length instances carry their own Unit, Value, and DPI properties that the conversion methods read."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get the A4 paper size in pixels for an HTML viewport in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call PdfPaperSize.A4.ToMillimeters() to receive a ValueTuple of two Length instances, then call .width.ToPixel() and .height.ToPixel() on the tuple fields. The default DPI used by Length is 96, which matches the default CSS pixel density. The two resulting double values can be passed straight into viewport-sizing code or used to compute a CSS @page rule. Other standard sizes work the same way: substitute Letter, Legal, Tabloid, or any other PdfPaperSize value in place of A4."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +221,22 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class PdfPaperSizeConverter : Object</code></pre>
   </div>
+                  <!-- archetype-N:start PdfPaperSizeConverter treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>The physical width and height of a standard paper size, in millimetres, comes from <code>PdfPaperSizeConverter</code> applied to a <code>PdfPaperSize</code> enum value. The class has no constructor and exposes exactly one method, <code>ToMillimeters</code>, which is declared as a C# extension method on <code>PdfPaperSize</code>. In user code the class name itself is rarely written; the extension call site reads as a method on the enum value.</p>
+<p><code>PdfPaperSizeConverter</code> matters whenever code needs the actual dimensions of a standard paper size rather than just the enum label. Common scenarios include viewport sizing for HTML-to-PDF rendering, custom layout calculations that mix standard sizes with margin or content boxes, and reporting code that has to display the width and height of the configured output. The returned dimensions are typed as <code>Length</code> instances, which means the millimetre values produced by this converter can be reprojected into inches, centimeters, pixels, or points by calling the relevant conversion method on each element of the tuple.</p>
+<p>The full surface is one method, verified on the live reference page: <code>public static (Length, Length) ToMillimeters(this PdfPaperSize paperSize)</code>. The qualified form <code>PdfPaperSizeConverter.ToMillimeters(PdfPaperSize.A4)</code> compiles, but the extension call site <code>PdfPaperSize.A4.ToMillimeters()</code> is idiomatic. The return is a <code>System.ValueTuple&lt;Length, Length&gt;</code> whose lowercase tuple fields are <code>width</code> and <code>height</code>, both expressed in millimetres. Each <code>Length</code> instance carries a <code>Value</code>, a <code>Unit</code>, and a <code>DPI</code> and exposes <code>ToInch</code>, <code>ToCentimeter</code>, <code>ToPixel</code>, and <code>ToPoints</code> for downstream unit conversion. The <a href="https://ironpdf.com/how-to/custom-paper-size/">custom paper size how-to</a> documents this exact pattern alongside the <code>SetCustomPaperSize*</code> family on <code>ChromePdfRenderOptions</code>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf.Rendering;
+
+// Canonical idiom: extension-method syntax on the enum value.
+// Tuple fields are lowercase width and height; both Length instances are in millimetres.
+double a4WidthInMm = PdfPaperSize.A4.ToMillimeters().width.ToMillimeter();
+double a4WidthInPixels = PdfPaperSize.A4.ToMillimeters().width.ToPixel();
+double a4HeightInCentimeters = PdfPaperSize.A4.ToMillimeters().height.ToCentimeter();
+double a4HeightInPoints = PdfPaperSize.A4.ToMillimeters().height.ToPoints();</code></pre></div>
+<p>For the broader rendering surface that consumes <code>PdfPaperSize</code> directly, see the <a href="https://ironpdf.com/how-to/rendering-options/">rendering options how-to</a>. For the related case of dimensions supplied as plain <code>double</code> values rather than <code>Length</code> instances, see the <a href="https://ironpdf.com/how-to/custom-margins/">custom margins how-to</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   
