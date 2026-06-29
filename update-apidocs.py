@@ -1,4 +1,4 @@
-import json, re, os, sys, argparse, platform, shutil, subprocess, zipfile, urllib, time
+import json, re, os, sys, glob, argparse, platform, shutil, subprocess, zipfile, urllib, time
 import xml.etree.ElementTree as ET
 from urllib.request import urlretrieve
 from apidocs import *
@@ -230,6 +230,28 @@ def build_java_apidoc(info:dict, version_string:str):
 
     StatusLogger.success(f"Built {info['name']} JavaDoc v{version_string}.")
 
+def archive_tree(source_dir:str, destination_dir:str) -> int:
+    """Copy every file under `source_dir` into `destination_dir`, preserving the
+    relative tree and overwriting existing files.
+
+    Merges into an existing destination and works on any Python 3.x. This is the
+    same resilient walk-copy the JavaDoc path uses; it replaces
+    `shutil.copytree(..., dirs_exist_ok=True)`, which is 3.8+ only and raises on a
+    pre-existing tree on older runtimes — a failure that would otherwise leave the
+    assembled output in scaffolds/output without ever reaching ./object-reference.
+
+    Returns the number of files copied (0 means the source produced no output).
+    """
+    copied = 0
+    for root, dirs, files in os.walk(source_dir):
+        relative_path = os.path.relpath(root, source_dir)
+        target_dir = destination_dir if relative_path == "." else os.path.join(destination_dir, relative_path)
+        os.makedirs(target_dir, exist_ok=True)
+        for name in files:
+            shutil.copy2(os.path.join(root, name), os.path.join(target_dir, name))
+            copied += 1
+    return copied
+
 def build_dotnet_apidoc(info:dict, version_string:str):
     StatusLogger.title(f"Building {info['name']} .NET API docs — v{version_string}")
 
@@ -241,7 +263,6 @@ def build_dotnet_apidoc(info:dict, version_string:str):
     binary_dir = "bin/{}".format(info["packageName"])
     nupkg_url = "https://www.nuget.org/api/v2/package/{}/{}".format(info["packageName"], version_string)
     nupkg_path = "bin/{package}/{package}.nupkg".format(package = info["packageName"])
-    nuspec_file = "{}/{}.nuspec".format(binary_dir, info["packageName"])
     build_output_dir = "output/{}{}/object-reference/".format(info["domain"], info["path"])
     apidocs_storage_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "object-reference", info["code"], version_string)
     apidocs_template_header = "- name: {} .NET API - v{}\n".format(info["name"], version_string)
@@ -268,6 +289,15 @@ def build_dotnet_apidoc(info:dict, version_string:str):
     with zipfile.ZipFile(nupkg_path, 'r') as zip_ref:
         zip_ref.extractall(binary_dir)
     os.remove(nupkg_path)
+
+    # The .nuspec inside the package follows its published ID casing, which can
+    # differ from packageName (e.g. IronZIP.nuspec for packageName "IronZip"), so
+    # locate it by extension rather than assuming the exact file name.
+    nuspec_matches = glob.glob(os.path.join(binary_dir, "*.nuspec"))
+    if not nuspec_matches:
+        raise FileNotFoundError(
+            f"No .nuspec found in {binary_dir} after extracting {info['packageName']} {version_string}")
+    nuspec_file = nuspec_matches[0]
 
     current_version = ""
     # Extract current version from nuspec
@@ -314,11 +344,18 @@ def build_dotnet_apidoc(info:dict, version_string:str):
             run_enhancement(info, build_output_dir)
 
         StatusLogger.progress(f"Archiving to {apidocs_storage_dir}...")
-        os.makedirs(apidocs_storage_dir, exist_ok=True)
-        shutil.copytree(build_output_dir, apidocs_storage_dir, dirs_exist_ok=True)
+        copied = archive_tree(build_output_dir, apidocs_storage_dir)
+        if copied == 0:
+            StatusLogger.warning(
+                f"No files under {build_output_dir} to archive — check the DocFX "
+                f"'dest' in {docfx_config_file}; nothing was copied to {apidocs_storage_dir}.")
+        else:
+            StatusLogger.info(f"Archived {copied} file(s) to {apidocs_storage_dir}.")
         StatusLogger.success(f"Built {info['name']} .NET API v{version_string}.")
     except subprocess.CalledProcessError:
         StatusLogger.error(f"DocFX build failed for {info['packageName']} v{version_string}.")
+    except Exception as error:
+        StatusLogger.error(f"Post-build/archive step failed for {info['name']} v{version_string}: {error}")
     finally:
         time.sleep(20)
 
