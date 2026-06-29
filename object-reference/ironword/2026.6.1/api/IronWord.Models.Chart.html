@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Chart
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Chart Class - IronWord C# API Reference
+      v2 (human)     title:       Chart: Add Charts to C# Word Documents
+      v1 (algorithm) description: Add a bar, line, or pie chart in C# Word documents with the IronWord Chart class. Set the Type, DataSource, Style, Title, and legend.
+      v2 (human)     description: Build charts for a C# Word document with the IronWord Chart class: choose a chart type, attach a data source, style it, and show a legend.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Chart Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Chart
-   | C# Word API | IronWord ">
+    <meta name="title" content="Chart Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord Chart class in C#: create a chart, set its Type and DataSource, apply a Style, and control the Title and legend.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Chart Class | IronWord C# API Reference",
+    "name": "Chart class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Chart.html",
+    "abstract": "Chart draws figures visually in a C# Word document with IronWord, as a bar, line, or pie chart added alongside paragraphs and tables. Construct it with new Chart() or new Chart(ChartType, string) to set the kind and title, then add it to a section. Its DataSource supplies the values, Style controls themes and colors, AxisConfig tunes the axes, Title sets a heading, and HasLegend toggles the legend.",
+    "description": "Reference for the IronWord Chart class in C#: create a chart, set its Type and DataSource, apply a Style, and control the Title and legend.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var chart = new Chart(ChartType.Bar, \"Quarterly Revenue\");\nchart.HasLegend = true;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Chart live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Chart is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from ContentElement, so it is added to a document like any other content element."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add a chart to a Word document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct a Chart with a ChartType and optional title, assign a ChartDataSource to its DataSource property, then add it to a document section. Set Style for themes and colors and HasLegend to show the legend."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set the data and appearance of an IronWord chart?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Assign a ChartDataSource to the chart's DataSource property for the values, a ChartStyle to the Style property for themes and colors, and an AxisConfiguration to AxisConfig for the axes. Each is set independently, so one can change without affecting the others."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -181,6 +245,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Chart : ContentElement, IWordDocumentObject, IDocumentObject, ICloneable</code></pre>
   </div>
+    <!-- archetype-N:start Chart treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a Word document needs to present figures visually, <code>Chart</code> is the content element that draws them. It represents one chart, such as a bar, line, or pie chart, that a developer builds in code and adds to the document alongside paragraphs, tables, and images.</p>
+<p>A chart is created with <code>new Chart()</code> for a blank chart, or with <code>new Chart(ChartType, string)</code> to set the chart kind and an optional title in one step. From there it is added to the document the same way as any other content element, so it sits inside a section or container with the rest of the content. The chart's kind can also be changed afterward through the <code>Type</code> property, which takes a <code>ChartType</code> value.</p>
+<p>The values a chart plots come from its <code>DataSource</code>, a <code>ChartDataSource</code> assigned to the chart, while <code>Style</code> (a <code>ChartStyle</code>) controls themes and colors and <code>AxisConfig</code> (an <code>AxisConfiguration</code>) tunes the axes. Set <code>Title</code> for a heading above the plot, and toggle the boolean <code>HasLegend</code> to show or hide the legend that labels each series. Because data, styling, and axis configuration each live on their own property, a developer can prepare them independently and attach them as the chart is assembled, then adjust one without disturbing the others. A blank chart created with <code>new Chart()</code> can have its <code>Type</code> and these properties filled in step by step, which suits code that decides the chart kind at runtime, while the two-argument constructor is the shorter path when the kind and title are known up front.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var chart = new Chart(ChartType.Bar, &quot;Quarterly Revenue&quot;);
+chart.HasLegend = true;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> shows how content elements assemble into a document, the <a href="https://ironsoftware.com/csharp/word/how-to/add-table/">add table how-to</a> handles structured data nearby, and the <a href="https://ironsoftware.com/csharp/word/how-to/add-image/">add image how-to</a> covers other visual content.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

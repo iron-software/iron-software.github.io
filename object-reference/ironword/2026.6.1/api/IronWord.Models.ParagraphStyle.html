@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ParagraphStyle
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ParagraphStyle - IronWord C# API Reference
+      v2 (human)     title:       ParagraphStyle: Style Word Paragraphs in C#
+      v1 (algorithm) description: Style Word paragraphs in C# with the IronWord ParagraphStyle class: Borders, Indentation, Justification, LineSpacing, and pagination control.
+      v2 (human)     description: Define reusable paragraph formatting in C# with the IronWord ParagraphStyle class: alignment, spacing, borders, indentation, and page flow.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ParagraphStyle Class | IronWord .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ParagraphStyle
-   | C# Word API | IronWord ">
+    <meta name="title" content="ParagraphStyle Class | IronWord .NET API">
+    <meta name="description" content="Reference for the IronWord ParagraphStyle class in C#: gather alignment, spacing, borders, indentation, and pagination into a reusable style.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ParagraphStyle Class | IronWord .NET API",
+    "name": "ParagraphStyle class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.ParagraphStyle.html",
+    "abstract": "Defining reusable paragraph formatting in a Word document in C# runs through the IronWord ParagraphStyle class. It gathers Borders and Indentation, alignment and LineSpacing, and pagination settings such as KeepLinesOnPage and PageBreakBefore into one object. Attach it through Paragraph.Style or SetStyle, and extend an existing style through BaseStyle to override only what differs.",
+    "description": "Reference for the IronWord ParagraphStyle class in C#: gather alignment, spacing, borders, indentation, and pagination into a reusable style.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var style = new ParagraphStyle();\nstyle.KeepWithNextParagraph = true;\nparagraph.SetStyle(style);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ParagraphStyle live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ParagraphStyle is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object and implements IParagraphStyle, IDerivedStyle, and IStyle, and it attaches to a paragraph through Paragraph.Style."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you apply a style to a paragraph in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a ParagraphStyle, set the properties you need such as Justification, LineSpacing, Borders, or Indentation, then assign it through Paragraph.Style or call SetStyle on the paragraph. A paragraph with no style inherits the document default."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can one ParagraphStyle build on another in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The BaseStyle property records the style a derived style is based on, so a heading style can extend a body style and override only the properties that differ rather than redefining every setting."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -160,6 +224,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ParagraphStyle : Object, IParagraphStyle, IParagraphStyle, IDerivedStyle, IDerivedStyle, IStyle, IWordDocumentObjectProperty, IDocumentObjectProperty</code></pre>
   </div>
+    <!-- archetype-N:start ParagraphStyle treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Reach for <code>ParagraphStyle</code> to define the look of a paragraph once and reuse it across a document, the spacing, alignment, borders, indentation, and pagination behavior that travel together as a named style. It gathers paragraph-level formatting into a single object so a developer sets it up once and applies it wherever that look is needed.</p>
+<p>A style attaches to a paragraph through <code>Paragraph.Style</code>, or the shortcut <code>SetStyle</code>, and a paragraph with no explicit style inherits the document's default. Building one style on top of another is supported through <code>BaseStyle</code>, which records the style a derived style is based on, so a heading style can extend a body style and override only what differs.</p>
+<p>Its properties fall into groups. Composition: <code>Borders</code> holds a <code>ParagraphBorders</code> for the edges, and <code>Indentation</code> holds a <code>ParagraphIndentation</code> for the indents, each its own configurable object. Alignment and spacing: <code>Justification</code>, <code>TextAlignment</code>, and <code>LineSpacing</code> control horizontal placement and line height, while <code>ContextualSpacing</code> suppresses extra space between same-styled paragraphs. Pagination and flow: <code>KeepLinesOnPage</code> prevents a paragraph splitting across pages, <code>KeepWithNextParagraph</code> ties it to the following one, <code>PageBreakBefore</code> forces a break ahead of it, and <code>OutlineLevel</code> sets its rank for navigation and tables of contents. Direction and wrapping: <code>RightToLeft</code>, <code>WordWrap</code>, <code>MirrorIndents</code>, and <code>AdjustRightIndent</code> handle bidirectional text and edge behavior, which matters for documents that mix scripts or print double-sided. <code>Status</code> reports the style's state. Setting these properties once on a shared style and reusing it keeps a document consistent and makes a global change a single edit, rather than touching every paragraph in turn.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var style = new ParagraphStyle();
+style.KeepWithNextParagraph = true;
+paragraph.SetStyle(style);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-style-text/">add style text how-to</a> walks through styling paragraphs, the <a href="https://ironsoftware.com/csharp/word/examples/add-style-text/">add style text example</a> shows the result, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> covers how styles fit the document model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

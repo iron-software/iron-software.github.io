@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CreatingOptions
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       CreatingOptions Class - IronXL C# API
+      v2 (human)     title:       CreatingOptions: New Workbook Format in C#
+      v1 (algorithm) description: Set the format of a new IronXL workbook in C# with CreatingOptions: choose XLS or XLSX through the DefaultFileFormat property.
+      v2 (human)     description: Pick the file format for a new spreadsheet in C# with the IronXL CreatingOptions class: XLSX by default, or XLS for older tools.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>CreatingOptions | IronXL C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CreatingOptions
-   | C# Excel API | IronXL ">
+    <meta name="title" content="CreatingOptions | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL CreatingOptions class in .NET: set DefaultFileFormat to XLS or XLSX when creating a new WorkBook.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "CreatingOptions | IronXL C# API Reference",
+    "name": "CreatingOptions class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Options.CreatingOptions.html",
+    "abstract": "Choosing the format of a new IronXL workbook in C# runs through the CreatingOptions class. Its DefaultFileFormat property takes an ExcelFileFormat value, with XLSX as the default and XLS available for older tools. Construct it with the parameterless constructor, set the format, and pass it when creating a WorkBook.",
+    "description": "Reference for the IronXL CreatingOptions class in .NET: set DefaultFileFormat to XLS or XLSX when creating a new WorkBook.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\nusing IronXL.Options;\n\nvar options = new CreatingOptions();\noptions.DefaultFileFormat = ExcelFileFormat.XLSX;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does CreatingOptions live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CreatingOptions is a class in the IronXL.Options namespace, shipped in IronXL.dll, deriving from System.Object. It supplies format settings when creating a new WorkBook."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set the format of a new workbook in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a CreatingOptions instance, set its DefaultFileFormat property to an ExcelFileFormat value such as XLSX or XLS, and pass it when creating the WorkBook. XLSX is the default if nothing is specified."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +206,18 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class CreatingOptions : Object</code></pre>
   </div>
+    <!-- archetype-N:start CreatingOptions treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>CreatingOptions</code> is the small settings object that decides the file format of a brand-new IronXL <code>WorkBook</code>. It carries the choice between the legacy XLS format and the modern XLSX format, so a developer creating a spreadsheet from scratch can pin the output to whichever a downstream consumer expects rather than accepting the default.</p>
+<p>Pass an instance when creating a workbook, having set its one property first. <code>DefaultFileFormat</code> is an <code>ExcelFileFormat</code> value, and XLSX is the default when nothing is specified, which suits most new files. Reach for XLS only when an older tool or process cannot read the newer format. Because the object holds a single decision, configuring it is a one-line step taken before the workbook exists; the chosen format then governs how that workbook saves unless overridden at save time. A parameterless constructor creates the options with the XLSX default already in place.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+using IronXL.Options;
+
+var options = new CreatingOptions();
+options.DefaultFileFormat = ExcelFileFormat.XLSX;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/create-spreadsheet/">create a spreadsheet how-to</a> walks through making a new workbook, and the <a href="https://ironsoftware.com/csharp/excel/examples/create-excel-spreadsheet/">create Excel spreadsheet example</a> shows a worked file.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

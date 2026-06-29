@@ -1,10 +1,15 @@
-import json, re, os, platform, shutil, subprocess, zipfile, urllib, time
+import json, re, os, sys, argparse, platform, shutil, subprocess, zipfile, urllib, time
 import xml.etree.ElementTree as ET
 from urllib.request import urlretrieve
 from apidocs import *
 from statuslogger import StatusLogger
 
 DOCS_BUILDING_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scaffolds")
+ARCHETYPE_N_DIR = os.path.join(DOCS_BUILDING_DIR, "tools", "archetype-n")
+
+# Archetype-N enhancement runs after DocFX generation by default; --no-enhancement disables it.
+ENHANCE_ENABLED = True
+ENHANCE_OPTS = {"force": False, "provider": None, "model": None}
 DOCFX_EXECUTABLE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scaffolds", "tools", "docfx", "tools", "docfx.exe")
 JAVA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scaffolds", "tools", "jdk")
 
@@ -30,13 +35,19 @@ def iter_html_files(directory:str):
                 yield os.path.join(root, name)
 
 def strip_guid_markers(directory:str) -> int:
-    """Remove DocFX's spurious `<GUID>` markers from file names and from href values (item 4).
+    """Remove DocFX's spurious `<GUID>` markers from file names and from href values.
 
     A known DocFX issue emits files like `Foo<8e7c…>.html` and `href="Foo<8e7c…>.html"`. The
-    angle brackets are also invalid in Windows file names, so stripping them is what lets the
-    output be served and committed cross-platform. Ported from devops.ironsoftware's
-    makedocs.common.sh. Idempotent: a second run finds nothing to change. Returns the count of
-    files/dirs renamed.
+    angle brackets are also invalid in Windows file names; removing these patterns allows the
+    output be served and committed cross-platform. 
+    
+    Idempotent: a second run finds nothing to change. 
+    
+    Args:
+        directory (string): path to a directory containing files with GUID markers
+    
+    Returns:
+        int: the count of files/dirs renamed.
     """
     renamed = 0
     # Rename names bottom-up so a parent rename never invalidates a child path mid-walk.
@@ -60,12 +71,20 @@ def strip_guid_markers(directory:str) -> int:
     return renamed
 
 def apply_canonical_tags(directory:str, canonical_base_url:str) -> int:
-    """Ensure every HTML page under `directory` carries a `<link rel="canonical">` (item 6).
+    """Ensure every HTML page under `directory` carries a `<link rel="canonical">`.
 
     The canonical href is `canonical_base_url` + the page's path relative to `directory`. DocFX
     already injects canonical tags via its template, so for DocFX output this only backfills pages
-    that lack one; JavaDoc has none, so all of its pages receive one. Idempotent — a page that
-    already declares a canonical link is left untouched. Returns the count of pages updated.
+    that lack one; JavaDoc has none, so all of its pages receive one. 
+    
+    Idempotent. A page that already declares a canonical link is left untouched. 
+    
+    Args:
+        directory (string): Path to a versioned API documentation directory
+        canonical_base_url (string): A product Base URL associated with the API documentation directory
+    
+    Returns:
+        int: the count of pages updated.
     """
     base = canonical_base_url.rstrip("/") + "/"
     updated = 0
@@ -73,7 +92,7 @@ def apply_canonical_tags(directory:str, canonical_base_url:str) -> int:
         with open(html_path, "r", encoding="utf-8", errors="ignore") as html_file:
             content = html_file.read()
         if CANONICAL_LINK_RE.search(content):
-            continue  # already canonicalized — keep the pass idempotent
+            continue  # already canonicalized, keep the pass idempotent
         relative_url = os.path.relpath(html_path, directory).replace(os.sep, "/")
         tag = f'<link rel="canonical" href="{base}{relative_url}">'
         if re.search(r"</head>", content, re.IGNORECASE):
@@ -90,6 +109,11 @@ def get_docfx_canonical_prefix(info:dict) -> str:
 
     Falls back to the legacy `https://<domain><path>/object-reference/` shape when the config has
     no explicit prefix, so a page always gets a sensible canonical target.
+
+    Args:
+        info (dict): 
+    Returns:
+        string: The DocFX canonical URL prefix for a product
     """
     config_path = os.path.join(DOCS_BUILDING_DIR, f"docfx.{info['code']}.json")
     try:
@@ -101,6 +125,39 @@ def get_docfx_canonical_prefix(info:dict) -> str:
     except (OSError, ValueError):
         pass
     return f"https://{info['domain']}{info['path']}/object-reference/"
+
+def run_enhancement(info:dict, build_output_dir:str):
+    """Archetype-N post-DocFX enhancement
+
+    Operates on the freshly-built `…/object-reference/api/` pages before they are
+    archived, so the cached copy already carries the injected overviews. Reuses a
+    per-product generation cache (token-free) and authors any missing page via an
+    LLM (Claude default, OpenAI fallback). .NET/DocFX only — never aborts the build.
+    """
+    api_dir = os.path.join(DOCS_BUILDING_DIR, build_output_dir, "api")
+    if not os.path.isdir(api_dir):
+        StatusLogger.notice("No api/ directory found; skipping Archetype-N enhancement.")
+        return
+    try:
+        if ARCHETYPE_N_DIR not in sys.path:
+            sys.path.insert(0, ARCHETYPE_N_DIR)
+        import enhance as archetype_n
+        StatusLogger.progress("Archetype-N: enhancing API reference pages...")
+        summary = archetype_n.enhance(
+            api_dir, info["code"],
+            force=ENHANCE_OPTS["force"], provider=ENHANCE_OPTS["provider"],
+            model=ENHANCE_OPTS["model"], log=lambda m: StatusLogger.info(m))
+        if summary.get("no_provider") and summary.get("generated", 0) == 0 and summary.get("skipped", 0):
+            StatusLogger.warning(
+                "Archetype-N: no LLM API key set, only cached pages were injected. "
+                "Set CLAUDE_API_KEY or OPENAI_API_KEY to author missing pages.")
+        StatusLogger.info(
+            f"Archetype-N: injected {summary['injected']} page(s) "
+            f"(generated {summary['generated']}, reused {summary['reused']}, "
+            f"preserved {summary['preserved']}, failed {summary['failed']}, "
+            f"skipped {summary['skipped']}).")
+    except Exception as error:
+        StatusLogger.warning(f"Archetype-N enhancement skipped: {error}")
 
 def get_jar_executable_path() -> str:
     if is_windows_os():
@@ -252,6 +309,10 @@ def build_dotnet_apidoc(info:dict, version_string:str):
         canonical_count = apply_canonical_tags(build_output_dir, get_docfx_canonical_prefix(info))
         StatusLogger.info(f"Backfilled canonical tags on {canonical_count} page(s) (DocFX's template emits the rest).")
 
+        # Post-generation: Archetype-N SEO overview injection (default on; --no-enhancement disables).
+        if ENHANCE_ENABLED:
+            run_enhancement(info, build_output_dir)
+
         StatusLogger.progress(f"Archiving to {apidocs_storage_dir}...")
         os.makedirs(apidocs_storage_dir, exist_ok=True)
         shutil.copytree(build_output_dir, apidocs_storage_dir, dirs_exist_ok=True)
@@ -261,13 +322,33 @@ def build_dotnet_apidoc(info:dict, version_string:str):
     finally:
         time.sleep(20)
 
+def parse_args():
+    ap = argparse.ArgumentParser(description="Build Iron Software object-reference API docs.")
+    ap.add_argument("--no-enhancement", action="store_true",
+                    help="skip the Archetype-N SEO overview injection that runs after DocFX")
+    ap.add_argument("--enhance-force", action="store_true",
+                    help="regenerate cached Archetype-N overviews (POLISHED_PRESERVED still preserved)")
+    ap.add_argument("--provider", choices=("claude", "openai"), default=None,
+                    help="LLM provider for overview generation (default: auto-detect by API key)")
+    ap.add_argument("--model", default=None, help="override the LLM model")
+    ap.add_argument("--code", default=None, help="only build this product code (e.g. ironpdf)")
+    ap.add_argument("--version", default=None, help="only build this version string")
+    return ap.parse_args()
+
 def main():
     """Build any object-reference documentation that is missing from the archive."""
+    args = parse_args()
+    global ENHANCE_ENABLED, ENHANCE_OPTS
+    ENHANCE_ENABLED = not args.no_enhancement
+    ENHANCE_OPTS = {"force": args.enhance_force, "provider": args.provider, "model": args.model}
+
     StatusLogger.title("Iron Software API Documentation Generator")
     with open(PRODUCTS_CATALOG, 'r') as file:
         products = json.load(file)
 
     for product in products["libraries"]:
+        if args.code and product["code"] != args.code:
+            continue
         package_type = product["packageType"]
         StatusLogger.progress(f"Checking {product['name']} ({package_type})...")
         # Isolate each product so one failed registry query / build never aborts the whole run.
@@ -275,11 +356,15 @@ def main():
             if package_type == "nuget":
                 package_versions = get_nuget_package_versions(product["packageName"])
                 for package_version in package_versions:
+                    if args.version and package_version["version"] != args.version:
+                        continue
                     if not apidoc_already_exists(product, package_version["version"]):
                         build_dotnet_apidoc(product, package_version["version"])
             elif package_type == "maven":
                 package_versions = get_maven_package_versions(product["groupId"], product["artifactId"])
                 for package_version in package_versions:
+                    if args.version and package_version["v"] != args.version:
+                        continue
                     if not apidoc_already_exists(product, package_version["v"]):
                         build_java_apidoc(product, package_version["v"])
             else:

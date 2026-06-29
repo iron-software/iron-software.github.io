@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrProgressEventsArgs
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrProgressEventsArgs Class - IronOCR C# API
+      v2 (human)     title:       OcrProgressEventsArgs: Track OCR Progress in C#
+      v1 (algorithm) description: Track OCR progress in C# with the IronOCR OcrProgressEventsArgs class: read ProgressPercent, PagesComplete, TotalPages, and timing from OcrProgress.
+      v2 (human)     description: Report long OCR jobs in C# with the IronOCR OcrProgressEventsArgs class: get percent done, pages complete, and elapsed time from the OcrProgress event.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrProgressEventsArgs Class | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrProgressEventsArgs
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrProgressEventsArgs Class | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR OcrProgressEventsArgs class in C#: ProgressPercent, PagesComplete, TotalPages, and timing, delivered by OcrProgress.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrProgressEventsArgs Class | IronOCR C# API",
+    "name": "OcrProgressEventsArgs class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.Events.OcrProgressEventsArgs.html",
+    "abstract": "Progress on a long OCR job in C# arrives in IronOCR's OcrProgressEventsArgs class, delivered to the OcrProgress event on IronTesseract. Each callback exposes ProgressPercent, PagesComplete, TotalPages, StartTimeUTC, the nullable EndTimeUTC, and the elapsed Duration. All properties are read-only, so it is an immutable snapshot for updating a progress bar or log.",
+    "description": "Reference for the IronOCR OcrProgressEventsArgs class in C#: ProgressPercent, PagesComplete, TotalPages, and timing, delivered by OcrProgress.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronOcr;\n\nvar ocr = new IronTesseract();\nocr.OcrProgress += (sender, e) =>\n    Console.WriteLine($\"{e.ProgressPercent}% ({e.PagesComplete}/{e.TotalPages})\");\nocr.Read(input);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrProgressEventsArgs live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrProgressEventsArgs is a class in the IronOcr.Events namespace, shipped in IronOcr.dll. It derives from EventArgs and is delivered through the OcrProgress event on IronTesseract, typed as EventHandler<OcrProgressEventsArgs>."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you track OCR progress in C# with IronOCR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Subscribe to the OcrProgress event on an IronTesseract instance before calling Read. The handler receives an OcrProgressEventsArgs on each callback; read ProgressPercent for a progress bar, or PagesComplete and TotalPages for a page count."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the EndTimeUTC property return before a job finishes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EndTimeUTC is a Nullable<DateTime> that stays null until the OCR job completes. Use StartTimeUTC and Duration for elapsed time while the job is running, and read EndTimeUTC once the read has finished."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -152,6 +216,20 @@ ocr job progress.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class OcrProgressEventsArgs : EventArgs</code></pre>
   </div>
+    <!-- archetype-N:start OcrProgressEventsArgs treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Progress on a long OCR job, percentage done, pages finished, and elapsed time, arrives in <code>OcrProgressEventsArgs</code>. The object is delivered to a handler each time IronOCR advances through a multi-page read, so an application can update a progress bar or log throughput instead of leaving the user waiting on an opaque call. It is what a developer reads when wiring feedback into batch recognition.</p>
+<p>A developer never constructs one. It is handed to the <code>OcrProgress</code> event on <code>IronTesseract</code>, typed as <code>EventHandler&lt;OcrProgressEventsArgs&gt;</code>. Subscribe before calling <code>Read</code>, and the handler fires as the engine works through the input; the event argument carries a fresh snapshot on each callback. Because the read may run on a worker thread, marshal any UI update back to the UI thread inside the handler.</p>
+<p>The snapshot exposes six read-only values. <code>ProgressPercent</code> is the headline figure for a progress bar, while <code>PagesComplete</code> and <code>TotalPages</code> give the same idea as a page count, so a 3-of-10 read reads naturally either way. <code>StartTimeUTC</code> records when the job began, <code>EndTimeUTC</code> is a <code>Nullable&lt;DateTime&gt;</code> that stays null until the job finishes, and <code>Duration</code> is the elapsed <code>TimeSpan</code> so far. Read <code>ProgressPercent</code> for a simple indicator, and pair <code>Duration</code> with <code>ProgressPercent</code> when reporting an estimated time remaining for a long batch. Every property is get-only, so treat the argument as an immutable report of that moment rather than something to modify, and capture only the values you intend to display since the next callback supplies a newer snapshot.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronOcr;
+
+var ocr = new IronTesseract();
+ocr.OcrProgress += (sender, e) =&gt;
+    Console.WriteLine($&quot;{e.ProgressPercent}% ({e.PagesComplete}/{e.TotalPages})&quot;);
+ocr.Read(input);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/progress-tracking/">progress tracking how-to</a> wires the event to a progress display, the <a href="https://ironsoftware.com/csharp/ocr/examples/progress-tracking/">progress tracking example</a> shows a working handler, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/async/">async OCR how-to</a> keeps the read off the calling thread.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ChoiceIterator
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ChoiceIterator - IronOCR C# API Reference
+      v2 (human)     title:       ChoiceIterator: Per-Symbol OCR Guesses in C#
+      v1 (algorithm) description: Step through Tesseract's alternative character guesses in C# with the IronOCR ChoiceIterator: GetText, GetConfidence, and Next over one symbol.
+      v2 (human)     description: Inspect each candidate reading for a symbol in C# with the IronOCR ChoiceIterator class: read the text, check its confidence, and advance to the next.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ChoiceIterator Class | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ChoiceIterator
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="ChoiceIterator Class | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR ChoiceIterator in C#: read per-symbol candidate guesses with GetText and GetConfidence, advancing with Next.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ChoiceIterator Class | IronOCR C# API",
+    "name": "ChoiceIterator class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.ChoiceIterator.html",
+    "abstract": "ChoiceIterator steps through the alternative character guesses Tesseract weighed for one symbol in IronOCR for C#. Obtained from the engine while reading, it exposes GetText for the current candidate, GetConfidence for its score, and Next to advance. It holds a native handle, so dispose it after use.",
+    "description": "Reference for the IronOCR ChoiceIterator in C#: read per-symbol candidate guesses with GetText and GetConfidence, advancing with Next.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ChoiceIterator live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChoiceIterator is a sealed class in the DynamicTesseract namespace, shipped in IronOcr.dll. It derives from DisposableBase and implements IDisposable, so it must be disposed after the per-symbol choices are read."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read alternative character guesses in C# with IronOCR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Obtain a ChoiceIterator from the engine for a symbol, call GetText for the current candidate and GetConfidence for its score, then call Next to move to the following choice. Dispose the iterator when finished. For ordinary text and confidence, use the high-level result classes instead."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -169,6 +217,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class ChoiceIterator : DisposableBase, IDisposable</code></pre>
   </div>
+    <!-- archetype-N:start ChoiceIterator treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Walking the alternative recognition guesses Tesseract considered for one symbol runs through <code>ChoiceIterator</code>. For a single character position, the engine often weighs several candidate readings, and this iterator steps through them so low-level code can inspect each guess and its confidence instead of accepting only the top result.</p>
+<p>A <code>ChoiceIterator</code> is obtained from the engine while reading, not constructed directly, and it is positioned at one symbol's set of choices. <code>GetText</code> returns the current candidate string and <code>GetConfidence</code> returns its score, while <code>Next</code> advances to the following choice and reports whether one exists. Because the type is sealed and derives from <code>DisposableBase</code>, it holds a native handle, so call <code>Dispose</code> (or wrap it in a <code>using</code>) once the choices have been read. This sits in the deep interop layer beneath IronOCR's reading API; the high-level result classes cover ordinary text and confidence needs, and <code>ChoiceIterator</code> is for code that genuinely needs the per-symbol alternatives.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/tesseract-result-confidence/">result confidence how-to</a> explains how IronOCR surfaces confidence scores, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">read results how-to</a> walks through the standard result model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

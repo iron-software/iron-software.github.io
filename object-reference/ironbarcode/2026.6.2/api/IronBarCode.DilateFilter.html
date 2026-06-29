@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DilateFilter
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       DilateFilter - IronBarcode C# API
+      v2 (human)     title:       DilateFilter: Rejoin Broken Barcode Bars in C#
+      v1 (algorithm) description: Rejoin broken barcode bars in C# with IronBarcode DilateFilter: a morphological dilation with a KernelSize setting, added to ImageFilters before reading.
+      v2 (human)     description: Reconnect thin or fragmented barcode bars in C# with IronBarcode DilateFilter, growing the dark regions so a broken pattern reads as one shape.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>DilateFilter Class | IronBarcode C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DilateFilter
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="DilateFilter Class | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode DilateFilter class in C#: apply morphological dilation with KernelSize to thicken bars before reading a barcode.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "DilateFilter Class | IronBarcode C# API",
+    "name": "DilateFilter class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.DilateFilter.html",
+    "abstract": "DilateFilter thickens the dark regions of a barcode image in C# with IronBarcode, a morphological dilation that grows foreground pixels to close gaps and rejoin broken bars. It implements IImageFilter and is added to the ImageFilterCollection on BarcodeReaderOptions.ImageFilters. The KernelSize property, default 3, sets how aggressively the bars are grown.",
+    "description": "Reference for the IronBarcode DilateFilter class in C#: apply morphological dilation with KernelSize to thicken bars before reading a barcode.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nvar options = new BarcodeReaderOptions\n{\n    ImageFilters = new ImageFilterCollection { new DilateFilter() }\n};\nvar results = BarcodeReader.Read(\"faded.png\", options);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does DilateFilter live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DilateFilter is a class in the IronBarCode namespace, shipped in IronBarCode.dll. It derives from Object and implements IImageFilter, so it can be added to the ImageFilterCollection assigned to BarcodeReaderOptions.ImageFilters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you make DilateFilter grow the bars more aggressively?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Raise KernelSize above its default of 3, either through the DilateFilter(int kernelSize) constructor or by setting the KernelSize property. A larger kernel grows the dark regions further, closing wider gaps in a fragmented barcode."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,6 +210,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class DilateFilter : Object, IImageFilter</code></pre>
   </div>
+    <!-- archetype-N:start DilateFilter treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>DilateFilter</code> thickens the dark regions of a barcode image so thin or broken bars join into a solid, readable shape. Dilation is a morphological operation that grows the foreground pixels, which closes small gaps and reconnects a pattern that printing, faxing, or low-resolution scanning has eroded into fragments. Reach for it when a code reads as a scatter of disconnected marks rather than continuous bars; for the opposite problem, where bars have bled together, the erosion filter shrinks them back.</p>
+<p>The filter implements <code>IImageFilter</code> and is added to the <code>ImageFilterCollection</code> on <code>BarcodeReaderOptions.ImageFilters</code>, where filters run in collection order before the read. A developer constructs it, adds it to the collection, and passes the options to <code>BarcodeReader.Read</code>. The parameterless constructor uses a <code>KernelSize</code> of 3, the length of one side of the square kernel that controls how aggressively the bars are grown. The <code>DilateFilter(int kernelSize)</code> overload or the <code>KernelSize</code> property raises that value for heavier dilation when the gaps are wide.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+var options = new BarcodeReaderOptions
+{
+    ImageFilters = new ImageFilterCollection { new DilateFilter() }
+};
+var results = BarcodeReader.Read(&quot;faded.png&quot;, options);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/image-correction/">image correction how-to</a> walks through filter selection on a sample barcode, and the <a href="https://ironsoftware.com/csharp/barcode/examples/imperfect-barcode-with-image-correction/">imperfect barcode example</a> reads a degraded image through a filter pipeline.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

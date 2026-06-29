@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IPatternFormatting
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IPatternFormatting - IronXL C# API Reference
+      v2 (human)     title:       IPatternFormatting: Conditional Fills in C#
+      v1 (algorithm) description: Fill cells that match a conditional rule in C# with the IronXL IPatternFormatting interface: set BackgroundColor and FillPattern on the rule.
+      v2 (human)     description: Highlight cells when a conditional rule fires in C# with IronXL IPatternFormatting: set the background color and fill pattern for matched cells.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IPatternFormatting | IronXL C# .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IPatternFormatting
-   | C# Excel API | IronXL ">
+    <meta name="title" content="IPatternFormatting | IronXL C# .NET API">
+    <meta name="description" content="Reference for the IronXL IPatternFormatting interface in C#: the fill contract from ConditionalFormattingRule.PatternFormatting for matched cells.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IPatternFormatting | IronXL C# .NET API",
+    "name": "IPatternFormatting interface | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Formatting.IPatternFormatting.html",
+    "abstract": "ConditionalFormattingRule.PatternFormatting returns IronXL's IPatternFormatting interface in C#, the fill contract for a conditional formatting rule. BackgroundColor sets the fill color as an RGB string and FillPattern takes a FillPattern value for solid or patterned fills. The fill applies only when the rule's condition is met, so it is configured on the rule before it is added to a region.",
+    "description": "Reference for the IronXL IPatternFormatting interface in C#: the fill contract from ConditionalFormattingRule.PatternFormatting for matched cells.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\nusing IronXL.Formatting;\n\nWorkSheet sheet = WorkBook.Load(\"report.xlsx\").DefaultWorkSheet;\nConditionalFormattingRule rule = sheet.ConditionalFormatting\n    .CreateConditionalFormattingRule(ComparisonOperator.GreaterThan, \"1000\");\nrule.PatternFormatting.BackgroundColor = \"#FFEB9C\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IPatternFormatting live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPatternFormatting is an interface in the IronXL.Formatting namespace, shipped in IronXL.dll. It is returned by the PatternFormatting property of ConditionalFormattingRule and defines the fill a conditional rule applies."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What returns IPatternFormatting in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ConditionalFormattingRule.PatternFormatting returns an IPatternFormatting. IronXL exposes it through that get-only property on a rule rather than letting you construct one, so the fill is set on the rule before it is added to a sheet."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +201,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IPatternFormatting</code></pre>
   </div>
+    <!-- archetype-N:start IPatternFormatting treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>When a conditional formatting rule needs to fill the cells it matches, <code>IPatternFormatting</code> is the contract that sets that fill. It is the classic &quot;color this cell when its value crosses a threshold&quot; effect, the background color and pattern a rule paints over matched data, and the most common way a conditional rule draws attention. It is the fill side of conditional formatting, separate from the always-on fill on <code>IStyle</code>.</p>
+<p>A developer obtains it from <code>ConditionalFormattingRule.PatternFormatting</code>, a get-only property on a rule created through a worksheet's conditional formatting surface. The fill applies only when the rule's condition is met, so it is configured on the rule before the rule is added to a region.</p>
+<p><code>BackgroundColor</code> sets the fill color as an RGB string, and <code>FillPattern</code> takes a <code>FillPattern</code> value for solid or patterned fills. A solid background color is the typical choice for highlighting; the pattern is there for cases that need a textured fill rather than a flat one.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+using IronXL.Formatting;
+
+WorkSheet sheet = WorkBook.Load(&quot;report.xlsx&quot;).DefaultWorkSheet;
+ConditionalFormattingRule rule = sheet.ConditionalFormatting
+    .CreateConditionalFormattingRule(ComparisonOperator.GreaterThan, &quot;1000&quot;);
+rule.PatternFormatting.BackgroundColor = &quot;#FFEB9C&quot;;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/conditional-formatting/">conditional formatting how-to</a> walks through building rules, and the <a href="https://ironsoftware.com/csharp/excel/how-to/background-pattern-color/">background pattern color how-to</a> covers fills and patterns directly.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

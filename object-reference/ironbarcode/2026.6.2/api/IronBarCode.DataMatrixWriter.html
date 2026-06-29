@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DataMatrixWriter
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       DataMatrixWriter Class - IronBarcode C# API
+      v2 (human)     title:       DataMatrixWriter: Data Matrix Codes in C#
+      v1 (algorithm) description: Generate Data Matrix codes in C# with the IronBarcode DataMatrixWriter class. Call static CreateDataMatrix with a value and size to get a GeneratedBarcode.
+      v2 (human)     description: Create Data Matrix codes in C# with the IronBarcode DataMatrixWriter class: encode text, bytes, or a stream as a square or rectangular code.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>DataMatrixWriter | IronBarcode C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DataMatrixWriter
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="DataMatrixWriter | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode DataMatrixWriter class in C#: static CreateDataMatrix overloads for square or rectangular Data Matrix codes.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "DataMatrixWriter | IronBarcode C# API",
+    "name": "DataMatrixWriter class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.DataMatrixWriter.html",
+    "abstract": "Generating a Data Matrix code in C# runs through the IronBarcode DataMatrixWriter class. Its static CreateDataMatrix overloads encode a string, byte array, or stream, taking either a single size for a square code or a DataMatrixShape with an explicit width and height for a rectangular one, and return a GeneratedBarcode to save, stamp, or export.",
+    "description": "Reference for the IronBarcode DataMatrixWriter class in C#: static CreateDataMatrix overloads for square or rectangular Data Matrix codes.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nDataMatrixWriter.CreateDataMatrix(\"SN-48291\", 200).SaveAsPng(\"datamatrix.png\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does DataMatrixWriter live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DataMatrixWriter is a static class in the IronBarCode namespace, shipped in IronBarCode.dll. Call DataMatrixWriter.CreateDataMatrix directly to get a GeneratedBarcode, with no instance to construct."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you make a rectangular Data Matrix code in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call CreateDataMatrix with a DataMatrixWriter.DataMatrixShape and an explicit width and height. The simpler overload takes a single size instead and produces a square code."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +207,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class DataMatrixWriter : Object</code></pre>
   </div>
+    <!-- archetype-N:start DataMatrixWriter treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Generating a Data Matrix code in C# runs through <code>DataMatrixWriter</code>, the dedicated writer for that 2D symbology. Its one static method returns a <code>GeneratedBarcode</code>, so there is nothing to construct: call <code>DataMatrixWriter.CreateDataMatrix(...)</code> and save, stamp, or export the result.</p>
+<p><code>CreateDataMatrix</code> is overloaded across input and shape. It encodes a <code>string</code>, <code>byte[]</code>, or <code>Stream</code>, and each input has two forms. The simpler form takes a single <code>size</code> for a square code, while the second takes a <code>DataMatrixWriter.DataMatrixShape</code> along with an explicit <code>width</code> and <code>height</code>, which lets a developer request a rectangular Data Matrix where a layout calls for one. Data Matrix packs data densely into a small footprint, which suits marking small parts and components where a QR code would be too large. For QR codes or linear symbologies instead, use <code>QRCodeWriter</code> or <code>BarcodeWriter</code>. Because the call returns a <code>GeneratedBarcode</code>, the output format is chosen afterward, independent of how the value was encoded.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+DataMatrixWriter.CreateDataMatrix(&quot;SN-48291&quot;, 200).SaveAsPng(&quot;datamatrix.png&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/create-2d-barcodes/">create 2D barcodes how-to</a> generates a Data Matrix, and the <a href="https://ironsoftware.com/csharp/barcode/how-to/create-barcode-images/">create barcode images how-to</a> covers the save formats.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IChartSeries
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IChartSeries Interface - IronXL C# API
+      v2 (human)     title:       IChartSeries: Name Excel Chart Series in C#
+      v1 (algorithm) description: IChartSeries is the IronXL contract for a chart data series in C#: set its Title for the legend. IChart.AddSeries returns one per cell range.
+      v2 (human)     description: Label a chart's data series in C# with IronXL's IChartSeries: each range added to an IChart returns a series whose Title shows in the legend.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IChartSeries Interface | IronXL C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IChartSeries
-   | C# Excel API | IronXL ">
+    <meta name="title" content="IChartSeries Interface | IronXL C# API">
+    <meta name="description" content="Reference for the IronXL IChartSeries interface in C#: the contract IChart.AddSeries returns, with a Title property for the chart legend.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IChartSeries Interface | IronXL C# API",
+    "name": "IChartSeries interface | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Drawing.Charts.IChartSeries.html",
+    "abstract": "IChartSeries is the IronXL contract for one data series on an Excel chart in C#. IChart.AddSeries returns an IChartSeries each time a cell range is attached, and its writable Title property sets the label shown in the chart legend. Set the Title before plotting the parent chart.",
+    "description": "Reference for the IronXL IChartSeries interface in C#: the contract IChart.AddSeries returns, with a Title property for the chart legend.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IChartSeries series = chart.AddSeries(\"B1:B10\");\nseries.Title = \"Revenue\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IChartSeries live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IChartSeries is an interface in the IronXL.Drawing.Charts namespace, shipped in IronXL.dll. IChart.AddSeries returns an IChartSeries for each cell range added to a chart."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What returns an IChartSeries in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IChart.AddSeries returns an IChartSeries when a range is added to a chart, using either AddSeries(values) or AddSeries(xRange, yRange). There is no public constructor; series come from the chart and are labeled through the Title property."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +201,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IChartSeries</code></pre>
   </div>
+    <!-- archetype-N:start IChartSeries treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p><code>IChartSeries</code> is the single data series a developer gets back after attaching a range of cells to an Excel chart. Each series represents one plotted line, bar set, or pie slice group inside an <code>IChart</code>, and the contract lets code name that series so it reads clearly in the chart legend. A chart with several series, such as revenue against cost, holds one <code>IChartSeries</code> per data set, each labeled independently.</p>
+<p>A developer never constructs an <code>IChartSeries</code> directly. <code>IChart.AddSeries</code> returns one each time a cell range is added to a chart, whether through <code>AddSeries(string values)</code> for a single range or <code>AddSeries(string xRange, string yRange)</code> for paired ranges. The contract exposes a <code>Title</code> property, readable and writable, which sets the label shown for that series in the legend. Reading it reports the current label, and assigning it renames the series in place. Set the <code>Title</code> after adding the series and before calling <code>Plot</code> on the parent chart, so the rendered chart carries meaningful series names rather than the default range references.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IChartSeries series = chart.AddSeries(&quot;B1:B10&quot;);
+series.Title = &quot;Revenue&quot;;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/examples/create-a-excel-line-chart/">create a line chart example</a> plots series from cell data, and the <a href="https://ironsoftware.com/csharp/excel/how-to/csharp-excel-chart-create-edit-tutorial/">create and edit a chart how-to</a> walks through naming and styling them.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

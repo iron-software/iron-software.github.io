@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ParentElement
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ParentElement Class - IronWord C# API
+      v2 (human)     title:       ParentElement: Hold Child Word Nodes in C#
+      v1 (algorithm) description: ParentElement is the IronWord base for Word nodes that hold children in C#: Children, Tables, Texts, AddChild, InsertChildToIndex, ExtractElements, and more.
+      v2 (human)     description: Manage child content in a Word document in C# with IronWord's ParentElement base: read Children, add and remove nodes, and extract elements by type.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ParentElement Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ParentElement
-   | C# Word API | IronWord ">
+    <meta name="title" content="ParentElement Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord ParentElement class in C#: the abstract base behind Paragraph, Run, and Container, with child read, mutate, and copy members.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ParentElement Class | IronWord C# API",
+    "name": "ParentElement class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Abstract.ParentElement.html",
+    "abstract": "Holding and arranging child content in a Word document in C# is what the IronWord ParentElement base class provides. Paragraph, Run, Container, DocumentSection, ListItem, and the table bases extend it. It exposes Children, Tables, and Texts for reading, AddChild, InsertChildToIndex, and the Remove members for mutation, GetChildByIndex and ExtractElements for lookup, and LogObjectTree for inspecting a subtree.",
+    "description": "Reference for the IronWord ParentElement class in C#: the abstract base behind Paragraph, Run, and Container, with child read, mutate, and copy members.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord;\nusing IronWord.Models;\n\nWordDocument doc = new WordDocument(\"input.docx\");\nParagraph paragraph = doc.Paragraphs[0];\nparagraph.AddChild(new Text(\"appended\"));\nConsole.WriteLine(paragraph.LogObjectTree());"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ParentElement live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ParentElement is an abstract class in the IronWord.Models.Abstract namespace, shipped in IronWord.dll. It derives from ContentElement and is the base for child-holding nodes such as Paragraph, Run, Container, DocumentSection, and ListItem."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add or remove child nodes in a Word document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call AddChild to append nodes or InsertChildToIndex to place one at a position. Detach nodes with RemoveChildren, RemoveAllChildren, or Remove. Read the current children through the Children collection, or the typed Tables and Texts lists."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you find all elements of a type inside a ParentElement?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call ExtractElements with the type you want; it returns a List of every matching descendant. Use GetChildByIndex with a type and position for a single typed child, and LogObjectTree to print the subtree while debugging."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -182,6 +246,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class ParentElement : ContentElement, IWordDocumentObject, IDocumentObject, ICloneable, IParent&lt;IWordDocumentObjectCollection, IWordDocumentObject&gt;</code></pre>
   </div>
+    <!-- archetype-N:start ParentElement treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Holding and arranging child content in a Word document in C# is what <code>ParentElement</code> provides. It is the base for every node that contains other nodes, so a <code>Paragraph</code> holding runs, a <code>DocumentSection</code> holding paragraphs, a <code>ListItem</code>, and a <code>Container</code> all draw their child-management behavior from one place. Where the plain <code>ContentElement</code> base gives a node its identity, <code>ParentElement</code> adds the ability to own a subtree.</p>
+<p>Concrete and intermediate types that extend it include <code>Paragraph</code>, <code>Run</code>, <code>Container</code>, <code>DocumentSection</code>, <code>ListItem</code>, <code>MultiLevelTextList</code>, and the table-side bases <code>TableElement</code> and <code>TableElements</code>. A developer obtains one of these by building a document or by reading nodes out of an existing one, then works through the inherited surface to read and reshape its children. Because the behavior lives on this base, the same operations apply no matter which parent you hold.</p>
+<p>The member surface groups into clear functions. **Reading children:** <code>Children</code> returns the full child collection, while <code>Tables</code> and <code>Texts</code> give typed lists of the <code>Table</code> and <code>TextContent</code> nodes inside. **Mutating children:** <code>AddChild</code> appends nodes, <code>InsertChildToIndex</code> places one at a position, and <code>RemoveChildren</code>, <code>RemoveAllChildren</code>, and <code>Remove</code> detach them. **Locating and copying:** <code>GetChildByIndex&lt;T&gt;</code> fetches a typed child by position, <code>ExtractElements&lt;T&gt;</code> collects every descendant of a type, and <code>Clone</code> deep-copies the element. **Diagnostics:** <code>LogObjectTree</code> prints the subtree as readable text, which is useful when verifying the structure of a node during development before you save.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord;
+using IronWord.Models;
+
+WordDocument doc = new WordDocument(&quot;input.docx&quot;);
+Paragraph paragraph = doc.Paragraphs[0];
+paragraph.AddChild(new Text(&quot;appended&quot;));
+Console.WriteLine(paragraph.LogObjectTree());</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-text/">add text how-to</a> appends child content, the <a href="https://ironsoftware.com/csharp/word/how-to/add-table/">add table how-to</a> builds nested structures, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> explains the parent-child tree.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

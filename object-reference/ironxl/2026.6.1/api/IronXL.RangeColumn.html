@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class RangeColumn
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       RangeColumn Class - IronXL C# API
+      v2 (human)     title:       RangeColumn: Size & Hide Excel Columns in C#
+      v1 (algorithm) description: Work with a whole Excel column in C# with the IronXL RangeColumn class: ColumnLetter and ColumnNumber, Width, AutoSizeColumn, Hidden, and RemoveColumn.
+      v2 (human)     description: Handle an entire Excel column in C# through the IronXL RangeColumn class: read its letter and number, set its width, auto-size it, hide it, or remove it.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>RangeColumn Class | IronXL C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class RangeColumn
-   | C# Excel API | IronXL ">
+    <meta name="title" content="RangeColumn Class | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL RangeColumn class in C#: identify a column by letter or number, set Width, AutoSizeColumn to content, and Hidden or RemoveColumn.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "RangeColumn Class | IronXL C# API Reference",
+    "name": "RangeColumn class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.RangeColumn.html",
+    "abstract": "Treating one whole Excel column as a unit in C# is the job of the IronXL RangeColumn class. A worksheet returns one from GetColumn, by index or letter. ColumnLetter and ColumnNumber identify it, Width sets its size while AutoSizeColumn fits content, Hidden shows or hides it, and RemoveColumn deletes it. It derives from Range, so range members apply to the column's cells too.",
+    "description": "Reference for the IronXL RangeColumn class in C#: identify a column by letter or number, set Width, AutoSizeColumn to content, and Hidden or RemoveColumn.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nWorkBook workBook = WorkBook.Load(\"sample.xlsx\");\nWorkSheet workSheet = workBook.GetWorkSheet(\"Sheet1\");\nRangeColumn column = workSheet.GetColumn(0);\ncolumn.AutoSizeColumn();\nworkBook.SaveAs(\"output.xlsx\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does RangeColumn live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RangeColumn is a class in the IronXL namespace, shipped in IronXL.dll, and derives from Range. A WorkSheet returns one from GetColumn, by index or column letter."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you auto-size an Excel column in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Get the column with WorkSheet.GetColumn, then call AutoSizeColumn on the returned RangeColumn to fit its width to content. An overload controls whether merged cells count toward the measurement, and Width sets a fixed size instead."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you identify a column by its letter with IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read ColumnLetter on the RangeColumn for the spreadsheet letter like A or B, and ColumnNumber for the numeric position. Both come from the column returned by WorkSheet.GetColumn."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -348,6 +412,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class RangeColumn : Range, IEnumerable&lt;Cell&gt;, IEnumerable</code></pre>
   </div>
+    <!-- archetype-N:start RangeColumn treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>RangeColumn</code> treats one whole column of an Excel sheet as a unit in C#, so a developer can size it, hide it, identify it, or read its cells without listing each one. It is the column-shaped view a worksheet hands back, and it carries the column-level operations that a plain range of arbitrary cells does not. Code reaching for &quot;C# Excel column&quot; wants this type.</p>
+<p>A column comes from a worksheet through <code>GetColumn</code>, by index or by letter, which returns the <code>RangeColumn</code> for that position. Because <code>RangeColumn</code> derives from <code>Range</code>, every range member still applies, so the column's cells can be summed, sorted, iterated, or formatted exactly as any other range, while the column-specific members add the operations that only make sense on a full column.</p>
+<p>Those members are few and focused. <code>ColumnLetter</code> and <code>ColumnNumber</code> identify the column in spreadsheet terms (<code>A</code>, <code>B</code>, ... or <code>1</code>, <code>2</code>, ...), which is the pair developers reach for when mapping between user-facing letters and zero-based code. <code>Width</code> reads or sets how wide the column renders, and <code>AutoSizeColumn</code> fits that width to the content instead, with an overload that controls whether merged cells count toward the measurement. <code>Hidden</code> shows or hides the column, and <code>RemoveColumn</code> deletes it from the sheet, shifting the columns after it. These edits stay in memory until the parent <code>WorkBook</code> is saved, so a column change and the workbook that owns it are written together.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+WorkBook workBook = WorkBook.Load(&quot;sample.xlsx&quot;);
+WorkSheet workSheet = workBook.GetWorkSheet(&quot;Sheet1&quot;);
+RangeColumn column = workSheet.GetColumn(0);
+column.AutoSizeColumn();
+workBook.SaveAs(&quot;output.xlsx&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/autosize-rows-columns/">auto resize how-to</a> covers <code>AutoSizeColumn</code>, the <a href="https://ironsoftware.com/csharp/excel/how-to/add-rows-columns/">add rows and columns how-to</a> inserts and removes columns, and the <a href="https://ironsoftware.com/csharp/excel/how-to/select-range/">select range how-to</a> shows <code>GetColumn</code>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IParagraphIndention
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IParagraphIndention Interface - IronPPT C#
+      v2 (human)     title:       IParagraphIndention: Paragraph Indents in C#
+      v1 (algorithm) description: IParagraphIndention is the IronPPT indent contract in C#: Left, Right, FirstLine, and Hanging offsets as IDocUnit values, implemented by ParagraphIndention.
+      v2 (human)     description: Set paragraph indents in C# through IronPPT's IParagraphIndention contract: left and right insets, first-line indents, and hanging offsets as unit values.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IParagraphIndention | IronPPT .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IParagraphIndention
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IParagraphIndention | IronPPT .NET API">
+    <meta name="description" content="Reference for the IronPPT IParagraphIndention interface in C#: left, right, first-line, and hanging indent offsets, implemented by ParagraphIndention.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IParagraphIndention | IronPPT .NET API",
+    "name": "IParagraphIndention interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IParagraphIndention.html",
+    "abstract": "Set the margin offsets of a paragraph in C# through IronPPT's IParagraphIndention contract. Left and Right control the edge insets, FirstLine and Hanging control the opening line, each measurement is an IDocUnit that carries its own unit, and character-counted and writing-direction twins handle fixed-width and right-to-left layouts. The concrete implementor is ParagraphIndention, reached through a paragraph's style.",
+    "description": "Reference for the IronPPT IParagraphIndention interface in C#: left, right, first-line, and hanging indent offsets, implemented by ParagraphIndention.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IParagraphIndention indention = new ParagraphIndention();\nindention.Left = new DocUnit { Point = 36 };\nindention.Hanging = new DocUnit { Point = 18 };"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IParagraphIndention live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IParagraphIndention is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It does not extend another interface; its members are IDocUnit measurements reached through a paragraph's style."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IParagraphIndention in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ParagraphIndention class in IronPPT.Models implements IParagraphIndention. You reach the indention object through paragraph styling rather than constructing it, then set Left, Right, FirstLine, or Hanging."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Left and LeftChars on IParagraphIndention?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Left is the inset expressed as an IDocUnit measurement, while LeftChars expresses the same offset as a character count for fixed-width contexts. Start and End express the offsets in writing-direction terms for right-to-left layouts."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +208,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IParagraphIndention</code></pre>
   </div>
+    <!-- archetype-N:start IParagraphIndention treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>Margin offsets for a paragraph, the left and right insets plus the special first-line and hanging measurements, are set through <code>IParagraphIndention</code>. Reach for it when a bulleted list needs its text pulled in from the bullet, when a quotation needs to sit further from the slide edge, or when the opening line of a paragraph should start at a different position than the rest. Every measurement is an <code>IDocUnit</code>, so the values carry their own unit rather than a bare number, which is the disambiguation the FAQ also resolves against the simpler character-count members.</p>
+<p>The contract is reached through a paragraph's style rather than created on its own. The concrete implementor in IronPPT is <code>ParagraphIndention</code>, and the indention object is read and written as part of the paragraph styling you apply when laying out text. Coding against the interface keeps the layout logic independent of how the paragraph acquired its indention.</p>
+<p>The twelve properties group into a few jobs. The edge insets are <code>Left</code> and <code>Right</code>, the distance the whole paragraph sits from each margin. The first-line controls are <code>FirstLine</code> (extra indent on the opening line only) and <code>Hanging</code> (the opposite, where every line after the first is indented). Each of those has a character-counted twin for fixed-width contexts: <code>LeftChars</code>, <code>RightChars</code>, <code>FirstLineChars</code>, and <code>HangingChars</code>. Finally <code>Start</code>, <code>End</code>, <code>StartCharacters</code>, and <code>EndCharacters</code> express the same offsets in logical writing-direction terms, which matters for right-to-left layouts where start and end are not left and right.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IParagraphIndention indention = new ParagraphIndention();
+indention.Left = new DocUnit { Point = 36 };
+indention.Hanging = new DocUnit { Point = 18 };</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> shows indentation alongside spacing, the <a href="https://ironsoftware.com/csharp/ppt/examples/customized-bullet-point/">customized bullet point example</a> pairs hanging indents with bullets, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> covers placing the text those indents apply to.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

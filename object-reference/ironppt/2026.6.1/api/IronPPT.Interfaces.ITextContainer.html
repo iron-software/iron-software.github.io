@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ITextContainer
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ITextContainer - IronPPT C# API Reference
+      v2 (human)     title:       ITextContainer: Hold Text in C#
+      v1 (algorithm) description: ITextContainer is the IronPPT text-holding contract in C#: add runs with AddText and read them back through the Texts collection.
+      v2 (human)     description: Add and read runs of text in C# through the IronPPT ITextContainer contract: the shared text capability behind text-holding slide elements.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ITextContainer Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ITextContainer
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="ITextContainer Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT ITextContainer interface in C#: the contract implemented by TextContainer, with AddText and a Texts collection.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ITextContainer Interface | IronPPT C# API",
+    "name": "ITextContainer interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.ITextContainer.html",
+    "abstract": "ITextContainer is the contract for an element that holds runs of text in IronPPT in C#. Its Texts property exposes the held runs as a List<IText>, AddText appends a run from a string or an IText, and the inherited TextStyle sets default run formatting. TextContainer implements it, supplying the shared text behavior behind text-holding slide elements.",
+    "description": "Reference for the IronPPT ITextContainer interface in C#: the contract implemented by TextContainer, with AddText and a Texts collection.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "ITextContainer container = textBox;\ncontainer.AddText(\"Subtitle\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ITextContainer live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ITextContainer is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It extends IHasTextStyle. The concrete implementor is TextContainer, the base that text-holding elements build on."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +198,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface ITextContainer : IHasTextStyle</code></pre>
   </div>
+    <!-- archetype-N:start ITextContainer treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p><code>ITextContainer</code> is the contract for any element that holds and accepts runs of text, the small surface a developer uses to add words to a container and read them back. It captures the &quot;this thing can contain text&quot; capability shared by the parts of a presentation that carry text, so adding text works the same way wherever the text lives.</p>
+<p>The concrete implementor in IronPPT is <code>TextContainer</code>, the base that text-holding elements build on. A developer typically works with a more specific element (a text box or a slide) but relies on this contract for the common text behavior underneath. Its own members are small and direct: the <code>Texts</code> property is a <code>List&lt;IText&gt;</code> exposing the runs the container holds, and <code>AddText</code> (overloaded for a plain <code>string</code> or an existing <code>IText</code>) appends a run and returns it. Default run formatting for the container is reached through the <code>TextStyle</code> member inherited from <code>IHasTextStyle</code>, so text added through this contract picks up a consistent style.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">ITextContainer container = textBox;
+container.AddText(&quot;Subtitle&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> places text on a slide, and the <a href="https://ironsoftware.com/csharp/ppt/examples/add-paragraph/">add paragraph example</a> builds runs of text.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

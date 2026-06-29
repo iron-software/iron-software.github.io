@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TableStyle
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TableStyle Class - IronXL C# API Reference
+      v2 (human)     title:       TableStyle: Style Excel Named Tables in C#
+      v1 (algorithm) description: Style an Excel named table in C# with the IronXL TableStyle class: pass a built-in preset like TableStyleMedium2 to Range.SaveAsNamedTable and toggle stripes.
+      v2 (human)     description: Give an Excel table the banded gallery look in C# with IronXL TableStyle: choose a light, medium, or dark preset and toggle row and column stripes.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TableStyle Class | IronXL C# .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TableStyle
-   | C# Excel API | IronXL ">
+    <meta name="title" content="TableStyle Class | IronXL C# .NET API">
+    <meta name="description" content="Reference for the IronXL TableStyle class in C#: built-in table presets plus ShowRowStripes and ShowColumnStripes flags for Range.SaveAsNamedTable.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TableStyle Class | IronXL C# .NET API",
+    "name": "TableStyle class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Styles.TableStyle.html",
+    "abstract": "The banded look of an Excel named table in C# comes from IronXL's TableStyle class. Pass a built-in preset such as TableStyleMedium2 or TableStyleDark3 to Range.SaveAsNamedTable, or TableStyle.None for no style. Instance flags ShowRowStripes, ShowColumnStripes, ShowFirstColumn, and ShowLastColumn tune the banding and emphasis on top of the chosen preset, and Name reports the style identifier.",
+    "description": "Reference for the IronXL TableStyle class in C#: built-in table presets plus ShowRowStripes and ShowColumnStripes flags for Range.SaveAsNamedTable.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nWorkBook workbook = WorkBook.Create();\nWorkSheet sheet = workbook.DefaultWorkSheet;\nsheet[\"A1:C4\"].SaveAsNamedTable(\"Sales\", true, TableStyle.TableStyleMedium2, true);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TableStyle live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TableStyle is a class in the IronXL.Styles namespace, shipped in IronXL.dll, with a base type of Object. It is passed to Range.SaveAsNamedTable to style a range that is saved as a named table."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you style an Excel named table in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Range.SaveAsNamedTable and pass a TableStyle preset such as TableStyle.TableStyleMedium2 for the tableStyle argument. Use TableStyle.None for an unstyled table, and set ShowRowStripes or ShowColumnStripes to control the banding."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What table style presets does IronXL provide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TableStyle exposes static fields matching Excel's gallery in light, medium, and dark families, each numbered, such as TableStyleLight1, TableStyleMedium2, and TableStyleDark3, plus None for no styling."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TableStyle : Object</code></pre>
   </div>
+    <!-- archetype-N:start TableStyle treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>The banded look of an Excel named table comes from <code>TableStyle</code>. When a range is saved as a named table, this type decides which banner of stripes, header emphasis, and column highlighting Excel paints over the data. A developer building a report or an exported dataset reaches for it to make a plain block of cells read as a real Excel table rather than loose values.</p>
+<p><code>TableStyle</code> is supplied to <code>Range.SaveAsNamedTable</code>, the call that promotes a selected range into a named table on the worksheet. The argument is optional, so a table can be created with the workbook default, or styled by passing one of the built-in presets that mirror Excel's own gallery. The style travels with the table once it is written, so the choice made here is what a user sees when the file is opened.</p>
+<p>The presets are exposed as static fields named after Excel's three families: light, medium, and dark, each numbered (<code>TableStyleLight1</code>, <code>TableStyleMedium2</code>, <code>TableStyleDark3</code>, and so on), with <code>None</code> for an unstyled table. Pass one of these fields straight into <code>SaveAsNamedTable</code> rather than constructing a style by hand. The instance properties tune the banding on top of the chosen preset: <code>ShowRowStripes</code> and <code>ShowColumnStripes</code> toggle the alternating bands, while <code>ShowFirstColumn</code> and <code>ShowLastColumn</code> emphasize the leading and trailing columns, and <code>Name</code> reports the underlying style identifier. The stripe and emphasis flags are nullable, so an unset flag defers to the preset's own default instead of forcing a value. The same presets and flags map directly onto the table styling a user would pick from Excel's ribbon, which keeps a generated table consistent with what the audience expects to see.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+WorkBook workbook = WorkBook.Create();
+WorkSheet sheet = workbook.DefaultWorkSheet;
+sheet[&quot;A1:C4&quot;].SaveAsNamedTable(&quot;Sales&quot;, true, TableStyle.TableStyleMedium2, true);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/named-table/">named table how-to</a> walks through creating a styled table, the <a href="https://ironsoftware.com/csharp/excel/examples/excel-style-cells-borders-fonts/">style cells, borders, and fonts example</a> shows the wider formatting surface that surrounds it, and the <a href="https://ironsoftware.com/csharp/excel/how-to/border-alignment/">border and alignment how-to</a> covers per-cell styling for tables that need finer control.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrPdfInput
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrPdfInput Class - IronOCR C# API Reference
+      v2 (human)     title:       OcrPdfInput: OCR a PDF in C#
+      v1 (algorithm) description: Feed a PDF into OCR in C# with the IronOCR OcrPdfInput class: load by path, bytes, or stream with a password, OcrContent mode, and page limits.
+      v2 (human)     description: Read a PDF with OCR in C# using the IronOCR OcrPdfInput: wrap a file, stream, or bytes, set the content mode, and restrict pages or regions.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrPdfInput Class | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrPdfInput
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrPdfInput Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR OcrPdfInput class in C#: the OcrInputBase that wraps a PDF for reading, with password, OcrContent, and page options.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrPdfInput Class | IronOCR C# API Reference",
+    "name": "OcrPdfInput class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrPdfInput.html",
+    "abstract": "Feeding a PDF into an OCR read in C# uses the IronOCR OcrPdfInput class, the input that wraps a PDF by path, byte array, stream, or IDocumentId. Each constructor takes an optional Password, a PdfContents value as OcrContent to set the content mode, a PageIndices sequence to limit pages, and a ContentAreas array to restrict regions. As an OcrInputBase it passes to IronTesseract.Read, and it implements IDisposable, so wrap it in a using.",
+    "description": "Reference for the IronOCR OcrPdfInput class in C#: the OcrInputBase that wraps a PDF for reading, with password, OcrContent, and page options.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrPdfInput live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrPdfInput is a class in the IronOcr namespace, shipped in IronOcr.dll. It derives from OcrInputBase and implements IDisposable, so it passes to IronTesseract.Read and should be wrapped in a using."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you OCR a PDF in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct an OcrPdfInput from a file path, byte array, or stream, optionally with a Password and a PdfContents OcrContent mode, then pass it to IronTesseract.Read. Use PageIndices to limit the pages and ContentAreas to restrict recognition to regions."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -278,6 +326,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class OcrPdfInput : OcrInputBase, IDisposable</code></pre>
   </div>
+    <!-- archetype-N:start OcrPdfInput treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Reach for <code>OcrPdfInput</code> to feed a PDF into an OCR read instead of an image. It wraps a PDF, by file path, byte array, stream, or an <code>IDocumentId</code>, so <code>IronTesseract</code> can recognize text across its pages the same way it reads a scan. It is the PDF-specific input alongside the image input types, and as an <code>OcrInputBase</code> it slots into the same <code>Read</code> call every other input uses.</p>
+<p>The constructors carry the options a PDF read needs. Each takes the source plus an optional <code>Password</code> for protected documents, a <code>PdfContents</code> value as <code>OcrContent</code> to choose whether to read embedded text, rendered pages, or both, a <code>PageIndices</code> sequence to limit the read to specific pages, and a <code>ContentAreas</code> array of rectangles to restrict recognition to regions of each page. The <code>OcrContent</code> property reports the content mode the input was built with. Because the type implements <code>IDisposable</code>, wrap it in a <code>using</code> so the document and its resources are released after the read.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/input-pdfs/">input PDFs how-to</a> covers reading from a PDF, and the <a href="https://ironsoftware.com/csharp/ocr/examples/make-pdf-searchable/">searchable PDF example</a> turns a read into a searchable document.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Reflection
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Reflection Class - IronWord C# API
+      v2 (human)     title:       Reflection: Mirrored Text Effect in C#
+      v1 (algorithm) description: Add a mirrored reflection to Word text in C# with the IronWord Reflection class: set StartingOpacity, EndingOpacity, BlurRadius, and positions.
+      v2 (human)     description: Make text in a Word document look like it sits on glass in C# with the IronWord Reflection class: a faded mirror image with a tunable blur.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Reflection Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Reflection
-   | C# Word API | IronWord ">
+    <meta name="title" content="Reflection Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord Reflection class in C#: the mirrored text effect set as TextEffect.ReflectionEffect, with opacity, blur, and position.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Reflection Class | IronWord C# API",
+    "name": "Reflection class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Reflection.html",
+    "abstract": "Adding a mirrored reflection to Word text in C# runs through the IronWord Reflection class. StartingOpacity, EndingOpacity, StartPosition, and EndPosition shape the fade, BlurRadius softens the mirror, and skew and scaling properties shear the copy. SetBlurRadius, SetDistanceFromText, and the position setters take a MeasurementUnit. A reflection attaches as the ReflectionEffect on a TextEffect.",
+    "description": "Reference for the IronWord Reflection class in C#: the mirrored text effect set as TextEffect.ReflectionEffect, with opacity, blur, and position.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\nusing IronWord.Models.Enums;\n\nvar reflection = new Reflection();\nreflection.StartingOpacity = 60;\nreflection.EndingOpacity = 0;\nreflection.SetBlurRadius(2, MeasurementUnit.Point);\nreflection.SetDistanceFromText(1, MeasurementUnit.Point);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Reflection live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Reflection is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object and is attached as the ReflectionEffect property of a TextEffect to mirror styled text."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you apply a reflection to text in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a Reflection, set its fade with StartingOpacity and EndingOpacity, soften it with SetBlurRadius, and assign it as the ReflectionEffect on a TextEffect. The position setters and blur method take a MeasurementUnit so the dimensions are unambiguous."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Reflection and Shadow in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Reflection produces a faded mirror image of the text beneath it, as if it sits on glass. Shadow casts a dark, offset copy behind the text. Both attach to a TextEffect, but through the ReflectionEffect and ShadowEffect properties respectively."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,22 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Reflection : Object</code></pre>
   </div>
+    <!-- archetype-N:start Reflection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Reflection</code> is the mirrored-image effect a developer attaches when text in a Word document should appear to reflect off a surface below it. It describes the faded copy that falls beneath the original, the polished touch on a title or heading that makes the type look like it is sitting on glass. A developer styling a document reaches for it when flat text needs a sense of depth, and it is the effect most easily confused with <code>Shadow</code>, which casts a dark offset rather than a faded mirror.</p>
+<p>A reflection is set as the <code>ReflectionEffect</code> on a <code>TextEffect</code>, so it is configured as part of a text style's effects rather than on its own. Build the reflection's geometry and fade once, attach it to the text effect, and the mirrored copy renders wherever that styled text appears.</p>
+<p>The fade is controlled by <code>StartingOpacity</code> and <code>EndingOpacity</code> together with <code>StartPosition</code> and <code>EndPosition</code>, which set where the reflection begins and ends and how it dissolves. <code>BlurRadius</code> softens the mirrored image, <code>DistanceFromText</code> pushes it away from the original, and <code>Alignment</code> and <code>FadeDirectionAngle</code> orient it. The skew and scaling properties (<code>HorizontalSkewAngle</code>, <code>VerticalSkewAngle</code>, <code>HorizontalScalingFactor</code>, <code>VerticalScalingFactor</code>) shear and size the reflected copy, while <code>SchemeColor</code> and <code>DirectionAngle</code> tune its tint and direction. Because Word measurements can be expressed in several units, the <code>SetBlurRadius</code>, <code>SetDistanceFromText</code>, <code>SetStartPosition</code>, and <code>SetEndPosition</code> methods take a value plus a <code>MeasurementUnit</code>, and the matching <code>Get</code> methods read those values back in a chosen unit. Prefer the <code>Set</code> methods over the raw properties whenever the unit matters, so the dimension is recorded unambiguously.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+using IronWord.Models.Enums;
+
+var reflection = new Reflection();
+reflection.StartingOpacity = 60;
+reflection.EndingOpacity = 0;
+reflection.SetBlurRadius(2, MeasurementUnit.Point);
+reflection.SetDistanceFromText(1, MeasurementUnit.Point);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-reflection-effect/">reflection text effect how-to</a> walks through applying it, the <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-shadow-effect/">shadow text effect how-to</a> covers the related offset effect, and the <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-glow-effect/">glow text effect how-to</a> shows another text styling option.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

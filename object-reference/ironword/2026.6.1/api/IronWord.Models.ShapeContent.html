@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ShapeContent
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ShapeContent Class - IronWord C# API
+      v2 (human)     title:       ShapeContent: Inline Shapes in Word with C#
+      v1 (algorithm) description: Add an inline shape to a Word run in C# with the IronWord ShapeContent class: build from ShapeType and RectangleF, set fill, size, and wrap.
+      v2 (human)     description: Embed a figure that flows with text in a Word document in C# with the IronWord ShapeContent class: a rectangle, ellipse, or freeform path.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ShapeContent Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ShapeContent
-   | C# Word API | IronWord ">
+    <meta name="title" content="ShapeContent Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord ShapeContent class in C#: the inline shape added to a Run, with construction, appearance, sizing, and transforms.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ShapeContent Class | IronWord C# API",
+    "name": "ShapeContent class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.ShapeContent.html",
+    "abstract": "Adding an inline shape to a Word run in C# runs through the IronWord ShapeContent class. Construct one from a ShapeType and a RectangleF, or from a List of IPathSegment for freeform paths. FillColor, StrokeColor, and Type set appearance, the SetHeight, SetWidth, and DistanceFrom methods size and place it in a MeasurementUnit, and a Run accepts it through AddShape. ToJson serializes it.",
+    "description": "Reference for the IronWord ShapeContent class in C#: the inline shape added to a Run, with construction, appearance, sizing, and transforms.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\nusing IronWord.Models.Enums;\n\nvar shape = new ShapeContent(ShapeType.Rectangle, new RectangleF(0, 0, 100, 50));\nshape.FillColor = Color.LightBlue;\nnew Run(shape);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ShapeContent live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ShapeContent is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from ContentElement and implements IWordShapeObject and IShape, representing an inline shape added to a Run."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add an inline shape to a document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a ShapeContent from a ShapeType and a RectangleF, set FillColor and StrokeColor if needed, then add it to a Run with AddShape or the Run constructor. ExtractShapes reads the inline shapes back as a List of ShapeContent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ShapeContent and Shape in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ShapeContent is an inline shape that flows with the text inside a Run. Shape is a drawing positioned on the page with its own coordinates. Use ShapeContent when the figure should move with the surrounding content and Shape for fixed page graphics."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -187,6 +251,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ShapeContent : ContentElement, IWordShapeObject, IShape, IWordDocumentObject, IDocumentObject, ICloneable, IColored, IWordAbsolute, IAbsolute, IJsonSerializable</code></pre>
   </div>
+    <!-- archetype-N:start ShapeContent treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>ShapeContent</code> is the inline shape a developer adds inside a run so a figure flows with the surrounding text. It is the drawing that travels with the words, a rectangle, ellipse, or freeform path that sits in the text stream rather than being pinned to a fixed spot on the page. A developer reaches for it to embed a small graphic alongside content, and it is paired with <code>Shape</code>, the page-positioned drawing that does not flow with text.</p>
+<p>A run owns its inline shapes: a <code>Run</code> accepts <code>ShapeContent</code> items in its constructor, <code>AddShape</code> inserts one, and <code>ExtractShapes</code> reads them back as a <code>List&lt;ShapeContent&gt;</code>. A developer creates a shape from a <code>ShapeType</code> and a bounding <code>RectangleF</code>, optionally passing fill and stroke <code>Color</code> values, or builds a freeform outline by passing a <code>List&lt;IPathSegment&gt;</code>. That places it in the content-building step, between the run and the path geometry it may carry.</p>
+<p>The members group by job. Construction comes from the <code>ShapeType</code> plus <code>RectangleF</code> constructors or the path-based ones, and <code>Points</code> exposes the freeform geometry as a <code>List&lt;IPathSegment&gt;</code>. Appearance is set by <code>FillColor</code>, <code>StrokeColor</code>, <code>StrokeWeight</code>, and <code>Type</code>, with <code>Name</code>, <code>Id</code>, and <code>Index</code> identifying the shape. Sizing and placement use <code>Height</code>, <code>Width</code>, the distance-from-edge properties such as <code>DistanceFromTop</code> and <code>DistanceFromLeft</code>, <code>HorizontalAlignment</code>, and <code>VerticalAlignment</code>, all available as <code>Get</code> and <code>Set</code> method forms that take a <code>MeasurementUnit</code>, plus <code>BoundingBox</code>, <code>ZOrder</code>, and <code>ZPosition</code> for stacking and bounds. Transforms cover <code>Angle</code>, <code>Rotate</code>, <code>FlipHorizontal</code>, <code>FlipVertical</code>, and <code>Resize</code>, while <code>TextWrapBehavior</code> controls how text flows around it and <code>ToJson</code> serializes it. Prefer the <code>Set</code> methods over the raw properties whenever the unit matters.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+using IronWord.Models.Enums;
+
+var shape = new ShapeContent(ShapeType.Rectangle, new RectangleF(0, 0, 100, 50));
+shape.FillColor = Color.LightBlue;
+new Run(shape);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-image/">add image how-to</a> covers placing visual content inline, the <a href="https://ironsoftware.com/csharp/word/how-to/add-text/">add text how-to</a> shows building runs, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> explains the document model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

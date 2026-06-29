@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class WorkBook
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       WorkBook Class - IronXL C# API Reference
+      v2 (human)     title:       WorkBook: Open & Save Excel Files in C#
+      v1 (algorithm) description: Open, edit, and save Excel files in C# with the IronXL WorkBook class. Load a file or Create one, reach its WorkSheets, then SaveAs to write it back.
+      v2 (human)     description: Work with an entire Excel document in C# through the IronXL WorkBook class: load or create a file, get its worksheets, edit, and save in one object.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>WorkBook Class | IronXL C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class WorkBook
-   | C# Excel API | IronXL ">
+    <meta name="title" content="WorkBook Class | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL WorkBook class in C#: load or create an Excel file, access its WorkSheets collection, set metadata, and save with SaveAs.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "WorkBook Class | IronXL C# API Reference",
+    "name": "WorkBook class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.WorkBook.html",
+    "abstract": "Opening, editing, and saving an Excel file in C# runs through the IronXL WorkBook class. Load reads an existing XLSX, XLS, or CSV file from a path, stream, or byte array, while the static Create starts a new document. A workbook exposes its sheets through the WorkSheets collection, GetWorkSheet, and CreateWorkSheet, holds document properties in Metadata, and writes back with Save or SaveAs.",
+    "description": "Reference for the IronXL WorkBook class in C#: load or create an Excel file, access its WorkSheets collection, set metadata, and save with SaveAs.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nWorkBook workBook = WorkBook.Load(\"sample.xlsx\");\nWorkSheet workSheet = workBook.GetWorkSheet(\"Sheet1\");\nworkSheet[\"A1\"].Value = \"Updated\";\nworkBook.SaveAs(\"output.xlsx\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does WorkBook live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WorkBook is a class in the IronXL namespace, shipped in IronXL.dll, and derives from Object. Get one from WorkBook.Load or WorkBook.Create, then reach its sheets through the WorkSheets collection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you open an existing Excel file in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call the static WorkBook.Load with a file path, byte array, or Stream. It reads XLSX, XLS, CSV, and other supported formats and returns a WorkBook you can edit and then write back with Save or SaveAs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Save and SaveAs on a WorkBook?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Save writes the workbook back to the file it was loaded from, while SaveAs writes to a new path you supply. Both pick the output format from the file extension, or you can pass a SavingOptions argument."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -153,6 +217,20 @@ new sheets and most other Excel programming operations.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class WorkBook : Object</code></pre>
   </div>
+    <!-- archetype-N:start WorkBook treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>WorkBook</code> is the object a developer holds for the whole span of an Excel job in C#, from opening or creating a file through editing it and saving it back out. It models a single spreadsheet document, its worksheets, and the metadata around it, so most IronXL code starts by getting a <code>WorkBook</code> and ends by saving one. It is the type a search like &quot;C# Excel workbook&quot; lands on.</p>
+<p>Open an existing file with <code>WorkBook.Load</code>, which accepts a path, a byte array, or a <code>Stream</code> and reads <code>XLSX</code>, <code>XLS</code>, <code>CSV</code>, and other supported formats. Start a fresh document instead with the static <code>WorkBook.Create</code>, optionally passing an <code>ExcelFileFormat</code>. Once a workbook is in hand, reach into its sheets through the <code>WorkSheets</code> collection, <code>GetWorkSheet</code> by name, or <code>CreateWorkSheet</code> to add one, and remove a sheet with <code>RemoveWorkSheet</code>.</p>
+<p>The everyday surface is small. <code>WorkSheets</code> exposes the sheets for iteration, <code>Metadata</code> carries document properties like author and title, and <code>SetActiveTab</code> chooses which sheet opens first. When the edits are done, persist with <code>SaveAs</code> for a new file path or <code>Save</code> to write back to the loaded source, and choose the output format through the file extension or a <code>SavingOptions</code> argument. For protected files, <code>Password</code> and <code>Encrypt</code> apply a password before saving. A workbook obtained from <code>Load</code> and one from <code>Create</code> behave the same way from this point on, so the read and write paths converge on the same object.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+WorkBook workBook = WorkBook.Load(&quot;sample.xlsx&quot;);
+WorkSheet workSheet = workBook.GetWorkSheet(&quot;Sheet1&quot;);
+workSheet[&quot;A1&quot;].Value = &quot;Updated&quot;;
+workBook.SaveAs(&quot;output.xlsx&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/load-spreadsheet/">load spreadsheet how-to</a> walks through opening files, the <a href="https://ironsoftware.com/csharp/excel/how-to/create-spreadsheet/">create spreadsheet how-to</a> starts a new workbook, and the <a href="https://ironsoftware.com/csharp/excel/examples/read-excel/">read Excel example</a> shows a full read.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class IronBaseArchive
-   | C# Zip API | IronZIP </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IronBaseArchive Class - IronZip C# API
+      v2 (human)     title:       IronBaseArchive: Shared C# Archive Contract
+      v1 (algorithm) description: IronBaseArchive is the abstract base for IronZip archive types in C#: ZIP, TAR, gzip, and bzip2. Reference its shared Save, SaveAs, and Dispose contract.
+      v2 (human)     description: Handle ZIP, TAR, gzip, and bzip2 archives uniformly in C# through the IronZip IronBaseArchive base class and its shared save and dispose contract.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IronBaseArchive Class | IronZip C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class IronBaseArchive
-   | C# Zip API | IronZIP ">
+    <meta name="title" content="IronBaseArchive Class | IronZip C# API Reference">
+    <meta name="description" content="Reference for the IronZip IronBaseArchive base class in C#: the shared Save, SaveAs, and Dispose contract behind ZIP, TAR, gzip, and bzip2.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IronBaseArchive Class | IronZip C# API Reference",
+    "name": "IronBaseArchive class | IronZip C# API",
+    "url": "https://ironsoftware.com/csharp/zip/object-reference/api/IronZip.IronBaseArchive.html",
+    "abstract": "Handling IronZip archives uniformly in C# runs through the abstract IronBaseArchive base class. Its four subclasses, IronZipArchive, IronTarArchive, IronGZipArchive, and IronBZip2Archive, share the abstract Save and SaveAs methods and the virtual Dispose. Type a variable as IronBaseArchive to stay format-agnostic across ZIP, TAR, gzip, and bzip2, or use a concrete subclass for its format-specific helpers.",
+    "description": "Reference for the IronZip IronBaseArchive base class in C#: the shared Save, SaveAs, and Dispose contract behind ZIP, TAR, gzip, and bzip2.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronZip",
+      "url": "https://ironsoftware.com/csharp/zip/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronZip;\n\nIronBaseArchive archive = new IronTarArchive();\narchive.SaveAs(\"output.tar\");\narchive.Dispose();"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IronBaseArchive live in the IronZip API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IronBaseArchive is an abstract class in the IronZip namespace, shipped in IronZip.dll. It derives from Object and implements IDisposable, and is the base type for all IronZip archive classes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What classes inherit from IronBaseArchive in IronZip?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Four concrete archive classes derive from it: IronZipArchive (.zip), IronTarArchive (.tar), IronGZipArchive (.gz), and IronBZip2Archive (.bz2). Each implements the abstract Save and SaveAs methods for its own format."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you construct IronBaseArchive directly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. IronBaseArchive is abstract and has only a protected constructor. Create one of the concrete subclasses, then assign it to an IronBaseArchive variable when you need format-agnostic save and dispose handling."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -158,6 +222,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class IronBaseArchive : Object, IDisposable</code></pre>
   </div>
+    <!-- archetype-N:start IronBaseArchive treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>The save-and-dispose contract shared by every IronZip archive type lives in <code>IronBaseArchive</code>. It is abstract, so a developer never constructs one directly; instead they create one of the four concrete subclasses and rely on the shared contract when handling archives uniformly. The subclasses are <code>IronZipArchive</code> for ZIP (<code>.zip</code>), <code>IronTarArchive</code> for TAR (<code>.tar</code>), <code>IronGZipArchive</code> for gzip (<code>.gz</code>), and <code>IronBZip2Archive</code> for bzip2 (<code>.bz2</code>).</p>
+<p>The contract is small and deliberate. <code>Save</code> and <code>SaveAs(string Path)</code> are abstract, so each subclass writes its own format. <code>Dispose</code> is virtual: the base releases the internal stream, and a subclass overrides it when it has extra resources to free. The shared shape means code that compresses or stores a file can accept an <code>IronBaseArchive</code> parameter and stay format-agnostic, deferring the choice of ZIP, TAR, gzip, or bzip2 to the caller.</p>
+<p>When a single format is known, work with the concrete type for its format-specific helpers (<code>IronZipArchive</code> adds editing and encryption that the simpler archives do not). When several formats flow through one code path, type the variable as <code>IronBaseArchive</code> and call the shared <code>Save</code>, <code>SaveAs</code>, and <code>Dispose</code>. The base also owns the internal stream that backs an open archive, which is why disposal matters: an undisposed archive can hold the underlying file or memory until the process ends. A <code>using</code> statement on the concrete type, or an explicit <code>Dispose</code> call through the base reference, releases it promptly.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronZip;
+
+IronBaseArchive archive = new IronTarArchive();
+archive.SaveAs(&quot;output.tar&quot;);
+archive.Dispose();</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/zip/get-started/">get started guide</a> introduces the archive types, while the <a href="https://ironsoftware.com/csharp/zip/examples/create-zip/">create ZIP example</a> and <a href="https://ironsoftware.com/csharp/zip/examples/create-tar/">create TAR example</a> show two concrete subclasses in use.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrInputBase
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrInputBase Class - IronOCR C# API
+      v2 (human)     title:       OcrInputBase: OCR Image Filters in C#
+      v1 (algorithm) description: Preprocess OCR images in C# with the IronOCR OcrInputBase class: Deskew, Binarize, DeNoise, and ApplyMultipleFilters on every input type.
+      v2 (human)     description: Clean up images before OCR in C# with the IronOCR OcrInputBase class: the deskew, denoise, contrast, and color filters shared by every input.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrInputBase Class | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrInputBase
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrInputBase Class | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR OcrInputBase class in C#: the shared image-filter and page surface for OcrImageInput and OcrInput.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrInputBase Class | IronOCR C# API",
+    "name": "OcrInputBase class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrInputBase.html",
+    "abstract": "Image preprocessing for OCR in IronOCR lives on the OcrInputBase class in C#, the shared parent of OcrImageInput and OcrInput. It exposes the TargetDPI and Title properties and the filter methods a developer calls on an input, grouped into thresholding, geometry such as Deskew and Rotate, cleanup such as DeNoise and Sharpen, and color handling, plus ApplyMultipleFilters and page operations like GetPages and RemovePage. It is the type IronTesseract.Read accepts.",
+    "description": "Reference for the IronOCR OcrInputBase class in C#: the shared image-filter and page surface for OcrImageInput and OcrInput.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using var input = new OcrImageInput(\"scan.png\");\ninput.Deskew();\ninput.DeNoise();\nOcrResult result = ironTesseract.Read(input);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrInputBase live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrInputBase is the base class in the IronOcr namespace, shipped in IronOcr.dll. It derives from Object, is the parent of OcrImageInput and OcrInput, and is the parameter type accepted by IronTesseract.Read."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you clean up an image before OCR in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call the inherited filter methods on the input, such as Deskew, Binarize, DeNoise, and Contrast, or run a set at once with ApplyMultipleFilters. Apply only the filters the source needs, then pass the input to IronTesseract.Read."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between OcrInputBase and OcrInput?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrInputBase is the abstract parent that defines the image filters and page operations. OcrInput and OcrImageInput are the concrete inputs you construct; OcrInput holds many pages and OcrImageInput wraps a single image."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -157,6 +221,18 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class OcrInputBase : Object, IDisposable</code></pre>
   </div>
+    <!-- archetype-N:start OcrInputBase treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Image preprocessing in IronOCR, every deskew, denoise, and color fix that lifts recognition accuracy, lives on <code>OcrInputBase</code>. It is the shared parent of the concrete inputs <code>OcrImageInput</code> and <code>OcrInput</code>, so the filter and page operations described here are the ones a developer actually calls on whichever input was built, and the type <code>IronTesseract.Read</code> accepts.</p>
+<p>A developer rarely names <code>OcrInputBase</code> directly; its value is the surface inherited by the inputs. Two properties carry settings: <code>TargetDPI</code> declares the working resolution and <code>Title</code> labels the input. The filter methods group by job. Thresholding and contrast covers <code>Binarize</code>, <code>Contrast</code>, and <code>AdaptiveThreshold</code>. Geometry covers <code>Deskew</code>, <code>Rotate</code>, <code>Scale</code>, and <code>HoughTransformStraighten</code> for tilted scans. Cleanup covers <code>DeNoise</code>, <code>Despeckle</code>, <code>Sharpen</code>, <code>EnhanceResolution</code>, and the morphology pair-set <code>Dilate</code>, <code>Erode</code>, <code>Open</code>, and <code>Close</code>. Color handling covers <code>ReplaceColor</code>, <code>SelectTextColor</code>, <code>SelectTextColors</code>, <code>Invert</code>, and <code>ToGrayScale</code>. <code>ApplyMultipleFilters</code> runs a chosen <code>OcrFilters</code> combination in one call.</p>
+<p>Most filter methods return the same <code>OcrInputBase</code>, so corrections chain fluently before the read, and many take an optional strength argument such as the deskew angle or a contrast amount when the default needs tuning. Page operations sit alongside the filters: <code>GetPages</code> and <code>PageCount</code> enumerate the loaded pages, <code>RemovePage</code> and <code>RemovePages</code> drop pages from the input, <code>WithTitle</code> sets a label inline, and <code>Dispose</code> frees the images once the read is finished. Apply only the filters a source actually needs, since over-filtering a clean image hurts accuracy more than it helps, then pass the prepared input to <code>Read</code> and read the words off the returned <code>OcrResult</code>.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/image-quality-correction/">image quality how-to</a> walks through these filters, the <a href="https://ironsoftware.com/csharp/ocr/how-to/filter-wizard/">filter wizard how-to</a> picks a combination, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/input-images/">input images how-to</a> builds the input they run on.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using var input = new OcrImageInput(&quot;scan.png&quot;);
+input.Deskew();
+input.DeNoise();
+OcrResult result = ironTesseract.Read(input);</code></pre></div>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

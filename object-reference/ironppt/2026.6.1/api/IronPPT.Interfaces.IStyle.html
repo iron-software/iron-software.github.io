@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IStyle
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IStyle Interface - IronPPT C# API Reference
+      v2 (human)     title:       IStyle: Reusable Slide Styles in C#
+      v1 (algorithm) description: IStyle is the IronPPT style contract in C#: StyleName, BasedOn, StyleType, plus TextStyle and ParagraphStyle for reusable formatting.
+      v2 (human)     description: Define a reusable slide style in C# through the IronPPT IStyle contract: name it, base it on another, and bundle its text and paragraph formatting.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IStyle Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IStyle
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IStyle Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT IStyle interface in C#: the reusable style contract implemented by Style, bundling TextStyle and ParagraphStyle.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IStyle Interface | IronPPT C# API",
+    "name": "IStyle interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IStyle.html",
+    "abstract": "IStyle is the contract for a reusable named style in an IronPPT document in C#. StyleName, BasedOn, NextParagraphStyle, IsPrimaryStyle, and StyleType describe the style, while TextStyle (an ITextStyle) and ParagraphStyle (an IParagraphStyle) carry the run-level and paragraph-level formatting. Style implements IStyle, so formatting is defined once and reused.",
+    "description": "Reference for the IronPPT IStyle interface in C#: the reusable style contract implemented by Style, bundling TextStyle and ParagraphStyle.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IStyle style = document.Styles.First();\nstyle.TextStyle.IsBold = true;\nstyle.StyleName = \"Heading\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IStyle live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IStyle is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It does not extend another interface; it bundles an ITextStyle and an IParagraphStyle into a single named style definition."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IStyle in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Style implements IStyle. You edit a Style to define formatting a document reuses, setting its TextStyle and ParagraphStyle and giving it a StyleName."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IStyle and ITextStyle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IStyle is the whole named style: it has a StyleName, a BasedOn parent, and both a TextStyle and a ParagraphStyle. ITextStyle is only the run-level formatting (font, bold, color, underline) and is exposed as the TextStyle property of an IStyle."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +208,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IStyle</code></pre>
   </div>
+    <!-- archetype-N:start IStyle treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>Named formatting that several paragraphs and runs can share lives behind <code>IStyle</code>. It is the contract for a reusable style definition, the kind a developer applies to many elements so a heading or body look is defined once and reused, rather than setting font, color, and spacing element by element.</p>
+<p>A style is reached and edited through this contract: <code>Style</code> is the concrete implementor in IronPPT, and a developer works with one to set up the formatting a document reuses. The interface pulls the two halves of a style, its run-level look and its paragraph-level layout, together so they travel as a single named unit. Defining the look in one place means a later change to that style updates every paragraph that points at it, instead of forcing a sweep over each element.</p>
+<p>The properties split into identity and content. <code>StyleName</code> is the human-readable name, <code>BasedOn</code> names a parent style to inherit from, <code>NextParagraphStyle</code> names the style applied to the following paragraph, and <code>IsPrimaryStyle</code> flags the primary style. <code>StyleType</code> is a <code>Nullable&lt;StyleValues&gt;</code> recording what kind of style this is. The two content members carry the actual formatting: <code>TextStyle</code> is an <code>ITextStyle</code> (font, bold, italic, color, underline, and spacing for runs) and <code>ParagraphStyle</code> is an <code>IParagraphStyle</code> (paragraph-level layout). Setting both on one style and giving it a <code>StyleName</code> produces a definition the document can reuse across its paragraphs.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IStyle style = document.Styles.First();
+style.TextStyle.IsBold = true;
+style.StyleName = &quot;Heading&quot;;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> sets paragraph formatting, the <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> places styled text, and the <a href="https://ironsoftware.com/csharp/ppt/tutorials/slide-element/">slide element tutorial</a> covers slide elements.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

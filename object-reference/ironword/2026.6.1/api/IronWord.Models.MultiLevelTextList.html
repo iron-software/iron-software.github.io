@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class MultiLevelTextList
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       MultiLevelTextList - IronWord C# API
+      v2 (human)     title:       MultiLevelTextList: Word Lists in C#
+      v1 (algorithm) description: Build numbered and bulleted Word lists in C# with the IronWord MultiLevelTextList class: add ListItem entries, set ListType, and control indentation.
+      v2 (human)     description: Create multi-level numbered or bulleted lists in a Word document in C# with the IronWord MultiLevelTextList class, nesting items for outlines.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>MultiLevelTextList Class | IronWord .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class MultiLevelTextList
-   | C# Word API | IronWord ">
+    <meta name="title" content="MultiLevelTextList Class | IronWord .NET API">
+    <meta name="description" content="Reference for the IronWord MultiLevelTextList class in C#: collect ListItem entries, choose numbering or bullets, and set per-level indentation.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "MultiLevelTextList Class | IronWord .NET API",
+    "name": "MultiLevelTextList class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.MultiLevelTextList.html",
+    "abstract": "Building numbered, bulleted, or multi-level lists in a Word document in C# runs through the IronWord MultiLevelTextList class. It collects ListItem entries through AddItem, RemoveItem, and Clear, sets numbering or bullets with ListType, and controls per-level layout with SetStartIndentation and SetHangingIndentation. Attach the finished list to a WordDocument with AddMultiLevelTextList.",
+    "description": "Reference for the IronWord MultiLevelTextList class in C#: collect ListItem entries, choose numbering or bullets, and set per-level indentation.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var list = new MultiLevelTextList();\nlist.AddItem(new ListItem(new Paragraph(\"First\")));\nlist.AddItem(new ListItem(new Paragraph(\"Second\")));\ndocument.AddMultiLevelTextList(list);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does MultiLevelTextList live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MultiLevelTextList is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from ParentElement, and a WordDocument exposes the lists added to it through its MultiLevelTextLists property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create a numbered or bulleted list in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a MultiLevelTextList, add ListItem entries with AddItem, and set ListType for numbering or bullets. Then call AddMultiLevelTextList on the WordDocument so the list renders with its numbering and indentation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set indentation on a MultiLevelTextList in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call SetStartIndentation and SetHangingIndentation, passing a value and a MeasurementUnit. Read the current values back with GetStartIndentation and GetHangingIndentation in the unit you request."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -213,6 +277,18 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class MultiLevelTextList : ParentElement, IWordDocumentObject, IDocumentObject, ICloneable, IParent&lt;IWordDocumentObjectCollection, IWordDocumentObject&gt;</code></pre>
   </div>
+    <!-- archetype-N:start MultiLevelTextList treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>MultiLevelTextList</code> builds the numbered or bulleted lists in a Word document, including outlines that nest several levels deep. It gathers the <code>ListItem</code> entries that make up the list and carries the formatting that decides whether they appear as numbers or bullets, how they are justified, and how far each level indents.</p>
+<p>A developer assembles the list, then attaches it to a <code>WordDocument</code> with <code>AddMultiLevelTextList</code>; the document's <code>MultiLevelTextLists</code> property holds the lists already added, and <code>Index</code> reports a list's position among them. Entries come from <code>ListItem</code> objects, each built from a <code>Paragraph</code>, and a nested list lives beneath an item to form the next level. This is the type behind a checklist, a legal outline, or any ordered series in the body.</p>
+<p>Add and remove entries with <code>AddItem</code>, <code>RemoveItem</code>, and <code>Clear</code>, all of which take a <code>ListItem</code>. <code>Items</code> exposes the current entries, so you can inspect or reorder them before the list is rendered. <code>ListType</code> selects numbering versus bullets, <code>Justification</code> aligns the text, and <code>SymbolText</code> with <code>SymbolTextFontName</code> set the bullet glyph and its font for a level. <code>StartNumberingValue</code> chooses the first number, useful when a list resumes counting from an earlier section, and <code>NumberingId</code> ties related lists together so they share one numbering sequence across breaks. Indentation is controlled in real units: <code>SetStartIndentation</code> and <code>SetHangingIndentation</code> take a value plus a <code>MeasurementUnit</code>, and the matching <code>GetStartIndentation</code> and <code>GetHangingIndentation</code> read them back in the unit you ask for. Build the entries before attaching the list so the numbering and indentation are settled when the document renders.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var list = new MultiLevelTextList();
+list.AddItem(new ListItem(new Paragraph(&quot;First&quot;)));
+list.AddItem(new ListItem(new Paragraph(&quot;Second&quot;)));
+document.AddMultiLevelTextList(list);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/examples/add-list/">add list example</a> builds a numbered list, the <a href="https://ironsoftware.com/csharp/word/examples/add-bullet-list/">add bullet list example</a> demonstrates the bulleted form, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> shows how lists sit within a document.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

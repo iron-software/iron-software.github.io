@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class SpacingBetweenLines
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       SpacingBetweenLines - IronWord C# API
+      v2 (human)     title:       SpacingBetweenLines: Paragraph Spacing in C#
+      v1 (algorithm) description: Set Word paragraph spacing in C# with the IronWord SpacingBetweenLines class: Before, After, Line, and LineRule plus auto-spacing options.
+      v2 (human)     description: Control the gap above, below, and between lines of a Word paragraph in C# with the IronWord SpacingBetweenLines class, in points or line units.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>SpacingBetweenLines Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class SpacingBetweenLines
-   | C# Word API | IronWord ">
+    <meta name="title" content="SpacingBetweenLines Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord SpacingBetweenLines class in C#: paragraph spacing with Before, After, Line, LineRule, and auto-spacing settings.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "SpacingBetweenLines Class | IronWord C# API",
+    "name": "SpacingBetweenLines class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.SpacingBetweenLines.html",
+    "abstract": "Controlling paragraph spacing in a Word document in C# runs through the IronWord SpacingBetweenLines class. Before and After set the space above and below a paragraph, BeforeLines and AfterLines express it in line units, BeforeAutoSpacing and AfterAutoSpacing defer to Word's defaults, and Line with LineRule sets and interprets the spacing between lines within the paragraph.",
+    "description": "Reference for the IronWord SpacingBetweenLines class in C#: paragraph spacing with Before, After, Line, LineRule, and auto-spacing settings.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nvar spacing = new SpacingBetweenLines();\nspacing.Before = 120;\nspacing.After = 120;\nspacing.Line = 240;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does SpacingBetweenLines live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SpacingBetweenLines is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object and gathers a paragraph's before, after, and line-spacing settings in one configuration object."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set paragraph spacing in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a SpacingBetweenLines, set Before and After for the gaps above and below the paragraph, and set Line with LineRule for the spacing between lines. Use BeforeAutoSpacing and AfterAutoSpacing to defer to Word's automatic spacing instead."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does LineRule do on SpacingBetweenLines?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LineRule decides how the Line value is interpreted: as an exact line height, a minimum height, or a multiple of single spacing. Pair Line with LineRule so the line-spacing value is read the way it was intended."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +213,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class SpacingBetweenLines : Object</code></pre>
   </div>
+    <!-- archetype-N:start SpacingBetweenLines treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Paragraph spacing, the gap above and below a paragraph and the leading between its lines, is described by <code>SpacingBetweenLines</code>. A developer adjusts it to open up or tighten the vertical rhythm of a document, adding breathing room between paragraphs or controlling line height within one. It is the object that gathers every spacing setting for a block of text in one place, so a layout decision becomes a few property assignments rather than scattered tweaks.</p>
+<p>This object collects the before, after, and line-spacing values that govern how a paragraph breathes, so a developer configures it as part of setting a paragraph's appearance and applies that spacing where the paragraph is styled. It keeps the spacing concern together rather than splintering it across unrelated properties.</p>
+<p><code>Before</code> and <code>After</code> set the space above and below the paragraph, while <code>BeforeLines</code> and <code>AfterLines</code> express that same spacing in line units instead of an absolute measure. <code>BeforeAutoSpacing</code> and <code>AfterAutoSpacing</code> hand the decision to Word's automatic spacing, useful when the document should follow built-in defaults rather than fixed gaps. <code>Line</code> sets the spacing between lines within the paragraph, and <code>LineRule</code> decides how that <code>Line</code> value is interpreted, whether as an exact height, a minimum, or a multiple. Set <code>Before</code> and <code>After</code> for fixed paragraph gaps, switch on the auto-spacing properties to defer to Word's defaults, and pair <code>Line</code> with <code>LineRule</code> so the line-height value is read the way it was intended.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+var spacing = new SpacingBetweenLines();
+spacing.Before = 120;
+spacing.After = 120;
+spacing.Line = 240;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-text/">add text how-to</a> covers placing paragraphs, the <a href="https://ironsoftware.com/csharp/word/how-to/add-style-text/">style text how-to</a> walks through formatting them, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> explains the document model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

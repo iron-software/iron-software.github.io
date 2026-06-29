@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class IdentifierDefinition
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IdentifierDefinition - IronBarcode C# API
+      v2 (human)     title:       IdentifierDefinition: Parse Fields in C#
+      v1 (algorithm) description: Define a structured-data field in C# with IronBarcode IdentifierDefinition: Identifier, Format, Length, MaxLength, IsVariableLength, and Validator.
+      v2 (human)     description: Describe how a GS1 or structured barcode field is recognized in C# with IronBarcode IdentifierDefinition: its code, format, length, and validator.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IdentifierDefinition | IronBarcode .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class IdentifierDefinition
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="IdentifierDefinition | IronBarcode .NET API">
+    <meta name="description" content="Reference for the IronBarcode IdentifierDefinition class in C#: the Identifier, Format, length rules, and Validator that define one parsed field.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IdentifierDefinition | IronBarcode .NET API",
+    "name": "IdentifierDefinition class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.IdentifierDefinition.html",
+    "abstract": "IdentifierDefinition describes one field of a structured barcode payload such as GS1 in C# with IronBarcode. Identifier is the field code, Description and Format describe its content, and Length, IsVariableLength, and MaxLength give its size rules. Validator, a Func of string to ValidationResult, checks a candidate value so the parser can recognize and validate each field while building ParsedElement results.",
+    "description": "Reference for the IronBarcode IdentifierDefinition class in C#: the Identifier, Format, length rules, and Validator that define one parsed field.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nConsole.WriteLine($\"{definition.Identifier}: {definition.Description}\");\nValidationResult check = definition.Validator(candidate);\nConsole.WriteLine(check.IsValid);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IdentifierDefinition live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IdentifierDefinition is a class in the IronBarCode namespace, shipped in IronBarCode.dll, with base type Object. It supports parsing structured payloads by describing the rules for a single identifier field."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does IdentifierDefinition describe the size of a field in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Length gives the fixed width of the field, IsVariableLength flags fields whose length can vary, and MaxLength caps how far a variable field may run. Identifier holds the code that introduces the field and Format describes its expected content."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you validate a field value with IdentifierDefinition?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call the Validator property, a Func of string to ValidationResult, with the candidate value. It returns a ValidationResult that reports whether the value is well formed, which the parser uses while turning a payload into ParsedElement objects."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class IdentifierDefinition : Object</code></pre>
   </div>
+    <!-- archetype-N:start IdentifierDefinition treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a structured barcode payload such as a GS1 string needs to be split into named fields, <code>IdentifierDefinition</code> is the rule that describes one of those fields. Structured formats prefix each value with an identifier code that says what the value is and how long it runs, and a definition captures that contract for a single identifier so the parser knows where one field ends and the next begins. A developer works with these definitions when reading or validating application-identifier data rather than treating a barcode as one opaque string.</p>
+<p>A definition states the shape of its field. <code>Identifier</code> is the code that introduces the field, <code>Description</code> is a human-readable label for it, and <code>Format</code> describes the expected content. Length is expressed by <code>Length</code> for fixed-width fields, with <code>IsVariableLength</code> flagging fields that can vary and <code>MaxLength</code> capping how far a variable field may run. These together let the parser carve a payload into the right pieces without guessing.</p>
+<p>Validation rides on <code>Validator</code>, a <code>Func&lt;string, ValidationResult&gt;</code> that checks a candidate value and returns a <code>ValidationResult</code> reporting whether it is well formed. A developer reads these properties to understand how a field is recognized and constrained, and the resulting <code>ParsedElement</code> objects carry the data each definition extracted. Treat the definition as the read-only description of a field's rules. The <a href="https://ironsoftware.com/csharp/barcode/how-to/checksum-and-format-validation/">checksum and format validation how-to</a> walks through validating structured values, and the <a href="https://ironsoftware.com/csharp/barcode/how-to/output-data-formats/">output data formats how-to</a> shows how parsed fields are surfaced.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+Console.WriteLine($&quot;{definition.Identifier}: {definition.Description}&quot;);
+ValidationResult check = definition.Validator(candidate);
+Console.WriteLine(check.IsValid);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/tutorials/reading-barcodes/">reading barcodes tutorial</a> covers the wider read and parse workflow.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -22,6 +22,11 @@ const CWD = dirname(fileURLToPath(import.meta.url));
 const DOCS_BUILDING_DIR = join(CWD, "scaffolds");
 const DOCFX_EXECUTABLE_PATH = join(CWD, "scaffolds", "tools", "docfx", "tools", "docfx.exe");
 const JAVA_PATH = join(CWD, "scaffolds", "tools", "jdk");
+const ARCHETYPE_N_DIR = join(CWD, "scaffolds", "tools", "archetype-n");
+
+// Archetype-N enhancement runs after DocFX generation by default; --no-enhancement disables it.
+let ENHANCE_ENABLED = true;
+let ENHANCE_OPTS = { force: false, provider: null, model: null };
 
 // A bare DocFX GUID marker (`<8e7c…-…>`) as it appears in a file name (global: a name may repeat it).
 const GUID_MARKER_RE = /<[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}>/g;
@@ -175,6 +180,39 @@ async function buildJavaApidoc(info, versionString) {
   StatusLogger.success(`Built ${info.name} JavaDoc v${versionString}.`);
 }
 
+/**
+ * Archetype-N post-DocFX enhancement: inject SEO overviews into the freshly-built
+ * `…/object-reference/api/` pages before archiving. Reuses a per-product cache
+ * (token-free) and authors missing pages via an LLM (Claude default, OpenAI fallback).
+ * .NET/DocFX only — never aborts the build.
+ */
+async function runEnhancement(info, buildOutputDir) {
+  const apiDir = join(DOCS_BUILDING_DIR, buildOutputDir, "api");
+  if (!existsSync(apiDir)) {
+    StatusLogger.notice("No api/ directory found; skipping Archetype-N enhancement.");
+    return;
+  }
+  try {
+    const mod = await import(pathToFileURL(join(ARCHETYPE_N_DIR, "enhance.mjs")).href);
+    StatusLogger.progress("Archetype-N: enhancing API reference pages...");
+    const summary = await mod.enhance(apiDir, info.code, {
+      force: ENHANCE_OPTS.force, provider: ENHANCE_OPTS.provider,
+      model: ENHANCE_OPTS.model, log: (m) => StatusLogger.info(m),
+    });
+    if (summary.no_provider && summary.generated === 0 && summary.skipped) {
+      StatusLogger.warning(
+        "Archetype-N: no LLM API key set, only cached pages were injected. " +
+        "Set CLAUDE_API_KEY or OPENAI_API_KEY to author missing pages.");
+    }
+    StatusLogger.info(
+      `Archetype-N: injected ${summary.injected} page(s) ` +
+      `(generated ${summary.generated}, reused ${summary.reused}, ` +
+      `preserved ${summary.preserved}, failed ${summary.failed}, skipped ${summary.skipped}).`);
+  } catch (error) {
+    StatusLogger.warning(`Archetype-N enhancement skipped: ${error}`);
+  }
+}
+
 async function buildDotnetApidoc(info, versionString) {
   StatusLogger.title(`Building ${info.name} .NET API docs — v${versionString}`);
 
@@ -239,6 +277,9 @@ async function buildDotnetApidoc(info, versionString) {
     const canonicalCount = applyCanonicalTags(buildOutputDir, getDocfxCanonicalPrefix(info));
     StatusLogger.info(`Backfilled canonical tags on ${canonicalCount} page(s) (DocFX's template emits the rest).`);
 
+    // Post-generation: Archetype-N SEO overview injection (default on; --no-enhancement disables).
+    if (ENHANCE_ENABLED) await runEnhancement(info, buildOutputDir);
+
     StatusLogger.progress(`Archiving to ${apidocsStorageDir}...`);
     mkdirSync(apidocsStorageDir, { recursive: true });
     cpSync(buildOutputDir, apidocsStorageDir, { recursive: true });
@@ -250,11 +291,31 @@ async function buildDotnetApidoc(info, versionString) {
   }
 }
 
+function parseArgs(argv) {
+  const a = { no_enhancement: false, enhance_force: false, provider: null, model: null, code: null, version: null };
+  for (let i = 0; i < argv.length; i++) {
+    switch (argv[i]) {
+      case "--no-enhancement": a.no_enhancement = true; break;
+      case "--enhance-force": a.enhance_force = true; break;
+      case "--provider": a.provider = argv[++i]; break;
+      case "--model": a.model = argv[++i]; break;
+      case "--code": a.code = argv[++i]; break;
+      case "--version": a.version = argv[++i]; break;
+    }
+  }
+  return a;
+}
+
 async function main() {
+  const args = parseArgs(process.argv.slice(2));
+  ENHANCE_ENABLED = !args.no_enhancement;
+  ENHANCE_OPTS = { force: args.enhance_force, provider: args.provider, model: args.model };
+
   StatusLogger.title("Iron Software API Documentation Generator");
   const products = JSON.parse(readFileSync(PRODUCTS_CATALOG, "utf-8"));
 
   for (const product of products.libraries) {
+    if (args.code && product.code !== args.code) continue;
     const packageType = product.packageType;
     StatusLogger.progress(`Checking ${product.name} (${packageType})...`);
     // Isolate each product so one failed registry query / build never aborts the whole run.
@@ -262,6 +323,7 @@ async function main() {
       if (packageType === "nuget") {
         const versions = await getNugetPackageVersions(product.packageName);
         for (const packageVersion of versions) {
+          if (args.version && packageVersion.version !== args.version) continue;
           if (!apidocAlreadyExists(product, packageVersion.version)) {
             await buildDotnetApidoc(product, packageVersion.version);
           }
@@ -269,6 +331,7 @@ async function main() {
       } else if (packageType === "maven") {
         const versions = await getMavenPackageVersions(product.groupId, product.artifactId);
         for (const packageVersion of versions) {
+          if (args.version && packageVersion.v !== args.version) continue;
           if (!apidocAlreadyExists(product, packageVersion.v)) {
             await buildJavaApidoc(product, packageVersion.v);
           }

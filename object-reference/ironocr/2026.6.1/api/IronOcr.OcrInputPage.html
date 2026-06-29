@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrInputPage
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrInputPage Class - IronOCR C# API
+      v2 (human)     title:       OcrInputPage: Work With One OCR Page in C#
+      v1 (algorithm) description: Work with a single OCR page in C# with the IronOCR OcrInputPage class: ContentArea, FindTextRegion, ToBitmap, and SaveAsImage.
+      v2 (human)     description: Inspect and crop one page of an OCR input in C# with the IronOCR OcrInputPage class: read its size, set a content area, or export it.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrInputPage Class | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrInputPage
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrInputPage Class | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR OcrInputPage class in C#: page size, ContentArea, FindTextRegion, and image export from GetPages.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrInputPage Class | IronOCR C# API",
+    "name": "OcrInputPage class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrInputPage.html",
+    "abstract": "OcrInputPage is one page within an OcrInput in IronOCR, the object you inspect or adjust per page in C#. Width, Height, Index, and the DPI properties describe the loaded page, while the settable ContentArea restricts recognition to a region. FindTextRegion and GetTextRegions locate text, and ToBitmap, SaveAsImage, and GetCropRectangleImage export the page. Pages come from OcrInputBase.GetPages.",
+    "description": "Reference for the IronOCR OcrInputPage class in C#: page size, ContentArea, FindTextRegion, and image export from GetPages.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using var input = new OcrInput();\ninput.LoadImage(\"page.png\");\nOcrInputPage page = input.GetPages().First();\npage.ContentArea = new Rectangle(0, 0, 600, 200);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrInputPage live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrInputPage is a class in the IronOcr namespace, shipped in IronOcr.dll. It derives from Object, and the nested OcrInput.Page type extends it. Pages are obtained from OcrInputBase.GetPages."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you OCR only part of a page in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Get the OcrInputPage from OcrInputBase.GetPages, then assign a Rectangle to its ContentArea property to limit recognition to that area. Call FindTextRegion first to let IronOCR locate the text automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between OcrInputPage and OcrInput.Page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrInputPage is the standalone page type returned by GetPages. OcrInput.Page is a nested type that extends OcrInputPage. In everyday code you work with the OcrInputPage instances the input gives you."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +215,18 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class OcrInputPage : Object</code></pre>
   </div>
+    <!-- archetype-N:start OcrInputPage treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>OcrInputPage</code> is one page, a single image, inside an <code>OcrInput</code>. A developer reaches for it to inspect or adjust an individual page after loading, rather than treating the whole input as one block: read a page's dimensions, restrict the read to a region, or export the page back out as an image. The pages of an input are enumerated by <code>OcrInputBase.GetPages</code>, which returns one <code>OcrInputPage</code> per loaded image.</p>
+<p>The geometry properties describe the page as loaded. <code>Width</code> and <code>Height</code> give its pixel size, <code>HorizontalDPI</code> and <code>VerticalDPI</code> its resolution, and <code>Index</code> its position in the input. <code>ContentArea</code> is the one settable property: assign a <code>Rectangle</code> to limit recognition to part of the page, the building block behind region-of-interest reads. The methods cover two jobs. Region discovery is handled by <code>FindTextRegion</code>, which returns the bounding rectangle of the text on the page, and <code>GetTextRegions</code>, which returns a list of regions for a page with several text blocks. Image export is handled by <code>ToBitmap</code>, which returns the page as an <code>AnyBitmap</code>, <code>SaveAsImage</code>, which writes it to a file, <code>GetCropRectangleImage</code>, which returns just the <code>ContentArea</code>, and <code>DrawRectanglesOnPage</code>, which renders rectangles onto the page for debugging.</p>
+<p>Set <code>ContentArea</code> to read only the part of a page that matters, or call <code>FindTextRegion</code> first to let IronOCR locate the text, then read the input as usual. Do not confuse <code>OcrInputPage</code> with <code>OcrInput.Page</code>, the nested type that extends it.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/ocr-region-of-an-image/">region of an image how-to</a> reads a content area, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/input-images/">input images how-to</a> loads the pages.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using var input = new OcrInput();
+input.LoadImage(&quot;page.png&quot;);
+OcrInputPage page = input.GetPages().First();
+page.ContentArea = new Rectangle(0, 0, 600, 200);</code></pre></div>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

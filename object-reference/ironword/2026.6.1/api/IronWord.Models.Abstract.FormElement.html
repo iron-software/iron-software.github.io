@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class FormElement
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       FormElement Class - IronWord C# API
+      v2 (human)     title:       FormElement: The Word Form Control Base in C#
+      v1 (algorithm) description: FormElement is the IronWord base for Word form controls in C#: RadioButton and TextInput derive from it, so code can treat form fields as one family.
+      v2 (human)     description: Group Word form controls under one type in C# with IronWord's FormElement base: RadioButton and TextInput share it as their common parent.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>FormElement Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class FormElement
-   | C# Word API | IronWord ">
+    <meta name="title" content="FormElement Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord FormElement class in C#: the abstract base behind the RadioButton and TextInput form controls.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "FormElement Class | IronWord C# API",
+    "name": "FormElement class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Abstract.FormElement.html",
+    "abstract": "Grouping the interactive form controls of a Word document under one type in C# is the role of the IronWord FormElement base class. RadioButton and TextInput derive from it, so a routine can accept either control through a shared FormElement reference. The base is abstract and carries no fillable behavior of its own; you work with the derived controls.",
+    "description": "Reference for the IronWord FormElement class in C#: the abstract base behind the RadioButton and TextInput form controls.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does FormElement live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FormElement is an abstract class in the IronWord.Models.Abstract namespace, shipped in IronWord.dll. It derives from System.Object and is the base for the RadioButton and TextInput form controls."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What types derive from FormElement in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RadioButton and TextInput extend FormElement. Instantiate and configure those concrete controls directly; use a FormElement reference only when a routine should accept either form field without naming the specific type."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -152,6 +200,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class FormElement : Object</code></pre>
   </div>
+    <!-- archetype-N:start FormElement treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Treating the interactive form controls of an IronWord document as one family in C# is what <code>FormElement</code> makes possible. It groups the form-field types under one parent so a developer can handle radio buttons and text inputs through a single reference when building or reading a fillable Word document. The base itself carries no fillable behavior of its own; it exists to give the form controls a common type.</p>
+<p>The concrete elements that extend it are <code>RadioButton</code> and <code>TextInput</code>, and those are the types a developer instantiates and configures. A <code>FormElement</code> reference is what you hold when a routine should accept either control without caring which one it received, for example when iterating mixed form fields. Because the type is abstract, it is never constructed directly; you work with one of its derived controls and rely on <code>FormElement</code> only as the common base.</p>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-text/">add text how-to</a> builds document content, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> explains where elements like form controls sit in the model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

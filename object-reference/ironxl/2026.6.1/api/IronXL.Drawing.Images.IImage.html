@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IImage
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IImage Interface - IronXL C# API Reference
+      v2 (human)     title:       IImage: Resize & Extract Excel Images in C#
+      v1 (algorithm) description: IImage is the IronXL contract for embedded Excel pictures in C#: read Data, set Position, call Resize, and convert with ToAnyBitmap or ToImage.
+      v2 (human)     description: Work with embedded spreadsheet pictures in C# through IronXL's IImage: resize, reposition, read bytes, or export an inserted image to a bitmap.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IImage Interface | IronXL C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IImage
-   | C# Excel API | IronXL ">
+    <meta name="title" content="IImage Interface | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL IImage interface in C#: the contract WorkSheet.InsertImage returns for resizing, positioning, and extracting Excel images.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IImage Interface | IronXL C# API Reference",
+    "name": "IImage interface | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Drawing.Images.IImage.html",
+    "abstract": "IImage is the IronXL contract for a picture embedded in a worksheet in C#. WorkSheet.InsertImage returns an IImage and WorkSheet.Images holds every image in the sheet. Use Position to anchor it, Resize to scale it, Data to read its bytes, and ToAnyBitmap or ToImage to convert it. Changes persist when the workbook is saved.",
+    "description": "Reference for the IronXL IImage interface in C#: the contract WorkSheet.InsertImage returns for resizing, positioning, and extracting Excel images.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "WorkSheet sheet = workbook.DefaultWorkSheet;\nIImage image = sheet.InsertImage(\"logo.png\", 1, 1, 3, 4);\nimage.Resize(0.5, 0.5);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IImage live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IImage is an interface in the IronXL.Drawing.Images namespace, shipped in IronXL.dll. WorkSheet.InsertImage returns an IImage, and the WorkSheet.Images property holds them as a List<IImage>."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What returns an IImage in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WorkSheet.InsertImage returns an IImage when a picture is added from a file path or byte array, and WorkSheet.Images exposes the existing pictures in a sheet as a List<IImage>. There is no public constructor; images are obtained from the worksheet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you resize an embedded Excel image in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Resize on the IImage. Resize() restores the original size, Resize(double scale) scales uniformly, and Resize(double scaleX, double scaleY) scales each axis. Save the workbook to persist the change."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +209,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IImage</code></pre>
   </div>
+    <!-- archetype-N:start IImage treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p><code>IImage</code> is what a worksheet hands back for every picture embedded in a spreadsheet. When code inserts a logo, chart export, or screenshot into a sheet, it works through this contract to reposition that picture, resize it, read its raw bytes, or convert it to a bitmap for further processing. It is the type a developer reaches for when an embedded image needs to be measured, moved, or pulled back out of an <code>.xlsx</code> file rather than just placed once and forgotten. Do not confuse it with <code>ImageFormat</code>, the enumeration that records whether a picture is a PNG or JPEG; <code>IImage</code> is the picture object itself, and exposes that format through its own <code>ImageFormat</code> property.</p>
+<p>A developer never constructs an <code>IImage</code> directly. <code>WorkSheet.InsertImage</code> returns one when a picture is added from a file path or a byte array, and the <code>WorkSheet.Images</code> collection (a <code>List&lt;IImage&gt;</code>) holds every image already present in the sheet, so iterating that list is how existing pictures are discovered and edited. Each image belongs to a single worksheet and sits at a cell-anchored location, which is why obtaining the instance from the worksheet, rather than building one in isolation, is the only supported path.</p>
+<p>Working with an image centers on a few members. <code>Position</code> reports and adjusts where the picture is anchored on the sheet, <code>Id</code> identifies it for removal through <code>WorkSheet.RemoveImage</code>, and <code>Data</code> exposes the raw bytes for saving the picture elsewhere. <code>Resize()</code> restores the original dimensions, while <code>Resize(double scale)</code> and <code>Resize(double scaleX, double scaleY)</code> scale it uniformly or along each axis. <code>ToAnyBitmap</code> and <code>ToImage</code> convert the embedded picture into an in-memory bitmap when the project needs to inspect or re-encode it. Because the image is tied to its worksheet, saving the workbook persists every change made through these members.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">WorkSheet sheet = workbook.DefaultWorkSheet;
+IImage image = sheet.InsertImage(&quot;logo.png&quot;, 1, 1, 3, 4);
+image.Resize(0.5, 0.5);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/examples/add-extract-remove-worksheet-images/">add, extract, and remove worksheet images example</a> saves a picture into a sheet, the <a href="https://ironsoftware.com/csharp/excel/how-to/add-extract-remove-worksheet-images/">worksheet images how-to</a> walks through inserting and reading them back, and the <a href="https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.WorkSheet.html">WorkSheet reference</a> documents the <code>InsertImage</code> and <code>Images</code> members that produce them.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ScewSweep
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ScewSweep Struct - IronOCR C# API Reference
+      v2 (human)     title:       ScewSweep: Tune Deskew Search in C#
+      v1 (algorithm) description: Tune skew-angle search in C# with the IronOCR ScewSweep struct: set Range, Delta, and Reduction, or take the Default balanced configuration.
+      v2 (human)     description: Control how IronOCR hunts for a page's skew in C# with the ScewSweep struct: widen Range for tilted input or shrink Delta for a finer estimate.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ScewSweep Struct | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ScewSweep
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="ScewSweep Struct | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR ScewSweep struct in C#: Range, Delta, and Reduction settings plus the Default sweep for deskew estimation.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ScewSweep Struct | IronOCR C# API",
+    "name": "ScewSweep class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.ScewSweep.html",
+    "abstract": "Tune how IronOCR searches for a page's skew angle in C# with the ScewSweep struct. Range sets the span of angles tested, Delta the step between them, and Reduction the downscaling applied during the search, while the Default value and matching constants supply a balanced starting configuration.",
+    "description": "Reference for the IronOCR ScewSweep struct in C#: Range, Delta, and Reduction settings plus the Default sweep for deskew estimation.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ScewSweep live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ScewSweep is a value-type struct in the DynamicTesseract namespace, shipped in IronOcr.dll. It derives from System.ValueType, exposes the read-only Range, Delta, and Reduction values, and offers a Default static configuration for the deskew estimator."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do the Range, Delta, and Reduction values control in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Range is the span of angles the deskew search covers in degrees, Delta is the step between candidate angles, and Reduction is the downscaling factor used while testing. Widen Range for heavily tilted scans and shrink Delta for a more precise angle estimate."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +197,12 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class ScewSweep : ValueType</code></pre>
   </div>
+    <!-- archetype-N:start ScewSweep treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Tuning how IronOCR searches for a page's skew angle runs through <code>ScewSweep</code>, the small settings record that drives the deskew estimation. It bundles the parameters that decide how wide and how finely the estimator hunts for the tilt that best straightens a scan, so a project can trade detection speed against precision.</p>
+<p>Three read-only values define a sweep. <code>Range</code> is the span of angles searched in degrees, <code>Delta</code> is the step between candidate angles within that span, and <code>Reduction</code> is the downscaling factor applied while testing, where a larger reduction speeds the search on big images. The <code>Default</code> static value supplies a balanced configuration, and the <code>DefaultRange</code>, <code>DefaultDelta</code>, and <code>DefaultReduction</code> constants expose its individual settings for reference. The constructor takes the same three parameters with those defaults, so a custom sweep widens <code>Range</code> for badly tilted input or shrinks <code>Delta</code> for a finer angle estimate. The <a href="https://ironsoftware.com/csharp/ocr/how-to/image-orientation-correction/">orientation correction how-to</a> covers straightening a skewed page.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

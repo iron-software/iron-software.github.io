@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IColor
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IColor Interface - IronPPT C# API
+      v2 (human)     title:       IColor: The Presentation Color Contract in C#
+      v1 (algorithm) description: IColor is IronPPT's color contract in C#: it exposes RGB channels, theme and preset lookups, and converters, implemented by the Color class.
+      v2 (human)     description: Set fill and outline colors in C# through IronPPT's IColor contract: read RGB, theme, and preset values, or convert to ARGB and CSS.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IColor Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IColor
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IColor Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT IColor interface in C#: the color contract Color implements, with RGB channels, theme lookups, and converters.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IColor Interface | IronPPT C# API",
+    "name": "IColor interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IColor.html",
+    "abstract": "Fill and outline colors in IronPPT presentations are described through the IColor contract in C#. It exposes RGB channels (R, G, B, A), theme and preset lookups, and perceptual adjustments such as Hue, Saturation, and Luminance, plus converters like ToArgb and ToHtmlCssColorCode. The concrete implementor is the Color class, which you assign when styling shapes, runs, and borders.",
+    "description": "Reference for the IronPPT IColor interface in C#: the color contract Color implements, with RGB channels, theme lookups, and converters.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IColor color = new Color();\ncolor.R = new ColorField { Value = 0x1F };\ncolor.G = new ColorField { Value = 0x6F };\ncolor.B = new ColorField { Value = 0xC0 };\nstring css = color.ToHtmlCssColorCode();"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IColor live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IColor is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It does not extend another interface and is implemented by the Color class, which you assign when setting element colors."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IColor in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Color class in IronPPT.Models implements IColor. Most code uses Color directly to set RGB channels, theme colors, or preset values, then reads ColorValue or calls ToHtmlCssColorCode to export the resolved color."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you convert an IColor to a CSS or ARGB value?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call ToHtmlCssColorCode for a CSS-ready string or ToArgb for a packed 32-bit integer. GetBrightness and GetLuminance return computed measures useful for contrast checks, so you do not have to re-derive the math from the channels."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +208,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IColor</code></pre>
   </div>
+    <!-- archetype-N:start IColor treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p><code>IColor</code> is the color contract you work through when a shape, run, or border in a presentation needs a fill or outline color. It exposes a color from several angles at once: the RGB channels (<code>R</code>, <code>G</code>, <code>B</code>, plus alpha <code>A</code>), preset and theme lookups (<code>PresetColorValue</code>, <code>ThemeColorValue</code>, <code>SchemaColorValue</code>, <code>SystemColorValue</code>), and the perceptual adjustments (<code>Hue</code>, <code>Saturation</code>, <code>Luminance</code>, <code>Tint</code>, <code>Shade</code>) that PowerPoint applies on top of a base value. Coding against the contract means a styling helper does not care whether the color came from a hex string, a scheme slot, or a system value.</p>
+<p>A developer rarely constructs the contract directly. The concrete implementor in IronPPT is <code>Color</code>, which is what you assign or read when setting an element's appearance. <code>ColorType</code> reports which representation is active so a reader can branch on RGB versus a preset, and the read-only <code>ColorValue</code> returns the resolved value. The RGB channels <code>R</code>, <code>G</code>, and <code>B</code> are each a <code>ColorField</code>, so a channel carries its own value and modifiers rather than a bare byte.</p>
+<p>Beyond the properties, the contract carries conversion helpers that save a manual computation: <code>ToArgb</code> packs the channels into a single integer, <code>ToHtmlCssColorCode</code> produces a CSS-ready string, and <code>GetBrightness</code> and <code>GetLuminance</code> return computed measures useful for contrast checks. Use those when exporting or comparing colors rather than re-deriving the math. The fine-tuning properties <code>Tint</code> and <code>Shade</code> each take a <code>Percentage</code>, while <code>Complement</code>, <code>Inverse</code>, and <code>Gamma</code> are nullable flags that toggle the corresponding transform only when set, so leaving them unset keeps the base color untouched.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IColor color = new Color();
+color.R = new ColorField { Value = 0x1F };
+color.G = new ColorField { Value = 0x6F };
+color.B = new ColorField { Value = 0xC0 };
+string css = color.ToHtmlCssColorCode();</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> applies color while styling text, the <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> sets fill colors on shapes, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> walks through formatting runs where color is set.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

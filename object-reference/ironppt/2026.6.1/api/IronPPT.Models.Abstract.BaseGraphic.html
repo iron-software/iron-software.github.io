@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BaseGraphic
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       BaseGraphic Class - IronPPT C# API Reference
+      v2 (human)     title:       BaseGraphic: Position & Size Slide Graphics in C#
+      v1 (algorithm) description: Position and size slide graphics in C# with the IronPPT BaseGraphic base: Position, Width, Height, Angle, Resize, Rotate, and flip.
+      v2 (human)     description: The IronPPT BaseGraphic base in C# defines size, position, and rotation for slide graphics like Image: Resize, Rotate, and flip.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>BaseGraphic Class | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BaseGraphic
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="BaseGraphic Class | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT BaseGraphic class in C#: the geometry base for slide graphics, with Position, Width, Height, and Rotate.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "BaseGraphic Class | IronPPT C# API Reference",
+    "name": "BaseGraphic class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Abstract.BaseGraphic.html",
+    "abstract": "Position, size, and rotate a standalone slide graphic in C# through the IronPPT BaseGraphic base. Position is its ElementPosition, Width and Height are DocUnit values, and Angle is a Rotation. Resize sets width and height together, Rotate turns the graphic, and FlipHorizontal and FlipVertical mirror it. BaseGraphic is abstract; the concrete graphic that derives from it is Image.",
+    "description": "Reference for the IronPPT BaseGraphic class in C#: the geometry base for slide graphics, with Position, Width, Height, and Rotate.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "void Place(BaseGraphic graphic)\n{\n    graphic.Resize(400, 300);\n    graphic.Rotate(15);\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does BaseGraphic live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BaseGraphic is an abstract class in the IronPPT.Models.Abstract namespace, shipped in IronPPT.dll. It derives from ContentElement and implements ICloneableElement, IGraphic, and IContentElement, defining the shared geometry for slide graphics."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What derives from BaseGraphic in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Image derives from BaseGraphic, inheriting its Position, Width, Height, Angle, Resize, Rotate, and flip members. Because BaseGraphic is abstract you work with the derived type and use the inherited geometry members to place and size it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you resize and rotate a slide graphic in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Resize with a width and height to size the graphic and Rotate with an angle to turn it. Set Position to an ElementPosition to move it, and use FlipHorizontal or FlipVertical to mirror it. These inherited members work the same on any graphic that derives from BaseGraphic."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -190,6 +254,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class BaseGraphic : ContentElement, ICloneableElement, IGraphic, IContentElement</code></pre>
   </div>
+    <!-- archetype-N:start BaseGraphic treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>BaseGraphic</code> is the shared base every standalone graphic on a slide inherits, the place where size, position, rotation, and flipping are defined once. A developer rarely names it directly; the concrete type to reach for is <code>Image</code>, which derives from it. The base matters because the geometry members below are the same whether the graphic is an image or another standalone graphic, so learning them once covers the family.</p>
+<p>Because it is abstract, a graphic is not created as a <code>BaseGraphic</code>; a developer works with a derived type such as <code>Image</code> and then positions and sizes it through the inherited members. A graphic obtained from the slide can be cast or held as <code>BaseGraphic</code> when only the geometry matters, which is why the <code>IGraphic</code> contract it implements describes exactly this shared surface.</p>
+<p><code>Position</code> is the graphic's <code>ElementPosition</code> on the slide, while <code>Width</code> and <code>Height</code> are <code>DocUnit</code> values for its size and <code>Angle</code> is its <code>Rotation</code>. <code>Resize</code> sets width and height together from two integers, and <code>Rotate</code> turns the graphic by a given angle. <code>FlipHorizontal</code> and <code>FlipVertical</code> mirror it across the respective axis. These members move and shape the graphic without touching its content, so an image can be repositioned, resized, rotated, or flipped through the same calls used for any other standalone graphic.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">void Place(BaseGraphic graphic)
+{
+    graphic.Resize(400, 300);
+    graphic.Rotate(15);
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-image/">manage image how-to</a> covers placing and sizing an image on a slide, the <a href="https://ironsoftware.com/csharp/ppt/examples/add-image/">add image example</a> shows one in a worked slide, and the <a href="https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Image.html">Image reference</a> documents the concrete graphic that derives from this base.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

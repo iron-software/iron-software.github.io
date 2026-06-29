@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class WebScraper
-   | C# Web Scraping API | IronWebScraper </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       WebScraper Class - IronWebScraper C# API
+      v2 (human)     title:       WebScraper: Build a C# Web Crawler
+      v1 (algorithm) description: Build a web crawler in C# by extending the IronWebScraper WebScraper base class. Override Init and Parse, set scope and throttling, then Start.
+      v2 (human)     description: Create a C# web scraper by extending the IronWebScraper WebScraper class: queue URLs in Init, extract in Parse, control scope and rate, with examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>WebScraper Class | IronWebScraper C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class WebScraper
-   | C# Web Scraping API | IronWebScraper ">
+    <meta name="title" content="WebScraper Class | IronWebScraper C# API">
+    <meta name="description" content="Reference for the IronWebScraper WebScraper base class in C#: override Init and Parse, set crawl scope and throttling, and save scraped data.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "WebScraper Class | IronWebScraper C# API",
+    "name": "WebScraper class | IronWebScraper C# API",
+    "url": "https://ironsoftware.com/csharp/webscraper/object-reference/api/IronWebScraper.WebScraper.html",
+    "abstract": "Building a web crawler in C# runs through the abstract IronWebScraper WebScraper base class. Extend it and override Init to queue starting URLs with Request, and Parse to extract data from each Response and save it with Scrape. Set crawl scope with the AllowedDomains and BannedUrls pattern collections, and politeness with ObeyRobotsDotTxt, RateLimitPerHost, and rotating HttpIdentity instances. Run it with Start or StartAsync.",
+    "description": "Reference for the IronWebScraper WebScraper base class in C#: override Init and Parse, set crawl scope and throttling, and save scraped data.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWebScraper",
+      "url": "https://ironsoftware.com/csharp/webscraper/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWebScraper;\n\npublic class BlogScraper : WebScraper\n{\n    public override void Init()\n    {\n        Request(\"https://blog.example.com\", Parse);\n    }\n\n    public override void Parse(Response response)\n    {\n        foreach (HtmlNode title in response.Css(\"h2.post-title\"))\n            Scrape(new { Title = title.TextContentClean });\n    }\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does WebScraper live in the IronWebScraper API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WebScraper is an abstract class in the IronWebScraper namespace, shipped in IronWebScraper.dll. Extend it, override the abstract Init and Parse methods, and call Start to run the crawl."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create a web scraper in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Subclass WebScraper, override Init to queue start URLs with Request(url, Parse), and override Parse to extract data from the Response and store it with Scrape. Call Start or StartAsync to run the crawl."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you make a C# scraper respect rate limits and robots.txt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set ObeyRobotsDotTxt to true, set RateLimitPerHost and ThrottleMode to pace requests, and cap concurrency with MaxHttpConnectionLimit and OpenConnectionLimitPerHost. Rotate HttpIdentity instances through the Identities list to vary proxy and user agent."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +215,29 @@ custom web-scraping applications.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class WebScraper : Object</code></pre>
   </div>
+    <!-- archetype-N:start WebScraper treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Building a web crawler in C# starts by extending <code>WebScraper</code> and overriding two methods. It is abstract, so a developer subclasses it and supplies the crawl logic while the base runs the request queue, threading, retries, and throttling. A single subclass becomes a complete, runnable scraper.</p>
+<p>A subclass implements two abstract methods. <code>Init()</code> queues the starting URLs by calling <code>Request(url, Parse)</code>. <code>Parse(Response response)</code> receives each fetched page, pulls data from it, and queues any follow-up links with further <code>Request</code> calls. Calling <code>Start()</code>, or <code>StartAsync()</code> for the awaitable form, runs the crawl until the queue drains, and <code>Stop()</code> ends it early.</p>
+<p>The configuration groups into three jobs. Scope is set with <code>AllowedDomains</code>, <code>AllowedUrls</code>, <code>BannedDomains</code>, and <code>BannedUrls</code>, each a <code>UrlMatchPatternCollection</code> of wildcard or regex rules that decide which links are followed. Politeness is set with <code>ObeyRobotsDotTxt</code>, <code>RateLimitPerHost</code>, <code>ThrottleMode</code>, <code>MaxHttpConnectionLimit</code>, and the <code>Identities</code> list that rotates <code>HttpIdentity</code> proxies and user agents. Output uses <code>Scrape(item, fileName)</code> to persist extracted objects as JSON and <code>UnScrape&lt;T&gt;()</code> to read them back, while <code>DownloadFile</code> and <code>DownloadImage</code> save linked assets. The base also manages concurrency and resilience: <code>MaxHttpConnectionLimit</code> and <code>OpenConnectionLimitPerHost</code> cap parallel fetches, <code>HttpRetryAttempts</code> and <code>HttpTimeOut</code> govern failures, and <code>WorkingDirectory</code> sets where JSON and downloads land. Override points such as <code>AcceptUrl</code> and <code>ChooseIdentityForRequest</code> let a subclass refine link filtering and identity selection beyond the pattern collections.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWebScraper;
+
+public class BlogScraper : WebScraper
+{
+    public override void Init()
+    {
+        Request(&quot;https://blog.example.com&quot;, Parse);
+    }
+
+    public override void Parse(Response response)
+    {
+        foreach (HtmlNode title in response.Css(&quot;h2.post-title&quot;))
+            Scrape(new { Title = title.TextContentClean });
+    }
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/webscraper/tutorials/webscraping-in-c-sharp/">web scraping tutorial</a> builds a first scraper, the <a href="https://ironsoftware.com/csharp/webscraper/tutorials/webscraping-in-c-sharp-advanced/">advanced tutorial</a> covers throttling and identities, and the <a href="https://ironsoftware.com/csharp/webscraper/examples/c-sharp-web-scraper/">C# web scraper example</a> shows a complete class.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

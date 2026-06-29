@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ShapeObjectCollection
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ShapeObjectCollection - IronWord C# API
+      v2 (human)     title:       ShapeObjectCollection: Manage Word Shapes in C#
+      v1 (algorithm) description: Manage a group of inline Word shapes in C# with the IronWord ShapeObjectCollection class: an observable list of ShapeContent with ToJson.
+      v2 (human)     description: Hold and iterate a set of inline shapes in a Word document in C# with the IronWord ShapeObjectCollection class, then serialize with ToJson.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ShapeObjectCollection Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ShapeObjectCollection
-   | C# Word API | IronWord ">
+    <meta name="title" content="ShapeObjectCollection Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord ShapeObjectCollection class in C#: an observable collection of ShapeContent with Items, IsReadOnly, and ToJson.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,39 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ShapeObjectCollection Class | IronWord C# API",
+    "name": "ShapeObjectCollection class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.ShapeObjectCollection.html",
+    "abstract": "Managing a group of inline shapes in a Word document in C# runs through the IronWord ShapeObjectCollection class. It is an observable collection of ShapeContent: construct it empty or from an IList of ShapeContent, add and iterate items through the inherited list operations, read the underlying list through Items, and serialize the set with ToJson.",
+    "description": "Reference for the IronWord ShapeObjectCollection class in C#: an observable collection of ShapeContent with Items, IsReadOnly, and ToJson.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ShapeObjectCollection live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ShapeObjectCollection is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from ObservableCollection of ShapeContent and implements IWordShapeObjectCollection, so it holds a group of inline shapes as an observable list."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -159,6 +199,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ShapeObjectCollection : ObservableCollection&lt;ShapeContent&gt;, IWordShapeObjectCollection, IList&lt;ShapeContent&gt;, ICollection&lt;ShapeContent&gt;, IEnumerable&lt;ShapeContent&gt;, IEnumerable, IJsonSerializable</code></pre>
   </div>
+    <!-- archetype-N:start ShapeObjectCollection treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Holding the inline shapes that belong together in a Word document runs through <code>ShapeObjectCollection</code>. It gathers a group of <code>ShapeContent</code> items, the figures embedded in the document's content, into one observable list a developer can build up, iterate, and serialize. It is the container a developer works through when several shapes are managed as a set rather than one at a time.</p>
+<p>Because it derives from <code>ObservableCollection&lt;ShapeContent&gt;</code>, the collection notifies on change and supports the usual list operations inherited from that base, so a developer adds, indexes, and enumerates shapes through the standard collection surface. A developer either starts an empty collection or seeds one from an existing <code>IList&lt;ShapeContent&gt;</code> passed to the constructor, which fits the collection into the shape-building flow alongside the runs and content that carry those shapes.</p>
+<p>Construct a <code>ShapeObjectCollection</code> with its parameterless constructor or from an <code>IList&lt;ShapeContent&gt;</code>, then add and iterate <code>ShapeContent</code> items using the inherited list operations. <code>Items</code> exposes the underlying list and <code>IsReadOnly</code> reports whether the collection can be modified, while <code>ToJson</code> serializes the whole set to JSON for storage or transport. Treat it as a typed, observable group of inline shapes: build the set, enumerate it to read each <code>ShapeContent</code>, and serialize when the collection needs to be persisted.</p>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-image/">add image how-to</a> covers placing visual content, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> shows how shapes fit the document model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

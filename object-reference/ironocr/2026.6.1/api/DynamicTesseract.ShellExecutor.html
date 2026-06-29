@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ShellExecutor
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ShellExecutor Class - IronOCR C# Reference
+      v2 (human)     title:       ShellExecutor: Run a Process in C#
+      v1 (algorithm) description: Run an external process in C# with the IronOCR ShellExecutor static class: ExecuteCommand takes a fileName, arguments, and an expected exitCode.
+      v2 (human)     description: Launch a command-line program from IronOCR in C# with the ShellExecutor static class, an internal helper used while setting up native Tesseract.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ShellExecutor Class | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ShellExecutor
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="ShellExecutor Class | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR ShellExecutor static class in C#: ExecuteCommand runs a process and checks its exit code during native engine setup.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ShellExecutor Class | IronOCR C# API",
+    "name": "ShellExecutor class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.ShellExecutor.html",
+    "abstract": "Run an external command-line process in IronOCR for C# with the ShellExecutor static class, an internal helper used while setting up native Tesseract tooling. ExecuteCommand launches a program with the given arguments and treats an unexpected exit code as a failure, so most projects never call it directly.",
+    "description": "Reference for the IronOCR ShellExecutor static class in C#: ExecuteCommand runs a process and checks its exit code during native engine setup.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ShellExecutor live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ShellExecutor is a static class in the DynamicTesseract namespace, shipped in IronOcr.dll. It derives from System.Object and exposes a single static method, ExecuteCommand, used internally while configuring the native Tesseract engine."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the ExecuteCommand method do in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ExecuteCommand launches the program named by fileName, passes it the supplied arguments, and waits for it to finish. The optional exitCode parameter sets the return code expected on success, defaulting to 0, and any other code is reported as a failure."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +197,12 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class ShellExecutor : Object</code></pre>
   </div>
+    <!-- archetype-N:start ShellExecutor treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>ShellExecutor</code> is the internal helper IronOCR uses to run an external process while setting up or driving its native Tesseract tooling. It wraps the work of launching a command-line program and waiting for it to finish, so the surrounding loader code does not repeat process-handling boilerplate.</p>
+<p>The type exposes one static method, <code>ExecuteCommand</code>, which takes the program to run as <code>fileName</code>, the command-line <code>arguments</code> to pass it, and an optional expected <code>exitCode</code> that defaults to <code>0</code>. The call runs the process to completion and treats a return code other than the expected value as a failure, surfacing it to the caller. Because the class is static, there is nothing to instantiate. This is plumbing for the engine's native setup rather than a recognition API, so most projects never call it directly and instead work through IronOCR's higher-level reading methods. The <a href="https://ironsoftware.com/csharp/ocr/how-to/iron-tesseract/">IronTesseract how-to</a> walks through configuring and running the engine.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class MailMergeOptions
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       MailMergeOptions - IronWord C# API Reference
+      v2 (human)     title:       MailMergeOptions: Tune Word Mail Merge in C#
+      v1 (algorithm) description: Configure a Word mail merge in C# with IronWord MailMergeOptions: case-insensitive names, null replacement, and removal of unused fields and regions.
+      v2 (human)     description: Control unmatched fields and missing values in a C# mail merge with IronWord MailMergeOptions, reached through the MailMerge.Options property.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>MailMergeOptions Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class MailMergeOptions
-   | C# Word API | IronWord ">
+    <meta name="title" content="MailMergeOptions Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord MailMergeOptions class in C#: settings for field-name case, null replacement, and unused field and region removal.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "MailMergeOptions Class | IronWord C# API",
+    "name": "MailMergeOptions class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.MailMerge.MailMergeOptions.html",
+    "abstract": "MailMergeOptions configures how an IronWord mail merge handles unmatched fields, missing values, and unused regions in C#. Reached through MailMerge.Options, it exposes CaseInsensitiveFieldNames, NullValueReplacement, RemoveUnusedFields, and RemoveUnusedRegions, with defaults matching Microsoft Word. Set them before calling Execute.",
+    "description": "Reference for the IronWord MailMergeOptions class in C#: settings for field-name case, null replacement, and unused field and region removal.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "mailMerge.Options.NullValueReplacement = \"N/A\";\nmailMerge.Options.RemoveUnusedFields = false;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does MailMergeOptions live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MailMergeOptions is a class in the IronWord.Models.MailMerge namespace, shipped in IronWord.dll, with base type System.Object. Reach an instance through the Options property of a MailMerge and adjust it before calling Execute."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you keep unused merge fields in an IronWord document?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set MailMerge.Options.RemoveUnusedFields to false; unused fields default to being removed. Use NullValueReplacement to substitute text for null data values, and RemoveUnusedRegions to control whether empty TableStart/TableEnd regions are dropped."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +206,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class MailMergeOptions : Object</code></pre>
   </div>
+    <!-- archetype-N:start MailMergeOptions treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Controlling how a mail merge treats fields the data does not cover runs through <code>MailMergeOptions</code>. It collects the settings that decide what happens to merge fields with no matching value, what replaces a null, and whether unused fields and table regions stay in the finished document. The defaults match Microsoft Word's behaviour, so an unconfigured merge produces a clean result without any setup.</p>
+<p>Reach the settings through the <code>Options</code> property of a <code>MailMerge</code>, which exposes a <code>MailMergeOptions</code> to adjust before running <code>Execute</code>. <code>CaseInsensitiveFieldNames</code> (default <code>true</code>) controls whether field-name lookups ignore case. <code>NullValueReplacement</code> (default an empty string) is the text substituted when the data source supplies a null. <code>RemoveUnusedFields</code> (default <code>true</code>) drops fields whose names never appear in the data, and <code>RemoveUnusedRegions</code> (default <code>true</code>) removes <code>TableStart</code>/<code>TableEnd</code> regions for which no rows were supplied. Set these before the merge so the result reflects the chosen handling. The <a href="https://ironsoftware.com/csharp/word/how-to/replace-words/">replace words how-to</a> covers replacing field text in a document.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">mailMerge.Options.NullValueReplacement = &quot;N/A&quot;;
+mailMerge.Options.RemoveUnusedFields = false;</code></pre></div>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

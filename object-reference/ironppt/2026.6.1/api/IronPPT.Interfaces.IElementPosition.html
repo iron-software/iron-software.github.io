@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IElementPosition
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IElementPosition - IronPPT C# API
+      v2 (human)     title:       IElementPosition: Place Slide Elements in C#
+      v1 (algorithm) description: IElementPosition is IronPPT's coordinate contract in C#: it exposes X and Y as IDocUnit values. Implemented by the ElementPosition class.
+      v2 (human)     description: Position a slide element in C# through IronPPT's IElementPosition contract: set X and Y in any unit through their IDocUnit values.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IElementPosition Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IElementPosition
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IElementPosition Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT IElementPosition interface in C#: the X and Y coordinate contract ElementPosition implements.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IElementPosition Interface | IronPPT C# API",
+    "name": "IElementPosition interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IElementPosition.html",
+    "abstract": "Placing an element precisely on an IronPPT slide is handled by the IElementPosition contract in C#. It exposes an X and a Y, each an IDocUnit, so a coordinate reads or sets in any measurement unit. The concrete implementor is ElementPosition, which holds an element's location; you receive it from the element being laid out and adjust X and Y to move it.",
+    "description": "Reference for the IronPPT IElementPosition interface in C#: the X and Y coordinate contract ElementPosition implements.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "position.X.Inch = 1.0;\nposition.Y.Inch = 2.0;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IElementPosition live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IElementPosition is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It does not extend another interface and declares X and Y, each typed as IDocUnit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IElementPosition in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ElementPosition class in IronPPT.Models implements IElementPosition. You usually receive it from the element being laid out, then set X and Y through their IDocUnit values to move the element."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +200,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IElementPosition</code></pre>
   </div>
+    <!-- archetype-N:start IElementPosition treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>Placing a shape, image, or text box at a precise spot on a slide runs through <code>IElementPosition</code>. The contract exposes an <code>X</code> and a <code>Y</code>, each typed as <code>IDocUnit</code>, so a coordinate can be read or set in whichever measurement unit the surrounding layout code uses, inches, points, EMU, and the rest. Coding against the contract keeps positioning logic uniform across element types.</p>
+<p>The concrete implementor in IronPPT is <code>ElementPosition</code>, the object that holds an element's location on its slide. Because <code>X</code> and <code>Y</code> are <code>IDocUnit</code> values rather than plain numbers, a developer assigns a position by setting the unit that matches the value at hand and can read the same coordinate back in a different unit. A developer usually receives a position from the element being laid out rather than constructing it, then adjusts <code>X</code> and <code>Y</code> to move the element.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">position.X.Inch = 1.0;
+position.Y.Inch = 2.0;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/tutorials/slide-element/">slide element tutorial</a> positions elements on a slide, and the <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> places shapes at set coordinates.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class QrReader
-   | C# QR API | IronQR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       QrReader Class - IronQR C# API Reference
+      v2 (human)     title:       QrReader: Read QR Codes in C#
+      v1 (algorithm) description: Read QR codes in C# with the IronQR QrReader class. Pass a QrImageInput to Read or ReadAsync and get a QrResult for each code, with its value and type.
+      v2 (human)     description: Detect and decode QR codes in C# with the IronQR QrReader class: read every code in an image, sync or async, with value, URL, and position.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>QrReader Class | IronQR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class QrReader
-   | C# QR API | IronQR ">
+    <meta name="title" content="QrReader Class | IronQR C# API Reference">
+    <meta name="description" content="Reference for the IronQR QrReader class in C#: read QR codes from an image with Read and ReadAsync, returning a QrResult per detected code.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "QrReader Class | IronQR C# API Reference",
+    "name": "QrReader class | IronQR C# API",
+    "url": "https://ironsoftware.com/csharp/qr/object-reference/api/IronQr.QrReader.html",
+    "abstract": "Reading QR codes from an image in C# runs through the IronQR QrReader class. Construct one, pass a QrImageInput (an AnyBitmap plus a QrScanMode) to Read or the awaitable ReadAsync, and receive an IEnumerable<QrResult>, one per code found. Each result exposes the decoded Value, a parsed Url, the QrType, and the corner Points. A single image can hold several codes, so iterate the results.",
+    "description": "Reference for the IronQR QrReader class in C#: read QR codes from an image with Read and ReadAsync, returning a QrResult per detected code.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronQR",
+      "url": "https://ironsoftware.com/csharp/qr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronQr;\nusing IronSoftware.Drawing;\n\nvar reader = new QrReader();\nusing var input = new QrImageInput(AnyBitmap.FromFile(\"qr.png\"), QrScanMode.Auto);\nforeach (QrResult result in reader.Read(input))\n    Console.WriteLine(result.Value);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does QrReader live in the IronQR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "QrReader is a class in the IronQr namespace, shipped in IronQr.dll. Construct it with new QrReader() and call Read or ReadAsync with an IQrInput such as QrImageInput."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read a QR code from an image in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a QrReader, wrap the image in a QrImageInput with a QrScanMode, and call Read to get an IEnumerable<QrResult>. Read each result's Value for the decoded text. Use ReadAsync for the non-blocking form."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can IronQR read multiple QR codes from one image?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. QrReader.Read returns an IEnumerable<QrResult> with one entry per code detected in the image, so iterate the results. Each QrResult also reports its position through the Points property."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class QrReader : Object</code></pre>
   </div>
+    <!-- archetype-N:start QrReader treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Reading QR codes from an image in C# runs through <code>QrReader</code>. A single reader detects and decodes every QR code in a supplied image, so one call handles a photo or scan that contains one code or several. It is the entry point a developer reaches for behind a search like &quot;C# QR code reader&quot;.</p>
+<p>Create one with <code>new QrReader()</code> and call <code>Read</code>, passing an <code>IQrInput</code>. The usual input is a <code>QrImageInput</code> wrapping an <code>AnyBitmap</code> loaded from a file, stream, or bytes, with a <code>QrScanMode</code> that selects the detection strategy. <code>Read</code> returns an <code>IEnumerable&lt;QrResult&gt;</code>, one entry per code found, and <code>ReadAsync</code> is the awaitable form for keeping the call off the UI or request thread.</p>
+<p>Each <code>QrResult</code> carries the decoded <code>Value</code>, a parsed <code>Url</code> when the value is a link, the detected <code>QrType</code> as a <code>QrEncoding</code>, and the corner <code>Points</code> that locate the code in the image. Because a single image can hold multiple codes, iterate the results rather than assuming one. Set <code>QrScanMode.Auto</code> on the input for difficult photos, where the machine-learning model improves detection, and a basic mode for clean, generated images. IronQR reads from photos, screenshots, and scanned documents, not only crisp generated images, which is why the default mode favors detection accuracy, and the same reader handles a QR code on a PDF page once that page is rendered to a bitmap.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronQr;
+using IronSoftware.Drawing;
+
+var reader = new QrReader();
+using var input = new QrImageInput(AnyBitmap.FromFile(&quot;qr.png&quot;), QrScanMode.Auto);
+foreach (QrResult result in reader.Read(input))
+    Console.WriteLine(result.Value);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/qr/examples/read-qr-code/">read QR code example</a> covers a basic read, the <a href="https://ironsoftware.com/csharp/qr/how-to/read-qr-codes-from-image/">read from image how-to</a> handles real images, and the <a href="https://ironsoftware.com/csharp/qr/how-to/read-qr-codes-with-scan-modes/">scan modes how-to</a> tunes detection.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

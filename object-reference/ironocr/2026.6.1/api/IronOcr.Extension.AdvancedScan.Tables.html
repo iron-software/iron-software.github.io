@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Tables
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Tables Class - IronOCR C# API Reference
+      v2 (human)     title:       Tables: Iterate Scanned Tables in C#
+      v1 (algorithm) description: Iterate recognized tables in C# with the IronOCR Tables class: an IEnumerable<TableInfo> from advanced scanning, with GetEnumerator for foreach.
+      v2 (human)     description: Loop over tables found by IronOCR's advanced scan in C# using the Tables class, an enumerable sequence of TableInfo objects from an OcrInput.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Tables Class | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Tables
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="Tables Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR Tables class in C#: an enumerable collection of TableInfo from advanced table scanning over an OcrInput.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Tables Class | IronOCR C# API Reference",
+    "name": "Tables class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.Extension.AdvancedScan.Tables.html",
+    "abstract": "Iterate recognized tables in C# with IronOCR's Tables class, the collection returned after advanced table scanning over an OcrInput. It implements IEnumerable<TableInfo>, so a foreach loop or LINQ reads each recognized table, and GetEnumerator supplies the sequence. Each item is a TableInfo carrying a bounding rectangle, page number, and cells.",
+    "description": "Reference for the IronOCR Tables class in C#: an enumerable collection of TableInfo from advanced table scanning over an OcrInput.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Tables live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tables is a class in the IronOcr.Extension.AdvancedScan namespace, shipped in IronOcr.dll. It derives from System.Object and implements IEnumerable<TableInfo> and IEnumerable, so you enumerate it to read each recognized table."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you iterate the tables found by IronOCR in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because Tables implements IEnumerable<TableInfo>, use a foreach loop or LINQ over the collection. Each TableInfo it yields exposes the table's bounding rectangle, page number, and cell list."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -155,6 +203,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Tables : Object, IEnumerable&lt;TableInfo&gt;, IEnumerable</code></pre>
   </div>
+    <!-- archetype-N:start Tables treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>Tables</code> is the collection you iterate after IronOCR's advanced scan recognizes tables in an <code>OcrInput</code>. Each item it yields is a <code>TableInfo</code>, one recognized table with its bounding rectangle, page, and cells, so a single pass over the result gives you every table found across the document.</p>
+<p>Because the class implements <code>IEnumerable&lt;TableInfo&gt;</code>, you work with it directly in a <code>foreach</code> loop or with LINQ, and <code>GetEnumerator</code> supplies the sequence behind both. There are no indexers or count properties to learn: enumerate it once, read each <code>TableInfo</code> as you go, and project or filter the cells you need. Reach for <code>Tables</code> when a scanned invoice, form, or report holds structured rows you want to pull out programmatically rather than as a flat block of text.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-table-in-document/">read table in a document how-to</a> walks through producing this collection, and the <a href="https://ironsoftware.com/csharp/ocr/examples/read-table-in-document/">read table example</a> shows iterating it end to end.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ConditionalFormattingRule
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ConditionalFormattingRule Class - IronXL C# API
+      v2 (human)     title:       ConditionalFormattingRule in C# | IronXL
+      v1 (algorithm) description: Build an Excel conditional formatting rule in C# with IronXL: set ComparisonOperation, Formula1, FontFormatting, BorderFormatting, PatternFormatting.
+      v2 (human)     description: Color cells when a condition is met in C# with IronXL's ConditionalFormattingRule: pair a comparison with the font, border, or fill to apply.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ConditionalFormattingRule | IronXL C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ConditionalFormattingRule
-   | C# Excel API | IronXL ">
+    <meta name="title" content="ConditionalFormattingRule | IronXL C# API">
+    <meta name="description" content="Reference for the IronXL ConditionalFormattingRule class in C#: pair a comparison and formulas with font, border, and pattern formatting.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ConditionalFormattingRule | IronXL C# API",
+    "name": "ConditionalFormattingRule class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Formatting.ConditionalFormattingRule.html",
+    "abstract": "Styling cells when they meet a condition runs through IronXL's ConditionalFormattingRule in C#. One rule pairs a test with the formatting applied when it passes. ConditionType reports the category, ComparisonOperation holds the operator from IronXL.Formatting.Enums.ComparisonOperator, and Formula1 and Formula2 carry the compared values. FontFormatting, BorderFormatting, and PatternFormatting set the styles. Create a rule with CreateConditionalFormattingRule, then add it to a range.",
+    "description": "Reference for the IronXL ConditionalFormattingRule class in C#: pair a comparison and formulas with font, border, and pattern formatting.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\nusing IronXL.Formatting;\n\nWorkSheet sheet = WorkBook.Create().DefaultWorkSheet;\nConditionalFormattingRule rule =\n    sheet.ConditionalFormatting.CreateConditionalFormattingRule(ComparisonOperator.LessThan, \"8\");\nrule.FontFormatting.IsBold = true;\nsheet.ConditionalFormatting.AddConditionalFormatting(\"A1:A10\", rule);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ConditionalFormattingRule live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ConditionalFormattingRule is a class in the IronXL.Formatting namespace, shipped in IronXL.dll. CreateConditionalFormattingRule returns one, which you style and then add to a worksheet with AddConditionalFormatting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create a conditional formatting rule in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call CreateConditionalFormattingRule on a worksheet's ConditionalFormatting accessor, passing a comparison operator and a value. Configure the returned rule's FontFormatting, BorderFormatting, or PatternFormatting, then add it to a cell range with AddConditionalFormatting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which ComparisonOperator does ComparisonOperation use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ComparisonOperation property uses the operator from IronXL.Formatting.Enums.ComparisonOperator, such as LessThan or Between. That is a different type from the ComparisonOperator in IronXL.DataValidations, which applies to data validation rules instead."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,22 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ConditionalFormattingRule : Object</code></pre>
   </div>
+    <!-- archetype-N:start ConditionalFormattingRule treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Styling cells when they meet a condition runs through <code>ConditionalFormattingRule</code>. One rule pairs a test (a comparison against a value or a category) with the formatting applied when the test passes, so a developer expresses &quot;color this cell red when it is below 8&quot; as a single object. It is the rule a developer builds behind a search like &quot;C# Excel conditional formatting rule&quot;.</p>
+<p>A rule is produced by <code>CreateConditionalFormattingRule</code> on a worksheet's conditional formatting accessor, then attached to a cell range with <code>AddConditionalFormatting</code>. The factory call sets the rule's <code>ComparisonOperation</code> and <code>Formula1</code>; the returned object is then configured with the styles to apply and added to the sheet. The rule belongs to the formatting pass that runs when the workbook is saved or evaluated.</p>
+<p>Two groups of members do the work. The condition group decides when the rule fires: <code>ConditionType</code> reports the category (cell-value comparison, formula, color scale, and similar), <code>ComparisonOperation</code> holds the operator from the <code>IronXL.Formatting.Enums.ComparisonOperator</code> set such as <code>LessThan</code> or <code>Between</code>, and <code>Formula1</code> and <code>Formula2</code> carry the compared values, with <code>Formula2</code> used by range operators like <code>Between</code>. The styling group decides what the rule does: <code>FontFormatting</code> sets font and color, <code>BorderFormatting</code> sets borders, and <code>PatternFormatting</code> sets the background fill and pattern. Note that <code>ComparisonOperation</code> uses the formatting enum, which differs from the same-named operator in <code>IronXL.DataValidations</code> used for data validation rules; the two are separate types with separate members.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+using IronXL.Formatting;
+
+WorkSheet sheet = WorkBook.Create().DefaultWorkSheet;
+ConditionalFormattingRule rule =
+    sheet.ConditionalFormatting.CreateConditionalFormattingRule(ComparisonOperator.LessThan, &quot;8&quot;);
+rule.FontFormatting.IsBold = true;
+sheet.ConditionalFormatting.AddConditionalFormatting(&quot;A1:A10&quot;, rule);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/conditional-formatting/">conditional formatting how-to</a> walks through creating and styling a rule, the <a href="https://ironsoftware.com/csharp/excel/examples/excel-conditional-formatting/">conditional formatting example</a> applies one to a range, and the <a href="https://ironsoftware.com/csharp/excel/examples/excel-style-cells-borders-fonts/">style cells example</a> covers the fonts and borders a rule sets.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

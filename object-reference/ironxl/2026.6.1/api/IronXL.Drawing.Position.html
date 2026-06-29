@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Position
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Position Class - IronXL C# API Reference
+      v2 (human)     title:       Position: Anchor Worksheet Images in C#
+      v1 (algorithm) description: Anchor a worksheet image in C# with the IronXL Position class: set row and column indexes, column letters, and the AnchorType behavior.
+      v2 (human)     description: Place a graphic on an Excel sheet in C# with the IronXL Position class: bound it to cells by row, column, or letter and set how it anchors.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Position Class | IronXL C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Position
-   | C# Excel API | IronXL ">
+    <meta name="title" content="Position Class | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL Position class in .NET: TopRowIndex, BottomRowIndex, column indexes and letters, and AnchorType for worksheet images.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Position Class | IronXL C# API Reference",
+    "name": "Position class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Drawing.Position.html",
+    "abstract": "Locating a graphic object on a worksheet in C# runs through the IronXL Position class. TopRowIndex, BottomRowIndex, LeftColumnIndex, and RightColumnIndex bound it in 0-based cell coordinates, LeftColumnLetter and RightColumnLetter offer the column bounds as letters, and AnchorType controls how the object moves and sizes with its cells. Set the corners and the anchor type to place an image.",
+    "description": "Reference for the IronXL Position class in .NET: TopRowIndex, BottomRowIndex, column indexes and letters, and AnchorType for worksheet images.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL.Drawing;\n\n// position obtained from a worksheet image\nposition.LeftColumnIndex = 0;\nposition.TopRowIndex = 0;\nposition.RightColumnIndex = 3;\nposition.BottomRowIndex = 5;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Position live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Position is a class in the IronXL.Drawing namespace, shipped in IronXL.dll, deriving from System.Object. It represents the placement of a graphic object within a worksheet's cells."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you anchor an image to specific cells in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the Position object's LeftColumnIndex and TopRowIndex for the top-left corner and RightColumnIndex and BottomRowIndex for the bottom-right, all 0-based. LeftColumnLetter and RightColumnLetter set the column bounds as letters instead."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does AnchorType control on a Position?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AnchorType is an AnchorType value that decides how the graphic reacts when cells change: whether it moves and sizes with the cells, moves without sizing, or stays fixed. Set it alongside the corner coordinates."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Position : Object</code></pre>
   </div>
+    <!-- archetype-N:start Position treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Position</code> locates a graphic object, such as an image, on a worksheet by naming the cells it is attached to. When a developer adds a picture to a sheet and needs it to sit over a specific range rather than float at an arbitrary point, this object pins it to the grid: it defines the top-left and bottom-right cell corners that bound the object and how tightly it follows those cells as the sheet changes.</p>
+<p>A <code>Position</code> describes where a drawing anchors within the worksheet's coordinate system. It carries the top, bottom, left, and right cell coordinates of the object and the anchoring behavior that ties it to them, so reading a position tells you which cells a graphic covers and adjusting one moves or resizes the graphic in cell terms. It belongs to the image-handling step of a workbook workflow, after a sheet exists and a drawing is being placed or inspected.</p>
+<p>The coordinates come in two complementary forms. <code>TopRowIndex</code> and <code>BottomRowIndex</code> set the first and last rows as 0-based indexes, while <code>LeftColumnIndex</code> and <code>RightColumnIndex</code> do the same for columns; a value of 0 maps to Excel's row 1 or column A. For columns, <code>LeftColumnLetter</code> and <code>RightColumnLetter</code> offer the same bounds as letters such as &quot;A&quot;, an alternative to the numeric index for code that thinks in spreadsheet terms. <code>AnchorType</code> is an <code>AnchorType</code> value that decides whether the object moves and sizes with its cells, moves but does not size, or stays fixed. Set the corner coordinates to bound the object and the anchor type to control how it reacts when rows or columns are inserted or resized.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL.Drawing;
+
+// position obtained from a worksheet image
+position.LeftColumnIndex = 0;
+position.TopRowIndex = 0;
+position.RightColumnIndex = 3;
+position.BottomRowIndex = 5;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/add-extract-remove-worksheet-images/">worksheet images how-to</a> covers placing and removing pictures, the <a href="https://ironsoftware.com/csharp/excel/examples/add-extract-remove-worksheet-images/">worksheet images example</a> shows a worked file, and the <a href="https://ironsoftware.com/csharp/excel/how-to/manage-worksheet/">manage worksheets how-to</a> sets up the sheet a graphic sits on.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

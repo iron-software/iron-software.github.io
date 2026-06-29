@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IShading
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IShading Interface - IronPPT C# API
+      v2 (human)     title:       IShading: Paragraph Shading Colors in C#
+      v1 (algorithm) description: IShading is the IronPPT shading contract in C#: Color, Fill, theme colors, and a ShadingPatternValues pattern, implemented by Shading.
+      v2 (human)     description: Shade a slide text block in C# through IronPPT's IShading contract: set a foreground Color, a Fill, theme colors, and a shading pattern, implemented by Shading.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IShading Interface | IronPPT .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IShading
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IShading Interface | IronPPT .NET API">
+    <meta name="description" content="Reference for the IronPPT IShading interface in C#: the background-shading contract for color, fill, theme colors, and pattern, implemented by Shading.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IShading Interface | IronPPT .NET API",
+    "name": "IShading interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IShading.html",
+    "abstract": "Fill a slide text block with a background color or pattern in C# through IronPPT's IShading contract. Color and Fill set the foreground and background as IColor values, the ThemeColor and ThemeFill members track the presentation palette, and ShadingPattern selects a ShadingPatternValues blend. The concrete implementor is Shading, read or assigned on the element that supports shading rather than built standalone.",
+    "description": "Reference for the IronPPT IShading interface in C#: the background-shading contract for color, fill, theme colors, and pattern, implemented by Shading.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IShading shading = new Shading();\nshading.Fill = new Color(\"#FFF2CC\");\nshading.ShadingPattern = ShadingPatternValues.Solid;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IShading live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IShading is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It does not extend another interface; its color members are typed as IColor and its pattern is a ShadingPatternValues value."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IShading in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Shading class in IronPPT.Models implements IShading. You read or assign the shading on the element that supports it rather than constructing a standalone object, then set Color, Fill, and ShadingPattern."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you make shading follow the presentation theme?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the theme members instead of the direct colors. ThemeColor and ThemeFill pick scheme colors, and ThemeFillShade, ThemeTint, and ThemeFillTint shift them lighter or darker so the shading tracks the presentation palette."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +208,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IShading</code></pre>
   </div>
+    <!-- archetype-N:start IShading treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>Filling a paragraph or text region with a background color or pattern runs through <code>IShading</code>. It is the contract that holds the foreground color, the fill color, and the pattern that blends them, so a developer can shade a block of text the way a highlight or banded background would. Reach for it when a slide element needs a colored or patterned backdrop rather than a flat single color, and lean on the theme members when the shading should track the presentation's color scheme.</p>
+<p>A developer reads or assigns the shading on the element that supports it rather than building a freestanding object. The concrete implementor in IronPPT is <code>Shading</code>, and its color members are typed as <code>IColor</code>, the same color contract the rest of the API uses, so a shading color is built and reused exactly like any other color.</p>
+<p>The members split into direct colors, theme colors, and the pattern. The direct pair is <code>Color</code> (the pattern foreground) and <code>Fill</code> (the background behind it), both <code>IColor</code>. The theme set lets shading follow the presentation palette: <code>ThemeColor</code> and <code>ThemeFill</code> pick scheme colors, while <code>ThemeFillShade</code>, <code>ThemeFillTint</code>, and <code>ThemeTint</code> adjust them lighter or darker (<code>ThemeFillShade</code> is an <code>IColor</code>; <code>ThemeTint</code> and <code>ThemeFillTint</code> are string adjustments). <code>ShadingPattern</code> is a nullable <code>ShadingPatternValues</code> that selects the pattern blending the two colors; leaving it null gives a solid fill.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IShading shading = new Shading();
+shading.Fill = new Color(&quot;#FFF2CC&quot;);
+shading.ShadingPattern = ShadingPatternValues.Solid;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> styles a paragraph block, the <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> covers placing the text a shading sits behind, and the <a href="https://ironsoftware.com/csharp/ppt/examples/add-paragraph/">add paragraph example</a> shows building the block that carries it.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

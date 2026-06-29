@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IImageFilter
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IImageFilter Interface - IronBarcode C# API
+      v2 (human)     title:       IImageFilter: The Barcode Image Filter Contract
+      v1 (algorithm) description: IImageFilter is the contract for IronBarcode image-correction filters in C#: implemented by AdaptiveThresholdFilter, ContrastFilter, GaussianBlurFilter, and more.
+      v2 (human)     description: Every IronBarcode image filter in C# implements IImageFilter, so a single ImageFilterCollection can queue brightness, contrast, blur, and threshold steps.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IImageFilter Interface | IronBarcode C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IImageFilter
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="IImageFilter Interface | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode IImageFilter interface in C#: the common contract for the filters added to BarcodeReaderOptions.ImageFilters.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IImageFilter Interface | IronBarcode C# API",
+    "name": "IImageFilter interface | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.IImageFilter.html",
+    "abstract": "IImageFilter is the contract every IronBarcode image-correction filter implements in C#, letting an ImageFilterCollection hold any mix of filters in one ordered list. Implementors include AdaptiveThresholdFilter, BinaryThresholdFilter, BrightnessFilter, ContrastFilter, GaussianBlurFilter, and BilateralFilter; code adds one to the collection on BarcodeReaderOptions.ImageFilters rather than implementing the interface itself.",
+    "description": "Reference for the IronBarcode IImageFilter interface in C#: the common contract for the filters added to BarcodeReaderOptions.ImageFilters.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IImageFilter filter = new ContrastFilter(2.0f);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IImageFilter live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IImageFilter is an interface in the IronBarCode namespace, shipped in IronBarCode.dll. It extends Object and is the element type of ImageFilterCollection, which is assigned to BarcodeReaderOptions.ImageFilters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IImageFilter in IronBarcode?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The built-in filters implement it: AdaptiveThresholdFilter, BinaryThresholdFilter, BrightnessFilter, ContrastFilter, GaussianBlurFilter, BilateralFilter, SharpenFilter, MedianBlurFilter, InvertFilter, DilateFilter, ErodeFilter, and HistogramEqualizationFilter. Implement it yourself only for a custom correction step."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -147,7 +203,15 @@
   </div>
   
   
-</article>
+  <!-- archetype-N:start IImageFilter treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p><code>IImageFilter</code> is the common contract every image-correction filter in IronBarcode satisfies, the type the reader accepts when a barcode image needs cleaning up before decoding. A developer rarely names it directly. Its value is that it lets the <code>ImageFilterCollection</code> hold any mix of filters in one ordered list, so brightness, contrast, blur, and threshold steps queue together and the reader applies them uniformly without knowing which concrete filter is which.</p>
+<p>The concrete implementors shipped with IronBarcode cover the common image problems: <code>AdaptiveThresholdFilter</code> and <code>BinaryThresholdFilter</code> binarize, <code>BrightnessFilter</code> and <code>ContrastFilter</code> adjust tone, <code>GaussianBlurFilter</code> and <code>BilateralFilter</code> smooth noise, and <code>SharpenFilter</code>, <code>MedianBlurFilter</code>, <code>InvertFilter</code>, <code>DilateFilter</code>, <code>ErodeFilter</code>, and <code>HistogramEqualizationFilter</code> handle the rest. Code that needs a correction step instantiates one of these and adds it to an <code>ImageFilterCollection</code>, which is then assigned to <code>BarcodeReaderOptions.ImageFilters</code>. Implementing <code>IImageFilter</code> directly is reserved for a custom correction the built-in set does not provide; for everyday reads, the supplied filters are the answer.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IImageFilter filter = new ContrastFilter(2.0f);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/image-correction/">image correction how-to</a> walks through the built-in filters, and the <a href="https://ironsoftware.com/csharp/barcode/examples/imperfect-barcode-with-image-correction/">imperfect barcode example</a> applies several to read a degraded image.</p>
+  </div>
+  <!-- archetype-N:end -->
+  </article>
           </div>
            
           <div class="hidden-sm col-md-2" role="complementary">

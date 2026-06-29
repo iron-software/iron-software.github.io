@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class WorkSheet
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       WorkSheet Class - IronXL C# API Reference
+      v2 (human)     title:       WorkSheet: Read & Write Excel Cells in C#
+      v1 (algorithm) description: Read and write Excel cells in C# with the IronXL WorkSheet class. Use the indexer for ranges, GetRange and GetRow for access, Merge and AutoSizeColumn for layout.
+      v2 (human)     description: Work with one Excel tab in C# through the IronXL WorkSheet class: read and write cells, select ranges, merge cells, and size rows and columns.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>WorkSheet Class | IronXL C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class WorkSheet
-   | C# Excel API | IronXL ">
+    <meta name="title" content="WorkSheet Class | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL WorkSheet class in C#: access cells and ranges with the indexer, merge cells, auto-size columns, and add named ranges.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "WorkSheet Class | IronXL C# API Reference",
+    "name": "WorkSheet class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.WorkSheet.html",
+    "abstract": "A WorkSheet is the object IronXL hands a developer to read and write the cells of one Excel tab in C#. Get it from a WorkBook with GetWorkSheet, then use the string indexer or GetRange, GetRow, and GetColumn to access data. It derives from Range, so the full range surface is available, alongside sheet members like Merge, AutoSizeColumn, AddNamedRange, and CreateFreezePane.",
+    "description": "Reference for the IronXL WorkSheet class in C#: access cells and ranges with the indexer, merge cells, auto-size columns, and add named ranges.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nWorkBook workBook = WorkBook.Load(\"sample.xlsx\");\nWorkSheet workSheet = workBook.GetWorkSheet(\"Sheet1\");\nRange range = workSheet[\"A1:A10\"];\ndecimal total = range.Sum();\nworkSheet[\"B1\"].Value = total;\nworkBook.SaveAs(\"output.xlsx\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does WorkSheet live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WorkSheet is a class in the IronXL namespace, shipped in IronXL.dll, and derives from Range. Get one from a WorkBook through GetWorkSheet or the WorkSheets collection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read a cell value from a WorkSheet in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the string indexer: workSheet[\"A1\"].Value returns the cell value, and workSheet[\"A1:C3\"] returns a Range covering several cells. GetCellAt and GetRange do the same with explicit row and column arguments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does WorkSheet share members with Range in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. WorkSheet derives from Range, so range members like Rows, Columns, Sum, and value access work directly on the sheet, in addition to sheet-specific members such as Merge, AutoSizeColumn, and AddNamedRange."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -345,6 +409,22 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class WorkSheet : Range, IEnumerable&lt;Cell&gt;, IEnumerable</code></pre>
   </div>
+    <!-- archetype-N:start WorkSheet treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Reading and writing the cells of a single Excel tab in C# happens through <code>WorkSheet</code>. It represents one sheet inside a <code>WorkBook</code> and is where the actual data work lives: pulling values out, writing them in, selecting ranges, merging cells, and shaping rows and columns. A developer searching for &quot;C# Excel worksheet&quot; wants this type, and most IronXL examples spend the bulk of their lines on it.</p>
+<p>Obtain a worksheet from a workbook with <code>GetWorkSheet</code>, by index from the <code>WorkSheets</code> collection, or fresh from <code>CreateWorkSheet</code>. Once held, the indexer <code>Item[String]</code> gives the quickest path to data, so <code>workSheet[&quot;A1&quot;]</code> reads or assigns a single cell and <code>workSheet[&quot;A1:C3&quot;]</code> returns a <code>Range</code> spanning several. The <code>GetRange</code>, <code>GetCellAt</code>, <code>GetRow</code>, and <code>GetColumn</code> methods cover the same ground with explicit arguments when a string address is awkward.</p>
+<p>Because <code>WorkSheet</code> derives from <code>Range</code>, the whole range surface is available on the sheet itself, including <code>Rows</code>, <code>Columns</code>, and value access, alongside sheet-specific members grouped by job. For layout, <code>Merge</code> and <code>Unmerge</code> combine cells while <code>AutoSizeColumn</code> and <code>AutoSizeRow</code> fit them to content. For structure, <code>AddNamedRange</code> and <code>AddNamedTable</code> register reusable names and <code>CreateFreezePane</code> locks headers in place. <code>Name</code> reads or sets the tab label, and <code>SaveAs</code> writes just this sheet to its own file. Edits stay in memory until the parent <code>WorkBook</code> is saved, so a worksheet and the workbook that owns it are written together.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+WorkBook workBook = WorkBook.Load(&quot;sample.xlsx&quot;);
+WorkSheet workSheet = workBook.GetWorkSheet(&quot;Sheet1&quot;);
+Range range = workSheet[&quot;A1:A10&quot;];
+decimal total = range.Sum();
+workSheet[&quot;B1&quot;].Value = total;
+workBook.SaveAs(&quot;output.xlsx&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/select-range/">select range how-to</a> covers cell and range access, the <a href="https://ironsoftware.com/csharp/excel/how-to/manage-worksheet/">manage worksheets how-to</a> handles sheet operations, and the <a href="https://ironsoftware.com/csharp/excel/how-to/csharp-excel-merge-cells/">merge cells how-to</a> demonstrates <code>Merge</code>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class GradientStop
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       GradientStop Class - IronWord C# API
+      v2 (human)     title:       GradientStop: Color Stops for Gradients in C#
+      v1 (algorithm) description: Define a gradient color stop in C# with the IronWord GradientStop class: set Color and a unit-aware StopPoint, then add it to Gradient.StopPoints.
+      v2 (human)     description: Anchor a Word text gradient in C# with the IronWord GradientStop class: pair a color with a position and add the stop to a Gradient's StopPoints.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>GradientStop Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class GradientStop
-   | C# Word API | IronWord ">
+    <meta name="title" content="GradientStop Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord GradientStop class in C#: a color-and-position record, with Color, StopPoint, and the static FirstDefault and SecondDefault.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "GradientStop Class | IronWord C# API",
+    "name": "GradientStop class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.GradientStop.html",
+    "abstract": "A GradientStop is the color-and-position record an IronWord Gradient blends between in C#. Color sets the color at the anchor and StopPoint its position, read and written through GetStopPoint and SetStopPoint with a MeasurementUnit. Add stops to a Gradient's StopPoints list, in order, to define the blend; the static FirstDefault and SecondDefault provide a ready two-color pair.",
+    "description": "Reference for the IronWord GradientStop class in C#: a color-and-position record, with Color, StopPoint, and the static FirstDefault and SecondDefault.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "GradientStop stop = new GradientStop();\nstop.Color = Color.Red;\nstop.SetStopPoint(0, MeasurementUnit.Point);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does GradientStop live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GradientStop is a class in the IronWord.Models namespace, shipped in IronWord.dll, with base type Object. A Gradient holds an ordered List of GradientStop in its StopPoints property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set the position of a gradient stop in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call SetStopPoint with a double and a MeasurementUnit so the value is read in points, centimeters, or inches. Use GetStopPoint with the same unit to read it back, rather than reading the raw StopPoint number."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between GradientStop and Gradient?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Gradient describes the whole blend and holds the StopPoints list, the angle, and the scaling. A GradientStop is one anchor in that list, pairing a single Color with one StopPoint position. Order the stops by position so the colors transition correctly."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class GradientStop : Object</code></pre>
   </div>
+    <!-- archetype-N:start GradientStop treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>GradientStop</code> is the single color-and-position record that a <code>Gradient</code> blends between. Each stop pairs one color with a point along the gradient line, and a <code>Gradient</code> holds an ordered <code>List&lt;GradientStop&gt;</code> in its <code>StopPoints</code> property. Where the surrounding <code>Gradient</code> describes the whole blend, a <code>GradientStop</code> describes one anchor of it.</p>
+<p>A stop sits inside the gradient workflow rather than standing alone: you create the stops, add them to a <code>Gradient.StopPoints</code> list, then attach that gradient to a <code>TextEffect</code> so the run renders with the blend. The position of each stop, together with the order of the list, determines how the colors transition across the text. A simple two-color blend needs only two stops, one at each end, while a richer transition adds intermediate stops at the positions where you want the color to shift.</p>
+<p>Two properties carry the data. <code>Color</code> holds the color at this anchor, and <code>StopPoint</code> holds its position as a <code>double</code>. Because the position is unit-sensitive, read and write it through <code>GetStopPoint</code> and <code>SetStopPoint</code>, which both take a <code>MeasurementUnit</code> so the value is interpreted in points, centimeters, or inches rather than a bare number. For a quick start, the static <code>FirstDefault</code> and <code>SecondDefault</code> return two ready-made stops that form a usable two-color blend, which you can apply as-is or adjust before adding more. Keep the list ordered by <code>StopPoint</code> so colors blend in the intended sequence.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">GradientStop stop = new GradientStop();
+stop.Color = Color.Red;
+stop.SetStopPoint(0, MeasurementUnit.Point);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-gradient-effect/">gradient text effect how-to</a> builds a blend from stops, the <a href="https://ironsoftware.com/csharp/word/examples/add-text-effect-gradient-effect/">gradient effect example</a> shows a working run, and the <a href="https://ironsoftware.com/csharp/word/how-to/add-style-text/">styled text how-to</a> sets surrounding run formatting.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AdvancedCharacter
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       AdvancedCharacter Class - IronOCR C# API
+      v2 (human)     title:       AdvancedCharacter: Per-Character OCR Data in C#
+      v1 (algorithm) description: AdvancedCharacter is a recognized character from IronOCR's advanced read in C#: its Text plus BoundingBox, X, Y, Width, Height, and PageNumber.
+      v2 (human)     description: Inspect each recognized character in C# with IronOCR's AdvancedCharacter: read the glyph and its exact pixel position from an advanced OCR result.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>AdvancedCharacter Class | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AdvancedCharacter
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="AdvancedCharacter Class | IronOCR C# API">
+    <meta name="description" content="Reference for IronOCR's AdvancedCharacter in C#: a single recognized character with text and spatial coordinates from an advanced OCR result.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "AdvancedCharacter Class | IronOCR C# API",
+    "name": "AdvancedCharacter class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.AdvancedCharacter.html",
+    "abstract": "AdvancedCharacter is a single recognized character returned by IronOCR's advanced OCR engine in C#, obtained from the Characters array of an AdvancedOcrResultBase. Its Text holds the decoded glyph, while BoundingBox, X, Y, Width, Height, and PageNumber (inherited from AdvancedOcrElement) locate it on the page. RegionIndex and RegionConfidence link it to its text region.",
+    "description": "Reference for IronOCR's AdvancedCharacter in C#: a single recognized character with text and spatial coordinates from an advanced OCR result.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "foreach (AdvancedCharacter ch in result.Characters)\n    Console.WriteLine($\"{ch.Text} at {ch.X},{ch.Y}\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does AdvancedCharacter live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AdvancedCharacter is a class in the IronOcr namespace, shipped in IronOcr.dll. It derives from AdvancedOcrElement, and you obtain instances from the Characters array on an AdvancedOcrResultBase."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get the position of a recognized character in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read BoundingBox for the pixel rectangle, or X, Y, Width, and Height for the same box as separate values. PageNumber gives the 1-based page. These members are inherited from AdvancedOcrElement and shared with AdvancedWord."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -183,18 +239,16 @@ positional mapping of individual characters within recognized text.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class AdvancedCharacter : AdvancedOcrElement</code></pre>
   </div>
-  <h5 id="IronOcr_AdvancedCharacter_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p><strong>Usage:</strong></p>
-<pre><code>var ocr = new IronTesseract();
-var input = new OcrInput();
-input.LoadPdf(&quot;scanned.pdf&quot;);
-var result = ocr.ReadDocumentAdvanced(input);
-<p>// Access all characters with coordinates
-foreach (var ch in result.Characters)
-{
-Console.WriteLine($&quot;'{ch.Text}' at ({ch.X},{ch.Y}) size ({ch.Width}x{ch.Height}) on page {ch.PageNumber}&quot;);
-}</code></pre><p>
-</div>
+    <!-- archetype-N:start AdvancedCharacter treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>AdvancedCharacter</code> is a single recognized character returned by the advanced OCR engine, complete with its position on the page. Each one pairs the decoded glyph with the pixel rectangle that locates it, so a project can highlight, crop, or map individual characters rather than only the run of text. It is the character-level peer of <code>AdvancedWord</code>, which groups the same data at word granularity.</p>
+<p>You receive an <code>AdvancedCharacter</code> from the <code>Characters</code> array on an <code>AdvancedOcrResultBase</code> (the result type produced by the advanced and handwriting reads on <code>IronTesseract</code>). Iterate that array to walk every character the engine found across the document.</p>
+<p>The recognized glyph is on <code>Text</code>, and the position comes from members inherited from <code>AdvancedOcrElement</code>: <code>BoundingBox</code> gives the pixel rectangle, <code>X</code>, <code>Y</code>, <code>Width</code>, and <code>Height</code> give the same box as separate values, and <code>PageNumber</code> reports the 1-based page the character sits on. <code>RegionIndex</code> and <code>RegionConfidence</code> tie the character back to its text region and that region's confidence score, useful when filtering low-confidence output before display.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">foreach (AdvancedCharacter ch in result.Characters)
+    Console.WriteLine($&quot;{ch.Text} at {ch.X},{ch.Y}&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-document-advanced/">read document advanced how-to</a> walks through an advanced read, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">read results how-to</a> shows how to traverse characters, words, and their coordinates.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

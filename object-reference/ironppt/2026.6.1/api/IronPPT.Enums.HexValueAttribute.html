@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class HexValueAttribute
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       HexValueAttribute Class - IronPPT C# Reference
+      v2 (human)     title:       HexValueAttribute: Tag Enum Values in C#
+      v1 (algorithm) description: Tie an enum member to a hex string in C# with the IronPPT HexValueAttribute: a constructor takes the hex value, read back via the HexValue property.
+      v2 (human)     description: Map a named enum value to its hex token in C# with IronPPT's HexValueAttribute: pass the hex to the constructor and read it from HexValue.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>HexValueAttribute | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class HexValueAttribute
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="HexValueAttribute | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT HexValueAttribute class in C#: decorate an enum member with a hex string and read it through HexValue.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "HexValueAttribute | IronPPT C# API Reference",
+    "name": "HexValueAttribute class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Enums.HexValueAttribute.html",
+    "abstract": "Tie an enum member to a hex string in IronPPT with HexValueAttribute. Applied to a member at declaration, it takes a hex string in its constructor and exposes it through the read-only HexValue property, keeping a readable identifier next to the literal hex token a presentation file expects.",
+    "description": "Reference for the IronPPT HexValueAttribute class in C#: decorate an enum member with a hex string and read it through HexValue.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var attr = new HexValueAttribute(\"FF0000\");\nstring hex = attr.HexValue;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does HexValueAttribute live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HexValueAttribute is in the IronPPT.Enums namespace, shipped in IronPPT.dll, and derives from System.Attribute. It decorates enum members and exposes the supplied hex string through its HexValue property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read the hex value from a HexValueAttribute in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the get-only HexValue property, which returns the string passed to the constructor. In normal flow you reach it through reflection on the decorated enum member rather than constructing the attribute yourself."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +205,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class HexValueAttribute : Attribute</code></pre>
   </div>
+    <!-- archetype-N:start HexValueAttribute treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>HexValueAttribute</code> is the decoration that ties an enum member to a hex string, so a named value such as a color or pattern constant carries the literal hex it stands for. It pairs a readable identifier in code with the underlying hex token a presentation file expects, keeping the mapping next to the value rather than in a separate lookup.</p>
+<p>You apply it to an enum member at declaration, passing the hex string to its constructor. At runtime, code that needs the literal reads the value back through reflection on the member. The attribute holds a single read-only property, <code>HexValue</code>, which returns the string supplied to the constructor; there is no setter, so the value is fixed once the member is declared.</p>
+<p>Because <code>HexValueAttribute</code> is a metadata annotation, you do not construct it directly in normal application flow. The framework reads it when it resolves a member to its hex token, so the everyday job is choosing the right hex string when an enum member is defined, often a six-digit color hex consumed when building a <a href="https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Color.html">Color</a>. The <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> shows applying styling that resolves to such values on a slide.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var attr = new HexValueAttribute(&quot;FF0000&quot;);
+string hex = attr.HexValue;</code></pre></div>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

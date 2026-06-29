@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ZipSaveOptions
-   | C# Zip API | IronZIP </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ZipSaveOptions Class - IronZip C# API
+      v2 (human)     title:       ZipSaveOptions: Configure ZIP Saves in C#
+      v1 (algorithm) description: Configure ZIP saves in C# with the IronZip ZipSaveOptions class: set Compression, Password, and EncryptionMethod, then pass it to a save call.
+      v2 (human)     description: Control how a ZIP is written in C# with the IronZip ZipSaveOptions class: compression level, password, and encryption method, with code examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ZipSaveOptions Class | IronZip C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ZipSaveOptions
-   | C# Zip API | IronZIP ">
+    <meta name="title" content="ZipSaveOptions Class | IronZip C# API Reference">
+    <meta name="description" content="Reference for the IronZip ZipSaveOptions class in C#: set compression, password, and encryption method for an archive save, with examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ZipSaveOptions Class | IronZip C# API Reference",
+    "name": "ZipSaveOptions class | IronZip C# API",
+    "url": "https://ironsoftware.com/csharp/zip/object-reference/api/IronZip.ZipSaveOptions.html",
+    "abstract": "Configuring how a ZIP archive is written in C# runs through the IronZip ZipSaveOptions class. It groups Compression (the size-versus-speed level), Password, and EncryptionMethod (an EncryptionMethods value). Build one with new ZipSaveOptions, set the properties, and pass it to IronZipArchive.Save or SaveAs, or assign it to the archive's ZipSaveOptions property.",
+    "description": "Reference for the IronZip ZipSaveOptions class in C#: set compression, password, and encryption method for an archive save, with examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronZip",
+      "url": "https://ironsoftware.com/csharp/zip/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronZip;\n\nusing var archive = new IronZipArchive();\narchive.Add(\"report.pdf\");\narchive.SaveAs(\"secure.zip\", new ZipSaveOptions { Password = \"p@ss\", EncryptionMethod = EncryptionMethods.AES256 });"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ZipSaveOptions live in the IronZip API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ZipSaveOptions is a class in the IronZip namespace, shipped in IronZip.dll. Construct it with new ZipSaveOptions(), then pass it to IronZipArchive.Save or SaveAs, or assign it to the archive's ZipSaveOptions property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set a ZIP password in C# with ZipSaveOptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the Password property and choose an EncryptionMethod (AES256, AES128, or Traditional), then pass the options to SaveAs or Save. Leaving Password unset writes an unencrypted archive."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +206,18 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ZipSaveOptions : Object</code></pre>
   </div>
+    <!-- archetype-N:start ZipSaveOptions treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>The compression level, password, and encryption method for a save are carried by <code>ZipSaveOptions</code>. It groups the three settings that control how an archive is written so they travel together instead of as loose arguments. Construct one with <code>new ZipSaveOptions()</code> and set the properties that matter.</p>
+<p><code>Compression</code> sets the level for the size-versus-speed trade-off, <code>Password</code> sets the password applied to the archive, and <code>EncryptionMethod</code> selects the scheme through an <code>EncryptionMethods</code> value (<code>AES256</code>, <code>AES128</code>, or <code>Traditional</code>). Pass the configured object to <code>IronZipArchive.SaveAs(path, options)</code> or <code>Save(options)</code>, or assign it to the archive's <code>ZipSaveOptions</code> property so later saves reuse it. Leaving <code>Password</code> unset writes an unencrypted archive. Reusing one options object across saves keeps a consistent password and compression for a batch of archives, and the object read back from the <code>ZipSaveOptions</code> property shows what a loaded archive will apply on its next save.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronZip;
+
+using var archive = new IronZipArchive();
+archive.Add(&quot;report.pdf&quot;);
+archive.SaveAs(&quot;secure.zip&quot;, new ZipSaveOptions { Password = &quot;p@ss&quot;, EncryptionMethod = EncryptionMethods.AES256 });</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/zip/examples/password-protect-zip/">password-protect ZIP example</a> uses these options, and the <a href="https://ironsoftware.com/csharp/zip/examples/create-zip/">create ZIP example</a> shows a plain save for comparison.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

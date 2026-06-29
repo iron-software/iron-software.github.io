@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class IronTarArchive
-   | C# Zip API | IronZIP </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IronTarArchive Class - IronZip C# API
+      v2 (human)     title:       IronTarArchive: Create TAR Files in C#
+      v1 (algorithm) description: Create and extract TAR archives in C# with the IronZip IronTarArchive class. Reference its Add, FromFiles, Save, and extract methods with examples.
+      v2 (human)     description: Bundle files into TAR archives in C# with the IronZip IronTarArchive class: add files, save, and extract uncompressed tarballs, with code examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IronTarArchive Class | IronZip C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class IronTarArchive
-   | C# Zip API | IronZIP ">
+    <meta name="title" content="IronTarArchive Class | IronZip C# API Reference">
+    <meta name="description" content="Reference for the IronZip IronTarArchive class in C#: bundle files into .tar archives, save, and extract, with code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IronTarArchive Class | IronZip C# API Reference",
+    "name": "IronTarArchive class | IronZip C# API",
+    "url": "https://ironsoftware.com/csharp/zip/object-reference/api/IronZip.IronTarArchive.html",
+    "abstract": "Creating TAR archives in C# runs through the IronZip IronTarArchive class. TAR bundles files without compressing them, preserving structure and metadata. Add files with Add, build directly from paths with the static FromFile and FromFiles, list contents with GetArchiveEntryNames, and write or unpack with SaveAs and the static ExtractArchiveToDirectory. The class derives from IronBaseArchive and is disposable.",
+    "description": "Reference for the IronZip IronTarArchive class in C#: bundle files into .tar archives, save, and extract, with code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronZip",
+      "url": "https://ironsoftware.com/csharp/zip/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronZip;\n\nusing var archive = new IronTarArchive();\narchive.Add(\"report.pdf\");\narchive.SaveAs(\"output.tar\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IronTarArchive live in the IronZip API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IronTarArchive is in the IronZip namespace, shipped in IronZip.dll. It derives from the abstract IronBaseArchive and implements IDisposable, so wrap instances in a using statement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a TAR archive compress its files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. TAR bundles files together without compression, preserving structure and metadata. To shrink the output, create a gzip archive with IronGZipArchive or a bzip2 archive with IronBZip2Archive instead, or in addition."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create a TAR file from existing files in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call the static IronTarArchive.FromFiles with an array of paths, or construct new IronTarArchive(), call Add for each file, then SaveAs with the .tar output path."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -167,6 +231,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class IronTarArchive : IronBaseArchive, IDisposable</code></pre>
   </div>
+    <!-- archetype-N:start IronTarArchive treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Bundling files into a TAR (<code>.tar</code>) archive runs through <code>IronTarArchive</code>. TAR comes from Unix and stores files together without compressing them, preserving the original file structure and metadata, which is why it is often paired with gzip or bzip2 to produce compressed tarballs. Create an empty archive with <code>new IronTarArchive()</code>, or open one from a path with the second constructor.</p>
+<p>Files go in through <code>Add</code>, which takes one file path per call, and <code>AddArchiveEntry</code>. Three static helpers cover the common one-shot operations: <code>FromFile</code> and <code>FromFiles</code> build an archive directly from paths, and <code>ExtractArchiveToDirectory</code> unpacks an existing <code>.tar</code> to a folder. <code>GetArchiveEntryNames</code> lists the entries already inside an archive. The type derives from <code>IronBaseArchive</code>, so <code>Save</code> and <code>SaveAs</code> write the result and <code>Dispose</code> releases the stream.</p>
+<p>A common run creates the archive, adds the files that belong together, and calls <code>SaveAs</code>. Because TAR does not compress, the output is close to the combined input size; reach for <code>IronGZipArchive</code> or <code>IronBZip2Archive</code> when the result also needs to shrink, which is how a <code>.tar.gz</code> or <code>.tar.bz2</code> is produced. Opening an existing <code>.tar</code> through the path constructor exposes its contents through <code>GetArchiveEntryNames</code>, so the entries can be listed before extracting, and the static <code>ExtractArchiveToDirectory</code> unpacks an archive without constructing an instance. Wrap the archive in a <code>using</code> statement so it is disposed after saving.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronZip;
+
+using var archive = new IronTarArchive();
+archive.Add(&quot;report.pdf&quot;);
+archive.SaveAs(&quot;output.tar&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/zip/examples/create-tar/">create TAR example</a> builds an archive, the <a href="https://ironsoftware.com/csharp/zip/examples/add-files-to-tar/">add files to TAR example</a> grows an existing one, and the <a href="https://ironsoftware.com/csharp/zip/examples/extract-tar/">extract TAR example</a> unpacks it.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

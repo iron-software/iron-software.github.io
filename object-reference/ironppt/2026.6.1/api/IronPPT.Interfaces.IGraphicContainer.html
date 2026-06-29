@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IGraphicContainer
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IGraphicContainer - IronPPT C# API Reference
+      v2 (human)     title:       IGraphicContainer: Hold Images & Shapes in C#
+      v1 (algorithm) description: The IronPPT IGraphicContainer interface in C#: hold Images and Shapes lists and add to them with AddImage and AddShape, each returning the element.
+      v2 (human)     description: Add and hold pictures and shapes on a slide surface in C# through the IronPPT IGraphicContainer contract, with AddImage and AddShape.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IGraphicContainer Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IGraphicContainer
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IGraphicContainer Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT IGraphicContainer interface in C#: the contract exposing Images, Shapes, AddImage, and AddShape for slide graphics.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IGraphicContainer Interface | IronPPT C# API",
+    "name": "IGraphicContainer interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IGraphicContainer.html",
+    "abstract": "Hold and add pictures and shapes on a presentation surface in C# through the IronPPT IGraphicContainer contract. It exposes get-only Images and Shapes lists and overloaded AddImage and AddShape methods; AddImage accepts an IImage, AnyBitmap, Stream, or file path and returns an IImage, while AddShape takes and returns an IShape. Each Add call returns the created element for immediate positioning.",
+    "description": "Reference for the IronPPT IGraphicContainer interface in C#: the contract exposing Images, Shapes, AddImage, and AddShape for slide graphics.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IImage picture = container.AddImage(\"logo.png\");\npicture.Name = \"brand-logo\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IGraphicContainer live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IGraphicContainer is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It declares no base interface and stands on its own as the contract for a surface that owns images and shapes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IGraphicContainer in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IGraphicContainer is the contract for a graphics-bearing surface. The documented object model exposes the capability through the slide and shape types that carry images and shapes, so most code adds pictures and shapes through those elements rather than referencing IGraphicContainer by name."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add a picture to a slide surface in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call AddImage, which is overloaded to accept an IImage, an AnyBitmap, a Stream, or a file-path string, and returns the created IImage. Use AddShape to add an IShape. Each call returns the new element, so you can position or name it in the same statement."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +208,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IGraphicContainer</code></pre>
   </div>
+    <!-- archetype-N:start IGraphicContainer treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>When a surface in a presentation needs to hold pictures and shapes, <code>IGraphicContainer</code> describes the capability it exposes. The contract models anything that can own a collection of images and a collection of shapes and add new ones to either, so code that builds slide content can target the contract instead of a specific element type and stay reusable across the surfaces that carry graphics.</p>
+<p>A developer meets this contract while populating a slide. The container is the thing you ask to add a picture or a shape, and it keeps each kind in its own list so the two never tangle. Read access comes through <code>Images</code> and <code>Shapes</code>, both get-only <code>List</code> properties; the lists themselves are mutable, but the slots are assigned by the container rather than replaced wholesale.</p>
+<p>Adding is handled by overloaded factory methods. <code>AddImage</code> accepts an existing <code>IImage</code>, an <code>AnyBitmap</code>, a <code>Stream</code>, or a <code>string</code> file path and returns the resulting <code>IImage</code>, so the same call covers a picture loaded from disk, from memory, or already constructed. <code>AddShape</code> takes an <code>IShape</code> and returns it. Because each <code>Add</code> call returns the created element, the common pattern is to add and immediately position or name the result in one statement. The documented IronPPT object model exposes this contract for graphics-bearing surfaces; a developer normally works through the slide and shape types that carry images and shapes rather than naming <code>IGraphicContainer</code> directly.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IImage picture = container.AddImage(&quot;logo.png&quot;);
+picture.Name = &quot;brand-logo&quot;;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/add-image/">add image example</a> adds a picture, the <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> adds a shape, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-slide/">manage slide how-to</a> shows the slide that holds them.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

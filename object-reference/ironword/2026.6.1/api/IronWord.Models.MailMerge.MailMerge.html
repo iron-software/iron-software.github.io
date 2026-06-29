@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class MailMerge
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       MailMerge Class - IronWord C# API Reference
+      v2 (human)     title:       MailMerge: Fill Word Templates in C#
+      v1 (algorithm) description: Run a Word mail merge in C# with the IronWord MailMerge class: detect fields, then fill them with Execute or repeat regions with ExecuteWithRegions.
+      v2 (human)     description: Fill a Word template with data in C# using IronWord MailMerge: merge a dictionary, DataRow, or DataTable, and repeat regions from a DataSet.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>MailMerge Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class MailMerge
-   | C# Word API | IronWord ">
+    <meta name="title" content="MailMerge Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord MailMerge class in C#: discover merge fields, fill them with Execute, and repeat regions with ExecuteWithRegions.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,71 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "MailMerge Class | IronWord C# API Reference",
+    "name": "MailMerge class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.MailMerge.MailMerge.html",
+    "abstract": "Mail merge in IronWord for C# runs through the MailMerge class, reached through the WordDocument.MailMerge property. It discovers merge fields with GetFieldNames, GetFields, and GetRegionNames, fills them with the Execute overloads (dictionary, name/value pairs, DataRow, or DataTable), repeats template blocks with ExecuteWithRegions, and exposes run settings through Options.",
+    "description": "Reference for the IronWord MailMerge class in C#: discover merge fields, fill them with Execute, and repeat regions with ExecuteWithRegions.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "WordDocument document = new WordDocument(\"template.docx\");\ndocument.MailMerge.Execute(new Dictionary<string, string>\n{\n    [\"FirstName\"] = \"Ada\",\n    [\"Company\"] = \"Iron Software\"\n});\ndocument.Save(\"letter.docx\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does MailMerge live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MailMerge is a class in the IronWord.Models.MailMerge namespace, shipped in IronWord.dll, with base type System.Object. A document exposes it through the get-only WordDocument.MailMerge property, so it is not constructed directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you run a mail merge on a Word document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open the document, call GetFieldNames on its MailMerge to see the fields, then pass matching data to an Execute overload (a dictionary, name and value lists, a DataRow, or a DataTable). Save the document afterward."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you repeat a region per data row in an IronWord mail merge?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mark the repeating block with TableStart:Region and TableEnd:Region fields, then call ExecuteWithRegions with a DataSet, a DataTable, or a region name and DataTable. Each supplied row produces one copy of the marked block."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between MailMerge and MergeField in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MailMerge performs the merge: it discovers fields and fills them with data. MergeField is the read-only record returned by GetFields describing one discovered field, with its Name, Instruction, Kind, and RegionName. MailMergeOptions holds the run settings."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,19 +222,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class MailMerge : Object</code></pre>
   </div>
-  <h5 id="IronWord_Models_MailMerge_MailMerge_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>Use <a class="xref" href="IronWord.WordDocument.html#IronWord_WordDocument_MailMerge">MailMerge</a> to access mail merge operations for a document.</p>
-<p>
-Merge fields within the document are automatically detected, whether they were created
-using Microsoft Word or another compatible library.
-</p><p>
-Call <a class="xref" href="IronWord.Models.MailMerge.MailMerge.html#IronWord_Models_MailMerge_MailMerge_GetFieldNames">GetFieldNames()</a> to retrieve all available merge field names.
-Then use one of the <code>Execute</code> overloads to populate those fields with data.
-</p><p>
-For repeating regions, use <a class="xref" href="IronWord.Models.MailMerge.MailMerge.html#IronWord_Models_MailMerge_MailMerge_ExecuteWithRegions_System_Data_DataSet_">ExecuteWithRegions(DataSet)</a> with
-fields marked by <code>TableStart:Region</code> and <code>TableEnd:Region</code>.
-</p>
-</div>
+    <!-- archetype-N:start MailMerge treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Populating a Word template with data, names on a batch of letters, line items on an invoice, rows in a report, runs through <code>MailMerge</code>. It detects the merge fields already in a document, whether they were authored in Microsoft Word or another compatible library, and fills them from the data a developer supplies. It is the type behind a &quot;C# mail merge&quot; search, and it sits alongside <code>MergeField</code>, the read-only record describing one discovered field, and <code>MailMergeOptions</code>, the settings that govern the run.</p>
+<p>A document hands back its merge facade through the get-only <code>WordDocument.MailMerge</code> property, so there is no separate object to construct. From there the members fall into four groups. **Discovery**: <code>GetFieldNames</code> lists every merge field name, <code>GetFields</code> returns the richer <code>MergeField</code> records, and <code>GetRegionNames</code> reports the repeating-region names. **Flat merge**: the <code>Execute</code> overloads fill the fields once, accepting an <code>IDictionary&lt;string, string&gt;</code>, a parallel pair of <code>IEnumerable&lt;string&gt;</code> names and values, a <code>DataRow</code>, or a <code>DataTable</code> (whose first row supplies the values). **Region merge**: the <code>ExecuteWithRegions</code> overloads repeat a block of the template per data row, accepting a <code>DataSet</code>, a <code>DataTable</code>, or a region name paired with a <code>DataTable</code>, driven by fields marked <code>TableStart:Region</code> and <code>TableEnd:Region</code>. **Configuration**: the <code>Options</code> property exposes a <code>MailMergeOptions</code> for null handling and unused-field removal.</p>
+<p>The usual sequence is to read the field names, build matching data, then call one <code>Execute</code> overload for a single record or <code>ExecuteWithRegions</code> for a repeating section. Configure <code>Options</code> first if the defaults need adjusting, then save the document as usual.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">WordDocument document = new WordDocument(&quot;template.docx&quot;);
+document.MailMerge.Execute(new Dictionary&lt;string, string&gt;
+{
+    [&quot;FirstName&quot;] = &quot;Ada&quot;,
+    [&quot;Company&quot;] = &quot;Iron Software&quot;
+});
+document.Save(&quot;letter.docx&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/replace-words/">replace words how-to</a> covers replacing field text, the <a href="https://ironsoftware.com/csharp/word/examples/create-word-from-text/">create word from text example</a> builds a document to merge into, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> explains the document model around it.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

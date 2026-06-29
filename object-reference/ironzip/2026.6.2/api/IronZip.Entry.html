@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Entry
-   | C# Zip API | IronZIP </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Entry Class - IronZip C# API Reference
+      v2 (human)     title:       Entry: Inspect ZIP Archive Contents in C#
+      v1 (algorithm) description: Inspect files inside an archive in C# with the IronZip Entry class: read Name, Size, CompressedSize, Crc, and encryption state from Entries().
+      v2 (human)     description: Read archive contents in C# with the IronZip Entry class: name, size, compression, checksum, and encryption details for each file, without extracting.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Entry Class | IronZip C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Entry
-   | C# Zip API | IronZIP ">
+    <meta name="title" content="Entry Class | IronZip C# API Reference">
+    <meta name="description" content="Reference for the IronZip Entry class in C#: inspect each archived file's name, size, compression, and encryption via IronZipArchive.Entries().">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Entry Class | IronZip C# API Reference",
+    "name": "Entry class | IronZip C# API",
+    "url": "https://ironsoftware.com/csharp/zip/object-reference/api/IronZip.Entry.html",
+    "abstract": "Inspecting the files inside an archive in C# runs through the IronZip Entry class. IronZipArchive.Entries() returns a List<Entry>, one per archived item, exposing identity (Name, IsFile, IsDirectory), size and compression (Size, CompressedSize, CompressionMethod, Crc), security (IsCrypted and AES detail), and timing (DateTime). Read these to audit an archive without extracting it.",
+    "description": "Reference for the IronZip Entry class in C#: inspect each archived file's name, size, compression, and encryption via IronZipArchive.Entries().",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronZip",
+      "url": "https://ironsoftware.com/csharp/zip/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronZip;\n\nusing var archive = new IronZipArchive(\"input.zip\");\nforeach (Entry entry in archive.Entries())\n{\n    Console.WriteLine($\"{entry.Name} ({entry.Size} bytes)\");\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Entry live in the IronZip API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Entry is a class in the IronZip namespace, shipped in IronZip.dll. Instances are produced by IronZipArchive.Entries(), which returns a List<Entry> describing each item in the archive."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you list the files inside a ZIP archive in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open the archive with IronZipArchive, call Entries() to get a List<Entry>, and read each Entry.Name. The list reflects the archive as opened, so no extraction is needed to inspect it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Size and CompressedSize on an Entry?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Size is the original uncompressed byte length of the file, and CompressedSize is the stored length inside the archive. Comparing the two shows how much compression the entry achieved."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +213,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Entry : Object</code></pre>
   </div>
+    <!-- archetype-N:start Entry treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Each file inside a ZIP archive, with its name, size, timestamp, and encryption state, is described by an <code>Entry</code>. A developer rarely constructs one; instead <code>IronZipArchive.Entries()</code> returns a <code>List&lt;Entry&gt;</code>, one per item in the archive, for inspecting contents before extracting. Reading these properties answers the common questions about an archive without unpacking it to disk.</p>
+<p>The properties fall into groups. Identity covers <code>Name</code>, <code>IsFile</code>, <code>IsDirectory</code>, and <code>Comment</code>. Size and compression cover <code>Size</code> (the original byte length), <code>CompressedSize</code> (the stored length), <code>CompressionMethod</code> (an <code>EncryptionMethods</code> value), and the <code>Crc</code> checksum. Security covers <code>IsCrypted</code> and the AES detail properties (<code>AESKeySize</code>, <code>AESEncryptionStrength</code>, and related). Timing covers <code>DateTime</code> and <code>DosTime</code>. The remaining flags (<code>HasCrc</code>, <code>IsUnicodeText</code>, <code>LocalHeaderRequiresZip64</code>, and similar) expose low-level ZIP header state for advanced inspection.</p>
+<p>To audit an archive, open it, call <code>Entries()</code>, and read the properties that matter: compare <code>Size</code> against <code>CompressedSize</code> to see the saving, check <code>IsCrypted</code> to find protected items, or read <code>Name</code> to list contents. The values are a snapshot of the archive as opened; changing them does not rewrite the archive, so use the archive's own <code>Add</code>, <code>Delete</code>, and <code>ReplaceEntry</code> methods to modify contents. The AES properties such as <code>AESKeySize</code> and <code>AESEncryptionStrength</code> are meaningful only when <code>IsCrypted</code> is true and the entry uses AES rather than <code>Traditional</code> encryption, and <code>IsDirectory</code> separates folder placeholders from real files when walking the list.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronZip;
+
+using var archive = new IronZipArchive(&quot;input.zip&quot;);
+foreach (Entry entry in archive.Entries())
+{
+    Console.WriteLine($&quot;{entry.Name} ({entry.Size} bytes)&quot;);
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/zip/examples/view-archive-entries/">view archive entries example</a> lists contents this way, and the <a href="https://ironsoftware.com/csharp/zip/tutorials/create-read-extract-zip/">create, read, and extract tutorial</a> shows reading entries inside a full workflow.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

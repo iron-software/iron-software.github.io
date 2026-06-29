@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Logger
-   | C# QR API | IronQR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Logger Class - IronQR C# API Reference
+      v2 (human)     title:       Logger: Debug IronQR Reads in C#
+      v1 (algorithm) description: Configure IronQR debug logging in C# with the static Logger class: set LoggingMode, LogFilePath, and clear old logs with ClearLogFiles.
+      v2 (human)     description: Diagnose IronQR reads and writes in C# with the static Logger class: route logs to console, file, or a custom handler and set the file path.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Logger Class | IronQR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Logger
-   | C# QR API | IronQR ">
+    <meta name="title" content="Logger Class | IronQR C# API Reference">
+    <meta name="description" content="Reference for the IronQR Logger class in C#: set LoggingMode and LogFilePath and clear logs with ClearLogFiles for diagnostics.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Logger Class | IronQR C# API Reference",
+    "name": "Logger class | IronQR C# API",
+    "url": "https://ironsoftware.com/csharp/qr/object-reference/api/IronQr.Logging.Logger.html",
+    "abstract": "The static IronQR Logger class turns on debug logging in C# for diagnosing reads and writes. LoggingMode routes output through a LoggingModes flags value to the console, debug window, a file, or a custom handler, LogFilePath sets the file target, and ClearLogFiles deletes existing logs. Configure it once at startup and leave it off in production.",
+    "description": "Reference for the IronQR Logger class in C#: set LoggingMode and LogFilePath and clear logs with ClearLogFiles for diagnostics.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronQR",
+      "url": "https://ironsoftware.com/csharp/qr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronQr;\nusing IronQr.Logging;\n\nLogger.LoggingMode = LoggingModes.Console;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Logger live in the IronQR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Logger is a static class in the IronQr.Logging namespace, shipped in IronQr.dll. Its members are static, so set Logger.LoggingMode and Logger.LogFilePath directly without constructing an instance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you enable debug logging in IronQR for C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set Logger.LoggingMode to a LoggingModes value such as Console or File at startup, and set Logger.LogFilePath when logging to a file. Call ClearLogFiles to start from a clean log. Use it while diagnosing an issue, not in production."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +206,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class Logger : Object</code></pre>
   </div>
+    <!-- archetype-N:start Logger treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Turning on IronQR's debug logging runs through the static <code>Logger</code>. When a read returns nothing or a write behaves unexpectedly, the log shows what the detector and native layer actually did, which is far faster than guessing. The members are static, so configure logging once at startup.</p>
+<p><code>LoggingMode</code> selects where output goes through a <code>LoggingModes</code> flags value, combining destinations such as console, the IDE debug window, a file, or a custom handler. <code>LogFilePath</code> sets the file target when <code>File</code> is among the modes. <code>ClearLogFiles()</code> deletes existing log files, useful at the start of a run so the output reflects only the current session. Leave logging off in production and enable it while diagnosing a specific issue. Because the modes are flags, a single run can log to both the console and a file at once, giving live feedback while preserving a record to attach to a bug report.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronQr;
+using IronQr.Logging;
+
+Logger.LoggingMode = LoggingModes.Console;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/qr/how-to/detailed-error-messages/">detailed error messages how-to</a> turns logging on for diagnostics, and the <a href="https://ironsoftware.com/csharp/qr/get-started/">get started guide</a> covers project setup.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

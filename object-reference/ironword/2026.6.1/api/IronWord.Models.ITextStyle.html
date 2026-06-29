@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ITextStyle
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ITextStyle Interface - IronWord C# API
+      v2 (human)     title:       ITextStyle: Style Word Text in C#
+      v1 (algorithm) description: ITextStyle is IronWord's C# text styling contract: set Color, TextFont, Underline, and effects through it, implemented by the TextStyle class.
+      v2 (human)     description: Style text in a Word document in C# through IronWord's ITextStyle contract: control color, font, underline, and effects via the TextStyle class.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ITextStyle Interface | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ITextStyle
-   | C# Word API | IronWord ">
+    <meta name="title" content="ITextStyle Interface | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord ITextStyle interface in C#: the text styling contract for color, font, and effects, implemented by TextStyle.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ITextStyle Interface | IronWord C# API",
+    "name": "ITextStyle interface | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.ITextStyle.html",
+    "abstract": "Styling the characters in a Word document in C# runs through IronWord's ITextStyle contract, which gathers the text-level options, color, font, underline, and effects, into one object. The concrete implementor is TextStyle, constructed and assigned to a run. Everyday members are Color, TextFont, Underline, Strike, and TextEffect; Reset returns a default TextStyle. ITextStyle extends IDerivedStyle, contributing the inherited BaseStyle member.",
+    "description": "Reference for the IronWord ITextStyle interface in C#: the text styling contract for color, font, and effects, implemented by TextStyle.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "ITextStyle style = new TextStyle\n{\n    Color = Color.Blue,\n    TextFont = new Font { FontFamily = \"Calibri\" },\n    Underline = new Underline()\n};"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ITextStyle live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ITextStyle is an interface in the IronWord.Models namespace, shipped in IronWord.dll. It extends IDerivedStyle, which contributes the BaseStyle member, and is implemented by the TextStyle class."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements ITextStyle in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The TextStyle class implements ITextStyle. Construct a TextStyle, set members such as Color, TextFont, and Underline, and assign it to the text you are writing. Code accepts ITextStyle by contract when a routine should work with any text style."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set the font and color of text in C# with IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use an ITextStyle (the TextStyle class): set its TextFont to a Font and its Color to an IronWord Color, then apply the style to the run. Add Underline, Strike, or TextEffect for further presentation, and call Reset to return every property to its default."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +215,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface ITextStyle : ITextStyle, IDerivedStyle, IDerivedStyle, IStyle, IWordDocumentObjectProperty, IDocumentObjectProperty</code></pre>
   </div>
+    <!-- archetype-N:start ITextStyle treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>Formatting the characters in a Word document, the font, color, underline, and effects, runs through <code>ITextStyle</code> in C#. The contract gathers every text-level styling option into one place, so code that styles a run can set appearance through a single object and apply the same style to many runs. It is the text counterpart to the table styling contract <code>ITableStyle</code>, and it is most often used through the concrete <code>TextStyle</code> class.</p>
+<p>The concrete implementor in IronWord is <code>TextStyle</code>, the type a developer constructs, fills with the appearance settings, and assigns to the text being written or edited. Code usually names <code>TextStyle</code> directly; the interface matters when a routine accepts or returns a style by contract, or inspects <code>DefaultStyle</code> to read the baseline appearance. <code>ITextStyle</code> extends <code>IDerivedStyle</code>, which contributes the inherited <code>BaseStyle</code> member, so a text style participates in the same derived-style chain as the other styling contracts and can fall back to a base style for any value it does not set.</p>
+<p>The everyday members are <code>Color</code> (the text color, an IronWord <code>Color</code>), <code>TextFont</code> (the <code>Font</code> family), and the toggles <code>Underline</code>, <code>Strike</code>, and <code>Emphasis</code> that mark a run. Richer presentation comes from <code>TextEffect</code>, <code>Shading</code> for background fill, and <code>VerticalTextAlignment</code> for superscript or subscript positioning. <code>Reset()</code> returns a <code>TextStyle</code> with every property back at its default, which is the clean starting point for building a fresh style.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">ITextStyle style = new TextStyle
+{
+    Color = Color.Blue,
+    TextFont = new Font { FontFamily = &quot;Calibri&quot; },
+    Underline = new Underline()
+};</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-style-text/">style text how-to</a> walks through applying styles, the <a href="https://ironsoftware.com/csharp/word/examples/add-style-text/">style text example</a> has a worked listing, and the <a href="https://ironsoftware.com/csharp/word/how-to/add-text/">add text how-to</a> shows where styled runs are written.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

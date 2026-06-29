@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IHeaderFooter
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IHeaderFooter Interface - IronXL C# API
+      v2 (human)     title:       IHeaderFooter: Excel Page Header Text in C#
+      v1 (algorithm) description: IHeaderFooter is the IronXL contract for Excel page header and footer text in C#: set the Left, Center, and Right zones on a worksheet.
+      v2 (human)     description: Set running header and footer text in C# with IronXL's IHeaderFooter: assign the left, center, and right zones shown on each printed page.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IHeaderFooter Interface | IronXL C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IHeaderFooter
-   | C# Excel API | IronXL ">
+    <meta name="title" content="IHeaderFooter Interface | IronXL C# API">
+    <meta name="description" content="Reference for the IronXL IHeaderFooter interface in C#: the base contract for IHeader and IFooter, with Left, Center, and Right text zones.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IHeaderFooter Interface | IronXL C# API",
+    "name": "IHeaderFooter interface | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Layout.IHeaderFooter.html",
+    "abstract": "IHeaderFooter is the IronXL contract for a worksheet's running header and footer text in C#. WorkSheet.Header returns an IHeader and WorkSheet.Footer returns an IFooter, both extending IHeaderFooter with no extra members. Its Left, Center, and Right string properties hold the text for each page zone, applied to print output when the workbook is saved.",
+    "description": "Reference for the IronXL IHeaderFooter interface in C#: the base contract for IHeader and IFooter, with Left, Center, and Right text zones.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IHeaderFooter header = sheet.Header;\nheader.Center = \"Quarterly Report\";\nheader.Right = \"Page &P\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IHeaderFooter live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IHeaderFooter is an interface in the IronXL.Layout namespace, shipped in IronXL.dll. It is the base extended by IHeader and IFooter, which WorkSheet.Header and WorkSheet.Footer return."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IHeader and IFooter in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both extend IHeaderFooter and share the same Left, Center, and Right text properties with no added members. IHeader is what WorkSheet.Header returns for the top of the page, and IFooter is what WorkSheet.Footer returns for the bottom; the type only signals which zone is being edited."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +201,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IHeaderFooter</code></pre>
   </div>
+    <!-- archetype-N:start IHeaderFooter treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p><code>IHeaderFooter</code> is the shared contract for the running header and footer text printed on every page of a worksheet. A developer assigns the three positioned text zones, left, center, and right, to put a report title, a page number, or a company name across the top or bottom of a printed sheet. It is the common base that both the page header and the page footer expose, so the same three properties drive both, and a developer rarely names <code>IHeaderFooter</code> directly, instead working through the header or footer a worksheet hands back.</p>
+<p>A developer reaches it through the worksheet: <code>WorkSheet.Header</code> returns an <code>IHeader</code> and <code>WorkSheet.Footer</code> returns an <code>IFooter</code>, both of which extend <code>IHeaderFooter</code> and add no members of their own. The two derived contracts exist only to distinguish which zone of the page is being addressed; the editable surface is identical. The <code>Left</code>, <code>Center</code>, and <code>Right</code> properties are each a readable and writable <code>string</code> holding the text for that zone. Set the ones a layout needs, leave the rest empty, and save the workbook to apply them to print output.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IHeaderFooter header = sheet.Header;
+header.Center = &quot;Quarterly Report&quot;;
+header.Right = &quot;Page &amp;P&quot;;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/examples/excel-print-setup/">Excel print setup example</a> configures a sheet for printing, where header and footer text appear on each page, and the <a href="https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.WorkSheet.html">WorkSheet reference</a> documents the <code>Header</code> and <code>Footer</code> properties that return them.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

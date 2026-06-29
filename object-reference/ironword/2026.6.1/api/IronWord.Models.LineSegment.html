@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class LineSegment
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       LineSegment Class - IronWord C# API
+      v2 (human)     title:       LineSegment: Straight Path Edges in C#
+      v1 (algorithm) description: Define a straight edge of a shape path in C# with the IronWord LineSegment class: a Coordinate, IsClose, and SeparateFromPrevious in a path collection.
+      v2 (human)     description: Trace the straight legs of a custom shape outline in C# with the IronWord LineSegment class, sitting alongside BezierSegment in a path.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>LineSegment Class | IronWord .NET API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class LineSegment
-   | C# Word API | IronWord ">
+    <meta name="title" content="LineSegment Class | IronWord .NET API Reference">
+    <meta name="description" content="Reference for the IronWord LineSegment class in C#: a linear IPathSegment with a target Coordinate, IsClose, and SeparateFromPrevious flags.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "LineSegment Class | IronWord .NET API Reference",
+    "name": "LineSegment class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.LineSegment.html",
+    "abstract": "Describing a straight leg of a shape outline in C# runs through the IronWord LineSegment class. Its constructor takes a target PointF and flags for IsClose and SeparateFromPrevious; Coordinate holds the point the line runs to. As an IPathSegment it sits in a PathSegmentCollection alongside BezierSegment, and a renderer reads the ordered segments to build the path.",
+    "description": "Reference for the IronWord LineSegment class in C#: a linear IPathSegment with a target Coordinate, IsClose, and SeparateFromPrevious flags.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var segment = new LineSegment(new PointF(120f, 0f), false, false);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does LineSegment live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LineSegment is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object and implements ILineSegment and IPathSegment, so it can be placed in a PathSegmentCollection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between LineSegment and BezierSegment in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both implement IPathSegment and live in the same path. LineSegment draws a straight edge to its Coordinate, while BezierSegment draws a curve. A PathSegmentCollection mixes them in order to trace a complete shape outline."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -155,6 +211,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class LineSegment : Object, ILineSegment, IPathSegment</code></pre>
   </div>
+    <!-- archetype-N:start LineSegment treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Drawing a straight edge of a custom shape outline in C# is described by a <code>LineSegment</code>. It records one linear leg of a path, the point it travels to and how it connects to the rest of the outline, so a sequence of segments traces the full geometry of a shape.</p>
+<p>A segment is created with a constructor that takes the target <code>PointF</code>, a flag for whether the segment closes the path, and a flag for whether it stands apart from the previous segment. <code>Coordinate</code> holds the point the line runs to, <code>IsClose</code> reports whether this segment connects back to the path start, and <code>SeparateFromPrevious</code> controls whether it joins the prior segment. Because <code>LineSegment</code> implements <code>IPathSegment</code>, it sits in a <code>PathSegmentCollection</code> alongside its curved counterpart, <code>BezierSegment</code>, and a renderer reads the collection in order to build the outline. Reach for <code>LineSegment</code> for the straight portions and <code>BezierSegment</code> where a curve is needed.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var segment = new LineSegment(new PointF(120f, 0f), false, false);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> covers how shapes and their parts fit into a document.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

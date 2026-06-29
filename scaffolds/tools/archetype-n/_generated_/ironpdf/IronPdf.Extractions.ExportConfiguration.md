@@ -1,0 +1,78 @@
+<!--
+GENERATED SAMPLE — Archetype N-Full (full/class)
+Target page: https://ironpdf.com/object-reference/api/IronPdf.Extractions.ExportConfiguration.html
+
+GENERATION NOTES
+- Produced by api-overview-seo/work/generate_samples.py from live docfx HTML.
+- All API names referenced are pulled directly from the live reference page.
+- Prose patterns are templated; expect to need human polish on framing,
+  example specificity, and (for full variants) FAQ shape against the page's
+  actual class-name long-tail.
+- Generated full/class — prose is templated; polish before publishing if you want CTR wins.
+-->
+
+## Injected overview (Markdown)
+
+Working with text extraction in IronPDF runs through `ExportConfiguration`. It represents configuration for batch export operations Controls how tables and text are exported from a complete extraction result.
+
+`ExportConfiguration` matters when an application needs to configure or invoke text extraction from C# code. The class encapsulates the related options and behavior in a single object that is set up once and reused across render or processing calls. Typical scenarios include batch generation pipelines, templated document workflows, and integration with existing C# document services.
+
+To use `ExportConfiguration`, instantiate or obtain it from the relevant entry point in the IronPDF C# API. Key properties include `ExportTables`, `ExportText`, `FileNamePattern`, `SeparateFilePerTable`. Assign options or invoke methods on the instance to configure or perform the operation. The [draw text and bitmap](https://ironpdf.com/how-to/draw-text-and-bitmap/) covers typical usage in C# end to end.
+
+```csharp
+using IronPdf;
+
+var instance = new ExportConfiguration();
+var current = instance.ExportTables;
+// Read or assign other properties such as ExportText, FileNamePattern
+```
+
+For the broader workflow, see the [export save PDF csharp](https://ironpdf.com/how-to/export-save-pdf-csharp/) guide in the IronPDF C# documentation. For broader context, the text extraction portion of the IronPDF C# API contains related types that work with `ExportConfiguration` directly. `ExportConfiguration` exposes additional members beyond those highlighted above; the reference tables on this page list the full set. In application code, treat `ExportConfiguration` as a configured object that is constructed once and reused across operations rather than instantiated per call. Configuration is generally idempotent: assigning the same property value twice has the same effect as assigning it once. For diagnostic purposes, inspect the relevant `ExportConfiguration` property after each operation to confirm the configured state. See the constructors, properties, and methods tables below for the complete API surface of `ExportConfiguration`.
+
+---
+
+## Recommended metadata
+
+**Meta-title (≤ 60 chars)**
+- v1 (algorithm): `ExportConfiguration Class - IronPDF C# API Reference`
+- v2 (human): `ExportConfiguration: IronPDF Text Extraction in C#`
+- v3 (balanced): `ExportConfiguration Class | IronPDF C# Text Extraction`
+
+**Meta-description (120-160 chars)**
+- v1 (algorithm): `ExportConfiguration is the IronPDF class for text extraction in C#. Reference its members, declared values, and usage in PDF generation.`
+- v2 (human): `IronPDF ExportConfiguration class reference for C#: configuration for batch export operations Controls how tables and text are...`
+- v3 (balanced): `ExportConfiguration (Text Extraction) in IronPDF for C#: configuration for batch export operations Controls how tables and text are... See members and usage.`
+
+---
+
+## Structured data
+
+**TechArticle abstract**
+
+> Use ExportConfiguration in IronPDF to work with text extraction from C#. ExportConfiguration is in the IronPdf.Extractions namespace. Configuration for batch export operations Controls how tables and text are exported from a complete extraction result. Reference for the public surface and its role in the IronPDF C# API.
+
+**FAQPage entries**
+
+```json
+[
+  {
+    "question": "Which namespace and assembly contain ExportConfiguration?",
+    "answer": "ExportConfiguration is in the IronPdf.Extractions namespace, shipped in IronPdf.dll."
+  },
+  {
+    "question": "What is the ExportConfiguration class used for in C#?",
+    "answer": "ExportConfiguration is the IronPDF class that configuration for batch export operations Controls how tables and text are exported from a complete extraction result. It is part of the IronPdf.Extractions namespace and is used through the IronPDF C# API."
+  },
+  {
+    "question": "What are the key properties of ExportConfiguration?",
+    "answer": "Properties commonly used on ExportConfiguration include ExportTables, ExportText, FileNamePattern, SeparateFilePerTable. Each property configures one aspect of the text extraction surface exposed by the class."
+  },
+  {
+    "question": "How do you create a ExportConfiguration in C#?",
+    "answer": "Instantiate ExportConfiguration directly with one of its constructors, or obtain it from the relevant IronPDF API entry point. The class supports the standard C# new expression where a constructor is defined."
+  }
+]
+```
+
+**Schema notes**
+- Page type: `TechArticle` (full/class).

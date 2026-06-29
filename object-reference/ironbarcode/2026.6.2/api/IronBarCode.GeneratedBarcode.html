@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class GeneratedBarcode
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       GeneratedBarcode Class - IronBarcode C# API
+      v2 (human)     title:       GeneratedBarcode: Save & Style Barcodes in C#
+      v1 (algorithm) description: Save, style, or stamp a generated barcode in C# with the IronBarcode GeneratedBarcode class: SaveAsPng, ResizeTo, ChangeBarCodeColor, StampToExistingPdfPage.
+      v2 (human)     description: Turn a generated barcode into output in C# with the IronBarcode GeneratedBarcode class: save an image, restyle it, annotate, stamp a PDF, or verify it.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>GeneratedBarcode | IronBarcode C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class GeneratedBarcode
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="GeneratedBarcode | IronBarcode C# API Reference">
+    <meta name="description" content="Reference for the IronBarcode GeneratedBarcode class in C#: save as image or PDF, resize, recolor, annotate, stamp onto a document, and verify.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "GeneratedBarcode | IronBarcode C# API Reference",
+    "name": "GeneratedBarcode class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.GeneratedBarcode.html",
+    "abstract": "GeneratedBarcode is the rendered barcode returned by IronBarcode's BarcodeWriter and QRCodeWriter in C#. Saving and export methods like SaveAsPng, SaveAsPdf, ToStream, ToDataUrl, and ToHtmlTag emit the symbol; ResizeTo, SetMargins, and ChangeBarCodeColor restyle it; the AddAnnotationText methods print readable text; StampToExistingPdfPage places it on a PDF; and Verify confirms the code decodes to an expected value.",
+    "description": "Reference for the IronBarcode GeneratedBarcode class in C#: save as image or PDF, resize, recolor, annotate, stamp onto a document, and verify.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nBarcodeWriter.CreateBarcode(\"PRODUCT-001\", BarcodeEncoding.Code128)\n    .ChangeBarCodeColor(System.Drawing.Color.Navy)\n    .AddAnnotationTextBelowBarcode(\"PRODUCT-001\")\n    .SaveAsPng(\"labelled.png\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does GeneratedBarcode live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GeneratedBarcode is a class in the IronBarCode namespace, shipped in IronBarCode.dll. BarcodeWriter.CreateBarcode and the QRCodeWriter methods return a GeneratedBarcode, which you then save, restyle, or stamp."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you save a generated barcode as an image in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call SaveAsPng, SaveAsJpeg, or SaveAsImage on the GeneratedBarcode returned by a writer, passing a file path. The To family, such as ToStream and ToPngBinaryData, returns the image in memory instead, and ToDataUrl or ToHtmlTag produce web-ready output."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add readable text and color to a generated barcode in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call AddAnnotationTextBelowBarcode or AddBarcodeValueTextAboveBarcode to print text, and ChangeBarCodeColor or ChangeBackgroundColor to set the palette. Each method returns the same GeneratedBarcode, so the calls chain before a final SaveAs call."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +215,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class GeneratedBarcode : Object</code></pre>
   </div>
+    <!-- archetype-N:start GeneratedBarcode treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>GeneratedBarcode</code> is the rendered barcode that <code>BarcodeWriter</code> and <code>QRCodeWriter</code> return, ready to save, restyle, annotate, or place onto a PDF. It holds one drawn symbol along with its decoded value and image data, and its methods turn that symbol into whatever output a project needs without going back to the writer. Most methods return the same <code>GeneratedBarcode</code>, so calls chain in a fluent style.</p>
+<p>A developer obtains one by calling a writer, then works through the type's members rather than touching pixels directly. The members fall into clear functional groups. **Saving and export** is the largest: <code>SaveAsImage</code>, <code>SaveAsPng</code>, <code>SaveAsJpeg</code>, <code>SaveAsGif</code>, <code>SaveAsTiff</code>, and <code>SaveAsPdf</code> write files, <code>SaveAsHtmlFile</code> writes a standalone page, and the <code>To...</code> family returns data instead of writing it, with <code>ToImage</code>, <code>ToBitmap</code>, <code>ToStream</code>, <code>ToPngBinaryData</code>, <code>ToDataUrl</code>, and <code>ToHtmlTag</code> for in-memory and web use. **Stamping** places a code onto an existing document through <code>StampToExistingPdfPage</code> and <code>StampToExistingPdfPages</code>.</p>
+<p>**Styling and resizing** reshapes the symbol before output: <code>ResizeTo</code> and <code>ResizeToMil</code> change dimensions, <code>KeepAspectRatio</code> and <code>SetMargins</code> control proportion and quiet zone, and <code>ChangeBarCodeColor</code> and <code>ChangeBackgroundColor</code> set the palette. **Annotation** prints human-readable text alongside the bars with <code>AddAnnotationTextAboveBarcode</code>, <code>AddAnnotationTextBelowBarcode</code>, <code>AddBarcodeValueTextAboveBarcode</code>, and <code>AddBarcodeValueTextBelowBarcode</code>.</p>
+<p>**Encoding information** is exposed through the properties: <code>Value</code> and <code>BinaryValue</code> give the decoded content, <code>BarcodeType</code> reports the symbology, <code>Width</code> and <code>Height</code> give the rendered size, and <code>Image</code> and <code>BinaryStream</code> hold the raw output. <code>Verify</code> decodes the rendered symbol and confirms it matches an expected value, a quick self-check after generation. Because every transform returns the same instance, one writer call can be recolored, resized, annotated, and saved in a single chain.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+BarcodeWriter.CreateBarcode(&quot;PRODUCT-001&quot;, BarcodeEncoding.Code128)
+    .ChangeBarCodeColor(System.Drawing.Color.Navy)
+    .AddAnnotationTextBelowBarcode(&quot;PRODUCT-001&quot;)
+    .SaveAsPng(&quot;labelled.png&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/create-barcode-images/">create barcode images how-to</a> covers the save formats, the <a href="https://ironsoftware.com/csharp/barcode/how-to/customize-barcode-style/">customize barcode style how-to</a> restyles a code, and the <a href="https://ironsoftware.com/csharp/barcode/examples/barcode-styling-and-annotation/">barcode styling and annotation example</a> adds readable text.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BuiltinFormats
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       BuiltinFormats Class - IronXL C# API Reference
+      v2 (human)     title:       BuiltinFormats: Excel Number Formats in C#
+      v1 (algorithm) description: Apply Excel number formats in C# with the IronXL BuiltinFormats class: assign Currency2, Percent2, ShortDate, and more to a cell's FormatString.
+      v2 (human)     description: Format Excel cells in C# with the IronXL BuiltinFormats class: ready-made currency, percentage, date, and accounting codes for FormatString.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>BuiltinFormats Class | IronXL C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BuiltinFormats
-   | C# Excel API | IronXL ">
+    <meta name="title" content="BuiltinFormats Class | IronXL C# API">
+    <meta name="description" content="Reference for the IronXL BuiltinFormats class in C#: built-in number-format strings like Currency2 and ShortDate for the FormatString property.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "BuiltinFormats Class | IronXL C# API",
+    "name": "BuiltinFormats class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Formatting.BuiltinFormats.html",
+    "abstract": "Currency, percentage, date, and accounting layouts live as ready-made number-format strings on IronXL's BuiltinFormats class in C#. Assign a field such as Currency2, Percent2, or ShortDate to the FormatString property of a Cell or Range to format spreadsheet data without writing a raw Excel format code. The fields group by data kind, and the trailing digit on most names sets the decimal-place count.",
+    "description": "Reference for the IronXL BuiltinFormats class in C#: built-in number-format strings like Currency2 and ShortDate for the FormatString property.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\nusing IronXL.Formatting;\n\nWorkBook book = WorkBook.Create();\nWorkSheet sheet = book.DefaultWorkSheet;\nsheet[\"B2\"].Value = 1234.5;\nsheet[\"B2\"].FormatString = BuiltinFormats.Currency2;\nbook.SaveAs(\"formatted.xlsx\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does BuiltinFormats live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BuiltinFormats is a static class in the IronXL.Formatting namespace, shipped in IronXL.dll. Its fields are constant Excel number-format strings that you assign to a cell or range FormatString property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you apply a built-in number format to a cell in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the FormatString property of a Cell or Range to a BuiltinFormats field, for example cell.FormatString = BuiltinFormats.Currency2 for two-decimal currency. There is nothing to construct because BuiltinFormats holds static constants."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do the numbers in field names like Number2 and Currency0 mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The trailing digit is the decimal-place count: Number0 shows whole numbers, Number2 shows two decimals, and Currency0 shows currency with no decimals. Names ending in Red, such as Currency2Red, display negative values in red."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,22 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class BuiltinFormats : Object</code></pre>
   </div>
+    <!-- archetype-N:start BuiltinFormats treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Currency, percentage, date, and accounting layouts that a spreadsheet needs every day live as ready-made strings on <code>BuiltinFormats</code>. Each field holds an Excel number-format code, so a developer assigns one to a cell instead of hand-writing a format pattern like <code>&quot;$#,##0.00&quot;</code>. It is the shortcut a developer reaches for behind a search like &quot;C# Excel number format&quot;.</p>
+<p>The fields feed the <code>FormatString</code> property on a <code>Cell</code> or a <code>Range</code>. After loading or creating a workbook, pick the field that matches the data and assign it: <code>BuiltinFormats.Currency2</code> for two-decimal money, <code>BuiltinFormats.Percent2</code> for percentages, <code>BuiltinFormats.ShortDate</code> for dates. Because <code>BuiltinFormats</code> is a static class of constants, there is nothing to construct; reference the field directly wherever a format string is expected.</p>
+<p>The fields group by data kind. Money and accounting cover <code>Currency0</code>, <code>Currency2</code>, <code>Accounting0</code>, <code>Accounting2</code>, and their red-negative variants such as <code>Currency2Red</code>. Numbers cover <code>Number0</code>, <code>Number2</code>, <code>Thousands2</code>, <code>Scientific1</code>, and the <code>Fraction1</code> family. Dates and times cover <code>ShortDate</code>, <code>LongDate1</code>, <code>ShortDateAndTime</code>, and the <code>Time1</code> through <code>Time4</code> set. <code>Percent</code> and <code>Percent2</code> handle ratios, while <code>Text</code> forces literal text and <code>General</code> restores Excel's default. The trailing digit on most names is the decimal-place count, so <code>Number0</code> shows whole numbers and <code>Number2</code> shows two places. When none of the built-ins fit, assign a raw Excel format code to <code>FormatString</code> directly instead of a <code>BuiltinFormats</code> field.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+using IronXL.Formatting;
+
+WorkBook book = WorkBook.Create();
+WorkSheet sheet = book.DefaultWorkSheet;
+sheet[&quot;B2&quot;].Value = 1234.5;
+sheet[&quot;B2&quot;].FormatString = BuiltinFormats.Currency2;
+book.SaveAs(&quot;formatted.xlsx&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/set-cell-data-format/">set cell data format how-to</a> walks through applying a format to a cell or range, the <a href="https://ironsoftware.com/csharp/excel/examples/excel-number-formats/">Excel number formats example</a> shows several built-ins side by side, and the <a href="https://ironsoftware.com/csharp/excel/examples/excel-style-cells-borders-fonts/">style cells example</a> combines formats with fonts and borders.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="fields">Fields
   </h3>
   

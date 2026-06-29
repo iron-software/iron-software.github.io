@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ParentElement
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ParentElement Class - IronPPT C# API
+      v2 (human)     title:       ParentElement: Manage Nested Slide Content in C#
+      v1 (algorithm) description: The IronPPT ParentElement base in C# manages nested slide content: Children, AddChild, InsertChildToIndex, GetChildByIndex, and remove.
+      v2 (human)     description: ParentElement is the IronPPT container base in C#: add, find, reorder, and remove the child elements nested inside a slide container.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ParentElement Class | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ParentElement
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="ParentElement Class | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT ParentElement class in C#: the container base behind Slide and Paragraph, with Children, AddChild, and more.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ParentElement Class | IronPPT C# API Reference",
+    "name": "ParentElement class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Abstract.ParentElement.html",
+    "abstract": "Manage the child content nested inside a slide container in C# through the IronPPT ParentElement base. Children is the List of contained elements; AddChild and InsertChildToIndex add them, RemoveChildren, RemoveAllChildren, and Remove take them out, and GetChildByIndex and ExtractElements fetch them by position or type. ParentElement is abstract; concrete containers such as Slide, Paragraph, and Run derive from it.",
+    "description": "Reference for the IronPPT ParentElement class in C#: the container base behind Slide and Paragraph, with Children, AddChild, and more.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "void Fill(ParentElement container, params IContentElement[] children)\n{\n    container.AddChild(children);\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ParentElement live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ParentElement is an abstract class in the IronPPT.Models.Abstract namespace, shipped in IronPPT.dll. It derives from ContentElement and implements ICloneableElement, IParentElement, and IContentElement, defining how a container holds child elements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What derives from ParentElement in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Slide, Paragraph, Run, Container, BaseGraphicContainer, and TextContainer derive from ParentElement, inheriting Children, AddChild, GetChildByIndex, and the remove members. Because the base is abstract you work with these concrete containers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add or extract child elements in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call AddChild to append elements or InsertChildToIndex to place them at a position, and use GetChildByIndex to fetch a typed child or ExtractElements to pull every child of a type from the subtree. RemoveChildren and RemoveAllChildren take elements back out."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -189,6 +253,18 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class ParentElement : ContentElement, ICloneableElement, IParentElement, IContentElement</code></pre>
   </div>
+    <!-- archetype-N:start ParentElement treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>ParentElement</code> holds and arranges the child content nested inside it. It is the base every container in the slide model inherits, the type that knows how to add, find, reorder, and remove the elements it contains. A developer works with the concrete containers that derive from it, <code>Slide</code>, <code>Paragraph</code>, <code>Run</code>, and <code>Container</code> among them, and uses the members below to build their content. It extends <code>ContentElement</code>, so a container is itself an element inside its own parent.</p>
+<p>Because the class is abstract, a container is created as one of its derived types and its children are managed through the inherited members. Code that edits a document tree often holds a container as <code>IParentElement</code>, the contract this class implements, so it can rearrange children without naming the exact container type.</p>
+<p><code>Children</code> is the <code>List&lt;IContentElement&gt;</code> of contained elements. <code>AddChild</code> appends one or more children and <code>InsertChildToIndex</code> places them at a given position, while <code>RemoveChildren</code>, <code>RemoveAllChildren</code>, and the overridden <code>Remove</code> take elements out. <code>GetChildByIndex&lt;T&gt;</code> fetches a typed child by position and <code>ExtractElements&lt;T&gt;</code> pulls every child of a given type from the subtree, which is how a developer collects, say, every run in a paragraph. <code>Clone</code> copies the container and its content, and <code>LogObjectTree</code> returns a text view of the nested structure that is useful while debugging a layout. Build a container's content by adding children, then reorder or extract them through these calls rather than rebuilding the tree.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">void Fill(ParentElement container, params IContentElement[] children)
+{
+    container.AddChild(children);
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> covers adding content to a slide, the <a href="https://ironsoftware.com/csharp/ppt/tutorials/slide-element/">slide element tutorial</a> walks through the nested element model, and the <a href="https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Abstract.ContentElement.html">ContentElement reference</a> documents the element side of the same tree.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

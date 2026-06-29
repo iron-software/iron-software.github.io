@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PdfBarcodeReaderOptions
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfBarcodeReaderOptions - IronBarcode C# API
+      v2 (human)     title:       PdfBarcodeReaderOptions: Read PDFs in C#
+      v1 (algorithm) description: Read barcodes from PDFs in C# with the IronBarcode PdfBarcodeReaderOptions class: set PageNumbers, DPI, Scale, and Password for ReadPdf.
+      v2 (human)     description: Control PDF barcode reads in C# with IronBarcode PdfBarcodeReaderOptions: choose pages, set render DPI and scale, and open password-protected files.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfBarcodeReaderOptions | IronBarcode C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PdfBarcodeReaderOptions
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="PdfBarcodeReaderOptions | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode PdfBarcodeReaderOptions class in C#: page selection, DPI, scale, and password settings for ReadPdf.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfBarcodeReaderOptions | IronBarcode C# API",
+    "name": "PdfBarcodeReaderOptions class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.PdfBarcodeReaderOptions.html",
+    "abstract": "Reading barcodes out of a PDF in C# is configured through the IronBarcode PdfBarcodeReaderOptions class, the argument BarcodeReader.ReadPdf and ReadPdfs accept. It derives from BarcodeReaderOptions and adds PDF-only properties: PageNumbers to restrict the read, DPI and Scale to control page rendering, and Password to open an encrypted file. The inherited symbology and speed settings still apply.",
+    "description": "Reference for the IronBarcode PdfBarcodeReaderOptions class in C#: page selection, DPI, scale, and password settings for ReadPdf.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nvar options = new PdfBarcodeReaderOptions\n{\n    PageNumbers = new[] { 1, 2 },\n    DPI = 150,\n    Password = \"secret\"\n};\nBarcodeResults results = BarcodeReader.ReadPdf(\"invoice.pdf\", options);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PdfBarcodeReaderOptions live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfBarcodeReaderOptions is a class in the IronBarCode namespace, shipped in IronBarCode.dll, deriving from BarcodeReaderOptions. Construct one and pass it to BarcodeReader.ReadPdf, ReadPdfs, or ReadPdfsAsync."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I read a barcode from specific PDF pages in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the PageNumbers property to an IEnumerable of the page numbers you want, then pass the PdfBarcodeReaderOptions to BarcodeReader.ReadPdf. The reader scans only those pages instead of the whole document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can IronBarcode read a barcode from a password-protected PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Set the Password property on PdfBarcodeReaderOptions to the document password before calling ReadPdf. Raising DPI or Scale also helps small or dense codes resolve before scanning."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -194,6 +258,23 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PdfBarcodeReaderOptions : BarcodeReaderOptions</code></pre>
   </div>
+    <!-- archetype-N:start PdfBarcodeReaderOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Page selection, rendering resolution, and password handling for reading barcodes out of a PDF live on <code>PdfBarcodeReaderOptions</code>. It is the argument a developer passes to <code>BarcodeReader.ReadPdf</code>, <code>ReadPdfs</code>, and <code>ReadPdfsAsync</code> to point the reader at the right pages of a document and to open a protected file. This is the type behind a search like &quot;read barcode from PDF C#&quot; or &quot;scan barcode in PDF page&quot;, and it answers the questions a plain image read cannot.</p>
+<p><code>PdfBarcodeReaderOptions</code> derives from <code>BarcodeReaderOptions</code>, so it carries every base setting, the symbology, scan mode, speed, and image handling, and adds the PDF-only properties on top. A developer constructs one, sets the PDF-specific properties a job needs, and passes it to a <code>ReadPdf</code> overload that takes a path, byte array, or stream. Constructor overloads let a single page number or a sequence of page numbers be supplied up front.</p>
+<p>The PDF-specific properties are few and purposeful. <code>PageNumbers</code> is an <code>IEnumerable&lt;int&gt;</code> that restricts the read to chosen pages instead of scanning the whole document, which matters for large files. <code>DPI</code> sets the resolution each page is rendered at before scanning, and <code>Scale</code> adjusts the rendered page size; raising either helps small or dense codes resolve at the cost of speed. <code>Password</code> opens an encrypted PDF so its pages can be rendered and read. Because the base properties still apply, a PDF read can also set <code>ExpectBarcodeTypes</code>, <code>Speed</code>, and the rest exactly as an image read would. Leave the PDF properties at their defaults to scan every page at the standard resolution.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+var options = new PdfBarcodeReaderOptions
+{
+    PageNumbers = new[] { 1, 2 },
+    DPI = 150,
+    Password = &quot;secret&quot;
+};
+BarcodeResults results = BarcodeReader.ReadPdf(&quot;invoice.pdf&quot;, options);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/read-barcodes-from-pdf/">read barcodes from PDF how-to</a> walks through a document read, the <a href="https://ironsoftware.com/csharp/barcode/examples/pdf-barcode-reader-settings-csharp/">PDF barcode reader settings example</a> shows the configured options, and the <a href="https://ironsoftware.com/csharp/barcode/tutorials/reading-barcodes/">reading barcodes tutorial</a> covers the wider workflow.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

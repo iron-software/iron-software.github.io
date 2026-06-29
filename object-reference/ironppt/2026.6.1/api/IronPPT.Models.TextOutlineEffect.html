@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TextOutlineEffect
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextOutlineEffect Class - IronPPT C# API
+      v2 (human)     title:       TextOutlineEffect: Outline Slide Text in C#
+      v1 (algorithm) description: Outline slide text in C# with the IronPPT TextOutlineEffect class: set Color, LineWidth, dash, cap, and join, or start from DefaultEffect.
+      v2 (human)     description: Draw a stroke around slide text in C# with the IronPPT TextOutlineEffect class: control color, width, dash pattern, line cap, and join.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextOutlineEffect Class | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TextOutlineEffect
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="TextOutlineEffect Class | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT TextOutlineEffect class in C#: configure a text outline stroke with Color, LineWidth, dash, cap, and join.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextOutlineEffect Class | IronPPT C# API",
+    "name": "TextOutlineEffect class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.TextOutlineEffect.html",
+    "abstract": "The IronPPT TextOutlineEffect class describes the stroke drawn around glyphs of a text run in a slide in C#. Color sets the stroke color and LineWidth its thickness, with GetLineWidth and SetLineWidth working in a chosen Units. CompoundLineType, LineCapType, LineJoin, PenAlignment, and presetLineDash shape how the stroke is drawn. Start from the static DefaultEffect and adjust.",
+    "description": "Reference for the IronPPT TextOutlineEffect class in C#: configure a text outline stroke with Color, LineWidth, dash, cap, and join.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var outline = TextOutlineEffect.DefaultEffect;\noutline.Color = Color.Black;\noutline.SetLineWidth(1.5, Units.Point);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TextOutlineEffect live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextOutlineEffect is a class in the IronPPT.Models namespace, shipped in IronPPT.dll, deriving from Object. It describes the stroke drawn around the glyphs of a styled text run."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set the outline width on slide text in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Build a TextOutlineEffect, then call SetLineWidth with a value and a Units, or assign the LineWidth property directly. Read the current width back with GetLineWidth in the units you want. Start from TextOutlineEffect.DefaultEffect to avoid setting every field."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What controls the look of a text outline stroke?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Color sets the stroke color and presetLineDash picks a dash pattern from PresetLineDashValues. CompoundLineType, LineCapType, LineJoin, and PenAlignment determine how the stroke is compounded, capped, joined, and aligned to the glyph edge."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +213,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TextOutlineEffect : Object</code></pre>
   </div>
+    <!-- archetype-N:start TextOutlineEffect treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Outlining the glyphs of a run of text in a slide runs through <code>TextOutlineEffect</code>. The object describes the stroke drawn around each character, so a heading or callout can carry a colored, weighted border rather than a flat fill. Use it whenever a title needs more visual weight than a plain font color delivers, and pull <code>TextOutlineEffect.DefaultEffect</code> for a sensible starting stroke instead of setting every field by hand.</p>
+<p>The effect attaches to the text styling of a run and is read when the slide renders, so a developer builds the stroke once and assigns it where the run's outline is expected. A fresh instance comes from <code>new TextOutlineEffect()</code>, and the static <code>DefaultEffect</code> returns a preconfigured stroke that you can adjust from there.</p>
+<p><code>Color</code> sets the stroke color and <code>LineWidth</code> its thickness, with <code>GetLineWidth</code> and <code>SetLineWidth</code> reading and writing that width in a chosen <code>Units</code> so a value can be expressed in points or another measure. <code>CompoundLineType</code>, <code>LineCapType</code>, <code>LineJoin</code>, and <code>PenAlignment</code> shape how the stroke is drawn, joined, and positioned relative to the glyph edge, taking <code>CompoundLineValues</code>, <code>LineCapValues</code>, <code>StrokeJoinStyleValues</code>, and <code>PenAlignmentValues</code> respectively. The <code>presetLineDash</code> property selects a dash pattern from <code>PresetLineDashValues</code> for a dotted or dashed outline. Keep widths modest so the outline frames the text rather than swallowing it, and prefer the unit-aware <code>SetLineWidth</code> over assigning <code>LineWidth</code> raw when the rest of the document works in points.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var outline = TextOutlineEffect.DefaultEffect;
+outline.Color = Color.Black;
+outline.SetLineWidth(1.5, Units.Point);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> walks through placing and styling text on a slide, the <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> shows run-level formatting in context, and the <a href="https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.TextStyle.html">TextStyle reference</a> covers the wider text styling surface this outline sits within.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

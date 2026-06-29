@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrReadTask
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrReadTask Class - IronOCR C# API Reference
+      v2 (human)     title:       OcrReadTask: Async OCR Reads in C#
+      v1 (algorithm) description: Run OCR asynchronously in C# with the IronOCR OcrReadTask class: a Task<OcrResult> that wraps a read, supports CancellationToken, and Cancel.
+      v2 (human)     description: Read images off the main thread in C# with the IronOCR OcrReadTask: an awaitable OCR job that returns an OcrResult and supports cancellation.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrReadTask Class | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrReadTask
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrReadTask Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR OcrReadTask class in C#: the Task&lt;OcrResult&gt; an async OCR read returns, with cancellation and a Cancel method.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrReadTask Class | IronOCR C# API Reference",
+    "name": "OcrReadTask class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrReadTask.html",
+    "abstract": "Running an OCR read asynchronously in C# uses the IronOCR OcrReadTask class, a Task<OcrResult> that wraps a synchronous recognition function. Construct it with a Func<OcrResult> plus an optional CancellationToken, TaskCreationOptions, or state object, then await it to receive the OcrResult. Call Cancel to request that an in-flight read stop. Continuations, status, and exceptions behave as on any Task.",
+    "description": "Reference for the IronOCR OcrReadTask class in C#: the Task<OcrResult> an async OCR read returns, with cancellation and a Cancel method.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronOcr;\n\nvar ocr = new IronTesseract();\nusing var input = new OcrInput();\ninput.LoadImage(\"scan.png\");\nOcrResult result = await ocr.ReadAsync(input);\nConsole.WriteLine(result.Text);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrReadTask live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrReadTask is a class in the IronOcr namespace, shipped in IronOcr.dll. It derives from System.Threading.Tasks.Task<OcrResult>, so it works with standard async and await."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you run an OCR read asynchronously in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Await an asynchronous read, which returns an OcrReadTask, a Task<OcrResult>. The awaited result is an OcrResult with the recognized text and structure. Pass a CancellationToken when constructing the task to allow cancellation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you cancel an OcrReadTask?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Cancel on the task to request that the in-flight read stop, and construct the task with a CancellationToken so the wrapped OCR function can observe the request and exit. The task then completes as cancelled."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class OcrReadTask : Task&lt;OcrResult&gt;</code></pre>
   </div>
+    <!-- archetype-N:start OcrReadTask treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Running an OCR read in the background, while the rest of an application stays responsive, runs through <code>OcrReadTask</code>. It represents one asynchronous recognition job and produces an <code>OcrResult</code> once the read finishes, so a UI app keeps painting and a web request stays free while Tesseract works. Because it derives from the standard <code>Task&lt;OcrResult&gt;</code>, it slots into the usual <code>async</code>/<code>await</code> patterns a developer already knows, while adding OCR-specific construction and cancellation.</p>
+<p>A task is created around the synchronous OCR function it wraps. The constructors accept a <code>Func&lt;OcrResult&gt;</code> (the work to run), optionally with a <code>CancellationToken</code>, a <code>TaskCreationOptions</code> value, or a state object for the overloads that take <code>Func&lt;object, OcrResult&gt;</code>. Once started, awaiting the task yields the <code>OcrResult</code>, the same document model a direct <code>Read</code> call would return, with its text, page structure, and confidence intact.</p>
+<p>In practice, most code reaches asynchronous OCR through the higher-level read methods rather than constructing this type by hand, but the task is what those methods return and what a developer awaits. The key members are the constructor overloads that bind the OCR function plus its cancellation and scheduling options, and <code>Cancel</code>, which requests that an in-flight read stop. Pair <code>Cancel</code> with a <code>CancellationToken</code> constructor overload so the wrapped function can observe the request and exit cleanly. Everything else, continuations, status, exceptions, comes from the <code>Task&lt;OcrResult&gt;</code> base, so the awaited result and any error handling behave exactly as they do for any other task.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronOcr;
+
+var ocr = new IronTesseract();
+using var input = new OcrInput();
+input.LoadImage(&quot;scan.png&quot;);
+OcrResult result = await ocr.ReadAsync(input);
+Console.WriteLine(result.Text);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/async/">async OCR how-to</a> walks through reading off the main thread, the <a href="https://ironsoftware.com/csharp/ocr/examples/csharp-tesseract-multithreading-for-speed/">multithreading example</a> scales several reads across cores, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/progress-tracking/">progress tracking how-to</a> reports on a long-running read.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

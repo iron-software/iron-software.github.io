@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ResultIterator
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ResultIterator Class - IronOCR C# API
+      v2 (human)     title:       ResultIterator: Read OCR Text in C#
+      v1 (algorithm) description: Read recognized text and confidence in C# with the IronOCR ResultIterator class: GetText, GetConfidence, and word and symbol attributes.
+      v2 (human)     description: Get OCR text plus its confidence and font in C# with ResultIterator: read words and symbols as you walk a recognized page.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ResultIterator Class | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ResultIterator
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="ResultIterator Class | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR ResultIterator class in C#: extends PageIterator with GetText, GetConfidence, and word and symbol reads.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ResultIterator Class | IronOCR C# API",
+    "name": "ResultIterator class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.ResultIterator.html",
+    "abstract": "Read both the recognized text and its layout in IronOCR for C# with ResultIterator. It extends PageIterator with recognition output, so one walk yields words and confidence together. GetText returns text at a PageIteratorLevel, GetConfidence reports certainty, word reads describe font, language, and dictionary status, and symbol reads flag superscript, subscript, and dropcap characters.",
+    "description": "Reference for the IronOCR ResultIterator class in C#: extends PageIterator with GetText, GetConfidence, and word and symbol reads.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using DynamicTesseract;\n\nvoid DumpWords(ResultIterator iterator)\n{\n    iterator.Begin();\n    do\n    {\n        string word = iterator.GetText(PageIteratorLevel.Word);\n        float confidence = iterator.GetConfidence(PageIteratorLevel.Word);\n        Console.WriteLine($\"{word} ({confidence:F1}%)\");\n    }\n    while (iterator.Next(PageIteratorLevel.Word));\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ResultIterator live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ResultIterator is a sealed class in the DynamicTesseract namespace, shipped in IronOcr.dll. It derives from PageIterator and implements IDisposable, so dispose it after a walk. It adds the recognized text and confidence to the base page traversal."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read recognized text and its confidence in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Walk the page by calling Begin then Next with a PageIteratorLevel, and at each stop call GetText for the recognized text and GetConfidence for the engine's certainty. Both take the level, so the same loop can read words or symbols."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ResultIterator and PageIterator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PageIterator reports page structure and geometry, such as block types and bounding boxes. ResultIterator derives from it and adds the recognized content, including GetText, GetConfidence, font attributes, and GetChoiceIterator for alternative candidates."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -206,6 +270,27 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class ResultIterator : PageIterator, IDisposable</code></pre>
   </div>
+    <!-- archetype-N:start ResultIterator treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>ResultIterator</code> is what code reads from when it needs both the recognized text and where that text came from. It extends the page traversal of <code>PageIterator</code> with the recognition output Tesseract attaches to each element, so a single walk yields the words, their confidence, and their layout together rather than in separate passes.</p>
+<p>A <code>ResultIterator</code> is produced from a recognized page and inherits the cursor mechanics of its base, <code>Begin</code> to reset and <code>Next</code> to advance by a <code>PageIteratorLevel</code>, while adding the result-side reads on top. Because it is sealed and disposable, wrap it in <code>using</code> or dispose it once the walk is done. The geometry methods of the base, such as <code>TryGetBoundingBox</code>, remain available, so position and text are read at the same cursor stop.</p>
+<p><code>GetText</code> returns the recognized text at a chosen <code>PageIteratorLevel</code>, from a single symbol up to a whole block, and <code>GetConfidence</code> reports how certain the engine is about that element so low-confidence results can be flagged or re-read. The word-level reads describe each word in context: <code>GetWordFontAttributes</code> reports its font, <code>GetWordRecognitionLanguage</code> the language the engine matched, and <code>GetWordIsFromDictionary</code> and <code>GetWordIsNumeric</code> flag dictionary words and numeric tokens, which helps when validating fields such as totals or codes. At the symbol level, <code>GetSymbolIsSuperscript</code>, <code>GetSymbolIsSubscript</code>, and <code>GetSymbolIsDropcap</code> distinguish special characters, while <code>GetChoiceIterator</code> exposes the alternative candidates the engine considered for the current symbol when a result needs review.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using DynamicTesseract;
+
+void DumpWords(ResultIterator iterator)
+{
+    iterator.Begin();
+    do
+    {
+        string word = iterator.GetText(PageIteratorLevel.Word);
+        float confidence = iterator.GetConfidence(PageIteratorLevel.Word);
+        Console.WriteLine($&quot;{word} ({confidence:F1}%)&quot;);
+    }
+    while (iterator.Next(PageIteratorLevel.Word));
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">OCR results how-to</a> covers reading recognized text, the <a href="https://ironsoftware.com/csharp/ocr/examples/results-objects/">results objects example</a> shows the result model, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/tesseract-result-confidence/">result confidence how-to</a> explains the confidence scores.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

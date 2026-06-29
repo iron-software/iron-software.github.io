@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IParagraphStyle
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IParagraphStyle Interface - IronPPT C# API
+      v2 (human)     title:       IParagraphStyle: Paragraph Styling in C#
+      v1 (algorithm) description: IParagraphStyle is the IronPPT paragraph-style contract in C#: spacing, indent, alignment, and bullet members, implemented by ParagraphStyle.
+      v2 (human)     description: Style a slide paragraph in C# through IronPPT's IParagraphStyle contract: set spacing, indentation, alignment, and bullets, then apply it with SetStyle.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IParagraphStyle | IronPPT .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IParagraphStyle
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IParagraphStyle | IronPPT .NET API">
+    <meta name="description" content="Reference for the IronPPT IParagraphStyle interface in C#: the paragraph styling contract for spacing, indents, and bullets, implemented by ParagraphStyle.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IParagraphStyle | IronPPT .NET API",
+    "name": "IParagraphStyle interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IParagraphStyle.html",
+    "abstract": "Style a slide paragraph in C# through IronPPT's IParagraphStyle contract. It carries the paragraph-level settings: SpaceBefore, SpaceAfter, LineSpacing, and ContextualSpacing for spacing, Alignment, Indent, and RightToLeft for layout, and Bullet and NoBullet for lists. The concrete implementor is ParagraphStyle, applied to a paragraph through SetStyle rather than built as a freestanding object.",
+    "description": "Reference for the IronPPT IParagraphStyle interface in C#: the paragraph styling contract for spacing, indents, and bullets, implemented by ParagraphStyle.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IParagraphStyle style = new ParagraphStyle();\nstyle.Alignment = TextAlignmentTypeValues.Center;\nstyle.SpaceAfter = new DocUnit { Point = 12 };\nparagraph.SetStyle(style);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IParagraphStyle live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IParagraphStyle is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. The concrete implementor ParagraphStyle is built on the document-style hierarchy, so paragraph styling stays consistent across elements that accept it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IParagraphStyle in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ParagraphStyle class in IronPPT.Models implements IParagraphStyle. You assign a style to a paragraph with SetStyle on IParagraph rather than constructing a standalone style, then set members such as Alignment, SpaceAfter, and Bullet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IParagraphStyle and ITextStyle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IParagraphStyle controls the paragraph: spacing, indentation, alignment, and bullets. ITextStyle controls the characters inside it, such as TextFont, IsBold, and Color. A paragraph carries a paragraph style while its text runs carry text styles."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +208,18 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IParagraphStyle</code></pre>
   </div>
+    <!-- archetype-N:start IParagraphStyle treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>When a paragraph needs consistent spacing, indentation, alignment, or a bullet, <code>IParagraphStyle</code> is the contract that carries those settings. It is the paragraph-level styling object a developer reads from or assigns when shaping a list, a heading, or a body block, and it is distinct from <code>ITextStyle</code>, which controls the look of the characters themselves rather than the paragraph that holds them. The FAQ below resolves that pairing.</p>
+<p>A developer attaches the style to a paragraph rather than building a freestanding one. The concrete implementor in IronPPT is <code>ParagraphStyle</code>, and a paragraph applies it through <code>SetStyle</code> (on <code>IParagraph</code>). Because the implementor is built on the document-style hierarchy, the same style shape carries across the elements that accept paragraph styling, so layout rules stay uniform from one paragraph to the next. Reading the style back from a paragraph lets editing code adjust one setting without rebuilding the whole style.</p>
+<p>The members fall into spacing, indentation, and bullet groups. For spacing, <code>SpaceBefore</code> and <code>SpaceAfter</code> set the gaps above and below the paragraph as <code>DocUnit</code> values, <code>LineSpacing</code> sets the inter-line distance, and <code>ContextualSpacing</code> suppresses spacing between same-style paragraphs so a tight list does not gain extra gaps. For layout, <code>Alignment</code> sets the horizontal <code>TextAlignmentTypeValues</code>, <code>Indent</code> sets the leading inset as a <code>DocUnit</code>, and <code>RightToLeft</code> flips the reading direction for languages that need it. For lists, <code>Bullet</code> assigns an <code>IBullet</code> that defines the marker while <code>NoBullet</code> removes any marker entirely. <code>ContextualSpacing</code>, <code>NoBullet</code>, and <code>RightToLeft</code> are nullable, so an unset value can inherit from the document defaults rather than forcing a choice.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IParagraphStyle style = new ParagraphStyle();
+style.Alignment = TextAlignmentTypeValues.Center;
+style.SpaceAfter = new DocUnit { Point = 12 };
+paragraph.SetStyle(style);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> builds a style end to end, the <a href="https://ironsoftware.com/csharp/ppt/examples/customized-bullet-point/">customized bullet point example</a> walks through the bullet members, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> covers the text the style applies to.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

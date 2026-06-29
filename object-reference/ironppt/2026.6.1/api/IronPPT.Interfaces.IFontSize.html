@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IFontSize
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IFontSize - IronPPT C# API
+      v2 (human)     title:       IFontSize: Half-Point Text Sizing in C#
+      v1 (algorithm) description: IFontSize is IronPPT's font-size contract in C#: it adds a nullable HalfPoint over IDocUnit. Implemented by FontSize, returned by Font.FontSize.
+      v2 (human)     description: Set text size in C# through IronPPT's IFontSize contract: assign HalfPoint, the native unit where 24 means 12 points, on the FontSize object.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IFontSize Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IFontSize
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IFontSize Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT IFontSize interface in C#: the half-point sizing contract extending IDocUnit, implemented by FontSize.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IFontSize Interface | IronPPT C# API",
+    "name": "IFontSize interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IFontSize.html",
+    "abstract": "Sizing text in the unit PowerPoint stores it in is handled by the IFontSize contract in IronPPT for C#. It adds a nullable HalfPoint integer, the native font-size unit where 24 means 12 points, on top of the IDocUnit contract it extends. The concrete implementor is FontSize, returned by a Font's FontSize property, so the same size also reads in inches or points.",
+    "description": "Reference for the IronPPT IFontSize interface in C#: the half-point sizing contract extending IDocUnit, implemented by FontSize.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "fontSize.HalfPoint = 24;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IFontSize live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IFontSize is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It extends IDocUnit and adds a nullable HalfPoint integer for the native font-size unit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IFontSize in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The FontSize class in IronPPT.Models implements IFontSize. You receive it from a Font's FontSize property, then set HalfPoint to apply an exact size, where 24 half-points equals 12 points."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -171,6 +227,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IFontSize : IDocUnit</code></pre>
   </div>
+    <!-- archetype-N:start IFontSize treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>Expressing the size of text in the unit PowerPoint stores it in runs through <code>IFontSize</code>. The contract adds a <code>HalfPoint</code> property, a nullable integer holding the size in half-point units (the native font-size unit, where 24 means 12 points), on top of the multi-unit measurement contract it extends. Coding against the contract lets text-sizing logic set or read a size in half-points without rebuilding the conversion that font sizing needs.</p>
+<p>The concrete implementor in IronPPT is <code>FontSize</code>, which is what a <code>Font</code> returns from its <code>FontSize</code> property. Because the type also satisfies the broader unit contract it extends, a developer can read the same size in inches, points, or other units, while <code>HalfPoint</code> is the value that maps directly to how PowerPoint records font size. A developer usually receives a <code>FontSize</code> from a font rather than constructing it, then sets <code>HalfPoint</code> to apply an exact size.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">fontSize.HalfPoint = 24;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> covers adding and sizing text, and the <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> sets font sizes while styling content.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

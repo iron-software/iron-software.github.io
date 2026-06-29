@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ISlide
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ISlide Interface - IronPPT C# API Reference
+      v2 (human)     title:       ISlide: Build a Slide in C#
+      v1 (algorithm) description: ISlide is the IronPPT slide contract in C#: AddShape, AddText, AddImage, and AddParagraph, and read Shapes, Texts, TextBoxes, and Images.
+      v2 (human)     description: Build a slide in C# through the IronPPT ISlide contract: add shapes, text, paragraphs, and images, and read back the slide's content collections.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ISlide Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ISlide
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="ISlide Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT ISlide interface in C#: the slide contract implemented by Slide, with add methods and content collections.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ISlide Interface | IronPPT C# API",
+    "name": "ISlide interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.ISlide.html",
+    "abstract": "ISlide is the contract for one slide in an IronPPT presentation in C#. Add methods (AddShape, AddText, AddParagraph, AddImage, AddChild) grow the slide, content collections (Shapes, Texts, TextBoxes, Paragraphs, Images) read it back, and state members (ID, Index, IsMasterSlide) describe it. Slide implements ISlide, reached through PresentationDocument.Slides.",
+    "description": "Reference for the IronPPT ISlide interface in C#: the slide contract implemented by Slide, with add methods and content collections.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "ISlide slide = document.Slides[0];\nslide.AddText(\"Quarterly Summary\");\nslide.AddImage(\"chart.png\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ISlide live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ISlide is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It extends IGraphic and IContentElement, so a slide carries inherited geometry alongside its own content members."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements ISlide in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Slide implements ISlide. You obtain slides through PresentationDocument.Slides, a List<Slide>, or add one with AddSlide rather than constructing the interface directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add content to a slide in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call AddText with a string, AddShape with an IShape, AddImage with a path, Stream, AnyBitmap, or IImage, and AddParagraph with an IParagraph. Read existing content back through the Shapes, Texts, TextBoxes, and Images collections."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -174,6 +238,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface ISlide : IGraphic, IContentElement</code></pre>
   </div>
+    <!-- archetype-N:start ISlide treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>Building up a single page of a presentation in C# runs through <code>ISlide</code>. It is the contract for one slide and gives a developer everything needed to add content to that slide and to read back what is already there, so a report generator can append shapes, text, and images to a page through one consistent surface.</p>
+<p>A developer receives an <code>ISlide</code> rather than constructing it: <code>PresentationDocument.Slides</code> is a <code>List&lt;Slide&gt;</code>, and <code>Slide</code> (the concrete implementor) is what those entries are, while <code>AddSlide</code> returns a fresh one to fill. From there the slide is the parent every other element attaches to, and editing the deck means walking its slides and adding to or reading from each in turn.</p>
+<p>The members fall into clear functional groups. The add methods grow the slide: <code>AddShape</code> takes an <code>IShape</code>, <code>AddText</code> accepts a <code>string</code> or an <code>IText</code>, <code>AddParagraph</code> takes an <code>IParagraph</code>, <code>AddImage</code> has overloads for a file path, a <code>Stream</code>, an <code>AnyBitmap</code>, or an <code>IImage</code>, and <code>AddChild</code> attaches several <code>IContentElement</code> items at once. The read-back collections expose what the slide holds: <code>Shapes</code> (a <code>List&lt;IShape&gt;</code>), <code>Texts</code>, <code>TextBoxes</code>, <code>Paragraphs</code>, and <code>Images</code>. The slide-state members cover the rest: <code>ID</code> and <code>Index</code> identify and order the slide, <code>IsMasterSlide</code> flags a master, and <code>ShowMasterPlaceholderAnimations</code> toggles inherited animations. Geometry such as <code>Height</code>, <code>Width</code>, <code>Angle</code>, and <code>Position</code> is inherited from <code>IGraphic</code>, so the same slide object answers both content questions and layout questions through one surface.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">ISlide slide = document.Slides[0];
+slide.AddText(&quot;Quarterly Summary&quot;);
+slide.AddImage(&quot;chart.png&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/add-slide/">add slide example</a> creates a slide, the <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-slide/">manage slide how-to</a> walks through editing one, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> covers placing text on a slide.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

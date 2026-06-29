@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IPercentage
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IPercentage Interface - IronPPT C# API
+      v2 (human)     title:       IPercentage: Proportional Values in C#
+      v1 (algorithm) description: IPercentage is the IronPPT proportion contract in C#: a nullable double Value for saturation, scale, and relative sizes, implemented by Percentage.
+      v2 (human)     description: Read and set proportional slide values in C# through IronPPT's IPercentage contract: a nullable Value that keeps proportions distinct from unit measurements.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IPercentage Interface | IronPPT .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IPercentage
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IPercentage Interface | IronPPT .NET API">
+    <meta name="description" content="Reference for the IronPPT IPercentage interface in C#: the proportion contract carrying a nullable double Value, implemented by Percentage.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IPercentage Interface | IronPPT .NET API",
+    "name": "IPercentage interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IPercentage.html",
+    "abstract": "Read and set a proportional slide value in C# through IronPPT's IPercentage contract, used where a property is a proportion such as saturation or scale rather than an absolute measurement. It carries a single nullable double Value, so an unset proportion reads as null. The concrete implementor is Percentage, usually received from the property that exposes it rather than constructed directly.",
+    "description": "Reference for the IronPPT IPercentage interface in C#: the proportion contract carrying a nullable double Value, implemented by Percentage.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IPercentage saturation = new Percentage();\nsaturation.Value = 75.0;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IPercentage live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPercentage is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It does not extend another interface; it carries a nullable double Value and a ToString method, and is implemented by the Percentage class."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IPercentage and IDocUnit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPercentage expresses a proportion as a nullable double, while IDocUnit expresses an absolute measurement that carries its own unit such as points or centimeters. A property typed as IPercentage is a relative figure, not a fixed size."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +200,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IPercentage</code></pre>
   </div>
+    <!-- archetype-N:start IPercentage treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p><code>IPercentage</code> is the value a developer reads or sets when a slide property is expressed as a proportion rather than an absolute measurement, the kind of figure used for a color saturation, a scale factor, or a relative width. Wrapping the number in a contract rather than passing a bare <code>double</code> keeps proportion values distinct from point or pixel measurements, so a property typed as <code>IPercentage</code> cannot be confused with one typed as a unit. Lean on the FAQ to place it against <code>IDocUnit</code>, the absolute-measurement contract it sits beside.</p>
+<p>A developer usually receives an <code>IPercentage</code> from the property that exposes it rather than constructing one. The concrete implementor in IronPPT is <code>Percentage</code>, and the contract carries a single nullable <code>Value</code> of type <code>double</code> so an unset proportion reads as null instead of zero. <code>ToString</code> renders the value for display or logging. Reading <code>Value</code> gives the current proportion; assigning it changes the proportion the consuming property applies.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IPercentage saturation = new Percentage();
+saturation.Value = 75.0;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> and the <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> show properties that take proportional values.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

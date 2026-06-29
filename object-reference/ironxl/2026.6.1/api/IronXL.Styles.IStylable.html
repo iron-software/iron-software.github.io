@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IStylable
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IStylable Interface - IronXL C# API Reference
+      v2 (human)     title:       IStylable: The Styleable Contract in C#
+      v1 (algorithm) description: IStylable is the IronXL C# contract for a styled object: it declares a Style property returning IStyle for fonts, borders, fill, and alignment.
+      v2 (human)     description: Mark a type as styleable in C# with the IronXL IStylable contract: its Style property returns the IStyle that controls fonts, borders, and fill.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IStylable Interface | IronXL C# .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IStylable
-   | C# Excel API | IronXL ">
+    <meta name="title" content="IStylable Interface | IronXL C# .NET API">
+    <meta name="description" content="Reference for the IronXL IStylable interface in C#: the contract whose Style property returns IStyle, the styling surface used on cells and ranges.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IStylable Interface | IronXL C# .NET API",
+    "name": "IStylable interface | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Styles.IStylable.html",
+    "abstract": "IStylable is IronXL's contract for a styled object in C#. It declares a single Style property that returns an IStyle, the surface for a type's font, borders, fill, and alignment. In practice the styling members are reached by reading Cell.Style or Range.Style, both of which return IStyle, then assigning to that object rather than replacing the get-only Style property.",
+    "description": "Reference for the IronXL IStylable interface in C#: the contract whose Style property returns IStyle, the styling surface used on cells and ranges.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\nusing IronXL.Styles;\n\nWorkSheet sheet = WorkBook.Load(\"report.xlsx\").DefaultWorkSheet;\nIStyle style = sheet[\"A1\"].Style;\nstyle.Font.Bold = true;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IStylable live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IStylable is an interface in the IronXL.Styles namespace, shipped in IronXL.dll. It declares one member, a Style property of type IStyle, marking a type as something that carries a style."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does IStylable do in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IStylable defines a Style property returning IStyle, the contract for a styleable object. In day-to-day code the styling surface is reached through Cell.Style and Range.Style, which return the IStyle that IStylable describes."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +201,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IStylable</code></pre>
   </div>
+    <!-- archetype-N:start IStylable treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p><code>IStylable</code> is the contract for anything in IronXL that carries a style. It declares a single <code>Style</code> property returning an <code>IStyle</code>, marking a type as something whose appearance, font, borders, fill, and alignment, can be read and set. It is the abstraction behind the styling surface a developer uses on cells and ranges.</p>
+<p>The contract is reached through its one member rather than directly: the spreadsheet objects a developer works with expose a <code>Style</code> property of type <code>IStyle</code>, which is the shape <code>IStylable</code> defines. In practice that means reading <code>Cell.Style</code> or <code>Range.Style</code> to get the <code>IStyle</code> and assigning to its members. Because <code>Style</code> is get-only, styling is done by reading the property and setting the font, borders, and fill on the returned object rather than replacing the style wholesale.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+using IronXL.Styles;
+
+WorkSheet sheet = WorkBook.Load(&quot;report.xlsx&quot;).DefaultWorkSheet;
+IStyle style = sheet[&quot;A1&quot;].Style;
+style.Font.Bold = true;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/examples/excel-style-cells-borders-fonts/">style cells, borders, and fonts example</a> demonstrates the styling surface, and the <a href="https://ironsoftware.com/csharp/excel/how-to/border-alignment/">border and alignment how-to</a> covers borders and layout through it.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

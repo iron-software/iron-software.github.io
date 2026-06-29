@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrDocAdvancedResult
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrDocAdvancedResult - IronOCR C# API
+      v2 (human)     title:       OcrDocAdvancedResult: Tables & Text in C#
+      v1 (algorithm) description: Read structured documents in C# with the IronOCR OcrDocAdvancedResult class: Text, Confidence, Tables, and NoOutlineRegions from an advanced read.
+      v2 (human)     description: Get text and table structure in C# from the IronOCR OcrDocAdvancedResult class, returned by ReadDocumentAdvanced for structured documents.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrDocAdvancedResult | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrDocAdvancedResult
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrDocAdvancedResult | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR OcrDocAdvancedResult class in C#: Text, Confidence, Tables, and NoOutlineRegions from ReadDocumentAdvanced.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrDocAdvancedResult | IronOCR C# API",
+    "name": "OcrDocAdvancedResult class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrDocAdvancedResult.html",
+    "abstract": "Receive structured-document output in IronOCR from the OcrDocAdvancedResult class, returned by IronTesseract.ReadDocumentAdvanced in C#. Text holds the full recognized text and Confidence reports average per-character accuracy. Tables exposes recognized tables and their cells, and NoOutlineRegions lists borderless text regions, so a developer reads both content and layout from one object.",
+    "description": "Reference for the IronOCR OcrDocAdvancedResult class in C#: Text, Confidence, Tables, and NoOutlineRegions from ReadDocumentAdvanced.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrDocAdvancedResult live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrDocAdvancedResult is a class in the IronOcr namespace, shipped in IronOcr.dll. It derives from AdvancedOcrResultBase and is returned by IronTesseract.ReadDocumentAdvanced."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read tables from a document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call IronTesseract.ReadDocumentAdvanced to get an OcrDocAdvancedResult, then read its Tables property for the recognized tables and their cells. Use Text for the full transcription and Confidence to gauge accuracy."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -175,30 +223,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class OcrDocAdvancedResult : AdvancedOcrResultBase, IOcrResult</code></pre>
   </div>
-  <h5 id="IronOcr_OcrDocAdvancedResult_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>This result class supports both structured table data and word-level OCR output with bounding box coordinates.</p>
-<p>Use the <a class="xref" href="IronOcr.AdvancedOcrResultBase.html#IronOcr_AdvancedOcrResultBase_Words">Words</a> property to access individual words with their positions,
-enabling deterministic reading order reconstruction and spatial analysis of text within table cells.</p>
-<p><strong>Example:</strong></p>
-<pre><code>var ocr = new IronTesseract();
-var input = new OcrInput();
-input.LoadPdf(&quot;scanned.pdf&quot;);
-var result = ocr.ReadDocumentAdvanced(input);
-<p>// Access structured table data
-foreach (var table in result.Tables) { /* ... */ }</p>
-<p>// Access word-level coordinates for reading order
-foreach (var word in result.Words)
-{
-Console.WriteLine($&quot;'{word.Text}' at ({word.X},{word.Y}) page {word.PageNumber}&quot;);
-}</p>
-<p>// Reconstruct ordered text deterministically
-var orderedText = string.Join(&quot; &quot;,
-result.Words
-.Where(w =&gt; w.PageNumber == 1)
-.OrderBy(w =&gt; w.Y)
-.ThenBy(w =&gt; w.X)
-.Select(w =&gt; w.Text));</code></pre><p>
-</div>
+    <!-- archetype-N:start OcrDocAdvancedResult treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>OcrDocAdvancedResult</code> is the record you receive from <code>IronTesseract.ReadDocumentAdvanced</code>, the machine-learning read built for structured documents. It carries the recognized content of one document together with the layout the advanced model recovered, so a developer reads both the words and the structure around them from a single object.</p>
+<p><code>Text</code> holds the full recognized text of the input, and <code>Confidence</code> reports the average per-character accuracy as a value where 1 equals 100 percent, useful for deciding whether a result is trustworthy enough to use unattended. <code>Tables</code> exposes the recognized tables and their cell contents, the property that makes this result type worth choosing over a plain read when a document contains grids. <code>NoOutlineRegions</code> lists the borderless regions the model detected, the areas of text that sit outside a ruled table. Read <code>Text</code> for the raw transcription, then walk <code>Tables</code> to rebuild the document's grids in code.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-document-advanced/">advanced document read how-to</a> produces this result, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/read-table-in-document/">read table how-to</a> works through its <code>Tables</code> property.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

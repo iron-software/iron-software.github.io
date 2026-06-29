@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Form
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Form Class - IronWord C# API Reference
+      v2 (human)     title:       Form: Hold Word Form Fields in C#
+      v1 (algorithm) description: Group Word form fields in C# with the IronWord Form class: its Elements property is a List of FormElement holding controls like TextInput.
+      v2 (human)     description: Collect a Word document's interactive controls in C# with the IronWord Form class: add TextInput and RadioButton fields to its Elements list.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Form Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Form
-   | C# Word API | IronWord ">
+    <meta name="title" content="Form Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord Form class in C#: the container whose Elements list holds FormElement controls such as TextInput and RadioButton.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Form Class | IronWord C# API Reference",
+    "name": "Form class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Form.html",
+    "abstract": "Grouping a Word document's interactive controls in C# runs through the IronWord Form class. Its Elements property is a List of FormElement, so a Form collects the document's fields, such as TextInput and RadioButton, in order. Add controls to Elements when building a document, or iterate the list to inspect the inputs an existing document contains.",
+    "description": "Reference for the IronWord Form class in C#: the container whose Elements list holds FormElement controls such as TextInput and RadioButton.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "Form form = new Form();\nform.Elements.Add(new TextInput());"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Form live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Form is a class in the IronWord.Models namespace, shipped in IronWord.dll, with base type Object. Its Elements property is a List of FormElement that holds the document's interactive controls."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What goes in a Form's Elements list in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each entry is a concrete FormElement, such as a TextInput for a typed value or a RadioButton for a chosen option. Because Elements is a standard List, you add, iterate, or clear controls as you would any List."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +206,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Form : Object</code></pre>
   </div>
+    <!-- archetype-N:start Form treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Grouping the interactive controls of a Word document runs through <code>Form</code>, the container that holds a document's form fields together. Its one property, <code>Elements</code>, is a <code>List&lt;FormElement&gt;</code>, so the form is the collection point you read or build when a document carries inputs the reader is expected to fill in.</p>
+<p>Each entry in <code>Elements</code> is a concrete <code>FormElement</code>, such as a <code>TextInput</code> for a typed value or a <code>RadioButton</code> for a chosen option. Because <code>Elements</code> is a standard list, you add controls to it, iterate over the existing ones, or clear it, the same way you would any <code>List&lt;T&gt;</code>. Construct a <code>Form</code>, populate <code>Elements</code> with the field objects the document needs, and place that form on the document so the controls render in order. When you read an existing document, walk <code>Elements</code> to discover which inputs it contains and inspect each one by its concrete type.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">Form form = new Form();
+form.Elements.Add(new TextInput());</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> explains how elements compose a document, and the <a href="https://ironsoftware.com/csharp/word/examples/log-object-tree/">object tree example</a> prints the structure a form sits within.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

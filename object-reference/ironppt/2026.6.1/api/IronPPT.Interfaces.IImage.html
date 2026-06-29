@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IImage
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IImage Interface - IronPPT C# API Reference
+      v2 (human)     title:       IImage: Work With Slide Images in C#
+      v1 (algorithm) description: The IronPPT IImage interface in C#: read and edit a slide picture's Name, Type, Position, and ImageData, with LoadFromFile, Resize, and Clone.
+      v2 (human)     description: Position, name, and resize a picture on a PowerPoint slide in C# through the IronPPT IImage contract, implemented by the Image class.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IImage Interface | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IImage
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IImage Interface | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT IImage interface in C#: the slide-picture contract carrying geometry, ImageData, and Resize, implemented by Image.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IImage Interface | IronPPT C# API Reference",
+    "name": "IImage interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IImage.html",
+    "abstract": "Work through the IronPPT IImage contract in C# whenever a slide carries a picture. It models one image: Name, Id, Type, and ImageData identify and expose it, while inherited Width, Height, Position, and Angle place it. LoadFromFile, LoadFromStream, and Resize change the content, and Clone copies it. The concrete implementor is the Image class.",
+    "description": "Reference for the IronPPT IImage interface in C#: the slide-picture contract carrying geometry, ImageData, and Resize, implemented by Image.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "foreach (IImage image in slide.Images)\n{\n    image.Resize(400, 300);\n    image.Name = \"logo\";\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IImage live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IImage is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It extends IGraphic and IContentElement, so it inherits geometry members such as Width, Height, and Position alongside its own image members."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IImage in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Image class in the IronPPT.Models namespace implements IImage. A slide's graphics surface returns IImage when a picture is added or enumerated, so most code receives the interface and uses Image only when constructing or type-checking."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you resize an image on a slide in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Resize on the IImage with a new width and height in pixels, or set the inherited Width and Height. To replace the picture itself, call LoadFromFile or LoadFromStream, which swap the source bytes in place."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -171,6 +235,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IImage : IGraphic, IContentElement</code></pre>
   </div>
+    <!-- archetype-N:start IImage treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p><code>IImage</code> is the picture object you work through whenever a slide carries a bitmap. It models one image placed on a presentation: where it sits, how big it is, what it is called, and the raw bytes behind it. A developer reaches for this contract when reading or repositioning the pictures already on a slide, or when adjusting an image that was just added.</p>
+<p>You rarely construct it. An image arrives through the graphics surface of a slide or shape, which hands back an <code>IImage</code> after a picture is added or when the existing pictures are enumerated. From there the same object is the handle for every later edit, so adding, measuring, and resizing all run against one reference rather than a fresh lookup each time. Coding against the interface also keeps the picture-handling code independent of how the bitmap was first supplied, whether from a file path, a stream, or a bitmap already in memory.</p>
+<p>The everyday members fall into a few groups. <code>Name</code> and <code>Id</code> identify the image, <code>Type</code> reports its <code>ImageType</code>, and <code>ImageData</code> exposes the underlying <code>IImageContent</code>. Geometry is inherited from <code>IGraphic</code>: <code>Width</code>, <code>Height</code>, <code>Position</code>, and <code>Angle</code> place and rotate the picture. For content changes, <code>LoadFromFile</code> and <code>LoadFromStream</code> swap the source bytes in place, <code>Resize</code> takes a new width and height in pixels, and <code>Clone</code> returns a copy as an <code>IContentElement</code>. The concrete implementor in IronPPT is <code>Image</code>, so a variable typed as <code>IImage</code> and one typed as <code>Image</code> describe the same object.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">foreach (IImage image in slide.Images)
+{
+    image.Resize(400, 300);
+    image.Name = &quot;logo&quot;;
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/add-image/">add image example</a> places a picture on a slide, the <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-image/">manage image how-to</a> walks through editing one that is already there, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-slide/">manage slide how-to</a> covers reaching the slide that holds it.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

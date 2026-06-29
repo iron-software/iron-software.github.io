@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PrintSettings
-   | C# Print API | IronPrint </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PrintSettings Class - IronPrint C# API
+      v2 (human)     title:       PrintSettings: Configure C# Printing in IronPrint
+      v1 (algorithm) description: Configure printing in C# with the IronPrint PrintSettings class: paper size, orientation, margins, copies, DPI, grayscale, and printer name.
+      v2 (human)     description: Control how documents print in C# with the IronPrint PrintSettings class: set paper, copies, quality, and the target printer, with code examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PrintSettings Class | IronPrint C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PrintSettings
-   | C# Print API | IronPrint ">
+    <meta name="title" content="PrintSettings Class | IronPrint C# API Reference">
+    <meta name="description" content="Reference for the IronPrint PrintSettings class in C#: set paper size, orientation, margins, copies, DPI, and printer name, with code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PrintSettings Class | IronPrint C# API Reference",
+    "name": "PrintSettings class | IronPrint C# API",
+    "url": "https://ironsoftware.com/csharp/print/object-reference/api/IronPrint.PrintSettings.html",
+    "abstract": "Configuring how a document prints in C# runs through the IronPrint PrintSettings class. It groups paper setup (PaperSize, PaperOrientation, PaperMargins), output quality (Dpi, Grayscale, Flatten), and job control (NumberOfCopies, PrinterName, Tray). Build one with new PrintSettings or start from the static DefaultSettings, then pass it to a Printer method. Some values are advisory: NumberOfCopies may be capped, and PrinterName and Tray are ignored when a print dialog is used.",
+    "description": "Reference for the IronPrint PrintSettings class in C#: set paper size, orientation, margins, copies, DPI, and printer name, with code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPrint",
+      "url": "https://ironsoftware.com/csharp/print/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPrint;\n\nPrintSettings settings = new PrintSettings\n{\n    PaperSize = PaperSize.A4,\n    PaperOrientation = PaperOrientation.Landscape,\n    NumberOfCopies = 3\n};\nPrinter.Print(\"report.pdf\", settings);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PrintSettings live in the IronPrint API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PrintSettings is a class in the IronPrint namespace, shipped in IronPrint.dll. Construct it with new PrintSettings(), or read the static PrintSettings.DefaultSettings for a baseline, then pass it to a Printer print or dialog method."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does NumberOfCopies sometimes print only one copy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NumberOfCopies is advisory. On some platforms the print subsystem cannot reproduce multiple copies from a single job, so the value is ignored and one copy is printed. Loop the print call when an exact copy count is required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is PrinterName ignored when printing in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PrinterName and Tray are ignored when the user chooses a device in a print dialog, since the dialog selection takes precedence. Set PrinterName and call Printer.Print directly for silent printing to a specific device. Tray applies only on Windows."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,14 +214,23 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PrintSettings : Object</code></pre>
   </div>
-  <h5 id="IronPrint_PrintSettings_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>These settings might be overridden by the settings that will be set in the print dialog,
-as the print dialog is optional and may be invoked using
-IronPrint.Printer.ShowPrintDialog() or IronPrint.Printer.ShowPrintDialogAsync().</p>
-<p>
-Use <a class="xref" href="IronPrint.PrintSettings.html#IronPrint_PrintSettings_DefaultSettings">DefaultSettings</a> to access a predefined set of default settings.
-</p>
-</div>
+    <!-- archetype-N:start PrintSettings treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PrintSettings</code> is the configuration object you hand to a print call to control how a document reaches paper. It carries the printer choice, copy count, paper size and orientation, margins, and output quality, and it is accepted as the optional argument to every <code>Printer</code> method. One settings object can be reused across several jobs or adjusted per call. The defaults suit most documents, so only the properties that differ from a standard print need to be set.</p>
+<p>Create one with <code>new PrintSettings()</code> for an empty configuration, or read the static <code>PrintSettings.DefaultSettings</code> for a populated baseline to adjust. The properties fall into three groups. Paper setup covers <code>PaperSize</code>, <code>PaperOrientation</code>, and <code>PaperMargins</code>, the last a <code>Nullable&lt;Margins&gt;</code> that falls back to the printer's own margins when left null. Output quality covers <code>Dpi</code>, <code>Grayscale</code>, and <code>Flatten</code>, where <code>Flatten</code> renders form fields and images before printing. Job control covers <code>NumberOfCopies</code>, <code>PrinterName</code>, and <code>Tray</code>.</p>
+<p>Several values are advisory rather than guaranteed. <code>NumberOfCopies</code> can be capped by the platform, so a multi-copy request may yield a single copy. <code>PrinterName</code> and <code>Tray</code> are ignored when the user selects a device in a print dialog, and <code>Tray</code> applies only on Windows. To target a printer reliably, read <a href="https://ironsoftware.com/csharp/print/how-to/retrieve-printer-names/">the printer names</a> first and assign one to <code>PrinterName</code> before calling <code>Printer.Print</code>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPrint;
+
+PrintSettings settings = new PrintSettings
+{
+    PaperSize = PaperSize.A4,
+    PaperOrientation = PaperOrientation.Landscape,
+    NumberOfCopies = 3
+};
+Printer.Print(&quot;report.pdf&quot;, settings);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/print/how-to/print-settings/">print settings guide</a> walks through every option, the <a href="https://ironsoftware.com/csharp/print/how-to/set-paper-size/">paper size guide</a> and <a href="https://ironsoftware.com/csharp/print/how-to/set-paper-orientation/">paper orientation guide</a> cover layout, and the <a href="https://ironsoftware.com/csharp/print/how-to/grayscale-printing/">grayscale printing guide</a> covers monochrome output.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

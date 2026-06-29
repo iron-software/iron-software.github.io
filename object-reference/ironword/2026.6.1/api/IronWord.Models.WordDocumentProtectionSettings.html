@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class WordDocumentProtectionSettings
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       WordDocumentProtectionSettings - IronWord C# API
+      v2 (human)     title:       Protect a Word Document in C# | IronWord
+      v1 (algorithm) description: Protect Word documents in C# with the IronWord WordDocumentProtectionSettings class: set ProtectionType, Password, RestrictFormatting, and unprotected regions.
+      v2 (human)     description: Lock a Word file in C# with the IronWord WordDocumentProtectionSettings class: choose the protection type, set a password, and allow specific styles or regions.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>WordDocumentProtectionSettings | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class WordDocumentProtectionSettings
-   | C# Word API | IronWord ">
+    <meta name="title" content="WordDocumentProtectionSettings | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord WordDocumentProtectionSettings class in C#: set protection type, password, formatting restriction, allowed styles, and open regions.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "WordDocumentProtectionSettings | IronWord C# API",
+    "name": "WordDocumentProtectionSettings class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.WordDocumentProtectionSettings.html",
+    "abstract": "Protecting a Word document in C# goes through the IronWord WordDocumentProtectionSettings class. Type, a ProtectionType, sets the mode and Password holds the unlock secret, while RestrictFormatting blocks formatting changes. AllowedStyles lists the styles that stay editable and UnprotectedRegions lists the spans left open. Construct it with a ProtectionType and password, then apply it when saving the protected file.",
+    "description": "Reference for the IronWord WordDocumentProtectionSettings class in C#: set protection type, password, formatting restriction, allowed styles, and open regions.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nvar protection = new WordDocumentProtectionSettings(\n    ProtectionType.ReadOnly, \"secret\");\nprotection.RestrictFormatting = true;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does WordDocumentProtectionSettings live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WordDocumentProtectionSettings is a class in the IronWord.Models namespace, shipped in IronWord.dll, with Object as its base type. Construct it with a ProtectionType and password, then apply it when saving to enforce the protection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you password-protect a Word document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a WordDocumentProtectionSettings with a ProtectionType and a password through its constructor, set RestrictFormatting if formatting should be locked, and apply the settings when you save. The saved file then requires the password to remove the restriction."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you leave part of a protected document editable?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Add UnprotectedRegion entries to the UnprotectedRegions list, each pinned by a start and end ContentElement, and list editable style names in AllowedStyles. Those regions and styles stay open while the rest of the document is restricted."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class WordDocumentProtectionSettings : Object</code></pre>
   </div>
+    <!-- archetype-N:start WordDocumentProtectionSettings treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Use <code>WordDocumentProtectionSettings</code> to lock down a Word document so readers can open it but cannot freely change it. It gathers the protection mode, an optional password, and the formatting and region rules that decide what editing the document still permits, giving you one object to describe how a file is protected.</p>
+<p>You construct the settings and apply them when you save a protected document. The simplest path is the constructor that takes a <code>ProtectionType</code> and a password, which sets the protection level and the unlock secret in one step; the parameterless constructor lets you fill the properties individually instead. Either way the configured object describes the restrictions the saved file enforces.</p>
+<p>The <code>Type</code> property is a <code>ProtectionType</code> that names the protection mode, and <code>Password</code> holds the secret a reader needs to lift the restriction. <code>RestrictFormatting</code> toggles whether formatting changes are blocked, while <code>AllowedStyles</code> is a read-only <code>List&lt;string&gt;</code> of the style names that remain editable when formatting is restricted, so you can permit a known set of styles and freeze the rest. <code>UnprotectedRegions</code> is a read-only <code>List&lt;UnprotectedRegion&gt;</code> marking the spans that stay editable inside an otherwise locked document, each region pinned by a start and end <code>ContentElement</code>. Add the styles and regions you want to leave open, set the type and password, and the saved document applies exactly those exceptions to the protection.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+var protection = new WordDocumentProtectionSettings(
+    ProtectionType.ReadOnly, &quot;secret&quot;);
+protection.RestrictFormatting = true;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/edit-text/">edit text how-to</a> covers changing document content, the <a href="https://ironsoftware.com/csharp/word/examples/edit-text/">edit text example</a> shows an edit in code, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> shows the element model that unprotected regions point into.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

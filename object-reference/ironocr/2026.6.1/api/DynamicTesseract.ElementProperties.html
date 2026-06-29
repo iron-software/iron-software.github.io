@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ElementProperties
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ElementProperties - IronOCR C# API Reference
+      v2 (human)     title:       ElementProperties: Element Orientation in C#
+      v1 (algorithm) description: Read element layout in C# with the IronOCR ElementProperties struct: Orientation, TextLineOrder, WritingDirection, and DeskewAngle for a region.
+      v2 (human)     description: Get the orientation, line order, writing direction, and skew of a page region in C# with the IronOCR ElementProperties value type.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ElementProperties Struct | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ElementProperties
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="ElementProperties Struct | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR ElementProperties struct in C#: Orientation, TextLineOrder, WritingDirection, and DeskewAngle of a recognized region.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ElementProperties Struct | IronOCR C# API",
+    "name": "ElementProperties class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.ElementProperties.html",
+    "abstract": "ElementProperties carries the layout orientation of a recognized page region in IronOCR for C#. Returned by the DynamicTesseract interop layer during analysis, this value type exposes Orientation, TextLineOrder, WritingDirection, and a DeskewAngle Single. Read it to decide how to deskew or reorder a region; for ordinary page-rotation handling, IronOCR's high-level features are simpler.",
+    "description": "Reference for the IronOCR ElementProperties struct in C#: Orientation, TextLineOrder, WritingDirection, and DeskewAngle of a recognized region.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ElementProperties live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ElementProperties is a value-type struct in the DynamicTesseract namespace, shipped in IronOcr.dll. It derives from ValueType and is returned by the interop layer's layout analysis rather than constructed in everyday code."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does ElementProperties tell you about a page element in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It reports the region's Orientation, its TextLineOrder, its WritingDirection, and a DeskewAngle Single for the fine tilt. Together these describe how the element is rotated and laid out so code can deskew or reorder it correctly."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +197,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class ElementProperties : ValueType</code></pre>
   </div>
+    <!-- archetype-N:start ElementProperties treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>When low-level code needs the layout orientation of a recognized page element, <code>ElementProperties</code> carries it. The value groups the geometric facts Tesseract reports about a region, the rotation it sits at, the order its text lines run in, and the direction the script is written, into one struct the interop layer hands back during analysis.</p>
+<p>Four members describe the element. <code>Orientation</code> gives the rotation of the region as an <code>Orientation</code> value, <code>TextLineOrder</code> reports how its lines are stacked as a <code>TextLineOrder</code> value, and <code>WritingDirection</code> reports left-to-right or right-to-left as a <code>WritingDirection</code> value. <code>DeskewAngle</code> is a <code>Single</code> holding the fine skew angle, the small tilt to correct after the coarse orientation is known. The constructor takes all four in that order. Being a value type, an <code>ElementProperties</code> is copied by value and read after layout analysis to decide how to deskew or reorder a region. This sits in the <code>DynamicTesseract</code> interop layer; for ordinary page-rotation handling, IronOCR's high-level orientation features are the simpler path.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/detect-page-rotation/">detect page rotation how-to</a> reads orientation at the IronOCR level, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/image-orientation-correction/">orientation correction how-to</a> straightens a skewed image.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

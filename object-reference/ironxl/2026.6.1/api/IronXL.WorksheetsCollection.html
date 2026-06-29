@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class WorksheetsCollection
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       WorksheetsCollection - IronXL C# API
+      v2 (human)     title:       WorksheetsCollection: Excel Sheets in C#
+      v1 (algorithm) description: Iterate, add, reorder, and remove Excel sheets in C# with the IronXL WorksheetsCollection: index by position, Count, Create, Add, Remove, and SetSheetIndex.
+      v2 (human)     description: Manage the worksheets of a workbook in C# through the IronXL WorksheetsCollection: loop over every tab, add or remove sheets, and change their order.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>WorksheetsCollection Class | IronXL C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class WorksheetsCollection
-   | C# Excel API | IronXL ">
+    <meta name="title" content="WorksheetsCollection Class | IronXL C# API">
+    <meta name="description" content="Reference for the IronXL WorksheetsCollection in C#: the WorkBook.WorkSheets list of sheets, with Create, Add, RemoveAt, and SetSheetIndex.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "WorksheetsCollection Class | IronXL C# API",
+    "name": "WorksheetsCollection class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.WorksheetsCollection.html",
+    "abstract": "Walking, adding, reordering, and removing the sheets of an Excel file in C# runs through the IronXL WorksheetsCollection. A WorkBook exposes it as the WorkSheets property, an IList of WorkSheet that supports indexing by position, Count, and foreach iteration. Create and Add bring in sheets, Remove and RemoveAt take them out, and SetSheetIndex changes their order.",
+    "description": "Reference for the IronXL WorksheetsCollection in C#: the WorkBook.WorkSheets list of sheets, with Create, Add, RemoveAt, and SetSheetIndex.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nWorkBook workBook = WorkBook.Load(\"sample.xlsx\");\nforeach (WorkSheet sheet in workBook.WorkSheets)\n    Console.WriteLine(sheet.Name);\n\nWorkSheet added = workBook.WorkSheets.Create(\"Summary\");\nworkBook.SaveAs(\"output.xlsx\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does WorksheetsCollection live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WorksheetsCollection is a class in the IronXL namespace, shipped in IronXL.dll, and implements IList<WorkSheet>. A WorkBook exposes it through the WorkSheets property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you loop over every worksheet in a workbook in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Iterate the WorkBook.WorkSheets collection with foreach, since WorksheetsCollection implements IList<WorkSheet>. Each item is a WorkSheet, and Count reports how many sheets the workbook holds."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you reorder worksheets with IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call SetSheetIndex on the WorkSheets collection to move a sheet to a new position. Use Add, Create, or Insert to bring sheets in, and Remove or RemoveAt to take them out."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -157,6 +221,22 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class WorksheetsCollection : Object, IList&lt;WorkSheet&gt;, ICollection&lt;WorkSheet&gt;, IEnumerable&lt;WorkSheet&gt;, IEnumerable</code></pre>
   </div>
+    <!-- archetype-N:start WorksheetsCollection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When code needs to walk, add, reorder, or remove the sheets of an Excel file in C#, <code>WorksheetsCollection</code> is the type it works through. It is the list of worksheets a <code>WorkBook</code> exposes as its <code>WorkSheets</code> property, so iterating every tab, counting them, or inserting a new one all run against this collection rather than the workbook directly.</p>
+<p>A workbook hands back its collection through <code>WorkSheets</code>, and from there the surface is a familiar list. Index a sheet by position with <code>Item[Int32]</code>, so <code>workBook.WorkSheets[0]</code> is the first tab, and read how many there are with <code>Count</code>. The collection implements <code>IList&lt;WorkSheet&gt;</code>, so it supports <code>GetEnumerator</code> for <code>foreach</code> iteration over each <code>WorkSheet</code>.</p>
+<p>The members fall into a few jobs. For adding, <code>Create</code> builds a new named sheet in place and <code>Add</code> appends an existing <code>WorkSheet</code>, while <code>Insert</code> places one at a chosen index. For removal, <code>Remove</code> takes a sheet instance, <code>RemoveAt</code> takes a position, and <code>Clear</code> empties the collection. For ordering and lookup, <code>SetSheetIndex</code> moves a sheet to a new position, <code>IndexOf</code> and <code>FindIndex</code> locate one, and <code>Contains</code> tests membership. Changes to the collection are part of the workbook, so they persist when the parent <code>WorkBook</code> is saved. To create or fetch a sheet by name rather than by position, the workbook's own <code>CreateWorkSheet</code> and <code>GetWorkSheet</code> are the more direct route.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+WorkBook workBook = WorkBook.Load(&quot;sample.xlsx&quot;);
+foreach (WorkSheet sheet in workBook.WorkSheets)
+    Console.WriteLine(sheet.Name);
+
+WorkSheet added = workBook.WorkSheets.Create(&quot;Summary&quot;);
+workBook.SaveAs(&quot;output.xlsx&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/manage-worksheet/">manage worksheets how-to</a> walks through adding and removing sheets, the <a href="https://ironsoftware.com/csharp/excel/examples/excel-worksheets/">Excel worksheets example</a> iterates a collection, and the <a href="https://ironsoftware.com/csharp/excel/how-to/copy-an-excel-worksheet/">copy worksheet how-to</a> moves sheets between workbooks.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BitmapHelper
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       BitmapHelper Class - IronOCR C# API Reference
+      v2 (human)     title:       BitmapHelper: Pixel & Buffer Helpers in C#
+      v1 (algorithm) description: Convert pixel formats and read raw bitmap bytes in C# with the IronOCR BitmapHelper class: EncodeAsRGBA, GetBPP, and typed Get/Set data accessors.
+      v2 (human)     description: Work with raw image data in C# through the IronOCR BitmapHelper class: promote 16-bit pixels to RGBA, pack channels, and read or write buffer samples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>BitmapHelper Class | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BitmapHelper
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="BitmapHelper Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR BitmapHelper class in C#: pixel-format converters, EncodeAsRGBA, GetBPP, and typed buffer Get/Set accessors.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "BitmapHelper Class | IronOCR C# API Reference",
+    "name": "BitmapHelper class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.BitmapHelper.html",
+    "abstract": "BitmapHelper is a static pixel and buffer utility in IronOCR's DynamicTesseract interop layer for C#. It converts 16-bit packed samples to 32-bit RGBA with ConvertArgb1555ToRGBA, ConvertRgb555ToRGBA, and ConvertRgb565ToRGBA, packs channels with EncodeAsRGBA, reports bits per pixel with GetBPP, and reads or writes individual samples through typed GetData and SetData accessors over raw pointers.",
+    "description": "Reference for the IronOCR BitmapHelper class in C#: pixel-format converters, EncodeAsRGBA, GetBPP, and typed buffer Get/Set accessors.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "int bpp = BitmapHelper.GetBPP(bitmap);\nuint rgba = BitmapHelper.EncodeAsRGBA(r, g, b, a);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does BitmapHelper live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BitmapHelper is a static class in the DynamicTesseract namespace, shipped in IronOcr.dll. It derives from Object and exposes only static pixel-format and buffer-access methods, so it is never instantiated."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does BitmapHelper do in IronOCR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It provides low-level image helpers for the interop layer: ConvertArgb1555ToRGBA, ConvertRgb555ToRGBA, and ConvertRgb565ToRGBA promote 16-bit samples to RGBA, EncodeAsRGBA packs four channels into a UInt32, GetBPP reports bits per pixel, and the GetData and SetData methods read and write buffer samples."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you need BitmapHelper for normal OCR reading in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. BitmapHelper is part of the DynamicTesseract interop layer beneath IronOCR's reading API. For typical OCR, use the high-level input and result classes; reach for BitmapHelper only when custom code manipulates raw pixel data before the native engine reads it."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +213,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class BitmapHelper : Object</code></pre>
   </div>
+    <!-- archetype-N:start BitmapHelper treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Reach for <code>BitmapHelper</code> when low-level OCR code has to convert pixel formats or touch a bitmap's raw bytes before handing the image to Tesseract. It is a static utility in the <code>DynamicTesseract</code> interop layer that sits under IronOCR's higher-level reading API, so most projects never call it directly. Code that drives the native engine itself, or that pre-processes image data for a custom scan path, is where it earns its place.</p>
+<p>The class works on an <code>AnyBitmap</code> and on raw byte and pixel pointers, so it belongs to the stage that prepares image data, before the engine reads it. A typical caller has already decoded an image and now needs it in the packed RGBA layout the native pipeline expects, or needs to read and write individual samples in a buffer. <code>BitmapHelper</code> supplies the format conversions and the indexed accessors for that work without forcing a full re-decode of the image.</p>
+<p>The members fall into three functional groups. The pixel-format converters, <code>ConvertArgb1555ToRGBA</code>, <code>ConvertRgb555ToRGBA</code>, and <code>ConvertRgb565ToRGBA</code>, promote a single packed 16-bit sample to 32-bit RGBA, and <code>EncodeAsRGBA</code> packs four <code>Byte</code> channels back into one <code>UInt32</code>. The typed buffer readers, <code>GetDataBit</code>, <code>GetDataByte</code>, <code>GetDataQBit</code>, <code>GetDataUInt16</code>, and <code>GetDataUInt32</code>, read a sample at an index from a pointer, and the matching <code>SetDataBit</code>, <code>SetDataByte</code>, <code>SetDataQBit</code>, <code>SetDataUInt16</code>, and <code>SetDataUInt32</code> write one back. <code>GetBPP</code> reports the bits per pixel of an <code>AnyBitmap</code>, which tells you which converter and accessor width to use. Because the accessors take raw pointers, call them from an <code>unsafe</code> context and respect the buffer bounds yourself.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">int bpp = BitmapHelper.GetBPP(bitmap);
+uint rgba = BitmapHelper.EncodeAsRGBA(r, g, b, a);</code></pre></div>
+<p>For everyday reading, prefer the high-level API: the <a href="https://ironsoftware.com/csharp/ocr/how-to/image-color-correction/">color correction how-to</a> and the <a href="https://ironsoftware.com/csharp/ocr/how-to/image-quality-correction/">image quality how-to</a> tune the image, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/ocr-configurations-for-advanced-reading/">advanced reading configuration how-to</a> covers deeper engine control.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

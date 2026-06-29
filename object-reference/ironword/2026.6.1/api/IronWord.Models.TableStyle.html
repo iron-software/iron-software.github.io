@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TableStyle
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TableStyle Class - IronWord C# API Reference
+      v2 (human)     title:       TableStyle: Word Table Styling in C#
+      v1 (algorithm) description: Style Word tables in C# with the IronWord TableStyle class: set Borders, the four cell margins, Justification, and Width, with BaseStyle inheritance.
+      v2 (human)     description: Apply table-wide styling with the IronWord TableStyle class in C#: set default borders, cell margins, alignment, and width, then assign it to a table.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TableStyle Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TableStyle
-   | C# Word API | IronWord ">
+    <meta name="title" content="TableStyle Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord TableStyle class in C#: the borders, cell margins, Justification, and Width held on Table.Style, with BaseStyle inheritance.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TableStyle Class | IronWord C# API Reference",
+    "name": "TableStyle class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.TableStyle.html",
+    "abstract": "Applying table-wide styling in C# runs through the IronWord TableStyle class in IronWord.Models. It holds the default Borders, the four cell margins, Justification, and Width for a table, and is assigned to the Style property of a Table. BaseStyle lets a table style extend a shared base, and individual rows or cells can override these defaults.",
+    "description": "Reference for the IronWord TableStyle class in C#: the borders, cell margins, Justification, and Width held on Table.Style, with BaseStyle inheritance.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nTable table = new Table(3, 3);\ntable.Style = new TableStyle\n{\n    Borders = new TableBorders(),\n    Width = 9000\n};"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TableStyle live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The TableStyle class is in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object, implements ITableStyle and IDerivedStyle, and is held on the Style property of a Table."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you apply a default style to a whole table in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a TableStyle, set Borders to a TableBorders, the cell margins, Justification, and Width, then assign it to the Style property of a Table. Individual rows and cells can override these defaults."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between the TableStyle class and the TableStyle enum?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The TableStyle class in IronWord.Models is the styling object you assign to Table.Style. The TableStyle enumeration in IronWord.Models.Enums is a separate type listing named built-in style values, not the styling container."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -160,9 +224,22 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TableStyle : Object, ITableStyle, ITableStyle, IDerivedStyle, IDerivedStyle, IStyle, IWordDocumentObjectProperty, IDocumentObjectProperty</code></pre>
   </div>
-  <h5 id="IronWord_Models_TableStyle_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>Corresponds to the TableProperties (w:tblPr) of OpenXML.</p>
-</div>
+    <!-- archetype-N:start TableStyle treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a table needs a default appearance applied across all of its rows and cells, <code>TableStyle</code> collects those settings into one object you assign to the table. It holds the table-wide borders, cell margins, alignment, and width, so a developer sets the look once instead of repeating values per cell. Note that it is the styling object in <code>IronWord.Models</code>, distinct from the <code>TableStyle</code> enumeration in <code>IronWord.Models.Enums</code>.</p>
+<p>The defaults a table applies are set through this object's properties: <code>Borders</code> takes a <code>TableBorders</code> for the frame and grid lines, <code>BottomCellMargin</code>, <code>TopCellMargin</code>, <code>LeftCellMargin</code>, and <code>RightCellMargin</code> set the default padding inside every cell, <code>Justification</code> aligns the table on the page, and <code>Width</code> sets its overall width. Any of these can be overridden by the styling of an individual row or cell, so the table style is the baseline rather than the last word.</p>
+<p><code>TableStyle</code> also takes part in IronWord's derived-style model: <code>BaseStyle</code> points at a style this one extends, and <code>InheritedStyle</code> exposes the effective settings once inheritance is resolved, which lets several tables share a base style and override only what differs. Build a <code>TableStyle</code>, set its borders, margins, and alignment, and assign it to the <code>Style</code> property of a <code>Table</code> to apply the defaults across the whole grid. Setting the look on the table style rather than on each cell keeps a large grid consistent and easy to retune, since one change to the style flows to every cell that has not overridden it. This baseline-plus-override approach is what lets a reporting layout reuse the same table style while a few highlighted cells still carry their own shading.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+Table table = new Table(3, 3);
+table.Style = new TableStyle
+{
+    Borders = new TableBorders(),
+    Width = 9000
+};</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-table/">add a table how-to</a> covers table-wide styling, the <a href="https://ironsoftware.com/csharp/word/examples/add-table/">add table example</a> saves a styled grid to DOCX, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> shows where table styling fits the document model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

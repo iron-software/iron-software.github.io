@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrResult.OcrResultElement
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrResultElement Class - IronOCR C# API
+      v2 (human)     title:       OcrResultElement: OCR Element Geometry in C#
+      v1 (algorithm) description: Base class for IronOCR result elements in C#: read X, Y, Width, Height, and Location, or call ToBitmap to crop a detected region from an OcrInput.
+      v2 (human)     description: Get the position and size of any recognized OCR element in C# with the IronOCR OcrResultElement base class: X, Y, Width, Height, and ToBitmap.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrResultElement Class | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrResult.OcrResultElement
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrResultElement Class | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR OcrResultElement class in C#: the shared geometry, X, Y, Width, Height, Location, and ToBitmap, behind every result item.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrResultElement Class | IronOCR C# API",
+    "name": "OcrResultElement class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrResult.OcrResultElement.html",
+    "abstract": "Reading the position of any recognized OCR element in C# runs through the IronOCR OcrResultElement base class. It is the abstract parent every result item inherits, exposing X, Y, Width, Height, and a Location Rectangle in source-image pixels, plus a ToBitmap method that crops the element from its OcrInput. OcrResult.Barcode and OcrResult.OcrResultTextElement extend it.",
+    "description": "Reference for the IronOCR OcrResultElement class in C#: the shared geometry, X, Y, Width, Height, Location, and ToBitmap, behind every result item.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronOcr;\n\nvar ocr = new IronTesseract();\nusing var input = new OcrInput(\"scan.png\");\nOcrResult result = ocr.Read(input);\nforeach (OcrResult.Word word in result.Words)\n    Console.WriteLine($\"{word.Text} at {word.X},{word.Y} ({word.Width}x{word.Height})\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrResultElement live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrResult.OcrResultElement is an abstract class in the IronOcr namespace, shipped in IronOcr.dll, deriving from System.Object. OcrResult.Barcode and OcrResult.OcrResultTextElement extend it, and concrete result items inherit its geometry members."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get the position of a recognized element in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the X and Y properties for the top-left corner and Width and Height for the size, all in source-image pixels, on any result item such as a Word or Line. Location returns the same geometry as a single Rectangle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between OcrResultElement and OcrResultTextElement?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrResultElement carries only geometry and is the base for everything, including barcodes. OcrResult.OcrResultTextElement extends it to add the text members such as Text and Confidence for the character, word, line, and block elements."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -152,6 +216,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class OcrResultElement : Object</code></pre>
   </div>
+    <!-- archetype-N:start OcrResultElement treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>OcrResult.OcrResultElement</code> is the shared base every positioned item in an OCR result inherits, so any time you ask where a recognized piece of text or a detected barcode sits on the page, you are reading members declared here. It supplies the geometry common to the whole result tree, which is what lets you draw boxes, crop regions, or map coordinates back to the source image regardless of whether the item is a character, a word, a line, or a barcode.</p>
+<p>Every element exposes its position and size through <code>X</code>, <code>Y</code>, <code>Width</code>, and <code>Height</code>, all measured in pixels from the top-left of the source page. <code>Location</code> bundles the same geometry into a single <code>Rectangle</code> when you would rather pass one value than four. The element does not hold the text itself; the richer text subclasses add <code>Text</code>, <code>Confidence</code>, and the navigation members on top of this geometry. Because the type is abstract, you never construct one directly. You receive concrete subclasses by walking an <code>OcrResult</code> returned from <code>IronTesseract.Read</code>, then reading these inherited members on each item.</p>
+<p><code>ToBitmap</code> takes the originating <code>OcrInput</code> and returns an <code>AnyBitmap</code> cropped to that element, which is handy for saving a snippet of a detected region or feeding it to a downstream step. Two branches extend this base directly: <code>OcrResult.Barcode</code> for detected barcodes, and <code>OcrResult.OcrResultTextElement</code>, the parent of the text-bearing elements such as <code>OcrResult.Character</code>, <code>OcrResult.Line</code>, and <code>OcrResult.Block</code>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronOcr;
+
+var ocr = new IronTesseract();
+using var input = new OcrInput(&quot;scan.png&quot;);
+OcrResult result = ocr.Read(input);
+foreach (OcrResult.Word word in result.Words)
+    Console.WriteLine($&quot;{word.Text} at {word.X},{word.Y} ({word.Width}x{word.Height})&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">working with OCR results how-to</a> walks through the result tree, the <a href="https://ironsoftware.com/csharp/ocr/how-to/highlight-texts-as-images/">highlight text as images how-to</a> uses element geometry to crop regions, and the <a href="https://ironsoftware.com/csharp/ocr/examples/results-objects/">results objects example</a> shows reading geometry from each element.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

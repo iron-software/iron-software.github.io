@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IContentElement
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IContentElement - IronPPT C# API
+      v2 (human)     title:       IContentElement: The Slide Content Contract in C#
+      v1 (algorithm) description: IContentElement is IronPPT's content contract in C#: it exposes Parent, Status, Clone, Remove, and Replace. Implemented by ContentElement subclasses.
+      v2 (human)     description: Move and edit slide content in C# through IronPPT's IContentElement contract: read Parent and Status, then Clone, Remove, or Replace the element.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IContentElement Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IContentElement
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IContentElement Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT IContentElement interface in C#: the content contract ContentElement, Container, and BaseGraphic implement.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IContentElement Interface | IronPPT C# API",
+    "name": "IContentElement interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IContentElement.html",
+    "abstract": "Every placed element in an IronPPT presentation satisfies the IContentElement contract in C#. It carries the owning Parent, an ElementStatus, and the lifecycle methods Clone, Remove, and Replace. The shared behavior comes from the abstract ContentElement base and is built on by ParentElement, Container, and the BaseGraphic graphic base, so editing logic can act on any element uniformly.",
+    "description": "Reference for the IronPPT IContentElement interface in C#: the content contract ContentElement, Container, and BaseGraphic implement.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IContentElement parent = element.Parent;\nelement.Remove();"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IContentElement live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IContentElement is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It does not extend another interface and declares Parent, Status, Clone, Remove, and Replace."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IContentElement in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The abstract ContentElement base implements the shared behavior, and content classes such as ParentElement, Container, and the BaseGraphic graphic base inherit it. You usually receive an IContentElement from a parent's children rather than constructing it."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +200,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IContentElement</code></pre>
   </div>
+    <!-- archetype-N:start IContentElement treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p><code>IContentElement</code> is the contract every piece of placed content in a presentation satisfies, from a shape to a paragraph to a graphic. It carries the <code>Parent</code> that owns the element, a <code>Status</code> of type <code>ElementStatus</code> that tracks its state, and the lifecycle methods a developer uses to move it around: <code>Clone</code> to copy it, <code>Remove</code> to detach it, and <code>Replace</code> to swap in a different child. Coding against the contract lets editing logic act on any element uniformly.</p>
+<p>The implementors in IronPPT are the content classes themselves: the abstract <code>ContentElement</code> base supplies the shared behavior, and types such as <code>ParentElement</code>, <code>Container</code>, and the <code>BaseGraphic</code> graphic base build on it. A developer usually receives an <code>IContentElement</code> from a parent's children rather than constructing the interface, then reads <code>Parent</code> to walk up the tree or calls <code>Remove</code> and <code>Replace</code> to restructure the slide. <code>Clone</code> returns another <code>IContentElement</code> so the copy stays usable through the same contract.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IContentElement parent = element.Parent;
+element.Remove();</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/tutorials/slide-element/">slide element tutorial</a> covers manipulating elements on a slide, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-slide/">manage slide how-to</a> shows reorganizing slide content.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

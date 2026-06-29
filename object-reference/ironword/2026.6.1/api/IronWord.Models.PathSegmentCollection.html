@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PathSegmentCollection
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PathSegmentCollection - IronWord C# API
+      v2 (human)     title:       PathSegmentCollection: Read Shape Paths in C#
+      v1 (algorithm) description: Read the IPathSegment items of a Word shape path in C# with the IronWord PathSegmentCollection: use Count, the indexer, Contains, CopyTo, and ToList.
+      v2 (human)     description: Inspect the line and curve segments of a custom Word shape in C# with the IronWord PathSegmentCollection class: iterate, index, and copy the path.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PathSegmentCollection Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PathSegmentCollection
-   | C# Word API | IronWord ">
+    <meta name="title" content="PathSegmentCollection Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord PathSegmentCollection class in C#: a read-only list of IPathSegment values describing a custom shape's outline.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PathSegmentCollection Class | IronWord C# API",
+    "name": "PathSegmentCollection class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.PathSegmentCollection.html",
+    "abstract": "Inspecting the segments of a custom Word shape outline in C# runs through the IronWord PathSegmentCollection class. It is a read-only list of IPathSegment values: Count reports the segment total, the Item indexer reaches a segment by position, Contains tests membership, CopyTo fills an array, and ToList returns a List. Iterate it to read the path in order.",
+    "description": "Reference for the IronWord PathSegmentCollection class in C#: a read-only list of IPathSegment values describing a custom shape's outline.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nvar segments = new PathSegmentCollection();\nConsole.WriteLine($\"Segments in path: {segments.Count}\");\nforeach (IPathSegment segment in segments)\n    Console.WriteLine(segment);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PathSegmentCollection live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PathSegmentCollection is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object and implements IReadOnlyList of IPathSegment, so it exposes the ordered segments of a shape path for reading."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read the segments of a shape path in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Iterate the PathSegmentCollection with foreach, or reach a single segment by position with the Item indexer. Count reports how many segments the path has, and ToList copies them into a List of IPathSegment when a mutable copy is needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you add segments to a PathSegmentCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. IsReadOnly is true, so the collection is a read-only view of an already-defined path. Build a shape's geometry by passing a List of IPathSegment when constructing the ShapeContent, then read the segments back through this collection."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -157,6 +221,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PathSegmentCollection : Object, IReadOnlyList&lt;IPathSegment&gt;, IEnumerable&lt;IPathSegment&gt;, IEnumerable, IReadOnlyCollection&lt;IPathSegment&gt;</code></pre>
   </div>
+    <!-- archetype-N:start PathSegmentCollection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PathSegmentCollection</code> gathers the ordered <code>IPathSegment</code> items that trace the outline of a custom shape in a Word document. When a developer builds or inspects a freeform shape, the individual line and curve segments that define its geometry are held together here, read in the same sequence they were drawn. It is the container a developer works through whenever a shape is described by its path rather than by a simple preset rectangle or ellipse.</p>
+<p>The collection is read-only over its segments, exposing them for iteration and lookup once the path has been assembled. A developer typically meets the segments of a path when constructing a <code>ShapeContent</code> from a <code>List&lt;IPathSegment&gt;</code>, or when reading the geometry back from an existing shape, so this collection sits on the inspection side of building custom shape outlines.</p>
+<p><code>Count</code> reports how many segments make up the path, and the <code>Item[Int32]</code> indexer reaches a single segment by position so the geometry can be examined point by point. <code>Contains</code> tests whether a particular segment is part of the path, while <code>CopyTo</code> writes the segments into an <code>IPathSegment[]</code> for code that needs a plain array. <code>GetEnumerator</code> backs a <code>foreach</code> over the segments in order, and <code>ToList</code> materializes them into a <code>List&lt;IPathSegment&gt;</code> when a mutable copy is convenient. Because <code>IsReadOnly</code> is true, treat the collection as a window onto an already-defined path: read, iterate, and copy the segments rather than expecting to add to them in place.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+var segments = new PathSegmentCollection();
+Console.WriteLine($&quot;Segments in path: {segments.Count}&quot;);
+foreach (IPathSegment segment in segments)
+    Console.WriteLine(segment);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-image/">add image how-to</a>, the <a href="https://ironsoftware.com/csharp/word/how-to/add-table/">add table how-to</a>, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> show how shapes and drawing elements fit into a document.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

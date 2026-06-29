@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TextOutlineEffect
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextOutlineEffect - IronWord C# API Reference
+      v2 (human)     title:       TextOutlineEffect: Outline Text in C# Word
+      v1 (algorithm) description: Outline text in C# Word docs with the IronWord TextOutlineEffect class: set Color, LineWidth, CompoundLineType, PenAlignment, and a preset line dash.
+      v2 (human)     description: Draw a colored stroke around characters in C# with the IronWord TextOutlineEffect class: control width, color, dash, caps, and joins, then apply it.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextOutlineEffect | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TextOutlineEffect
-   | C# Word API | IronWord ">
+    <meta name="title" content="TextOutlineEffect | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord TextOutlineEffect class in C#: configure outline color, width, dash, and corners, then apply through TextEffect and TextStyle.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextOutlineEffect | IronWord C# API Reference",
+    "name": "TextOutlineEffect class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.TextOutlineEffect.html",
+    "abstract": "Outlining characters in a C# Word document goes through the IronWord TextOutlineEffect class. Color and LineWidth set the stroke, SetLineWidth and GetLineWidth work in a chosen MeasurementUnit, and CompoundLineType, LineCapType, LineJoin, PenAlignment, and presetLineDash shape how the line is drawn. A static DefaultEffect supplies a baseline. Assign the result to a TextEffect to render the outline.",
+    "description": "Reference for the IronWord TextOutlineEffect class in C#: configure outline color, width, dash, and corners, then apply through TextEffect and TextStyle.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nvar outline = TextOutlineEffect.DefaultEffect;\noutline.SetLineWidth(1.5, MeasurementUnit.Point);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TextOutlineEffect live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextOutlineEffect is a class in the IronWord.Models namespace, shipped in IronWord.dll, with Object as its base type. It is assigned to the TextOutlineEffect property on a TextEffect, which carries the outline onto a styled text run."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you outline text in a C# Word document?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start from TextOutlineEffect.DefaultEffect, set the stroke Color and width through LineWidth or SetLineWidth, then assign the effect to a TextEffect and apply that through a TextStyle. The outline renders around each character."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set the outline thickness in specific units?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call SetLineWidth with a value and a MeasurementUnit to specify the stroke width, and GetLineWidth to read it back in the same units. The plain LineWidth property holds the raw value when units are not a concern."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,18 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TextOutlineEffect : Object</code></pre>
   </div>
+    <!-- archetype-N:start TextOutlineEffect treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>An outlined character, where the stroke around each letter is colored and weighted independently of the fill, comes from <code>TextOutlineEffect</code>. You configure the outline's color, thickness, dash pattern, and corner treatment, then apply it so headings and display text read as drawn shapes rather than flat type.</p>
+<p>The effect attaches to text through <code>TextEffect</code>, which exposes a <code>TextOutlineEffect</code> property. Assign a configured instance there and the style that owns the <code>TextEffect</code> carries the outline onto every run it formats. A static <code>DefaultEffect</code> returns a ready-made outline, so you can start from a sensible baseline and adjust only the parts you care about.</p>
+<p>Set the stroke color with <code>Color</code> and its thickness with <code>LineWidth</code>, or use <code>SetLineWidth</code> to supply the width in a chosen <code>MeasurementUnit</code> and <code>GetLineWidth</code> to read it back in the same units, which keeps the measurement explicit when a design specifies points or millimeters. The line's shape is controlled by <code>CompoundLineType</code> (a <code>CompoundLineValues</code> for single or doubled strokes), <code>LineCapType</code> and <code>LineJoin</code> for how the ends and corners are drawn, <code>PenAlignment</code> (a <code>PenAlignmentValues</code>) for how the stroke sits on the glyph edge, and <code>presetLineDash</code> for a dashed pattern instead of a solid rule. Configure the values a design needs, leave the rest at their defaults from <code>DefaultEffect</code>, and assign the result to a <code>TextEffect</code> before saving so the outline renders on screen and in the exported document.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+var outline = TextOutlineEffect.DefaultEffect;
+outline.SetLineWidth(1.5, MeasurementUnit.Point);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-text-outline-effect/">text outline how-to</a> outlines characters, the <a href="https://ironsoftware.com/csharp/word/examples/add-text-effect-text-outline-effect/">text outline example</a> shows a worked outline in code, and the <a href="https://ironsoftware.com/csharp/word/how-to/add-style-text/">style text how-to</a> covers the surrounding text formatting.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

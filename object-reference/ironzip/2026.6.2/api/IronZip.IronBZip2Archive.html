@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class IronBZip2Archive
-   | C# Zip API | IronZIP </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IronBZip2Archive Class - IronZip C# API
+      v2 (human)     title:       IronBZip2Archive: Bzip2 Compression in C#
+      v1 (algorithm) description: Create and extract bzip2 archives in C# with the IronZip IronBZip2Archive class. Reference its Add, FromFiles, Save, and extract methods with examples.
+      v2 (human)     description: Compress and extract .bz2 archives in C# with the IronZip IronBZip2Archive class: add files, save, and unpack high-ratio archives, with examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IronBZip2Archive | IronZip C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class IronBZip2Archive
-   | C# Zip API | IronZIP ">
+    <meta name="title" content="IronBZip2Archive | IronZip C# API Reference">
+    <meta name="description" content="Reference for the IronZip IronBZip2Archive class in C#: high-ratio bzip2 compression, save, and extract, with code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IronBZip2Archive | IronZip C# API Reference",
+    "name": "IronBZip2Archive class | IronZip C# API",
+    "url": "https://ironsoftware.com/csharp/zip/object-reference/api/IronZip.IronBZip2Archive.html",
+    "abstract": "Creating bzip2 archives in C# runs through the IronZip IronBZip2Archive class. bzip2 reaches a smaller output than gzip at the cost of more CPU time. Add files with Add, build from paths with the static FromFile and FromFiles, and write or unpack with SaveAs and the static ExtractArchiveToDirectory. The class derives from IronBaseArchive and is disposable.",
+    "description": "Reference for the IronZip IronBZip2Archive class in C#: high-ratio bzip2 compression, save, and extract, with code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronZip",
+      "url": "https://ironsoftware.com/csharp/zip/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronZip;\n\nusing var archive = new IronBZip2Archive();\narchive.Add(\"data.csv\");\narchive.SaveAs(\"output.bz2\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IronBZip2Archive live in the IronZip API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IronBZip2Archive is in the IronZip namespace, shipped in IronZip.dll. It derives from the abstract IronBaseArchive and implements IDisposable, so wrap instances in a using statement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should you choose bzip2 over gzip in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Choose IronBZip2Archive when a smaller archive is worth more compression time, since bzip2 usually reaches a higher ratio than gzip. Choose IronGZipArchive when speed matters more than the last bit of size."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create a bzip2 archive in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct new IronBZip2Archive(), call Add for each file path, then SaveAs with the .bz2 output path. The static FromFiles builds one directly from an array of paths."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -167,6 +231,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class IronBZip2Archive : IronBaseArchive, IDisposable</code></pre>
   </div>
+    <!-- archetype-N:start IronBZip2Archive treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>IronBZip2Archive</code> is the handle for bzip2 (<code>.bz2</code>) compression in C#. bzip2 usually reaches a smaller output than gzip for the same data, trading extra CPU time for the higher ratio, which suits archival and distribution where size matters more than speed. Construct one with <code>new IronBZip2Archive()</code>, or open an existing archive by passing a path to the second constructor.</p>
+<p>Files go in through <code>Add</code> (one path per call) and <code>AddArchiveEntry</code>. The static helpers match the rest of the archive family: <code>FromFile</code> and <code>FromFiles</code> build straight from paths, and <code>ExtractArchiveToDirectory</code> unpacks a <code>.bz2</code> to a folder. Because the type derives from <code>IronBaseArchive</code>, <code>Save</code> and <code>SaveAs</code> write the archive and <code>Dispose</code> frees the stream.</p>
+<p>A typical run constructs the archive, adds the files, and saves to a <code>.bz2</code> path. Choose bzip2 over gzip when a smaller archive is worth the longer compression time, and over plain TAR when the output must shrink. bzip2 compresses a data stream much like gzip, so a multi-file archive is built by bundling the files with <code>IronTarArchive</code> first and then compressing the result to <code>.tar.bz2</code>. Opening an existing <code>.bz2</code> through the path constructor allows extraction, and the static <code>ExtractArchiveToDirectory</code> unpacks one without constructing an instance. Source tarballs and large scientific datasets are frequently shipped as <code>.tar.bz2</code> for exactly this reason. Wrap the archive in a <code>using</code> statement so it is disposed once saved.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronZip;
+
+using var archive = new IronBZip2Archive();
+archive.Add(&quot;data.csv&quot;);
+archive.SaveAs(&quot;output.bz2&quot;);</code></pre></div>
+<p>Worked code lives in the <a href="https://ironsoftware.com/csharp/zip/examples/create-bzip2/">create bzip2 example</a> and the <a href="https://ironsoftware.com/csharp/zip/examples/extract-bzip2/">extract bzip2 example</a>, with format guidance in the <a href="https://ironsoftware.com/csharp/zip/get-started/">get started guide</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

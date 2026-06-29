@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TextEffect
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextEffect Class - IronWord C# API Reference
+      v2 (human)     title:       TextEffect: Glow, Gradient & Outline in C#
+      v1 (algorithm) description: Apply visual text effects in C# Word docs with the IronWord TextEffect class: set GlowEffect, GradientEffect, ShadowEffect, Effect3D, and TextOutlineEffect.
+      v2 (human)     description: Layer glow, gradient, shadow, reflection, 3-D, and outline onto Word text in C# with the IronWord TextEffect class, then attach it to a TextStyle.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextEffect Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TextEffect
-   | C# Word API | IronWord ">
+    <meta name="title" content="TextEffect Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord TextEffect class in C#: collect glow, gradient, shadow, reflection, 3-D, and outline effects and apply them through TextStyle.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextEffect Class | IronWord C# API Reference",
+    "name": "TextEffect class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.TextEffect.html",
+    "abstract": "Layering visual effects onto Word text in C# goes through the IronWord TextEffect class. It collects glow, gradient, shadow, reflection, 3-D, and outline treatments as the GlowEffect, GradientEffect, ShadowEffect, ReflectionEffect, Effect3D, and TextOutlineEffect properties, each typed to its own effect class. Assign the effects a design needs, then attach the TextEffect to a TextStyle so every run with that style renders the treatment.",
+    "description": "Reference for the IronWord TextEffect class in C#: collect glow, gradient, shadow, reflection, 3-D, and outline effects and apply them through TextStyle.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nvar effect = new TextEffect();\neffect.GlowEffect = new Glow();\neffect.TextOutlineEffect = TextOutlineEffect.DefaultEffect;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TextEffect live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextEffect is a class in the IronWord.Models namespace, shipped in IronWord.dll, with Object as its base type. It is reached through the TextEffect property on TextStyle, which carries the bundle of effects onto a text run."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add a glow or gradient to text in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a TextEffect, assign a Glow to its GlowEffect property or a Gradient to GradientEffect, then attach the TextEffect to a TextStyle. Every run that uses the style renders with the configured effects."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you combine several text effects at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The GlowEffect, GradientEffect, ShadowEffect, ReflectionEffect, Effect3D, and TextOutlineEffect properties are independent, so a single TextEffect can carry a gradient fill, a glow, and an outline together, with unset effects simply left off."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TextEffect : Object</code></pre>
   </div>
+    <!-- archetype-N:start TextEffect treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>TextEffect</code> gathers the visual effects you can layer onto text, so glow, gradient fill, shadow, reflection, a 3-D bevel, and an outline all hang off one object instead of being scattered across the styling API. You build it up by assigning the individual effects you want, then attach the whole bundle to a run's style.</p>
+<p>A <code>TextEffect</code> reaches text through <code>TextStyle</code>, which exposes a <code>TextEffect</code> property. Assign your configured effect there and every run carrying that style picks up the look. Because the effects live together on a single object, you can prepare one decorative treatment once and reuse it across headings or callouts without rebuilding each effect inline.</p>
+<p>Each property maps to a dedicated effect type. <code>GlowEffect</code> takes a <code>Glow</code>, <code>GradientEffect</code> takes a <code>Gradient</code>, <code>Effect3D</code> takes an <code>Effect3D</code>, and <code>TextOutlineEffect</code> takes a <code>TextOutlineEffect</code>, while <code>ShadowEffect</code> and <code>ReflectionEffect</code> cover drop shadows and mirrored reflections beneath the text. Set only the effects a design calls for and leave the rest unassigned, since an unset property simply contributes nothing to the rendered look. The properties combine rather than replace one another, so a single heading can carry a gradient fill, a soft glow, and an outline at the same time without any of them canceling the others. Build each sub-effect first, configure its own settings, assign it to the matching property on the <code>TextEffect</code>, and then hand the whole bundle to a <code>TextStyle</code> so the run renders with the full treatment when the document is saved.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+var effect = new TextEffect();
+effect.GlowEffect = new Glow();
+effect.TextOutlineEffect = TextOutlineEffect.DefaultEffect;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-glow-effect/">glow effect how-to</a> adds a glow, the <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-gradient-effect/">gradient effect how-to</a> fills text with a gradient, and the <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-text-outline-effect/">text outline how-to</a> outlines characters.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

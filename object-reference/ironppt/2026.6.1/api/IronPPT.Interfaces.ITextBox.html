@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ITextBox
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ITextBox Interface - IronPPT C# API Reference
+      v2 (human)     title:       ITextBox: Fill a Slide Text Box in C#
+      v1 (algorithm) description: ITextBox is the IronPPT text-box contract in C#: AddText, AddParagraph, AddImage, and AddShape, and read the Texts and Paragraphs collections.
+      v2 (human)     description: Fill a slide text box in C# through the IronPPT ITextBox contract: add text, paragraphs, images, and shapes, then read the box contents back.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ITextBox Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ITextBox
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="ITextBox Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT ITextBox interface in C#: the text-box contract implemented by TextBox, with add methods and content collections.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ITextBox Interface | IronPPT C# API",
+    "name": "ITextBox interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.ITextBox.html",
+    "abstract": "ITextBox is the contract for a text box on an IronPPT slide in C#. Add methods (AddText, AddParagraph, AddImage, AddShape, AddChild) fill the box, the Texts and Paragraphs collections read it back, and the inherited Style member sets default paragraph formatting. TextBox implements ITextBox and is itself a Shape, reached through ISlide.TextBoxes.",
+    "description": "Reference for the IronPPT ITextBox interface in C#: the text-box contract implemented by TextBox, with add methods and content collections.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "ITextBox box = slide.TextBoxes[0];\nbox.AddText(\"Caption\");\nbox.AddParagraph(paragraph);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ITextBox live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ITextBox is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It extends IContentElement and IHasParagraphStyle. The concrete implementor is TextBox, which is itself a Shape."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements ITextBox in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextBox implements ITextBox, and because TextBox derives from Shape it is also an IShape. You obtain text boxes through ISlide.TextBoxes, a List<ITextBox>, rather than constructing the interface directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add text to a text box in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call AddText on the ITextBox with a string or an IText, and AddParagraph with an IParagraph for multi-line content. Read the result back through the Texts and Paragraphs collections."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -165,6 +229,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface ITextBox : IContentElement, IHasParagraphStyle</code></pre>
   </div>
+    <!-- archetype-N:start ITextBox treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>When a slide needs a box that holds words and other content, <code>ITextBox</code> is the contract for it. It represents a text box placed on a slide and gives a developer one surface for filling that box with text, paragraphs, images, and shapes, then reading those contents back, so building a captioned panel or a bulleted callout goes through a single object.</p>
+<p>A developer receives an <code>ITextBox</code> rather than constructing it directly: <code>ISlide.TextBoxes</code> is a <code>List&lt;ITextBox&gt;</code>, and <code>TextBox</code> is the concrete implementor, a <code>Shape</code> that also carries text. Because a text box is a kind of shape, it brings the shape contract along with the text-box members, so the same object can be moved and recolored as a shape and filled with content as a text box. That dual nature is why a caption panel and the box behind it are one object, not two.</p>
+<p>The add methods build the box up: <code>AddText</code> accepts a <code>string</code> or an <code>IText</code>, <code>AddParagraph</code> takes an <code>IParagraph</code>, <code>AddImage</code> has overloads for a path, a <code>Stream</code>, an <code>AnyBitmap</code>, or an <code>IImage</code>, <code>AddShape</code> adds an <code>IShape</code>, and <code>AddChild</code> attaches several <code>IContentElement</code> items at once. The two collections read the box back: <code>Texts</code> is a <code>List&lt;IText&gt;</code> and <code>Paragraphs</code> is a <code>List&lt;IParagraph&gt;</code>. The default paragraph formatting for the box comes through the <code>Style</code> member inherited from <code>IHasParagraphStyle</code>, so text added to the box picks up a consistent look.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">ITextBox box = slide.TextBoxes[0];
+box.AddText(&quot;Caption&quot;);
+box.AddParagraph(paragraph);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> places text on a slide, the <a href="https://ironsoftware.com/csharp/ppt/examples/add-paragraph/">add paragraph example</a> builds paragraphs, and the <a href="https://ironsoftware.com/csharp/ppt/tutorials/slide-element/">slide element tutorial</a> covers slide elements.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

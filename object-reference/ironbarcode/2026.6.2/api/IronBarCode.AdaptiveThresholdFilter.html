@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AdaptiveThresholdFilter
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       AdaptiveThresholdFilter - IronBarcode C# API
+      v2 (human)     title:       AdaptiveThresholdFilter: Binarize Barcodes in C#
+      v1 (algorithm) description: Binarize uneven barcode images in C# with the IronBarcode AdaptiveThresholdFilter: a Bradley adaptive threshold added to BarcodeReaderOptions.ImageFilters.
+      v2 (human)     description: Clean up barcode photos with patchy lighting in C# using IronBarcode AdaptiveThresholdFilter, a per-region threshold that beats a single global cutoff.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>AdaptiveThresholdFilter Class | IronBarcode C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AdaptiveThresholdFilter
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="AdaptiveThresholdFilter Class | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode AdaptiveThresholdFilter class in C#: apply a Bradley adaptive threshold to barcode images before reading them.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "AdaptiveThresholdFilter Class | IronBarcode C# API",
+    "name": "AdaptiveThresholdFilter class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.AdaptiveThresholdFilter.html",
+    "abstract": "AdaptiveThresholdFilter binarizes barcode images in C# with IronBarcode by applying a Bradley adaptive threshold, computing a local cutoff per region so images with uneven lighting still produce clean black bars. It implements IImageFilter, goes into the ImageFilterCollection on BarcodeReaderOptions.ImageFilters, and exposes Threshold, Lower, Upper, and Rectangle to tune sensitivity, output colors, and a region of interest.",
+    "description": "Reference for the IronBarcode AdaptiveThresholdFilter class in C#: apply a Bradley adaptive threshold to barcode images before reading them.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nvar options = new BarcodeReaderOptions\n{\n    ImageFilters = new ImageFilterCollection { new AdaptiveThresholdFilter() }\n};\nvar results = BarcodeReader.Read(\"uneven-lighting.png\", options);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does AdaptiveThresholdFilter live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AdaptiveThresholdFilter is a class in the IronBarCode namespace, shipped in IronBarCode.dll. It derives from Object and implements IImageFilter, so it can be added to the ImageFilterCollection assigned to BarcodeReaderOptions.ImageFilters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should you use AdaptiveThresholdFilter instead of BinaryThresholdFilter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use AdaptiveThresholdFilter when lighting across the image is uneven, since it computes a separate threshold for each region. Use BinaryThresholdFilter when a single global cutoff is enough, such as a uniformly lit image."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you apply AdaptiveThresholdFilter before reading a barcode in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create an ImageFilterCollection containing a new AdaptiveThresholdFilter, assign it to BarcodeReaderOptions.ImageFilters, and pass the options to BarcodeReader.Read with your image. The filter runs in collection order before decoding."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,6 +218,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class AdaptiveThresholdFilter : Object, IImageFilter</code></pre>
   </div>
+    <!-- archetype-N:start AdaptiveThresholdFilter treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a barcode image has uneven lighting, glare, or a shadow falling across part of the frame, a single global cutoff cannot cleanly separate the bars from the background, and <code>AdaptiveThresholdFilter</code> is the preprocessing step that handles it. It applies a Bradley adaptive threshold, computing a local cutoff for each region of the image rather than one value for the whole picture, so a barcode that is bright on one side and dim on the other still binarizes into clean black bars on a white field. This is the filter to reach for on photos and scans with non-uniform illumination, where a plain binary threshold would lose part of the code.</p>
+<p>The filter is one of the <code>IImageFilter</code> implementations that go into the <code>ImageFilterCollection</code> assigned to <code>BarcodeReaderOptions.ImageFilters</code>. The reader applies the filters in collection order before it attempts decoding, so an adaptive threshold typically sits early in the pipeline, ahead of a sharpen or contrast pass, because it produces the clean two-tone image those later steps refine. A developer constructs the filter, adds it to the collection, and passes the options to <code>BarcodeReader.Read</code> along with the source image.</p>
+<p>Several constructors trade off convenience against control. The parameterless form uses tuned defaults, while overloads accept a <code>Threshold</code>, the <code>Lower</code> and <code>Upper</code> replacement colors, and a <code>Rectangle</code> that confines the operation to a region of interest. The <code>Threshold</code> property sets the sensitivity of the local comparison, <code>Lower</code> and <code>Upper</code> choose the two output colors the pixels collapse to, and <code>Rectangle</code> restricts the filter to part of the frame when only one zone needs correcting. Tune <code>Threshold</code> first; the defaults already suit most documents with patchy lighting.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+var options = new BarcodeReaderOptions
+{
+    ImageFilters = new ImageFilterCollection { new AdaptiveThresholdFilter() }
+};
+var results = BarcodeReader.Read(&quot;uneven-lighting.png&quot;, options);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/image-correction/">image correction how-to</a> walks through each filter on a sample barcode, and the <a href="https://ironsoftware.com/csharp/barcode/examples/imperfect-barcode-with-image-correction/">imperfect barcode example</a> shows a full read of a low-quality image. For images that are also skewed or rotated, the <a href="https://ironsoftware.com/csharp/barcode/how-to/image-orientation-correction/">image orientation correction how-to</a> is the companion guide.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

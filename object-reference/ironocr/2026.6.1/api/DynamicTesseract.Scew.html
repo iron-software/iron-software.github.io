@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Scew
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Scew Struct - IronOCR C# API Reference
+      v2 (human)     title:       Scew: Read Page Skew Angle in C#
+      v1 (algorithm) description: Read the detected page skew in C# with the IronOCR Scew struct: Angle gives the tilt in degrees and Confidence rates how reliable the estimate is.
+      v2 (human)     description: Measure how far a scan is tilted in C# with the IronOCR Scew struct: check the Angle in degrees and the Confidence before rotating a page straight.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Scew Struct | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Scew
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="Scew Struct | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR Scew struct in C#: Angle and Confidence values from skew detection used to decide whether to deskew a page.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Scew Struct | IronOCR C# API Reference",
+    "name": "Scew class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.Scew.html",
+    "abstract": "Read the detected tilt of a scanned page in IronOCR for C# with the Scew struct. Angle reports the skew in degrees and Confidence rates how reliable that estimate is, so a workflow checks the confidence against a threshold before rotating the page straight ahead of recognition.",
+    "description": "Reference for the IronOCR Scew struct in C#: Angle and Confidence values from skew detection used to decide whether to deskew a page.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Scew live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Scew is a value-type struct in the DynamicTesseract namespace, shipped in IronOcr.dll. It derives from System.ValueType and is returned by the skew-estimation step, exposing the read-only Angle and Confidence values."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you tell whether a detected skew angle is reliable in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Confidence value on the Scew result alongside Angle. A high confidence means the sweep agreed on the tilt and the page is safe to rotate; a low confidence is the cue to leave the page unrotated rather than correct on a weak estimate."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +197,12 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class Scew : ValueType</code></pre>
   </div>
+    <!-- archetype-N:start Scew treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>Scew</code> is the small record a deskew measurement returns when IronOCR estimates how far a scanned page is tilted. It pairs the detected tilt with a measure of how trustworthy that estimate is, so a workflow can decide whether to rotate the page straight before recognition.</p>
+<p>The struct carries two read-only values. <code>Angle</code> is the skew angle in degrees, the amount the page would need to rotate to sit level, and <code>Confidence</code> rates how strongly the underlying sweep agreed on that angle. A low confidence is the signal to leave the page as-is rather than rotate on a weak guess. The value is produced by the skew estimation step and consumed when correcting orientation, so a typical flow reads <code>Angle</code>, checks <code>Confidence</code> against a threshold, and rotates only when the measurement is solid. Because it is a value type, instances compare by value through the supplied <code>Equals</code> and equality operators. The <a href="https://ironsoftware.com/csharp/ocr/how-to/image-orientation-correction/">orientation correction how-to</a> shows straightening a tilted scan before reading.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

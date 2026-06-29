@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NativeLibrary
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       NativeLibrary Class - IronOCR C# API
+      v2 (human)     title:       NativeLibrary: Load Native Code in C#
+      v1 (algorithm) description: The IronSoftware NativeLibrary class loads a native shared library in C# and resolves exports with LoadFunction and the generic LoadFunction<T>.
+      v2 (human)     description: Load a platform native library in C# with the IronSoftware NativeLibrary class: get a handle and resolve exported functions as typed delegates.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>NativeLibrary Class | IronOCR .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NativeLibrary
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="NativeLibrary Class | IronOCR .NET API">
+    <meta name="description" content="Reference for the IronSoftware NativeLibrary class in C#: wrap a loaded native library, read its Handle, and bind exports via LoadFunction&lt;T&gt;.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "NativeLibrary Class | IronOCR .NET API",
+    "name": "NativeLibrary class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronSoftware.Deployment.NativeLibrary.html",
+    "abstract": "Loading a platform native library and resolving its exports at runtime in C# runs through the IronSoftware NativeLibrary class. Construct it with a library name to load the binary, then call LoadFunction for an export address or the generic LoadFunction<T> for a marshaled delegate. Handle exposes the raw module pointer and the protected Loader can be overridden. The type implements IDisposable, so hold it in a using.",
+    "description": "Reference for the IronSoftware NativeLibrary class in C#: wrap a loaded native library, read its Handle, and bind exports via LoadFunction<T>.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronSoftware.Deployment;\n\nusing var library = new NativeLibrary(\"mylib\");\nvar compute = library.LoadFunction<ComputeDelegate>(\"compute\");\nint result = compute(21);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does NativeLibrary live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NativeLibrary is a class in the IronSoftware.Deployment namespace, shipped in IronOcr.dll. It derives from Object and implements IDisposable, so wrap it in a using to release the native handle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you call a native function from a loaded library in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct a NativeLibrary with the library name, then call the generic LoadFunction<T> with the export name to get a delegate of type T you can invoke. Use the non-generic LoadFunction to get the raw IntPtr address instead."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you need NativeLibrary to use IronOCR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. IronOCR loads its own Tesseract and Leptonica binaries internally. NativeLibrary is the seam for deployment scenarios where you load a native dependency yourself; see the Linux and Docker deployment guides for native packaging."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -153,6 +217,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class NativeLibrary : Object, IDisposable</code></pre>
   </div>
+    <!-- archetype-N:start NativeLibrary treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Loading a platform native library and resolving its exported functions at runtime runs through <code>NativeLibrary</code>. It wraps a handle to a loaded shared library (a <code>.dll</code>, <code>.so</code>, or <code>.dylib</code>) and hands back typed delegates for the entry points you name, so cross-platform native interop can sit behind one managed object instead of scattered <code>DllImport</code> declarations.</p>
+<p>Construct one with <code>new NativeLibrary(string)</code>, passing the library name or path; the constructor loads the binary through the platform loader. From the loaded library you resolve functions by name, and you dispose the object when finished. Most IronOCR code never touches this type directly, since the engine loads its own Tesseract and Leptonica binaries internally; it is the seam exposed for deployment scenarios where you load a native dependency yourself.</p>
+<p>The members are deliberately few. <code>Handle</code> is the raw <code>IntPtr</code> to the loaded module for code that needs to call into the platform directly. <code>LoadFunction(string name)</code> resolves an exported symbol and returns its address as an <code>IntPtr</code>, while the generic <code>LoadFunction&lt;T&gt;(string name)</code> returns the entry point already marshaled to a delegate type <code>T</code>, which is the form most callers want. <code>Loader</code> is the protected <code>LibraryLoader</code> a subclass can override to change how binaries are located. Because the type implements <code>IDisposable</code>, hold it in a <code>using</code> so the native handle is released, and resolve every function you need from the single instance rather than reloading the library.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronSoftware.Deployment;
+
+using var library = new NativeLibrary(&quot;mylib&quot;);
+var compute = library.LoadFunction&lt;ComputeDelegate&gt;(&quot;compute&quot;);
+int result = compute(21);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/get-started/linux/">Linux deployment guide</a> covers native dependencies on Linux, the <a href="https://ironsoftware.com/csharp/ocr/get-started/docker/">Docker guide</a> handles container images, and the <a href="https://ironsoftware.com/csharp/ocr/get-started/advanced-installation-nuget/">advanced installation guide</a> explains the native package layout.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

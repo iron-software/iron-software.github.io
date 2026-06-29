@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IWordTextObject
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IWordTextObject Interface - IronWord C# API
+      v2 (human)     title:       IWordTextObject: C# Word Text Contract
+      v1 (algorithm) description: IWordTextObject is IronWord's C# contract for a text element in a Word document, implemented by the TextContent class for reading and editing.
+      v2 (human)     description: Read and edit a run of text in a Word document in C# through IronWord's IWordTextObject contract, implemented by the TextContent class.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IWordTextObject Interface | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IWordTextObject
-   | C# Word API | IronWord ">
+    <meta name="title" content="IWordTextObject Interface | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord IWordTextObject interface in C#: the document text contract implemented by TextContent for reading and editing.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,39 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IWordTextObject Interface | IronWord C# API",
+    "name": "IWordTextObject interface | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.IWordTextObject.html",
+    "abstract": "Reading or editing a run of text in a Word document in C# runs through IronWord's IWordTextObject contract. It represents a single text element a document contains and composes the shared text, document-object, cloning, and serialization abstractions. The concrete implementor is TextContent, received when traversal code reaches text.",
+    "description": "Reference for the IronWord IWordTextObject interface in C#: the document text contract implemented by TextContent for reading and editing.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IWordTextObject live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IWordTextObject is an interface in the IronWord.Models namespace, shipped in IronWord.dll. It extends IText, IWordDocumentObject, ICloneable, and the serialization abstractions, and is implemented by the TextContent class."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -147,7 +187,14 @@
   </div>
   
   
-</article>
+  <!-- archetype-N:start IWordTextObject treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>Reading or editing a run of text already in a Word document in C# runs through <code>IWordTextObject</code>. The contract represents a single text element a document contains, so code that walks or rewrites content can treat every piece of text uniformly rather than binding to one concrete class. It composes the shared text, document-object, cloning, and serialization abstractions, which together expose the text content, its identity in the document, and its ability to be copied and round-tripped.</p>
+<p>The concrete implementor in IronWord is <code>TextContent</code>, the type code receives when it reaches text while traversing a document. Most code names <code>TextContent</code> directly; the interface matters when a method accepts or returns text by contract, which keeps editing routines decoupled from how the text was originally written. Because <code>IWordTextObject</code> extends <code>ICloneable</code>, an implementation can be duplicated, and because it extends the serialization abstraction, it persists with the document model. Work through the contract when a routine should accept any document text regardless of its source.</p>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/edit-text/">edit text how-to</a> rewrites existing text, and the <a href="https://ironsoftware.com/csharp/word/how-to/add-text/">add text how-to</a> writes new content.</p>
+  </div>
+  <!-- archetype-N:end -->
+  </article>
           </div>
            
           <div class="hidden-sm col-md-2" role="complementary">

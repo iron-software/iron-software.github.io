@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ValidationResult
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ValidationResult Class - IronBarcode C# API
+      v2 (human)     title:       ValidationResult: Validate Barcode Data in C#
+      v1 (algorithm) description: Report barcode validation in C# with the IronBarcode ValidationResult class: IsValid, Errors, Warnings, and the Valid, Invalid, Warning factories.
+      v2 (human)     description: Validate decoded barcode data in C# with the IronBarcode ValidationResult class: return Valid, Invalid, or Warning and read IsValid and Errors.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ValidationResult Class | IronBarcode C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ValidationResult
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="ValidationResult Class | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode ValidationResult class in C#: the pass or fail outcome of validating barcode data, with errors and warnings.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ValidationResult Class | IronBarcode C# API",
+    "name": "ValidationResult class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.ValidationResult.html",
+    "abstract": "Reporting whether scanned barcode data passed a custom rule runs through the IronBarcode ValidationResult class in C#. A validation function returns one per value: build it with the static Valid, Invalid, or Warning factory methods. Read IsValid for the verdict, and Errors and Warnings for the messages, each a List of strings. It is produced by the validator on an IdentifierDefinition.",
+    "description": "Reference for the IronBarcode ValidationResult class in C#: the pass or fail outcome of validating barcode data, with errors and warnings.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nValidationResult result =\n    value.Length == 8 ? ValidationResult.Valid() : ValidationResult.Invalid(\"Expected 8 digits\");\nif (!result.IsValid)\n    Console.WriteLine(string.Join(\", \", result.Errors));"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ValidationResult live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ValidationResult is a class in the IronBarCode namespace, shipped in IronBarCode.dll, deriving from Object. A validation function returns one, built with the static Valid, Invalid, and Warning factory methods."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I report a barcode validation outcome in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Return ValidationResult.Valid() when the decoded value passes, ValidationResult.Invalid(message) when it fails, or ValidationResult.Warning(message) for a non-fatal concern. The caller reads IsValid and the Errors and Warnings lists."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Errors and Warnings on a ValidationResult?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Errors is a List of strings describing failures that make IsValid false, returned by ValidationResult.Invalid. Warnings is a List of strings flagging concerns that do not fail the result, returned by ValidationResult.Warning."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ValidationResult : Object</code></pre>
   </div>
+    <!-- archetype-N:start ValidationResult treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Reporting whether scanned barcode data passed a custom rule runs through <code>ValidationResult</code>. It represents the outcome of validating a decoded value, carrying a pass or fail flag along with any error and warning messages collected during the check. A developer meets this type when wiring custom validation into barcode reading, where a rule decides whether a decoded payload, such as a SKU or serial format, is acceptable.</p>
+<p>A <code>ValidationResult</code> is produced rather than configured. The validation function supplied to an <code>IdentifierDefinition</code>, a <code>Func&lt;string, ValidationResult&gt;</code>, returns one for each value it inspects, and IronBarcode reads it to decide whether the data is valid. Code writes a <code>ValidationResult</code> from inside a validator and reads it where the validation outcome is consumed, so the same type bridges the rule and the caller that acts on it.</p>
+<p>Three static factory methods build the common outcomes without manual construction. <code>Valid()</code> returns a passing result, <code>Invalid(string)</code> returns a failing result carrying the error message supplied, and <code>Warning(string)</code> returns a result that flags a concern without failing outright. On the returned object, <code>IsValid</code> reports the boolean verdict, <code>Errors</code> lists the failure messages as a <code>List&lt;string&gt;</code>, and <code>Warnings</code> lists the non-fatal notes the same way. A validator typically returns <code>ValidationResult.Valid()</code> when a value matches its expected format and <code>ValidationResult.Invalid(&quot;reason&quot;)</code> when it does not, and the consuming code then checks <code>IsValid</code> and surfaces <code>Errors</code> to the user. Use the factory methods to produce results and the properties to inspect them.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+ValidationResult result =
+    value.Length == 8 ? ValidationResult.Valid() : ValidationResult.Invalid(&quot;Expected 8 digits&quot;);
+if (!result.IsValid)
+    Console.WriteLine(string.Join(&quot;, &quot;, result.Errors));</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/checksum-and-format-validation/">checksum and format validation how-to</a> covers validating decoded data, the <a href="https://ironsoftware.com/csharp/barcode/how-to/detailed-error-messages/">detailed error messages how-to</a> surfaces validation output, and the <a href="https://ironsoftware.com/csharp/barcode/how-to/read-barcodes-from-images/">read barcodes from images how-to</a> shows the read these rules check.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

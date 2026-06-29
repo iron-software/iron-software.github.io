@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class StreamHelper
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       StreamHelper - IronPPT C# API Reference
+      v2 (human)     title:       StreamHelper: Image Type & Base64 in C#
+      v1 (algorithm) description: Detect an image type and encode a stream in C# with IronPPT's StreamHelper: GetImageType returns the ImageType and ToBase64 returns a Base64 string.
+      v2 (human)     description: Work with image streams in C# through IronPPT's StreamHelper: call GetImageType to find the format or ToBase64 to embed the image inline.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>StreamHelper Class | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class StreamHelper
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="StreamHelper Class | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT StreamHelper static class in C#: GetImageType and ToBase64 extension methods for FileStream, MemoryStream, and Stream.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "StreamHelper Class | IronPPT C# API Reference",
+    "name": "StreamHelper class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Extensions.StreamHelper.html",
+    "abstract": "When an image arrives as a stream in C#, the IronPPT StreamHelper static class identifies its format and encodes it. GetImageType returns the detected ImageType for a FileStream, MemoryStream, or Stream, and ToBase64 returns the stream's bytes as a Base64 string. All are extension methods, so detection and encoding happen directly on the stream already in hand.",
+    "description": "Reference for the IronPPT StreamHelper static class in C#: GetImageType and ToBase64 extension methods for FileStream, MemoryStream, and Stream.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "ImageType type = imageStream.GetImageType();\nstring base64 = imageStream.ToBase64();"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does StreamHelper live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "StreamHelper is a static class in the IronPPT.Models.Extensions namespace, shipped in IronPPT.dll. It derives from System.Object and adds the GetImageType and ToBase64 extension methods to the stream types."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you detect an image type from a stream in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call GetImageType on the stream, for example imageStream.GetImageType(), which returns an ImageType. Overloads cover FileStream, MemoryStream, and the base Stream. Use ToBase64 on the same stream to get a Base64 string for inline embedding."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +205,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class StreamHelper : Object</code></pre>
   </div>
+    <!-- archetype-N:start StreamHelper treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>When an image arrives as a stream, <code>StreamHelper</code> identifies its format and turns it into a Base64 string for embedding. The static helper adds extension methods to the common stream types, so detecting a picture's type and serializing its bytes happen directly on the stream rather than through a separate utility call.</p>
+<p><code>GetImageType</code> reads a stream and returns the detected <code>ImageType</code>, with overloads for <code>FileStream</code>, <code>MemoryStream</code>, and the base <code>Stream</code>, so the same call works whether the image came from disk or memory. <code>ToBase64</code> returns the stream's contents as a Base64 <code>string</code>, with overloads for <code>FileStream</code> and <code>Stream</code>, ready to place into markup or a data URL. Because all five are extension methods, you call them on the stream you already hold (<code>stream.GetImageType()</code>), which keeps image handling inline. Reach for <code>GetImageType</code> before adding a picture to confirm its format, and for <code>ToBase64</code> when an image needs an inline textual form instead of a file reference.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">ImageType type = imageStream.GetImageType();
+string base64 = imageStream.ToBase64();</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-image/">manage image how-to</a> covers working with pictures on a slide, and the <a href="https://ironsoftware.com/csharp/ppt/examples/add-image/">add image example</a> places an image into a presentation.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   
