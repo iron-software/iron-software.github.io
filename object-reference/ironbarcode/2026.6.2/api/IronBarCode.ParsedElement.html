@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ParsedElement
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ParsedElement - IronBarcode C# API Reference
+      v2 (human)     title:       ParsedElement: Read One Parsed Field in C#
+      v1 (algorithm) description: Read one parsed barcode field in C# with IronBarcode ParsedElement: Identifier, Description, Data, IsValid, Errors, and Warnings.
+      v2 (human)     description: Consume a structured barcode field by field in C# with IronBarcode ParsedElement: read the identifier, value, and validity of each element.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ParsedElement Class | IronBarcode .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ParsedElement
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="ParsedElement Class | IronBarcode .NET API">
+    <meta name="description" content="Reference for the IronBarcode ParsedElement class in C#: the Identifier, Data, IsValid flag, and Errors of one field parsed from a payload.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ParsedElement Class | IronBarcode .NET API",
+    "name": "ParsedElement class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.ParsedElement.html",
+    "abstract": "ParsedElement holds one field extracted from a structured barcode payload in C# with IronBarcode. Each element, found in the Elements list of a ParseResult, exposes Identifier for the field code, Description for its label, and Data for the value. IsValid reports whether the value passed validation, and Errors and Warnings explain any problems so a developer can consume the payload field by field.",
+    "description": "Reference for the IronBarcode ParsedElement class in C#: the Identifier, Data, IsValid flag, and Errors of one field parsed from a payload.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nforeach (ParsedElement element in result.Elements)\n    if (element.IsValid)\n        Console.WriteLine($\"{element.Identifier}: {element.Data}\");\n    else\n        Console.WriteLine(string.Join(\"; \", element.Errors));"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ParsedElement live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ParsedElement is a class in the IronBarCode namespace, shipped in IronBarCode.dll, with base type Object. Instances arrive in the Elements list of a ParseResult rather than being constructed directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read a parsed barcode field in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Iterate the Elements list of a ParseResult and read each ParsedElement. Identifier is the field code, Description is its label, and Data is the extracted value. Check IsValid before trusting the value."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do you do when a ParsedElement is not valid?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When IsValid is false, read the Errors and Warnings lists, both lists of strings, which explain why the field failed its validation rule. This lets an application report the specific field that did not check out instead of rejecting the whole payload."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ParsedElement : Object</code></pre>
   </div>
+    <!-- archetype-N:start ParsedElement treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>ParsedElement</code> carries one field pulled out of a structured barcode payload. When a GS1 or other application-identifier string is parsed, each recognized field becomes its own element, and a developer reads these to consume the data field by field instead of slicing one long string by hand. Each element pairs the value with the identifier that introduced it and a verdict on whether that value passed validation.</p>
+<p>Elements arrive together in the <code>Elements</code> list on a <code>ParseResult</code>, so a developer obtains them by iterating that list rather than constructing them. <code>Identifier</code> is the application-identifier code that names the field, <code>Description</code> is a readable label for what the field represents, and <code>Data</code> is the extracted value itself. Reading these three answers the everyday question of what this part of the payload means and what it contains.</p>
+<p>Validity travels with the value. <code>IsValid</code> reports whether the field passed its validation rule, and when it did not, <code>Errors</code> and <code>Warnings</code>, both <code>List&lt;string&gt;</code>, explain why. A developer checks <code>IsValid</code> before trusting <code>Data</code>, then surfaces the diagnostics for any field that failed. Because the verdict rides on each element rather than on the payload as a whole, an application can keep the fields that checked out and flag only the ones that did not, instead of rejecting an entire barcode for a single bad value. Treat each element as read-only output describing one extracted field. Iterating the elements and inspecting their validity is the practical way to consume a structured payload safely, and pairing <code>Identifier</code> with <code>Description</code> makes a clear log line for each field read. The <a href="https://ironsoftware.com/csharp/barcode/how-to/output-data-formats/">output data formats how-to</a> shows how to present extracted fields, and the <a href="https://ironsoftware.com/csharp/barcode/how-to/checksum-and-format-validation/">checksum and format validation how-to</a> covers validating field values.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+foreach (ParsedElement element in result.Elements)
+    if (element.IsValid)
+        Console.WriteLine($&quot;{element.Identifier}: {element.Data}&quot;);
+    else
+        Console.WriteLine(string.Join(&quot;; &quot;, element.Errors));</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/tutorials/reading-barcodes/">reading barcodes tutorial</a> covers the surrounding read and parse workflow.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

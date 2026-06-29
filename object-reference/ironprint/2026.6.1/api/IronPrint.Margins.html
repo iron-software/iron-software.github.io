@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Margins
-   | C# Print API | IronPrint </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Margins Struct - IronPrint C# API Reference
+      v2 (human)     title:       Margins: Set Print Margins in C# with IronPrint
+      v1 (algorithm) description: Set print margins in C# with the IronPrint Margins value: top, right, bottom, and left in millimeters, assigned to PrintSettings.PaperMargins.
+      v2 (human)     description: Control print margins in C# with the IronPrint Margins value: set equal, paired, or per-edge spacing in millimeters, with code examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Margins | IronPrint C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Margins
-   | C# Print API | IronPrint ">
+    <meta name="title" content="Margins | IronPrint C# API Reference">
+    <meta name="description" content="Reference for the IronPrint Margins value in C#: set per-edge print margins in millimeters via PrintSettings.PaperMargins, with code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,55 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Margins | IronPrint C# API Reference",
+    "name": "Margins class | IronPrint C# API",
+    "url": "https://ironsoftware.com/csharp/print/object-reference/api/IronPrint.Margins.html",
+    "abstract": "Setting per-edge print margins in C# runs through the IronPrint Margins value, measured in millimeters. Construct it for an equal margin on all sides, matched horizontal and vertical pairs, or full per-edge control, or use the static Margins.Zero for a borderless layout. The Left, Top, Right, and Bottom properties read each edge. Assign a Margins value to PrintSettings.PaperMargins; leaving that nullable property null keeps the printer's default margins.",
+    "description": "Reference for the IronPrint Margins value in C#: set per-edge print margins in millimeters via PrintSettings.PaperMargins, with code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPrint",
+      "url": "https://ironsoftware.com/csharp/print/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPrint;\n\nPrintSettings settings = new PrintSettings\n{\n    PaperMargins = new Margins(20, 15, 20, 15)\n};"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Margins live in the IronPrint API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Margins is a value type in the IronPrint namespace, shipped in IronPrint.dll. It is assigned to the PrintSettings.PaperMargins property, which is a Nullable<Margins>, to set the margins for a print job."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What unit does IronPrint use for print margins?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Margins are measured in millimeters on all four edges. The values are passed to the print driver before rendering, so the output matches them regardless of the printer's default margins. Use new Margins(int uniformMargin) for an equal margin on every side, or Margins.Zero for a borderless layout."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +205,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class Margins : ValueType</code></pre>
   </div>
+      <!-- archetype-N:start Margins treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>The blank space around printed content on each edge of the sheet lives in a <code>Margins</code> value, measured in millimeters. Set wider margins to meet binding or letterhead requirements, or tighter ones to fit more on the page. A <code>Margins</code> value is assigned to <code>PrintSettings.PaperMargins</code> and applied to the print driver before the page renders, so the output matches the chosen spacing regardless of the printer's own defaults.</p>
+<p>Build one with the constructor that fits the job. <code>Margins(int uniformMargin)</code> applies an equal margin to all four sides. <code>Margins(int horizontal, int vertical)</code> sets matched left and right, top and bottom pairs. <code>Margins(int left, int top, int right, int bottom)</code> gives full control of each edge. The static <code>Margins.Zero</code> returns a borderless layout with every edge at zero.</p>
+<p>After construction, the <code>Left</code>, <code>Top</code>, <code>Right</code>, and <code>Bottom</code> properties expose each edge for reading or adjustment. Because <code>PaperMargins</code> is a <code>Nullable&lt;Margins&gt;</code> on <code>PrintSettings</code>, leaving it null keeps the printer's own default margins; assign a <code>Margins</code> value only when a document needs specific spacing. The <a href="https://ironsoftware.com/csharp/print/how-to/set-paper-margins/">set paper margins guide</a> shows the property in a complete print job.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPrint;
+
+PrintSettings settings = new PrintSettings
+{
+    PaperMargins = new Margins(20, 15, 20, 15)
+};</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/print/how-to/print-settings/">print settings guide</a> covers the other options margins combine with, and the <a href="https://ironsoftware.com/csharp/print/how-to/set-paper-size/">paper size guide</a> pairs sheet dimensions with margin spacing.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

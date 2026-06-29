@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Installation
-   | C# QR API | IronQR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Installation Class - IronQR C# API
+      v2 (human)     title:       Installation: Set IronQR's Deploy Path in C#
+      v1 (algorithm) description: Set IronQR's writable deployment folder in C# with Installation.DeploymentPath, where native setup and temporary files are staged on first use.
+      v2 (human)     description: Fix IronQR native deployment in C# with Installation.DeploymentPath: point it at a writable folder on containers and locked-down servers.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Installation Class | IronQR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Installation
-   | C# QR API | IronQR ">
+    <meta name="title" content="Installation Class | IronQR C# API">
+    <meta name="description" content="Reference for the IronQR Installation class in C#: set DeploymentPath to a writable folder for staging native files at runtime.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Installation Class | IronQR C# API",
+    "name": "Installation class | IronQR C# API",
+    "url": "https://ironsoftware.com/csharp/qr/object-reference/api/IronQr.Installation.html",
+    "abstract": "Installation.DeploymentPath sets the writable directory where IronQR stages its native setup and temporary files in C#. When the default location is not writable, as in containers and locked-down servers, point DeploymentPath at a writable folder at startup. A wrong path is a common cause of the native-layer failures reported by IronQrNativeException.",
+    "description": "Reference for the IronQR Installation class in C#: set DeploymentPath to a writable folder for staging native files at runtime.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronQR",
+      "url": "https://ironsoftware.com/csharp/qr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "Installation.DeploymentPath = \"/app/ironqr\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Installation live in the IronQR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Installation is a static class in the IronQr namespace, shipped in IronQr.dll. Its DeploymentPath property is static, so set it directly without constructing an instance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you fix IronQR native deployment errors in a container?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set Installation.DeploymentPath at startup to a folder the process can write to, ideally on a persistent volume. The native QR components stage there on first use; an unwritable path causes the failures seen as IronQrNativeException."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +206,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class Installation : Object</code></pre>
   </div>
+    <!-- archetype-N:start Installation treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>The writable directory where IronQR stages its setup and temporary files is set through <code>Installation.DeploymentPath</code>. IronQR ships native components for QR detection, and on first use it deploys them to a working folder. When the default location is not writable, which is common in containers, locked-down servers, and some hosting environments, point <code>DeploymentPath</code> at a folder the process can write to.</p>
+<p>Set it once at application startup, before the first read or write, since the files are staged lazily on first use. A path on a persistent volume avoids re-deploying the native files on every cold start. A wrong or unwritable path is a frequent cause of native-layer failures, which surface as an <code>IronQrNativeException</code>. On a developer machine the default location usually works, so this property is mainly a deployment concern rather than something set during local development.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">Installation.DeploymentPath = &quot;/app/ironqr&quot;;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/qr/get-started/">get started guide</a> covers first-run setup, and the <a href="https://ironsoftware.com/csharp/qr/get-started/aws/">AWS guide</a> shows deployment on a restricted host.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

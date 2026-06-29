@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IContainer
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IContainer - IronPPT C# API
+      v2 (human)     title:       IContainer: The Presentation Holder Contract in C#
+      v1 (algorithm) description: IContainer is IronPPT's holder contract in C#: it exposes Slides, default styles, and AddChild. Implemented by Container, extends IParentElement.
+      v2 (human)     description: Hold slides and set default styles in C# through IronPPT's IContainer contract: read Slides, set default paragraph and text styles, add children.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IContainer Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IContainer
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IContainer Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT IContainer interface in C#: the holder contract Container implements, exposing Slides and default styles.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IContainer Interface | IronPPT C# API",
+    "name": "IContainer interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IContainer.html",
+    "abstract": "Holding slides and supplying their default styling in IronPPT is described by the IContainer contract in C#. It exposes the Slides it owns, BuiltInStyles, and the ParagraphsDefaultStyle and TextsDefaultStyle new content inherits, plus an AddChild method. The concrete implementor is Container; because IContainer extends IParentElement and IContentElement, an implementor is also a parent and a content element.",
+    "description": "Reference for the IronPPT IContainer interface in C#: the holder contract Container implements, exposing Slides and default styles.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "List<ISlide> slides = container.Slides;\ncontainer.AddChild(newElement);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IContainer live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IContainer is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It extends IParentElement and IContentElement, so an implementor is both a parent that owns children and a content element."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IContainer in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Container class in IronPPT.Models implements IContainer. Read its Slides collection to enumerate slides, set ParagraphsDefaultStyle or TextsDefaultStyle for baseline formatting, and call AddChild to attach content elements."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -183,6 +239,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IContainer : IParentElement, IContentElement</code></pre>
   </div>
+    <!-- archetype-N:start IContainer treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>When a part of a presentation holds other elements and supplies default styling for them, <code>IContainer</code> is the contract that describes it. It gathers the child <code>Slides</code> it owns, the <code>BuiltInStyles</code> available to its content, and the <code>ParagraphsDefaultStyle</code> and <code>TextsDefaultStyle</code> that new paragraphs and runs inherit. The <code>AddChild</code> method accepts a params array of <code>IContentElement</code>, so several children can be attached in one call. Coding against the contract lets layout logic treat any container the same way.</p>
+<p>The concrete implementor in IronPPT is <code>Container</code>, the document-level holder that exposes the slide collection and the default styles a presentation applies. Because <code>IContainer</code> extends both <code>IParentElement</code> and <code>IContentElement</code>, an implementor is also a parent that can own children and a content element that can be cloned, removed, or replaced. A developer typically reads <code>Slides</code> to enumerate slides and sets <code>ParagraphsDefaultStyle</code> or <code>TextsDefaultStyle</code> to establish the baseline formatting, then calls <code>AddChild</code> to attach content.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">List&lt;ISlide&gt; slides = container.Slides;
+container.AddChild(newElement);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/add-slide/">add slide how-to</a> covers adding slides to a presentation, and the <a href="https://ironsoftware.com/csharp/ppt/tutorials/slide-element/">slide element tutorial</a> walks through the elements a container holds.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

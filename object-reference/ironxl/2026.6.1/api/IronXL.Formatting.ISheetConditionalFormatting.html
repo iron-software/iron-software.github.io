@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ISheetConditionalFormatting
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ISheetConditionalFormatting - IronXL C# API
+      v2 (human)     title:       Conditional Formatting Rules in C# with IronXL
+      v1 (algorithm) description: Manage Excel conditional formatting in C# via IronXL ISheetConditionalFormatting: CreateConditionalFormattingRule, AddConditionalFormatting, and remove.
+      v2 (human)     description: Make an Excel sheet react to its data in C# with IronXL: create conditional rules, apply them to ranges, count them, and remove them by index.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ISheetConditionalFormatting | IronXL C# .NET</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ISheetConditionalFormatting
-   | C# Excel API | IronXL ">
+    <meta name="title" content="ISheetConditionalFormatting | IronXL C# .NET">
+    <meta name="description" content="Reference for IronXL ISheetConditionalFormatting in C#: the worksheet contract from WorkSheet.ConditionalFormatting for creating and applying rules.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ISheetConditionalFormatting | IronXL C# .NET",
+    "name": "ISheetConditionalFormatting interface | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Formatting.ISheetConditionalFormatting.html",
+    "abstract": "WorkSheet.ConditionalFormatting returns IronXL's ISheetConditionalFormatting interface in C#, which manages a sheet's conditional formatting rules. CreateConditionalFormattingRule builds a ConditionalFormattingRule from a formula or a ComparisonOperator, the AddConditionalFormatting overloads apply rules to range strings, and ConditionalFormattingsCount, GetConditionalFormattingAt, and RemoveConditionalFormatting inspect and clean up the rules in place.",
+    "description": "Reference for IronXL ISheetConditionalFormatting in C#: the worksheet contract from WorkSheet.ConditionalFormatting for creating and applying rules.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\nusing IronXL.Formatting;\n\nWorkSheet sheet = WorkBook.Load(\"report.xlsx\").DefaultWorkSheet;\nISheetConditionalFormatting formatting = sheet.ConditionalFormatting;\nConditionalFormattingRule rule =\n    formatting.CreateConditionalFormattingRule(ComparisonOperator.GreaterThan, \"100\");\nrule.FontFormatting.IsBold = true;\nformatting.AddConditionalFormatting(\"A1:A20\", rule);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ISheetConditionalFormatting live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ISheetConditionalFormatting is an interface in the IronXL.Formatting namespace, shipped in IronXL.dll. It is returned by WorkSheet.ConditionalFormatting and manages the conditional formatting rules on that sheet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What returns ISheetConditionalFormatting in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WorkSheet.ConditionalFormatting returns an ISheetConditionalFormatting. IronXL exposes it through that get-only property rather than letting you construct one, so all rule creation and application happens through the worksheet's property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add a conditional formatting rule in C# with IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Get WorkSheet.ConditionalFormatting, call CreateConditionalFormattingRule with a ComparisonOperator and formula, configure the rule's font, fill, or border formatting, then call AddConditionalFormatting with the target range and the rule."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +209,23 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface ISheetConditionalFormatting</code></pre>
   </div>
+    <!-- archetype-N:start ISheetConditionalFormatting treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p><code>ISheetConditionalFormatting</code> manages the conditional formatting rules attached to a worksheet. It creates rules, adds them to cell regions, reads them back, and removes them, so all of a sheet's &quot;color this cell when its value crosses a threshold&quot; logic is reached through one object. A developer building a dashboard or a flagged report works through it to make the spreadsheet react to its own data.</p>
+<p>A worksheet exposes it as <code>WorkSheet.ConditionalFormatting</code>, a get-only property, so there is no construction step. The usual sequence is two stages: build a rule, then apply it to one or more cell regions. <code>CreateConditionalFormattingRule</code> produces a <code>ConditionalFormattingRule</code>, taking either a single formula, a <code>ComparisonOperator</code> with one formula, or a <code>ComparisonOperator</code> with two formulas for between-style conditions. The returned rule carries its own font, fill, and border formatting before it is applied.</p>
+<p>Applying and managing rules covers the rest of the surface. The <code>AddConditionalFormatting</code> overloads attach a rule, a pair of rules, or a <code>List</code> of rules to a region given as a single range string or an <code>IEnumerable</code> of ranges, and each returns the <code>ConditionalFormatting</code> that was added. The overloads that take two rules let a sheet stack a pair of conditions on the same region in one call. For inspection and cleanup, <code>ConditionalFormattingsCount</code> reports how many are present, <code>GetConditionalFormattingAt</code> fetches one by index, and <code>RemoveConditionalFormatting</code> deletes one by index. Create and configure the rule first, then add it to the regions it should govern, and use the count and index members afterward to audit or revise what a sheet already carries.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+using IronXL.Formatting;
+
+WorkSheet sheet = WorkBook.Load(&quot;report.xlsx&quot;).DefaultWorkSheet;
+ISheetConditionalFormatting formatting = sheet.ConditionalFormatting;
+ConditionalFormattingRule rule =
+    formatting.CreateConditionalFormattingRule(ComparisonOperator.GreaterThan, &quot;100&quot;);
+rule.FontFormatting.IsBold = true;
+formatting.AddConditionalFormatting(&quot;A1:A20&quot;, rule);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/conditional-formatting/">conditional formatting how-to</a> walks through creating and applying rules, the <a href="https://ironsoftware.com/csharp/excel/examples/excel-conditional-formatting/">conditional formatting example</a> shows a worked rule end to end, and the <a href="https://ironsoftware.com/csharp/excel/how-to/background-pattern-color/">background pattern color how-to</a> covers the fills a rule can apply.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

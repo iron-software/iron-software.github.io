@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ITextContentElement
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ITextContentElement Interface - IronWord C# API
+      v2 (human)     title:       ITextContentElement: Find & Replace Text in C#
+      v1 (algorithm) description: ITextContentElement is the IronWord C# styled-text contract: Text, Style, Find, and Replace, implemented by TextContent and Text.
+      v2 (human)     description: Search, restyle, and rewrite a styled run of text in C# through IronWord's ITextContentElement contract, implemented by TextContent and Text.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ITextContentElement Interface | IronWord API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ITextContentElement
-   | C# Word API | IronWord ">
+    <meta name="title" content="ITextContentElement Interface | IronWord API">
+    <meta name="description" content="Reference for the IronWord ITextContentElement interface in C#: the styled-text contract with Find and Replace, implemented by TextContent and Text.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ITextContentElement Interface | IronWord API",
+    "name": "ITextContentElement interface | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Abstract.Interfaces.ITextContentElement.html",
+    "abstract": "A single styled run of text in IronWord is reached through ITextContentElement in C#. Text is the readable and writable string, Style is the applied TextStyle, Find returns match positions with optional regex and case flags, Replace rewrites the content, and ToString returns the plain text. TextContent and Text implement it.",
+    "description": "Reference for the IronWord ITextContentElement interface in C#: the styled-text contract with Find and Replace, implemented by TextContent and Text.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "ITextContentElement element = textContent;\nelement.Replace(\"draft\", \"final\");\nstring body = element.Text;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ITextContentElement live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ITextContentElement is an interface in the IronWord.Models.Abstract.Interfaces namespace, shipped in IronWord.dll. It is a standalone contract declaring the Text and Style properties and the Find, Replace, and ToString methods, and it is implemented by TextContent and Text."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +193,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface ITextContentElement</code></pre>
   </div>
+    <!-- archetype-N:start ITextContentElement treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p><code>ITextContentElement</code> is the contract you work through when a piece of document text needs to be read, searched, restyled, or rewritten on its own. It represents a single styled run of text and exposes the operations that act on that run, so editing code can treat any text element the same way. It differs from the container contracts: a text container holds and arranges text, while a text content element is the styled text itself.</p>
+<p>You receive one from the concrete implementors <code>TextContent</code> and <code>Text</code>. Holding either gives you an <code>ITextContentElement</code>, which a search-and-edit method can accept without depending on the exact type.</p>
+<p>The two properties are <code>Text</code>, the readable and writable <code>string</code> content, and <code>Style</code>, the read-only <code>TextStyle</code> applied to it. The <code>Find</code> method searches the content with optional <code>RegexOptions</code>, whole-word, and case-sensitive flags and returns a <code>List&lt;int&gt;</code> of match positions. <code>Replace</code> performs the substitution with the same options and returns the updated <code>ITextContentElement</code>, and <code>ToString</code> returns the plain text.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">ITextContentElement element = textContent;
+element.Replace(&quot;draft&quot;, &quot;final&quot;);
+string body = element.Text;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/edit-text/">edit text how-to</a> and the <a href="https://ironsoftware.com/csharp/word/how-to/replace-words/">replace words how-to</a> cover searching and rewriting content.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

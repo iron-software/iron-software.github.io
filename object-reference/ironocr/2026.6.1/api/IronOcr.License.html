@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class License
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       License Class - IronOCR C# API Reference
+      v2 (human)     title:       License: Apply an IronOCR Key in C#
+      v1 (algorithm) description: Apply an IronOCR license key in C# with the static License class: set LicenseKey, check IsLicensed, and validate a key with IsValidLicense.
+      v2 (human)     description: Set your IronOCR license in C# with the static License class: assign LicenseKey at startup to remove the watermark and unlock the library.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>License Class | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class License
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="License Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for IronOCR's static License class in C#: set LicenseKey, read IsLicensed, validate with IsValidLicense, and DisableAppAnalytics.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "License Class | IronOCR C# API Reference",
+    "name": "License class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.License.html",
+    "abstract": "Apply an IronOCR license key across an application in C# through the static License class. Assign LicenseKey once at startup to remove the trial watermark, read IsLicensed to confirm the key took effect, validate a candidate key with IsValidLicense, and opt out of usage data with DisableAppAnalytics. The same licensing members are also exposed on Installation.",
+    "description": "Reference for IronOCR's static License class in C#: set LicenseKey, read IsLicensed, validate with IsValidLicense, and DisableAppAnalytics.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IronOcr.License.LicenseKey = \"IRONOCR-MYLICENSE-KEY-1EF01\";\nbool licensed = IronOcr.License.IsLicensed;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does License live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "License is a static class in the IronOcr namespace, shipped in IronOcr.dll. Assign and read its members directly without constructing an instance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between License and Installation in IronOCR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both are static classes that expose LicenseKey, IsLicensed, and IsValidLicense. License is the licensing-only entry point; Installation adds installation paths, logging, and dependency configuration alongside those licensing members."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +206,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class License : Object</code></pre>
   </div>
+    <!-- archetype-N:start License treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Apply an IronOCR license key across an application through <code>License</code>. Setting the key here removes the trial watermark and unlocks the library for every read in the process, so a single assignment at startup covers the whole app. It is the focused, licensing-only entry point, distinct from <code>Installation</code>, which exposes the same licensing members alongside broader install and logging configuration.</p>
+<p>Set <code>LicenseKey</code> once, early, before the first OCR call. <code>IsLicensed</code> then reports whether the running instance is licensed, a quick check to confirm the key took effect, and <code>IsValidLicense</code> validates a candidate key string without committing it. <code>DisableAppAnalytics</code> opts the application out of usage analytics where that is required.</p>
+<p>Because <code>License</code> is static, there is nothing to construct: assign and read its members directly. The same <code>LicenseKey</code>, <code>IsLicensed</code>, and <code>IsValidLicense</code> members are also reachable on <code>Installation</code>, so choose <code>License</code> when licensing is all you need and <code>Installation</code> when you are configuring paths, logging, or dependencies in the same place.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IronOcr.License.LicenseKey = &quot;IRONOCR-MYLICENSE-KEY-1EF01&quot;;
+bool licensed = IronOcr.License.IsLicensed;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/iron-tesseract/">Iron Tesseract how-to</a> shows a licensed read in context, and the <a href="https://ironsoftware.com/csharp/ocr/examples/csharp-configure-setup-tesseract/">configure and set up Tesseract example</a> sets options around it.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

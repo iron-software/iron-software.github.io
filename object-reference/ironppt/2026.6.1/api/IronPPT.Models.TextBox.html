@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TextBox
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextBox Class - IronPPT C# API Reference
+      v2 (human)     title:       TextBox: Text Containers on Slides in C#
+      v1 (algorithm) description: Add a text container to a slide in C# with the IronPPT TextBox class: AddParagraph and AddText, read Paragraphs and Texts, and set a Style.
+      v2 (human)     description: Hold paragraphs in a bordered frame on a slide in C# with the IronPPT TextBox class: a shape that carries and styles multiple paragraphs.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextBox Class | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TextBox
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="TextBox Class | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT TextBox class in C#: a Shape that holds text, with AddParagraph and AddText, Paragraphs and Texts, and a paragraph Style.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextBox Class | IronPPT C# API Reference",
+    "name": "TextBox class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.TextBox.html",
+    "abstract": "TextBox is a shape that carries text in IronPPT for C#, combining placement and styling with a text container that holds multiple paragraphs. AddText and AddParagraph fill it, the AddImage overloads and AddShape nest graphics, the Paragraphs and Texts collections read it back, and Style applies paragraph formatting across the box.",
+    "description": "Reference for the IronPPT TextBox class in C#: a Shape that holds text, with AddParagraph and AddText, Paragraphs and Texts, and a paragraph Style.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var textBox = new TextBox();\ntextBox.AddParagraph(paragraph);\ntextBox.AddText(\"Caption\");\nslide.AddShape(textBox);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TextBox live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextBox is a class in the IronPPT.Models namespace, shipped in IronPPT.dll. It derives from Shape and implements ITextBox, IShape, IHasParagraphStyle, and related interfaces."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add text to a text box in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call AddParagraph or AddText on the TextBox, then read the content back through its Paragraphs and Texts collections. Set the Style property to apply paragraph formatting across the whole box."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is TextBox different from Shape in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextBox derives from Shape, so it has a shape's fill, outline, and geometry, but it also holds paragraphs of text through AddParagraph and AddText and a paragraph Style. Use Shape for a plain graphic and TextBox when the graphic must contain text."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -259,6 +323,18 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TextBox : Shape, ICloneableElement, IParentElement, IShape, IGraphic, ITextBox, IContentElement, IHasParagraphStyle</code></pre>
   </div>
+    <!-- archetype-N:start TextBox treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a slide needs a bordered container that holds paragraphs of text, <code>TextBox</code> provides it. It is a shape that carries text, combining a shape's placement and styling with a text container's ability to hold and format multiple paragraphs, so a developer can lay out body copy, captions, and callouts as discrete blocks.</p>
+<p>A <code>TextBox</code> is created and added to a slide, then filled through its <code>Add</code> methods. Text content uses <code>AddText</code> (a <code>string</code> or an <code>IText</code>) and <code>AddParagraph</code>; nested graphics use <code>AddShape</code> and the four <code>AddImage</code> overloads (a path, a <code>Stream</code>, an <code>AnyBitmap</code>, or an existing <code>IImage</code>); and <code>AddChild</code> adds raw content elements. The text it holds is read back through the <code>Paragraphs</code> and <code>Texts</code> collection properties, each a <code>List</code> of the matching interface.</p>
+<p>Paragraph-level formatting for the whole box is set through <code>Style</code>, an <code>IParagraphStyle</code> that applies spacing and alignment across the box's paragraphs in one place rather than per paragraph. Because <code>TextBox</code> derives from <code>Shape</code>, it also carries the shape members for fill, outline, and geometry, so the same object positions itself on the slide and styles its border. That inheritance is what lets a caption sit in a bordered, filled frame and move as a single unit when the layout changes. Add the paragraphs first, then set <code>Style</code> for shared formatting, and reach for <code>TextBox</code> over loose text whenever the content should live in one movable, styleable frame.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var textBox = new TextBox();
+textBox.AddParagraph(paragraph);
+textBox.AddText(&quot;Caption&quot;);
+slide.AddShape(textBox);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> places text on a slide, the <a href="https://ironsoftware.com/csharp/ppt/examples/add-paragraph/">add paragraph example</a> builds the paragraphs a text box holds, and the <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> styles them.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

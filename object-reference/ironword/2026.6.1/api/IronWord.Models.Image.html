@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Image
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Image Class - IronWord C# API Reference
+      v2 (human)     title:       Image: Add a Picture to a Word Doc in C#
+      v1 (algorithm) description: Add a picture to a Word document in C# with the IronWord Image class: build from a file, stream, or AnyBitmap and set Width, Height, and Position.
+      v2 (human)     description: Place an image in a Word document in C# with the IronWord Image class: load from a file, stream, or bitmap and control its size and position.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Image Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Image
-   | C# Word API | IronWord ">
+    <meta name="title" content="Image Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord Image class in C#: add a picture to a Word document from a file, stream, or AnyBitmap, with size and placement.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Image Class | IronWord C# API Reference",
+    "name": "Image class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Image.html",
+    "abstract": "Placing a picture into a Word document in C# uses the IronWord Image class. Build one from a file path, a Stream, or an AnyBitmap, then set Width, Height, Position, and WrapText before adding it to the document. The GetWidth and SetWidth pairs convert between measurement units, and LoadFromFile or LoadFromStream swap in new data. Image is the authoring sibling of ImageContent, the element exposed when reading pictures back.",
+    "description": "Reference for the IronWord Image class in C#: add a picture to a Word document from a file, stream, or AnyBitmap, with size and placement.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var image = new Image(\"logo.png\");\nimage.Width = 120;\nimage.Height = 80;\nimage.SetDistanceFromTop(1, Units.inch);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Image live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Image is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from ContentElement, so it shares Clone, Index, and Parent with the other document elements, and is added to the document body where pictures are inserted."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add an image to a Word document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create an Image from a file path, a Stream, or an AnyBitmap, set Width, Height, and Position, and add it to the document content. Use SetDistanceFromTop and the other Set methods with a Units value to position it in inches or another unit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Image and ImageContent in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Image is the element you build to author a picture into a document. ImageContent is the image element the document model exposes when you read pictures back, and it implements IWordImageObject. Use Image when adding pictures and ImageContent when inspecting existing ones."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -171,6 +235,18 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Image : ContentElement, lyduza</code></pre>
   </div>
+    <!-- archetype-N:start Image treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Reach for <code>Image</code> to place a picture into a Word document and control how it sits on the page in C#. It is the element a developer builds from a file, a stream, or an in-memory bitmap and then adds to the document body, carrying its own size, position, and text-wrap settings. It is the close sibling of <code>ImageContent</code>, the image element the document model exposes when you read pictures back out; <code>Image</code> is the one you reach for when authoring.</p>
+<p>Create one with a path through <code>new Image(&quot;logo.png&quot;)</code>, with a <code>Stream</code>, or from an <code>IronSoftware.Drawing.AnyBitmap</code>; a parameterless <code>Image()</code> is available when properties are set afterward. The element then attaches to the document content where pictures are inserted, alongside the paragraphs and tables that make up the body. As a <code>ContentElement</code>, it shares the common <code>Clone()</code>, <code>Index</code>, and <code>Parent</code> behavior of every element in the document tree.</p>
+<p>Size the picture with <code>Width</code> and <code>Height</code>, name it with <code>Name</code>, and set its placement with <code>Position</code> (an <code>ElementPosition</code>) and <code>WrapText</code>. Because those values are in points by default, the <code>GetWidth(Units)</code> and <code>SetWidth(double, Units)</code> pairs, along with their distance equivalents like <code>SetDistanceFromTop(double, Units)</code>, convert to and from other measurement units. <code>Type</code> reports the <code>ImageType</code>, <code>ImageData</code> exposes the encoded bytes, and <code>LoadFromFile(String)</code> or <code>LoadFromStream(Stream)</code> swap in new image data after construction. <code>Clone()</code> returns a copy as a <code>ContentElement</code> for reuse elsewhere in the document.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var image = new Image(&quot;logo.png&quot;);
+image.Width = 120;
+image.Height = 80;
+image.SetDistanceFromTop(1, Units.inch);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-image/">add image how-to</a> walks through inserting a picture, the <a href="https://ironsoftware.com/csharp/word/examples/add-image/">add image example</a> has a worked listing, and the <a href="https://ironsoftware.com/csharp/word/how-to/extract-images/">extract images how-to</a> reads pictures back out.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

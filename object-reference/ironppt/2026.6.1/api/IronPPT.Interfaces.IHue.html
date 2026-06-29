@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IHue
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IHue Interface - IronPPT C# API Reference
+      v2 (human)     title:       IHue: Adjust Color Hue in C#
+      v1 (algorithm) description: The IronPPT IHue interface in C#: an Angle (IRotation) hue adjustment over IBaseColorField, with inherited Modulation and Offset.
+      v2 (human)     description: Shift a color's hue in C# through the IronPPT IHue contract: set the Angle of rotation, implemented by the Hue class.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IHue Interface | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IHue
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IHue Interface | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT IHue interface in C#: the hue adjustment carrying an Angle, extending IBaseColorField, implemented by Hue.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IHue Interface | IronPPT C# API Reference",
+    "name": "IHue interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IHue.html",
+    "abstract": "Shift the hue of a presentation color in C# through the IronPPT IHue contract. Its own member is Angle, an IRotation giving the degrees of rotation around the color wheel; inherited Modulation and Offset percentages scale and shift the adjustment. The concrete implementor is the Hue class, alongside the sibling Luminance and Saturation adjustments.",
+    "description": "Reference for the IronPPT IHue interface in C#: the hue adjustment carrying an Angle, extending IBaseColorField, implemented by Hue.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "hue.Angle = rotation;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IHue live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IHue is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It extends IBaseColorField and is implemented by the Hue class in IronPPT.Models."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -153,6 +201,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IHue : IBaseColorField</code></pre>
   </div>
+    <!-- archetype-N:start IHue treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p><code>IHue</code> shifts the hue component of a color in a presentation. The contract represents the hue adjustment applied to a color field, the rotation around the color wheel that changes a color's tint while leaving its brightness and intensity alone. A developer works with it while fine-tuning theme colors or matching a shape's fill to a brand palette without picking a new color outright.</p>
+<p>A hue adjustment is reached through the color it modifies rather than created on its own, so an <code>IHue</code> reference is usually obtained from a color and then set. Its own member is <code>Angle</code>, an <code>IRotation</code> giving the degrees of hue rotation. Because the contract extends <code>IBaseColorField</code>, it also carries the inherited <code>Modulation</code> and <code>Offset</code> percentages that scale and shift the adjustment. The concrete implementor in IronPPT is the <code>Hue</code> class, alongside its sibling adjustments <code>Luminance</code> and <code>Saturation</code>, so most code sets the hue angle through <code>Hue</code> directly.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">hue.Angle = rotation;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> styles a shape fill, and the <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> covers related color work.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

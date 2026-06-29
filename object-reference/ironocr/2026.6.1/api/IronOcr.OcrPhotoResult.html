@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrPhotoResult
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrPhotoResult Class - IronOCR C# API
+      v2 (human)     title:       OcrPhotoResult: Read Text From Photos in C#
+      v1 (algorithm) description: Read photo OCR results in C# with the IronOCR OcrPhotoResult class: get TextRegions, the combined Text, a Confidence score, and SaveAsTextFile.
+      v2 (human)     description: Get text from a photo in C# with the IronOCR OcrPhotoResult: scattered TextRegions, the combined recognized text, and a confidence score.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrPhotoResult Class | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrPhotoResult
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrPhotoResult Class | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR OcrPhotoResult class in C#: the TextRegions, Text, and Confidence from reading a camera image.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrPhotoResult Class | IronOCR C# API",
+    "name": "OcrPhotoResult class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrPhotoResult.html",
+    "abstract": "Reading text from a photo in C# returns the IronOCR OcrPhotoResult class, the result tuned for camera images where text sits in scattered regions. TextRegions is a list of text blocks found across the frame, while Text gives the combined recognized string and Confidence reports overall certainty, both overriding AdvancedOcrResultBase. SaveAsTextFile writes the text to a file. Iterate TextRegions when position matters.",
+    "description": "Reference for the IronOCR OcrPhotoResult class in C#: the TextRegions, Text, and Confidence from reading a camera image.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrPhotoResult live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrPhotoResult is a class in the IronOcr namespace, shipped in IronOcr.dll. It extends AdvancedOcrResultBase and implements IOcrResult, and it is returned when IronTesseract reads a photo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get text regions from a photo in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the TextRegions property of an OcrPhotoResult, a list of OcrPhotoResult.TextRegion entries, each a block of text located in the image. Use the combined Text property for the full string, or SaveAsTextFile to write it out."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -174,6 +222,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class OcrPhotoResult : AdvancedOcrResultBase, IOcrResult</code></pre>
   </div>
+    <!-- archetype-N:start OcrPhotoResult treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Reading text out of a photo in C#, a snapshot of a sign, a label, or a receipt rather than a clean scan, produces an <code>OcrPhotoResult</code>. It is the result type tuned for camera images, where text appears in scattered regions across the frame instead of neat document lines, and it returns from the photo-reading path on <code>IronTesseract</code>. It extends <code>AdvancedOcrResultBase</code>, so it shares the advanced-scan result shape while specializing in the spatial layout a photo demands.</p>
+<p>The members center on those regions. <code>TextRegions</code> is a <code>List&lt;OcrPhotoResult.TextRegion&gt;</code>, each entry a block of text found somewhere in the image, which is the property that distinguishes a photo read from a flat document read. <code>Text</code> gives the combined recognized text and <code>Confidence</code> reports overall certainty, both overriding the base members. <code>SaveAsTextFile</code> writes the recognized text straight to a file when a quick dump is all a workflow needs. Iterate <code>TextRegions</code> when position matters, and fall back to <code>Text</code> for the plain string.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-photo/">read photo how-to</a> walks through reading a camera image, and the <a href="https://ironsoftware.com/csharp/ocr/examples/read-photo/">photo reading example</a> shows the regions in code.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Font
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Font Class - IronWord C# API Reference
+      v2 (human)     title:       Font: Set Typefaces in C# Word Documents
+      v1 (algorithm) description: Set the typeface in C# Word documents with the IronWord Font class. Choose a FontFamily, per-script faces, or theme fonts, and embed data.
+      v2 (human)     description: Control the typeface of text in a C# Word document with the IronWord Font class: set a font family, per-script faces, or theme fonts.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Font Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Font
-   | C# Word API | IronWord ">
+    <meta name="title" content="Font Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord Font class in C#: set FontFamily and per-script faces, follow a theme with AsciiTheme, and check IsEmbedded.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Font Class | IronWord C# API Reference",
+    "name": "Font class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Font.html",
+    "abstract": "The typeface a run of text uses in a C# Word document is described by IronWord's Font, covering the font family, per-script faces, and embedded data. Construct one and set FontFamily and Name for the primary face, HighAnsi, ComplexScript, and EastAsia for other scripts, or the nullable theme fonts AsciiTheme, HighAnsiTheme, ComplexScriptTheme, and EastAsiaTheme to follow a document theme. IsEmbedded reports embedding, and Clone copies a configured font.",
+    "description": "Reference for the IronWord Font class in C#: set FontFamily and per-script faces, follow a theme with AsciiTheme, and check IsEmbedded.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var font = new Font();\nfont.FontFamily = \"Calibri\";\nfont.EastAsia = \"MS Mincho\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Font live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Font is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object and implements IFont and ICloneable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set the typeface of text in a Word document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a Font, set FontFamily to the typeface name, and assign it through text styling. For other scripts, set HighAnsi, ComplexScript, or EastAsia to give those characters their own faces."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you make a font follow a document theme in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set one of the theme font properties, AsciiTheme, HighAnsiTheme, ComplexScriptTheme, or EastAsiaTheme, to a ThemeFontValues value. Leaving a theme font null falls back to the named face, and IsEmbedded reports whether the font is embedded."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -157,6 +221,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Font : Object, IFont, IFont, IDocumentObject, ICloneable</code></pre>
   </div>
+    <!-- archetype-N:start Font treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Font</code> describes the typeface a run of text uses in a Word document, covering the font family, the per-script faces, and the embedded font data. A developer sets it on text styling to control which typeface renders, including separate faces for Latin, complex-script, and East Asian text in the same document.</p>
+<p>A font is created with <code>new Font()</code> and configured through its properties, which group into three concerns. The named faces set the typeface directly: <code>FontFamily</code> and <code>Name</code> give the primary ASCII font, while <code>HighAnsi</code>, <code>ComplexScript</code>, and <code>EastAsia</code> set the faces for High ANSI, complex-script, and East Asian characters. The theme fonts let those faces follow a document theme instead of a fixed name: <code>AsciiTheme</code>, <code>HighAnsiTheme</code>, <code>ComplexScriptTheme</code>, and <code>EastAsiaTheme</code> each take a nullable <code>ThemeFontValues</code>, so leaving one null falls back to a named face. The embedding concern is read through <code>IsEmbedded</code>, which reports whether the font travels with the document, and <code>FontData</code>, which holds the raw font bytes.</p>
+<p>Choosing between a named face and a theme font is the main decision when working with this type. A fixed <code>FontFamily</code> pins the typeface regardless of theme, while setting a theme font keeps the text in step with the document's theme as it changes. The per-script faces matter for multilingual documents, where Latin, complex-script, and East Asian text often need different typefaces. <code>Clone</code> produces an independent copy of a configured font, which is convenient when one base font is varied slightly across several styles without sharing a single mutable instance.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var font = new Font();
+font.FontFamily = &quot;Calibri&quot;;
+font.EastAsia = &quot;MS Mincho&quot;;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-style-text/">add style text how-to</a> applies fonts to text, the <a href="https://ironsoftware.com/csharp/word/examples/add-style-text/">add style text example</a> shows a worked styling pass, and the <a href="https://ironsoftware.com/csharp/word/how-to/add-text/">add text how-to</a> covers placing the text itself.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

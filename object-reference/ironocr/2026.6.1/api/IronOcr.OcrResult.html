@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrResult
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrResult Class - IronOCR C# API Reference
+      v2 (human)     title:       OcrResult: The OCR Document Model in C#
+      v1 (algorithm) description: Read OCR output in C# with the IronOCR OcrResult class: get Text, Pages, Words, Lines, Confidence, Barcodes, and export a searchable PDF or hOCR.
+      v2 (human)     description: Work with full OCR output in C# through the IronOCR OcrResult class: text, page structure, confidence, barcodes, and searchable PDF export.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrResult Class | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrResult
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrResult Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR OcrResult class in C#: the document model IronTesseract.Read returns, with text, structure, and searchable PDF output.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrResult Class | IronOCR C# API Reference",
+    "name": "OcrResult class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrResult.html",
+    "abstract": "Working with OCR output in C# runs through the IronOCR OcrResult class, the document object model IronTesseract.Read returns. It exposes the recognized Text plus structured Pages, Paragraphs, Lines, Words, Characters, Blocks, Tables, and Barcodes, along with Confidence, PageCount, and the engine details EngineModeUsed and TesseractVersion. Methods such as SaveAsSearchablePdf, SaveAsHocrString, SaveAsHtmlString, and ToJson export the result.",
+    "description": "Reference for the IronOCR OcrResult class in C#: the document model IronTesseract.Read returns, with text, structure, and searchable PDF output.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronOcr;\n\nvar ocr = new IronTesseract();\nusing var input = new OcrInput();\ninput.LoadImage(\"scan.png\");\nOcrResult result = ocr.Read(input);\nConsole.WriteLine(result.Text);\nresult.SaveAsSearchablePdf(\"searchable.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrResult live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrResult is a class in the IronOcr namespace, shipped in IronOcr.dll. It derives from System.Object and implements IOcrResult and IDocumentWithExtractableText. IronTesseract.Read returns an OcrResult."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get the recognized text from an OcrResult in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Text property for the full document string, or call ExtractTextFromPage to get the text of a single page. For structure, iterate Pages, Paragraphs, Lines, Words, and Characters instead of parsing the flat string."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can OcrResult export a searchable PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Call SaveAsSearchablePdf to write a layered, searchable PDF, or SaveAsSearchablePdfBytes and SaveAsSearchablePdfStream for in-memory output. SaveAsHocrString, SaveAsHtmlString, and ToJson cover hOCR, HTML, and JSON export."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -157,6 +221,22 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class OcrResult : Object, IOcrResult, IDocumentPageContainer&lt;OcrResultPagesCollection&gt;, IDocumentWithExtractableText</code></pre>
   </div>
+    <!-- archetype-N:start OcrResult treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>OcrResult</code> is the object you hold after <code>IronTesseract</code> reads an image or <code>OcrInput</code>, the full document object model for everything the engine recognized. Reach for it whenever a project needs more than a flat string of text: word positions, per-page structure, confidence scores, and the searchable PDF or hOCR export that downstream steps depend on. It is what <code>IronTesseract.Read</code> hands back, and it is distinct from the lighter single-purpose results such as <code>OcrPhotoResult</code> or <code>OcrLicensePlateResult</code>, which expose only a <code>Text</code>/<code>Confidence</code> trio for one scenario.</p>
+<p>A read produces one <code>OcrResult</code>. <code>IronTesseract.Read</code> returns it directly, so a typical flow constructs an <code>IronTesseract</code>, builds an <code>OcrInput</code> from images or a PDF, calls <code>Read</code>, and then walks the result. The structure spans the whole input: <code>PageCount</code> reports how many pages were read, <code>Pages</code> exposes the per-page collection, and the overall <code>Confidence</code> summarizes recognition quality across the document.</p>
+<p>The members fall into clear groups. For text, read <code>Text</code> for the full string or <code>ExtractTextFromPage</code> for a single page. For structure, iterate <code>Pages</code>, <code>Paragraphs</code>, <code>Lines</code>, <code>Words</code>, and <code>Characters</code>, with <code>Blocks</code> and <code>Tables</code> for layout regions and <code>Barcodes</code> for any codes found alongside the text. For output, call <code>SaveAsSearchablePdf</code> to produce a layered PDF, <code>SaveAsHocrFile</code> or <code>SaveAsHocrString</code> for hOCR, <code>SaveAsHtmlString</code> for HTML, or <code>ToJson</code> to serialize the whole model. <code>EngineModeUsed</code> and <code>TesseractVersion</code> record how the read ran, and <code>Cancelled</code> reports whether a cancellation token stopped it early.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronOcr;
+
+var ocr = new IronTesseract();
+using var input = new OcrInput();
+input.LoadImage(&quot;scan.png&quot;);
+OcrResult result = ocr.Read(input);
+Console.WriteLine(result.Text);
+result.SaveAsSearchablePdf(&quot;searchable.pdf&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/examples/results-objects/">OCR results objects example</a> walks the document model property by property, the <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">read results how-to</a> shows how to pull text and coordinates, and the <a href="https://ironsoftware.com/csharp/ocr/examples/make-pdf-searchable/">searchable PDF example</a> builds the layered export.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

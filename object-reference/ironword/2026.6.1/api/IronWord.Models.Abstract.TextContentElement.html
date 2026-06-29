@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TextContentElement
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextContentElement - IronWord C# API
+      v2 (human)     title:       TextContentElement: Styled Word Text in C#
+      v1 (algorithm) description: TextContentElement is the IronWord base for a styled Word text node in C#: it pairs Text and Style with Find and Replace for search-and-replace edits.
+      v2 (human)     description: Hold and edit a styled run of Word text in C# with IronWord's TextContentElement base: read its Text and Style, then Find and Replace its content.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextContentElement Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TextContentElement
-   | C# Word API | IronWord ">
+    <meta name="title" content="TextContentElement Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord TextContentElement class in C#: the abstract base behind Text, with Text, Style, Find, and Replace members.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextContentElement Class | IronWord C# API",
+    "name": "TextContentElement class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Abstract.TextContentElement.html",
+    "abstract": "Carrying a styled run of words as a single Word document node in C# is what the IronWord TextContentElement base class defines. The concrete Text node extends it. It pairs the Text string with a TextStyle through the Style property, and exposes Find to locate positions of a search string and Replace to swap substrings, both with optional regex, whole-word, and case-sensitivity switches.",
+    "description": "Reference for the IronWord TextContentElement class in C#: the abstract base behind Text, with Text, Style, Find, and Replace members.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nText run = new Text(\"Quarterly Report\");\nrun.Replace(\"Quarterly\", \"Annual\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TextContentElement live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextContentElement is an abstract class in the IronWord.Models.Abstract namespace, shipped in IronWord.dll. It derives from ContentElement and implements the ITextContentElement interface; the concrete Text node extends it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you find and replace text in a run in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Find with a search string to get the positions where it occurs, or Replace with the search and replacement strings to swap content; both accept optional regex, whole-word, and case-sensitive arguments. Read Text for the literal content and Style for its TextStyle."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -179,6 +235,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class TextContentElement : ContentElement, lyduza, ITextContentElement</code></pre>
   </div>
+    <!-- archetype-N:start TextContentElement treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Carrying a styled run of words as a single document node in C# is what <code>TextContentElement</code> defines. It is the base for the leaf node that holds text directly, pairing the string content with its formatting and the search-and-replace operations that act on it. The concrete type that extends it is <code>Text</code>, the node a developer normally creates and edits.</p>
+<p>A <code>TextContentElement</code> is obtained as the base of a <code>Text</code> node built or read from a document, not constructed on its own, since the type is abstract; it also satisfies the <code>ITextContentElement</code> contract. <code>Text</code> is the literal string the node holds, and <code>Style</code> is the <code>TextStyle</code> that formats it, covering font, color, and emphasis. <code>Find</code> returns the character positions where a search string occurs, with optional regex, whole-word, and case-sensitive switches. <code>Replace</code> swaps one substring for another using the same options and returns the updated <code>ITextContentElement</code>. <code>ToString</code> yields the node's text for quick inspection.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+Text run = new Text(&quot;Quarterly Report&quot;);
+run.Replace(&quot;Quarterly&quot;, &quot;Annual&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/edit-text/">edit text how-to</a> changes run content, the <a href="https://ironsoftware.com/csharp/word/how-to/replace-words/">replace words how-to</a> covers find-and-replace, and the <a href="https://ironsoftware.com/csharp/word/how-to/add-style-text/">add style text how-to</a> applies a TextStyle.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

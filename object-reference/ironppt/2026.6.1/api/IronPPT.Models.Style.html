@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Style
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Style Class - IronPPT C# API Reference
+      v2 (human)     title:       Style: Reusable Slide Styles in C#
+      v1 (algorithm) description: Define reusable named styles in C# with the IronPPT Style class: bundle a ParagraphStyle and TextStyle, set StyleType, and inherit with BasedOn.
+      v2 (human)     description: Share formatting across a deck in C# with the IronPPT Style class: name a style, set its paragraph and text formatting, and derive variants.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Style Class | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Style
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="Style Class | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT Style class in C#: a named style bundling ParagraphStyle and TextStyle, with StyleType, IsPrimaryStyle, and BasedOn.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Style Class | IronPPT C# API Reference",
+    "name": "Style class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Style.html",
+    "abstract": "Defining a reusable named style in C# is the role of IronPPT's Style class. It bundles a ParagraphStyle and a TextStyle under a StyleName, with StyleType marking its target and IsPrimaryStyle the default. BasedOn inherits from another style and NextParagraphStyle chains the following paragraph's style.",
+    "description": "Reference for the IronPPT Style class in C#: a named style bundling ParagraphStyle and TextStyle, with StyleType, IsPrimaryStyle, and BasedOn.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var style = new Style();\nstyle.StyleName = \"Heading1\";\nstyle.TextStyle.IsBold = true;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Style live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Style is a class in the IronPPT.Models namespace, shipped in IronPPT.dll. It derives from the DocumentStyle base and implements IDocumentStyle and IStyle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create a reusable style in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a Style, give it a StyleName, and set its TextStyle and ParagraphStyle for the formatting. Reference the style from elements so changing it once updates everything that uses it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you base one style on another in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the BasedOn property to another style's name to inherit its formatting, then override only the properties that differ. Use NextParagraphStyle to set the style applied to the paragraph that follows."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -164,6 +228,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Style : DocumentStyle, IDocumentStyle, IStyle</code></pre>
   </div>
+    <!-- archetype-N:start Style treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Reach for <code>Style</code> to define a reusable named style that paragraphs and runs in a presentation can share. It bundles paragraph formatting and text formatting under one name, so a developer can change a heading's look in one place and have every element that uses that style update with it.</p>
+<p>A <code>Style</code> is registered in the presentation's style set and then referenced by other elements. Its formatting lives in two slots: <code>ParagraphStyle</code> (an <code>IParagraphStyle</code>) holds spacing, indentation, and alignment, while <code>TextStyle</code> (an <code>ITextStyle</code>) holds bold, italic, color, and size. Identity and behavior come from <code>StyleName</code>, the readable name; <code>StyleType</code>, a <code>Nullable&lt;StyleValues&gt;</code> that marks whether the style applies to paragraphs, characters, or another target; and <code>IsPrimaryStyle</code>, a <code>Nullable&lt;bool&gt;</code> flagging it as the document's default. The inherited <code>StyleId</code> and <code>Status</code> (from <code>DocumentStyle</code>) carry the underlying identifier and state.</p>
+<p>Use <code>BasedOn</code> to inherit from another style by name, setting only the properties that differ, and <code>NextParagraphStyle</code> to chain the style applied to the following paragraph, the familiar &quot;Heading then Body&quot; sequence. The <code>StyleType</code> value matters here because it tells IronPPT what the style targets, so a character style and a paragraph style with the same name stay distinct. Mark the deck's default with <code>IsPrimaryStyle</code> so unstyled content falls back to a known look. Build a base style, derive variants with <code>BasedOn</code>, and assign <code>TextStyle</code> and <code>ParagraphStyle</code> for the specifics so a deck's typography stays consistent without repeating formatting on every element.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var style = new Style();
+style.StyleName = &quot;Heading1&quot;;
+style.TextStyle.IsBold = true;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> styles paragraph formatting, the <a href="https://ironsoftware.com/csharp/ppt/examples/add-paragraph/">add paragraph example</a> builds the paragraphs a style applies to, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> places the text a text style formats.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

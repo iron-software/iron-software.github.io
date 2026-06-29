@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class LibTesseract5Instance
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       LibTesseract5Instance - IronOCR C# API
+      v2 (human)     title:       LibTesseract5Instance: Tesseract 5 Binding in C#
+      v1 (algorithm) description: LibTesseract5Instance is IronOCR's native Tesseract 5 binding in C#: it implements ILibTesseract for recognition, iteration, and rendering.
+      v2 (human)     description: Call the native Tesseract 5 engine in C# through IronOCR's LibTesseract5Instance, the ILibTesseract implementation that marshals each step.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>LibTesseract5Instance | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class LibTesseract5Instance
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="LibTesseract5Instance | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR LibTesseract5Instance class in C#: the ILibTesseract implementation that binds the native Tesseract 5 engine.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "LibTesseract5Instance | IronOCR C# API Reference",
+    "name": "LibTesseract5Instance class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.LibTesseract5Instance.html",
+    "abstract": "LibTesseract5Instance binds the native Tesseract 5 engine for IronOCR in C#, marshalling managed calls into the engine's C API through HandleRef handles. It implements ILibTesseract with members for engine lifecycle and recognition, page and result iteration, PDF, hOCR, and text rendering, and native memory cleanup. Most code holds it as an ILibTesseract or works through the high-level IronTesseract API.",
+    "description": "Reference for the IronOCR LibTesseract5Instance class in C#: the ILibTesseract implementation that binds the native Tesseract 5 engine.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "ILibTesseract engine = new LibTesseract5Instance();\nstring version = engine.GetVersion();"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does LibTesseract5Instance live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LibTesseract5Instance is a class in the DynamicTesseract namespace, shipped in IronOcr.dll, with Object as its base type. It implements the ILibTesseract interface and is constructed with a parameterless new LibTesseract5Instance()."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does LibTesseract5Instance relate to ILibTesseract in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LibTesseract5Instance is the concrete implementation of the ILibTesseract contract. It forwards each interface member to the bundled Tesseract 5 native binary, so callers typically hold it as an ILibTesseract to keep the binding swappable and testable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you call LibTesseract5Instance directly in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usually no. The high-level IronTesseract API and the Page it produces wrap the entire recognition flow. Use LibTesseract5Instance directly only when integrating the native Tesseract 5 engine outside IronOCR's high-level path."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -153,6 +217,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class LibTesseract5Instance : Object, ILibTesseract</code></pre>
   </div>
+    <!-- archetype-N:start LibTesseract5Instance treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Talking to the bundled Tesseract 5 binary runs through <code>LibTesseract5Instance</code>, the concrete native binding that turns managed calls into the engine's C API. It is the object that actually performs every low-level recognition step IronOCR relies on, with each method marshalling its arguments across the managed boundary through <code>HandleRef</code> handles.</p>
+<p>The class implements <code>ILibTesseract</code> and is constructed with a parameterless <code>new LibTesseract5Instance()</code>. Because it satisfies that contract, callers usually hold it as an <code>ILibTesseract</code> so the binding can be mocked in tests, and most application code never names it at all, since <code>IronTesseract</code> and the <code>Page</code> it produces wrap the entire flow. Reach for the instance directly only when integrating the native engine outside IronOCR's high-level path.</p>
+<p>Its members follow the same functional buckets as the contract. The engine-lifecycle and recognition calls (<code>BaseApiCreate</code>, <code>BaseApiInit</code>, <code>BaseApiSetImage</code>, <code>BaseApiRecognize</code>, <code>BaseAPIGetUTF8TextInternal</code>, <code>BaseAPISetPageSegMode</code>, <code>BaseApiSetVariable</code>) start the API, load an image, run recognition, and read results or tune variables. The iterator buckets walk the recognized layout: the <code>PageIterator*</code> calls (<code>PageIteratorBegin</code>, <code>PageIteratorNext</code>, <code>PageIteratorBoundingBox</code>) for geometry, the <code>ResultIterator*</code> calls for text and confidence, and the <code>ChoiceIterator*</code> calls for alternative readings. The rendering bucket (<code>PDFRendererCreate</code>, <code>HOcrRendererCreate</code>, <code>TextRendererCreate</code>, and the <code>ResultRenderer*</code> calls) builds searchable-PDF, hOCR, and text output, while <code>GetVersion</code> reports the linked engine version. The memory bucket (<code>DeleteText</code>, <code>DeleteIntArray</code>, <code>BaseApiDelete</code>) frees the native allocations each call returns.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">ILibTesseract engine = new LibTesseract5Instance();
+string version = engine.GetVersion();</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/examples/csharp-tesseract-5/">Tesseract 5 example</a> shows the high-level engine, the <a href="https://ironsoftware.com/csharp/ocr/examples/csharp-configure-setup-tesseract/">configure and set up Tesseract example</a> covers setup, and the <a href="https://ironsoftware.com/csharp/ocr/tutorials/c-sharp-tesseract-ocr/">Tesseract OCR tutorial</a> walks the engine in full.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

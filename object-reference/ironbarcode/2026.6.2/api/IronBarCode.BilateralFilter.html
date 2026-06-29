@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BilateralFilter
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       BilateralFilter - IronBarcode C# API Reference
+      v2 (human)     title:       BilateralFilter: Edge-Safe Smoothing in C#
+      v1 (algorithm) description: Smooth barcode noise while preserving edges in C# with IronBarcode BilateralFilter: NeighborhoodDiameter, SigmaColor, and SigmaSpace control the pass.
+      v2 (human)     description: Clean a grainy barcode in C# with IronBarcode BilateralFilter, an edge-preserving smooth that flattens noise without blurring the bar edges.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>BilateralFilter Class | IronBarcode C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BilateralFilter
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="BilateralFilter Class | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode BilateralFilter class in C#: edge-preserving smoothing added to BarcodeReaderOptions.ImageFilters before reading.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "BilateralFilter Class | IronBarcode C# API",
+    "name": "BilateralFilter class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.BilateralFilter.html",
+    "abstract": "BilateralFilter smooths noise from a barcode image in C# with IronBarcode while preserving edges, weighing both color difference and pixel distance so bar edges survive the cleanup. It implements IImageFilter, goes into the ImageFilterCollection on BarcodeReaderOptions.ImageFilters, and exposes NeighborhoodDiameter, SigmaColor, and SigmaSpace to tune the neighborhood size and smoothing strength.",
+    "description": "Reference for the IronBarcode BilateralFilter class in C#: edge-preserving smoothing added to BarcodeReaderOptions.ImageFilters before reading.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nvar options = new BarcodeReaderOptions\n{\n    ImageFilters = new ImageFilterCollection { new BilateralFilter() }\n};\nvar results = BarcodeReader.Read(\"grainy.png\", options);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does BilateralFilter live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BilateralFilter is a class in the IronBarCode namespace, shipped in IronBarCode.dll. It derives from Object and implements IImageFilter, so it can be added to the ImageFilterCollection assigned to BarcodeReaderOptions.ImageFilters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does BilateralFilter differ from GaussianBlurFilter for barcodes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GaussianBlurFilter averages neighboring pixels uniformly, softening edges along with noise. BilateralFilter weighs color difference and distance, so it removes noise while keeping the sharp bar edges a decoder needs. Use it when edge fidelity matters."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,6 +210,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class BilateralFilter : Object, IImageFilter</code></pre>
   </div>
+    <!-- archetype-N:start BilateralFilter treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Smoothing noise out of a barcode image without softening the bar edges runs through <code>BilateralFilter</code>. A plain blur averages every pixel with its neighbors and blurs the edges along with the grain, but a bilateral pass weighs both color difference and pixel distance, so it flattens speckle and grain while keeping the sharp light-to-dark transitions a decoder relies on. This is the filter for a grainy photo or a noisy scan where edge fidelity has to survive the cleanup.</p>
+<p>The filter implements <code>IImageFilter</code> and goes into the <code>ImageFilterCollection</code> on <code>BarcodeReaderOptions.ImageFilters</code>, applied in collection order before the read. A developer constructs it, adds it to the collection, and passes the options to <code>BarcodeReader.Read</code>. The parameterless constructor uses tuned defaults; the three-argument overload exposes <code>NeighborhoodDiameter</code> for the pixel-neighborhood diameter (default 5), <code>SigmaColor</code> for how strongly color difference is weighed (default 75.0), and <code>SigmaSpace</code> for how strongly distance is weighed (default 75.0). Raise the sigmas for heavier smoothing when the noise is severe.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+var options = new BarcodeReaderOptions
+{
+    ImageFilters = new ImageFilterCollection { new BilateralFilter() }
+};
+var results = BarcodeReader.Read(&quot;grainy.png&quot;, options);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/image-correction/">image correction how-to</a> compares the bilateral and Gaussian passes on a sample, and the <a href="https://ironsoftware.com/csharp/barcode/examples/imperfect-barcode-with-image-correction/">imperfect barcode example</a> reads a degraded image through a pipeline.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

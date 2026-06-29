@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IOcrPageCollection
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IOcrPageCollection - IronOCR C# API
+      v2 (human)     title:       IOcrPageCollection: OCR Pages Contract in C#
+      v1 (algorithm) description: IOcrPageCollection is the read-only OCR pages contract in IronOCR for C#: a typed, enumerable collection of OcrResult.Page items.
+      v2 (human)     description: Accept the pages of any IronOCR read in C# through the IOcrPageCollection contract, implemented by the OcrResultPagesCollection that Pages returns.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IOcrPageCollection Interface | IronOCR .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IOcrPageCollection
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="IOcrPageCollection Interface | IronOCR .NET API">
+    <meta name="description" content="Reference for the IronOCR IOcrPageCollection interface in C#: the read-only, enumerable page collection implemented by OcrResultPagesCollection.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IOcrPageCollection Interface | IronOCR .NET API",
+    "name": "IOcrPageCollection interface | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrResults.IOcrPageCollection.html",
+    "abstract": "IOcrPageCollection is the read-only contract for a set of IronOCR result pages in C#. It extends IReadOnlyCollection and IEnumerable of OcrResult.Page, so you get a Count and can enumerate pages without mutating the collection. The concrete implementor is OcrResultPagesCollection, the type OcrResult.Pages returns, so reading result.Pages gives you an IOcrPageCollection.",
+    "description": "Reference for the IronOCR IOcrPageCollection interface in C#: the read-only, enumerable page collection implemented by OcrResultPagesCollection.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IOcrPageCollection live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IOcrPageCollection is an interface in the IronOcr.OcrResults namespace, shipped in IronOcr.dll. It extends IDocumentPageCollection<OcrResult.Page>, IReadOnlyCollection<OcrResult.Page>, and IEnumerable, so it is a typed, read-only page collection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IOcrPageCollection in IronOCR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrResultPagesCollection implements IOcrPageCollection and is the type returned by OcrResult.Pages. Read result.Pages to obtain one; type a parameter as IOcrPageCollection only when a helper should accept pages from any source."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -147,7 +195,15 @@
   </div>
   
   
-</article>
+  <!-- archetype-N:start IOcrPageCollection treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p><code>IOcrPageCollection</code> is the read-only contract for a set of OCR result pages. It lets code accept &quot;the pages of a read&quot; without binding to a concrete list type, so a method can take the pages of any <code>OcrResult</code> and enumerate them the same way.</p>
+<p>The contract is a typed, read-only page collection: it extends <code>IReadOnlyCollection&lt;OcrResult.Page&gt;</code> and <code>IEnumerable&lt;OcrResult.Page&gt;</code>, so you get a <code>Count</code> and can <code>foreach</code> over <code>OcrResult.Page</code> items, but the collection is not meant to be mutated by consumers. The concrete implementor in IronOCR is <code>OcrResultPagesCollection</code>, the type <code>OcrResult.Pages</code> returns, so in practice you obtain an <code>IOcrPageCollection</code> simply by reading <code>result.Pages</code>.</p>
+<p>Most code uses <code>result.Pages</code> directly and never names the interface. Type a parameter as <code>IOcrPageCollection</code> when you want a helper that processes pages from any source and stays easy to test, since a unit test can pass a stub collection of <code>OcrResult.Page</code> instead of running a real read. Either way, enumerate the pages and read each one through the <code>OcrResult.Page</code> members.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/examples/results-objects/">OCR results objects example</a> iterates the page collection, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">reading results how-to</a> shows how to process each page.</p>
+  </div>
+  <!-- archetype-N:end -->
+  </article>
           </div>
            
           <div class="hidden-sm col-md-2" role="complementary">

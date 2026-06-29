@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IFont
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IFont Interface - IronXL C# API Reference
+      v2 (human)     title:       IFont: Set Excel Cell Fonts in C#
+      v1 (algorithm) description: Set Excel cell fonts in C# through the IronXL IFont interface from IStyle.Font: control Name, Height, Bold, Italic, Underline, and color via SetColor.
+      v2 (human)     description: Control Excel cell typefaces in C# with the IronXL IFont contract: read Style.Font and set family, size, bold, italic, underline, and color.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IFont Interface | IronXL C# .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IFont
-   | C# Excel API | IronXL ">
+    <meta name="title" content="IFont Interface | IronXL C# .NET API">
+    <meta name="description" content="Reference for the IronXL IFont interface in C#: the font contract from IStyle.Font for typeface, size, bold, italic, underline, and color.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IFont Interface | IronXL C# .NET API",
+    "name": "IFont interface | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Styles.IFont.html",
+    "abstract": "IStyle.Font returns IronXL's IFont interface in C#, the font contract for an Excel cell or range. Name sets the typeface, Height the point size, and Bold and Italic the weight and slant. Underline takes a FontUnderlineType, Strikeout and FontScript add decoration, and Color or the SetColor method sets the text color. Assigning through a range's style applies the font to every cell.",
+    "description": "Reference for the IronXL IFont interface in C#: the font contract from IStyle.Font for typeface, size, bold, italic, underline, and color.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nWorkBook workbook = WorkBook.Load(\"report.xlsx\");\nWorkSheet sheet = workbook.DefaultWorkSheet;\nIFont font = sheet[\"A1\"].Style.Font;\nfont.Name = \"Calibri\";\nfont.Height = 14;\nfont.Bold = true;\nfont.SetColor(\"#C00000\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IFont live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IFont is an interface in the IronXL.Styles namespace, shipped in IronXL.dll. It is returned by the Font property of IStyle, which itself comes from Cell.Style or Range.Style."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What returns IFont in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IStyle.Font returns an IFont. Because IStyle comes from Cell.Style and Range.Style, the typical path is range.Style.Font. IronXL exposes IFont through that property rather than letting you construct one directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you make Excel text bold in C# with IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read Cell.Style.Font or Range.Style.Font to get an IFont, then set Bold to true. The same object's Name, Height, Italic, Underline, and SetColor control the typeface, size, slant, underline, and color."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +209,23 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IFont</code></pre>
   </div>
+    <!-- archetype-N:start IFont treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>Controlling the typeface of an Excel cell in C# runs through <code>IFont</code>. It describes the font applied to a cell or range, the family, size, weight, and decoration, and is the part of a cell's style a developer touches whenever text needs to stand out as a heading, a total, or a flagged value. It pairs with the borders and fill on the same cell to produce the finished look.</p>
+<p>A developer reaches <code>IFont</code> through <code>IStyle.Font</code>, the get-only property on the style returned by <code>Cell.Style</code> or <code>Range.Style</code>. There is no separate construction step: read <code>.Style.Font</code> and assign to its members, and assigning through a range's style applies the font to every cell in that range at once. This keeps header rows and labeled columns consistent without per-cell code.</p>
+<p>The members map closely to Excel's font dialog. <code>Name</code> sets the typeface and <code>Height</code> the point size, while <code>Bold</code> and <code>Italic</code> control the weight and slant a heading or total usually needs. <code>Underline</code> takes a <code>FontUnderlineType</code> for single or double underlining, <code>Strikeout</code> draws a line through the text for struck-out values, and <code>FontScript</code> raises or lowers text for superscript and subscript. Color is set either through the <code>Color</code> string property or the <code>SetColor</code> method, which accepts a <code>Color</code> value or an RGB string for convenience, so a developer can pass whichever form is already on hand. Because <code>IFont</code> is reached through <code>IStyle.Font</code>, the usual idiom chains the two: <code>range.Style.Font.Bold = true</code>, and the same font members carry over whether the target is one cell or a whole range.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+WorkBook workbook = WorkBook.Load(&quot;report.xlsx&quot;);
+WorkSheet sheet = workbook.DefaultWorkSheet;
+IFont font = sheet[&quot;A1&quot;].Style.Font;
+font.Name = &quot;Calibri&quot;;
+font.Height = 14;
+font.Bold = true;
+font.SetColor(&quot;#C00000&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/cell-font-size/">cell font size how-to</a> covers sizing and weight, the <a href="https://ironsoftware.com/csharp/excel/examples/excel-style-cells-borders-fonts/">style cells, borders, and fonts example</a> shows fonts alongside the rest of a cell's styling, and the <a href="https://ironsoftware.com/csharp/excel/how-to/border-alignment/">border and alignment how-to</a> covers the borders and layout that pair with a font on the same style.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

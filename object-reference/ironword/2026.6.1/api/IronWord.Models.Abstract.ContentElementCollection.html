@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ContentElementCollection
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ContentElementCollection - IronWord C# API
+      v2 (human)     title:       ContentElementCollection: Iterate Word Nodes in C#
+      v1 (algorithm) description: ContentElementCollection groups IronWord document nodes in C#: read Count, index items, iterate with GetEnumerator, and find positions with First, Last, IndexOf.
+      v2 (human)     description: Walk an ordered set of Word document nodes in C# with IronWord's ContentElementCollection: count, index, iterate, and locate items by position.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ContentElementCollection | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ContentElementCollection
-   | C# Word API | IronWord ">
+    <meta name="title" content="ContentElementCollection | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord ContentElementCollection class in C#: an indexed, enumerable list of IWordDocumentObject items with First, Last, and IndexOf.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ContentElementCollection | IronWord C# API",
+    "name": "ContentElementCollection class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Abstract.ContentElementCollection.html",
+    "abstract": "Holding an ordered group of IronWord document nodes in C# is the job of the ContentElementCollection class. Construct it empty or from an IList of IWordDocumentObject, then read Count, index items with the [int] indexer, and iterate with GetEnumerator. First, Last, and IndexOf locate items by position, and every entry is typed as the shared IWordDocumentObject contract.",
+    "description": "Reference for the IronWord ContentElementCollection class in C#: an indexed, enumerable list of IWordDocumentObject items with First, Last, and IndexOf.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models.Abstract;\n\nvar collection = new ContentElementCollection();\nConsole.WriteLine(collection.Count);\nforeach (var item in collection)\n    Console.WriteLine(item);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ContentElementCollection live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ContentElementCollection is a class in the IronWord.Models.Abstract namespace, shipped in IronWord.dll. It derives from System.Object and implements IWordDocumentObjectCollection along with the generic IEnumerable of IWordDocumentObject."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you iterate the items in a ContentElementCollection in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use a foreach loop, since GetEnumerator returns an enumerator over IWordDocumentObject. Read Count for the size, index a position with the [int] indexer, and call First or Last for the ends of the collection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you find the position of an item in a ContentElementCollection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call IndexOf with the IWordDocumentObject you are looking for; it returns the item's zero-based position in the collection. Because the collection enumerates IWordDocumentObject, you can also query it with LINQ."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -157,6 +221,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ContentElementCollection : Object, IWordDocumentObjectCollection, IDocumentObjectCollection&lt;IWordDocumentObject&gt;, IEnumerable&lt;IWordDocumentObject&gt;, IEnumerable</code></pre>
   </div>
+    <!-- archetype-N:start ContentElementCollection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Holding an ordered group of document nodes in C# is the job of <code>ContentElementCollection</code>. It is the list type IronWord uses to gather the content elements that belong together, exposing them through an indexer and standard iteration so you can walk, count, and address each item the same way you would any .NET collection. Where a single <code>ContentElement</code> is one node, this is the sequence of them.</p>
+<p>A collection is created empty with <code>new ContentElementCollection()</code> or seeded from an existing <code>IList&lt;IWordDocumentObject&gt;</code> through the second constructor, which copies the supplied items in. From there a developer reads <code>Count</code> for the size, indexes into it with the <code>[int index]</code> indexer to fetch the item at a position, and iterates it with <code>foreach</code> because <code>GetEnumerator</code> returns an enumerator over <code>IWordDocumentObject</code>. Each entry is typed as <code>IWordDocumentObject</code>, the shared document-object contract, so the same collection can carry mixed content.</p>
+<p>The lookup helpers cover the common positions: <code>First</code> and <code>Last</code> return the ends of the collection, and <code>IndexOf</code> reports where a given object sits, returning its zero-based position. Reach for these rather than re-implementing them when you need the leading or trailing element or want to confirm membership before editing. Because the collection enumerates <code>IWordDocumentObject</code>, it composes cleanly with LINQ when a richer query is needed, and the indexer makes a positional edit a one-line lookup. Treat the collection as the read side of a document region: walk it to inspect what is there, then act on the individual nodes through their own members.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models.Abstract;
+
+var collection = new ContentElementCollection();
+Console.WriteLine(collection.Count);
+foreach (var item in collection)
+    Console.WriteLine(item);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/extract-text/">extract text how-to</a> reads content out of a document, the <a href="https://ironsoftware.com/csharp/word/how-to/add-text/">add text how-to</a> adds nodes to it, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> shows how nodes are grouped and traversed.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class MergeCell
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       MergeCell Class - IronWord C# API Reference
+      v2 (human)     title:       MergeCell: Merge Word Table Cells in C#
+      v1 (algorithm) description: Merge Word table cells in C# with the IronWord MergeCell class: StartRow, StartColumn, EndRow, and EndColumn mark the block a Table combines.
+      v2 (human)     description: Combine a block of Word table cells into one in C# with the IronWord MergeCell class, the record behind Table.MergeCells and MergedCells.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>MergeCell Class | IronWord .NET API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class MergeCell
-   | C# Word API | IronWord ">
+    <meta name="title" content="MergeCell Class | IronWord .NET API Reference">
+    <meta name="description" content="Reference for the IronWord MergeCell class in C#: the corner coordinates of a merged table region, applied through Table.MergeCells.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "MergeCell Class | IronWord .NET API Reference",
+    "name": "MergeCell class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.MergeCell.html",
+    "abstract": "Combining a rectangular block of Word table cells into one in C# runs through the IronWord MergeCell class. It records the merge with four zero-based coordinates: StartRow and StartColumn for the top-left corner, EndRow and EndColumn for the bottom-right. A Table applies a merge through MergeCells with the same arguments and lists applied regions in MergedCells.",
+    "description": "Reference for the IronWord MergeCell class in C#: the corner coordinates of a merged table region, applied through Table.MergeCells.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "table.MergeCells(0, 0, 0, 2);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does MergeCell live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MergeCell is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object and describes a merged region by its corner coordinates; a Table exposes the applied records through its MergedCells property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you merge table cells in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call MergeCells on the Table with the start-row, start-column, end-row, and end-column of the block. The merged region behaves as the single cell at the start corner, and the Table's MergedCells property lists the MergeCell records in effect."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are MergeCell coordinates zero-based in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. StartRow, StartColumn, EndRow, and EndColumn are zero-based, so the first row and first column are index 0. Keep the start corner above and to the left of the end corner for a valid block."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class MergeCell : Object</code></pre>
   </div>
+    <!-- archetype-N:start MergeCell treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When two or more table cells should read as one, a <code>MergeCell</code> records the rectangular block they span. It captures the corner coordinates of a merge so a table can present a single combined cell, the pattern behind a header that stretches across columns or a label that runs down several rows.</p>
+<p>A merge is defined by four zero-based coordinates: <code>StartRow</code> and <code>StartColumn</code> mark the top-left cell of the block, and <code>EndRow</code> and <code>EndColumn</code> mark the bottom-right. The range between those corners becomes the merged region. In practice you do not build the geometry by hand for every case; a <code>Table</code> exposes <code>MergeCells</code>, which takes the same start-row, start-column, end-row, and end-column arguments and performs the merge, while the table's <code>MergedCells</code> property lists the <code>MergeCell</code> records already applied. Reading that list tells you which regions of an existing table are combined.</p>
+<p>Set the four coordinates to cover the block you want, keeping the start corner above and to the left of the end corner, then let the table apply it. Because the values are zero-based, the first row and first column are index <code>0</code>, so a header spanning the first three columns of the top row runs from <code>(0, 0)</code> to <code>(0, 2)</code>. Once merged, the cells behave as the single cell at the start corner, which is where content for the region is read and written through <code>GetCell</code>. The cells absorbed into the block no longer hold their own content, so populate the start cell after the merge rather than before. A table can carry several merges at once, each its own <code>MergeCell</code> record, which is how a layout combines a banner row and a stacked label column in the same grid.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">table.MergeCells(0, 0, 0, 2);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/examples/add-table/">add table example</a> builds a table, the <a href="https://ironsoftware.com/csharp/word/how-to/add-table/">add table how-to</a> walks through cells and layout in detail, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> places tables within a document.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

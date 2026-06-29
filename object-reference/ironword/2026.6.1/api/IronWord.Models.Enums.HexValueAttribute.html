@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class HexValueAttribute
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       HexValueAttribute Class - IronWord C# API
+      v2 (human)     title:       HexValueAttribute: Hex Codes on Enums in C#
+      v1 (algorithm) description: Pin a hex string to an enum member in C# with the IronWord HexValueAttribute: construct from a hex value and read the HexValue property.
+      v2 (human)     description: Tag enum members with a hex code in C# using the IronWord HexValueAttribute and read it back through the HexValue property.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>HexValueAttribute Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class HexValueAttribute
-   | C# Word API | IronWord ">
+    <meta name="title" content="HexValueAttribute Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord HexValueAttribute in C#: attach a hex string to an enum member and read it via the HexValue property.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "HexValueAttribute Class | IronWord C# API",
+    "name": "HexValueAttribute class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Enums.HexValueAttribute.html",
+    "abstract": "Pin a hexadecimal string to an enum member with IronWord HexValueAttribute in C#. Construct it with a hex value through HexValueAttribute(string hexValue), and read the code back through the get-only HexValue property after retrieving the attribute by reflection.",
+    "description": "Reference for the IronWord HexValueAttribute in C#: attach a hex string to an enum member and read it via the HexValue property.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var attribute = new HexValueAttribute(\"FFFFFF\");\nstring hex = attribute.HexValue;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does HexValueAttribute live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HexValueAttribute is in the IronWord.Models.Enums namespace, shipped in IronWord.dll. It derives from System.Attribute (System.Object then Attribute) and decorates enum members that carry a hex value."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read the hex value from an enum member in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Retrieve the HexValueAttribute applied to the member by reflection, then read its get-only HexValue property. The constructor HexValueAttribute(string hexValue) sets that value when the member is declared."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +205,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class HexValueAttribute : Attribute</code></pre>
   </div>
+    <!-- archetype-N:start HexValueAttribute treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>HexValueAttribute</code> is the annotation that pins a hexadecimal string to an enum member, so a named value can also carry its raw hex form. It decorates the members of color and theme enumerations in IronWord, letting a single member stand for both a readable name and the exact hex code Word stores.</p>
+<p>You attach it to a field by passing the hex string to its constructor, <code>HexValueAttribute(string hexValue)</code>, and you read it back through the get-only <code>HexValue</code> property after retrieving the attribute by reflection. Because <code>HexValue</code> is read-only, the value is fixed at the point the member is declared and cannot be reassigned at runtime. In day-to-day code you rarely construct this attribute yourself; it is applied to library enum members, and you consume it by inspecting the <code>HexValue</code> of the member you selected. The <a href="https://ironsoftware.com/csharp/word/examples/add-style-text/">add styled text example</a> shows where colored and themed text is configured, and the <a href="https://ironsoftware.com/csharp/word/examples/add-text-effect-gradient-effect/">gradient text effect example</a> applies color stops to text.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var attribute = new HexValueAttribute(&quot;FFFFFF&quot;);
+string hex = attribute.HexValue;</code></pre></div>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

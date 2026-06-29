@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class RangeExtension
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       RangeExtension - IronPPT C# API Reference
+      v2 (human)     title:       RangeExtension: Clamp a Value to a Range in C#
+      v1 (algorithm) description: Clamp a numeric value to a range in C# with the IronPPT RangeExtension static class: the ToRange extension constrains a value between a min and max double.
+      v2 (human)     description: Keep a value within bounds in C# with IronPPT's RangeExtension: call ToRange with a min and max to clamp a size, opacity, or percentage.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>RangeExtension Class | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class RangeExtension
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="RangeExtension Class | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT RangeExtension static class in C#: the generic ToRange extension that clamps a value between a min and max.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "RangeExtension Class | IronPPT C# API",
+    "name": "RangeExtension class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Extensions.RangeExtension.html",
+    "abstract": "Clamping a numeric value to a band in C# runs through the IronPPT RangeExtension static class. Its generic ToRange method is an extension that takes a double minimum and maximum and returns the value constrained inside that span. Use it to keep a size, opacity, or percentage within the limits a slide property accepts without repeating min and max guards.",
+    "description": "Reference for the IronPPT RangeExtension static class in C#: the generic ToRange extension that clamps a value between a min and max.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "double opacity = rawValue.ToRange(0, 1);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does RangeExtension live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RangeExtension is a static class in the IronPPT.Models.Extensions namespace, shipped in IronPPT.dll. It derives from System.Object and adds the generic ToRange extension method."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you clamp a value to a range in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call ToRange on the value, passing a minimum and maximum, for example rawValue.ToRange(0, 1). It returns a double constrained to that range, so a value below the floor returns the floor and one above the ceiling returns the ceiling."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +205,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class RangeExtension : Object</code></pre>
   </div>
+    <!-- archetype-N:start RangeExtension treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Clamping a numeric value into a fixed band runs through <code>RangeExtension</code>. The static helper adds one extension method that takes a value and a lower and upper bound, returning a <code>double</code> constrained to that span, which is handy for keeping a size, opacity, or percentage within the limits a slide property accepts.</p>
+<p>The method is <code>ToRange&lt;T&gt;</code>, a generic extension called on the value itself, taking a <code>double</code> minimum and a <code>double</code> maximum. It returns the value as a <code>double</code> brought inside <code>[min, max]</code>, so a figure below the floor comes back as the floor and a figure above the ceiling comes back as the ceiling. Because the receiver is generic, it works across the numeric types a presentation model uses without a separate overload per type. Reach for it when assigning a computed measurement to a property that has a valid range, rather than writing the same min and max guard inline each time.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">double opacity = rawValue.ToRange(0, 1);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> sets sized style values, and the <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> positions and sizes a shape where bounded values apply.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

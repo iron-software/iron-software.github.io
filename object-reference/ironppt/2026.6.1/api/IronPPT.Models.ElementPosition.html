@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ElementPosition
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ElementPosition Class - IronPPT C# API
+      v2 (human)     title:       ElementPosition: Place Slide Elements in C#
+      v1 (algorithm) description: Set where a slide element sits in C# with the IronPPT ElementPosition class: X and Y as IDocUnit, or assign a (double, double) coordinate tuple.
+      v2 (human)     description: Position a shape, image, or text box on a PowerPoint slide in C# with the IronPPT ElementPosition class, using X and Y or a simple tuple.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ElementPosition Class | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ElementPosition
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="ElementPosition Class | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT ElementPosition class in C#: hold a slide element's X and Y coordinates, or convert from a (double, double) tuple.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ElementPosition Class | IronPPT C# API",
+    "name": "ElementPosition class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.ElementPosition.html",
+    "abstract": "Locating a slide element in C# runs through IronPPT's ElementPosition class. X and Y carry the horizontal and vertical coordinates, each an IDocUnit so the position can use a chosen measurement. Assign an ElementPosition to the element being placed, or write a (double, double) tuple and let the implicit conversion build it.",
+    "description": "Reference for the IronPPT ElementPosition class in C#: hold a slide element's X and Y coordinates, or convert from a (double, double) tuple.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPPT.Models;\n\nElementPosition position = (100.0, 50.0);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ElementPosition live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ElementPosition is a class in the IronPPT.Models namespace, shipped in IronPPT.dll. It derives from Object and implements IElementPosition, and it holds the X and Y coordinates assigned to a slide element."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set an element's position in C# with IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the X and Y properties (each an IDocUnit) for explicit units, or assign a (double, double) tuple such as (100.0, 50.0) and the implicit conversion creates the ElementPosition for you."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -153,6 +209,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ElementPosition : Object, IElementPosition</code></pre>
   </div>
+    <!-- archetype-N:start ElementPosition treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>When a shape, image, or text box needs to sit at a precise spot on a slide, <code>ElementPosition</code> holds that location. It pairs a horizontal and a vertical coordinate so a single object describes where an element's anchor lands on the page.</p>
+<p><code>X</code> and <code>Y</code> are the two coordinates, each an <code>IDocUnit</code> so a position can be expressed in the measurement a project prefers rather than a bare number. Assign an <code>ElementPosition</code> to the element you are placing, and the slide draws it at those coordinates. For brevity, the type also defines an implicit conversion from a <code>(double, double)</code> tuple, so a position can be written as a coordinate pair and the runtime builds the <code>ElementPosition</code> for you. Set <code>X</code> and <code>Y</code> directly when you want explicit units, or assign a tuple when plain numbers are enough. Because position travels with the element it locates, configure it as part of adding and arranging that element. The slide element workflow shows where placement fits in building a slide.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPPT.Models;
+
+ElementPosition position = (100.0, 50.0);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/tutorials/slide-element/">slide element tutorial</a> walks through placing elements on a slide, and the <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> positions a shape.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

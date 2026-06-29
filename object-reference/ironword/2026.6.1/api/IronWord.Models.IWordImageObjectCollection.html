@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IWordImageObjectCollection
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IWordImageObjectCollection - IronWord C# API
+      v2 (human)     title:       IWordImageObjectCollection in C# | IronWord
+      v1 (algorithm) description: IWordImageObjectCollection is IronWord's C# list contract for document images, an IList of ImageContent implemented by ImageObjectCollection.
+      v2 (human)     description: Index and iterate every image in a Word document in C# through IronWord's IWordImageObjectCollection, implemented by ImageObjectCollection.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IWordImageObjectCollection | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IWordImageObjectCollection
-   | C# Word API | IronWord ">
+    <meta name="title" content="IWordImageObjectCollection | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord IWordImageObjectCollection interface in C#: an IList of ImageContent implemented by ImageObjectCollection.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,39 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IWordImageObjectCollection | IronWord C# API",
+    "name": "IWordImageObjectCollection interface | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.IWordImageObjectCollection.html",
+    "abstract": "Holding every image in a Word document as one indexable group in C# runs through IronWord's IWordImageObjectCollection. It extends IList of ImageContent, so the pictures index, count, add, remove, and iterate like a standard list. The concrete implementor is ImageObjectCollection, which derives from ObservableCollection of ImageContent.",
+    "description": "Reference for the IronWord IWordImageObjectCollection interface in C#: an IList of ImageContent implemented by ImageObjectCollection.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IWordImageObjectCollection live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IWordImageObjectCollection is an interface in the IronWord.Models namespace, shipped in IronWord.dll. It extends IList of ImageContent and the serialization abstraction, and is implemented by the ImageObjectCollection class."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -147,7 +187,14 @@
   </div>
   
   
-</article>
+  <!-- archetype-N:start IWordImageObjectCollection treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>Holding every image in a Word document as one indexable group in C# runs through <code>IWordImageObjectCollection</code>. The contract extends <code>IList&lt;ImageContent&gt;</code>, so the pictures behave like a standard list: index them, count them, add and remove entries, and iterate with <code>foreach</code>. Treating the group through this contract keeps document-traversal code independent of the concrete collection type while still giving full list semantics over the images.</p>
+<p>The concrete implementor in IronWord is <code>ImageObjectCollection</code>, which derives from <code>ObservableCollection&lt;ImageContent&gt;</code> and is what code receives when it reaches a document's images. Because each element is an <code>ImageContent</code>, every entry exposes the sizing, placement, and identity members of an image; the collection itself adds the list operations. The contract also extends the serialization abstraction, so the image set round-trips with the document model. Iterate it to extract every picture, or mutate it to add and reorder images before saving.</p>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/extract-images/">extract images how-to</a> reads each picture in turn, and the <a href="https://ironsoftware.com/csharp/word/how-to/add-image/">add image how-to</a> builds the set up.</p>
+  </div>
+  <!-- archetype-N:end -->
+  </article>
           </div>
            
           <div class="hidden-sm col-md-2" role="complementary">

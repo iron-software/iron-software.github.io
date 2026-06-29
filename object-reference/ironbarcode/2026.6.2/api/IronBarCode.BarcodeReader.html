@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BarcodeReader
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       BarcodeReader Class - IronBarcode C# API
+      v2 (human)     title:       BarcodeReader: Read Barcodes in C#
+      v1 (algorithm) description: Read barcodes and QR codes in C# with the IronBarcode BarcodeReader class. Call Read or ReadPdf to get a BarcodeResults collection from any source.
+      v2 (human)     description: Decode barcodes in C# with the IronBarcode BarcodeReader class: read from images, streams, byte arrays, or PDFs, sync or async, with full results.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>BarcodeReader Class | IronBarcode C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BarcodeReader
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="BarcodeReader Class | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode BarcodeReader class in C#: read barcodes from images and PDFs with Read, ReadPdf, and their async forms.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,71 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "BarcodeReader Class | IronBarcode C# API",
+    "name": "BarcodeReader class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.BarcodeReader.html",
+    "abstract": "Decoding barcodes and QR codes in C# runs through the IronBarcode BarcodeReader static class. Call Read with an image path, AnyBitmap, byte array, or stream, or ReadPdf and ReadPdfs for PDF files, and receive a BarcodeResults collection. ReadAsync and ReadPdfsAsync are the awaitable forms. Tune detection through BarcodeReaderOptions, and iterate the results because one source can hold several codes.",
+    "description": "Reference for the IronBarcode BarcodeReader class in C#: read barcodes from images and PDFs with Read, ReadPdf, and their async forms.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nBarcodeResults results = BarcodeReader.Read(\"barcode.png\");\nforeach (BarcodeResult result in results)\n    Console.WriteLine(result.Value);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does BarcodeReader live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BarcodeReader is a static class in the IronBarCode namespace, shipped in IronBarCode.dll. Because it is static there is nothing to construct, so call Read, ReadAsync, ReadPdf, ReadPdfs, or ReadPdfsAsync directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read a barcode from an image in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call BarcodeReader.Read with the image path, an AnyBitmap, a byte array, or a stream, and pass an optional BarcodeReaderOptions. Read returns a BarcodeResults collection; iterate it and read each result's Value for the decoded text."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can BarcodeReader read barcodes from a PDF in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Call ReadPdf for one document or ReadPdfs for several, passing a PdfBarcodeReaderOptions to set page numbers, DPI, and a password. Both return BarcodeResults, and ReadPdfsAsync is the awaitable form."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can IronBarcode read multiple barcodes from one image?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. BarcodeReader returns a BarcodeResults collection with one entry per detected code, so iterate the results. Set BarcodeReaderOptions.ExpectMultipleBarcodes to true to keep scanning after the first symbol is found."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +223,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class BarcodeReader : Object</code></pre>
   </div>
+    <!-- archetype-N:start BarcodeReader treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>BarcodeReader</code> decodes barcodes and QR codes from images, byte arrays, streams, and PDF files in C#. A single static call scans a supplied source, locates every symbol it can find, and hands back the decoded text, the symbology, and the position of each code. It is the entry point a developer reaches for behind a search like &quot;C# barcode reader&quot; or &quot;read barcode from image C#&quot;, and it covers both one-dimensional barcodes and two-dimensional codes through the same surface.</p>
+<p>Because <code>BarcodeReader</code> is a static class, there is no object to construct. Call <code>Read</code> with a file path, an <code>AnyBitmap</code>, a byte array, or a stream, and pass an optional <code>BarcodeReaderOptions</code> to tune detection. For PDF input, call <code>ReadPdf</code> (or <code>ReadPdfs</code> for several documents) with a <code>PdfBarcodeReaderOptions</code> that adds page selection, DPI, and a password. Each read returns a <code>BarcodeResults</code> collection, and <code>ReadAsync</code> and <code>ReadPdfsAsync</code> provide awaitable forms that keep the work off a UI or request thread. The collection overloads accept a sequence of sources so a batch of images or documents runs through one call.</p>
+<p>The most-used members group by source. The image lane is <code>Read</code> and <code>ReadAsync</code>, taking a path, <code>AnyBitmap</code>, <code>byte[]</code>, or <code>Stream</code>. The PDF lane is <code>ReadPdf</code>, <code>ReadPdfs</code>, and <code>ReadPdfsAsync</code>, taking the same source shapes plus a <code>PdfBarcodeReaderOptions</code>. Detection itself is steered through <code>BarcodeReaderOptions</code>: set <code>ExpectBarcodeTypes</code> to limit the symbologies scanned, <code>ExpectMultipleBarcodes</code> to keep scanning after the first hit, <code>ScanMode</code> to pick a basic or machine-learning strategy, and <code>Speed</code> to trade thoroughness for throughput. <code>BarcodeReader</code> reads from photos, screenshots, and scanned documents, not only crisp generated images, which is why the machine-learning scan modes exist for difficult sources. Iterate the returned <code>BarcodeResults</code> rather than assuming a single code, since one image or PDF page can carry several.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+BarcodeResults results = BarcodeReader.Read(&quot;barcode.png&quot;);
+foreach (BarcodeResult result in results)
+    Console.WriteLine(result.Value);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/read-barcodes-from-images/">read barcodes from images how-to</a> walks through image input, the <a href="https://ironsoftware.com/csharp/barcode/how-to/read-barcodes-from-pdf/">read barcodes from PDF how-to</a> handles documents, and the <a href="https://ironsoftware.com/csharp/barcode/tutorials/reading-barcodes/">reading barcodes tutorial</a> covers the full workflow.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

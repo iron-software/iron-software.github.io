@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BinaryThresholdFilter
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       BinaryThresholdFilter - IronBarcode C# API
+      v2 (human)     title:       BinaryThresholdFilter: Threshold Barcodes in C#
+      v1 (algorithm) description: Apply a global luminance threshold to barcode images in C# with IronBarcode BinaryThresholdFilter, added to BarcodeReaderOptions.ImageFilters before reading.
+      v2 (human)     description: Flatten an evenly lit, low-contrast barcode into clean black-and-white in C# with IronBarcode BinaryThresholdFilter, a single global threshold pass.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>BinaryThresholdFilter Class | IronBarcode C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BinaryThresholdFilter
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="BinaryThresholdFilter Class | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode BinaryThresholdFilter class in C#: split barcode pixels at a chosen luminance cutoff before decoding.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "BinaryThresholdFilter Class | IronBarcode C# API",
+    "name": "BinaryThresholdFilter class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.BinaryThresholdFilter.html",
+    "abstract": "BinaryThresholdFilter converts a barcode image to two tones in C# with IronBarcode by splitting pixels at a single global luminance cutoff, suited to evenly lit, low-contrast images. It implements IImageFilter, goes into the ImageFilterCollection on BarcodeReaderOptions.ImageFilters, and exposes Threshold, Lower, Upper, Rectangle, and BinarizationMethod to control the cutoff, output colors, region, and algorithm.",
+    "description": "Reference for the IronBarcode BinaryThresholdFilter class in C#: split barcode pixels at a chosen luminance cutoff before decoding.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nvar options = new BarcodeReaderOptions\n{\n    ImageFilters = new ImageFilterCollection { new BinaryThresholdFilter() }\n};\nvar results = BarcodeReader.Read(\"low-contrast.png\", options);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does BinaryThresholdFilter live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BinaryThresholdFilter is a class in the IronBarCode namespace, shipped in IronBarCode.dll. It derives from Object and implements IImageFilter, so it can be added to the ImageFilterCollection assigned to BarcodeReaderOptions.ImageFilters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between BinaryThresholdFilter and AdaptiveThresholdFilter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BinaryThresholdFilter applies one global cutoff across the whole image and works best when lighting is even. AdaptiveThresholdFilter computes a separate cutoff per region, which handles uneven illumination and shadows that a single threshold cannot."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set the threshold for BinaryThresholdFilter in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pass a Threshold value to one of the constructor overloads, or set the Threshold property after construction. Lower and Upper choose the two output colors, and BinarizationMethod selects the split algorithm. The defaults suit most evenly lit images."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,6 +218,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class BinaryThresholdFilter : Object, IImageFilter</code></pre>
   </div>
+    <!-- archetype-N:start BinaryThresholdFilter treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>A hard two-tone conversion of a barcode image, where every pixel becomes either black or white at a chosen luminance cutoff, is the job of <code>BinaryThresholdFilter</code>. It splits the pixels at a single global threshold by comparing the luminance of each color component, which is the fast, predictable way to flatten a evenly lit but low-contrast image into the crisp bars a decoder expects. Where <code>AdaptiveThresholdFilter</code> computes a cutoff per region for patchy lighting, this filter uses one cutoff across the whole frame, so it suits images whose brightness is consistent and only the contrast is weak.</p>
+<p>The filter implements <code>IImageFilter</code> and is added to the <code>ImageFilterCollection</code> on <code>BarcodeReaderOptions.ImageFilters</code>. Because the reader applies the collection in order before decoding, a binary threshold usually runs early, turning the source into a clean black-and-white image that any later step works from. A developer instantiates it, adds it to the collection, and hands the options to <code>BarcodeReader.Read</code>.</p>
+<p>The constructors range from a parameterless default to overloads that take a <code>Threshold</code>, the <code>Lower</code> and <code>Upper</code> colors, a <code>Rectangle</code> region, and a <code>BinarizationMethod</code>. The <code>Threshold</code> property is the cutoff luminance, <code>Lower</code> and <code>Upper</code> set the two colors pixels collapse to, <code>Rectangle</code> confines the operation to a region of interest, and <code>BinarizationMethod</code> selects the algorithm used to decide the split. IronBarcode ships sensible defaults for every property, so a bare <code>new BinaryThresholdFilter()</code> is often enough; reach for the overloads only when a specific image needs a tuned cutoff or a restricted region.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+var options = new BarcodeReaderOptions
+{
+    ImageFilters = new ImageFilterCollection { new BinaryThresholdFilter() }
+};
+var results = BarcodeReader.Read(&quot;low-contrast.png&quot;, options);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/image-correction/">image correction how-to</a> compares this filter against the adaptive threshold on a real barcode, and the <a href="https://ironsoftware.com/csharp/barcode/examples/imperfect-barcode-with-image-correction/">imperfect barcode example</a> reads a degraded image end to end. The <a href="https://ironsoftware.com/csharp/barcode/how-to/image-orientation-correction/">image orientation correction how-to</a> covers the rotation and skew cases a threshold pass does not address.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

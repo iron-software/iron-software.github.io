@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IResultRenderer
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IResultRenderer - IronOCR C# API Reference
+      v2 (human)     title:       IResultRenderer: OCR Output Contract in C#
+      v1 (algorithm) description: IResultRenderer is the IronOCR contract in C# for writing recognized Page results to output: BeginDocument, AddPage, and PageNumber.
+      v2 (human)     description: Write recognized OCR pages to a document in C# through the IronOCR IResultRenderer contract: begin a document, add pages, track the count.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IResultRenderer | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IResultRenderer
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="IResultRenderer | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR IResultRenderer interface in C#: the disposable contract that writes Page results into an output document.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IResultRenderer | IronOCR C# API Reference",
+    "name": "IResultRenderer interface | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.IResultRenderer.html",
+    "abstract": "IResultRenderer is the IronOCR contract in C# for writing recognized Page results into an output document such as a searchable PDF or hOCR file. BeginDocument opens a document and returns an IDisposable, AddPage writes one Page, and PageNumber reports the count. It extends IDisposable, so dispose the renderer to release its native output handle.",
+    "description": "Reference for the IronOCR IResultRenderer interface in C#: the disposable contract that writes Page results into an output document.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IResultRenderer live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IResultRenderer is an interface in the DynamicTesseract namespace, shipped in IronOcr.dll. It extends IDisposable and defines BeginDocument, AddPage, and PageNumber for writing recognized pages to an output document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you write OCR results to a document with IResultRenderer in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call BeginDocument with a title to open the output and capture the returned IDisposable in a using block, call AddPage for each recognized Page, and read PageNumber for the running count. Disposing the document handle finishes the file."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +192,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IResultRenderer : IDisposable</code></pre>
   </div>
+    <!-- archetype-N:start IResultRenderer treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p><code>IResultRenderer</code> is the contract for writing recognized <code>Page</code> results into an output document, such as a searchable PDF, hOCR file, or plain text export. A renderer accumulates pages and tracks how many it has written, so the same recognition pass can feed one multi-page document.</p>
+<p>Three members define the contract. <code>BeginDocument</code> opens a new output document under a given title and returns an <code>IDisposable</code> that closes the document when disposed, so a <code>using</code> block frames the whole write. <code>AddPage</code> writes one recognized <code>Page</code> into the open document and returns whether the page was accepted. <code>PageNumber</code> reports how many pages have been rendered so far. Because the contract extends <code>IDisposable</code>, dispose the renderer to release its native output handle once every page is written, and dispose the document handle that <code>BeginDocument</code> returns to finalize the file on disk.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/searchable-pdf/">searchable PDF how-to</a> and the <a href="https://ironsoftware.com/csharp/ocr/how-to/html-hocr-export/">hOCR export how-to</a> cover the high-level output that this rendering layer backs.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

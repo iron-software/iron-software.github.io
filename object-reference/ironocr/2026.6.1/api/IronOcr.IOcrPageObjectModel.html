@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IOcrPageObjectModel
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IOcrPageObjectModel Interface - IronOCR C#
+      v2 (human)     title:       IOcrPageObjectModel: The OCR Page Model in C#
+      v1 (algorithm) description: IOcrPageObjectModel is IronOCR's page object-model contract in C#, returned by OcrResult.Page.ObjectModel and serializable to JSON.
+      v2 (human)     description: Get a structured view of an OCR'd page in C# through IronOCR's IOcrPageObjectModel, obtained from OcrResult.Page.ObjectModel.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IOcrPageObjectModel Interface | IronOCR C#</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IOcrPageObjectModel
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="IOcrPageObjectModel Interface | IronOCR C#">
+    <meta name="description" content="Reference for IronOCR's IOcrPageObjectModel interface in C#: the page object model from OcrResult.Page, bounded and JSON-serializable.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IOcrPageObjectModel Interface | IronOCR C#",
+    "name": "IOcrPageObjectModel interface | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.IOcrPageObjectModel.html",
+    "abstract": "When code needs a structured, positioned view of one OCR'd page in C#, IOcrPageObjectModel is IronOCR's contract for it. You receive it from the ObjectModel property of an OcrResult.Page rather than constructing it. The interface extends a generic document-page object model along with IBounded and IJsonSerializable, so the page can be inspected as bounded objects and serialized to JSON.",
+    "description": "Reference for IronOCR's IOcrPageObjectModel interface in C#: the page object model from OcrResult.Page, bounded and JSON-serializable.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IOcrPageObjectModel live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IOcrPageObjectModel is an interface in the IronOcr namespace, shipped in IronOcr.dll. It extends a generic IDocumentPageObjectModel along with IBounded and IJsonSerializable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get an IOcrPageObjectModel in IronOCR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the ObjectModel property on an OcrResult.Page. After IronTesseract.Read returns an OcrResult, index into one of its pages and access ObjectModel to obtain the page's object model."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -147,7 +195,15 @@
   </div>
   
   
-</article>
+  <!-- archetype-N:start IOcrPageObjectModel treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>When code needs a structured view of one OCR'd page rather than its flat text, <code>IOcrPageObjectModel</code> is the contract that supplies it. It models a page as a document object, so a consumer can treat the recognized content as positioned, bounded objects and serialize that structure to JSON. It is what <code>OcrResult.Page</code> hands back when asked for its object model.</p>
+<p>A developer does not construct this type. You receive it from the <code>ObjectModel</code> property on an <code>OcrResult.Page</code>, after <code>IronTesseract.Read</code> has produced an <code>OcrResult</code> and you have indexed into one of its pages. Holding the interface rather than a concrete page model keeps the consumer decoupled from IronOCR's internal page representation.</p>
+<p>The contract is composed from the interfaces it extends rather than a long member list of its own. It builds on a generic document-page object model, <code>IBounded</code> for the page's bounding geometry, and <code>IJsonSerializable</code> so the page structure can be written out as JSON for storage or downstream tooling. Reach for the object model when flat <code>Text</code> is not enough and the layout of the page matters.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">read results how-to</a> traverses a result's pages and their content, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/searchable-pdf/">searchable PDF how-to</a> shows the page structure put to use.</p>
+  </div>
+  <!-- archetype-N:end -->
+  </article>
           </div>
            
           <div class="hidden-sm col-md-2" role="complementary">

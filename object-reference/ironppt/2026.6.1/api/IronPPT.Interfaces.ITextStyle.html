@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ITextStyle
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ITextStyle Interface - IronPPT C# API
+      v2 (human)     title:       ITextStyle: Format Text Runs in C#
+      v1 (algorithm) description: ITextStyle is the IronPPT run-formatting contract in C#: IsBold, IsItalic, Color, TextFont, Underline, Strike, and Spacing for slide text.
+      v2 (human)     description: Format a run of slide text in C# through the IronPPT ITextStyle contract: set bold, italic, color, font, underline, and spacing, then clone it.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ITextStyle Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ITextStyle
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="ITextStyle Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT ITextStyle interface in C#: the run-formatting contract implemented by TextStyle, with weight, color, and font members.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ITextStyle Interface | IronPPT C# API",
+    "name": "ITextStyle interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.ITextStyle.html",
+    "abstract": "ITextStyle is the contract for character-level formatting of a text run in IronPPT in C#. Weight members (IsBold, IsItalic, Outline), font and color members (TextFont, Color, Underline, Strike), and spacing and language members (Spacing, Languages, NoProof, SpecVanish) control the look, while Clone and Reset copy or default the style. It is exposed as the TextStyle of a run or IStyle; TextStyle implements it.",
+    "description": "Reference for the IronPPT ITextStyle interface in C#: the run-formatting contract implemented by TextStyle, with weight, color, and font members.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "ITextStyle style = run.TextStyle;\nstyle.IsBold = true;\nstyle.Color = redColor;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ITextStyle live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ITextStyle is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It extends IDocumentStyle. The concrete implementor is TextStyle, reached as the TextStyle property of a run or a named IStyle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements ITextStyle in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextStyle implements ITextStyle. You usually edit it through the TextStyle property of an IText run or an IStyle, rather than constructing it directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you make text bold in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set IsBold to true on the ITextStyle exposed by the run's TextStyle property. Set Color, TextFont, and Underline on the same style to change appearance, and call Clone to copy the look to another run."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -153,6 +217,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface ITextStyle : IDocumentStyle</code></pre>
   </div>
+    <!-- archetype-N:start ITextStyle treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>Character-level formatting, the bold, italic, color, font, and underline of a run, lives behind <code>ITextStyle</code>. It is the contract a developer sets to control how a stretch of text looks, the place to reach when text on a slide needs the right weight, color, or typeface.</p>
+<p>A developer rarely constructs this contract: it arrives as the <code>TextStyle</code> property of a run or a named <code>IStyle</code>, and <code>TextStyle</code> is the concrete implementor. Editing those properties restyles the text that carries the style, so the same contract serves both a one-off tweak to a single run and the shared look defined inside a reusable style. Because the properties read and write the live element, a change takes effect the moment it is set. The members group by what they control. The weight-and-emphasis members are booleans: <code>IsBold</code>, <code>IsItalic</code>, and <code>Outline</code>. The font-and-color members carry richer types: <code>TextFont</code> is an <code>IFont</code>, <code>Color</code> is an <code>IColor</code>, <code>Underline</code> is an <code>IUnderline</code>, and <code>Strike</code> is a <code>Nullable&lt;StrikValue&gt;</code>. The spacing-and-language members cover the rest: <code>Spacing</code> is a <code>DocUnit</code> for character spacing, <code>Languages</code> sets the proofing language, and <code>NoProof</code> and <code>SpecVanish</code> are display flags. Two methods round out the surface: <code>Clone</code> copies the style and <code>Reset</code> returns it to defaults, both returning an <code>ITextStyle</code> so a developer can stamp one run's look onto another or wipe a run back to a clean baseline before restyling. The contract also carries <code>StyleId</code> and <code>Status</code> inherited from <code>IDocumentStyle</code>, which track the style's identity within the document.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">ITextStyle style = run.TextStyle;
+style.IsBold = true;
+style.Color = redColor;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> places styled text, the <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> formats text, and the <a href="https://ironsoftware.com/csharp/ppt/tutorials/slide-element/">slide element tutorial</a> covers slide elements.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

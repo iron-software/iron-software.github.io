@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Printer
-   | C# Print API | IronPrint </title>
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Printer Class - IronPrint C# API Reference
+      v2 (human)     title:       Printer: Print Files from C# with IronPrint
+      v1 (algorithm) description: Print files to any printer from C# with the IronPrint Printer class. Reference its Print, ShowPrintDialog, and printer-discovery methods with examples.
+      v2 (human)     description: Send documents to a printer from C# with the IronPrint Printer class: print silently, show a dialog, or list printers and trays, with code examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Printer Class | IronPrint C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Printer
-   | C# Print API | IronPrint ">
+    <meta name="title" content="Printer Class | IronPrint C# API Reference">
+    <meta name="description" content="Reference for the IronPrint Printer class in C#: print files silently, show the print dialog, and enumerate printers and trays, with code examples.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,7 +80,63 @@
     <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
-    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Printer Class | IronPrint C# API Reference",
+    "name": "Printer class | IronPrint C# API",
+    "url": "https://ironsoftware.com/csharp/print/object-reference/api/IronPrint.Printer.html",
+    "abstract": "Printing a document from C# across desktop and mobile platforms runs through the static Printer class in IronPrint. Pass a file path or byte array to Print, with an optional PrintSettings to choose the printer, copies, paper, and quality. Use ShowPrintDialog to let the user pick a device, and GetPrinterNames or GetPrinterTrays to discover what is available first. Every printing and dialog call has an Async form that returns a Task.",
+    "description": "Reference for the IronPrint Printer class in C#: print files silently, show the print dialog, and enumerate printers and trays, with code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPrint",
+      "url": "https://ironsoftware.com/csharp/print/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPrint;\n\nPrintSettings settings = new PrintSettings { NumberOfCopies = 2 };\nPrinter.Print(\"invoice.pdf\", settings);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Printer live in the IronPrint API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Printer is a static class in the IronPrint namespace, shipped in IronPrint.dll. Call its static Print, ShowPrintDialog, GetPrinterNames, and GetPrinterTrays methods directly; there is no instance to construct."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you print a file silently in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Printer.Print with a file path or byte array. Printing is silent by default, so no dialog appears. Pass an optional PrintSettings to set the printer name, number of copies, and paper options."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you list the available printers in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Printer.GetPrinterNames to get the installed printer names, or Printer.GetPrinterNamesAsync for the non-blocking form. Use Printer.GetPrinterTrays to list the trays for a named printer."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,36 +217,18 @@ We also provide an `Async` functions to prevent the print operation from blockin
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class Printer : Object</code></pre>
   </div>
-  <h5 id="IronPrint_Printer_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-<code>Note:</code> The print result and print dialog may vary based on your platform.</p>
-<p>------------------------------------------------</p>
-<code>Supports:</code>
-<p>
-<code>Project Types:</code>  
-MAUI, WPF, Windows Forms </p>
-<p>
-<code>.NET version:</code>
-.NET Framework 4.6.2 and above, .NET3.1 and above (including .NET5 .NET6 .NET7 and .NET8) </p>
-<p>
-<code>OS:</code>
-Windows, Android, iOS, macOS
-</p>
-<p>
-When working with .NET Core projects (including .NET 5 and above),
-specifying the target OS in your .csproj file using the TargetFrameworks property is indeed necessary. 
-</p>
-<p>
-This ensures that IronPrint can utilize OS-specific UI components for printing operations on your target platform.
-</p>
-<p>
-For example, if you’re targeting Windows, Android, iOS, or macOS, you should adjust your TargetFrameworks accordingly.
-Change net6.0 to net6.0-windows, net6.0-android, net6.0-ios, net6.0-macos, or net6.0-maccatalyst, depending on your desired platform.
-</p>
-<p>you can specify multiple TargetFrameworks for your cross-platform project e.g. `net6.0-ios;net6.0-macos;net6.0-maccatalyst;net6.0-android;`</p>
-<p>
-<code>Note:</code> For Android projects `Printer.Initialize(Android.Content.Context mainActivity)` needs to be called before printing.</p>
-</div>
+      <!-- archetype-N:start Printer treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Printer</code> sends a document to a physical printer from C#, and it does so on Windows, macOS, Linux, Android, and iOS through one API. Hand it a file path or a <code>byte[]</code> of file data and it queues the job on the default printer or on one named through <code>PrintSettings</code>. Jobs print silently by default, so a server or background service can print with no user present.</p>
+<p>The members fall into three groups. Printing methods (<code>Print</code> and <code>PrintAsync</code>) send a job straight to the device. The interactive methods (<code>ShowPrintDialog</code> and <code>ShowPrintDialogAsync</code>) open the operating system print dialog so the user picks the printer and options. The discovery methods (<code>GetPrinterNames</code> and <code>GetPrinterTrays</code>) list the printers and trays available on the machine. Because the class is static, there is nothing to construct: call the methods directly after rendering or loading the file you want on paper. Every printing and dialog call takes an optional <code>PrintSettings</code>, and each has an asynchronous form that returns a <code>Task</code> to keep the operation off the calling thread.</p>
+<p>A typical job builds a <code>PrintSettings</code>, sets the values that matter, and passes it to <code>Print</code>. When the target device is not known ahead of time, call <code>GetPrinterNames</code> first and assign the chosen name to <code>PrintSettings.PrinterName</code>, or call <code>ShowPrintDialog</code> and let the user choose. Where blocking the thread is a concern, prefer <code>PrintAsync</code> or <code>ShowPrintDialogAsync</code> and await the returned <code>Task</code>. The <a href="https://ironsoftware.com/csharp/print/how-to/print-settings/">print settings guide</a> covers the options each call accepts.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPrint;
+
+PrintSettings settings = new PrintSettings { NumberOfCopies = 2 };
+Printer.Print(&quot;invoice.pdf&quot;, settings);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/print/how-to/silent-printing/">silent printing guide</a> walks through unattended jobs, the <a href="https://ironsoftware.com/csharp/print/how-to/print-with-dialog/">print with dialog guide</a> covers interactive printing, and the <a href="https://ironsoftware.com/csharp/print/how-to/retrieve-printer-names/">retrieve printer names guide</a> shows how to enumerate devices first.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

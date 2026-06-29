@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IContentElement
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IContentElement - IronWord C# API
+      v2 (human)     title:       IContentElement: The Word Node Contract in C#
+      v1 (algorithm) description: IContentElement is the IronWord contract for a child-holding Word node in C#: Children, Parent, AddChild, ExtractElements, GetChildByIndex, and Replace.
+      v2 (human)     description: Walk and edit a Word document tree in C# through IronWord's IContentElement contract: read Children, follow Parent, add, remove, and replace nodes.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IContentElement Interface | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IContentElement
-   | C# Word API | IronWord ">
+    <meta name="title" content="IContentElement Interface | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord IContentElement interface in C#: the child-holding node contract with Children, Parent, AddChild, and ExtractElements.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IContentElement Interface | IronWord C# API",
+    "name": "IContentElement interface | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Abstract.Interfaces.IContentElement.html",
+    "abstract": "IContentElement is the IronWord contract that describes a child-holding node in the Word content model in C#. It declares Children and Parent for traversing the tree, AddChild and InsertChildToIndex for inserting nodes, Remove, RemoveChildren, and Replace for editing, and the typed ExtractElements and GetChildByIndex members, all expressed in terms of ContentElement so routines stay decoupled from concrete node types.",
+    "description": "Reference for the IronWord IContentElement interface in C#: the child-holding node contract with Children, Parent, AddChild, and ExtractElements.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IContentElement live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IContentElement is an interface in the IronWord.Models.Abstract.Interfaces namespace, shipped in IronWord.dll. It is a standalone contract that declares the child-holding members of a Word content node, typed against the ContentElement family."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does IContentElement represent in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It represents a content node that owns a subtree of other nodes. Its Children property is a list of ContentElement, and its Parent points back at the containing ContentElement, so code that takes an IContentElement can walk and rewrite a document tree without naming a concrete node class."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you edit a node's children through IContentElement in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call AddChild or InsertChildToIndex to insert nodes, RemoveChildren or RemoveAllChildren to clear them, and Replace to swap a child in place. Use GetChildByIndex for a typed child by position and ExtractElements to collect every descendant of a type."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +201,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IContentElement</code></pre>
   </div>
+    <!-- archetype-N:start IContentElement treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p><code>IContentElement</code> is the contract that describes a child-holding node in the IronWord content model. It declares the operations a document element exposes when it owns a subtree of other elements, so code can read and reshape that subtree without depending on a concrete node type. The contract mirrors the shape of the <code>ContentElement</code> family: it speaks in terms of <code>ContentElement</code> children and a <code>ContentElement</code> parent.</p>
+<p>A developer works through the interface rather than instantiating it, since an interface has no constructor. The everyday members read clearly. <code>Children</code> is the list of <code>ContentElement</code> nodes the element holds, and <code>Parent</code> points back at the <code>ContentElement</code> that contains it, so traversal works in both directions. <code>AddChild</code> appends nodes, <code>InsertChildToIndex</code> places one at a position, and <code>Clone</code> returns a <code>ContentElement</code> copy. Coding to <code>IContentElement</code> keeps editing routines decoupled from any single node class and makes them easy to test with a stand-in.</p>
+<p>The rest of the surface fills out tree editing. <code>Remove</code> detaches the element, <code>RemoveChildren</code> and <code>RemoveAllChildren</code> clear nodes, and <code>Replace</code> swaps a child in place. <code>GetChildByIndex&lt;T&gt;</code> fetches a typed child by position, and <code>ExtractElements&lt;T&gt;</code> collects every descendant of a requested type into a list. Because all of these are typed against <code>ContentElement</code>, a routine that accepts an <code>IContentElement</code> can walk and rewrite a document tree whatever concrete elements it actually contains.</p>
+<p>The <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> explains the content tree this contract describes, the <a href="https://ironsoftware.com/csharp/word/how-to/add-text/">add text how-to</a> adds children, and the <a href="https://ironsoftware.com/csharp/word/how-to/remove-text/">remove text how-to</a> detaches them.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

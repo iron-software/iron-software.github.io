@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Slide
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Slide Class - IronPPT C# API Reference
+      v2 (human)     title:       Slide: Build PowerPoint Slides in C#
+      v1 (algorithm) description: Build a PowerPoint slide in C# with the IronPPT Slide class: add text, shapes, and images, read them via typed collections, and set geometry.
+      v2 (human)     description: Fill a PowerPoint slide in C# with the IronPPT Slide class: AddText, AddShape, and AddImage, then size and position the page before saving.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Slide Class | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Slide
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="Slide Class | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT Slide class in C#: the page object with AddText, AddShape, and AddImage, typed content collections, and layout properties.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Slide Class | IronPPT C# API Reference",
+    "name": "Slide class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Slide.html",
+    "abstract": "The page object a developer fills when building a PowerPoint deck in C# is IronPPT's Slide class. AddText, AddParagraph, AddShape, and the AddImage overloads populate it; the Texts, Shapes, Images, and TextBoxes collections read it back; and Width, Height, Position, and Angle set its layout. IsMasterSlide marks a template slide.",
+    "description": "Reference for the IronPPT Slide class in C#: the page object with AddText, AddShape, and AddImage, typed content collections, and layout properties.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "slide.AddText(\"Quarterly Report\");\nslide.AddImage(\"logo.png\");\nslide.Width = new DocUnit(960, Units.Point);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Slide live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Slide is a class in the IronPPT.Models namespace, shipped in IronPPT.dll. It derives from ParentElement and implements ISlide, IGraphic, IContentElement, and related interfaces."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add content to a slide in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call AddText for text (a string or an IText), AddShape for shapes, and one of the AddImage overloads for images. Read what you added through the Texts, Shapes, and Images collection properties."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you make a slide a master slide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the IsMasterSlide property to true so the slide acts as a template for others. ShowMasterPlaceholderAnimations and the Show property, both nullable booleans, control its visibility behavior."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -216,6 +280,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Slide : ParentElement, ICloneableElement, IParentElement, ISlide, IGraphic, IContentElement</code></pre>
   </div>
+    <!-- archetype-N:start Slide treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Slide</code> is the page object a developer fills with content when building a PowerPoint deck in code. It holds the text, shapes, and images that appear on one slide and exposes the methods that add them, so generating a presentation comes down to creating slides and populating each one.</p>
+<p>A slide is reached through the presentation document's slide collection, then content is added through its <code>Add</code> methods, which fall into clear groups. Text content uses <code>AddText</code> (taking a <code>string</code> or an <code>IText</code>) and <code>AddParagraph</code>; graphics use <code>AddShape</code> and the four <code>AddImage</code> overloads (a path, a <code>Stream</code>, an <code>AnyBitmap</code>, or an existing <code>IImage</code>); and <code>AddChild</code> adds raw content elements. What has been added is read back through the typed collection properties: <code>Texts</code>, <code>Paragraphs</code>, <code>Shapes</code>, <code>Images</code>, and <code>TextBoxes</code>, each a <code>List</code> of the matching interface.</p>
+<p>Layout and identity are separate buckets. Geometry is set through <code>Width</code>, <code>Height</code> (both <code>DocUnit</code>), <code>Position</code> (an <code>ElementPosition</code>), and <code>Angle</code> (a <code>Rotation</code>), so a slide can be sized and oriented in document units rather than raw pixels. Identity and visibility live on <code>ID</code>, <code>IsMasterSlide</code>, <code>Show</code> and <code>ShowMasterPlaceholderAnimations</code> (both <code>Nullable&lt;bool&gt;</code>), and the read-only <code>SlideColor</code>, which reports the slide's resolved color. Set <code>IsMasterSlide</code> when the slide acts as a template for others, and toggle <code>Show</code> to control whether it appears in the rendered deck. Build a slide by adding its content first, then adjust geometry and visibility before saving the deck.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">slide.AddText(&quot;Quarterly Report&quot;);
+slide.AddImage(&quot;logo.png&quot;);
+slide.Width = new DocUnit(960, Units.Point);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/add-slide/">add slide how-to</a> creates slides, the <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-slide/">manage slide how-to</a> reorders them, and the <a href="https://ironsoftware.com/csharp/ppt/tutorials/slide-element/">slide element tutorial</a> walks through populating one.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

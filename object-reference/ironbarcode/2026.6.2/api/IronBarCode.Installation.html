@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Installation
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Installation - IronBarcode C# API
+      v2 (human)     title:       Installation: Set the Deploy Path in C#
+      v1 (algorithm) description: Set IronBarcode's writable deployment folder in C# with Installation.DeploymentPath, where native components are staged on first use.
+      v2 (human)     description: Fix IronBarcode native deployment in C# with Installation.DeploymentPath: point it at a writable folder on containers and locked-down servers.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Installation Class | IronBarcode .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Installation
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="Installation Class | IronBarcode .NET API">
+    <meta name="description" content="Reference for the IronBarcode Installation class in C#: set DeploymentPath to a writable folder for staging native components at runtime.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Installation Class | IronBarcode .NET API",
+    "name": "Installation class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.Installation.html",
+    "abstract": "Installation.DeploymentPath sets the writable directory where IronBarcode stages its native components in C#. When the default location is not writable, as in containers and locked-down servers, point DeploymentPath at a writable folder at application startup. The native files are staged lazily on first use, so a wrong path is a common cause of native-layer failures during deployment.",
+    "description": "Reference for the IronBarcode Installation class in C#: set DeploymentPath to a writable folder for staging native components at runtime.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nInstallation.DeploymentPath = \"/app/ironbarcode\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Installation live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Installation is a static class in the IronBarCode namespace, shipped in IronBarCode.dll, with base type Object. Its DeploymentPath property is static, so set it directly without constructing an instance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you fix IronBarcode native deployment errors in a container?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set Installation.DeploymentPath at startup to a folder the process can write to, ideally on a persistent volume. The native barcode components stage there on first use, and an unwritable path is a common cause of native-layer failures."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +206,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class Installation : Object</code></pre>
   </div>
+    <!-- archetype-N:start Installation treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>The writable directory where IronBarcode stages its native components is set through <code>Installation.DeploymentPath</code>. IronBarcode ships native libraries for barcode reading and writing, and on first use it deploys them to a working folder. When the default location is not writable, which is common in containers, locked-down servers, and some hosting environments, point <code>DeploymentPath</code> at a folder the process can write to.</p>
+<p>Set it once at application startup, before the first barcode is read or written, since the native files are staged lazily on first use. A path on a persistent volume avoids re-deploying those files on every cold start, which keeps container startup fast. A wrong or unwritable path is a frequent cause of native-layer failures, so confirming the folder is writable during deployment saves a class of runtime errors. On a developer machine the default location usually works without any change, so this property is mainly a deployment concern rather than something set during local development. The <a href="https://ironsoftware.com/csharp/barcode/get-started/license-keys/">installation guide</a> covers first-run setup, and the <a href="https://ironsoftware.com/csharp/barcode/get-started/docker-linux/">Linux Docker guide</a> shows deployment on a restricted host.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+Installation.DeploymentPath = &quot;/app/ironbarcode&quot;;</code></pre></div>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DocumentStyle
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       DocumentStyle Class - IronPPT C# API
+      v2 (human)     title:       DocumentStyle: The Slide Style Base in C#
+      v1 (algorithm) description: The IronPPT DocumentStyle base in C# gives a style its identity and state: StyleId and Status, inherited by TextStyle and ParagraphStyle.
+      v2 (human)     description: DocumentStyle is the IronPPT base for slide styles in C#: it carries a StyleId and Status shared by TextStyle, ParagraphStyle, and Style.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>DocumentStyle Class | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DocumentStyle
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="DocumentStyle Class | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT DocumentStyle class in C#: the style base behind TextStyle and ParagraphStyle, with StyleId and Status.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "DocumentStyle Class | IronPPT C# API Reference",
+    "name": "DocumentStyle class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Abstract.DocumentStyle.html",
+    "abstract": "Identify and track a slide style in C# through the IronPPT DocumentStyle base. StyleId is the string that names a style within the document so it can be reused, and Status is an ElementStatus describing its state. DocumentStyle is abstract and implements IDocumentStyle; the concrete styles that derive from it are TextStyle, ParagraphStyle, and Style.",
+    "description": "Reference for the IronPPT DocumentStyle class in C#: the style base behind TextStyle and ParagraphStyle, with StyleId and Status.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does DocumentStyle live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DocumentStyle is an abstract class in the IronPPT.Models.Abstract namespace, shipped in IronPPT.dll, deriving from Object and implementing IDocumentStyle. It is the base that gives a style its StyleId and Status."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What derives from DocumentStyle in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextStyle, ParagraphStyle, and Style derive from DocumentStyle, inheriting its StyleId and Status. Because the base is abstract you create one of these concrete styles and use the inherited identity and state members."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -156,6 +204,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class DocumentStyle : Object, IDocumentStyle</code></pre>
   </div>
+    <!-- archetype-N:start DocumentStyle treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>When a style needs an identity and a state in the document's style system, <code>DocumentStyle</code> supplies the base. It is the shared parent for the named styling types, holding the two things every style has in common: an identifier and a status. A developer works with the concrete styles that derive from it, <code>TextStyle</code>, <code>ParagraphStyle</code>, and <code>Style</code>, rather than this base on its own.</p>
+<p>Because the class is abstract, a style is created as one of those derived types and then carries the members below through inheritance. Code that treats styles uniformly can hold one as <code>IDocumentStyle</code>, the contract this class implements, so a style can be referenced without naming its exact kind.</p>
+<p><code>StyleId</code> is the string that identifies the style within the document, used to reference and reuse it, and <code>Status</code> is an <code>ElementStatus</code> describing the style's current state. These let a style be tracked and addressed across the document so the same formatting can be reused rather than redefined. Set <code>StyleId</code> to a stable value when a style is meant to be shared so later references resolve to the same definition.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> covers styling slide text, and the <a href="https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.TextStyle.html">TextStyle reference</a> documents a concrete style that derives from this base.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

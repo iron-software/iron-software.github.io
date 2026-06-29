@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class WordDocument
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       WordDocument Class - IronWord C# API
+      v2 (human)     title:       WordDocument: Create & Edit Word Files in C#
+      v1 (algorithm) description: Create, edit, read, and save .docx files in C# with the IronWord WordDocument class: AddText, AddTable, ExtractText, ReplaceText, SaveAs, and ToPdf.
+      v2 (human)     description: Build, edit, and save Word documents in C# with the IronWord WordDocument class: add text, tables, and images, extract content, or export to PDF.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>WordDocument Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class WordDocument
-   | C# Word API | IronWord ">
+    <meta name="title" content="WordDocument Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord WordDocument class in C#: construct a document, add content, extract or replace text, and save to .docx or PDF.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "WordDocument Class | IronWord C# API",
+    "name": "WordDocument class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.WordDocument.html",
+    "abstract": "Creating, editing, and saving a Word document in C# runs through the IronWord WordDocument class. Construct one empty, from a file path, from bytes, or from content elements, then author content with AddText, AddParagraph, AddTable, and AddImage. Read it back through the Paragraphs, Runs, Tables, and Texts collections, search with FindText and ReplaceText, and persist with Save, SaveAs, or ToPdf.",
+    "description": "Reference for the IronWord WordDocument class in C#: construct a document, add content, extract or replace text, and save to .docx or PDF.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord;\nusing IronWord.Models;\n\nvar document = new WordDocument();\ndocument.AddText(\"Quarterly Report\");\ndocument.SaveAs(\"report.docx\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does WordDocument live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WordDocument is a class in the IronWord namespace, shipped in IronWord.dll. It derives from Object and implements IWordDocument, IDocument, and IParent. Construct it, add content, then call SaveAs to write a .docx file."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create and save a Word document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct a WordDocument with new WordDocument(), append content with AddText, AddParagraph, AddTable, or AddImage, then call SaveAs with a file path. Save() returns the document as a byte array instead, and ToPdf exports to PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read text from an existing Word document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Load the file with new WordDocument(filePath), then call ExtractText for the whole document or ExtractTextFromPage for a single page. FindText locates a string and ReplaceText swaps one value for another in place."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -156,6 +220,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class WordDocument : Object, IWordDocument, IDocument, IParent&lt;IWordDocumentObjectCollection, IWordDocumentObject&gt;</code></pre>
   </div>
+    <!-- archetype-N:start WordDocument treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>WordDocument</code> is the object you hold whenever you create, edit, read, or save a <code>.docx</code> file in C#. It models a whole Word document, and almost every IronWord task starts by constructing one and ends by saving it. Reach for it when a project needs to build a report from code, fill an existing template, or pull text and images back out of a document a user uploaded.</p>
+<p>Construct it four ways: <code>new WordDocument()</code> for an empty document, <code>new WordDocument(string filePath)</code> or <code>new WordDocument(byte[] bytes)</code> to load an existing file, and <code>new WordDocument(params ContentElement[] children)</code> to assemble one from elements you already built. Once you hold the instance, you mutate it in memory and then write it out, so the same object spans the full create-edit-save sequence.</p>
+<p>The members group into a few clear jobs. For **content authoring**, <code>AddText</code>, <code>AddParagraph</code>, <code>AddRun</code>, <code>AddTable</code>, <code>AddImage</code>, <code>AddShape</code>, <code>AddSection</code>, <code>AddMultiLevelTextList</code>, and <code>AddChild</code> append elements to the body. For **reading the structure**, the <code>Paragraphs</code>, <code>Runs</code>, <code>Tables</code>, <code>Texts</code>, <code>Sections</code>, <code>Children</code>, and <code>MultiLevelTextLists</code> collections expose what the document already contains, and <code>PageCount</code> reports its length. For **extraction and search**, <code>ExtractText</code>, <code>ExtractTextFromPage</code>, <code>ExtractTextFromPages</code>, <code>ExtractImages</code>, <code>ExtractShapes</code>, <code>FindText</code>, <code>ReplaceText</code>, and <code>Remove</code> mine and edit existing content. For **persistence**, <code>Save</code> and <code>SaveAs</code> write <code>.docx</code> to a path (<code>Save()</code> returns bytes), <code>ToPdf</code> exports straight to PDF, <code>ToJson</code> serializes the model, and <code>LogObjectTree</code> prints the element hierarchy for debugging. <code>MailMerge</code> reaches the template-merge surface.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord;
+using IronWord.Models;
+
+var document = new WordDocument();
+document.AddText(&quot;Quarterly Report&quot;);
+document.SaveAs(&quot;report.docx&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-text/">add text how-to</a> walks through writing content, the <a href="https://ironsoftware.com/csharp/word/how-to/extract-text/">extract text how-to</a> reads it back, and the <a href="https://ironsoftware.com/csharp/word/how-to/word-to-pdf/">Word to PDF how-to</a> covers the PDF export path.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

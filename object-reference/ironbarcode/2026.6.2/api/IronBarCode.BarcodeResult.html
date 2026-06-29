@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BarcodeResult
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       BarcodeResult Class - IronBarcode C# API
+      v2 (human)     title:       BarcodeResult: Read Scan Output in C#
+      v1 (algorithm) description: Read a decoded barcode in C# with the IronBarcode BarcodeResult class: Value, Text, BarcodeType, Url, Points, and per-page properties.
+      v2 (human)     description: Consume scan output in C# with the IronBarcode BarcodeResult class: the decoded value, the barcode type, and the position of each code found.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>BarcodeResult Class | IronBarcode C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BarcodeResult
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="BarcodeResult Class | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode BarcodeResult class in C#: the decoded Value, BarcodeType, Url, and Points of a scanned barcode.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "BarcodeResult Class | IronBarcode C# API",
+    "name": "BarcodeResult class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.BarcodeResult.html",
+    "abstract": "BarcodeResult is the decoded record IronBarcode returns for one scanned barcode in C#. A BarcodeReader.Read call returns a BarcodeResults collection of them. Read Value or Text for the decoded string, BinaryValue for raw bytes, Url for a parsed link, and BarcodeType for the symbology. Points, Rotation, Width, Height, PageNumber, and PageOrientation describe where and how the code appeared.",
+    "description": "Reference for the IronBarcode BarcodeResult class in C#: the decoded Value, BarcodeType, Url, and Points of a scanned barcode.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nforeach (BarcodeResult result in BarcodeReader.Read(\"barcode.png\"))\n    Console.WriteLine($\"{result.BarcodeType}: {result.Value}\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does BarcodeResult live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BarcodeResult is a class in the IronBarCode namespace, shipped in IronBarCode.dll, deriving from Object. BarcodeReader.Read returns a BarcodeResults collection of BarcodeResult entries, one per code found."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get the value of a scanned barcode in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Value property of the BarcodeResult, which holds the decoded string; Text returns the same content. Use BinaryValue for raw bytes and Url to read the value as a parsed link."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find the position of a barcode in an image with IronBarcode?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Points property of the BarcodeResult, a PointF array of the symbol's corner coordinates. Rotation, Width, and Height describe its orientation and size, and PageNumber reports the page for multi-page sources."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,18 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class BarcodeResult : Object</code></pre>
   </div>
+    <!-- archetype-N:start BarcodeResult treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>BarcodeResult</code> is the record a developer reads after a scan succeeds: one decoded barcode, with its text, its symbology, and where it sat in the source. A <code>BarcodeReader.Read</code> call returns a <code>BarcodeResults</code> collection of these, one per code found, so this is the type whose properties a developer actually consumes once the read is done. It answers &quot;how do I get the value of a scanned barcode in C#&quot; and the follow-ups about type and position.</p>
+<p>A developer does not construct <code>BarcodeResult</code> for a normal read; the reader produces it. After calling <code>Read</code> or <code>ReadAsync</code>, iterate the returned <code>BarcodeResults</code> and inspect each <code>BarcodeResult</code> in turn. Because one image or PDF page can hold several codes, treat the result as one entry among possibly many rather than assuming a single hit.</p>
+<p>The decoded payload is the first thing to read. <code>Value</code> and <code>Text</code> give the decoded string, <code>BinaryValue</code> exposes the raw bytes for non-text payloads, and <code>Url</code> parses the value as a <code>Uri</code> when the code holds a link. The symbology is <code>BarcodeType</code>, a <code>BarcodeEncoding</code> that names the format detected, such as QR, Code 128, or Code 39. The location and geometry are <code>Points</code>, the corner coordinates as a <code>PointF</code> array, plus <code>Rotation</code>, <code>Width</code>, and <code>Height</code>, which describe how the symbol was oriented and sized in the image. For multi-page sources, <code>PageNumber</code> and <code>PageOrientation</code> report which page the code came from and how that page was turned. <code>BarcodeImage</code> exposes the cropped image of the detected code itself. Read <code>Value</code> for the common case, and reach for the geometry and page properties when a job needs to locate or annotate the code.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+foreach (BarcodeResult result in BarcodeReader.Read(&quot;barcode.png&quot;))
+    Console.WriteLine($&quot;{result.BarcodeType}: {result.Value}&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/read-barcodes-from-images/">read barcodes from images how-to</a> reads codes and consumes the results, the <a href="https://ironsoftware.com/csharp/barcode/how-to/read-multiple-barcodes/">read multiple barcodes how-to</a> iterates several results, and the <a href="https://ironsoftware.com/csharp/barcode/tutorials/reading-barcodes/">reading barcodes tutorial</a> covers the end-to-end read.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

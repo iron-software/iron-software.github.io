@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IGraphic
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IGraphic Interface - IronPPT C# API Reference
+      v2 (human)     title:       IGraphic: Size & Position Slide Elements in C#
+      v1 (algorithm) description: The IronPPT IGraphic interface in C#: shared geometry with Width, Height, Position, and Angle for slide elements like Image, Shape, and Slide.
+      v2 (human)     description: Size, place, and rotate any slide element in C# through the IronPPT IGraphic contract, implemented by Image, Shape, TextBox, and Slide.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IGraphic Interface | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IGraphic
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IGraphic Interface | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT IGraphic interface in C#: Width, Height, Position, and Angle shared by Image, Shape, TextBox, and Slide.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IGraphic Interface | IronPPT C# API Reference",
+    "name": "IGraphic interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IGraphic.html",
+    "abstract": "Size, place, and rotate any slide element in C# through the IronPPT IGraphic contract. It carries the shared geometry: Width and Height as DocUnit values, Position as an ElementPosition, and Angle as a Rotation. Concrete implementors include Image, Shape, TextBox, and Slide, each adding its own members on top of this geometry.",
+    "description": "Reference for the IronPPT IGraphic interface in C#: Width, Height, Position, and Angle shared by Image, Shape, TextBox, and Slide.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "graphic.Width = new DocUnit(200);\ngraphic.Position = position;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IGraphic live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IGraphic is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It extends IContentElement and is implemented by visual element classes such as Image, Shape, TextBox, and Slide."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -162,6 +210,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IGraphic : IContentElement</code></pre>
   </div>
+    <!-- archetype-N:start IGraphic treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>Size, position, and rotation on a slide live on <code>IGraphic</code>. The contract is the common geometry every visual element shares, so the same four members place a picture, a shape, a text box, or a whole slide. A developer works through it whenever a placed element needs to move, scale, or turn, regardless of what kind of element it is.</p>
+<p>A graphic element is obtained from the slide it belongs to rather than created on its own, so an <code>IGraphic</code> reference usually comes from reading or adding an element and is then adjusted. The members are few and shared. <code>Width</code> and <code>Height</code> are <code>DocUnit</code> values setting the element's box. <code>Position</code> is an <code>ElementPosition</code> placing it on the slide. <code>Angle</code> is a <code>Rotation</code> turning it about its center. Because these are inherited wherever the contract is, code that lays out a slide can position any element through the same four members. Concrete implementors in IronPPT include <code>Image</code>, <code>Shape</code>, <code>TextBox</code>, and <code>Slide</code>, each adding its own members on top of this shared geometry.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">graphic.Width = new DocUnit(200);
+graphic.Position = position;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> places a shape, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-slide/">manage slide how-to</a> covers the slide that holds it.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

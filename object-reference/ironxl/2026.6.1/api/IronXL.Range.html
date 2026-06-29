@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Range
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Range Class - IronXL C# API Reference
+      v2 (human)     title:       Range: Work With Excel Cell Blocks in C#
+      v1 (algorithm) description: Work across a block of Excel cells in C# with the IronXL Range class: Sum, Avg, Min, and Max, iterate Rows and Columns, and SortAscending in one call.
+      v2 (human)     description: Handle many Excel cells at once in C# through the IronXL Range class: aggregate values, sort a selection, iterate rows and columns, and format in bulk.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Range Class | IronXL C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Range
-   | C# Excel API | IronXL ">
+    <meta name="title" content="Range Class | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL Range class in C#: aggregate with Sum and Avg, sort cells, iterate Rows and Columns, and save a selection as a named range.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Range Class | IronXL C# API Reference",
+    "name": "Range class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Range.html",
+    "abstract": "The IronXL Range class works across a rectangular block of Excel cells in C# in a single call. A worksheet's string indexer returns one, for example workSheet[\"A1:C10\"]. Sum, Avg, Min, and Max aggregate the numeric cells, Rows and Columns iterate the block, SortAscending and SortByColumn reorder it, and Value, Style, and Replace edit every cell at once. WorkSheet, RangeColumn, and RangeRow all derive from it.",
+    "description": "Reference for the IronXL Range class in C#: aggregate with Sum and Avg, sort cells, iterate Rows and Columns, and save a selection as a named range.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nWorkBook workBook = WorkBook.Load(\"sample.xlsx\");\nWorkSheet workSheet = workBook.GetWorkSheet(\"Sheet1\");\nRange range = workSheet[\"A1:A10\"];\ndecimal total = range.Sum();\nrange.SortAscending();"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Range live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Range is a class in the IronXL namespace, shipped in IronXL.dll, and derives from Object. A WorkSheet's string indexer or GetRange returns one, and WorkSheet, RangeColumn, and RangeRow all derive from it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you sum a range of cells in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Sum on the Range returned by the worksheet indexer, for example workSheet[\"A1:A10\"].Sum(). Avg, Min, and Max give the other aggregates over the numeric cells in the block."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you select a range of cells with IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the worksheet string indexer with an address like workSheet[\"A1:C10\"], which returns a Range, or call GetRange. From there you can aggregate, sort, iterate Rows and Columns, or apply Style to the whole block."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -158,6 +222,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Range : Object, IEnumerable&lt;Cell&gt;, IEnumerable</code></pre>
   </div>
+    <!-- archetype-N:start Range treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Working across a block of Excel cells at once in C#, rather than one cell at a time, is what <code>Range</code> is for. It represents a rectangular group of cells, such as <code>A1:C10</code>, and gives a developer aggregation, sorting, iteration, and bulk formatting over the whole block in a single call. It is the type a worksheet's string indexer returns and the surface most data-processing IronXL code spends its time on.</p>
+<p>A range comes from a worksheet's indexer, so <code>workSheet[&quot;A1:C10&quot;]</code> returns the <code>Range</code> covering those cells, or from <code>GetRange</code>. Because <code>WorkSheet</code>, <code>RangeColumn</code>, and <code>RangeRow</code> all derive from <code>Range</code>, the same members apply whether the block is an explicit selection, a whole sheet, a single column, or a single row.</p>
+<p>The members cluster by task. For math, <code>Sum</code>, <code>Avg</code>, <code>Min</code>, and <code>Max</code> reduce the numeric cells in the range to a single result. For navigation, <code>Rows</code> and <code>Columns</code> enumerate the sub-ranges, <code>Row</code> and <code>Column</code> pick one out, <code>ColumnCount</code> and <code>RowCount</code> size the block, and the range itself is iterable through <code>GetEnumerator</code>. For ordering, <code>SortAscending</code>, <code>SortDescending</code>, and <code>SortByColumn</code> reorder the cells in place. For editing, <code>Value</code> writes the same value to every cell, <code>Style</code> applies shared formatting, <code>Replace</code> swaps cell contents, and <code>Trim</code> drops surrounding empty cells. To keep a selection for reuse, <code>SaveAsNamedRange</code> registers it under a name. A range read with the indexer and one returned from <code>GetRange</code> are the same object, so either entry point reaches the full surface.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+WorkBook workBook = WorkBook.Load(&quot;sample.xlsx&quot;);
+WorkSheet workSheet = workBook.GetWorkSheet(&quot;Sheet1&quot;);
+Range range = workSheet[&quot;A1:A10&quot;];
+decimal total = range.Sum();
+range.SortAscending();</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/select-range/">select range how-to</a> covers building a range, the <a href="https://ironsoftware.com/csharp/excel/examples/aggregate-excel-functions/">aggregate functions example</a> uses <code>Sum</code> and <code>Avg</code>, and the <a href="https://ironsoftware.com/csharp/excel/how-to/sort-cells/">sort cells how-to</a> reorders one.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

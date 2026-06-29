@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Code128EncodingInfo
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Code128EncodingInfo - IronBarcode C# API
+      v2 (human)     title:       Code128EncodingInfo: Inspect Encoding in C#
+      v1 (algorithm) description: Inspect how a Code 128 barcode was encoded in C# with the IronBarcode Code128EncodingInfo class: OriginalData, TotalSymbols, IsGS1, and Segments.
+      v2 (human)     description: See exactly how a Code 128 string was packed in C# with IronBarcode Code128EncodingInfo: character-set segments, total symbols, and GS1 status.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Code128EncodingInfo Class | IronBarcode .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Code128EncodingInfo
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="Code128EncodingInfo Class | IronBarcode .NET API">
+    <meta name="description" content="Reference for the IronBarcode Code128EncodingInfo class in C#: read the Segments list, CharacterSetSummary, and TotalSymbols for a Code 128 barcode.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Code128EncodingInfo Class | IronBarcode .NET API",
+    "name": "Code128EncodingInfo class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.Code128EncodingInfo.html",
+    "abstract": "Code128EncodingInfo reports how a string was encoded into a Code 128 barcode in C# with IronBarcode. OriginalData holds the source string, TotalSymbols counts the symbols produced, IsGS1 flags GS1 application-identifier data, and Segments breaks the data into character-set runs as a List of Code128EncodingSegment. CharacterSetSummary renders the same breakdown as a readable string for logging.",
+    "description": "Reference for the IronBarcode Code128EncodingInfo class in C#: read the Segments list, CharacterSetSummary, and TotalSymbols for a Code 128 barcode.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nCode128EncodingInfo info = result.EncodingInfo;\nConsole.WriteLine(info.CharacterSetSummary);\nforeach (Code128EncodingSegment segment in info.Segments)\n    Console.WriteLine($\"{segment.CharacterSetName}: {segment.Data}\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Code128EncodingInfo live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Code128EncodingInfo is a class in the IronBarCode namespace, shipped in IronBarCode.dll, with base type Object. It is read-only output describing one Code 128 encoding; read its Segments list and CharacterSetSummary to inspect how the data was packed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you see which Code 128 character sets a barcode used in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Segments property of Code128EncodingInfo, a List of Code128EncodingSegment. Each segment names the character set that encoded its run of data. CharacterSetSummary gives the same breakdown as a short string for quick logging."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the IsGS1 property on Code128EncodingInfo indicate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IsGS1 returns true when the encoded data follows the GS1 application-identifier convention used on retail and logistics labels. TotalSymbols reports how many symbols the resulting Code 128 barcode contains, and OriginalData holds the source string that was encoded."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Code128EncodingInfo : Object</code></pre>
   </div>
+    <!-- archetype-N:start Code128EncodingInfo treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Code128EncodingInfo</code> is the report a developer reads back to learn how a string was packed into a Code 128 barcode. Code 128 switches between three character sets (A, B, and C) to pack letters, digits, and control codes as compactly as possible, and this object spells out exactly which sets were used and where. It is what you inspect when a Code 128 symbol is wider or narrower than expected and the question is why the encoder made the choices it did.</p>
+<p>The object describes a single Code 128 encoding rather than driving the read or write. <code>OriginalData</code> holds the source string that was encoded, <code>TotalSymbols</code> reports how many symbols the resulting barcode contains, and <code>IsGS1</code> flags whether the data follows the GS1 application-identifier convention used on retail and logistics labels. The detail that makes the report useful is <code>Segments</code>, a <code>List&lt;Code128EncodingSegment&gt;</code> that breaks the data into runs, each tagged with the character set that encoded it.</p>
+<p>Read <code>Segments</code> to walk the encoding run by run, since that is where the set switches and their symbol costs become visible. <code>CharacterSetSummary</code> gives the same breakdown as a short readable string for logging or a quick console check, so a developer can confirm the layout without iterating. Treat the object as read-only output describing one barcode, not a configuration surface. Because the segment list reflects the encoder's real decisions, comparing it across inputs is the practical way to understand why one payload produced a denser symbol than another. The <a href="https://ironsoftware.com/csharp/barcode/how-to/output-data-formats/">output data formats how-to</a> shows how to surface read results, and the <a href="https://ironsoftware.com/csharp/barcode/tutorials/reading-barcodes/">reading barcodes tutorial</a> covers the wider read workflow.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+Code128EncodingInfo info = result.EncodingInfo;
+Console.WriteLine(info.CharacterSetSummary);
+foreach (Code128EncodingSegment segment in info.Segments)
+    Console.WriteLine($&quot;{segment.CharacterSetName}: {segment.Data}&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/checksum-and-format-validation/">checksum and format validation how-to</a> walks through validating encoded payloads end to end.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

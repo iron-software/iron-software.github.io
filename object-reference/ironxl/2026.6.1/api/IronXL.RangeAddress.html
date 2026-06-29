@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class RangeAddress
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       RangeAddress Class - IronXL C# API
+      v2 (human)     title:       RangeAddress: Excel Range Bounds in C#
+      v1 (algorithm) description: Describe the bounds of an Excel range in C# with the IronXL RangeAddress: FirstRow, LastColumn, RowsCount, plus Includes, GetIntersection, and Extend.
+      v2 (human)     description: Read where a cell block sits in C# through the IronXL RangeAddress class: its first and last rows and columns, its size, and how it overlaps others.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>RangeAddress Class | IronXL C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class RangeAddress
-   | C# Excel API | IronXL ">
+    <meta name="title" content="RangeAddress Class | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL RangeAddress class in C#: a range's first and last rows and columns, RowsCount, and overlap tests like Includes and GetIntersection.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "RangeAddress Class | IronXL C# API Reference",
+    "name": "RangeAddress class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.RangeAddress.html",
+    "abstract": "When a range's position and size matter as data in C#, the IronXL RangeAddress describes them. A Range exposes its bounds through the RangeAddress property, which reports FirstRow, FirstColumn, LastRow, LastColumn, RowsCount, and ColumnsCount. Includes tests whether a cell falls inside, IsEqual compares two addresses, GetIntersection returns the overlap, and Extend grows an address to cover another.",
+    "description": "Reference for the IronXL RangeAddress class in C#: a range's first and last rows and columns, RowsCount, and overlap tests like Includes and GetIntersection.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nWorkBook workBook = WorkBook.Load(\"sample.xlsx\");\nWorkSheet workSheet = workBook.GetWorkSheet(\"Sheet1\");\nRangeAddress address = workSheet[\"A1:C10\"].RangeAddress;\nConsole.WriteLine(address.RowsCount);\nConsole.WriteLine(address.ColumnsCount);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does RangeAddress live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RangeAddress is a class in the IronXL namespace, shipped in IronXL.dll, and derives from Object. A Range exposes its own bounds through the RangeAddress property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get the size of a range in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read RowsCount and ColumnsCount on the Range.RangeAddress. FirstRow, FirstColumn, LastRow, and LastColumn give the four corners of the block as numbers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you find where two ranges overlap with IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call GetIntersection on one RangeAddress, passing another, to get the overlapping region as a new RangeAddress. Includes checks whether a single row and column fall inside, and IsEqual tests whether two addresses match."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class RangeAddress : Object</code></pre>
   </div>
+    <!-- archetype-N:start RangeAddress treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>The location and size of a cell block in C#, the bounds behind a selection like <code>A1:C10</code>, are what <code>RangeAddress</code> describes. It captures the first and last rows and columns of a range as a structured value, so code can ask where a range sits, how big it is, and whether two ranges overlap without re-parsing address strings. A developer reaches for it when a range's position matters as data, not just its cells.</p>
+<p>Every <code>Range</code> exposes its bounds through the <code>RangeAddress</code> property, which is the usual way to obtain one. From there <code>FirstRow</code>, <code>FirstColumn</code>, <code>LastRow</code>, and <code>LastColumn</code> give the four corners as numbers, and <code>RowsCount</code> and <code>ColumnsCount</code> report the dimensions. <code>Location</code> returns the address in a string form, and <code>ToString</code> does the same for display or logging.</p>
+<p>The comparison members answer the geometry questions that come up when ranges interact. <code>Includes</code> tests whether a given row and column fall inside the address, <code>IsEqual</code> checks whether two addresses cover the same cells, and <code>GetIntersection</code> returns the overlapping region of two ranges as a new <code>RangeAddress</code>. <code>Extend</code> grows an address to also cover another one, which is useful when merging adjacent selections. Reading these bounds does not change the underlying cells, since a <code>RangeAddress</code> describes a region rather than holding the data inside it, so it pairs with the <code>Range</code> it came from rather than replacing it.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+WorkBook workBook = WorkBook.Load(&quot;sample.xlsx&quot;);
+WorkSheet workSheet = workBook.GetWorkSheet(&quot;Sheet1&quot;);
+RangeAddress address = workSheet[&quot;A1:C10&quot;].RangeAddress;
+Console.WriteLine(address.RowsCount);
+Console.WriteLine(address.ColumnsCount);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/select-range/">select range how-to</a> covers building ranges, the <a href="https://ironsoftware.com/csharp/excel/examples/combine-excel-ranges/">combine ranges example</a> joins selections, and the <a href="https://ironsoftware.com/csharp/excel/how-to/trim-cell-range/">trim cell range how-to</a> narrows one.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

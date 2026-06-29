@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class SavingOptions
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       SavingOptions Class - IronXL C# API
+      v2 (human)     title:       SavingOptions: Save & Encrypt in C#
+      v1 (algorithm) description: Control workbook saving in C# with IronXL SavingOptions: encrypt with a Password and set the CSV ListDelimiter before writing a file.
+      v2 (human)     description: Protect or format a saved workbook in C# with the IronXL SavingOptions class: set a Password to encrypt, or a ListDelimiter for CSV.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>SavingOptions | IronXL C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class SavingOptions
-   | C# Excel API | IronXL ">
+    <meta name="title" content="SavingOptions | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL SavingOptions class in .NET: set Password to encrypt a workbook and ListDelimiter for CSV output.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "SavingOptions | IronXL C# API Reference",
+    "name": "SavingOptions class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Options.SavingOptions.html",
+    "abstract": "Encrypting or formatting a workbook on save in C# runs through the IronXL SavingOptions class. Password encrypts the written file so it requires that password to open, and ListDelimiter sets the separator used for CSV output, defaulting to the current region's culture. Both are string properties set before the save call.",
+    "description": "Reference for the IronXL SavingOptions class in .NET: set Password to encrypt a workbook and ListDelimiter for CSV output.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL.Options;\n\nvar options = new SavingOptions();\noptions.Password = \"secret\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does SavingOptions live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SavingOptions is a class in the IronXL.Options namespace, shipped in IronXL.dll, deriving from System.Object. It configures how a WorkBook is written when saving a file."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you password-protect a workbook on save in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a SavingOptions instance, set its Password property to the chosen password, and pass the options to the save call. The resulting file then requires that password to open. ListDelimiter on the same object sets the CSV separator."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +206,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class SavingOptions : Object</code></pre>
   </div>
+    <!-- archetype-N:start SavingOptions treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Encryption and CSV formatting on the way out are decided by <code>SavingOptions</code>. It is the settings object a developer passes when writing a workbook to disk, so a saved file can be protected with a password or written with a chosen list separator instead of accepting the defaults.</p>
+<p>Set the property a save needs, then hand the options to the save call. <code>Password</code> encrypts the workbook with the given value, so the resulting file requires that password to open. <code>ListDelimiter</code> sets the separator used when saving to CSV; its default follows the current region's culture, which matters when a target system expects a comma in a locale that defaults to a semicolon. Both are simple string properties, and a save that needs neither can skip the options entirely. The parameterless constructor creates an instance with both properties unset, ready to assign only what a particular output requires.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL.Options;
+
+var options = new SavingOptions();
+options.Password = &quot;secret&quot;;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/csharp-write-to-csv-file/">write to CSV how-to</a> saves delimited output, and the <a href="https://ironsoftware.com/csharp/excel/how-to/set-password-workbook/">password-protect a workbook how-to</a> secures a saved file.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

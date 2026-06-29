@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IHasTextStyle
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IHasTextStyle - IronPPT C# API Reference
+      v2 (human)     title:       IHasTextStyle: Owns a Text Style in C#
+      v1 (algorithm) description: The IronPPT IHasTextStyle interface in C#: a TextStyle property of type ITextStyle marking an element that owns character-level formatting.
+      v2 (human)     description: Read or set character formatting in C# through the IronPPT IHasTextStyle contract, implemented by Run, Text, and Paragraph.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IHasTextStyle Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IHasTextStyle
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IHasTextStyle Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT IHasTextStyle interface in C#: the TextStyle contract for character formatting, implemented by Run and Text.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IHasTextStyle Interface | IronPPT C# API",
+    "name": "IHasTextStyle interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IHasTextStyle.html",
+    "abstract": "Apply character-level formatting in C# through the IronPPT IHasTextStyle contract. It carries one TextStyle member, an ITextStyle holding font, size, color, and emphasis. Concrete implementors include Run, Text, and Paragraph, so the same assignment styles a single run of characters or a larger text element.",
+    "description": "Reference for the IronPPT IHasTextStyle interface in C#: the TextStyle contract for character formatting, implemented by Run and Text.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "element.TextStyle = textStyle;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IHasTextStyle live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IHasTextStyle is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It declares no base interface and is implemented by text-carrying classes such as Run, Text, and Paragraph."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +192,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IHasTextStyle</code></pre>
   </div>
+    <!-- archetype-N:start IHasTextStyle treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>When formatting needs to apply to characters rather than whole paragraphs, <code>IHasTextStyle</code> is the contract that exposes it. It marks an element as owning a text style, the font, size, color, and emphasis that decorate a run of characters, so code can set that formatting uniformly across any element that carries text. A developer works through it while styling the words inside a slide, separate from how the paragraphs are laid out.</p>
+<p>A text-styled element is reached through the slide content that holds the text, so the contract is normally obtained from an existing run or text element and then read or assigned. It declares one member: <code>TextStyle</code>, an <code>ITextStyle</code> carrying the character-level formatting. Assign a prepared <code>ITextStyle</code> to restyle the text, or read it to check the current font and emphasis. Concrete implementors in IronPPT include <code>Run</code>, <code>Text</code>, and <code>Paragraph</code>, so the same style applies whether the target is a single run of characters or a larger text element.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">element.TextStyle = textStyle;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> adds the text to style, and the <a href="https://ironsoftware.com/csharp/ppt/examples/add-paragraph/">add paragraph example</a> shows the surrounding content.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class IronBarCodeParsingException
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IronBarCodeParsingException - IronBarcode C#
+      v2 (human)     title:       IronBarCodeParsingException: Parse Error in C#
+      v1 (algorithm) description: IronBarCodeParsingException is raised in C# when IronBarcode decodes a barcode but cannot interpret its contents against the expected format.
+      v2 (human)     description: Handle parse failures in C# with IronBarCodeParsingException: the decoded barcode data does not match the structure the parser expects.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IronBarCodeParsingException | IronBarcode API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class IronBarCodeParsingException
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="IronBarCodeParsingException | IronBarcode API">
+    <meta name="description" content="Reference for IronBarCodeParsingException in C#: raised when decoded barcode data is malformed or breaks the expected format.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,23 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="lite" data-sub-variant="exception">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "IronBarCodeParsingException | IronBarcode API",
+  "name": "IronBarCodeParsingException exception | IronBarcode C# API",
+  "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.Exceptions.IronBarCodeParsingException.html",
+  "abstract": "IronBarCodeParsingException is raised in C# when IronBarcode decodes a barcode but cannot interpret its contents, such as data that does not match the structure a standard like GS1 expects. Inspect the raw decoded value, confirm it follows the required format, and handle nonconforming codes explicitly. It derives from IronBarCodeException.",
+  "description": "Reference for IronBarCodeParsingException in C#: raised when decoded barcode data is malformed or breaks the expected format.",
+  "inLanguage": "en-US",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "IronBarcode",
+    "url": "https://ironsoftware.com/csharp/barcode/"
+  }
+}
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,32 +175,11 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class IronBarCodeParsingException : IronBarCodeException</code></pre>
   </div>
-  <h5 id="IronBarCode_Exceptions_IronBarCodeParsingException_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-This exception is thrown when IronBarCode encounters errors while parsing structured barcode formats
-</p>
-<p>
-such as GS1, Code128, or other complex barcode standards. The exception provides detailed
-</p>
-<p>
-information about what went wrong during parsing, including validation errors, warnings, and the
-</p>
-<p>
-position where the error occurred.
-</p>
-</div>
-  <h5 id="IronBarCode_Exceptions_IronBarCodeParsingException_examples"><strong>Examples</strong></h5>
-  <pre><code>try
-{
-var result = Code128GS1Parser.Parse(barcodeData);
-}
-catch (IronBarCodeParsingException ex)
-{
-Console.WriteLine($&quot;Parser: {ex.ParserType}&quot;);
-Console.WriteLine($&quot;Input: {ex.Input}&quot;);
-Console.WriteLine($&quot;Errors: {string.Join(&quot;, &quot;, ex.ValidationErrors)}&quot;);
-}</code></pre>
-
+    <!-- archetype-N:start IronBarCodeParsingException treatment=lite sub_variant=exception -->
+  <div class="archetype-n-overview" data-treatment="lite" data-sub-variant="exception">
+<p><code>IronBarCodeParsingException</code> is raised when IronBarcode detects a barcode but cannot interpret its decoded contents, for example when the data does not match the structure a standard such as GS1 expects. It points to malformed or unexpected payload data rather than a problem reading the image itself. Inspect the raw decoded value, confirm it follows the format the parser requires, and handle nonconforming codes explicitly before reusing the result. It derives from <code>IronBarCodeException</code>, so the base type catches it as well.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

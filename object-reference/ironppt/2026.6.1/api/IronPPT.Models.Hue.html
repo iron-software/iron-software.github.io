@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Hue
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Hue Class - IronPPT C# API Reference
+      v2 (human)     title:       Hue: Rotate Shape Color in C#
+      v1 (algorithm) description: Rotate a color's hue in C# with the IronPPT Hue class: set the Angle (an IRotation), or assign a double for the degrees of rotation.
+      v2 (human)     description: Shift a PowerPoint element's color around the color wheel in C# with the IronPPT Hue class by setting how many degrees to rotate the hue.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Hue Class | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Hue
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="Hue Class | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT Hue class in C#: rotate a color's hue by an Angle, with an implicit conversion from a double degree value.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Hue Class | IronPPT C# API Reference",
+    "name": "Hue class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Hue.html",
+    "abstract": "Rotating a color's hue in C# runs through IronPPT's Hue class. Angle, an IRotation, sets how far around the color wheel the hue shifts. Building on BaseColorField, Hue applies as a color adjustment on an element, and an implicit conversion from double lets a rotation be written as a plain degree value such as 30.",
+    "description": "Reference for the IronPPT Hue class in C#: rotate a color's hue by an Angle, with an implicit conversion from a double degree value.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPPT.Models;\n\nHue hue = 30;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Hue live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hue is a class in the IronPPT.Models namespace, shipped in IronPPT.dll. It derives from BaseColorField and implements IHue and IBaseColorField, and it is applied as a color adjustment on an element."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you rotate a color's hue in C# with IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the Angle property (an IRotation) to the degrees of rotation, or assign a double to a Hue, for example Hue hue = 30, and the implicit conversion builds it. A larger angle produces a more pronounced shift."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -164,6 +220,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Hue : BaseColorField, IHue, IBaseColorField</code></pre>
   </div>
+    <!-- archetype-N:start Hue treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>A color adjustment that rotates the hue of a fill, the shift around the color wheel that turns a red toward orange or purple, is captured by <code>Hue</code>. Apply one as part of a color field when an element's color should be nudged by degrees rather than replaced outright.</p>
+<p><code>Angle</code>, an <code>IRotation</code>, is the amount of rotation: it expresses how far around the color wheel the hue moves, so a larger angle produces a more pronounced shift. Because <code>Hue</code> builds on <code>BaseColorField</code>, it slots into the same color-adjustment model as the library's other field types and is applied where a color modifier is expected. For brevity the type also defines an implicit conversion from <code>double</code>, so a rotation can be written as a plain number and the runtime builds the <code>Hue</code> for you. Set <code>Angle</code> directly when you want an explicit <code>IRotation</code>, or assign a <code>double</code> when a degree value is enough. Since a hue shift only has meaning against a base color, configure it while styling the element's color. To style the slide element it modifies, begin from the styling workflow.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPPT.Models;
+
+Hue hue = 30;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/tutorials/slide-element/">slide element tutorial</a> styles elements on a slide, and the <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> places a shape whose color a hue can adjust.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

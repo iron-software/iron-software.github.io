@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrResult.Character
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrResult.Character Class - IronOCR C# API
+      v2 (human)     title:       Character: Per-Glyph OCR Detail in C#
+      v1 (algorithm) description: Read a single OCR character in C# with the IronOCR Character class: Text, Confidence, Choices, Font, CharacterNumber, ToChar, and Block or Line links.
+      v2 (human)     description: Inspect OCR output glyph by glyph in C# with the IronOCR Character class: per-character text, confidence, alternative choices, and font details.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrResult.Character | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrResult.Character
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrResult.Character | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR OcrResult.Character class in C#: per-character Text, Confidence, Choices, Font, and ToChar from an OcrResult tree.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrResult.Character | IronOCR C# API",
+    "name": "Character class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrResult.Character.html",
+    "abstract": "Inspecting OCR output character by character in C# uses the IronOCR OcrResult.Character element, the finest-grained text item in a result. Obtain it by walking an OcrResult from IronTesseract.Read down to a word's Characters. It exposes inherited Text and Confidence, plus CharacterNumber, ToChar, a Choices array of alternatives, an OcrFont, and Block, Line, Paragraph, and Word links back up the tree.",
+    "description": "Reference for the IronOCR OcrResult.Character class in C#: per-character Text, Confidence, Choices, Font, and ToChar from an OcrResult tree.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronOcr;\n\nvar ocr = new IronTesseract();\nusing var input = new OcrInput(\"scan.png\");\nOcrResult result = ocr.Read(input);\nforeach (OcrResult.Character c in result.Pages[0].Words[0].Characters)\n    Console.WriteLine($\"{c.Text} ({c.Confidence:F0}%)\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrResult.Character live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrResult.Character is a class in the IronOcr namespace, shipped in IronOcr.dll, deriving from OcrResult.OcrResultTextElement. You receive instances by walking an OcrResult down to a word's or line's Characters array."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read individual characters from OCR output in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Run IronTesseract.Read to get an OcrResult, then enumerate Pages, Words, and each word's Characters array. Read each character's inherited Text and Confidence, or call ToChar to get a System.Char."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get alternative recognition guesses for a character?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Choices property, which returns an OcrResult.Choice array of alternative readings with a statistical Confidence for each. This is useful as a fallback when the primary Confidence is low."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -236,6 +300,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Character : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, IDocumentCharacter, IPdfDocumentObject, IDocumentObject</code></pre>
   </div>
+    <!-- archetype-N:start Character treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Inspecting OCR output one character at a time runs through <code>OcrResult.Character</code>, the finest-grained text element in an IronOCR result. Reach for it when a word-level or line-level read is not precise enough, for example when you need per-character confidence, alternative recognition guesses, or detailed font traits for a single glyph.</p>
+<p>You do not create a character. You obtain one by walking an <code>OcrResult</code> returned from <code>IronTesseract.Read</code>: enumerate <code>result.Pages</code>, then a page's <code>Words</code>, then a word's <code>Characters</code>, or read the <code>Characters</code> array directly on a <code>Line</code> or <code>Block</code>. Each character knows its place in the tree through the <code>Block</code>, <code>Line</code>, <code>Paragraph</code>, and <code>Word</code> fields, so you can move back up from a single glyph to its containing structures without re-querying the document.</p>
+<p>The everyday members are the inherited <code>Text</code> and <code>Confidence</code> from <code>OcrResult.OcrResultTextElement</code>, plus <code>CharacterNumber</code> for the one-based index within the document and <code>ToChar</code> to convert the element to a plain <code>System.Char</code>. <code>Choices</code> returns an <code>OcrResult.Choice</code> array of alternative readings with their statistical relevance, which is useful when confidence is low and you want a fallback. <code>Font</code> returns an <code>OcrResult.OcrFont</code> with typeface details, visible mainly under Tesseract-only engine modes. <code>Angle</code> and the <code>LooseLeft</code>, <code>LooseTop</code>, <code>LooseRight</code>, and <code>LooseBottom</code> values give the rotation and the relaxed bounding box for finer layout work, where the loose values widen the tight bounding box slightly to account for ascenders, descenders, and italic slant that can fall outside the exact glyph rectangle.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronOcr;
+
+var ocr = new IronTesseract();
+using var input = new OcrInput(&quot;scan.png&quot;);
+OcrResult result = ocr.Read(input);
+foreach (OcrResult.Character c in result.Pages[0].Words[0].Characters)
+    Console.WriteLine($&quot;{c.Text} ({c.Confidence:F0}%)&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">working with OCR results how-to</a> covers navigating the element tree, the <a href="https://ironsoftware.com/csharp/ocr/how-to/tesseract-result-confidence/">result confidence how-to</a> explains reading per-character confidence, and the <a href="https://ironsoftware.com/csharp/ocr/examples/results-objects/">results objects example</a> reads characters, words, and lines from a result.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="fields">Fields
   </h3>
   

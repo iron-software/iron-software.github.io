@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AdvancedWord
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       AdvancedWord Class - IronOCR C# API Reference
+      v2 (human)     title:       AdvancedWord: Per-Word OCR Data in C#
+      v1 (algorithm) description: AdvancedWord is a recognized word from IronOCR's advanced read in C#: its Text plus BoundingBox, X, Y, Width, Height, and PageNumber.
+      v2 (human)     description: Inspect each recognized word in C# with IronOCR's AdvancedWord: read the word and its exact pixel box from an advanced OCR result, with examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>AdvancedWord Class | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AdvancedWord
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="AdvancedWord Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for IronOCR's AdvancedWord in C#: a single recognized word with text and spatial coordinates from an advanced OCR result.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "AdvancedWord Class | IronOCR C# API Reference",
+    "name": "AdvancedWord class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.AdvancedWord.html",
+    "abstract": "Word-level output from IronOCR's advanced OCR engine in C# is carried by AdvancedWord, obtained from the Words array of an AdvancedOcrResultBase. Its Text holds the recognized word, while BoundingBox, X, Y, Width, Height, and PageNumber (inherited from AdvancedOcrElement) place it on the page. RegionIndex and RegionConfidence link it to its text region.",
+    "description": "Reference for IronOCR's AdvancedWord in C#: a single recognized word with text and spatial coordinates from an advanced OCR result.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "foreach (AdvancedWord word in result.Words)\n    Console.WriteLine($\"{word.Text} ({word.Width}x{word.Height})\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does AdvancedWord live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AdvancedWord is a class in the IronOcr namespace, shipped in IronOcr.dll. It derives from AdvancedOcrElement, and you obtain instances from the Words array on an AdvancedOcrResultBase."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get the position of a recognized word in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read BoundingBox for the pixel rectangle, or X, Y, Width, and Height for the same box as separate values. PageNumber gives the 1-based page. These members are inherited from AdvancedOcrElement and shared with AdvancedCharacter."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -183,25 +239,16 @@ determine reading order, reconstruct text layout, and map words to their positio
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class AdvancedWord : AdvancedOcrElement</code></pre>
   </div>
-  <h5 id="IronOcr_AdvancedWord_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p><strong>Usage:</strong></p>
-<pre><code>var ocr = new IronTesseract();
-var input = new OcrInput();
-input.LoadPdf(&quot;scanned.pdf&quot;);
-var result = ocr.ReadDocumentAdvanced(input);
-<p>// Access all words with coordinates
-foreach (var word in result.Words)
-{
-Console.WriteLine($&quot;'{word.Text}' at ({word.X},{word.Y}) size ({word.Width}x{word.Height}) on page {word.PageNumber} conf={word.RegionConfidence:P0}&quot;);
-}</p>
-<p>// Sort words by reading order within a page
-var page1Words = result.Words
-.Where(w =&gt; w.PageNumber == 1)
-.OrderBy(w =&gt; w.Y)
-.ThenBy(w =&gt; w.X);</p>
-<p>// Find low-confidence words that may indicate poor print quality
-var lowQualityWords = result.Words.Where(w =&gt; w.RegionConfidence &lt; 0.7);</code></pre><p>
-</div>
+    <!-- archetype-N:start AdvancedWord treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Word-level results from an advanced OCR read are carried by <code>AdvancedWord</code>. Each instance is one word the engine recognized, paired with the pixel rectangle that places it on the page, so a project can lay text back over an image, draw word boxes, or search by location. It is the word-granularity counterpart of <code>AdvancedCharacter</code>, which exposes the same data one glyph at a time.</p>
+<p>You obtain an <code>AdvancedWord</code> from the <code>Words</code> array on an <code>AdvancedOcrResultBase</code>, the result returned by the advanced and handwriting reads on <code>IronTesseract</code>. Iterating that array walks every word found across the document in reading order.</p>
+<p>The recognized text is on <code>Text</code>, and the geometry comes from members inherited from <code>AdvancedOcrElement</code>: <code>BoundingBox</code> gives the pixel rectangle, <code>X</code>, <code>Y</code>, <code>Width</code>, and <code>Height</code> give the same box as separate values, and <code>PageNumber</code> reports the 1-based page. <code>RegionIndex</code> and <code>RegionConfidence</code> connect the word to its text region and that region's confidence, which helps when discarding uncertain words before further processing.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">foreach (AdvancedWord word in result.Words)
+    Console.WriteLine($&quot;{word.Text} ({word.Width}x{word.Height})&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-document-advanced/">read document advanced how-to</a> covers an advanced read end to end, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">read results how-to</a> demonstrates traversing words and their coordinates.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

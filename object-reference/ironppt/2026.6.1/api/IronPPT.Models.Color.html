@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Color
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Color Class - IronPPT C# API Reference
+      v2 (human)     title:       Color: Set Colors in C# Presentations
+      v1 (algorithm) description: Color represents a presentation color in IronPPT for C#: build from RGB or a string, use predefined and theme colors, and convert with FromArgb.
+      v2 (human)     description: Set any color in C# with IronPPT's Color class: literal RGB, hex strings, named web colors, or theme slots like Accent1, plus tint and shade.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Color Class | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Color
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="Color Class | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT Color class in C#: construct from RGB or a string, use named and theme colors, and read R, G, B, Tint, and Shade.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Color Class | IronPPT C# API Reference",
+    "name": "Color class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Color.html",
+    "abstract": "Setting a color in IronPPT for C# runs through the Color class. Build one from RGB components, an ARGB integer, or a hex or named string, or take a predefined static color such as Red or the theme slot Accent1. The R, G, B, and A channels are ColorField objects, Tint and Shade are Percentage adjustments, and FromArgb, ToArgb, and ToHtmlCssColorCode convert it.",
+    "description": "Reference for the IronPPT Color class in C#: construct from RGB or a string, use named and theme colors, and read R, G, B, Tint, and Shade.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPPT.Models;\n\nColor brand = new Color(\"#1B6AC9\");\nColor accent = Color.Accent1;\nstring css = brand.ToHtmlCssColorCode();"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Color live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Color is a class in the IronPPT.Models namespace, shipped in IronPPT.dll. It derives from System.Object, implements IColor, and is assigned to fill, border, and text styling properties."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create a color in C# with IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use a constructor such as new Color(red, green, blue) or new Color(\"#1B6AC9\"), take a predefined static color like Color.Red, or call the static FromArgb overloads. Theme slots like Color.Accent1 follow the presentation theme."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a standard color and a theme color in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standard colors such as Red, Blue, and Black are literal values. Theme and scheme colors like Accent1, Background1, and Text1 resolve against the presentation's theme, so they change when the template changes. ColorType reports which kind a Color is."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -153,6 +217,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Color : Object, IColor</code></pre>
   </div>
+    <!-- archetype-N:start Color treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Color</code> represents a single color in IronPPT, the value you assign whenever text, a shape fill, a border, or a background needs a specific shade. It covers both literal RGB colors and the theme-aware colors a presentation template defines, so the same type serves a hard-coded hex value and a slot like &quot;Accent 1&quot; that follows the deck's theme.</p>
+<p>A <code>Color</code> is created directly and then assigned to whatever property takes one, so it sits at the styling step of building a slide. Construct it from components or a string, or take one of the many predefined colors exposed as static fields, then pass it to a fill, border, or text style.</p>
+<p>Four constructors cover the common cases: <code>new Color()</code>, <code>new Color(int red, int green, int blue)</code>, <code>new Color(int alpha, int red, int green, int blue)</code>, and <code>new Color(string color)</code> for a hex or named string. The static fields fall into two groups. The **standard web colors** (<code>Red</code>, <code>Green</code>, <code>Blue</code>, <code>Black</code>, <code>White</code>, <code>Transparent</code>, and the full named-color set) give you a literal color in one reference, while the **theme and scheme colors** (<code>Accent1</code> through <code>Accent6</code>, <code>Background1</code>, <code>Background2</code>, <code>Text1</code>, <code>Text2</code>, <code>None</code>) resolve against the presentation theme. For reading or tweaking a color, the **channel properties** <code>R</code>, <code>G</code>, <code>B</code>, and <code>A</code> are <code>ColorField</code> objects, <code>Tint</code> and <code>Shade</code> are <code>Percentage</code> lightening and darkening, and <code>Hue</code>, <code>Saturation</code>, and <code>Luminance</code> expose the HSL view; <code>ColorType</code> reports the kind via <code>ColorTypeValues</code> and <code>ColorValue</code> returns the resolved string. The **factory and conversion methods** round it out: the static <code>FromArgb</code> overloads build a color from packed or separate ARGB integers, while <code>ToArgb</code>, <code>ToHtmlCssColorCode</code>, <code>GetBrightness</code>, and <code>GetLuminance</code> read it back.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPPT.Models;
+
+Color brand = new Color(&quot;#1B6AC9&quot;);
+Color accent = Color.Accent1;
+string css = brand.ToHtmlCssColorCode();</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> applies color to styled text, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> covers formatting runs that carry a color.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

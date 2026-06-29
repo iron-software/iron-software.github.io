@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class MetaData
-   | C# Web Scraping API | IronWebScraper </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       MetaData Class - IronWebScraper C# API
+      v2 (human)     title:       MetaData: Carry Context Between Requests in C#
+      v1 (algorithm) description: Carry context between a Request and Response in C# with the IronWebScraper MetaData class: store any object by key and read it with Get<T>.
+      v2 (human)     description: Pass data into a scraper's parser in C# with the IronWebScraper MetaData class: attach objects to a Request and read them back from the Response.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>MetaData Class | IronWebScraper C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class MetaData
-   | C# Web Scraping API | IronWebScraper ">
+    <meta name="title" content="MetaData Class | IronWebScraper C# API">
+    <meta name="description" content="Reference for the IronWebScraper MetaData class in C#: a string-keyed bag that carries objects from a Request to the matching Response.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "MetaData Class | IronWebScraper C# API",
+    "name": "MetaData class | IronWebScraper C# API",
+    "url": "https://ironsoftware.com/csharp/webscraper/object-reference/api/IronWebScraper.MetaData.html",
+    "abstract": "Carrying per-request context in C# runs through the IronWebScraper MetaData class, a string-keyed bag of objects built on Dictionary<string, object>. Store any object under a string key with the indexer and read it back with the typed Get<T> helper. Attach a MetaData to a Request, and the matching Response exposes the same instance so a category, parent record, or page number reaches the parser.",
+    "description": "Reference for the IronWebScraper MetaData class in C#: a string-keyed bag that carries objects from a Request to the matching Response.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWebScraper",
+      "url": "https://ironsoftware.com/csharp/webscraper/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var meta = new MetaData();\nmeta[\"pageType\"] = \"listing\";\nRequest(url, Parse, meta);\n\n// later, in Parse:\nstring type = response.MetaData.Get<string>(\"pageType\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does MetaData live in the IronWebScraper API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MetaData is a class in the IronWebScraper namespace, shipped in IronWebScraper.dll. It derives from Dictionary<string, object>, so it is used like a dictionary with an added typed Get<T> helper."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you pass custom data into a scraper's parse method in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a MetaData, store values with the indexer, and pass it to WebScraper.Request. In Parse, read them from Response.MetaData with Get<T>, for example Get<string>(\"pageType\")."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -163,6 +219,19 @@ int pageNumber = Response.Request.Meta.Get&lt;int>(&quot;page-number&quot;);</co
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class MetaData : Dictionary&lt;string, object&gt;</code></pre>
   </div>
+    <!-- archetype-N:start MetaData treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>MetaData</code> is the per-request bag a scraper uses to carry its own objects from a <code>Request</code> through to the matching <code>Response</code>. It extends <code>Dictionary&lt;string, object&gt;</code>, so any value can be stored under a string key and read back when the page is parsed, which is how context such as a category, a parent record, or a page number reaches the parser.</p>
+<p>Store values with the dictionary indexer and read them with the typed <code>Get&lt;T&gt;(key)</code> helper, which casts the stored object for you. Attach a <code>MetaData</code> to a <code>WebScraper.Request</code> call; the resulting <code>Response.MetaData</code> exposes the same instance during parsing. Because the bag holds <code>object</code> values, a whole record or domain model can ride along rather than just strings, which keeps a multi-step crawl stateful without external storage, and the typed <code>Get&lt;T&gt;</code> removes the cast at the read site.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var meta = new MetaData();
+meta[&quot;pageType&quot;] = &quot;listing&quot;;
+Request(url, Parse, meta);
+
+// later, in Parse:
+string type = response.MetaData.Get&lt;string&gt;(&quot;pageType&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/webscraper/tutorials/c-sharp-blog-web-scraper/">blog web scraper tutorial</a> threads context through MetaData, and the <a href="https://ironsoftware.com/csharp/webscraper/tutorials/webscraping-in-c-sharp-advanced/">advanced tutorial</a> uses it across multi-step crawls.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

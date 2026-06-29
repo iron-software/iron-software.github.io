@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IFont
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IFont - IronPPT C# API
+      v2 (human)     title:       IFont: Typeface Control for Text in C#
+      v1 (algorithm) description: IFont is IronPPT's font contract in C#: it exposes FontFamily, FontSize, and per-script faces. Implemented by the Font class for text runs.
+      v2 (human)     description: Control typeface and size in C# through IronPPT's IFont contract: set FontFamily and FontSize, plus per-script faces for mixed-script text.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IFont Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IFont
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IFont Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT IFont interface in C#: the typeface contract Font implements, with FontFamily, FontSize, and per-script faces.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IFont Interface | IronPPT C# API",
+    "name": "IFont interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IFont.html",
+    "abstract": "Controlling the typeface of a text run in IronPPT is the job of the IFont contract in C#. It exposes FontFamily and FontSize for everyday styling, plus the per-script faces LatinFont, EastAsia, ComplexScript, and SymbolFont for mixed-script documents. The concrete implementor is the Font class, which you receive from a run's style and adjust to change how text renders.",
+    "description": "Reference for the IronPPT IFont interface in C#: the typeface contract Font implements, with FontFamily, FontSize, and per-script faces.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "font.FontFamily = \"Calibri\";\nfont.LatinFont = \"Calibri\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IFont live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IFont is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It does not extend another interface and declares FontFamily, FontSize, and the per-script faces LatinFont, EastAsia, ComplexScript, and SymbolFont."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IFont in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Font class in IronPPT.Models implements IFont. You usually receive it from a text run's style, set FontFamily and FontSize for most work, and use the script-specific properties only when a presentation mixes Latin, East Asian, complex, and symbol text."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +200,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IFont</code></pre>
   </div>
+    <!-- archetype-N:start IFont treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>Typeface choices for a run of text, the family, the size, and the script-specific variants, sit behind <code>IFont</code>. The contract exposes <code>FontFamily</code> and <code>FontSize</code> for the everyday case, plus the per-script faces PowerPoint tracks separately: <code>LatinFont</code>, <code>EastAsia</code>, <code>ComplexScript</code>, and <code>SymbolFont</code>. Setting these lets a document render correctly across mixed-script content rather than forcing one face on every character. Coding against the contract keeps text-styling logic independent of the concrete font type.</p>
+<p>The concrete implementor in IronPPT is <code>Font</code>, the object a developer assigns or reads when controlling how a run looks. <code>FontSize</code> is typed as the concrete <code>FontSize</code> measurement object, so a developer sets the size through its unit properties rather than passing a bare number. A developer typically receives a font from a text run's style and adjusts <code>FontFamily</code> and <code>FontSize</code> for most work, reaching for the script-specific properties only when a presentation mixes Latin, East Asian, complex, and symbol text.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">font.FontFamily = &quot;Calibri&quot;;
+font.LatinFont = &quot;Calibri&quot;;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> covers adding and formatting text, and the <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> sets fonts while styling content.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

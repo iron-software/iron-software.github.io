@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TableBorders
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TableBorders Class - IronWord C# API
+      v2 (human)     title:       TableBorders: Word Table Lines in C#
+      v1 (algorithm) description: Set Word table borders in C# with the IronWord TableBorders class: assign a BorderStyle to each outer edge and to the inside horizontal and vertical grid lines.
+      v2 (human)     description: Draw lines around and inside Word tables with the IronWord TableBorders class in C#: set the four outer edges and the inner grid lines in one object.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TableBorders Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TableBorders
-   | C# Word API | IronWord ">
+    <meta name="title" content="TableBorders Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord TableBorders class in C#: six BorderStyle edges for a table, the outer frame plus the inside horizontal and vertical lines.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TableBorders Class | IronWord C# API",
+    "name": "TableBorders class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.TableBorders.html",
+    "abstract": "Drawing lines around and inside a Word table in C# runs through the IronWord TableBorders class. It collects six edges, each a BorderStyle: TopBorder, BottomBorder, LeftBorder, and RightBorder for the outer frame, plus InsideHorizontalBorder and InsideVerticalBorder for the inner grid. Assign a TableBorders to the Borders property of a Table or TableStyle.",
+    "description": "Reference for the IronWord TableBorders class in C#: six BorderStyle edges for a table, the outer frame plus the inside horizontal and vertical lines.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nTable table = new Table(4, 4);\ntable.Borders = new TableBorders\n{\n    TopBorder = new BorderStyle(),\n    BottomBorder = new BorderStyle()\n};"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TableBorders live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TableBorders is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object and is assigned to the Borders property of a Table or a TableStyle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add borders to a table in C# with IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a TableBorders, set each edge to a BorderStyle (TopBorder, BottomBorder, LeftBorder, RightBorder, and the InsideHorizontalBorder and InsideVerticalBorder grid lines), then assign it to the Borders property of your Table."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between the outer and inside borders?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TopBorder, BottomBorder, LeftBorder, and RightBorder draw the outer frame of the table, while InsideHorizontalBorder and InsideVerticalBorder draw the lines that separate rows and columns within it."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,22 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TableBorders : Object</code></pre>
   </div>
+    <!-- archetype-N:start TableBorders treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a table needs lines drawn around and between its cells, <code>TableBorders</code> collects the six edges that define them. It groups the outer frame and the inner grid lines into one object you assign to a table, so you set every border in a single place instead of per cell. Reach for it whenever a Word table needs anything beyond the default look.</p>
+<p>Each side is its own <code>BorderStyle</code>: <code>TopBorder</code>, <code>BottomBorder</code>, <code>LeftBorder</code>, and <code>RightBorder</code> draw the outer frame, while <code>InsideHorizontalBorder</code> and <code>InsideVerticalBorder</code> draw the grid lines that separate rows and columns inside the table. A <code>BorderStyle</code> carries the color, line pattern, and thickness, so assigning the same instance to several edges keeps them visually matched, and assigning different ones lets the frame differ from the interior.</p>
+<p>Build a <code>TableBorders</code>, set the edges you care about, and assign it to the <code>Borders</code> property of a <code>Table</code> or a <code>TableStyle</code>. Edges you leave unset fall back to the table's defaults, so a header rule or a single outer frame needs only the relevant properties populated. Because the same object holds all six sides, a developer can define one border scheme and reuse it across tables for a consistent document. A common scheme gives the outer frame a heavier line and the inside grid a lighter one, which separates the table from the page while keeping the cells legible. Sharing a single <code>BorderStyle</code> instance between matching edges is the simplest way to guarantee those edges stay identical as the design changes.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+Table table = new Table(4, 4);
+table.Borders = new TableBorders
+{
+    TopBorder = new BorderStyle(),
+    BottomBorder = new BorderStyle()
+};</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-table/">add a table how-to</a> shows borders applied to a styled table, the <a href="https://ironsoftware.com/csharp/word/examples/add-table/">add table example</a> saves a bordered grid to DOCX, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> covers how tables and their styling fit the document model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

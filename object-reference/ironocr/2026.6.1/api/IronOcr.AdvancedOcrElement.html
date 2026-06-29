@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AdvancedOcrElement
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       AdvancedOcrElement Class - IronOCR C# API
+      v2 (human)     title:       AdvancedOcrElement: Positioned OCR Data in C#
+      v1 (algorithm) description: AdvancedOcrElement is the base for IronOCR's advanced OCR elements in C#: Text plus BoundingBox, X, Y, Width, Height, PageNumber, and region data.
+      v2 (human)     description: Work with positioned OCR data in C# through IronOCR's AdvancedOcrElement, the shared base of AdvancedWord and AdvancedCharacter, with examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>AdvancedOcrElement Class | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AdvancedOcrElement
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="AdvancedOcrElement Class | IronOCR C# API">
+    <meta name="description" content="Reference for IronOCR's AdvancedOcrElement in C#: the base class for AdvancedWord and AdvancedCharacter, carrying text and spatial coordinates.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "AdvancedOcrElement Class | IronOCR C# API",
+    "name": "AdvancedOcrElement class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.AdvancedOcrElement.html",
+    "abstract": "The shared shape behind every positioned element of an IronOCR advanced read in C# is AdvancedOcrElement. It pairs recognized Text with geometry (BoundingBox, X, Y, Width, Height, PageNumber) plus RegionIndex and RegionConfidence. Its concrete forms, AdvancedWord and AdvancedCharacter, are obtained from the Words and Characters arrays of an AdvancedOcrResultBase.",
+    "description": "Reference for IronOCR's AdvancedOcrElement in C#: the base class for AdvancedWord and AdvancedCharacter, carrying text and spatial coordinates.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "foreach (AdvancedWord word in result.Words)\n    if (word.RegionConfidence > 0.8)\n        Console.WriteLine($\"{word.Text} @ {word.BoundingBox}\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does AdvancedOcrElement live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AdvancedOcrElement is an abstract class in the IronOcr namespace, shipped in IronOcr.dll. It derives from Object and is the base type of AdvancedWord and AdvancedCharacter."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What classes derive from AdvancedOcrElement in IronOCR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AdvancedWord and AdvancedCharacter both derive from AdvancedOcrElement. You obtain them from the Words and Characters arrays on an AdvancedOcrResultBase, the result of an advanced or handwriting read."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get an element's position from an advanced OCR read in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read BoundingBox for the pixel rectangle, or X, Y, Width, and Height as separate values. PageNumber gives the 1-based page, and RegionConfidence lets you filter low-confidence regions before using the text."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,6 +218,17 @@ region index, and confidence score.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class AdvancedOcrElement : Object</code></pre>
   </div>
+    <!-- archetype-N:start AdvancedOcrElement treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>AdvancedOcrElement</code> is the shared shape behind every positioned element an advanced OCR read returns, the common data a recognized word or character carries. It pairs the recognized text with the coordinates that place it on the page image, so any element from an advanced read can be highlighted, cropped, or mapped back onto its source the same way. Its two concrete forms are <code>AdvancedWord</code> and <code>AdvancedCharacter</code>, which add nothing structural beyond word versus character granularity.</p>
+<p>You do not work with <code>AdvancedOcrElement</code> directly. You receive its derived types from an <code>AdvancedOcrResultBase</code>: the <code>Words</code> array yields <code>AdvancedWord</code> elements and the <code>Characters</code> array yields <code>AdvancedCharacter</code> elements. Both result collections come from the advanced and handwriting reads on <code>IronTesseract</code>, which is where every element in this hierarchy originates.</p>
+<p>The members split into two groups. Content is on <code>Text</code>, the recognized string for the element. Geometry is the rest: <code>BoundingBox</code> is the element's pixel rectangle, while <code>X</code>, <code>Y</code>, <code>Width</code>, and <code>Height</code> express that same box as individual values for code that prefers them separately. <code>PageNumber</code> is the 1-based page the element was found on, important for multi-page documents. Two region members add context: <code>RegionIndex</code> is the 0-based index of the text region the element belongs to, and <code>RegionConfidence</code> is the OCR confidence for that region, which is the value to threshold on when filtering shaky output before display or storage.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">foreach (AdvancedWord word in result.Words)
+    if (word.RegionConfidence &gt; 0.8)
+        Console.WriteLine($&quot;{word.Text} @ {word.BoundingBox}&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-document-advanced/">read document advanced how-to</a> walks through an advanced read, the <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">read results how-to</a> covers traversing the recognized elements, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/read-handwritten-image/">read handwritten image how-to</a> uses the same element shape for handwriting.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

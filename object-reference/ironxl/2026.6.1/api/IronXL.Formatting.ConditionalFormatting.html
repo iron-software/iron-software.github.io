@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ConditionalFormatting
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ConditionalFormatting Class - IronXL C# API
+      v2 (human)     title:       ConditionalFormatting: Excel Rule Sets in C#
+      v1 (algorithm) description: Group Excel formatting rules in C# with the IronXL ConditionalFormatting class: hold rules with AddRule, GetRule, SetRule, and GetFormattingRanges.
+      v2 (human)     description: Manage a set of conditional formatting rules in C# with IronXL's ConditionalFormatting class, then attach them to a worksheet in one pass.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ConditionalFormatting Class | IronXL C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ConditionalFormatting
-   | C# Excel API | IronXL ">
+    <meta name="title" content="ConditionalFormatting Class | IronXL C# API">
+    <meta name="description" content="Reference for the IronXL ConditionalFormatting class in C#: bundle ConditionalFormattingRule objects and their ranges, then add them to a sheet.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ConditionalFormatting Class | IronXL C# API",
+    "name": "ConditionalFormatting class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Formatting.ConditionalFormatting.html",
+    "abstract": "ConditionalFormatting is the rule set a developer hands to a worksheet to highlight cells by criteria in IronXL for C#. It bundles ConditionalFormattingRule objects with the ranges they cover. NumberOfRules reports the count, AddRule appends a rule, GetRule and SetRule read and replace a rule by index, and GetFormattingRanges returns the covered ranges. Pass the set to AddConditionalFormatting on a worksheet's formatting accessor.",
+    "description": "Reference for the IronXL ConditionalFormatting class in C#: bundle ConditionalFormattingRule objects and their ranges, then add them to a sheet.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "ConditionalFormattingRule rule =\n    sheet.ConditionalFormatting.CreateConditionalFormattingRule(ComparisonOperator.LessThan, \"8\");\nsheet.ConditionalFormatting.AddConditionalFormatting(\"A1:A10\", rule);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ConditionalFormatting live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ConditionalFormatting is a class in the IronXL.Formatting namespace, shipped in IronXL.dll. It groups conditional formatting rules and is passed to AddConditionalFormatting on a worksheet's ConditionalFormatting accessor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you manage several conditional formatting rules together in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use a ConditionalFormatting set: AddRule appends a ConditionalFormattingRule, GetRule and SetRule access a rule by index, and NumberOfRules reports the total. GetFormattingRanges returns the ranges the rules apply to."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +206,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ConditionalFormatting : Object</code></pre>
   </div>
+    <!-- archetype-N:start ConditionalFormatting treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>ConditionalFormatting</code> is the rule set a developer hands to a worksheet to highlight cells by criteria. It bundles one or more <code>ConditionalFormattingRule</code> objects together with the ranges they cover, so a group of related rules travels and applies as a single unit rather than rule by rule.</p>
+<p>The object is passed to <code>AddConditionalFormatting</code> on a worksheet's <code>ConditionalFormatting</code> accessor, which attaches its rules to the sheet. Build up the set first, then attach it, and the rules take effect when the workbook is saved or evaluated. <code>NumberOfRules</code> reports how many rules the set holds. <code>AddRule</code> appends a <code>ConditionalFormattingRule</code>, <code>GetRule</code> and <code>SetRule</code> read and replace a rule by its integer index, and <code>GetFormattingRanges</code> returns the ranges the rules apply to. Use it when several rules belong to the same formatting pass and should be managed as one collection. For a single quick rule, the worksheet accessor's <code>CreateConditionalFormattingRule</code> and <code>AddConditionalFormatting</code> shortcut is usually enough.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">ConditionalFormattingRule rule =
+    sheet.ConditionalFormatting.CreateConditionalFormattingRule(ComparisonOperator.LessThan, &quot;8&quot;);
+sheet.ConditionalFormatting.AddConditionalFormatting(&quot;A1:A10&quot;, rule);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/conditional-formatting/">conditional formatting how-to</a> shows the add, retrieve, and remove flow, and the <a href="https://ironsoftware.com/csharp/excel/examples/excel-conditional-formatting/">conditional formatting example</a> applies a rule to a range.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

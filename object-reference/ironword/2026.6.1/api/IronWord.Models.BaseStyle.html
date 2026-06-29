@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BaseStyle
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       BaseStyle Class - IronWord C# API
+      v2 (human)     title:       BaseStyle: Reusable Word Styles in C#
+      v1 (algorithm) description: Define reusable Word styles in C# with the IronWord BaseStyle class: StyleName, StyleType, InheritedStyle, ParagraphStyle, TextStyle, and TableStyle.
+      v2 (human)     description: Share one consistent look across a Word document in C# with the IronWord BaseStyle class: name a style and set its paragraph, text, and table formatting.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>BaseStyle Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BaseStyle
-   | C# Word API | IronWord ">
+    <meta name="title" content="BaseStyle Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord BaseStyle class in C#: name a reusable style and attach ParagraphStyle, TextStyle, TableStyle, and TableCellStyle formatting.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "BaseStyle Class | IronWord C# API",
+    "name": "BaseStyle class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.BaseStyle.html",
+    "abstract": "Sharing one reusable look across a Word document in C# runs through the IronWord BaseStyle class. StyleId and StyleName identify the style, InheritedStyle and NextParagraphStyle handle inheritance and paragraph flow, and ParagraphStyle, TextStyle, TableStyle, and TableCellStyle hold the paragraph, run, table, and cell formatting that content applies by name.",
+    "description": "Reference for the IronWord BaseStyle class in C#: name a reusable style and attach ParagraphStyle, TextStyle, TableStyle, and TableCellStyle formatting.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nvar style = new BaseStyle();\nstyle.StyleName = \"Heading 1\";\nstyle.TextStyle = new TextStyle();"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does BaseStyle live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BaseStyle is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object and implements IBaseStyle, IStyle, IWordDocumentObjectProperty, and IDocumentObjectProperty. It holds reusable formatting that content references by name."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you define a reusable style in a Word document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a BaseStyle, set StyleName and StyleId, then assign the formatting through TextStyle, ParagraphStyle, TableStyle, or TableCellStyle. Use InheritedStyle to base it on another style and NextParagraphStyle to set what follows."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between StyleType and StyleName on BaseStyle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "StyleName is the human-readable name content uses to apply the style, while StyleType records what kind of style it is. IsDefaultStyle marks whether it is the document default, and Status reports the style's change state."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -158,6 +222,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class BaseStyle : Object, IBaseStyle, IBaseStyle, IStyle, IWordDocumentObjectProperty, IDocumentObjectProperty</code></pre>
   </div>
+    <!-- archetype-N:start BaseStyle treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>BaseStyle</code> collects the formatting a Word document reuses by name, so paragraphs, runs, tables, and cells can share one consistent look instead of carrying inline formatting each. A developer building branded reports or applying a house style defines the appearance once on a <code>BaseStyle</code> and points content at it, which keeps a long document uniform and easy to restyle later.</p>
+<p>A style is identified and applied through the document's style collection, where <code>StyleId</code> and <code>StyleName</code> give it the key and display name that content references. From there it nests the per-aspect style objects that actually carry the formatting, so one named style can govern several kinds of element at once.</p>
+<p>The members fall into clear groups. For **identity and state**, <code>StyleId</code> and <code>StyleName</code> name the style, <code>StyleType</code> records the kind, <code>IsDefaultStyle</code> marks the document default, and <code>Status</code> (read-only) reports the change state of the style. For **inheritance**, <code>InheritedStyle</code> points at the style this one is based on and <code>NextParagraphStyle</code> names the style to apply to the following paragraph, the mechanism behind a heading that flows into body text. For the **formatting payload**, <code>ParagraphStyle</code>, <code>TextStyle</code>, <code>TableStyle</code>, and <code>TableCellStyle</code> hold the actual paragraph, run, table, and cell appearance, so a single named style can govern text and table formatting at once.</p>
+<p>Set the few aspects a style needs and leave the rest, since a style only overrides what it specifies and inherits everything else from the style named by <code>InheritedStyle</code>. A paragraph style typically fills in <code>ParagraphStyle</code> and <code>TextStyle</code>, while a table style adds <code>TableStyle</code> and <code>TableCellStyle</code>. Reuse one <code>BaseStyle</code> across many paragraphs and cells rather than repeating inline formatting, which keeps a long document consistent and makes a later restyle a single edit.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+var style = new BaseStyle();
+style.StyleName = &quot;Heading 1&quot;;
+style.TextStyle = new TextStyle();</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-style-text/">add styled text how-to</a> walks through applying formatting, the <a href="https://ironsoftware.com/csharp/word/how-to/add-table/">add table how-to</a> shows table and cell styling, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> shows where styles sit in the object model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

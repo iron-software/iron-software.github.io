@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ErodeFilter
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ErodeFilter - IronBarcode C# API
+      v2 (human)     title:       ErodeFilter: Separate Merged Barcode Bars in C#
+      v1 (algorithm) description: Separate merged barcode bars in C# with IronBarcode ErodeFilter: a morphological erosion with a KernelSize setting, added to ImageFilters before reading.
+      v2 (human)     description: Recover the gaps in an over-inked or smudged barcode in C# with IronBarcode ErodeFilter, shrinking the dark regions so bled bars read apart.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ErodeFilter Class | IronBarcode C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ErodeFilter
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="ErodeFilter Class | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode ErodeFilter class in C#: apply morphological erosion with KernelSize to trim bars before reading a barcode.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ErodeFilter Class | IronBarcode C# API",
+    "name": "ErodeFilter class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.ErodeFilter.html",
+    "abstract": "ErodeFilter shrinks the dark regions of a barcode image in C# with IronBarcode, a morphological erosion that trims foreground pixels to separate bars that have bled together. It implements IImageFilter and is added to the ImageFilterCollection on BarcodeReaderOptions.ImageFilters. The KernelSize property, default 3, sets how much the bars are trimmed.",
+    "description": "Reference for the IronBarcode ErodeFilter class in C#: apply morphological erosion with KernelSize to trim bars before reading a barcode.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nvar options = new BarcodeReaderOptions\n{\n    ImageFilters = new ImageFilterCollection { new ErodeFilter() }\n};\nvar results = BarcodeReader.Read(\"smudged.png\", options);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ErodeFilter live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ErodeFilter is a class in the IronBarCode namespace, shipped in IronBarCode.dll. It derives from Object and implements IImageFilter, so it can be added to the ImageFilterCollection assigned to BarcodeReaderOptions.ImageFilters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you increase the erosion strength of ErodeFilter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Raise KernelSize above its default of 3, either through the ErodeFilter(int kernelSize) constructor or by setting the KernelSize property. A larger kernel trims the dark regions further, recovering wider gaps in a smudged or over-inked barcode."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,6 +210,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ErodeFilter : Object, IImageFilter</code></pre>
   </div>
+    <!-- archetype-N:start ErodeFilter treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>When the bars of a barcode have bled into each other and the decoder can no longer tell where one ends and the next begins, <code>ErodeFilter</code> shrinks the dark regions back to separate them. Erosion is a morphological operation that trims the foreground pixels, the inverse of dilation, so over-inked, smudged, or heavily compressed images recover their gaps between bars. Reach for it when a code reads as one merged block; for the opposite defect, where thin bars have broken apart, the dilation filter grows them back together.</p>
+<p>The filter implements <code>IImageFilter</code> and is added to the <code>ImageFilterCollection</code> on <code>BarcodeReaderOptions.ImageFilters</code>, where filters run in collection order before the read. A developer constructs it, adds it to the collection, and passes the options to <code>BarcodeReader.Read</code>. The parameterless constructor uses a <code>KernelSize</code> of 3, the length of one side of the square kernel that controls how much the bars are trimmed. The <code>ErodeFilter(int kernelSize)</code> overload or the <code>KernelSize</code> property raises that value for stronger erosion when the bars are badly merged.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+var options = new BarcodeReaderOptions
+{
+    ImageFilters = new ImageFilterCollection { new ErodeFilter() }
+};
+var results = BarcodeReader.Read(&quot;smudged.png&quot;, options);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/image-correction/">image correction how-to</a> demonstrates filter selection on a sample barcode, and the <a href="https://ironsoftware.com/csharp/barcode/examples/imperfect-barcode-with-image-correction/">imperfect barcode example</a> reads a degraded image through a filter pipeline.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

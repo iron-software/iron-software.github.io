@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IFooter
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IFooter Interface - IronXL C# API Reference
+      v2 (human)     title:       IFooter: Set Excel Page Footers in C#
+      v1 (algorithm) description: IFooter is the IronXL contract for a worksheet's page footer in C#: set the inherited Left, Center, and Right text zones. WorkSheet.Footer returns it.
+      v2 (human)     description: Set bottom-of-page footer text in C# with IronXL's IFooter: assign the left, center, and right zones printed along the bottom of every page.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IFooter Interface | IronXL C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IFooter
-   | C# Excel API | IronXL ">
+    <meta name="title" content="IFooter Interface | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL IFooter interface in C#: the contract WorkSheet.Footer returns, extending IHeaderFooter with Left, Center, Right.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IFooter Interface | IronXL C# API Reference",
+    "name": "IFooter interface | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Layout.IFooter.html",
+    "abstract": "IFooter is the IronXL contract for a worksheet's page footer in C#. WorkSheet.Footer returns it. IFooter extends IHeaderFooter and adds no members, so its Left, Center, and Right string zones are inherited and hold the text printed along the bottom of each page. The matching IHeader from WorkSheet.Header shares the same surface for the top band.",
+    "description": "Reference for the IronXL IFooter interface in C#: the contract WorkSheet.Footer returns, extending IHeaderFooter with Left, Center, Right.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IFooter footer = sheet.Footer;\nfooter.Center = \"Page &P of &N\";\nfooter.Right = \"Confidential\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IFooter live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IFooter is an interface in the IronXL.Layout namespace, shipped in IronXL.dll. It extends IHeaderFooter and is returned by the WorkSheet.Footer property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between IFooter and IHeader in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both extend IHeaderFooter and share the same inherited Left, Center, and Right text properties with no added members. WorkSheet.Footer returns an IFooter for the bottom of the page, and WorkSheet.Header returns an IHeader for the top; the type only indicates which band is being edited."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -158,6 +214,16 @@
     <pre><code class="lang-csharp hljs">public interface IFooter : IHeaderFooter</code></pre>
   </div>
   
+    <!-- archetype-N:start IFooter treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>When a printed worksheet needs text along the bottom of every page, a page number, a confidentiality note, or a filename, <code>IFooter</code> is the contract that holds it. It is what a worksheet returns specifically for the bottom-of-page band, the counterpart to the header that prints across the top. A developer assigns text to its three positioned zones so a printed or exported spreadsheet carries a consistent footer without editing the file by hand in Excel.</p>
+<p>A developer obtains an <code>IFooter</code> from <code>WorkSheet.Footer</code>; there is no constructor, and the footer belongs to its worksheet. <code>IFooter</code> extends <code>IHeaderFooter</code> and declares no members of its own, so its editable surface is entirely inherited: the <code>Left</code>, <code>Center</code>, and <code>Right</code> properties, each a readable and writable <code>string</code>, hold the text for the left, center, and right zones of the footer band. The matching <code>IHeader</code>, returned by <code>WorkSheet.Header</code>, shares the same inherited surface; the two types differ only in which page band they target. Set the zones a layout needs and save the workbook to apply them to print output.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IFooter footer = sheet.Footer;
+footer.Center = &quot;Page &amp;P of &amp;N&quot;;
+footer.Right = &quot;Confidential&quot;;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/examples/excel-print-setup/">Excel print setup example</a> configures a sheet for printing, where footer text prints on each page, and the <a href="https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Layout.IHeaderFooter.html">IHeaderFooter reference</a> documents the inherited <code>Left</code>, <code>Center</code>, and <code>Right</code> zones.</p>
+  </div>
+  <!-- archetype-N:end -->
   <div class="inheritance">
     <h3>Inherited members</h3>
     <div class="level">

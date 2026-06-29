@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Request
-   | C# Web Scraping API | IronWebScraper </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Request Class - IronWebScraper C# API
+      v2 (human)     title:       Request: Queue Scraper Fetches in C#
+      v1 (algorithm) description: Queue a fetch in C# with the IronWebScraper Request class: set Url, the parse Action, a pinned HttpIdentity, and MetaData carried to the Response.
+      v2 (human)     description: Control how a scraper fetches a URL in C# with the IronWebScraper Request class: target URL, parse callback, identity, and per-request MetaData.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Request Class | IronWebScraper C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Request
-   | C# Web Scraping API | IronWebScraper ">
+    <meta name="title" content="Request Class | IronWebScraper C# API">
+    <meta name="description" content="Reference for the IronWebScraper Request class in C#: target URL, parse Action, pinned HttpIdentity, MetaData, retries, and request hashing.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Request Class | IronWebScraper C# API",
+    "name": "Request class | IronWebScraper C# API",
+    "url": "https://ironsoftware.com/csharp/webscraper/object-reference/api/IronWebScraper.Request.html",
+    "abstract": "Queuing a fetch in C# runs through the IronWebScraper Request class, created when you call WebScraper.Request from Init or Parse. It records the Url, the Action parse callback, the Method, an optional HttpIdentity that overrides identity rotation, and a MetaData bag carried through to the matching Response so per-request context reaches the parser. Retries tracks re-attempts and the static Hash de-duplicates URLs.",
+    "description": "Reference for the IronWebScraper Request class in C#: target URL, parse Action, pinned HttpIdentity, MetaData, retries, and request hashing.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWebScraper",
+      "url": "https://ironsoftware.com/csharp/webscraper/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "public override void Init()\n{\n    var meta = new MetaData();\n    meta[\"category\"] = \"books\";\n    Request(\"https://example.com/books\", Parse, metaData: meta);\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Request live in the IronWebScraper API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Request is a class in the IronWebScraper namespace, shipped in IronWebScraper.dll. The WebScraper.Request method creates one and adds it to the crawl queue; you rarely construct it directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you pass data to a scraper's parse method in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Attach a MetaData object when queuing a Request, for example Request(url, Parse, metaData). The matching Response carries the same MetaData, so the parser reads back the category, parent record, or page number you stored."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you use a specific proxy for one scraper request?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the Identity property to an HttpIdentity, or pass one to WebScraper.Request, to pin that request to a specific proxy and user agent, overriding the crawler's normal identity rotation."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Request : Object</code></pre>
   </div>
+    <!-- archetype-N:start Request treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a scraper queues a URL to fetch, it travels as a <code>Request</code>. A developer rarely builds one directly; calling <code>WebScraper.Request(url, parse, ...)</code> from <code>Init</code> or <code>Parse</code> creates the <code>Request</code> and adds it to the crawl queue, where the base class fetches it and hands the result to the parse method named in the call.</p>
+<p>A <code>Request</code> records what to fetch and how to handle it. <code>Url</code> is the target, <code>Action</code> is the <code>Action&lt;Response&gt;</code> parse callback to run when the page arrives, and <code>Method</code> reports whether the fetch is a GET or POST. <code>Identity</code> pins a specific <code>HttpIdentity</code> to this request, overriding the crawler's normal rotation, and <code>MetaData</code> attaches a bag of your own objects that the matching <code>Response</code> carries through, which is how per-request context (a category, a parent record, a page number) reaches the parser.</p>
+<p>The <code>Method</code> reflects whether the fetch is a GET, queued through <code>Request</code>, or a POST, queued through the related <code>WebScraper.PostRequest</code> overloads that send form data, and <code>Action</code> holds the same parse callback the response will run. <code>Retries</code> reports how many times the request has been re-attempted after a failure, and the static <code>Request.Hash</code> produces a stable key for a request, useful for de-duplicating URLs across a large crawl. Set any <code>MetaData</code> at queue time, since the values are captured once the request enters the crawl queue and read back only when its response is parsed.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">public override void Init()
+{
+    var meta = new MetaData();
+    meta[&quot;category&quot;] = &quot;books&quot;;
+    Request(&quot;https://example.com/books&quot;, Parse, metaData: meta);
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/webscraper/tutorials/webscraping-in-c-sharp/">web scraping tutorial</a> queues requests from a parser, and the <a href="https://ironsoftware.com/csharp/webscraper/tutorials/c-sharp-blog-web-scraper/">blog web scraper tutorial</a> carries context through MetaData.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

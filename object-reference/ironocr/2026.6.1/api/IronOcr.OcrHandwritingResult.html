@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrHandwritingResult
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrHandwritingResult - IronOCR C# API
+      v2 (human)     title:       OcrHandwritingResult: Read Handwriting in C#
+      v1 (algorithm) description: Read handwriting in C# with the IronOCR OcrHandwritingResult class: Text, Confidence, TextLines, and SaveAsTextFile from ReadHandwriting.
+      v2 (human)     description: Get transcribed handwriting and line positions in C# from the IronOCR OcrHandwritingResult class, returned by ReadHandwriting.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrHandwritingResult | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrHandwritingResult
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrHandwritingResult | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR OcrHandwritingResult class in C#: Text, Confidence, and TextLines for handwriting returned by ReadHandwriting.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrHandwritingResult | IronOCR C# API",
+    "name": "OcrHandwritingResult class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrHandwritingResult.html",
+    "abstract": "Read handwriting line by line in IronOCR with the OcrHandwritingResult class, returned by IronTesseract.ReadHandwriting in C#. Text gives the full transcription, Confidence reports average per-character accuracy, and TextLines lists each recognized line with its position. SaveAsTextFile writes the words to a plain text file when layout is not needed.",
+    "description": "Reference for the IronOCR OcrHandwritingResult class in C#: Text, Confidence, and TextLines for handwriting returned by ReadHandwriting.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrHandwritingResult live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrHandwritingResult is a class in the IronOcr namespace, shipped in IronOcr.dll. It derives from Object, implements IOcrResult, and is returned by IronTesseract.ReadHandwriting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read handwriting from an image in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call IronTesseract.ReadHandwriting to get an OcrHandwritingResult, then read Text for the full transcription. Iterate TextLines to keep line positions, or call SaveAsTextFile to write the words to a file."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -155,6 +203,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class OcrHandwritingResult : Object, IOcrResult</code></pre>
   </div>
+    <!-- archetype-N:start OcrHandwritingResult treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Recognized handwriting, line by line, lives on <code>OcrHandwritingResult</code>. It is the object <code>IronTesseract.ReadHandwriting</code> hands back, holding the transcribed text of a handwritten image along with where each line sits, so a developer reads the words and keeps the on-page layout from one result.</p>
+<p><code>Text</code> returns the full transcription as a single string, the quickest way to pull every recognized word at once. <code>Confidence</code> reports the average per-character accuracy where 1 equals 100 percent, a signal worth checking because handwriting reads less reliably than print. <code>TextLines</code> is a list of <code>OcrHandwritingResult.TextLine</code> entries, each a recognized line with its position on the input, which lets code preserve line breaks or map text back to the image. <code>SaveAsTextFile</code> writes the result straight to a plain <code>.txt</code> file when only the words are needed. Read <code>Text</code> for a fast dump, or iterate <code>TextLines</code> when layout matters.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-handwritten-image/">handwriting read how-to</a> produces this result, and the <a href="https://ironsoftware.com/csharp/ocr/examples/read-handwritten-image/">handwriting read example</a> shows a short run.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TextStyle
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextStyle Class - IronWord C# API Reference
+      v2 (human)     title:       TextStyle: Format Word Text in C#
+      v1 (algorithm) description: Format Word text in C# with the IronWord TextStyle class: set TextFont, FontSize, IsBold, Color, Underline, Shading, and apply effects through TextEffect.
+      v2 (human)     description: Control character formatting in C# Word files with the IronWord TextStyle class: font, size, bold, color, underline, caps, spacing, and visual effects.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextStyle Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TextStyle
-   | C# Word API | IronWord ">
+    <meta name="title" content="TextStyle Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord TextStyle class in C#: set font, size, weight, color, decorations, spacing, and effects, then assign it to a TextContent run.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextStyle Class | IronWord C# API Reference",
+    "name": "TextStyle class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.TextStyle.html",
+    "abstract": "Formatting characters in a C# Word document goes through the IronWord TextStyle class. It is assigned to a TextContent's Style property and groups typeface and size (TextFont, FontSize), weight (IsBold, IsItalic), color (Color, Shading), decorations (Underline, Strike, Caps, Outline, Shadow, TextEffect), spacing (Spacing, Kern, VerticalPosition), and visibility (Vanish, WebHidden, NoProof). BaseStyle links a named style and Reset clears it.",
+    "description": "Reference for the IronWord TextStyle class in C#: set font, size, weight, color, decorations, spacing, and effects, then assign it to a TextContent run.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nvar style = new TextStyle();\nstyle.IsBold = true;\nstyle.FontSize = 14;\nstyle.Color = Color.Black;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TextStyle live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextStyle is a class in the IronWord.Models namespace, shipped in IronWord.dll. It implements ITextStyle, IDerivedStyle, and IStyle, and is assigned to the Style property of a TextContent run to format its characters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set bold, font, and color on Word text in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a TextStyle, set IsBold, TextFont, FontSize, and Color, then assign it to a TextContent's Style property. Start from the static DefaultStyle to inherit sensible defaults and override only what changes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between TextStyle and TextEffect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextStyle covers character formatting such as font, size, color, and decorations, while TextEffect collects visual treatments like glow, gradient, and outline. TextStyle exposes a TextEffect property, so the effects are applied as part of the style."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -160,6 +224,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TextStyle : Object, ITextStyle, ITextStyle, IDerivedStyle, IDerivedStyle, IStyle, IWordDocumentObjectProperty, IDocumentObjectProperty</code></pre>
   </div>
+    <!-- archetype-N:start TextStyle treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Formatting the characters in a Word run, everything from bold and color to outlines and small caps, runs through <code>TextStyle</code>. It is the character-level style object you assign to a run's <code>Style</code> property, collecting the typeface, color, weight, and decorations that determine how a stretch of text looks when the document is saved.</p>
+<p>A <code>TextStyle</code> reaches text through <code>TextContent</code>, whose <code>Style</code> property is a <code>TextStyle</code>. Build a style once and assign it to as many runs as share the look, or start from the static <code>DefaultStyle</code> and adjust from there. The <code>BaseStyle</code> property links to a named document style, so a run can inherit a base and override only the properties it changes, keeping a document's formatting consistent.</p>
+<p>Because the surface is large, it helps to read the properties in functional groups. **Typeface and size**: <code>TextFont</code>, <code>FontSize</code>, <code>FontSizeComplexScript</code>, and <code>CharacterScale</code>. **Weight and slant**: <code>IsBold</code> and <code>IsItalic</code>. **Color and fill**: <code>Color</code> and a <code>Shading</code>. **Decorations**: <code>Underline</code>, <code>Strike</code>, <code>Caps</code>, <code>SmallCaps</code>, <code>Emboss</code>, <code>Imprint</code>, <code>Outline</code>, <code>Shadow</code>, and the richer <code>TextEffect</code>. **Spacing and position**: <code>Spacing</code>, <code>Kern</code>, <code>VerticalPosition</code>, <code>VerticalTextAlignment</code>, and <code>SnapToGrid</code>. **Visibility and proofing**: <code>Vanish</code>, <code>SpecVanish</code>, <code>WebHidden</code>, <code>NoProof</code>, <code>Emphasis</code>, and <code>Languages</code>. The <code>Status</code> property reports an <code>ElementStatus</code>, and <code>Reset</code> clears the style back to its defaults. Set only the properties a design needs and leave the rest inherited from the base or default.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+var style = new TextStyle();
+style.IsBold = true;
+style.FontSize = 14;
+style.Color = Color.Black;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-style-text/">style text how-to</a> applies character formatting, the <a href="https://ironsoftware.com/csharp/word/how-to/add-text/">add text how-to</a> places the runs, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> shows where styles sit in the model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

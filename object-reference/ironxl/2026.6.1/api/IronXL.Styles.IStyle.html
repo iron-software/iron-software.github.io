@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IStyle
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IStyle Interface - IronXL C# API Reference
+      v2 (human)     title:       IStyle: Style Excel Cells and Ranges in C#
+      v1 (algorithm) description: Style Excel cells in C# through the IronXL IStyle interface from Cell.Style or Range.Style: set Font, borders, BackgroundColor, alignment, and WrapText.
+      v2 (human)     description: Control how Excel cells look in C# with the IronXL IStyle contract: read Cell.Style or Range.Style and set font, borders, fill, and alignment.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IStyle Interface | IronXL C# .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IStyle
-   | C# Excel API | IronXL ">
+    <meta name="title" content="IStyle Interface | IronXL C# .NET API">
+    <meta name="description" content="Reference for the IronXL IStyle interface in C#: the styling contract returned by Cell.Style and Range.Style for fonts, borders, fills, and alignment.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IStyle Interface | IronXL C# .NET API",
+    "name": "IStyle interface | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Styles.IStyle.html",
+    "abstract": "Cell.Style and Range.Style return IronXL's IStyle interface in C#, the single contract for cell appearance. Font returns an IFont; TopBorder, BottomBorder, LeftBorder, RightBorder, and DiagonalBorder return IBorder; BackgroundColor, FillPattern, and SetBackgroundColor handle fill; and HorizontalAlignment, VerticalAlignment, WrapText, and Rotation set layout. Assigning a range's Style applies the format across every cell.",
+    "description": "Reference for the IronXL IStyle interface in C#: the styling contract returned by Cell.Style and Range.Style for fonts, borders, fills, and alignment.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nWorkBook workbook = WorkBook.Load(\"report.xlsx\");\nWorkSheet sheet = workbook.DefaultWorkSheet;\nIStyle headerStyle = sheet[\"A1:D1\"].Style;\nheaderStyle.Font.Bold = true;\nheaderStyle.SetBackgroundColor(\"#DDEBF7\");\nheaderStyle.BottomBorder.SetBorderStyle(\"#000000\", BorderType.Thin);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IStyle live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IStyle is an interface in the IronXL.Styles namespace, shipped in IronXL.dll. It is returned by the Style property of Cell and Range, and exposes a cell's font, borders, fill, and alignment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What returns IStyle in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cell.Style and Range.Style both return an IStyle. IronXL exposes IStyle through these get-only properties rather than letting you construct one, so styling means reading Style and assigning to its members such as Font, BackgroundColor, and the border properties."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set a cell's font and borders in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read Cell.Style or Range.Style to get an IStyle, then use Font (an IFont) for bold, size, and color, and the border properties (TopBorder, BottomBorder, LeftBorder, RightBorder), each an IBorder, for line color and style. SetBackgroundColor sets the fill."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +209,22 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IStyle</code></pre>
   </div>
+    <!-- archetype-N:start IStyle treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p><code>IStyle</code> is what a cell or range hands back when a developer wants to control how it looks. Reading <code>Cell.Style</code> or <code>Range.Style</code> returns this contract, and everything about a cell's appearance, the fill color, font, borders, alignment, rotation, and text wrapping, is set through it. It is the single styling surface in IronXL, so the same object covers a one-cell tweak and a whole-range format.</p>
+<p>A developer obtains <code>IStyle</code> rather than constructing it: <code>Cell.Style</code> and <code>Range.Style</code> both expose it as a get-only property, so styling means reading the property and assigning to its members. Assigning to a range's <code>Style</code> applies the change across every cell in the selection in one pass, which is how column-wide or table-wide formatting is done without looping. A single cell and a wide selection use the same surface, so the styling code does not change as the target grows.</p>
+<p>The everyday members fall into a few groups. <code>Font</code> returns an <code>IFont</code> for typeface, size, bold, italic, and color; the four side borders (<code>TopBorder</code>, <code>BottomBorder</code>, <code>LeftBorder</code>, <code>RightBorder</code>) plus <code>DiagonalBorder</code> each return an <code>IBorder</code> for line color and style, with <code>DiagonalBorderDirection</code> setting which way a diagonal runs. Fill is handled by <code>BackgroundColor</code> together with <code>FillPattern</code>, or through the <code>SetBackgroundColor</code> helper that accepts a <code>Color</code> or an RGB string. Layout comes from <code>HorizontalAlignment</code>, <code>VerticalAlignment</code>, <code>WrapText</code>, <code>ShrinkToFit</code>, <code>Indention</code>, and <code>Rotation</code>. Because the border and font members return their own interfaces, a fluent path like <code>range.Style.Font.Bold = true</code> is the normal idiom.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+WorkBook workbook = WorkBook.Load(&quot;report.xlsx&quot;);
+WorkSheet sheet = workbook.DefaultWorkSheet;
+IStyle headerStyle = sheet[&quot;A1:D1&quot;].Style;
+headerStyle.Font.Bold = true;
+headerStyle.SetBackgroundColor(&quot;#DDEBF7&quot;);
+headerStyle.BottomBorder.SetBorderStyle(&quot;#000000&quot;, BorderType.Thin);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/examples/excel-style-cells-borders-fonts/">style cells, borders, and fonts example</a> demonstrates the full surface, the <a href="https://ironsoftware.com/csharp/excel/how-to/border-alignment/">border and alignment how-to</a> covers borders and layout, and the <a href="https://ironsoftware.com/csharp/excel/how-to/background-pattern-color/">background pattern color how-to</a> handles fills.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

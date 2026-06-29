@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DictionaryInspector
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       DictionaryInspector - IronOCR C# API Reference
+      v2 (human)     title:       DictionaryInspector: Check Trained Data in C#
+      v1 (algorithm) description: Check Tesseract trained-data compatibility in C# with the IronOCR DictionaryInspector: TrainedDataSupportsLtsm and TrainedDataSupportsOem.
+      v2 (human)     description: Confirm a .traineddata pack works with your engine mode in C# using the IronOCR DictionaryInspector class before loading a custom language.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>DictionaryInspector Class | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DictionaryInspector
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="DictionaryInspector Class | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR DictionaryInspector in C#: verify a trained-data file supports the LSTM or legacy OEM engine path before loading.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "DictionaryInspector Class | IronOCR C# API",
+    "name": "DictionaryInspector class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.DictionaryInspector.html",
+    "abstract": "DictionaryInspector confirms whether a Tesseract trained-data file is compatible with an engine mode in IronOCR for C#. Construct one and call TrainedDataSupportsLtsm or TrainedDataSupportsOem, each taking a trained-data path and a TesseractVersion, to check the pack before loading a custom or downloaded language and to fail fast on a mismatch.",
+    "description": "Reference for the IronOCR DictionaryInspector in C#: verify a trained-data file supports the LSTM or legacy OEM engine path before loading.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does DictionaryInspector live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DictionaryInspector is a class in the DynamicTesseract namespace, shipped in IronOcr.dll. It derives from Object and is constructed directly with its default constructor before its check methods are called."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you check a Tesseract trained-data file in C# with IronOCR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a DictionaryInspector and call TrainedDataSupportsLtsm to test the LSTM neural path, or TrainedDataSupportsOem for the legacy engine path, passing the trained-data path and a TesseractVersion. Use it to validate a custom language pack before loading it."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +197,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class DictionaryInspector : Object</code></pre>
   </div>
+    <!-- archetype-N:start DictionaryInspector treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>DictionaryInspector</code> is the helper that answers whether a Tesseract trained-data file works with a given engine mode before a read is attempted. A <code>.traineddata</code> language pack may carry an LSTM model, a legacy model, or both, and pairing the wrong pack with the wrong engine mode is a common cause of a failed or empty OCR run. This type lets interop code check that compatibility up front.</p>
+<p>Construct one and call <code>TrainedDataSupportsLtsm</code>, passing the trained-data path and a <code>TesseractVersion</code>, to confirm the pack contains the LSTM model the modern neural engine needs. <code>TrainedDataSupportsOem</code> performs the matching check for the legacy Tesseract OEM path. Each returns a simple yes or no for that combination, which sits in the validation step that runs before a custom or downloaded language pack is loaded. It lives in the <code>DynamicTesseract</code> interop layer beneath IronOCR; most projects rely on IronOCR's bundled language packs and never need it, but code that ships its own trained data can use it to fail fast with a clear message.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/ocr-custom-language/">custom language how-to</a> covers loading your own trained data, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/ocr-custom-font-training/">custom font training how-to</a> walks through producing a pack.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

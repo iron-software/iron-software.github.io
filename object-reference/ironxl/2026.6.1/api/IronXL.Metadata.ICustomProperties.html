@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ICustomProperties
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ICustomProperties Interface - IronXL C# API
+      v2 (human)     title:       ICustomProperties: Custom Excel Fields in C#
+      v1 (algorithm) description: ICustomProperties is the IronXL contract for custom Excel fields in C#: AddProperty, Contains, Remove, GetValue, GetValue<T>, and TryGetValue<T>.
+      v2 (human)     description: Attach custom named values to a spreadsheet in C# with IronXL's ICustomProperties: add, check, read, and remove application-defined fields.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ICustomProperties Interface | IronXL C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ICustomProperties
-   | C# Excel API | IronXL ">
+    <meta name="title" content="ICustomProperties Interface | IronXL C# API">
+    <meta name="description" content="Reference for the IronXL ICustomProperties interface in C#: the contract IMetadata.CustomProperties returns for custom workbook fields.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ICustomProperties Interface | IronXL C# API",
+    "name": "ICustomProperties interface | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Metadata.ICustomProperties.html",
+    "abstract": "ICustomProperties is the IronXL contract for a workbook's application-defined fields in C#. IMetadata.CustomProperties returns it. AddProperty stores a named value of any type, Contains checks a key, Remove deletes one, and GetValue, the generic GetValue<T>, and TryGetValue<T> read values back. The collection is edited in place and saved with the file.",
+    "description": "Reference for the IronXL ICustomProperties interface in C#: the contract IMetadata.CustomProperties returns for custom workbook fields.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "ICustomProperties properties = workbook.Metadata.CustomProperties;\nproperties.AddProperty(\"ProjectCode\", \"X-42\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ICustomProperties live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ICustomProperties is an interface in the IronXL.Metadata namespace, shipped in IronXL.dll. The IMetadata.CustomProperties property returns it for an open workbook."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What returns an ICustomProperties in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IMetadata.CustomProperties returns the ICustomProperties for a workbook. There is no public constructor; the collection belongs to the workbook's metadata, so it is edited in place with AddProperty and Remove and saved with the file."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +201,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface ICustomProperties</code></pre>
   </div>
+    <!-- archetype-N:start ICustomProperties treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>Application-defined fields that a spreadsheet carries beyond the standard author and title, such as a project code, a review status, or a department tag, live behind <code>ICustomProperties</code>. A developer uses this contract to attach arbitrary named values to a workbook and read them back, the same custom properties Excel exposes under File, Info, Properties, Advanced. Where <code>IMetadata</code> covers the fixed Office fields, <code>ICustomProperties</code> holds the open-ended key/value pairs a team defines for itself.</p>
+<p>A developer obtains an <code>ICustomProperties</code> from the metadata: <code>IMetadata.CustomProperties</code> returns it for the open workbook, and there is no constructor to call. The collection is edited in place and saved with the file. <code>AddProperty(string name, object value)</code> stores a named value of any type, <code>Contains(string name)</code> checks whether a key is present, and <code>Remove(string name)</code> deletes one. Reading offers two forms: <code>GetValue(string name)</code> returns an <code>object</code>, while the generic <code>GetValue&lt;T&gt;(string name)</code> returns the value typed, and <code>TryGetValue&lt;T&gt;(string name, out T value)</code> reads it safely without throwing when the key is missing. Prefer the <code>TryGetValue&lt;T&gt;</code> pattern for keys that may not exist.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">ICustomProperties properties = workbook.Metadata.CustomProperties;
+properties.AddProperty(&quot;ProjectCode&quot;, &quot;X-42&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/examples/edit-excel-metadata-csharp/">edit Excel metadata example</a> writes document properties, and the <a href="https://ironsoftware.com/csharp/excel/how-to/edit-workbook-metadata/">edit workbook metadata how-to</a> walks through reading and updating them.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ITableStyle
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ITableStyle Interface - IronWord C# API
+      v2 (human)     title:       ITableStyle: The C# Table Styling Contract
+      v1 (algorithm) description: ITableStyle is IronWord's C# table styling contract: it exposes Borders and InheritedStyle and is implemented by the TableStyle class.
+      v2 (human)     description: Style a table in C# through the IronWord ITableStyle contract: set its Borders and read InheritedStyle, implemented by the TableStyle class.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ITableStyle Interface | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ITableStyle
-   | C# Word API | IronWord ">
+    <meta name="title" content="ITableStyle Interface | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord ITableStyle interface in C#: the table styling contract exposing Borders and InheritedStyle, implemented by TableStyle.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,39 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ITableStyle Interface | IronWord C# API",
+    "name": "ITableStyle interface | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.ITableStyle.html",
+    "abstract": "Styling a table in C# runs through the IronWord ITableStyle contract. It exposes Borders, the TableBorders drawn around and inside the table, and InheritedStyle, the fallback style a table uses before overrides. The concrete implementor is TableStyle. ITableStyle extends IDerivedStyle, which contributes the shared BaseStyle member.",
+    "description": "Reference for the IronWord ITableStyle interface in C#: the table styling contract exposing Borders and InheritedStyle, implemented by TableStyle.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ITableStyle live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ITableStyle is an interface in the IronWord.Models namespace, shipped in IronWord.dll. It extends IDerivedStyle and is implemented by the TableStyle class, which supplies Borders and InheritedStyle."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +191,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface ITableStyle : ITableStyle, IDerivedStyle, IDerivedStyle, IStyle, IWordDocumentObjectProperty, IDocumentObjectProperty</code></pre>
   </div>
+    <!-- archetype-N:start ITableStyle treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p><code>ITableStyle</code> is the styling contract a table reads its appearance from when a document is built or edited in C#. It standardizes how borders and inherited styling are exposed, so code that formats a table can work against the contract rather than a single concrete style class. The contract surfaces <code>Borders</code>, the <code>TableBorders</code> drawn around and inside the table, and <code>InheritedStyle</code>, the <code>ITableStyle</code> a table falls back to when it does not override a value itself.</p>
+<p>The concrete implementor in IronWord is <code>TableStyle</code>, which most code instantiates and assigns directly; the interface matters when a routine accepts a style by contract or inspects the inherited chain. <code>ITableStyle</code> extends <code>IDerivedStyle</code>, which contributes the shared <code>BaseStyle</code> member, so a table style participates in the same derived-style model as the other style contracts. Set <code>Borders</code> to control the lines a reader sees, and read <code>InheritedStyle</code> to discover the defaults a table picks up before any explicit overrides.</p>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-table/">add table how-to</a> walks through building a table, and the <a href="https://ironsoftware.com/csharp/word/examples/add-table/">add table example</a> has a worked listing.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

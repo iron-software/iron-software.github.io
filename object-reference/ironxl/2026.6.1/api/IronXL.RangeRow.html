@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class RangeRow
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       RangeRow Class - IronXL C# API Reference
+      v2 (human)     title:       RangeRow: Size & Hide Excel Rows in C#
+      v1 (algorithm) description: Work with a whole Excel row in C# with the IronXL RangeRow class: RowNumber, Height, AutoSizeRow, Hidden, and RemoveRow on the row from GetRow.
+      v2 (human)     description: Handle an entire Excel row in C# through the IronXL RangeRow class: read its number, set its height, auto-size it to content, hide it, or remove it.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>RangeRow Class | IronXL C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class RangeRow
-   | C# Excel API | IronXL ">
+    <meta name="title" content="RangeRow Class | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL RangeRow class in C#: identify a row by number, set Height, AutoSizeRow to content, and Hidden or RemoveRow.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "RangeRow Class | IronXL C# API Reference",
+    "name": "RangeRow class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.RangeRow.html",
+    "abstract": "Sizing, hiding, identifying, or removing one Excel row as a unit in C# runs through the IronXL RangeRow class. A worksheet returns one from GetRow by index. RowNumber reports its position, Height sets its size while AutoSizeRow fits content, Hidden shows or hides it, and RemoveRow deletes it. It derives from Range, so range members apply to the row's cells too.",
+    "description": "Reference for the IronXL RangeRow class in C#: identify a row by number, set Height, AutoSizeRow to content, and Hidden or RemoveRow.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nWorkBook workBook = WorkBook.Load(\"sample.xlsx\");\nWorkSheet workSheet = workBook.GetWorkSheet(\"Sheet1\");\nRangeRow row = workSheet.GetRow(0);\nrow.AutoSizeRow();\nworkBook.SaveAs(\"output.xlsx\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does RangeRow live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RangeRow is a class in the IronXL namespace, shipped in IronXL.dll, and derives from Range. A WorkSheet returns one from GetRow, passing the row index."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you auto-size an Excel row in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Get the row with WorkSheet.GetRow, then call AutoSizeRow on the returned RangeRow to fit its height to content. An overload controls whether merged cells count, and Height sets a fixed size instead."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -348,6 +404,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class RangeRow : Range, IEnumerable&lt;Cell&gt;, IEnumerable</code></pre>
   </div>
+    <!-- archetype-N:start RangeRow treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>RangeRow</code> is the row-shaped view of an Excel sheet a developer holds in C# to size, hide, identify, or remove a single row as a unit. It is what a worksheet returns for one row, carrying the row-level operations that a plain block of cells does not, so code reaching for &quot;C# Excel row&quot; lands here.</p>
+<p>Get a row from a worksheet with <code>GetRow</code>, passing the row index, which returns the <code>RangeRow</code> for that position. Because <code>RangeRow</code> derives from <code>Range</code>, every range member still applies, so the row's cells can be read, summed, or formatted as any range, while the row-specific members add the operations that only make sense on a whole row. <code>RowNumber</code> reports the row's position, <code>Height</code> reads or sets how tall it renders, and <code>AutoSizeRow</code> fits that height to content instead, with an overload that controls whether merged cells count toward the measurement. <code>Hidden</code> shows or hides the row, and <code>RemoveRow</code> deletes it, shifting the rows below it up. These edits stay in memory until the parent <code>WorkBook</code> is saved.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+WorkBook workBook = WorkBook.Load(&quot;sample.xlsx&quot;);
+WorkSheet workSheet = workBook.GetWorkSheet(&quot;Sheet1&quot;);
+RangeRow row = workSheet.GetRow(0);
+row.AutoSizeRow();
+workBook.SaveAs(&quot;output.xlsx&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/autosize-rows-columns/">auto resize how-to</a> covers <code>AutoSizeRow</code>, and the <a href="https://ironsoftware.com/csharp/excel/how-to/add-rows-columns/">add rows and columns how-to</a> inserts and removes rows.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

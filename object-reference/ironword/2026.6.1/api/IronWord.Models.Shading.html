@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Shading
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Shading Class - IronWord C# API
+      v2 (human)     title:       Shading: Background Fills in Word with C#
+      v1 (algorithm) description: Fill a Word table cell or text background in C# with the IronWord Shading class: set Color, Fill, ShadingPattern, or theme-bound fill colors.
+      v2 (human)     description: Add a colored background behind a table cell or text in C# with the IronWord Shading class: pick a fixed fill or a theme color with a tint.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Shading Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Shading
-   | C# Word API | IronWord ">
+    <meta name="title" content="Shading Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord Shading class in C#: the background fill obtained from a Table or TextStyle, with Color, Fill, and theme properties.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Shading Class | IronWord C# API Reference",
+    "name": "Shading class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Shading.html",
+    "abstract": "Filling a table cell or text background with color in a Word document in C# runs through the IronWord Shading class. Color and Fill set a fixed foreground and background, ShadingPattern selects a patterned fill, and the theme properties bind the fill to the document theme with a shade or tint. A Table or TextStyle exposes a Shading property to attach it.",
+    "description": "Reference for the IronWord Shading class in C#: the background fill obtained from a Table or TextStyle, with Color, Fill, and theme properties.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nvar shading = new Shading();\nshading.Fill = Color.LightGray;\nshading.ShadingPattern = ShadingPatternValues.Clear;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Shading live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Shading is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object and implements IShading. A Table and a TextStyle each expose a Shading property to set the background fill behind content."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set a background fill color in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a Shading, set its Fill to a color, and assign it to the Shading property of a Table or TextStyle. Use ShadingPattern for a patterned fill, or the theme properties to bind the color to the document theme."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Color and theme colors on Shading?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Color and Fill set fixed foreground and background colors that do not change. ThemeColor and ThemeFill bind the fill to a document theme slot, and ThemeTint and ThemeFillTint adjust the shade, so the fill stays consistent if the document is re-themed."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -156,6 +220,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Shading : Object, IShading, IWordDocumentObjectProperty, IDocumentObjectProperty</code></pre>
   </div>
+    <!-- archetype-N:start Shading treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Filling the background of a table or a span of text with color in a Word document runs through <code>Shading</code>. It describes the fill that sits behind content, the colored backdrop that highlights a table cell, banded row, or run of text. A developer reaches for it when plain white behind text is not enough and a region should stand out with a solid color, a theme color, or a patterned fill.</p>
+<p>Shading attaches to the thing it colors: a <code>Table</code> exposes a <code>Shading</code> property and a <code>TextStyle</code> exposes one too, so a developer obtains a shading object from the element being styled rather than constructing it in isolation. That places it in the styling step of building a table or a text style, where the background is decided alongside borders and fonts.</p>
+<p><code>Color</code> and <code>Fill</code> set the foreground and background of the fill directly, while <code>ShadingPattern</code> selects a patterned fill instead of a flat color. The theme-based properties let the fill track the document's theme rather than a fixed value: <code>ThemeColor</code> and <code>ThemeFill</code> bind the foreground and background to theme slots, and <code>ThemeTint</code>, <code>ThemeFillTint</code>, and <code>ThemeFillShade</code> lighten or darken those theme colors by a tint or shade. Choose the explicit <code>Color</code> and <code>Fill</code> for a fixed look that does not change with the theme, or the theme properties when the shading should stay consistent with a document that may be re-themed. For a simple solid background, set <code>Fill</code>; reach for <code>ShadingPattern</code> only when a textured or banded effect is wanted.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+var shading = new Shading();
+shading.Fill = Color.LightGray;
+shading.ShadingPattern = ShadingPatternValues.Clear;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-table/">add table how-to</a> places shaded tables, the <a href="https://ironsoftware.com/csharp/word/how-to/add-style-text/">style text how-to</a> covers text styling, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> shows how styling fits the document model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

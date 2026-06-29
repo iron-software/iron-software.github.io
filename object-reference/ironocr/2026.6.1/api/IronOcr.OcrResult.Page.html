@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrResult.Page
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrResult.Page Class - IronOCR C# API
+      v2 (human)     title:       OcrResult.Page: Read an OCR Page in C#
+      v1 (algorithm) description: The IronOCR OcrResult.Page class in C# groups a page's Words, Lines, Paragraphs, Blocks, Tables, and Barcodes with page geometry and rotation.
+      v2 (human)     description: Navigate one OCR page in C# with the IronOCR OcrResult.Page class: read its words, lines, paragraphs, tables, barcodes, size, and rotation.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrResult.Page Class | IronOCR .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrResult.Page
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrResult.Page Class | IronOCR .NET API">
+    <meta name="description" content="Reference for the IronOCR OcrResult.Page class in C#: text hierarchy, detected tables and barcodes, and page geometry from a finished read.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrResult.Page Class | IronOCR .NET API",
+    "name": "Page class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrResult.Page.html",
+    "abstract": "Each page of an IronOCR read in C# is an OcrResult.Page, obtained from the OcrResult.Pages collection. Text-hierarchy properties Words, Lines, Paragraphs, Blocks, and Characters return reading-order arrays, with WordCount as a total. Tables and Barcodes hold structured content, while Width, Height, Rotation, and ContentArea report geometry. The page derives from OcrResultTextElement, so the shared text and confidence members apply too.",
+    "description": "Reference for the IronOCR OcrResult.Page class in C#: text hierarchy, detected tables and barcodes, and page geometry from a finished read.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronOcr;\n\nvar ocr = new IronTesseract();\nusing var input = new OcrInput();\ninput.LoadPdf(\"invoice.pdf\");\nOcrResult result = ocr.Read(input);\n\nforeach (OcrResult.Page page in result.Pages)\n    Console.WriteLine($\"Page {page.PageNumber}: {page.WordCount} words, {page.Tables.Length} tables\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrResult.Page live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrResult.Page is a class in the IronOcr.OcrResult namespace, shipped in IronOcr.dll. It derives from OcrResult.OcrResultTextElement, and you obtain pages from the OcrResult.Pages collection (an OcrResultPagesCollection)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read text from each page of a document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Iterate OcrResult.Pages and, on each Page, read Words, Lines, or Paragraphs depending on the level you need. PageNumber is a 1 based identifier, so a multi-page PDF or TIFF gives one Page per source page in order."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get the tables detected on an OCR page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Tables property, an array of OcrResult.Table found on that page, each exposing DataTable, location, and size. Barcodes are reported through the Barcodes property only when barcode reading is enabled on the OcrInput."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -228,6 +292,23 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Page : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable, IDocumentPage&lt;IOcrPageObjectModel&gt;, IPageContainer</code></pre>
   </div>
+    <!-- archetype-N:start Page treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Everything OCR recognized on a single scanned or rendered page, structured for reading, lives on <code>OcrResult.Page</code>. One page object groups its text into words, lines, paragraphs, and blocks, surfaces any tables and barcodes found, and reports the page geometry, so you can extract plain text or navigate the layout from one place.</p>
+<p>You get pages from a finished read: <code>OcrResult.Pages</code> returns an <code>OcrResultPagesCollection</code>, and each entry is a <code>Page</code>. A multi-page TIFF or PDF produces one <code>Page</code> per source page, ordered by <code>PageNumber</code> (1 based), which is why iterating <code>result.Pages</code> is the normal way to process a document. Each page derives from <code>OcrResult.OcrResultTextElement</code>, so it also carries the shared text, confidence, and bounding members.</p>
+<p>The members fall into clear groups. The text-hierarchy properties are <code>Words</code>, <code>Lines</code>, <code>Paragraphs</code>, <code>Blocks</code>, and <code>Characters</code>, each an array in reading order from coarse to fine; <code>WordCount</code> gives a quick total. The structured-content properties are <code>Tables</code>, an array of <code>OcrResult.Table</code> detected on the page, and <code>Barcodes</code>, populated only when barcode reading is enabled on the input. The geometry properties are <code>Width</code>, <code>Height</code>, <code>Rotation</code> (degrees the original was turned to produce this result), and <code>ContentArea</code>, the <code>Rectangle</code> region OCR was applied to. <code>ObjectModel</code> exposes the page as an <code>IOcrPageObjectModel</code>, and <code>ContentAreaToBitmap</code> returns an <code>AnyBitmap</code> crop of the content area for a given <code>OcrInput</code>. Pick the level you need rather than reading every array.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronOcr;
+
+var ocr = new IronTesseract();
+using var input = new OcrInput();
+input.LoadPdf(&quot;invoice.pdf&quot;);
+OcrResult result = ocr.Read(input);
+
+foreach (OcrResult.Page page in result.Pages)
+    Console.WriteLine($&quot;Page {page.PageNumber}: {page.WordCount} words, {page.Tables.Length} tables&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/examples/results-objects/">OCR results objects example</a> walks the page tree, the <a href="https://ironsoftware.com/csharp/ocr/how-to/input-pdfs/">read PDFs how-to</a> produces a page per PDF page, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/read-table-in-document/">read tables how-to</a> works through the <code>Tables</code> array.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

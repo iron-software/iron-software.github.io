@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrResult.Line
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrResult.Line Class - IronOCR C# API
+      v2 (human)     title:       Line: Read OCR Text Line by Line in C#
+      v1 (algorithm) description: Read a line of OCR text in C# with the IronOCR Line class: inherited Text and Confidence, LineNumber, Words, Characters, BaselineAngle, and Block links.
+      v2 (human)     description: Get OCR output grouped line by line in C# with the IronOCR Line class: line text, confidence, word and character arrays, and baseline geometry.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrResult.Line | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrResult.Line
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrResult.Line | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR OcrResult.Line class in C#: line Text, Confidence, LineNumber, Words, Characters, and baseline angle from an OcrResult.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrResult.Line | IronOCR C# API Reference",
+    "name": "Line class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrResult.Line.html",
+    "abstract": "Reading OCR text grouped line by line in C# uses the IronOCR OcrResult.Line element. Obtain lines by walking an OcrResult from IronTesseract.Read down to a page's or block's Lines. Each line exposes inherited Text and Confidence, a one-based LineNumber, Words and Characters arrays for drilling down, Block and Paragraph links for moving up, and BaselineAngle and BaselineOffset for skew measurement.",
+    "description": "Reference for the IronOCR OcrResult.Line class in C#: line Text, Confidence, LineNumber, Words, Characters, and baseline angle from an OcrResult.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronOcr;\n\nvar ocr = new IronTesseract();\nusing var input = new OcrInput(\"document.png\");\nOcrResult result = ocr.Read(input);\nforeach (OcrResult.Line line in result.Pages[0].Lines)\n    Console.WriteLine($\"{line.LineNumber}: {line.Text}\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrResult.Line live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrResult.Line is a class in the IronOcr namespace, shipped in IronOcr.dll, deriving from OcrResult.OcrResultTextElement. You receive instances by walking an OcrResult down to a page's or block's Lines array."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read OCR output one line at a time in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Run IronTesseract.Read to get an OcrResult, then enumerate the Lines array on a page or block and read each line's inherited Text property. LineNumber gives its one-based position in the result."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you detect a skewed line of text with OcrResult.Line?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read BaselineAngle for the angle at which the line slopes and BaselineOffset for the pixel offset that defines the slope. Together they let you measure or correct orientation on a skewed scan."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -238,6 +302,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Line : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable</code></pre>
   </div>
+    <!-- archetype-N:start Line treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>A single line of recognized text, with the words and characters that make it up, is exposed through <code>OcrResult.Line</code>. It sits between paragraphs and words in the IronOCR result tree, so it is the level you read when you want text grouped the way it appears on the page, line by line, rather than as one flat string or as individual glyphs.</p>
+<p>You obtain lines by walking an <code>OcrResult</code> from <code>IronTesseract.Read</code>: enumerate a page's paragraphs and their <code>Lines</code>, or read the <code>Lines</code> array on a <code>Block</code>. Each line carries the inherited <code>Text</code> and <code>Confidence</code> from <code>OcrResult.OcrResultTextElement</code>, plus <code>LineNumber</code> for its one-based position within the result. From a line you can drill down with the <code>Words</code> and <code>Characters</code> arrays, or move up to the containing <code>Block</code> and <code>Paragraph</code> fields, which keeps navigation in both directions without re-reading the document.</p>
+<p>For layout-sensitive work the line adds geometry beyond the inherited bounding box. <code>BaselineAngle</code> reports the angle at which the line slopes, and <code>BaselineOffset</code> gives the pixel offset that defines that slope, both helpful when a scan is skewed and you need to measure or correct orientation before further processing. Reading <code>Text</code> per line is the common path; the <code>Words</code> and <code>Characters</code> arrays are there when you need to go finer within a line you have already located, and the <code>Block</code> and <code>Paragraph</code> fields let you confirm which region a given line belongs to.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronOcr;
+
+var ocr = new IronTesseract();
+using var input = new OcrInput(&quot;document.png&quot;);
+OcrResult result = ocr.Read(input);
+foreach (OcrResult.Line line in result.Pages[0].Lines)
+    Console.WriteLine($&quot;{line.LineNumber}: {line.Text}&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">working with OCR results how-to</a> walks the result tree from pages to lines to words, the <a href="https://ironsoftware.com/csharp/ocr/how-to/detect-page-rotation/">detect page rotation how-to</a> covers handling skewed scans, and the <a href="https://ironsoftware.com/csharp/ocr/examples/results-objects/">results objects example</a> reads line-level text from a scan.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="fields">Fields
   </h3>
   

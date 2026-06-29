@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Container
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Container Class - IronPPT C# API Reference
+      v2 (human)     title:       Container: The Presentation Body in C#
+      v1 (algorithm) description: Container is the presentation body in IronPPT for C#: it holds Slides, BuiltInStyles, and default paragraph and text styles, and manages the tree.
+      v2 (human)     description: Work with the presentation body in C# through IronPPT's Container: reach the Slides, the built-in styles, and the deck-wide style defaults.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Container Class | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Container
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="Container Class | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT Container class in C#: the IContainer implementation exposing Slides, BuiltInStyles, and default styles.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Container Class | IronPPT C# API Reference",
+    "name": "Container class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Container.html",
+    "abstract": "Working with the body of a presentation in IronPPT for C# runs through Container, the concrete IContainer that holds the deck's content. Slides is a List of ISlide, BuiltInStyles a List of IStyle, and ParagraphsDefaultStyle and TextsDefaultStyle hold the defaults new text inherits. As a ParentElement, it also exposes AddChild, Children, and ExtractElements for editing the element tree.",
+    "description": "Reference for the IronPPT Container class in C#: the IContainer implementation exposing Slides, BuiltInStyles, and default styles.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPPT.Interfaces;\n\nforeach (ISlide slide in container.Slides)\n{\n    // work with each slide in the presentation body\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Container live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Container is a class in the IronPPT.Models namespace, shipped in IronPPT.dll. It extends ParentElement and implements IContainer, IParentElement, IContentElement, and ICloneableElement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get the slides from a Container in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Slides property, a read-only List of ISlide holding the presentation's slides. Iterate it to work with each slide, and use the inherited child methods such as AddChild and ExtractElements to edit the element tree."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Container and IContainer in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IContainer is the interface that defines the slide collection and default styles; Container is the concrete class that implements it. Code typed against IContainer is fulfilled by a Container instance at runtime."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -212,6 +276,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Container : ParentElement, ICloneableElement, IContainer, IParentElement, IContentElement</code></pre>
   </div>
+    <!-- archetype-N:start Container treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Container</code> is the body of a presentation in IronPPT, the element that holds the slides and the default styles applied across them. It implements the <code>IContainer</code> contract, so when you work with the slide collection and the deck-wide style defaults, this is the concrete type behind that interface.</p>
+<p>A <code>Container</code> sits at the root of the content tree: it is a parent element whose children are the slides and the elements they hold, which is why it carries both a slide collection and the tree-management methods every parent element shares. You reach the slides and styles through its properties and shape the tree through its child methods.</p>
+<p>The everyday members are the collections and defaults. <code>Slides</code> is a read-only <code>List&lt;ISlide&gt;</code> of the deck's slides, <code>BuiltInStyles</code> is a <code>List&lt;IStyle&gt;</code> of the styles the presentation defines, and <code>ParagraphsDefaultStyle</code> (<code>IParagraphStyle</code>) and <code>TextsDefaultStyle</code> (<code>ITextStyle</code>) hold the defaults new text inherits. Because <code>Container</code> extends <code>ParentElement</code>, it also exposes the tree operations: <code>AddChild</code> adds content elements, <code>Remove</code> detaches the container, and the inherited <code>Children</code>, <code>ExtractElements&lt;T&gt;</code>, <code>GetChildByIndex&lt;T&gt;</code>, <code>InsertChildToIndex</code>, and <code>RemoveAllChildren</code> walk and edit the element tree. <code>ExtractElements&lt;T&gt;</code> is especially useful for pulling every element of one kind, such as each shape or text box, out of the whole deck in a single call. Set the default styles once so new paragraphs and runs pick them up automatically rather than restyling each one.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPPT.Interfaces;
+
+foreach (ISlide slide in container.Slides)
+{
+    // work with each slide in the presentation body
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/create-empty-presentation/">create empty presentation example</a> starts a deck, the <a href="https://ironsoftware.com/csharp/ppt/how-to/add-slide/">add slide how-to</a> populates it, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-slide/">manage slide how-to</a> reorders and removes slides.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

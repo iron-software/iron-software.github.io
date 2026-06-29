@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PresentationDocument
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PresentationDocument - IronPPT C# API
+      v2 (human)     title:       PresentationDocument: Edit PPTX in C#
+      v1 (algorithm) description: Create, open, edit, and save PowerPoint files in C# with the IronPPT PresentationDocument class: add slides, text, shapes, and images, then Save.
+      v2 (human)     description: Build and edit PPTX files in C# with the IronPPT PresentationDocument class: open a deck, add slides and text, insert images, and save.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PresentationDocument Class | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PresentationDocument
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="PresentationDocument Class | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT PresentationDocument class in C#: construct or open a .pptx, add slides, text, and images, then Save to disk.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PresentationDocument Class | IronPPT C# API",
+    "name": "PresentationDocument class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.PresentationDocument.html",
+    "abstract": "Creating, opening, editing, and saving a PowerPoint file in C# runs through the IronPPT PresentationDocument class. Construct an empty deck, open an existing .pptx by file path, or build one from content elements, then read its Slides, Shapes, TextBoxes, Texts, Paragraphs, and Images collections. AddSlide, AddText, AddParagraph, AddTextBox, and AddImage place content, and Save writes the presentation back to disk.",
+    "description": "Reference for the IronPPT PresentationDocument class in C#: construct or open a .pptx, add slides, text, and images, then Save to disk.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPPT;\n\nvar ppt = new PresentationDocument();\nppt.AddSlide();\nppt.AddText(\"Quarterly Report\");\nppt.Save(\"report.pptx\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PresentationDocument live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PresentationDocument is a class in the IronPPT namespace, shipped in IronPPT.dll, deriving from Object. It is the top-level object representing a single .pptx presentation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create a PowerPoint file in C# with IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct a PresentationDocument, call AddSlide to add slides and AddText or AddTextBox to place content, then call Save with a file path to write the .pptx to disk. Pass an existing path to the constructor to open and edit a deck instead."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add an image to a slide with IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call AddImage on the PresentationDocument, passing the picture and the target slide index. AddImage accepts an Image, an AnyBitmap, a Stream, or a file path string, and returns the inserted IImage."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +213,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PresentationDocument : Object</code></pre>
   </div>
+    <!-- archetype-N:start PresentationDocument treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PresentationDocument</code> is the object you hold whenever you create, open, edit, or save a PowerPoint file with IronPPT. It models one <code>.pptx</code> presentation in memory: construct an empty one, load an existing file by path, or assemble a deck from content elements, then add slides and shapes to it and write it back out. This is the entry point a developer lands on from a search like &quot;C# create PowerPoint&quot; or &quot;edit PPTX in .NET&quot;.</p>
+<p>A developer obtains one in three ways. The parameterless constructor starts a fresh, empty presentation; the <code>PresentationDocument(string filePath)</code> constructor opens an existing <code>.pptx</code> from disk; and <code>PresentationDocument(params IContentElement[] children)</code> builds a document directly from content elements. From there the document exposes typed collections that mirror the deck's contents: <code>Slides</code>, <code>Shapes</code>, <code>TextBoxes</code>, <code>Texts</code>, <code>Paragraphs</code>, and <code>Images</code>, each a <code>List&lt;T&gt;</code> you can read or iterate.</p>
+<p>Editing happens through the add methods, grouped by what they place. For slide structure, <code>AddSlide</code> appends a <code>Slide</code> (passing none adds a blank slide) and returns it. For text, <code>AddText</code> takes either a <code>Text</code> element or a plain <code>string</code> and returns the created <code>Text</code>, while <code>AddParagraph</code> adds a <code>Paragraph</code>. For visual content, <code>AddTextBox</code> places a <code>Shape</code> and <code>AddImage</code> inserts a picture onto a given slide index from an <code>Image</code>, an <code>AnyBitmap</code>, a <code>Stream</code>, or a file path, returning the resulting <code>IImage</code>. When the deck is ready, <code>Save(string filePath)</code> writes the <code>.pptx</code> to disk, and <code>LogObjectTree</code> dumps the document structure as a string for debugging.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPPT;
+
+var ppt = new PresentationDocument();
+ppt.AddSlide();
+ppt.AddText(&quot;Quarterly Report&quot;);
+ppt.Save(&quot;report.pptx&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/create-empty-presentation/">create empty presentation example</a> starts a new deck, the <a href="https://ironsoftware.com/csharp/ppt/how-to/add-slide/">add slide how-to</a> walks through slide structure, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> covers writing content onto a slide.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

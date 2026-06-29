@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AdvancedOcrResultBase
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       AdvancedOcrResultBase Class - IronOCR C# API
+      v2 (human)     title:       AdvancedOcrResultBase: Advanced OCR Results in C#
+      v1 (algorithm) description: AdvancedOcrResultBase is IronOCR's advanced-read result in C#: Text, Confidence, Characters, Words, and SaveAsSearchablePdf export methods.
+      v2 (human)     description: Read text and export searchable PDFs in C# with IronOCR's AdvancedOcrResultBase, the base of advanced and handwriting results, with examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>AdvancedOcrResultBase Class | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AdvancedOcrResultBase
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="AdvancedOcrResultBase Class | IronOCR C# API">
+    <meta name="description" content="Reference for IronOCR's AdvancedOcrResultBase in C#: recognized Text, Confidence, Characters, Words, and searchable-PDF export methods.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "AdvancedOcrResultBase Class | IronOCR C# API",
+    "name": "AdvancedOcrResultBase class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.AdvancedOcrResultBase.html",
+    "abstract": "Reading a document with IronOCR's advanced engine in C# produces an AdvancedOcrResultBase. Text holds the recognized string and Confidence the average accuracy, while Characters and Words expose positioned AdvancedCharacter and AdvancedWord elements. SaveAsSearchablePdf, SaveAsSearchablePdfBytes, and SaveAsSearchablePdfStream export the result. You obtain one from IronTesseract.ReadDocumentAdvanced or ReadHandwriting.",
+    "description": "Reference for IronOCR's AdvancedOcrResultBase in C#: recognized Text, Confidence, Characters, Words, and searchable-PDF export methods.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var result = ocr.ReadDocumentAdvanced(input, ModelType.Document);\nConsole.WriteLine(result.Text);\nresult.SaveAsSearchablePdf(\"searchable.pdf\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does AdvancedOcrResultBase live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AdvancedOcrResultBase is an abstract class in the IronOcr namespace, shipped in IronOcr.dll. It derives from Object, implements IOcrResult, and is the base of OcrDocAdvancedResult and OcrHandwritingResult."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get an AdvancedOcrResultBase in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call an advanced read on IronTesseract: ReadDocumentAdvanced returns an OcrDocAdvancedResult and ReadHandwriting returns an OcrHandwritingResult, both of which are AdvancedOcrResultBase results."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you export an advanced OCR result to a searchable PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call SaveAsSearchablePdf with a file path to write the overlaid PDF, or use SaveAsSearchablePdfBytes for a byte array and SaveAsSearchablePdfStream for a stream. Each accepts options for the document title and OCR overlay."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -156,6 +220,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class AdvancedOcrResultBase : Object, IOcrResult</code></pre>
   </div>
+    <!-- archetype-N:start AdvancedOcrResultBase treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Reading a document with IronOCR's advanced engine produces an <code>AdvancedOcrResultBase</code>, the result that both gives you the recognized text and exports it as a searchable PDF. It is the shared base of the advanced-read results, so the same members work whether the read targeted a general document or handwriting. Concrete result types such as <code>OcrDocAdvancedResult</code> and <code>OcrHandwritingResult</code> extend it.</p>
+<p>You obtain one by calling an advanced read on <code>IronTesseract</code>: <code>ReadDocumentAdvanced</code> returns an <code>OcrDocAdvancedResult</code> and <code>ReadHandwriting</code> returns an <code>OcrHandwritingResult</code>, both of which are <code>AdvancedOcrResultBase</code> results. From there you inspect the recognized content or write it straight to a searchable PDF without a second pass.</p>
+<p>Two members give you the text: <code>Text</code> is the full recognized string for the whole input, and <code>Confidence</code> is the average per-character OCR accuracy from 0 to 1, the number to gate on before trusting the output. Two more give you positioned detail: <code>Characters</code> is an <code>AdvancedCharacter[]</code> and <code>Words</code> is an <code>AdvancedWord[]</code>, each element carrying its own coordinates for highlighting, cropping, or layout work, so the same result drives both plain text and a positioned overlay. The searchable-PDF members handle export without a second OCR pass: <code>SaveAsSearchablePdf</code> writes the overlaid PDF to a file path, <code>SaveAsSearchablePdfBytes</code> returns it as a byte array, and <code>SaveAsSearchablePdfStream</code> returns it as a stream, each accepting options for the document title and the OCR text overlay.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var result = ocr.ReadDocumentAdvanced(input, ModelType.Document);
+Console.WriteLine(result.Text);
+result.SaveAsSearchablePdf(&quot;searchable.pdf&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-document-advanced/">read document advanced how-to</a> covers an advanced read, the <a href="https://ironsoftware.com/csharp/ocr/how-to/searchable-pdf/">searchable PDF how-to</a> walks through the export, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">read results how-to</a> traverses the words and characters.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ParseResult
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ParseResult - IronBarcode C# API Reference
+      v2 (human)     title:       ParseResult: Read Parsed Fields in C#
+      v1 (algorithm) description: Read a structured-barcode parse outcome in C# with IronBarcode ParseResult: Success, Elements, Errors, Warnings, and EncodingInfo.
+      v2 (human)     description: Check whether a structured barcode parsed in C# with IronBarcode ParseResult: read Success, iterate Elements, and surface Errors and Warnings.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ParseResult Class | IronBarcode .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ParseResult
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="ParseResult Class | IronBarcode .NET API">
+    <meta name="description" content="Reference for the IronBarcode ParseResult class in C#: Success, the Elements list of parsed fields, Errors, Warnings, and EncodingInfo.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ParseResult Class | IronBarcode .NET API",
+    "name": "ParseResult class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.ParseResult.html",
+    "abstract": "ParseResult holds the outcome of parsing a structured barcode payload in C# with IronBarcode. Success reports whether parsing completed cleanly, Errors and Warnings list any problems, and Elements is a List of ParsedElement with one entry per recognized field. FormattedString and CharacterSetSummary add readable context, while HasEncodingInfo and EncodingInfo expose the Code128EncodingInfo when encoding detail is available.",
+    "description": "Reference for the IronBarcode ParseResult class in C#: Success, the Elements list of parsed fields, Errors, Warnings, and EncodingInfo.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nif (result.Success)\n    foreach (ParsedElement element in result.Elements)\n        Console.WriteLine($\"{element.Identifier}: {element.Data}\");\nelse\n    Console.WriteLine(string.Join(\"; \", result.Errors));"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ParseResult live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ParseResult is a class in the IronBarCode namespace, shipped in IronBarCode.dll, with base type Object. It is read-only output from parsing a structured payload; read Success, then iterate Elements for the recognized fields."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you check whether a structured barcode parsed correctly in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Success property of ParseResult. When it is false, Errors and Warnings, both lists of strings, explain what went wrong. When it is true, iterate the Elements list of ParsedElement to read each recognized field."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you get encoding detail from a ParseResult?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Check HasEncodingInfo, and when it is true read EncodingInfo, which returns a Code128EncodingInfo describing how the symbol was packed. FormattedString and CharacterSetSummary give a readable rendering and the character sets the source data used."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ParseResult : Object</code></pre>
   </div>
+    <!-- archetype-N:start ParseResult treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Parsing a structured barcode payload into named fields hands a developer a <code>ParseResult</code>. A raw Code 128 or GS1 value carries several application-identifier fields packed together, and parsing breaks that string into typed pieces while recording anything that did not check out. The result object is what a developer reads to decide whether the parse can be trusted and to reach the individual fields it produced.</p>
+<p>The headline is <code>Success</code>, a flag that says whether parsing completed cleanly, paired with <code>Errors</code> and <code>Warnings</code>, both <code>List&lt;string&gt;</code>, that explain any problems found. A developer checks <code>Success</code> first, then surfaces the diagnostics when it is false. The parsed data itself lives in <code>Elements</code>, a <code>List&lt;ParsedElement&gt;</code> where each entry holds one recognized field with its own validity state.</p>
+<p>The remaining members add context. <code>FormattedString</code> renders the parsed payload in a readable form suited to logs or a display field, and <code>CharacterSetSummary</code> describes the character sets the source data used. <code>HasEncodingInfo</code> reports whether encoding detail is available, and when it is, <code>EncodingInfo</code> returns the <code>Code128EncodingInfo</code> that documents how the symbol was packed. Checking <code>HasEncodingInfo</code> before reading <code>EncodingInfo</code> avoids a null reference when a parse produced no encoding report. Treat the result as read-only output describing one parse, iterating <code>Elements</code> for the data and consulting <code>Errors</code> for what went wrong. Because the diagnostics are separated from the data, an application can accept the valid fields and report the failed ones rather than discarding the whole read. The <a href="https://ironsoftware.com/csharp/barcode/how-to/output-data-formats/">output data formats how-to</a> shows how to present parsed results, and the <a href="https://ironsoftware.com/csharp/barcode/how-to/checksum-and-format-validation/">checksum and format validation how-to</a> covers validating the underlying values.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+if (result.Success)
+    foreach (ParsedElement element in result.Elements)
+        Console.WriteLine($&quot;{element.Identifier}: {element.Data}&quot;);
+else
+    Console.WriteLine(string.Join(&quot;; &quot;, result.Errors));</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/tutorials/reading-barcodes/">reading barcodes tutorial</a> covers the full read and parse workflow.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

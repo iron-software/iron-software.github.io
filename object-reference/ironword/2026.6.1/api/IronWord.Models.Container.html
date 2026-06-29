@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Container
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Container - IronWord C# API Reference
+      v2 (human)     title:       Container: The Word Document Body in C#
+      v1 (algorithm) description: Hold the body of a C# Word document with the IronWord Container class. Add child content with AddChild and set document default styles.
+      v2 (human)     description: Work with the body of a C# Word document through the IronWord Container class: add paragraphs and tables and set document-wide defaults.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Container Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Container
-   | C# Word API | IronWord ">
+    <meta name="title" content="Container Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord Container class in C#: add content with AddChild and set DefaultParagraphStyle, DefaultTableStyle, and DefaultTextStyle.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Container Class | IronWord C# API Reference",
+    "name": "Container class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Container.html",
+    "abstract": "When a Word document needs a body to hold its content, IronWord's Container is that home for paragraphs, tables, and images. Construct one with new Container() or seed it with child elements, then add content through AddChild. It also owns the document defaults, DefaultParagraphStyle, DefaultTableStyle, and DefaultTextStyle, and the BuiltInColors and BuiltInStyles banks, and inherits Texts, Tables, and Children for reading content back.",
+    "description": "Reference for the IronWord Container class in C#: add content with AddChild and set DefaultParagraphStyle, DefaultTableStyle, and DefaultTextStyle.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var body = new Container();\nbody.DefaultTextStyle = new TextStyle();\nbody.AddChild(new Paragraph());"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Container live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Container is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from ParentElement and represents the body of a Word document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add content to a Word document body in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call AddChild on the Container, passing paragraphs, runs, images, shapes, or text. New content is added to the last section in the document. You can also seed the container with child elements through its constructor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set default styles for a Word document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Assign DefaultParagraphStyle, DefaultTableStyle, and DefaultTextStyle on the Container. Elements that do not override their own style fall back to these defaults, keeping formatting consistent across the document."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -210,9 +274,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Container : ParentElement, IWordDocumentObject, IDocumentObject, ICloneable, IParent&lt;IWordDocumentObjectCollection, IWordDocumentObject&gt;</code></pre>
   </div>
-  <h5 id="IronWord_Models_Container_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>Equivalent to the &quot;body&quot; of a Word document.</p>
-</div>
+    <!-- archetype-N:start Container treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Container</code> is the object that holds the body of a Word document, the paragraphs, tables, and images that make up its content. A developer works with it as the top-level home for content elements, adding children to it and reading back the text and tables it holds, and it also carries the document-wide defaults that styling falls back to.</p>
+<p>A container is created with <code>new Container()</code>, or with <code>new Container(params ContentElement[])</code> to seed it with an initial set of child elements in one call. Content is added through <code>AddChild</code>, which accepts one or more <code>IWordDocumentObject</code> items such as paragraphs, runs, images, shapes, and text. As the remarks note, paragraphs and other content added this way are placed into the last section in the document, so the container manages where new content lands.</p>
+<p>Beyond holding content, a container owns the document's default styles and color and style banks. <code>DefaultParagraphStyle</code>, <code>DefaultTableStyle</code>, and <code>DefaultTextStyle</code> set the baseline a <code>ParagraphStyle</code>, <code>TableStyle</code>, or <code>TextStyle</code> falls back to when an element does not override it, while <code>BuiltInColors</code> and <code>BuiltInStyles</code> expose the registered colors and styles available across the document. From its <code>ParentElement</code> base it also inherits <code>Texts</code>, <code>Tables</code>, and <code>Children</code> for reading the content back, plus <code>LogObjectTree</code> for inspecting the structure during development. Setting the defaults once keeps formatting consistent without repeating style assignments on every element.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var body = new Container();
+body.DefaultTextStyle = new TextStyle();
+body.AddChild(new Paragraph());</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> walks through how content elements nest, the <a href="https://ironsoftware.com/csharp/word/examples/log-object-tree/">log object tree example</a> inspects the structure, and the <a href="https://ironsoftware.com/csharp/word/examples/add-paragraph/">add paragraph example</a> adds content.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

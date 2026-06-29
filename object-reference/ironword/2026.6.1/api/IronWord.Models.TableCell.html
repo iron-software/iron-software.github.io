@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TableCell
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TableCell Class - IronWord C# API Reference
+      v2 (human)     title:       TableCell: Fill Word Table Cells in C#
+      v1 (algorithm) description: Fill Word table cells in C# with the IronWord TableCell class: add text, images, and nested content, read Value, and style with Shading and alignment.
+      v2 (human)     description: Populate and style individual table cells with the IronWord TableCell class in C#: add text or images, set shading and alignment, and span columns.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TableCell Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TableCell
-   | C# Word API | IronWord ">
+    <meta name="title" content="TableCell Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord TableCell class in C#: obtained through a table indexer, it holds cell content via AddText and AddChild plus styling.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TableCell Class | IronWord C# API Reference",
+    "name": "TableCell class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.TableCell.html",
+    "abstract": "Filling a single Word table cell in C# runs through the IronWord TableCell class. A Table hands you a cell through its indexer, table[row, column], and you add content with AddText, AddParagraph, AddImage, or AddChild. The plain text is available through Value and ExtractText, and appearance is set through the Style, Shading, TextAlignment, and VerticalAlignment properties.",
+    "description": "Reference for the IronWord TableCell class in C#: obtained through a table indexer, it holds cell content via AddText and AddChild plus styling.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nTable table = new Table(2, 2);\nTableCell cell = table[0, 0];\ncell.AddText(new TextContent(\"Number\"));\ncell.VerticalAlignment = VerticalAlign.Middle;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TableCell live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TableCell is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from TableElement and is usually obtained from a Table through its indexer, table[row, column]."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add text to a table cell in C# with IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Index to the cell with table[row, column], then call AddText with a TextContent, or assign a new TableCell that was constructed with content. AddParagraph, AddImage, and AddChild add other content types to the same cell."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you style a single table cell in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the cell's own properties: Style takes a TableCellStyle, Shading sets the fill color, and TextAlignment and VerticalAlignment position the content. Width and GridSpan control sizing and column spanning."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -224,6 +288,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TableCell : TableElement, ITableCell, IWordDocumentObject, IDocumentObject, ICloneable, IParent&lt;IWordDocumentObjectCollection, IWordDocumentObject&gt;</code></pre>
   </div>
+    <!-- archetype-N:start TableCell treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Filling a single box in a Word table runs through <code>TableCell</code>. Each instance is one cell, holding the content placed inside it and the styling applied to it, and a <code>Table</code> hands you cells by index so you can write to them one at a time. It is what a developer works with whenever a table needs text, images, or nested content in a specific position.</p>
+<p>A cell is created empty (<code>new TableCell()</code>), from a string (<code>new TableCell(&quot;Total&quot;)</code>), or from content elements (<code>new TableCell(params ContentElement[])</code>), and the common way to obtain one is through the parent table's indexer, <code>table[row, column]</code>. Add content with <code>AddText</code>, <code>AddParagraph</code>, <code>AddImage</code>, <code>AddShape</code>, or <code>AddTable</code> for a nested grid, or call <code>AddChild</code> to attach any <code>ContentElement</code>. The plain text of a cell is available through the <code>Value</code> property and <code>ExtractText</code>, and <code>FindText</code> and <code>ReplaceText</code> edit it in place.</p>
+<p>Cell appearance is set through the cell's own properties: <code>Style</code> takes a <code>TableCellStyle</code>, <code>Shading</code> sets the fill color, <code>TextAlignment</code> and <code>VerticalAlignment</code> position the content, and <code>Width</code>, <code>GridSpan</code>, and the four margin properties control sizing. <code>GetWidth</code> and <code>SetWidth</code> read and write the width in a chosen <code>MeasurementUnit</code>, and <code>Split</code> divides a cell. Because the table addresses cells positionally, the usual pattern is to index to the cell you want, then add or style its content. A single cell is not limited to one piece of content: it can hold a paragraph, an image, and a nested table together, which is how richer layouts such as a product row with a label, a thumbnail, and a detail grid are built. <code>InsertCellBeforeSelf</code> and <code>InsertCellAfterSelf</code> add neighbouring cells relative to this one when a row needs to grow.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+Table table = new Table(2, 2);
+TableCell cell = table[0, 0];
+cell.AddText(new TextContent(&quot;Number&quot;));
+cell.VerticalAlignment = VerticalAlign.Middle;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-table/">add a table how-to</a> covers populating and styling cells, the <a href="https://ironsoftware.com/csharp/word/examples/add-table/">add table example</a> fills cells by index across a grid, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> shows where cells sit in the document model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

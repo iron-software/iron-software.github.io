@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Shape
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Shape Class - IronWord C# API Reference
+      v2 (human)     title:       Shape: Draw & Position Figures in Word with C#
+      v1 (algorithm) description: Add a positioned drawing to a Word document in C# with the IronWord Shape class: set FillColor, StrokeColor, size, position, and rotation.
+      v2 (human)     description: Draw and position a figure on a Word page in C# with the IronWord Shape class: set its fill, size, and offsets, then rotate or flip it.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Shape Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Shape
-   | C# Word API | IronWord ">
+    <meta name="title" content="Shape Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord Shape class in C#: a page-positioned drawing with fill, stroke, sizing, positioning, and transform members.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Shape Class | IronWord C# API Reference",
+    "name": "Shape class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Shape.html",
+    "abstract": "Adding a positioned drawing to a Word document in C# runs through the IronWord Shape class. FillColor, StrokeColor, and Type set its appearance, SetHeight and SetWidth size it in a chosen Units value, and the DistanceFrom and Alignment members place it on the page. Angle, Rotate, FlipHorizontal, and FlipVertical transform it, and Clone copies it.",
+    "description": "Reference for the IronWord Shape class in C#: a page-positioned drawing with fill, stroke, sizing, positioning, and transform members.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\nusing IronWord.Models.Enums;\n\nvar shape = new Shape();\nshape.SetWidth(100, Units.pt);\nshape.SetHeight(50, Units.pt);\nshape.Rotate(15);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Shape live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Shape is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from ContentElement and represents a page-positioned drawing object with its own size, position, and fill."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you size and position a shape in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set Height and Width directly, or call SetHeight and SetWidth with a Units value for unambiguous dimensions. Place the shape with HorizontalAlignment, VerticalAlignment, and the DistanceFromTop, DistanceFromLeft, and related offset members."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Shape and ShapeContent in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Shape is a drawing positioned on the page with its own coordinates. ShapeContent is the inline shape that flows with text inside a run. Use Shape for page graphics and ShapeContent when the figure should move with the surrounding text."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -171,6 +235,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Shape : ContentElement, lyduza</code></pre>
   </div>
+    <!-- archetype-N:start Shape treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Shape</code> represents a drawing object placed in a Word document, a rectangle, line, or other figure positioned on the page. A developer adds one to draw a callout, divider, or decorative figure, controlling its size, position, rotation, and fill. It is the visual element a developer works with for page graphics, and it is paired with <code>ShapeContent</code>, the inline shape that flows with text rather than being positioned on the page.</p>
+<p>A shape carries its own position and dimensions, so it is placed by setting where it sits and how large it is rather than by inserting it into a text flow. That makes it the page-positioned counterpart in the document model: a developer sets its coordinates and size, then the figure renders at that spot.</p>
+<p>The members fall into clear groups. Appearance is set by <code>FillColor</code>, <code>StrokeColor</code>, <code>StrokeWeight</code>, and <code>Type</code>, with <code>Name</code>, <code>Id</code>, and <code>Index</code> identifying the shape. Sizing uses <code>Height</code> and <code>Width</code> directly, or <code>GetHeight</code>, <code>GetWidth</code>, <code>SetHeight</code>, and <code>SetWidth</code>, which take a <code>Units</code> value so the dimension is unambiguous, plus <code>Resize</code> for a quick width-and-height resize. Positioning uses <code>HorizontalAlignment</code> and <code>VerticalAlignment</code> along with the <code>DistanceFromTop</code>, <code>DistanceFromBottom</code>, <code>DistanceFromLeft</code>, and <code>DistanceFromRight</code> properties and their <code>Get</code>/<code>Set</code> method forms that take a <code>Units</code> value, while <code>WrapText</code> controls how surrounding text flows around the shape. Transforms cover <code>Angle</code>, <code>Rotate</code>, <code>FlipHorizontal</code>, and <code>FlipVertical</code>, and <code>Clone</code> copies the shape. Prefer the <code>Set</code> methods over the raw distance and size properties whenever the unit matters.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+using IronWord.Models.Enums;
+
+var shape = new Shape();
+shape.SetWidth(100, Units.pt);
+shape.SetHeight(50, Units.pt);
+shape.Rotate(15);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-image/">add image how-to</a> covers placing visual content, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> shows how drawing elements fit the document model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

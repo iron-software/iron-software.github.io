@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Shadow
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Shadow Class - IronWord C# API
+      v2 (human)     title:       Shadow: Drop Shadow Text Effect in C#
+      v1 (algorithm) description: Add a drop shadow to Word text in C# with the IronWord Shadow class: set BlurRadius, DistanceFromText, DirectionAngle, and SchemeColor.
+      v2 (human)     description: Lift text off the page with a drop shadow in C# using the IronWord Shadow class: soften the edge, set the offset, and tint the dark copy.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Shadow Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Shadow
-   | C# Word API | IronWord ">
+    <meta name="title" content="Shadow Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord Shadow class in C#: the drop-shadow text effect set as TextEffect.ShadowEffect, with blur, offset, and color.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Shadow Class | IronWord C# API Reference",
+    "name": "Shadow class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Shadow.html",
+    "abstract": "Adding a drop shadow to Word text in C# runs through the IronWord Shadow class. BlurRadius and DistanceFromText shape the offset, DirectionAngle and Alignment orient it, SchemeColor tints it, and skew and scaling properties shear the copy. SetBlurRadius and SetDistanceFromText take a MeasurementUnit. A shadow attaches as the ShadowEffect on a TextEffect.",
+    "description": "Reference for the IronWord Shadow class in C#: the drop-shadow text effect set as TextEffect.ShadowEffect, with blur, offset, and color.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\nusing IronWord.Models.Enums;\n\nvar shadow = new Shadow();\nshadow.SetBlurRadius(3, MeasurementUnit.Point);\nshadow.SetDistanceFromText(2, MeasurementUnit.Point);\nshadow.DirectionAngle = 45;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Shadow live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Shadow is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object and is attached as the ShadowEffect property of a TextEffect to cast a dark, offset copy behind styled text."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you apply a drop shadow to text in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a Shadow, soften it with SetBlurRadius, set its offset with SetDistanceFromText, orient it with DirectionAngle, and assign it as the ShadowEffect on a TextEffect. The blur and distance setters take a MeasurementUnit so the dimensions are unambiguous."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Shadow and Reflection in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Shadow casts a dark, offset copy behind the text to give it depth. Reflection produces a faded mirror image beneath the text. Both attach to a TextEffect, through the ShadowEffect and ReflectionEffect properties respectively."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +214,21 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Shadow : Object</code></pre>
   </div>
+    <!-- archetype-N:start Shadow treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When text in a Word document should cast a dark, offset copy behind it, <code>Shadow</code> describes that effect. It is the drop shadow a developer applies to lift type off the page, the soft dark echo that gives a heading depth. A developer styling a document reaches for it when flat text needs emphasis, and it is the effect paired with <code>Reflection</code>, which mirrors the text rather than darkening a copy behind it.</p>
+<p>A shadow is set as the <code>ShadowEffect</code> on a <code>TextEffect</code>, so it is configured as part of a text style's effects rather than on its own. Build the shadow's blur, color, and offset once, attach it to the text effect, and the dark copy renders wherever that styled text appears. The <code>OuterShadow1</code> field offers a ready-made outer-shadow preset as a convenient starting point.</p>
+<p><code>BlurRadius</code> softens the shadow's edge and <code>DistanceFromText</code> sets how far it falls from the original, while <code>DirectionAngle</code> and <code>Alignment</code> orient where it lands. <code>SchemeColor</code> tints the shadow, and the skew and scaling properties (<code>HorizontalSkewAngle</code>, <code>VerticalSkewAngle</code>, <code>HorizontalScalingFactor</code>, <code>VerticalScalingFactor</code>) shear and size the offset copy for a slanted or stretched effect. Because Word measurements can be expressed in several units, <code>SetBlurRadius</code> and <code>SetDistanceFromText</code> take a value plus a <code>MeasurementUnit</code>, and <code>GetBlurRadius</code> and <code>GetDistanceFromText</code> read those values back in a chosen unit. Prefer the <code>Set</code> methods over the raw <code>BlurRadius</code> and <code>DistanceFromText</code> properties whenever the unit matters, so the dimension is recorded with its unit rather than as a bare number.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+using IronWord.Models.Enums;
+
+var shadow = new Shadow();
+shadow.SetBlurRadius(3, MeasurementUnit.Point);
+shadow.SetDistanceFromText(2, MeasurementUnit.Point);
+shadow.DirectionAngle = 45;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-shadow-effect/">shadow text effect how-to</a> walks through applying it, the <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-reflection-effect/">reflection text effect how-to</a> covers the mirrored counterpart, and the <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-glow-effect/">glow text effect how-to</a> shows another text effect.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

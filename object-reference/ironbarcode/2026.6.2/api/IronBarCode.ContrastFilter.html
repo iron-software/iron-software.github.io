@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ContrastFilter
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ContrastFilter - IronBarcode C# API Reference
+      v2 (human)     title:       ContrastFilter: Sharpen Barcode Contrast in C#
+      v1 (algorithm) description: Increase barcode image contrast in C# with IronBarcode ContrastFilter: an Amount-scaled pass added to BarcodeReaderOptions.ImageFilters before reading.
+      v2 (human)     description: Read a washed-out barcode in C# with IronBarcode ContrastFilter, which widens the light-to-dark difference so the bars stand out for decoding.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ContrastFilter Class | IronBarcode C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ContrastFilter
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="ContrastFilter Class | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode ContrastFilter class in C#: adjust image contrast with Amount before reading a barcode.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ContrastFilter Class | IronBarcode C# API",
+    "name": "ContrastFilter class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.ContrastFilter.html",
+    "abstract": "ContrastFilter widens the intensity difference between light and dark regions of a barcode image in C# with IronBarcode, sharpening the boundary a decoder keys on in washed-out photos. It implements IImageFilter and goes into the ImageFilterCollection on BarcodeReaderOptions.ImageFilters. The Amount property sets the strength: 1 leaves the image unchanged, 0 makes it gray, and values above 1 increase contrast.",
+    "description": "Reference for the IronBarcode ContrastFilter class in C#: adjust image contrast with Amount before reading a barcode.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nvar options = new BarcodeReaderOptions\n{\n    ImageFilters = new ImageFilterCollection { new ContrastFilter(2.0f) }\n};\nvar results = BarcodeReader.Read(\"washed-out.png\", options);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ContrastFilter live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ContrastFilter is a class in the IronBarCode namespace, shipped in IronBarCode.dll. It derives from Object and implements IImageFilter, so it can be added to the ImageFilterCollection assigned to BarcodeReaderOptions.ImageFilters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the Amount property do on ContrastFilter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Amount sets the contrast strength. The default of 1 leaves the image unchanged, 0 produces a fully gray image, and values above 1 increase contrast. Pass it to the constructor or set the property when a barcode image looks flat or washed out."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -154,6 +210,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ContrastFilter : Object, IImageFilter</code></pre>
   </div>
+    <!-- archetype-N:start ContrastFilter treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>ContrastFilter</code> widens the difference in intensity between the light and dark regions of a barcode image, the correction for a washed-out or flat photo where the bars and the background sit too close in tone for a reliable read. Pushing the contrast up makes the black bars darker and the white spaces lighter, sharpening the boundary a decoder keys on; pulling it down has the opposite, softening effect. It is one of the most frequently applied passes, often paired with a sharpen step.</p>
+<p>The filter implements <code>IImageFilter</code> and is added to the <code>ImageFilterCollection</code> on <code>BarcodeReaderOptions.ImageFilters</code>, run in collection order before decoding. A developer constructs it, adds it to the collection, and passes the options to <code>BarcodeReader.Read</code>. The single <code>Amount</code> property controls the strength: the default value of 1 leaves the image unchanged, 0 produces a fully gray image, and values above 1 increase contrast. The single-argument constructor sets <code>Amount</code> at creation.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+var options = new BarcodeReaderOptions
+{
+    ImageFilters = new ImageFilterCollection { new ContrastFilter(2.0f) }
+};
+var results = BarcodeReader.Read(&quot;washed-out.png&quot;, options);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/image-correction/">image correction how-to</a> demonstrates the contrast pass on a sample, and the <a href="https://ironsoftware.com/csharp/barcode/examples/imperfect-barcode-with-image-correction/">imperfect barcode example</a> reads a degraded barcode after correction.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

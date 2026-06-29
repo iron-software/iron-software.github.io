@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrImageInput
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrImageInput - IronOCR C# API Reference
+      v2 (human)     title:       OcrImageInput: OCR a Single Image in C#
+      v1 (algorithm) description: Wrap an image for OCR in C# with the IronOCR OcrImageInput class: build from a file, Stream, byte[], or AnyBitmap and pass it to Read.
+      v2 (human)     description: OCR a single image in C# with the IronOCR OcrImageInput class: load from a file, stream, or bitmap, set DPI and a content area, then read.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrImageInput | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrImageInput
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrImageInput | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR OcrImageInput class in C#: an image-backed input from a file, Stream, byte[], or AnyBitmap for IronTesseract.Read.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrImageInput | IronOCR C# API Reference",
+    "name": "OcrImageInput class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrImageInput.html",
+    "abstract": "Wrap a single image for OCR in IronOCR with the OcrImageInput class in C#. Construct it from a file path, Stream, byte[], or AnyBitmap, with optional Dpi, a ContentArea rectangle, and a Title, then pass it to IronTesseract.Read. It derives from OcrInputBase, so the inherited image filters clean the source before the read.",
+    "description": "Reference for the IronOCR OcrImageInput class in C#: an image-backed input from a file, Stream, byte[], or AnyBitmap for IronTesseract.Read.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using var input = new OcrImageInput(\"scan.png\");\nOcrResult result = ironTesseract.Read(input);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrImageInput live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrImageInput is a class in the IronOcr namespace, shipped in IronOcr.dll. It derives from OcrInputBase, implements IDisposable, and is passed to IronTesseract.Read as an OcrInputBase."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you OCR a single image in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create an OcrImageInput from a file, Stream, byte[], or AnyBitmap, optionally setting Dpi and a ContentArea, then pass it to IronTesseract.Read. Use OcrInput instead when a job has many images or PDF pages."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -278,6 +334,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class OcrImageInput : OcrInputBase, IDisposable</code></pre>
   </div>
+    <!-- archetype-N:start OcrImageInput treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Feeding a single image to a read starts by wrapping it in an <code>OcrImageInput</code>. It is the image-backed input you build from a file, a <code>Stream</code>, a <code>byte[]</code>, or an <code>AnyBitmap</code>, then pass to <code>IronTesseract.Read</code>. Use it for one picture, screenshot, or photo, where <code>OcrInput</code> is the choice when a job spans many images or PDF pages.</p>
+<p>Each constructor takes the image source plus three optional arguments: a <code>Dpi</code> to declare the source resolution, a <code>ContentArea</code> rectangle to read only part of the image, and a <code>Title</code> to label the input. Because <code>OcrImageInput</code> derives from <code>OcrInputBase</code>, the inherited filter methods, <code>Deskew</code>, <code>Binarize</code>, <code>DeNoise</code>, and <code>Contrast</code> among them, are available on the instance to clean the image before the read, and <code>Dispose</code> releases it afterward. Build the input, apply any filters the source needs, then hand it to <code>Read</code> and read the words off the returned <code>OcrResult</code>.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/input-images/">input images how-to</a> covers the image sources, and the <a href="https://ironsoftware.com/csharp/ocr/examples/csharp-ocr-input-for-iron-tesseract/">OCR input example</a> builds one for a read.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using var input = new OcrImageInput(&quot;scan.png&quot;);
+OcrResult result = ironTesseract.Read(input);</code></pre></div>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

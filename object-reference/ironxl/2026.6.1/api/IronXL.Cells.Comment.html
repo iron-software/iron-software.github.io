@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Comment
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Comment Class - IronXL C# API Reference
+      v2 (human)     title:       Comment: Cell Comments in C# Excel
+      v1 (algorithm) description: Read and edit cell comments in C# with the IronXL Comment class: set Content and Author, read the Address, and toggle IsVisible.
+      v2 (human)     description: Work with cell notes in C# using the IronXL Comment class: set the comment Content and Author, find its cell Address, and show it.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Comment Class | IronXL C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Comment
-   | C# Excel API | IronXL ">
+    <meta name="title" content="Comment Class | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL Comment class in .NET: Content, Author, read-only Address, and IsVisible for cell comments.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Comment Class | IronXL C# API Reference",
+    "name": "Comment class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Cells.Comment.html",
+    "abstract": "Reading and editing a cell note in C# runs through the IronXL Comment class. Content holds the comment text, Author records who wrote it, the read-only Address reports the cell it belongs to, and IsVisible controls whether the note shows on the sheet. Comments are hidden by default, so set IsVisible to pin one open.",
+    "description": "Reference for the IronXL Comment class in .NET: Content, Author, read-only Address, and IsVisible for cell comments.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "// comment obtained from a cell\ncomment.Author = \"Reviewer\";\ncomment.Content = \"Check this figure\";\ncomment.IsVisible = true;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Comment live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Comment is a class in the IronXL.Cells namespace, shipped in IronXL.dll, deriving from System.Object. It represents a note attached to a single worksheet cell."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you make a cell comment visible in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the comment's IsVisible property to true. Comments are hidden by default and appear on hover, so turning IsVisible on pins the note open on the worksheet. Content and Author hold the text and writer."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +206,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Comment : Object</code></pre>
   </div>
+    <!-- archetype-N:start Comment treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>Comment</code> is the note attached to a single spreadsheet cell, the kind a reviewer leaves to explain a value or flag a question. It holds the comment's text, who wrote it, the cell it belongs to, and whether it shows on the sheet, so a developer can read or adjust an annotation without touching the cell's own data.</p>
+<p>Work with a comment through the cell it sits on, then read or set its properties. <code>Content</code> holds the comment text and <code>Author</code> records who left it. <code>Address</code> reports the address of the cell that carries the comment and is read-only, so it identifies the location rather than moving the note. <code>IsVisible</code> controls whether the comment is shown directly on the worksheet; comments are hidden by default and surface on hover until this is turned on. Setting <code>IsVisible</code> to true pins a note open, which suits callouts a reader should not have to hunt for. Each property reads and writes plain values, so updating an annotation is a direct assignment.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">// comment obtained from a cell
+comment.Author = &quot;Reviewer&quot;;
+comment.Content = &quot;Check this figure&quot;;
+comment.IsVisible = true;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/add-comment/">add a comment how-to</a> covers creating and editing cell comments, and the <a href="https://ironsoftware.com/csharp/excel/how-to/csharp-edit-excel-file/">edit an Excel file how-to</a> sets the cell values a comment annotates.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

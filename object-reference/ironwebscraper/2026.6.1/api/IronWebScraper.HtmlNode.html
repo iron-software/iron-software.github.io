@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class HtmlNode
-   | C# Web Scraping API | IronWebScraper </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       HtmlNode Class - IronWebScraper C# API
+      v2 (human)     title:       HtmlNode: Read DOM Elements in C#
+      v1 (algorithm) description: Read DOM elements in C# with the IronWebScraper HtmlNode class: InnerText, attributes, OuterHtml, and nested Css, QuerySelector, and XPath queries.
+      v2 (human)     description: Extract text and attributes from scraped pages in C# with the IronWebScraper HtmlNode class, and run nested selector queries on any node.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>HtmlNode Class | IronWebScraper C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class HtmlNode
-   | C# Web Scraping API | IronWebScraper ">
+    <meta name="title" content="HtmlNode Class | IronWebScraper C# API">
+    <meta name="description" content="Reference for the IronWebScraper HtmlNode class in C#: read element text and attributes and run Css and XPath queries on the node subtree.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "HtmlNode Class | IronWebScraper C# API",
+    "name": "HtmlNode class | IronWebScraper C# API",
+    "url": "https://ironsoftware.com/csharp/webscraper/object-reference/api/IronWebScraper.HtmlNode.html",
+    "abstract": "Reading a DOM element in C# runs through the IronWebScraper HtmlNode class, returned by Response selector queries. Read element text with InnerText or the whitespace-collapsed InnerTextClean, markup with InnerHtml and OuterHtml, and attributes through the Attributes dictionary or GetAttribute. Each node is also a query root, so Css, QuerySelector, XPath, ChildNodes, and ParentNode drill into its subtree.",
+    "description": "Reference for the IronWebScraper HtmlNode class in C#: read element text and attributes and run Css and XPath queries on the node subtree.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWebScraper",
+      "url": "https://ironsoftware.com/csharp/webscraper/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "foreach (HtmlNode card in response.Css(\"div.product\"))\n{\n    string name = card.Css(\"h3\").FirstOrDefault()?.TextContentClean;\n    string price = card.GetAttribute(\"data-price\");\n    Scrape(new { name, price });\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does HtmlNode live in the IronWebScraper API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HtmlNode is a class in the IronWebScraper namespace, shipped in IronWebScraper.dll. Response selector methods such as Css and QuerySelectorAll return HtmlNode instances representing DOM elements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read an element's text and attributes in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the text from InnerText or TextContent, or use InnerTextClean and TextContentClean for whitespace-collapsed values. Read attributes from the Attributes dictionary or GetAttribute(name), and test presence with HasAtribute."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you run a CSS selector on a single HtmlNode?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. HtmlNode is a query root, so Css, QuerySelector, QuerySelectorAll, and XPath run against the node's own subtree. Use ChildNodes and ParentNode to walk the tree directly."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -151,6 +215,21 @@ XML document.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class HtmlNode : Object</code></pre>
   </div>
+    <!-- archetype-N:start HtmlNode treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>HtmlNode</code> is the DOM element you read when pulling data from a scraped page. Selector queries on a <code>Response</code> (<code>Css</code>, <code>QuerySelectorAll</code>, <code>XPath</code>, <code>GetElementById</code>) return <code>HtmlNode</code> instances or arrays, and each node exposes the element's text, markup, attributes, and position in the tree.</p>
+<p>Text comes out in two grades: <code>InnerText</code> and <code>TextContent</code> keep the raw element text, while <code>InnerTextClean</code> and <code>TextContentClean</code> collapse whitespace for tidy field values. Markup is available as <code>InnerHtml</code> and <code>OuterHtml</code>. Attributes are read through the <code>Attributes</code> dictionary or, for one value, <code>GetAttribute(&quot;href&quot;)</code>, with <code>HasAtribute</code> testing presence. Element identity is on <code>NodeName</code> and <code>NodeType</code>.</p>
+<p>Whitespace handling matters in practice: a title or price read from <code>InnerText</code> often carries newlines and indentation from the source markup, while the <code>Clean</code> variants return the trimmed, single-spaced value suited to a data field. <code>OuterHtml</code> includes the element's own tag, useful when storing a fragment, while <code>InnerHtml</code> returns only its contents, and <code>NodeName</code> reports the tag, such as <code>div</code> or <code>a</code>, when a selector matches mixed element types. When an attribute may be absent, guard with <code>HasAtribute</code> before <code>GetAttribute</code>, since a missing attribute returns null.</p>
+<p>A node is also a query root, so extraction can drill down without returning to the response. <code>Css</code>, <code>QuerySelector</code>, <code>QuerySelectorAll</code>, and <code>XPath</code> run against the node's own subtree, and <code>ChildNodes</code> and <code>ParentNode</code> walk the tree directly. A common shape selects a container with one query, then reads child fields from each node in the result.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">foreach (HtmlNode card in response.Css(&quot;div.product&quot;))
+{
+    string name = card.Css(&quot;h3&quot;).FirstOrDefault()?.TextContentClean;
+    string price = card.GetAttribute(&quot;data-price&quot;);
+    Scrape(new { name, price });
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/webscraper/how-to/scraping-from-a-shopping-website/">shopping-site how-to</a> extracts fields from nodes this way, and the <a href="https://ironsoftware.com/csharp/webscraper/tutorials/webscraping-in-c-sharp/">web scraping tutorial</a> covers selecting and reading elements.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

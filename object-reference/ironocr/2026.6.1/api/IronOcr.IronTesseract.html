@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class IronTesseract
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IronTesseract Class - IronOCR C# API Reference
+      v2 (human)     title:       IronTesseract: Run Tesseract OCR in C#
+      v1 (algorithm) description: Run Tesseract OCR in C# with the IronOCR IronTesseract class: set Language, call Read on an OcrInput, and get an OcrResult, sync or async.
+      v2 (human)     description: Read images and PDFs in C# with IronOCR's IronTesseract class: configure language, run standard or ML reads, and export searchable PDFs.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IronTesseract Class | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class IronTesseract
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="IronTesseract Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for IronOCR's IronTesseract class in C#: the Tesseract 5 engine with Read and ReadAsync overloads and specialized ML reads.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IronTesseract Class | IronOCR C# API Reference",
+    "name": "IronTesseract class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.IronTesseract.html",
+    "abstract": "IronTesseract runs Tesseract OCR on images and PDFs in C#, the engine behind IronOCR. Construct it, set Language (and AddSecondaryLanguage for multilingual pages), then call a read: the Read and ReadAsync overloads return an OcrResult, while ReadDocumentAdvanced, ReadHandwriting, ReadPassport, ReadLicensePlate, ReadPhoto, and ReadScreenShot target specific content. ConvertToSearchablePdf overlays recognized text onto a PDF.",
+    "description": "Reference for IronOCR's IronTesseract class in C#: the Tesseract 5 engine with Read and ReadAsync overloads and specialized ML reads.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronOcr;\n\nvar ocr = new IronTesseract();\nocr.Language = OcrLanguage.English;\nOcrResult result = ocr.Read(new OcrInput(\"scan.png\"));\nConsole.WriteLine(result.Text);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IronTesseract live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IronTesseract is a class in the IronOcr namespace, shipped in IronOcr.dll. It derives from Object and implements IOcrEngine. Construct it with new IronTesseract() and call Read with an OcrInput."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read text from an image in C# with IronTesseract?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create an IronTesseract, set Language, and call Read with an OcrInput wrapping the image, then read OcrResult.Text. Use ReadAsync for the non-blocking form, and pass a Rectangle to a Read overload to OCR only a region."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What specialized reads does IronTesseract provide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Beyond the standard Read, IronTesseract offers machine-learning reads for specific content: ReadDocumentAdvanced, ReadHandwriting, ReadPassport, ReadLicensePlate, ReadPhoto, and ReadScreenShot, each returning a result type tuned to that scenario, with async counterparts."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -155,6 +219,20 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class IronTesseract : Object, IOcrEngine</code></pre>
   </div>
+    <!-- archetype-N:start IronTesseract treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>IronTesseract</code> runs Tesseract OCR on images and PDFs in .NET, turning scanned pages, photos, and documents into text and searchable PDFs. It is the engine a developer reaches for behind a search like &quot;C# Tesseract OCR&quot;: construct one, point it at an <code>OcrInput</code>, and call a read. It wraps Iron Software's tuned Tesseract 5 build, so the same object handles a clean scan, a noisy photo, or a multi-page PDF.</p>
+<p>Create one with <code>new IronTesseract()</code>, or <code>new IronTesseract(TesseractConfiguration)</code> to start from a prepared configuration. Set <code>Language</code> to the document's natural language, add more with <code>AddSecondaryLanguage</code> for multilingual pages, and flip <code>MultiThreaded</code> to read pages and images on parallel threads. The <code>Configuration</code> field exposes a <code>TesseractConfiguration</code> for fine-grained engine control, and <code>EnableTesseractConsoleMessages</code> surfaces the engine's own diagnostics. Subscribe to the <code>OcrProgress</code> event to report progress on long reads.</p>
+<p>The read surface groups into functional buckets. **Standard reads** are the <code>Read</code> overloads, which accept an <code>OcrInputBase</code>, an array of inputs, an <code>AnyBitmap</code>, or an image path (with an optional <code>Rectangle</code> to limit OCR to a region) and return an <code>OcrResult</code>; the <code>IDocumentId</code> overloads read an existing PDF. **Asynchronous reads** are the <code>ReadAsync</code> overloads, which return an awaitable result with an optional timeout for keeping the call off a request thread. **Specialized machine-learning reads** target specific content: <code>ReadDocumentAdvanced</code>, <code>ReadHandwriting</code>, <code>ReadPassport</code>, <code>ReadLicensePlate</code>, <code>ReadPhoto</code>, and <code>ReadScreenShot</code>, each returning a result type tuned to that scenario, with matching async forms. **Searchable-PDF conversion** is handled by <code>ConvertToSearchablePdf</code> and <code>ConvertToSearchablePdfBytes</code>, which OCR a PDF's images and overlay the recognized text. Custom language data loads through <code>AddSecondaryLanguage</code> and <code>UseCustomTesseractLanguageFile</code>, and <code>ClearSecondaryLanguages</code> resets the set.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronOcr;
+
+var ocr = new IronTesseract();
+ocr.Language = OcrLanguage.English;
+OcrResult result = ocr.Read(new OcrInput(&quot;scan.png&quot;));
+Console.WriteLine(result.Text);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/iron-tesseract/">Iron Tesseract how-to</a> covers configuring and running a read, the <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">read results how-to</a> traverses the returned text and words, and the <a href="https://ironsoftware.com/csharp/ocr/examples/simple-csharp-ocr-tesseract/">simple OCR example</a> shows a minimal read.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

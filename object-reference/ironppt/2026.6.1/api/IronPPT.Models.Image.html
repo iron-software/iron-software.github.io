@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Image
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Image Class - IronPPT C# API Reference
+      v2 (human)     title:       Image: Add Pictures to Slides in C#
+      v1 (algorithm) description: Add pictures to slides in C# with the IronPPT Image class: construct from a file, stream, or AnyBitmap, then set Name, Type, and FrameShape.
+      v2 (human)     description: Place and manage pictures on PowerPoint slides in C# with the IronPPT Image class: load from a file, stream, or bitmap, crop, clone, and replace.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Image Class | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Image
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="Image Class | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT Image class in C#: build an image from a path, stream, or AnyBitmap, then position, name, clone, or replace it.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Image Class | IronPPT C# API Reference",
+    "name": "Image class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Image.html",
+    "abstract": "Placing a picture on a slide in C# runs through IronPPT's Image class. Construct it from a file path, a Stream, or an AnyBitmap, or create an empty one and call LoadFromFile or LoadFromStream. Name and Id label it, Type reports the ImageType, FrameShape crops it to a ShapeType, ImageData exposes the decoded IImageContent, Replace swaps the picture, and the Clone override returns a copy as an IContentElement.",
+    "description": "Reference for the IronPPT Image class in C#: build an image from a path, stream, or AnyBitmap, then position, name, clone, or replace it.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPPT.Models;\n\nvar image = new Image(\"logo.png\");\nimage.Name = \"BrandLogo\";\nslide.Shapes.AddShape(image);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Image live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Image is a class in the IronPPT.Models namespace, shipped in IronPPT.dll. It derives from BaseGraphic and implements IImage, IGraphic, IContentElement, and ICloneableElement, so it behaves like any other graphic element on a slide."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add a picture to a slide in C# with IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Build an Image from a path with new Image(\"logo.png\"), from a Stream, or from an AnyBitmap, then add it to the slide's shapes. You can also create an empty Image and call LoadFromFile or LoadFromStream afterward."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you replace or copy an Image in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Replace and pass another IImage to swap the picture while keeping the element in place. Use the Clone override to get a deep copy as an IContentElement when the same picture is reused across slides."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -212,6 +276,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Image : BaseGraphic, ICloneableElement, IImage, IGraphic, IContentElement</code></pre>
   </div>
+    <!-- archetype-N:start Image treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Placing a picture on a slide runs through <code>Image</code>, the graphic element that wraps a bitmap and carries it onto the presentation. Construct one from a file path, a stream, or an <code>AnyBitmap</code>, and the resulting object behaves like any other slide graphic that can be positioned, named, and cloned.</p>
+<p>The constructors cover the common sources: <code>new Image(string)</code> loads from a path, <code>new Image(Stream)</code> reads from an open stream, and <code>new Image(AnyBitmap)</code> takes an already-loaded bitmap. A parameterless <code>new Image()</code> creates an empty graphic you fill later with <code>LoadFromFile</code> or <code>LoadFromStream</code>, and <code>Replace</code> swaps the picture for another <code>IImage</code> while keeping the element in place. The decoded picture is exposed through the get-only <code>ImageData</code>, an <code>IImageContent</code>.</p>
+<p>Identity and appearance come from a small set of properties: <code>Name</code> and <code>Id</code> label the element, <code>Type</code> reports the <code>ImageType</code>, and <code>FrameShape</code>, a nullable <code>ShapeType</code>, crops the picture into a shape outline when set. Because <code>Image</code> derives from the shared graphic base and implements <code>ICloneableElement</code>, the <code>Clone</code> override returns a deep copy as an <code>IContentElement</code>, which is handy when the same picture appears on several slides. Position and sizing follow the same model as other graphics on the slide, so an <code>Image</code> is moved and scaled the way a shape is. When a picture is loaded once and reused, build it a single time and clone it per slide rather than reading the file again for each placement. To add and arrange a picture end to end, start from the image management workflow rather than wiring the pieces by hand.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPPT.Models;
+
+var image = new Image(&quot;logo.png&quot;);
+image.Name = &quot;BrandLogo&quot;;
+slide.Shapes.AddShape(image);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-image/">manage image how-to</a> covers adding and editing images, the <a href="https://ironsoftware.com/csharp/ppt/examples/add-image/">add image example</a> places one on a slide, and the <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> shows the surrounding shape model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

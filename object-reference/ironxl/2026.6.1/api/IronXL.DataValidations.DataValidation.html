@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DataValidation
-   | C# Excel API | IronXL </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       DataValidation Class - IronXL C# API Reference
+      v2 (human)     title:       DataValidation: Restrict Cell Input in C#
+      v1 (algorithm) description: Restrict Excel cell input in C# with IronXL's DataValidation class: set ConstraintType, ComparisonOperator, Formula1, and prompt and error messages.
+      v2 (human)     description: Control what users can type into Excel cells in C# with IronXL's DataValidation class: data kind, bounds, drop-down list, prompts, and errors.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>DataValidation Class | IronXL C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DataValidation
-   | C# Excel API | IronXL ">
+    <meta name="title" content="DataValidation Class | IronXL C# API">
+    <meta name="description" content="Reference for the IronXL DataValidation class in C#: a single validation rule with constraint, comparison, prompt, and error-message properties.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "DataValidation Class | IronXL C# API",
+    "name": "DataValidation class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.DataValidations.DataValidation.html",
+    "abstract": "DataValidation describes one rule that restricts what a user may type into Excel cells in IronXL for C#. ConstraintType names the data kind, ComparisonOperator from IronXL.DataValidations.ComparisonOperator chooses the test, and Formula1 and Formula2 carry the bounds. PromptBox and ErrorBox properties set the hint and rejection messages, and ShowDropDownList toggles the in-cell list. Create a rule through the worksheet's DataValidations factory methods.",
+    "description": "Reference for the IronXL DataValidation class in C#: a single validation rule with constraint, comparison, prompt, and error-message properties.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\nusing IronXL.DataValidations;\n\nWorkSheet sheet = WorkBook.Create().DefaultWorkSheet;\nDataValidation rule =\n    sheet.DataValidations.AddIntegerRule(\"A1:A10\", ComparisonOperator.Between, 1, 100);\nrule.ErrorBoxText = \"Enter a value from 1 to 100.\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does DataValidation live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DataValidation is a class in the IronXL.DataValidations namespace, shipped in IronXL.dll. It is created through the worksheet's DataValidations collection factory methods such as AddIntegerRule and AddStringListRule, and removed with Remove."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add a data validation rule in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call a typed factory method on the worksheet's DataValidations collection, for example AddIntegerRule with a range, a ComparisonOperator, and bounds. Refine the returned DataValidation with its prompt and error properties such as ErrorBoxText."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which ComparisonOperator does DataValidation use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ComparisonOperator property uses IronXL.DataValidations.ComparisonOperator, such as Between or GreaterThan. That is a different type from the ComparisonOperator in IronXL.Formatting.Enums, which applies to conditional formatting rules."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -153,6 +217,21 @@ values in a list of allowable values that is specified by the user.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class DataValidation : Object</code></pre>
   </div>
+    <!-- archetype-N:start DataValidation treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>DataValidation</code> is the rule a developer reads back to see how a worksheet restricts what a user may type into a cell. It describes one validation constraint: the kind of data allowed, the comparison and bounds it must satisfy, and the prompt and error messages Excel shows. It is what a developer inspects behind a search like &quot;C# Excel data validation rule&quot;.</p>
+<p>A <code>DataValidation</code> is created indirectly. The worksheet's <code>DataValidations</code> collection exposes typed factory methods such as <code>AddIntegerRule</code>, <code>AddDecimalRule</code>, <code>AddDateRule</code>, <code>AddTextLengthRule</code>, <code>AddStringListRule</code>, and <code>AddFormulaListRule</code> that build the rule and attach it to a range. The properties on the resulting <code>DataValidation</code> then describe and refine that rule, and <code>Remove</code> takes the same object back out of the collection.</p>
+<p>The properties fall into three groups. The constraint group sets what is valid: <code>ConstraintType</code> names the data kind (whole number, decimal, date, list, and similar), <code>ComparisonOperator</code> from the <code>IronXL.DataValidations.ComparisonOperator</code> set chooses the test such as <code>Between</code> or <code>GreaterThan</code>, and <code>Formula1</code> and <code>Formula2</code> carry the bounds, with <code>Formula2</code> used by range operators. <code>ConstrainedRangeAddress</code> reports the cells the rule covers and <code>EmptyCellAllowed</code> decides whether a blank passes. The prompt group, <code>ShowPromptBox</code>, <code>PromptBoxTitle</code>, and <code>PromptBoxText</code>, sets the hint shown when a cell is selected. The error group, <code>ShowErrorBox</code>, <code>ErrorBoxTitle</code>, <code>ErrorBoxText</code>, and <code>ErrorAlert</code>, sets the message and its severity when an entry is rejected, and <code>ShowDropDownList</code> toggles the in-cell picker for list rules. Note that this <code>ComparisonOperator</code> is the data validation type, separate from the same-named operator in <code>IronXL.Formatting.Enums</code> used for conditional formatting.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+using IronXL.DataValidations;
+
+WorkSheet sheet = WorkBook.Create().DefaultWorkSheet;
+DataValidation rule =
+    sheet.DataValidations.AddIntegerRule(&quot;A1:A10&quot;, ComparisonOperator.Between, 1, 100);
+rule.ErrorBoxText = &quot;Enter a value from 1 to 100.&quot;;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/examples/excel-conditional-formatting/">data validation example</a> shows rule-driven cell handling, the <a href="https://ironsoftware.com/csharp/excel/how-to/select-range/">select range how-to</a> covers the ranges a rule targets, and the <a href="https://ironsoftware.com/csharp/excel/how-to/set-cell-data-format/">set cell data format how-to</a> covers related cell controls.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

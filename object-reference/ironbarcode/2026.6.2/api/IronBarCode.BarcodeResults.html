@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BarcodeResults
-   | C# BarCode API | IronBarCode </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       BarcodeResults Class - IronBarcode C# API
+      v2 (human)     title:       BarcodeResults: The Read Result Set in C#
+      v1 (algorithm) description: Handle barcode read output in C# with the IronBarcode BarcodeResults class: a List of BarcodeResult with Values and FilterImages helpers.
+      v2 (human)     description: Work with every code found in a scan in C# using the IronBarcode BarcodeResults collection: iterate the results or read all Values at once.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>BarcodeResults Class | IronBarcode C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BarcodeResults
-   | C# BarCode API | IronBarCode ">
+    <meta name="title" content="BarcodeResults Class | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode BarcodeResults class in C#: the List of BarcodeResult a read returns, with Values and image helpers.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "BarcodeResults Class | IronBarcode C# API",
+    "name": "BarcodeResults class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.BarcodeResults.html",
+    "abstract": "BarcodeResults is the collection IronBarcode returns from a read in C#, a List of BarcodeResult holding every code found. Iterate it for per-code detail, or read the Values property for a string array of all decoded values. FilterImages exposes the processed images as an AnyBitmap array, and ExportFilterImagesToDisk writes them out for inspecting a difficult scan.",
+    "description": "Reference for the IronBarcode BarcodeResults class in C#: the List of BarcodeResult a read returns, with Values and image helpers.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "BarcodeResults results = BarcodeReader.Read(\"page.png\");\nstring[] values = results.Values;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does BarcodeResults live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BarcodeResults is a class in the IronBarCode namespace, shipped in IronBarCode.dll, deriving from List of BarcodeResult. BarcodeReader.Read and ReadPdf return one, holding every detected code."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I get all decoded values from a barcode read in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Values property of the BarcodeResults, which returns a string array of every decoded value. To inspect each code's type and position instead, iterate the collection and read each BarcodeResult."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +206,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class BarcodeResults : List&lt;BarcodeResult&gt;</code></pre>
   </div>
+    <!-- archetype-N:start BarcodeResults treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>BarcodeResults</code> is the collection a <code>BarcodeReader.Read</code> call hands back, holding every <code>BarcodeResult</code> found in a source. It is a <code>List&lt;BarcodeResult&gt;</code>, so a developer iterates it with <code>foreach</code> and uses the usual list members directly, while a few extra members make whole-batch work easier. This is what a developer receives from any read, whether the image held one code or several.</p>
+<p>Because it derives from <code>List&lt;BarcodeResult&gt;</code>, the collection supports indexing, <code>Count</code>, and iteration out of the box, so reading each decoded <code>Value</code> is a plain loop. On top of that, <code>Values</code> returns a <code>string[]</code> of every decoded value in one step, handy when only the text is needed and the per-code geometry is not. <code>FilterImages</code> exposes the processed images IronBarcode worked from as an <code>AnyBitmap[]</code>, and <code>ExportFilterImagesToDisk</code> writes those images to a folder, which is useful for inspecting why a difficult scan did or did not detect a code. Iterate the collection for full per-code detail, or read <code>Values</code> when a flat list of decoded strings is all a job needs.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">BarcodeResults results = BarcodeReader.Read(&quot;page.png&quot;);
+string[] values = results.Values;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/read-multiple-barcodes/">read multiple barcodes how-to</a> iterates a multi-code result, and the <a href="https://ironsoftware.com/csharp/barcode/how-to/read-barcodes-from-images/">read barcodes from images how-to</a> consumes the collection from a single read.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="methods">Methods
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ITableCellStyle
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ITableCellStyle Interface - IronWord C# API
+      v2 (human)     title:       ITableCellStyle: The Cell Style Contract in C#
+      v1 (algorithm) description: ITableCellStyle is the IronWord contract in C# for one table cell's style; its InheritedStyle returns ITableStyle, implemented by TableCellStyle.
+      v2 (human)     description: Work with a Word table cell's style in C# through the IronWord ITableCellStyle contract: read its inherited table style, implemented by TableCellStyle.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ITableCellStyle Interface | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ITableCellStyle
-   | C# Word API | IronWord ">
+    <meta name="title" content="ITableCellStyle Interface | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord ITableCellStyle interface in C#: the cell-style contract with an InheritedStyle property, implemented by TableCellStyle.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ITableCellStyle Interface | IronWord C# API",
+    "name": "ITableCellStyle interface | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.ITableCellStyle.html",
+    "abstract": "Describing one Word table cell's style through a contract in C# runs through the IronWord ITableCellStyle interface, implemented by TableCellStyle. Its InheritedStyle property is a get-only ITableStyle pointing to the table-level style a cell inherits from. Obtain the concrete TableCellStyle from a TableCell's Style property, and adjust formatting through that type.",
+    "description": "Reference for the IronWord ITableCellStyle interface in C#: the cell-style contract with an InheritedStyle property, implemented by TableCellStyle.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ITableCellStyle live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ITableCellStyle is an interface in the IronWord.Models namespace, shipped in IronWord.dll. It extends IDerivedStyle, IStyle, IWordDocumentObjectProperty, and IDocumentObjectProperty, and its InheritedStyle property returns an ITableStyle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements ITableCellStyle in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TableCellStyle implements ITableCellStyle. A TableCell exposes a TableCellStyle through its Style property, so you obtain and adjust cell formatting on the concrete TableCellStyle rather than the interface."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -145,6 +193,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface ITableCellStyle : ITableCellStyle, IDerivedStyle, IStyle, IWordDocumentObjectProperty, IDocumentObjectProperty</code></pre>
   </div>
+    <!-- archetype-N:start ITableCellStyle treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>Describing the styling of a single table cell through a contract, rather than a concrete type, is what <code>ITableCellStyle</code> provides. It represents the style applied to one cell of a Word table, separate from the row and table styles that surround it, so cell-level formatting can be read or carried independently of the implementing class.</p>
+<p>The concrete implementor in IronWord is <code>TableCellStyle</code>, which is what a <code>TableCell</code> exposes through its <code>Style</code> property. The contract's own member is <code>InheritedStyle</code>, a get-only property typed as <code>ITableStyle</code> that points to the table-level style a cell inherits its defaults from, so reading it shows where a cell's unset values come from. Because the interface member is read-only, you obtain the inherited style through it rather than reassigning it; to change a cell's formatting, set a <code>TableCellStyle</code> on the cell's <code>Style</code> property and adjust the concrete type.</p>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-table/">add table how-to</a> builds a styled table, and the <a href="https://ironsoftware.com/csharp/word/examples/add-table/">add table example</a> shows cell formatting in context.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

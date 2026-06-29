@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PageIterator
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PageIterator Class - IronOCR C# API Reference
+      v2 (human)     title:       PageIterator: Walk OCR Page Layout in C#
+      v1 (algorithm) description: Walk recognized page layout in C# with the IronOCR PageIterator class: Begin, Next, BlockType, and TryGetBoundingBox by PageIteratorLevel.
+      v2 (human)     description: Step through an OCR page's blocks, lines, and words in C# with PageIterator: read each region's type and bounding box as you go.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PageIterator Class | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PageIterator
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="PageIterator Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR PageIterator class in C#: traverse page regions with Next, read BlockType, and get bounding boxes per level.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PageIterator Class | IronOCR C# API Reference",
+    "name": "PageIterator class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.PageIterator.html",
+    "abstract": "PageIterator walks the layout of a recognized page in IronOCR for C#, moving a cursor over the regions Tesseract found and reporting where each sits. Begin resets the cursor and Next advances it by a PageIteratorLevel; BlockType returns the region role as a PolyBlockType, and TryGetBoundingBox fills a Rect with pixel coordinates. ResultIterator derives from it to add recognized text.",
+    "description": "Reference for the IronOCR PageIterator class in C#: traverse page regions with Next, read BlockType, and get bounding boxes per level.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using DynamicTesseract;\n\nvoid WalkBlocks(PageIterator iterator)\n{\n    iterator.Begin();\n    do\n    {\n        if (iterator.TryGetBoundingBox(PageIteratorLevel.Block, out Rect box))\n            Console.WriteLine($\"{iterator.BlockType} at {box}\");\n    }\n    while (iterator.Next(PageIteratorLevel.Block));\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PageIterator live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PageIterator is a class in the DynamicTesseract namespace, shipped in IronOcr.dll. It derives from DisposableBase and implements IDisposable, so dispose it after walking a page. ResultIterator derives from PageIterator to add recognized text."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read the position of each region on an OCR page in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Begin to reset the cursor, then loop with Next, passing a PageIteratorLevel such as Block or Word. At each stop, call TryGetBoundingBox to fill a Rect with the region's coordinates and read BlockType for the region's role."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between PageIterator and ResultIterator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PageIterator reports page structure and geometry, such as block types and bounding boxes. ResultIterator derives from PageIterator and adds the recognized text and confidence for each element, through methods like GetText and GetConfidence."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -167,6 +231,26 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PageIterator : DisposableBase, IDisposable</code></pre>
   </div>
+    <!-- archetype-N:start PageIterator treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Walking the layout of a recognized page, block by block down to individual symbols, runs through <code>PageIterator</code>. It moves a cursor over the regions Tesseract found and reports where each one sits, so code can map the structure of a page without decoding its text. When the text itself is needed too, <code>ResultIterator</code> derives from <code>PageIterator</code> and adds the recognized characters on top of the same traversal.</p>
+<p>A <code>PageIterator</code> is obtained from a recognized page rather than constructed directly, and because it inherits <code>DisposableBase</code> it should be disposed (or wrapped in <code>using</code>) once the walk finishes. <code>Begin</code> resets the cursor to the first element, and the two <code>Next</code> overloads advance it, one stepping a single <code>PageIteratorLevel</code> and the other moving to the next element at one level while bounded by a parent level. <code>IsAtBeginningOf</code> and <code>IsAtFinalOf</code> test the cursor's position within the hierarchy so a loop knows where a block, paragraph, or line starts and ends.</p>
+<p>At each stop, the iterator describes the current region. <code>BlockType</code> returns a <code>PolyBlockType</code> identifying the region's role, body text, heading, image, table, or separator, and <code>TryGetBoundingBox</code> fills a <code>Rect</code> with the region's pixel coordinates at a requested <code>PageIteratorLevel</code>, returning false when none is available. <code>TryGetBaseline</code> reports the text baseline the same way, and <code>GetProperties</code> reads font and size details for the current element. Pass the <code>PageIteratorLevel</code> that matches the granularity a task needs, from <code>Block</code> down to <code>Symbol</code>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using DynamicTesseract;
+
+void WalkBlocks(PageIterator iterator)
+{
+    iterator.Begin();
+    do
+    {
+        if (iterator.TryGetBoundingBox(PageIteratorLevel.Block, out Rect box))
+            Console.WriteLine($&quot;{iterator.BlockType} at {box}&quot;);
+    }
+    while (iterator.Next(PageIteratorLevel.Block));
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">OCR results how-to</a> walks through reading recognized structure, the <a href="https://ironsoftware.com/csharp/ocr/examples/results-objects/">results objects example</a> shows the result model, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/ocr-region-of-an-image/">region of an image how-to</a> covers working with page coordinates.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="fields">Fields
   </h3>
   

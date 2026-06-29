@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrInput
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrInput Class - IronOCR C# API Reference
+      v2 (human)     title:       OcrInput: Load Images & PDFs for OCR in C#
+      v1 (algorithm) description: Assemble OCR pages in C# with the IronOCR OcrInput class: LoadImage, LoadPdf, and LoadScannedPdf, then pass it to IronTesseract.Read.
+      v2 (human)     description: Load images and PDFs for OCR in C# with the IronOCR OcrInput class: build one input from many sources, filter it, then read it in one call.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrInput Class | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrInput
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrInput Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR OcrInput class in C#: load images and PDF pages with LoadImage, LoadPdf, and LoadScannedPdf for IronTesseract.Read.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrInput Class | IronOCR C# API Reference",
+    "name": "OcrInput class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrInput.html",
+    "abstract": "OcrInput is the container you fill with pages for OCR in IronOCR, holding images and PDF pages together in C#. Construct one with new OcrInput(), then load content with LoadImage, LoadImageFrames, LoadPdf, LoadPdfPages, or LoadScannedPdf, each accepting an optional ContentArea. It derives from OcrInputBase, so inherited image filters and GetPages apply before the input is passed to IronTesseract.Read.",
+    "description": "Reference for the IronOCR OcrInput class in C#: load images and PDF pages with LoadImage, LoadPdf, and LoadScannedPdf for IronTesseract.Read.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using var input = new OcrInput();\ninput.LoadPdf(\"invoice.pdf\");\ninput.LoadImage(\"signature.png\");\nOcrResult result = ironTesseract.Read(input);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrInput live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrInput is a class in the IronOcr namespace, shipped in IronOcr.dll. It derives from OcrInputBase and is passed to IronTesseract.Read, which accepts it as an OcrInputBase."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you load both images and PDFs into one OCR job in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create an OcrInput, then call LoadImage for pictures and LoadPdf or LoadScannedPdf for documents on the same instance. Pass the assembled input to IronTesseract.Read to recognize every loaded page in one call."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between OcrInput and OcrImageInput?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrImageInput wraps a single image, while OcrInput holds many pages from images and PDFs together. Use OcrImageInput for one picture and OcrInput when a job spans several images or PDF pages. Both derive from OcrInputBase."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -281,9 +345,18 @@ Also provides various image filter methods which can improve OCR accuracy.
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class OcrInput : OcrInputBase, IDisposable</code></pre>
   </div>
-  <h5 id="IronOcr_OcrInput_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>Also see <a class="xref" href="IronOcr.OcrPdfInput.html">OcrPdfInput</a> and <a class="xref" href="IronOcr.OcrImageInput.html">OcrImageInput</a></p>
-</div>
+    <!-- archetype-N:start OcrInput treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>OcrInput</code> is the container you fill with the pages you want to read, whether they come from images or from PDF documents. One input can hold a single screenshot or a hundred scanned pages, and the same object accepts both formats, so a developer assembles a whole job into one input and hands it to <code>IronTesseract.Read</code> in a single call. It is the multi-source counterpart to <code>OcrImageInput</code>, which wraps just one image.</p>
+<p>Construct an empty <code>OcrInput</code> with <code>new OcrInput()</code>, then load content through one of its <code>Load</code> families. The image loaders, <code>LoadImage</code>, <code>LoadImageFrame</code>, and <code>LoadImageFrames</code>, take a file path, <code>Stream</code>, <code>byte[]</code>, or <code>AnyBitmap</code> and add one picture or selected frames of a multi-frame image. The PDF loaders, <code>LoadPdf</code>, <code>LoadPdfPage</code>, and <code>LoadPdfPages</code>, rasterize a born-digital PDF at a chosen DPI, while <code>LoadScannedPdf</code> is the path for image-only scanned PDFs. <code>LoadPage</code>, <code>LoadPages</code>, and <code>Add</code> append existing <code>OcrInputPage</code> objects you already hold. Every loader accepts an optional <code>ContentArea</code> rectangle so only part of each page is read.</p>
+<p>Because <code>OcrInput</code> derives from <code>OcrInputBase</code>, the inherited image filters (<code>Deskew</code>, <code>Binarize</code>, <code>DeNoise</code>, and the rest) and the page accessors <code>GetPages</code> and <code>PageCount</code> work on the assembled input before you read it. Load every page first, apply any filters the sources need, then pass the input to <code>Read</code> and walk the returned <code>OcrResult</code>. Dispose the input when done to release the loaded images.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/input-images/">input images how-to</a> loads pictures, the <a href="https://ironsoftware.com/csharp/ocr/how-to/input-pdfs/">input PDFs how-to</a> loads documents, and the <a href="https://ironsoftware.com/csharp/ocr/examples/csharp-ocr-input-for-iron-tesseract/">OCR input example</a> assembles one for a read.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using var input = new OcrInput();
+input.LoadPdf(&quot;invoice.pdf&quot;);
+input.LoadImage(&quot;signature.png&quot;);
+OcrResult result = ironTesseract.Read(input);</code></pre></div>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

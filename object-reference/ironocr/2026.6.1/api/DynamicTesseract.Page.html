@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Page
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Page Class - IronOCR C# API Reference
+      v2 (human)     title:       Page: Read Recognized OCR Output in C#
+      v1 (algorithm) description: Read recognized OCR output in C# with the IronOCR Page class: GetText, GetHOCRText, GetMeanConfidence, GetIterator, and DetectBestOrientation.
+      v2 (human)     description: Get text, geometry, and confidence from a recognized image in C# with IronOCR's low-level Page class: plain text, hOCR, boxes, and regions.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Page Class | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Page
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="Page Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR Page class in C#: read plain text, hOCR, box text, confidence, iterators, and page orientation from a recognized image.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Page Class | IronOCR C# API Reference",
+    "name": "Page class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.Page.html",
+    "abstract": "Page represents one recognized image in IronOCR's low-level Tesseract layer in C# and exposes the engine's output. GetText, GetHOCRText, GetBoxText, and GetUNLVText return text in different shapes, GetMeanConfidence reports overall confidence, GetIterator and AnalyseLayout return iterators over results and layout, and DetectBestOrientation reports rotation. It derives from DisposableBase, so dispose it after reading.",
+    "description": "Reference for the IronOCR Page class in C#: read plain text, hOCR, box text, confidence, iterators, and page orientation from a recognized image.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using DynamicTesseract.Page page = engine.Process(image);\nConsole.WriteLine(page.GetText());\nConsole.WriteLine(page.GetMeanConfidence());"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Page live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Page is a class in the DynamicTesseract namespace, shipped in IronOcr.dll. It derives from DisposableBase and implements IDisposable, so wrap it in a using block to release its native recognition handle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read recognized text from a Page in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call GetText for plain text, GetHOCRText for positioned hOCR markup, or GetBoxText for per-character box coordinates. GetMeanConfidence returns the overall recognition confidence, and GetIterator returns a ResultIterator for element-by-element traversal."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Page different from IronTesseract's OcrResult?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Page is the low-level DynamicTesseract recognition unit exposing raw engine output and iterators. Most applications use the high-level IronTesseract API and its OcrResult instead, which wraps this layer in a richer, managed result model."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -166,6 +230,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class Page : DisposableBase, IDisposable</code></pre>
   </div>
+    <!-- archetype-N:start Page treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Page</code> represents one recognized image in IronOCR's low-level Tesseract layer and exposes the text, geometry, and confidence the engine extracted from it. A page is the unit of recognition at this level: feed the engine an image, and the resulting <code>Page</code> is where the recognized output is read back.</p>
+<p>A <code>Page</code> carries the image it was built from through the <code>ImageName</code> property, the <code>PageSegmentMode</code> that controlled how the engine split the image into regions, and a <code>RegionOfInterest</code> (a <code>Rect</code>) that can restrict recognition to part of the page. Because it derives from <code>DisposableBase</code> and holds a native recognition handle, a <code>Page</code> is disposable and should be wrapped in a <code>using</code> block so the handle is released when reading finishes.</p>
+<p>The text output comes in several shapes. <code>GetText</code> returns the plain recognized text, <code>GetHOCRText</code> returns positioned hOCR markup, <code>GetBoxText</code> returns per-character box coordinates, and <code>GetUNLVText</code> returns the UNLV format used in accuracy testing. <code>GetMeanConfidence</code> reports the overall recognition confidence as a percentage, which is useful for flagging a low-quality scan before trusting its text. For structural work, <code>GetIterator</code> returns a <code>ResultIterator</code> that walks the recognized text element by element, <code>AnalyseLayout</code> returns a <code>PageIterator</code> over layout without running full recognition, and <code>GetSegmentedRegions</code> returns a <code>List&lt;Rectangle&gt;</code> of regions at a chosen <code>PageIteratorLevel</code>. <code>DetectBestOrientation</code> reports the page rotation as an <code>Orientation</code> so the image can be turned upright before a final read.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using DynamicTesseract.Page page = engine.Process(image);
+Console.WriteLine(page.GetText());
+Console.WriteLine(page.GetMeanConfidence());</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">read results how-to</a> covers working with recognized output, the <a href="https://ironsoftware.com/csharp/ocr/how-to/html-hocr-export/">hOCR export how-to</a> covers positioned markup, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/detect-page-rotation/">detect page rotation how-to</a> covers orientation.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

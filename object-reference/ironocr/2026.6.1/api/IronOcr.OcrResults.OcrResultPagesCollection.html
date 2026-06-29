@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrResultPagesCollection
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrResultPagesCollection - IronOCR C# API
+      v2 (human)     title:       OcrResultPagesCollection: OCR Pages in C#
+      v1 (algorithm) description: The IronOCR OcrResultPagesCollection in C# is the List of OcrResult.Page returned by OcrResult.Pages, with a Length count and full list access.
+      v2 (human)     description: Walk an OCR document page by page in C# with the IronOCR OcrResultPagesCollection that OcrResult.Pages returns: index, count, and enumerate it.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrResultPagesCollection | IronOCR .NET API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrResultPagesCollection
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrResultPagesCollection | IronOCR .NET API">
+    <meta name="description" content="Reference for the IronOCR OcrResultPagesCollection in C#: a List of OcrResult.Page that implements IOcrPageCollection and exposes Length.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrResultPagesCollection | IronOCR .NET API",
+    "name": "OcrResultPagesCollection class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrResults.OcrResultPagesCollection.html",
+    "abstract": "The pages of an IronOCR read in C# come back as an OcrResultPagesCollection, the value OcrResult.Pages returns. It is a List of OcrResult.Page, so you can index, count, and enumerate it, and it implements IOcrPageCollection for code typed to that contract. A Length property reports the page count; iterate the collection and read each OcrResult.Page through its own members.",
+    "description": "Reference for the IronOCR OcrResultPagesCollection in C#: a List of OcrResult.Page that implements IOcrPageCollection and exposes Length.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrResultPagesCollection live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrResultPagesCollection is a class in the IronOcr.OcrResults namespace, shipped in IronOcr.dll. It derives from List<OcrResult.Page> and implements IOcrPageCollection. You obtain one from OcrResult.Pages."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you access a specific page from an OCR result in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read OcrResult.Pages to get the OcrResultPagesCollection, then index it like a list, for example result.Pages[0] for the first page. Use Length or the inherited Count for the number of pages, and foreach to process them all."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -158,6 +206,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class OcrResultPagesCollection : List&lt;OcrResult.Page&gt;, IOcrPageCollection, IDocumentPageCollection&lt;OcrResult.Page&gt;, IReadOnlyCollection&lt;OcrResult.Page&gt;, IEnumerable&lt;OcrResult.Page&gt;, IEnumerable</code></pre>
   </div>
+    <!-- archetype-N:start OcrResultPagesCollection treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>OcrResultPagesCollection</code> is the concrete list of pages an OCR read returns, the value you iterate to work through a document page by page. It holds every <code>OcrResult.Page</code> the engine produced, in order, ready to enumerate or index.</p>
+<p>You obtain it from a finished read: <code>OcrResult.Pages</code> returns an <code>OcrResultPagesCollection</code>. Because the collection is a <code>List&lt;OcrResult.Page&gt;</code>, everything you expect from a generic list is available, including indexing with <code>result.Pages[0]</code>, a <code>Count</code>, and <code>foreach</code>. It also implements <code>IOcrPageCollection</code>, so a method typed to that read-only contract accepts it directly.</p>
+<p>The type adds little of its own on purpose: a <code>Length</code> property reports the page count (a synonym for the list's <code>Count</code>), and the rest is the inherited list behavior. The practical guidance is to enumerate the collection and read each <code>OcrResult.Page</code> through its own members; index into it when you need a specific page, such as the first page of a single-image read. Treat the contents as the result of the read rather than a list to mutate.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/examples/results-objects/">OCR results objects example</a> iterates the pages collection, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/input-pdfs/">read PDFs how-to</a> produces one page per PDF page to walk.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

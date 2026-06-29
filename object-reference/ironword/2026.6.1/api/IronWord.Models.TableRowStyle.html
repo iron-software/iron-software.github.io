@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TableRowStyle
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TableRowStyle Class - IronWord C# API
+      v2 (human)     title:       TableRowStyle: Word Row Height in C#
+      v1 (algorithm) description: Style Word table rows in C# with the IronWord TableRowStyle class: set the nullable Height to fix a row's height, measured in twips by default.
+      v2 (human)     description: Control Word table row height with the IronWord TableRowStyle class in C#: set the nullable Height, or leave it unset to size the row to its content.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TableRowStyle Class | IronWord C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TableRowStyle
-   | C# Word API | IronWord ">
+    <meta name="title" content="TableRowStyle Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord TableRowStyle class in C#: a row styling record carrying a nullable Height, exposed through the derived-style contracts.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TableRowStyle Class | IronWord C# API",
+    "name": "TableRowStyle class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.TableRowStyle.html",
+    "abstract": "Setting the height of a Word table row in C# runs through the IronWord TableRowStyle class. It carries a single nullable Height, measured in twips by default, so a developer fixes a row's height by setting it or sizes the row to its content by leaving it null. The class participates in IronWord's derived-style contracts.",
+    "description": "Reference for the IronWord TableRowStyle class in C#: a row styling record carrying a nullable Height, exposed through the derived-style contracts.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nTableRowStyle rowStyle = new TableRowStyle\n{\n    Height = 600\n};"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TableRowStyle live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TableRowStyle is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object and implements ITableRowStyle and IDerivedStyle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set the height of a table row style in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a TableRowStyle and set its nullable Height property to the height you want, measured in twips by default. Leaving Height null lets the row size to its content."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -159,6 +215,19 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TableRowStyle : Object, ITableRowStyle, ITableRowStyle, IDerivedStyle, IStyle, IWordDocumentObjectProperty, IDocumentObjectProperty</code></pre>
   </div>
+    <!-- archetype-N:start TableRowStyle treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Row-level sizing for a Word table is captured by <code>TableRowStyle</code>, the styling record that holds the appearance settings for a table row separately from its cells. One instance describes a single row's style and exposes it through IronWord's derived-style contracts, so row styling can be defined and reused rather than set inline.</p>
+<p>The setting it carries is <code>Height</code>, a nullable value that sets how tall the row renders, measured in twips by default; leaving it null lets the row size to its content. Build a <code>TableRowStyle</code>, set <code>Height</code> to the value you need, and apply it where a row style is accepted. Because the height is nullable, a developer expresses &quot;no fixed height&quot; simply by leaving it unset, which is the right choice when the row should grow to fit whatever content it holds. A fixed height is useful for header rows or for keeping a table's rows visually even.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+TableRowStyle rowStyle = new TableRowStyle
+{
+    Height = 600
+};</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-table/">add a table how-to</a> covers table and row styling, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> shows where row styling fits the document model.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

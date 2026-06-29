@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrInput.Page
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrInput.Page Class - IronOCR C# API
+      v2 (human)     title:       OcrInput.Page: Per-Page OCR Input in C#
+      v1 (algorithm) description: Address one page of an IronOCR OcrInput in C#: read Index, Width, Height, and DPI, set ContentArea, or call ToBitmap and SaveAsImage on the page.
+      v2 (human)     description: Work with a single page of a multi-page OCR input in C# with the IronOCR OcrInput.Page class: size, DPI, content area, and per-page image export.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrInput.Page | IronOCR C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrInput.Page
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrInput.Page | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR OcrInput.Page class in C#: a page within an OcrInput with Index, size, DPI, ContentArea, and ToBitmap.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrInput.Page | IronOCR C# API Reference",
+    "name": "Page class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrInput.Page.html",
+    "abstract": "Addressing one page of a multi-page OcrInput in C# uses the IronOCR OcrInput.Page object, where a page maps to an appended image, a PDF or TIFF page, or a GIF frame. Enumerate the input's Pages and read inherited members from OcrInputPage: Index, Width, Height, HorizontalDPI, VerticalDPI, and ContentArea, plus ToBitmap, SaveAsImage, and the GetTextRegions methods.",
+    "description": "Reference for the IronOCR OcrInput.Page class in C#: a page within an OcrInput with Index, size, DPI, ContentArea, and ToBitmap.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrInput.Page live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrInput.Page is a class in the IronOcr namespace, shipped in IronOcr.dll, deriving from OcrInputPage. You obtain instances by enumerating the Pages collection of an OcrInput."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read just one page of a multi-page OCR input in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Load and append content to an OcrInput, then enumerate its Pages and use the page you want. Set ContentArea to limit the read to part of the page, and call IronTesseract.Read on the parent input."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -197,6 +245,14 @@
     <pre><code class="lang-csharp hljs">public class Page : OcrInputPage</code></pre>
   </div>
   
+    <!-- archetype-N:start Page treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>OcrInput.Page</code> is a single page inside an <code>OcrInput</code>, the unit you work with when an input holds more than one image. One page can correspond to an appended image, a page of a PDF or TIFF, or a frame of a GIF, so it is how you address an individual sheet within a multi-page or multi-frame document before or after reading.</p>
+<p>You obtain pages by enumerating the <code>Pages</code> collection of an <code>OcrInput</code> you have loaded and appended content to. Each page carries the members it inherits from <code>OcrInputPage</code>: <code>Index</code> for its position in the input, <code>Width</code> and <code>Height</code> for its pixel size, and <code>HorizontalDPI</code> and <code>VerticalDPI</code> for its resolution. <code>ContentArea</code> sets or reports the rectangle the engine should read, which is the member to use when you only need part of a page.</p>
+<p>For preparing or inspecting a page, <code>ToBitmap</code> renders it to an <code>AnyBitmap</code>, <code>SaveAsImage</code> writes it out (optionally with an <code>AnyBitmap.ImageFormat</code>), and <code>GetTextRegions</code>, <code>FindTextRegion</code>, and <code>FindMultipleTextRegions</code> locate text areas on the page. Set the page-level options before calling <code>IronTesseract.Read</code> on the parent input.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/input-pdfs/">input PDFs how-to</a> covers reading multi-page documents, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/ocr-region-of-an-image/">OCR a region how-to</a> uses the page content area.</p>
+  </div>
+  <!-- archetype-N:end -->
   <div class="inheritance">
     <h3>Inherited members</h3>
     <div class="level">

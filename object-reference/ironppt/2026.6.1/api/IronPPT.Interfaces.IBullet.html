@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IBullet
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IBullet Interface - IronPPT C# API Reference
+      v2 (human)     title:       IBullet: Style List Bullets in C#
+      v1 (algorithm) description: IBullet is the IronPPT bullet contract in C#: Characters, Picture, BulletColor, Font, and FollowsDefaultText flags, implemented by Bullet via ParagraphStyle.
+      v2 (human)     description: Style a list bullet in C# through the IronPPT IBullet contract: set its glyph, picture, color, and font, or follow the paragraph's default text.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IBullet Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IBullet
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IBullet Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT IBullet interface in C#: the bullet styling contract returned by ParagraphStyle.Bullet and implemented by Bullet.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IBullet Interface | IronPPT C# API",
+    "name": "IBullet interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IBullet.html",
+    "abstract": "Style the bullet on a list paragraph in IronPPT through the IBullet contract in C#. It describes the marker shown before list text: Characters for the glyph, Picture for an image bullet, BulletColor and Font for its appearance, and FollowsDefaultTextColor, FollowsDefaultTextFont, and FollowsDefaultTextSize to inherit from the paragraph text. A bullet is reached through ParagraphStyle.Bullet and implemented by the Bullet class.",
+    "description": "Reference for the IronPPT IBullet interface in C#: the bullet styling contract returned by ParagraphStyle.Bullet and implemented by Bullet.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var style = new ParagraphStyle()\n{\n    Bullet = new Bullet()\n    {\n        Characters = \"•\",\n        FollowsDefaultTextSize = true\n    }\n};"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IBullet live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IBullet is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It does not extend another interface and is returned by IParagraphStyle.Bullet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IBullet in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Bullet class in the IronPPT.Models.Styles namespace implements IBullet. Most code creates a new Bullet() inside a ParagraphStyle initializer and assigns it to the style's Bullet property rather than naming the interface."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you give a list item a picture bullet in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the Picture property of an IBullet to an IImage. A picture bullet overrides the Characters glyph. Assign the bullet to a ParagraphStyle and apply that style to the Paragraph, as shown in the customized bullet point example."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +208,22 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IBullet</code></pre>
   </div>
+    <!-- archetype-N:start IBullet treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>When a list item needs its own bullet glyph, color, or picture marker, <code>IBullet</code> is the contract that describes it. It models the bullet attached to a paragraph: the symbol shown before the text, how that symbol is colored and sized, and whether each aspect inherits from the surrounding text or overrides it. A developer styling list bullets on a slide works through this contract rather than touching the raw presentation markup.</p>
+<p>A bullet is reached through a paragraph's style. <code>IParagraphStyle.Bullet</code> (and the concrete <code>ParagraphStyle.Bullet</code>) returns an <code>IBullet</code>, so the usual flow is to build a <code>ParagraphStyle</code>, assign its <code>Bullet</code>, and apply the style to a <code>Paragraph</code>. The concrete implementor in IronPPT is <code>Bullet</code>, in the <code>IronPPT.Models.Styles</code> namespace; most code constructs <code>new Bullet()</code> in a style initializer rather than naming the interface, but typing against <code>IBullet</code> keeps a styling helper independent of the concrete class.</p>
+<p>The everyday members are <code>Characters</code>, the bullet glyph text; <code>Picture</code>, an <code>IImage</code> to use a graphic marker instead of a character; <code>BulletColor</code>, an <code>IColor</code> for the glyph; and <code>Font</code>, an <code>IFont</code> for the symbol typeface. The three <code>FollowsDefaultText</code> flags (<code>FollowsDefaultTextColor</code>, <code>FollowsDefaultTextFont</code>, <code>FollowsDefaultTextSize</code>) make the bullet inherit the paragraph's text color, font, or size; leave them on for a consistent look or turn one off to override that one aspect. Setting <code>Picture</code> produces an image bullet, which overrides the character glyph.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var style = new ParagraphStyle()
+{
+    Bullet = new Bullet()
+    {
+        Characters = &quot;•&quot;,
+        FollowsDefaultTextSize = true
+    }
+};</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/customized-bullet-point/">customized bullet point example</a> walks through styling a bullet, the <a href="https://ironsoftware.com/csharp/ppt/examples/add-paragraph/">add paragraph example</a> adds the paragraph the style applies to, and the <a href="https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IParagraphStyle.html">IParagraphStyle reference</a> returns the bullet through its <code>Bullet</code> property.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

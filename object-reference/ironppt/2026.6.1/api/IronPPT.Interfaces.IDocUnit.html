@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IDocUnit
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IDocUnit Interface - IronPPT C# API
+      v2 (human)     title:       IDocUnit: Multi-Unit Measurements in C#
+      v1 (algorithm) description: IDocUnit is IronPPT's measurement contract in C#: read or write a value as Inch, CM, MM, Point, Twips, or EMU. Implemented by DocUnit and FontSize.
+      v2 (human)     description: Express presentation measurements in any unit in C# through IronPPT's IDocUnit contract: set Inch and read EMU, implemented by DocUnit and FontSize.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IDocUnit Interface | IronPPT C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IDocUnit
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="IDocUnit Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT IDocUnit interface in C#: the multi-unit measurement contract implemented by DocUnit and FontSize.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IDocUnit Interface | IronPPT C# API",
+    "name": "IDocUnit interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IDocUnit.html",
+    "abstract": "IDocUnit is the measurement contract IronPPT uses in C# to hold a position or size and expose it across units. The same value reads as Inch, CM, MM, Point, Twips, EMU, or Percentage, each nullable so unset units stay absent. The concrete implementors are DocUnit, used for element positions and sizes, and FontSize, which specializes the contract for text.",
+    "description": "Reference for the IronPPT IDocUnit interface in C#: the multi-unit measurement contract implemented by DocUnit and FontSize.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IDocUnit width = new DocUnit();\nwidth.Inch = 2.5;\nlong? emu = width.EMU;\ndouble? mm = width.MM;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IDocUnit live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IDocUnit is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It does not extend another interface and is implemented by the DocUnit and FontSize classes in IronPPT.Models."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IDocUnit in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DocUnit and FontSize implement IDocUnit. DocUnit is the general measurement object for element positions and dimensions, while FontSize specializes the contract for text sizing and adds a HalfPoint property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you convert between units with IDocUnit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set one unit and read another: assign Inch and read EMU, or set Point and read MM. The implementation performs the conversion. Each unit property is nullable, so a unit that was never set reads back as null rather than a converted zero."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -144,6 +208,18 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IDocUnit</code></pre>
   </div>
+    <!-- archetype-N:start IDocUnit treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>When a position, size, or offset in a presentation has to be expressed in more than one measurement system, <code>IDocUnit</code> is the contract that holds the value and exposes it across units. The same underlying measurement is readable as <code>Inch</code>, <code>CM</code>, <code>MM</code>, <code>Point</code>, <code>Twips</code>, <code>EMU</code> (English Metric Units, PowerPoint's native integer unit), or <code>Percentage</code>, so a developer reads or writes whichever unit the surrounding code already uses without converting by hand. Each numeric property is nullable, so an unset unit stays absent rather than defaulting to zero.</p>
+<p>The concrete implementors in IronPPT are <code>DocUnit</code>, the general-purpose measurement object used for element positions and dimensions, and <code>FontSize</code>, which specializes the contract for text sizing. Because both satisfy <code>IDocUnit</code>, code that lays out shapes and code that sizes runs can share the same unit-handling logic. A developer typically receives one of these from a layout or styling property rather than constructing it, then assigns the unit that matches the value at hand.</p>
+<p>Working with the contract is a matter of setting one unit and reading another: assign <code>Inch</code> and read <code>EMU</code>, or set <code>Point</code> and read <code>MM</code>, letting the implementation handle the conversion. <code>ToString</code> returns a readable form of the held measurement, which is convenient for logging or diagnostics while positioning elements. Keep the nullable nature in mind, a property that was never set reads back as null rather than a converted zero.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IDocUnit width = new DocUnit();
+width.Inch = 2.5;
+long? emu = width.EMU;
+double? mm = width.MM;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/tutorials/slide-element/">slide element tutorial</a> positions and sizes elements on a slide, the <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> sets dimensions where these units apply, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-image/">add image how-to</a> places content using measured offsets.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OcrResult.Block
-   | C# OCR &amp; Tesseract API | IronOCR </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrResult.Block Class - IronOCR C# API
+      v2 (human)     title:       Block: Read OCR Text by Region in C#
+      v1 (algorithm) description: Read an OCR text block in C# with the IronOCR Block class: inherited Text and Confidence, BlockNumber, BlockType, Paragraphs, Lines, Words, Characters.
+      v2 (human)     description: Group OCR output by layout region in C# with the IronOCR Block class: block text, type, and arrays of paragraphs, lines, words, and characters.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrResult.Block | IronOCR C# API</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OcrResult.Block
-   | C# OCR &amp; Tesseract API | IronOCR ">
+    <meta name="title" content="OcrResult.Block | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR OcrResult.Block class in C#: BlockNumber, BlockType, and the Paragraphs, Lines, Words, and Characters arrays.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,47 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrResult.Block | IronOCR C# API",
+    "name": "Block class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrResult.Block.html",
+    "abstract": "Grouping OCR output into page regions in C# uses the IronOCR OcrResult.Block element, a block of zero or more paragraphs. Obtain blocks from a page's Blocks after IronTesseract.Read. Each exposes inherited Text and Confidence, a one-based BlockNumber, a BlockType string, and Paragraphs, Lines, Words, and Characters arrays for descending the result tree.",
+    "description": "Reference for the IronOCR OcrResult.Block class in C#: BlockNumber, BlockType, and the Paragraphs, Lines, Words, and Characters arrays.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrResult.Block live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrResult.Block is a class in the IronOcr namespace, shipped in IronOcr.dll, deriving from OcrResult.OcrResultTextElement. You receive instances from the Blocks on an OcrResult page."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read OCR output grouped by region in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Run IronTesseract.Read to get an OcrResult, enumerate a page's Blocks, and read each block's Text or descend through its Paragraphs, Lines, Words, and Characters arrays. BlockType names the kind of region detected."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -238,6 +286,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Block : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable</code></pre>
   </div>
+    <!-- archetype-N:start Block treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Grouping recognized text into the largest layout regions on a page runs through <code>OcrResult.Block</code>, a block holding zero or more paragraphs. It is the coarsest text element below the page itself, so it is where you start when you want output organized by column or region before drilling into paragraphs, lines, and words.</p>
+<p>You obtain blocks by walking an <code>OcrResult</code> from <code>IronTesseract.Read</code>: read the <code>Blocks</code> on a page, then move down through each block's structure. The block carries the inherited <code>Text</code> and <code>Confidence</code> from <code>OcrResult.OcrResultTextElement</code>, plus <code>BlockNumber</code>, a unique one-based ID within the result, and <code>BlockType</code>, a string naming the kind of region the engine detected.</p>
+<p>To descend the tree, a block exposes four arrays in order of appearance: <code>Paragraphs</code>, <code>Lines</code>, <code>Words</code>, and <code>Characters</code>. Read <code>Paragraphs</code> when you want the next structural level, or jump straight to <code>Words</code> or <code>Characters</code> when you only need the flattened content of the block. The inherited geometry locates the block on the page when you need to crop or draw it.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-results/">working with OCR results how-to</a> walks the result tree from blocks down to words, and the <a href="https://ironsoftware.com/csharp/ocr/examples/results-objects/">results objects example</a> reads block-level structure from a scan.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="properties">Properties
   </h3>
   

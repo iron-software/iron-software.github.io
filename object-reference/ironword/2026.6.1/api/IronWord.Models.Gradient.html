@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Gradient
-   | C# Word API | IronWord </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Gradient Class - IronWord C# API Reference
+      v2 (human)     title:       Gradient: Blend Text Colors in C#
+      v1 (algorithm) description: Configure a Word text gradient in C# with the IronWord Gradient class: set StopPoints, LinearShadeAngle, and apply it via TextEffect.GradientEffect.
+      v2 (human)     description: Blend colors across Word text in C# with the IronWord Gradient class: add GradientStop points, set the angle, and attach it to a TextEffect.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Gradient Class | IronWord C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Gradient
-   | C# Word API | IronWord ">
+    <meta name="title" content="Gradient Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord Gradient class in C#: define color StopPoints and a shade angle, then apply through TextEffect.GradientEffect.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,55 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Gradient Class | IronWord C# API Reference",
+    "name": "Gradient class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Gradient.html",
+    "abstract": "Building a multi-color blend on Word text in C# runs through the IronWord Gradient class. StopPoints holds a List of GradientStop entries that pair a color with a position, LinearShadeAngle and LinearShadeScaled set the direction, and the static DefaultGray returns a ready-made gradient. Assign a configured Gradient to the GradientEffect property of a TextEffect.",
+    "description": "Reference for the IronWord Gradient class in C#: define color StopPoints and a shade angle, then apply through TextEffect.GradientEffect.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "Gradient gradient = Gradient.DefaultGray;\ngradient.LinearShadeAngle = 45;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Gradient live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gradient is a class in the IronWord.Models namespace, shipped in IronWord.dll, with base type Object. Assign a configured instance to the GradientEffect property of a TextEffect to apply it to a run."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you define the colors of a gradient in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Add GradientStop entries to the StopPoints list, each pairing a color with its position along the blend. Set LinearShadeAngle for direction, or start from the static DefaultGray and replace its stops."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -150,6 +206,15 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Gradient : Object</code></pre>
   </div>
+    <!-- archetype-N:start Gradient treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>A multi-color fill that blends along an angle, applied to Word text, is configured through <code>Gradient</code>. You build one from its color stops and a direction, then attach it to the <code>GradientEffect</code> property of a <code>TextEffect</code> so the run renders with the blend.</p>
+<p>The stops live in <code>StopPoints</code>, a <code>List&lt;GradientStop&gt;</code> where each entry pairs a color with the position along the gradient where that color lands. <code>LinearShadeAngle</code> sets the direction of the blend as a nullable <code>double</code>, and <code>LinearShadeScaled</code> is a nullable <code>bool</code> that controls whether the shade scales with the shape. For a quick starting point, the static <code>DefaultGray</code> returns a ready-made gray gradient you can apply directly or use as a template before swapping in your own stops. Order the entries in <code>StopPoints</code> by their stop positions so the colors blend in the intended sequence.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">Gradient gradient = Gradient.DefaultGray;
+gradient.LinearShadeAngle = 45;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-gradient-effect/">gradient text effect how-to</a> covers configuring the blend, and the <a href="https://ironsoftware.com/csharp/word/examples/add-text-effect-gradient-effect/">gradient effect example</a> shows it on a run.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   

@@ -5,11 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Shadow
-   | C# PowerPoint API | IronPPT </title>
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Shadow Class - IronPPT C# API Reference
+      v2 (human)     title:       Shadow: Drop Shadows for Slides in C#
+      v1 (algorithm) description: Add drop shadows in C# with the IronPPT Shadow class: set BlurRadius, DistanceFromText, and DirectionAngle, or start from the OuterShadow1 preset.
+      v2 (human)     description: Lift text and shapes off a slide in C# with the IronPPT Shadow class: blur, offset, scale, and skew a cast shadow, or use OuterShadow1.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Shadow Class | IronPPT C# API Reference</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Shadow
-   | C# PowerPoint API | IronPPT ">
+    <meta name="title" content="Shadow Class | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT Shadow class in C#: drop-shadow styling with BlurRadius, DistanceFromText, scaling, skew, and the OuterShadow1 preset.">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -74,6 +81,63 @@
     
     <meta property="docfx:rel" content="../">
     
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Shadow Class | IronPPT C# API Reference",
+    "name": "Shadow class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Shadow.html",
+    "abstract": "Shadow is the object that styles a drop shadow on IronPPT text and shapes in C#. BlurRadius, DistanceFromText, and DirectionAngle control the cast; scaling and skew properties reshape it; Alignment anchors it; SchemeColor sets its color. Unit-aware accessors read and write blur and distance, and OuterShadow1 is a ready preset.",
+    "description": "Reference for the IronPPT Shadow class in C#: drop-shadow styling with BlurRadius, DistanceFromText, scaling, skew, and the OuterShadow1 preset.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var shadow = Shadow.OuterShadow1;\nshadow.SetBlurRadius(4, Units.Point);\nshadow.DirectionAngle = 45;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Shadow live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Shadow is a class in the IronPPT.Models namespace, shipped in IronPPT.dll. It derives from Object and is attached to text and shapes to style a drop shadow."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set a shadow's blur in a specific unit in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call SetBlurRadius with a value and a Units member, and read it back with GetBlurRadius and the same Units value. DistanceFromText has the matching GetDistanceFromText and SetDistanceFromText accessors."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a quick way to apply a default shadow?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the static OuterShadow1 preset, a ready-made outer shadow that needs no manual tuning. Override individual properties such as DirectionAngle or BlurRadius only when the design needs a different cast."
+        }
+      }
+    ]
+  }
+]
+    </script>
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -149,6 +213,17 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Shadow : Object</code></pre>
   </div>
+    <!-- archetype-N:start Shadow treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Drop-shadow styling on text and shapes is captured by <code>Shadow</code>. It describes how a shadow is offset, blurred, scaled, and skewed behind an element, so a developer can lift a heading or shape off the slide with a soft cast shadow instead of leaving it flat.</p>
+<p>A <code>Shadow</code> is attached to the element being styled, and the quickest start is the <code>static Shadow OuterShadow1</code> preset, a ready-made outer shadow that needs no manual tuning. From there the properties fall into clear groups. Offset and blur control the cast: <code>BlurRadius</code> softens the edge, <code>DistanceFromText</code> sets how far the shadow sits from the element, and <code>DirectionAngle</code> aims it. Transform controls reshape the cast: <code>HorizontalScalingFactor</code> and <code>VerticalScalingFactor</code> stretch it, <code>HorizontalSkewAngle</code> and <code>VerticalSkewAngle</code> lean it, and <code>Alignment</code> (a <code>RectangleAlignmentValues</code>) anchors it. Color is set through <code>SchemeColor</code>.</p>
+<p>Because shadow distances are measured quantities, <code>BlurRadius</code> and <code>DistanceFromText</code> have unit-aware accessors: call <code>GetBlurRadius</code> and <code>GetDistanceFromText</code> with a <code>Units</code> value to read in a chosen unit, and <code>SetBlurRadius</code> and <code>SetDistanceFromText</code> to write a value in that unit. Reading and writing through these accessors keeps a layout consistent whether the rest of the deck is measured in points, inches, or centimeters, and avoids hard-coding a single unit into the shadow. The <code>SchemeColor</code> property ties the shadow's color to the presentation, so a shadow can pick up a theme color rather than a fixed value. Reach for <code>OuterShadow1</code> for a sensible default and override individual properties only when the design calls for it.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var shadow = Shadow.OuterShadow1;
+shadow.SetBlurRadius(4, Units.Point);
+shadow.DirectionAngle = 45;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> creates and styles a shape, the <a href="https://ironsoftware.com/csharp/ppt/how-to/add-text/">add text how-to</a> places text that a shadow can lift, and the <a href="https://ironsoftware.com/csharp/ppt/examples/paragraph-style/">paragraph style example</a> styles the surrounding content.</p>
+  </div>
+  <!-- archetype-N:end -->
   <h3 id="constructors">Constructors
   </h3>
   
