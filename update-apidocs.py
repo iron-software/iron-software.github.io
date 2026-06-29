@@ -264,7 +264,11 @@ def build_dotnet_apidoc(info:dict, version_string:str):
     nupkg_url = "https://www.nuget.org/api/v2/package/{}/{}".format(info["packageName"], version_string)
     nupkg_path = "bin/{package}/{package}.nupkg".format(package = info["packageName"])
     build_output_dir = "output/{}{}/object-reference/".format(info["domain"], info["path"])
-    apidocs_storage_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "object-reference", info["code"], version_string)
+    # Use the frozen, import-time storage path (get_apidoc_path) rather than
+    # recomputing os.path.abspath(__file__) here: a preceding build chdir's into
+    # scaffolds/ and never restores cwd, so a runtime abspath would resolve the
+    # destination to scaffolds/object-reference/... instead of ./object-reference/.
+    apidocs_storage_dir = get_apidoc_path(info, version_string)
     apidocs_template_header = "- name: {} .NET API - v{}\n".format(info["name"], version_string)
 
     # Navigate to script directory
