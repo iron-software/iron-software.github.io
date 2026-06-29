@@ -7,7 +7,7 @@
  */
 
 import {
-  readFileSync, writeFileSync, existsSync, mkdirSync, rmSync, cpSync, renameSync, readdirSync,
+  readFileSync, writeFileSync, existsSync, mkdirSync, rmSync, cpSync, copyFileSync, renameSync, readdirSync,
 } from "node:fs";
 import { join, dirname, relative, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -213,6 +213,29 @@ async function runEnhancement(info, buildOutputDir) {
   }
 }
 
+/**
+ * Copy every file under `sourceDir` into `destinationDir`, preserving the relative
+ * tree and overwriting existing files; merges into an existing destination. Returns
+ * the number of files copied (0 means the source produced no output). Mirrors the
+ * Python archive_tree so both ports archive identically.
+ */
+export function archiveTree(sourceDir, destinationDir) {
+  let copied = 0;
+  for (const entry of readdirSync(sourceDir, { withFileTypes: true })) {
+    const src = join(sourceDir, entry.name);
+    const dst = join(destinationDir, entry.name);
+    if (entry.isDirectory()) {
+      mkdirSync(dst, { recursive: true });
+      copied += archiveTree(src, dst);
+    } else {
+      mkdirSync(destinationDir, { recursive: true });
+      copyFileSync(src, dst);
+      copied++;
+    }
+  }
+  return copied;
+}
+
 async function buildDotnetApidoc(info, versionString) {
   StatusLogger.title(`Building ${info.name} .NET API docs — v${versionString}`);
 
@@ -223,7 +246,6 @@ async function buildDotnetApidoc(info, versionString) {
   const binaryDir = `bin/${info.packageName}`;
   const nupkgUrl = `https://www.nuget.org/api/v2/package/${info.packageName}/${versionString}`;
   const nupkgPath = `bin/${info.packageName}/${info.packageName}.nupkg`;
-  const nuspecFile = `${binaryDir}/${info.packageName}.nuspec`;
   const buildOutputDir = `output/${info.domain}${info.path}/object-reference/`;
   const apidocsStorageDir = getApidocPath(info, versionString);
   const apidocsTemplateHeader = `- name: ${info.name} .NET API - v${versionString}\n`;
@@ -251,8 +273,12 @@ async function buildDotnetApidoc(info, versionString) {
   new AdmZip(nupkgPath).extractAllTo(binaryDir, true);
   rmSync(nupkgPath, { force: true });
 
-  // Extract the resolved version from the nuspec and record it.
-  const nuspecContents = readFileSync(nuspecFile, "utf-8");
+  // The .nuspec inside the package follows its published ID casing, which can
+  // differ from packageName (e.g. IronZIP.nuspec for packageName "IronZip"), so
+  // locate it by extension rather than assuming the exact file name.
+  const nuspecMatch = readdirSync(binaryDir).find((n) => n.toLowerCase().endsWith(".nuspec"));
+  if (!nuspecMatch) throw new Error(`No .nuspec found in ${binaryDir} after extracting ${info.packageName} ${versionString}`);
+  const nuspecContents = readFileSync(`${binaryDir}/${nuspecMatch}`, "utf-8");
   const currentVersion = nuspecContents.match(/<version>(.+)<\/version>/)?.[1] ?? versionString;
   writeFileSync(homepageVersion, `{"_version":"${currentVersion}"}`);
 
@@ -282,10 +308,15 @@ async function buildDotnetApidoc(info, versionString) {
 
     StatusLogger.progress(`Archiving to ${apidocsStorageDir}...`);
     mkdirSync(apidocsStorageDir, { recursive: true });
-    cpSync(buildOutputDir, apidocsStorageDir, { recursive: true });
+    const copied = archiveTree(buildOutputDir, apidocsStorageDir);
+    if (copied === 0) {
+      StatusLogger.warning(`No files under ${buildOutputDir} to archive — check the DocFX 'dest' in ${docfxConfigFile}; nothing was copied to ${apidocsStorageDir}.`);
+    } else {
+      StatusLogger.info(`Archived ${copied} file(s) to ${apidocsStorageDir}.`);
+    }
     StatusLogger.success(`Built ${info.name} .NET API v${versionString}.`);
-  } catch {
-    StatusLogger.error(`DocFX build failed for ${info.packageName} v${versionString}.`);
+  } catch (error) {
+    StatusLogger.error(`Build/archive failed for ${info.name} v${versionString}: ${error?.message ?? error}`);
   } finally {
     await sleep(20_000);
   }
