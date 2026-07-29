@@ -23,6 +23,32 @@ const CSHARP_BLOCK = /<code class="lang-csharp[^"]*">([\s\S]*?)<\/code>/gi;
 
 const TAG = /<[^>]+>/g;
 
+/**
+ * The "Implements" block a type page carries above its Syntax heading, e.g.
+ *
+ *     <h5>Implements</h5>
+ *         <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;…Cell…&gt;</div>
+ *         <div><span class="xref">System.Collections.IEnumerable</span></div>
+ *
+ * This is the authoritative record of the interfaces a type implements, and it is *stable across
+ * DocFX versions* — unlike the declaration line, which stopped inlining interfaces between the
+ * 2026.6 and 2026.7 builds while this section stayed byte-identical.
+ */
+const IMPLEMENTS_SECTION = /<h5>\s*Implements\s*<\/h5>([\s\S]*?)(?=<h[1-6])/i;
+const IMPLEMENTS_ENTRY = /<div>([\s\S]*?)<\/div>/g;
+
+/** A dotted, fully-qualified name; reduced to its last segment to match the declaration's form. */
+const QUALIFIED_NAME = /[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)+/g;
+
+/**
+ * Strip namespaces from every qualified name in a type expression, so
+ * `IronSoftware.Abstractions.IParent<IronSoftware.Abstractions.Word.IWordDocumentObjectCollection>`
+ * becomes `IParent<IWordDocumentObjectCollection>`.
+ */
+export function simplifyTypeName(text) {
+  return text.replace(QUALIFIED_NAME, (match) => match.slice(match.lastIndexOf(".") + 1));
+}
+
 /** Minimal HTML entity decoding — the set DocFX actually emits inside declarations. */
 const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", "#39": "'", nbsp: " " };
 
@@ -82,4 +108,16 @@ export function parseTypePage(pageHtml) {
     }
   }
   return declarations;
+}
+
+/** Return the interfaces listed in a type page's Implements section, simple-named and sorted. */
+export function parseImplements(pageHtml) {
+  const section = IMPLEMENTS_SECTION.exec(pageHtml);
+  if (!section) return [];
+  const interfaces = new Set();
+  for (const entry of section[1].matchAll(IMPLEMENTS_ENTRY)) {
+    const name = normalizeDeclaration(entry[1]);
+    if (name) interfaces.add(simplifyTypeName(name));
+  }
+  return [...interfaces].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
 }

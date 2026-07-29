@@ -36,6 +36,10 @@ class TypeEntry:
     name: str
     namespace: str
     declaration: str = ""  # e.g. "public class IronZipArchive : IronBaseArchive, IDisposable"
+    # Interfaces from the page's Implements section, simple-named. Held separately from the
+    # declaration because DocFX stopped inlining interfaces in the declaration line between the
+    # 2026.6 and 2026.7 builds while this section stayed identical, so it is the stable source.
+    implements: list = field(default_factory=list)
     members: dict = field(default_factory=dict)  # uid -> Member
 
 
@@ -48,6 +52,10 @@ class Surface:
     namespaces: set = field(default_factory=set)
     types: dict = field(default_factory=dict)  # uid -> TypeEntry
     warnings: list = field(default_factory=list)
+    # Simple names of types the filter rejected. Declarations render base types by simple name, so a
+    # namespace pattern cannot recognise them there; this set lets the classifier ignore base-list
+    # entries that are not part of the documented surface.
+    blocked_type_names: set = field(default_factory=set)
 
     def member_count(self) -> int:
         return sum(len(entry.members) for entry in self.types.values())

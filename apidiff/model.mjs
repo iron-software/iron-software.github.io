@@ -20,13 +20,25 @@ export function makeMember({ uid, kind, name, nameWithType, fullName, typeUid, d
 }
 
 /** One type page: its own declaration plus the members documented on it. */
-export function makeTypeEntry({ uid, name, namespace = "", declaration = "" }) {
-  return { uid, name, namespace, declaration, members: new Map() };
+export function makeTypeEntry({ uid, name, namespace = "", declaration = "", implementsList = [] }) {
+  // `implements` is a reserved word, so the field is named `implementsList`. Interfaces are held
+  // apart from the declaration because DocFX stopped inlining them in the declaration line between
+  // the 2026.6 and 2026.7 builds while the Implements section stayed identical.
+  return { uid, name, namespace, declaration, implementsList, members: new Map() };
 }
 
-/** The complete public API surface of one archived product version. */
+/**
+ * The complete public API surface of one archived product version.
+ *
+ * `blockedTypeNames` holds the simple names of types the filter rejected. Declarations render base
+ * types by simple name, so a namespace pattern cannot recognise them there; this lets the classifier
+ * ignore base-list entries that are not part of the documented surface.
+ */
 export function makeSurface(productCode, version) {
-  return { productCode, version, namespaces: new Set(), types: new Map(), warnings: [] };
+  return {
+    productCode, version, namespaces: new Set(), types: new Map(), warnings: [],
+    blockedTypeNames: new Set(),
+  };
 }
 
 export function memberCount(surface) {

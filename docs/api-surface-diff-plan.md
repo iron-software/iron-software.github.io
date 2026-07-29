@@ -157,6 +157,44 @@ procedure below. All of it was run and passed.
 > in the repo, not something this tool introduced, and was left alone rather than changing output the
 > devops pipeline may already parse. JSON, which this tool fully controls, is byte-identical.
 
+## Where each fact is read from, and why
+
+The declaration line is **not** a single source of truth. Two facts have a better source, and using
+the declaration for them produces large volumes of false breaking changes.
+
+### Interfaces come from the Implements section, not the declaration
+
+Between the 2026.6 and 2026.7 builds DocFX **stopped inlining interfaces in the declaration line**:
+
+```
+2026.6.2  Implements: System.IDisposable
+          decl:       public class IronZipArchive : IronBaseArchive, IDisposable
+2026.7.2  Implements: System.IDisposable          <- unchanged
+          decl:       public class IronZipArchive : IronBaseArchive
+```
+
+Nothing about the API changed. The `Implements` section is byte-identical across the two builds for
+every affected type; only the rendering of the syntax string changed. Read from the declaration, this
+reported **183 breaking changes across 11 products**; read from `Implements`, it reports **21** — and
+those 21 are IronWord's genuinely removed types, corroborated independently against the raw archive.
+
+So `apidiff/declarations.parse_implements` reads the `Implements` block, `_implements_reasons`
+compares it, and `_base_reasons` compares only the base *class* from the declaration.
+
+**Interface pages have no Implements section** (verified: `IronQr.IQrInput` in both builds), and
+neither do a few classes such as `IronSoftware.Deployment.SmartDeploymentBase`. For those there is no
+authoritative source, so an interface-shaped base-list difference is reported as **cosmetic** with an
+explicit "unverifiable" note rather than counted as breaking. That is a deliberate trade: it can
+under-report a real interface removal on an interface type, which is preferable to re-reporting a
+rendering change as ~160 breaking changes. The alternative — trusting the declaration — was measured
+and is far worse.
+
+> [!NOTE]
+> The `.xml` documentation file shipped inside each nupkg cannot help here and is not used. DocFX
+> takes metadata from the **assembly** (`"files": ["bin/IronZip/lib/netstandard2.0/IronZip.dll"]` in
+> `scaffolds/docfx.ironzip.json`); the `.xml` supplies only doc-comment prose and has no
+> representation of base types or interfaces at all.
+
 ## Build-nondeterminism artifacts
 
 Two things in the generated docs change on **every build** without the API changing. Both would
@@ -181,25 +219,39 @@ page actually on disk (`Org.BouncyCastle.Asn1.<GUID>Asn1Encodable` →
 `Org.BouncyCastle.Asn1.Asn1Encodable.html`). Those types now resolve their declarations instead of
 falling back to identity-only.
 
-### Obfuscated `Iron.Pdf.Extensions` types — excluded at both layers
+### Obfuscated `Iron.Pdf.Extensions` types — excluded at three levels
 
 That namespace contains **only** obfuscator-generated types, renamed randomly every build:
 
-| 2025.12.2 | 2026.1.3 | 2026.2.1 | 2026.3.1 | 2026.4.1 | 2026.5.2 | 2026.6.1 |
-| --- | --- | --- | --- | --- | --- | --- |
-| `auxkyk` `auxkyl` | `kjmakb` `kjmakc` | `mhdavw` `mhdavx` | `qkluyp` `qkluyq` | `iuvaho` `iuvahp` | `tgolzr` `tgolzs` | `bnubqp` `bnubqq` |
+| 2025.12.2 | 2026.1.3 | 2026.2.1 | 2026.3.1 | 2026.4.1 | 2026.5.2 | 2026.6.1 | 2026.7.2 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `auxkyk` `auxkyl` | `kjmakb` `kjmakc` | `mhdavw` `mhdavx` | `qkluyp` `qkluyq` | `iuvaho` `iuvahp` | `tgolzr` `tgolzs` | `bnubqp` `bnubqq` | `qdygyt` `qdygyu` |
 
-IronPDF is the only affected product. Untreated this is 2 breaking + 2 additive in every IronPDF
-diff — 33% of reported breaking changes in a quiet release — and the types were also being published
-to the live docs site.
+IronPDF is the only affected product. `scaffolds/filterConfig.yml` gained
+`uidRegex: ^Iron\.Pdf\.Extensions.*$` so builds that pick that change up stop publishing them
+(idiomatic there — it already excludes `^IronPdfEngine.Proto$` and similar). That does not help the
+archive: every already-built version still contains them, and a build that predates or misses the
+config change will contain them too. The tool therefore treats the noise as permanent and suppresses
+it in three distinct places, because the obfuscated name reaches the diff by three different routes:
 
-Handled at both layers, because they solve different halves of the problem:
+1. **As a type.** `BLOCK_NS` in `apidiff/filters` matches `Iron\.Pdf\.Extensions\b`. Deliberately
+   unanchored — the anchored form only matched at position 0 and so missed routes 2 and 3. The
+   literal dots keep it from colliding with the legitimate `IronPdf.Extensions` namespace (no dot
+   between `Iron` and `Pdf`), which is retained along with `IronPdf.Extensions.ConversionExtensions`.
+2. **As a parameter type.** A member uid embeds fully-qualified parameter types, e.g.
+   `LicensingException.#ctor(Iron.Pdf.Extensions.qdygyt)`, so `SurfaceFilter.allows_member` applies
+   `BLOCK_NS` to the whole uid rather than only the owning type. This also correctly drops members
+   whose parameters come from any other blocked namespace — they are not usable public surface,
+   since the parameter type itself is undocumented.
+3. **As a base type.** `IronSoftware.Deployment.BaseVersionFactory` *implements* an obfuscated
+   interface, and DocFX renders base types by **simple name** (`qdygyu`), so no namespace pattern can
+   recognise it there. `Surface.blocked_type_names` therefore records the simple names of every
+   filtered-out type, and the classifier ignores base-list entries naming one.
 
-- `scaffolds/filterConfig.yml` gained `uidRegex: ^Iron\.Pdf\.Extensions.*$` so future builds never
-  publish them (idiomatic there — it already excludes `^IronPdfEngine.Proto$` and similar).
-- `BLOCK_NS` in `apidiff/filters` gained `^Iron\.Pdf\.Extensions\b` as a backstop, because
-  filterConfig only affects future builds and all **73 already-archived IronPDF versions** still
-  contain them.
+Route 3 needs a subtlety: `compare_declarations` checks for blocked-name-only differences *before*
+running the rules, not after. Filtering them out of the reasons list afterwards would leave the list
+empty, which trips the generic "declaration changed" fallback — turning a suppressed artifact back
+into a reported breaking change.
 
 ## Known limitations
 
@@ -212,5 +264,10 @@ Handled at both layers, because they solve different halves of the problem:
   the run with `UnicodeEncodeError`.
 - **Not a C# parser.** `apidiff/csharp` reads only what the classifier compares and tolerates the
   rest, falling back to raw string comparison.
+- **Interface changes on interface types are not verifiable.** Interface pages carry no Implements
+  section, so a change there is reported as cosmetic rather than breaking. See the section above.
+- **Set iteration order must never reach a result.** `_without_blocked` removes names longest-first;
+  iterating the set unsorted made output depend on `PYTHONHASHSEED`, so the same diff produced
+  different counts on consecutive runs. Any future set-driven text rewriting needs the same care.
 - **`--all-visibility` is currently a no-op** on the archive, because DocFX's `filterConfig.yml`
   already restricts generated output to the public surface. It is kept as a safety net.

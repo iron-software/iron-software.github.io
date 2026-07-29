@@ -3,7 +3,7 @@
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-import { parseTypePage } from "./declarations.mjs";
+import { parseImplements, parseTypePage } from "./declarations.mjs";
 import { makeMember, makeSurface, makeTypeEntry } from "./model.mjs";
 import { kindOf, pageStem, parseXrefmap } from "./xrefmap.mjs";
 
@@ -43,8 +43,13 @@ export function buildSurface(versionDir, productCode, version, surfaceFilter) {
     if (kind === "N") {
       allNamespaces.add(uid);
       if (surfaceFilter.allowsType(uid)) surface.namespaces.add(uid);
-    } else if (kind === "T" && surfaceFilter.allowsType(uid)) {
-      surface.types.set(uid, makeTypeEntry({ uid, name: entry.name ?? uid }));
+    } else if (kind === "T") {
+      if (surfaceFilter.allowsType(uid)) {
+        surface.types.set(uid, makeTypeEntry({ uid, name: entry.name ?? uid }));
+      } else {
+        // Remember the simple name so the classifier can ignore it in a base list.
+        surface.blockedTypeNames.add(uid.slice(uid.lastIndexOf(".") + 1));
+      }
     }
   }
   for (const [typeUid, typeEntry] of surface.types) {
@@ -81,7 +86,9 @@ export function buildSurface(versionDir, productCode, version, surfaceFilter) {
       surface.warnings.push(`${version}: no page for ${typeUid} (identity only, no signatures)`);
       continue;
     }
-    const declarations = parseTypePage(readFileSync(pagePath, "utf-8"));
+    const pageHtml = readFileSync(pagePath, "utf-8");
+    const declarations = parseTypePage(pageHtml);
+    typeEntry.implementsList = parseImplements(pageHtml);
     if (Object.keys(declarations).length === 0) {
       surface.warnings.push(`${version}: no declarations parsed from ${typeUid}.html`);
       continue;

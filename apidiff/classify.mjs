@@ -49,6 +49,12 @@ export const MODIFIER_RULES = {
 /** Visibility keywords ordered widest to narrowest; narrowing breaks consumers, widening does not. */
 const VISIBILITY_ORDER = ["public", "protected", "internal", "private"];
 
+/**
+ * .NET naming convention for an interface: `I` followed by an upper-case letter. Used only to
+ * decide whether an unverifiable base-list difference should be downgraded, never to assert one.
+ */
+const INTERFACE_SHAPED = /^I[A-Z]/;
+
 /** Python-compatible string ordering (code point ascending). */
 const compareStrings = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 
@@ -122,13 +128,77 @@ function parameterReasons(before, after) {
   return reasons;
 }
 
-function baseReasons(before, after) {
-  const lost = before.bases.filter((base) => !after.bases.includes(base));
-  const gained = after.bases.filter((base) => !before.bases.includes(base));
+/**
+ * Base type and interface differences.
+ *
+ * Entries naming a filtered-out type are ignored. Declarations render base types by simple name, so
+ * a namespace pattern cannot recognise them here — `IronSoftware.Deployment.BaseVersionFactory`
+ * implements an obfuscated interface that DocFX renders as bare `qdygyu`, and that name changes on
+ * every build. Without this the type reports a base removed plus a base added in every release.
+ */
+function baseReasons(before, after, blockedNames = new Set(), interfaces = new Set()) {
+  const keep = (base) => !blockedNames.has(base) && !interfaces.has(base);
+  let lost = before.bases.filter((base) => !after.bases.includes(base) && keep(base));
+  let gained = after.bases.filter((base) => !before.bases.includes(base) && keep(base));
+
+  // Anything interface-shaped that survived the `interfaces` exclusion had no Implements section to
+  // corroborate it — interface pages never get one, and a few classes do not either. The declaration
+  // line is not a trustworthy source for interfaces across DocFX versions (2026.7 stopped inlining
+  // them), so such a difference is reported but not counted as breaking.
+  const lostInterfaces = lost.filter((base) => INTERFACE_SHAPED.test(base));
+  const gainedInterfaces = gained.filter((base) => INTERFACE_SHAPED.test(base));
+  lost = lost.filter((base) => !lostInterfaces.includes(base));
+  gained = gained.filter((base) => !gainedInterfaces.includes(base));
+
   const reasons = [];
-  if (lost.length) reasons.push([BREAKING, `base type or interface removed: ${lost.join(", ")}`]);
-  if (gained.length) reasons.push([ADDITIVE, `base type or interface added: ${gained.join(", ")}`]);
+  if (lost.length) reasons.push([BREAKING, `base type removed: ${lost.join(", ")}`]);
+  if (gained.length) reasons.push([ADDITIVE, `base type added: ${gained.join(", ")}`]);
+  if (lostInterfaces.length || gainedInterfaces.length) {
+    const detail = [];
+    if (lostInterfaces.length) detail.push(`no longer listed: ${lostInterfaces.join(", ")}`);
+    if (gainedInterfaces.length) detail.push(`newly listed: ${gainedInterfaces.join(", ")}`);
+    reasons.push([COSMETIC, `declaration interface list differs (${detail.join("; ")}) — unverifiable, `
+      + "this page has no Implements section and DocFX renders the declaration's interface list "
+      + "inconsistently across versions"]);
+  }
   return reasons;
+}
+
+/**
+ * Interface differences, taken from the type page's Implements section — the authoritative and
+ * version-stable record of what a type implements. The declaration line is not.
+ */
+function implementsReasons(before, after, blockedNames = new Set()) {
+  const beforeSet = new Set(before.filter((name) => !blockedNames.has(name)));
+  const afterSet = new Set(after.filter((name) => !blockedNames.has(name)));
+  const lost = sortedDifference(beforeSet, afterSet);
+  const gained = sortedDifference(afterSet, beforeSet);
+  const reasons = [];
+  if (lost.length) reasons.push([BREAKING, `interface no longer implemented: ${lost.join(", ")}`]);
+  if (gained.length) reasons.push([ADDITIVE, `interface now implemented: ${gained.join(", ")}`]);
+  return reasons;
+}
+
+/** Collapse the punctuation left behind after names are removed from a base list. */
+function normalizeBases(declaration) {
+  return declaration.replace(/[\s,:]+/g, " ").trim();
+}
+
+/**
+ * Drop whole-word occurrences of filtered-out type names from a declaration.
+ *
+ * Longest name first, which is load-bearing: `IEnumerable` is a whole-word match inside
+ * `IEnumerable<Cell>` (`<` is a non-word character), so removing the short name first would leave a
+ * stray `<Cell>` and the long name would then match nothing. Sorting also keeps the result
+ * independent of Set iteration order, matching the Python port exactly.
+ */
+function withoutBlocked(declaration, blockedNames) {
+  let result = declaration;
+  for (const name of [...blockedNames].sort((a, b) => b.length - a.length)) {
+    result = result.replace(
+      new RegExp(`(?<![A-Za-z0-9_])${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![A-Za-z0-9_])`, "g"), "");
+  }
+  return result;
 }
 
 /**
@@ -137,10 +207,21 @@ function baseReasons(before, after) {
  * unexplained signature change is more likely to matter than not — the raw before/after is always
  * shown so the reader can judge.
  */
-export function compareDeclarations(beforeText, afterText) {
-  if (beforeText === afterText) return [];
+export function compareDeclarations(beforeText, afterText, blockedNames = new Set(),
+  beforeImplements = [], afterImplements = []) {
+  const interfaces = new Set([...beforeImplements, ...afterImplements]);
+  const implementsResult = implementsReasons(beforeImplements, afterImplements, blockedNames);
+
+  if (beforeText === afterText) return implementsResult;
   // One side had no page to parse; the identity is unchanged, so there is nothing to claim.
-  if (!beforeText || !afterText) return [];
+  if (!beforeText || !afterText) return implementsResult;
+  // Declarations that differ only by the name of a filtered-out type are equivalent as far as the
+  // documented surface goes. Checking here rather than after the rules run matters: otherwise every
+  // such difference would be filtered out of the reasons list and then trip the fallback below.
+  if (blockedNames.size
+    && withoutBlocked(beforeText, blockedNames) === withoutBlocked(afterText, blockedNames)) {
+    return implementsResult;
+  }
 
   const before = parseDeclaration(beforeText);
   const after = parseDeclaration(afterText);
@@ -152,9 +233,18 @@ export function compareDeclarations(beforeText, afterText) {
   reasons.push(...modifierReasons(before, after));
   reasons.push(...accessorReasons(before, after));
   reasons.push(...parameterReasons(before, after));
-  reasons.push(...baseReasons(before, after));
+  reasons.push(...baseReasons(before, after, blockedNames, interfaces));
+  reasons.push(...implementsResult);
 
-  if (reasons.length === 0) reasons.push([BREAKING, "declaration changed"]);
+  if (reasons.length === 0) {
+    // Declarations differing only in how interfaces are rendered are equivalent; the Implements
+    // comparison above is the authority on whether anything really changed.
+    const strippedBefore = withoutBlocked(beforeText, interfaces);
+    const strippedAfter = withoutBlocked(afterText, interfaces);
+    if (normalizeBases(strippedBefore) !== normalizeBases(strippedAfter)) {
+      reasons.push([BREAKING, "declaration changed"]);
+    }
+  }
   return reasons;
 }
 
@@ -184,6 +274,9 @@ export function diffSurfaces(surfaceFrom, surfaceTo, productName) {
     surfaceFrom,
     surfaceTo,
   };
+
+  // A base type filtered out of either side is not documented surface, so ignore it in both.
+  const blockedNames = new Set([...surfaceFrom.blockedTypeNames, ...surfaceTo.blockedTypeNames]);
 
   // Namespaces.
   for (const namespace of sortedDifference(surfaceFrom.namespaces, surfaceTo.namespaces)) {
@@ -224,7 +317,8 @@ export function diffSurfaces(surfaceFrom, surfaceTo, productName) {
     const beforeType = surfaceFrom.types.get(typeUid);
     const afterType = surfaceTo.types.get(typeUid);
 
-    const typeReasons = compareDeclarations(beforeType.declaration, afterType.declaration);
+    const typeReasons = compareDeclarations(beforeType.declaration, afterType.declaration, blockedNames,
+      beforeType.implementsList, afterType.implementsList);
     if (typeReasons.length) {
       result.deltas.push(makeDelta({
         kind: CHANGED, severity: severityOf(typeReasons), target: "type", typeUid, uid: typeUid,
@@ -267,7 +361,7 @@ export function diffSurfaces(surfaceFrom, surfaceTo, productName) {
     for (const uid of sharedMembers) {
       const beforeMember = beforeType.members.get(uid);
       const afterMember = afterType.members.get(uid);
-      const memberReasons = compareDeclarations(beforeMember.declaration, afterMember.declaration);
+      const memberReasons = compareDeclarations(beforeMember.declaration, afterMember.declaration, blockedNames);
       if (memberReasons.length) {
         result.deltas.push(makeDelta({
           kind: CHANGED, severity: severityOf(memberReasons), target: "member", typeUid, uid,

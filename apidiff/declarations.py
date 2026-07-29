@@ -37,6 +37,45 @@ CSHARP_BLOCK = re.compile(r"<code class=\"lang-csharp[^\"]*\">(.*?)</code>", re.
 # Inline markup can appear inside a declaration block (cross-reference links on type names).
 TAG = re.compile(r"<[^>]+>")
 
+# The "Implements" block a type page carries above its Syntax heading, e.g.
+#
+#     <h5>Implements</h5>
+#         <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;…Cell…&gt;</div>
+#         <div><span class="xref">System.Collections.IEnumerable</span></div>
+#
+# This is the authoritative record of the interfaces a type implements, and it is *stable across
+# DocFX versions* — unlike the declaration line, which stopped inlining interfaces between the
+# 2026.6 and 2026.7 builds while this section stayed byte-identical. Reading interfaces from here
+# rather than from the declaration is what keeps a rendering change from reading as 162 removals.
+IMPLEMENTS_SECTION = re.compile(r"<h5>\s*Implements\s*</h5>(.*?)(?=<h[1-6])", re.DOTALL | re.I)
+IMPLEMENTS_ENTRY = re.compile(r"<div>(.*?)</div>", re.DOTALL)
+
+# A dotted, fully-qualified name; used to reduce `System.Collections.Generic.IEnumerable` to
+# `IEnumerable` so entries compare against the simple names the declaration line uses.
+QUALIFIED_NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)+")
+
+
+def simplify_type_name(text: str) -> str:
+    """Strip namespaces from every qualified name in a type expression.
+
+    ``IronSoftware.Abstractions.IParent<IronSoftware.Abstractions.Word.IWordDocumentObjectCollection>``
+    becomes ``IParent<IWordDocumentObjectCollection>``, matching how the declaration line renders it.
+    """
+    return QUALIFIED_NAME.sub(lambda match: match.group(0).rsplit(".", 1)[-1], text)
+
+
+def parse_implements(page_html: str) -> list:
+    """Return the interfaces listed in a type page's Implements section, simple-named and sorted."""
+    section = IMPLEMENTS_SECTION.search(page_html)
+    if not section:
+        return []
+    interfaces = []
+    for entry in IMPLEMENTS_ENTRY.findall(section.group(1)):
+        name = normalize_declaration(entry)
+        if name:
+            interfaces.append(simplify_type_name(name))
+    return sorted(set(interfaces))
+
 
 def normalize_declaration(raw: str) -> str:
     """Turn a raw declaration code block into a single comparable line.

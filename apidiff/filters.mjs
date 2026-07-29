@@ -9,13 +9,22 @@
  * Namespaces that are vendored or internal infrastructure rather than product surface. The first six
  * alternatives are kept in sync with BLOCK_NS in scaffolds/tools/archetype-n/facts.mjs.
  *
- * `Iron.Pdf.Extensions` is a backstop for the existing archive: it holds only obfuscator-generated
- * types whose names change on every build (auxkyk/auxkyl in ironpdf 2025.12.2, kjmakb/kjmakc in
- * 2026.1.3, bnubqp/bnubqq in 2026.6.1), which would otherwise report 2 breaking + 2 additive changes
- * in every IronPDF diff forever. scaffolds/filterConfig.yml now excludes them at generation time, but
- * that only affects future builds — all 73 already-archived IronPDF versions still contain them.
+ * `Iron.Pdf.Extensions` holds only obfuscator-generated types whose names change on every build
+ * (auxkyk/auxkyl in ironpdf 2025.12.2, kjmakb/kjmakc in 2026.1.3, bnubqp/bnubqq in 2026.6.1,
+ * qdygyt/qdygyu in 2026.7.2), which would otherwise report changes in every IronPDF diff forever.
+ * scaffolds/filterConfig.yml excludes them at generation time, but only for builds that pick that
+ * change up — every already-archived IronPDF version still contains them, so this stays regardless.
+ *
+ * Deliberately unanchored: member uids embed fully-qualified parameter types, so the namespace has to
+ * match mid-string too (see SurfaceFilter.allowsMember). The literal dots keep it from colliding with
+ * the legitimate `IronPdf.Extensions` namespace, which has no dot between Iron and Pdf.
  */
-export const BLOCK_NS = /\.Internal\b|Interop|grpc|Pdfium|BouncyCastle|GrpcLayer|^Iron\.Pdf\.Extensions\b/i;
+// `Interop` carries a word boundary that facts.mjs's copy lacks. Without it the alternative also
+// matches `System.Runtime.InteropServices`, which is a legitimate BCL namespace — harmless when only
+// type uids were tested, but once member uids are tested it wrongly drops every member taking a
+// HandleRef (134 of ironocr 2026.7.2's 1522 members). `Interop\b` still matches a real `….Interop.…`
+// namespace, since the following dot is a word boundary.
+export const BLOCK_NS = /\.Internal\b|Interop\b|grpc|Pdfium|BouncyCastle|GrpcLayer|Iron\.Pdf\.Extensions\b/i;
 
 /**
  * Compiler-generated members DocFX still emits. `value__` is the backing field every enum gets; it
@@ -69,9 +78,20 @@ export class SurfaceFilter {
     return true;
   }
 
-  /** Whether a member belongs in the reported surface. */
+  /**
+   * Whether a member belongs in the reported surface.
+   *
+   * A member uid embeds the fully-qualified types of its parameters, e.g.
+   * `LicensingException.#ctor(Iron.Pdf.Extensions.bnubqp)`. Applying BLOCK_NS to the whole uid — not
+   * just the owning type — therefore also drops members whose *parameters* come from a blocked
+   * namespace. Those are not usable public surface (the parameter type is undocumented), and when
+   * the parameter is an obfuscated type the uid changes on every build, which would otherwise report
+   * the member as removed-and-added in every single release.
+   */
   allowsMember(uid, name) {
-    return !(COMPILER_GENERATED_MEMBERS.includes(name) || uid.endsWith(`.${COMPILER_GENERATED_MEMBERS[0]}`));
+    if (COMPILER_GENERATED_MEMBERS.includes(name) || uid.endsWith(`.${COMPILER_GENERATED_MEMBERS[0]}`)) return false;
+    if (!this.includeInternal && BLOCK_NS.test(uid)) return false;
+    return true;
   }
 
   /**

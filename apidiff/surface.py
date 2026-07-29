@@ -2,7 +2,7 @@
 
 import os
 
-from .declarations import parse_type_page
+from .declarations import parse_implements, parse_type_page
 from .model import Member, Surface, TypeEntry
 from .xrefmap import kind_of, page_stem, parse_xrefmap
 
@@ -53,8 +53,12 @@ def build_surface(version_dir: str, product_code: str, version: str, surface_fil
             all_namespaces.add(uid)
             if surface_filter.allows_type(uid):
                 surface.namespaces.add(uid)
-        elif kind == "T" and surface_filter.allows_type(uid):
-            surface.types[uid] = TypeEntry(uid=uid, name=entry.get("name", uid), namespace="")
+        elif kind == "T":
+            if surface_filter.allows_type(uid):
+                surface.types[uid] = TypeEntry(uid=uid, name=entry.get("name", uid), namespace="")
+            else:
+                # Remember the simple name so the classifier can ignore it in a base list.
+                surface.blocked_type_names.add(uid.rsplit(".", 1)[-1])
 
     for type_uid, type_entry in surface.types.items():
         type_entry.namespace = _namespace_of(type_uid, all_namespaces)
@@ -91,7 +95,9 @@ def build_surface(version_dir: str, product_code: str, version: str, surface_fil
             surface.warnings.append(f"{version}: no page for {type_uid} (identity only, no signatures)")
             continue
         with open(page_path, "r", encoding="utf-8", errors="replace") as handle:
-            declarations = parse_type_page(handle.read())
+            page_html = handle.read()
+        declarations = parse_type_page(page_html)
+        type_entry.implements = parse_implements(page_html)
         if not declarations:
             surface.warnings.append(f"{version}: no declarations parsed from {type_uid}.html")
             continue
