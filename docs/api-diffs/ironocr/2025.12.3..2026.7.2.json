@@ -2,13 +2,13 @@
   "product": "ironocr",
   "productName": "IronOCR",
   "from": "2025.12.3",
-  "to": "2026.6.1",
+  "to": "2026.7.2",
   "generatedFrom": "xrefmap+html",
   "summary": {
-    "breaking": 22,
+    "breaking": 21,
     "additive": 29,
-    "cosmetic": 0,
-    "total": 51,
+    "cosmetic": 6,
+    "total": 56,
     "typesFrom": 109,
     "typesTo": 113
   },
@@ -18,6 +18,24 @@
     "COSMETIC"
   ],
   "types": [
+    {
+      "fqn": "DynamicTesseract.IResultRenderer",
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "uid": "DynamicTesseract.IResultRenderer",
+          "display": "DynamicTesseract.IResultRenderer",
+          "severity": "COSMETIC",
+          "target": "type",
+          "before": "public interface IResultRenderer : IDisposable",
+          "after": "public interface IResultRenderer",
+          "reasons": [
+            "declaration interface list differs (no longer listed: IDisposable) — unverifiable, this page has no Implements section and DocFX renders the declaration's interface list inconsistently across versions"
+          ]
+        }
+      ]
+    },
     {
       "fqn": "IronOcr.AdvancedCharacter",
       "added": [
@@ -200,13 +218,12 @@
         {
           "uid": "IronOcr.IOcrPageObjectModel",
           "display": "IronOcr.IOcrPageObjectModel",
-          "severity": "BREAKING",
+          "severity": "COSMETIC",
           "target": "type",
           "before": "public interface IOcrPageObjectModel : IDocumentPageObjectModel<avrodd, avrocd, avrobw>, IBounded, IJsonSerializable",
-          "after": "public interface IOcrPageObjectModel : IDocumentPageObjectModel<buwdmj, buwdlj, buwdlc>, IBounded, IJsonSerializable",
+          "after": "public interface IOcrPageObjectModel",
           "reasons": [
-            "base type or interface removed: IDocumentPageObjectModel<avrodd, avrocd, avrobw>",
-            "base type or interface added: IDocumentPageObjectModel<buwdmj, buwdlj, buwdlc>"
+            "declaration interface list differs (no longer listed: IDocumentPageObjectModel<avrodd, avrocd, avrobw>, IBounded, IJsonSerializable) — unverifiable, this page has no Implements section and DocFX renders the declaration's interface list inconsistently across versions"
           ]
         }
       ]
@@ -266,6 +283,24 @@
         }
       ],
       "changed": []
+    },
+    {
+      "fqn": "IronOcr.OcrHandwritingResult.TextLine",
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "uid": "IronOcr.OcrHandwritingResult.TextLine",
+          "display": "IronOcr.OcrHandwritingResult.TextLine",
+          "severity": "COSMETIC",
+          "target": "type",
+          "before": "public sealed class TextLine : ValueType, IEquatable<OcrHandwritingResult.TextLine>",
+          "after": "public sealed class TextLine : ValueType",
+          "reasons": [
+            "declaration interface list differs (no longer listed: IEquatable<OcrHandwritingResult.TextLine>) — unverifiable, this page has no Implements section and DocFX renders the declaration's interface list inconsistently across versions"
+          ]
+        }
+      ]
     },
     {
       "fqn": "IronOcr.OcrInput",
@@ -354,6 +389,24 @@
         }
       ],
       "changed": []
+    },
+    {
+      "fqn": "IronOcr.OcrPhotoResult.TextRegion",
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "uid": "IronOcr.OcrPhotoResult.TextRegion",
+          "display": "IronOcr.OcrPhotoResult.TextRegion",
+          "severity": "COSMETIC",
+          "target": "type",
+          "before": "public sealed class TextRegion : ValueType, IEquatable<OcrPhotoResult.TextRegion>",
+          "after": "public sealed class TextRegion : ValueType",
+          "reasons": [
+            "declaration interface list differs (no longer listed: IEquatable<OcrPhotoResult.TextRegion>) — unverifiable, this page has no Implements section and DocFX renders the declaration's interface list inconsistently across versions"
+          ]
+        }
+      ]
     },
     {
       "fqn": "IronOcr.OcrResult",
@@ -446,10 +499,10 @@
           "severity": "BREAKING",
           "target": "type",
           "before": "public class Block : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable",
-          "after": "public class Block : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable",
+          "after": "public class Block : OcrResult.OcrResultTextElement",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject, IPdfDocumentObject"
+            "interface no longer implemented: IBoundedDocumentObject",
+            "interface now implemented: IBoundedPdfDocumentObject, IPdfDocumentObject"
           ]
         }
       ]
@@ -465,10 +518,10 @@
           "severity": "BREAKING",
           "target": "type",
           "before": "public class Character : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedDocumentObject, IBounded, ITransformable, IColored, ICloneable, IDocumentCharacter, IDocumentObject",
-          "after": "public class Character : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, IDocumentCharacter, IPdfDocumentObject, IDocumentObject",
+          "after": "public class Character : OcrResult.OcrResultTextElement",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject, IPdfDocumentObject"
+            "interface no longer implemented: IBoundedDocumentObject",
+            "interface now implemented: IBoundedPdfDocumentObject, IPdfDocumentObject"
           ]
         }
       ]
@@ -484,10 +537,10 @@
           "severity": "BREAKING",
           "target": "type",
           "before": "public class Line : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable",
-          "after": "public class Line : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable",
+          "after": "public class Line : OcrResult.OcrResultTextElement",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject, IPdfDocumentObject"
+            "interface no longer implemented: IBoundedDocumentObject",
+            "interface now implemented: IBoundedPdfDocumentObject, IPdfDocumentObject"
           ]
         }
       ]
@@ -503,10 +556,10 @@
           "severity": "BREAKING",
           "target": "type",
           "before": "public abstract class OcrResultTextElement : OcrResult.OcrResultElement, IDocumentTextObject, IBoundedDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable",
-          "after": "public abstract class OcrResultTextElement : OcrResult.OcrResultElement, IDocumentTextObject, IBoundedPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable",
+          "after": "public abstract class OcrResultTextElement : OcrResult.OcrResultElement",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject, IPdfDocumentObject"
+            "interface no longer implemented: IBoundedDocumentObject",
+            "interface now implemented: IBoundedPdfDocumentObject, IPdfDocumentObject"
           ]
         }
       ]
@@ -522,10 +575,10 @@
           "severity": "BREAKING",
           "target": "type",
           "before": "public class Page : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable, IDocumentPage<IOcrPageObjectModel>, IPageContainer",
-          "after": "public class Page : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable, IDocumentPage<IOcrPageObjectModel>, IPageContainer",
+          "after": "public class Page : OcrResult.OcrResultTextElement",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject, IPdfDocumentObject"
+            "interface no longer implemented: IBoundedDocumentObject",
+            "interface now implemented: IBoundedPdfDocumentObject, IPdfDocumentObject"
           ]
         }
       ]
@@ -541,10 +594,10 @@
           "severity": "BREAKING",
           "target": "type",
           "before": "public class Paragraph : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable",
-          "after": "public class Paragraph : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable",
+          "after": "public class Paragraph : OcrResult.OcrResultTextElement",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject, IPdfDocumentObject"
+            "interface no longer implemented: IBoundedDocumentObject",
+            "interface now implemented: IBoundedPdfDocumentObject, IPdfDocumentObject"
           ]
         }
       ]
@@ -560,10 +613,10 @@
           "severity": "BREAKING",
           "target": "type",
           "before": "public class Table : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable",
-          "after": "public class Table : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable",
+          "after": "public class Table : OcrResult.OcrResultTextElement",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject, IPdfDocumentObject"
+            "interface no longer implemented: IBoundedDocumentObject",
+            "interface now implemented: IBoundedPdfDocumentObject, IPdfDocumentObject"
           ]
         }
       ]
@@ -579,10 +632,46 @@
           "severity": "BREAKING",
           "target": "type",
           "before": "public class Word : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable",
-          "after": "public class Word : OcrResult.OcrResultTextElement, IDocumentTextObject, IBoundedPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IBounded, ITransformable, IColored, ICloneable",
+          "after": "public class Word : OcrResult.OcrResultTextElement",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject, IPdfDocumentObject"
+            "interface no longer implemented: IBoundedDocumentObject",
+            "interface now implemented: IBoundedPdfDocumentObject, IPdfDocumentObject"
+          ]
+        }
+      ]
+    },
+    {
+      "fqn": "IronOcr.OcrResults.IOcrPageCollection",
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "uid": "IronOcr.OcrResults.IOcrPageCollection",
+          "display": "IronOcr.OcrResults.IOcrPageCollection",
+          "severity": "COSMETIC",
+          "target": "type",
+          "before": "public interface IOcrPageCollection : IDocumentPageCollection<OcrResult.Page>, IReadOnlyCollection<OcrResult.Page>, IEnumerable<OcrResult.Page>, IEnumerable",
+          "after": "public interface IOcrPageCollection",
+          "reasons": [
+            "declaration interface list differs (no longer listed: IDocumentPageCollection<OcrResult.Page>, IReadOnlyCollection<OcrResult.Page>, IEnumerable<OcrResult.Page>, IEnumerable) — unverifiable, this page has no Implements section and DocFX renders the declaration's interface list inconsistently across versions"
+          ]
+        }
+      ]
+    },
+    {
+      "fqn": "IronOcr.OcrResults.OcrResultPagesCollection",
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "uid": "IronOcr.OcrResults.OcrResultPagesCollection",
+          "display": "IronOcr.OcrResults.OcrResultPagesCollection",
+          "severity": "COSMETIC",
+          "target": "type",
+          "before": "public class OcrResultPagesCollection : List<OcrResult.Page>, IOcrPageCollection, IDocumentPageCollection<OcrResult.Page>, IReadOnlyCollection<OcrResult.Page>, IEnumerable<OcrResult.Page>, IEnumerable",
+          "after": "public class OcrResultPagesCollection : List<OcrResult.Page>, IOcrPageCollection",
+          "reasons": [
+            "declaration interface list differs (no longer listed: IDocumentPageCollection<OcrResult.Page>, IReadOnlyCollection<OcrResult.Page>, IEnumerable<OcrResult.Page>) — unverifiable, this page has no Implements section and DocFX renders the declaration's interface list inconsistently across versions"
           ]
         }
       ]

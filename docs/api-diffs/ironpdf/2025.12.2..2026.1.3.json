@@ -5,10 +5,10 @@
   "to": "2026.1.3",
   "generatedFrom": "xrefmap+html",
   "summary": {
-    "breaking": 40,
-    "additive": 57,
-    "cosmetic": 0,
-    "total": 97,
+    "breaking": 25,
+    "additive": 51,
+    "cosmetic": 5,
+    "total": 81,
     "typesFrom": 197,
     "typesTo": 223
   },
@@ -531,34 +531,8 @@
     },
     {
       "fqn": "IronPdf.Fonts.PdfFont",
-      "added": [
-        {
-          "uid": "IronPdf.Fonts.PdfFont.#ctor(IronSoftware.Pdfium.IPdfClient,IronSoftware.Abstractions.Pdf.IDocumentId,System.UInt32,System.Boolean,System.Boolean,System.String,IronPdf.Fonts.FontType,System.UInt32)",
-          "display": "PdfFont.PdfFont(IPdfClient, IDocumentId, UInt32, Boolean, Boolean, String, FontType, UInt32)",
-          "severity": "ADDITIVE",
-          "target": "member",
-          "before": "",
-          "after": "public PdfFont(IPdfClient client, IDocumentId id, uint obj_num, bool is_embedded, bool is_subsetted, string name, FontType type, uint descendantFontObjNum = 0U)",
-          "reasons": [
-            "member added",
-            "overload signature change (see the matching removal)"
-          ]
-        }
-      ],
-      "removed": [
-        {
-          "uid": "IronPdf.Fonts.PdfFont.#ctor(IronSoftware.Pdfium.IPdfClient,IronSoftware.IDocumentId,System.UInt32,System.Boolean,System.Boolean,System.String,IronPdf.Fonts.FontType,System.UInt32)",
-          "display": "PdfFont.PdfFont(IPdfClient, IDocumentId, UInt32, Boolean, Boolean, String, FontType, UInt32)",
-          "severity": "BREAKING",
-          "target": "member",
-          "before": "public PdfFont(IPdfClient client, IDocumentId id, uint obj_num, bool is_embedded, bool is_subsetted, string name, FontType type, uint descendantFontObjNum = 0U)",
-          "after": "",
-          "reasons": [
-            "member removed",
-            "overload signature change (see the matching addition)"
-          ]
-        }
-      ],
+      "added": [],
+      "removed": [],
       "changed": [
         {
           "uid": "IronPdf.Fonts.PdfFont",
@@ -568,7 +542,7 @@
           "before": "public class PdfFont : Object, IDocumentFontObject, IDocumentObject",
           "after": "public class PdfFont : Object, IDocumentFontObject, IFont, IDocumentObject, IPdfDocumentObject",
           "reasons": [
-            "base type or interface added: IFont, IPdfDocumentObject"
+            "interface now implemented: IFont, IPdfDocumentObject"
           ]
         }
       ]
@@ -586,8 +560,8 @@
           "before": "public class LineTextObject : TextObject, IPdfTextObject, IPdfDocumentObject, IDocumentObject, IDocumentTextObject, IBoundedDocumentObject, IBounded, ITransformable, IColored, ICloneable, IJsonSerializable",
           "after": "public class LineTextObject : TextObject, IPdfTextObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentTextObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, IJsonSerializable",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject"
+            "interface no longer implemented: IBoundedDocumentObject",
+            "interface now implemented: IBoundedPdfDocumentObject"
           ]
         }
       ]
@@ -905,113 +879,6 @@
       "changed": []
     },
     {
-      "fqn": "IronSoftware.Deployment.BaseVersionFactory",
-      "added": [],
-      "removed": [],
-      "changed": [
-        {
-          "uid": "IronSoftware.Deployment.BaseVersionFactory",
-          "display": "IronSoftware.Deployment.BaseVersionFactory",
-          "severity": "BREAKING",
-          "target": "type",
-          "before": "public abstract class BaseVersionFactory : Object, auxkyl",
-          "after": "public abstract class BaseVersionFactory : Object, kjmakc",
-          "reasons": [
-            "base type or interface removed: auxkyl",
-            "base type or interface added: kjmakc"
-          ]
-        }
-      ]
-    },
-    {
-      "fqn": "IronSoftware.Exceptions.IronSoftwareAssemblyVersionMismatchException",
-      "added": [
-        {
-          "uid": "IronSoftware.Exceptions.IronSoftwareAssemblyVersionMismatchException.#ctor(System.String,System.Version,System.Version,Iron.Pdf.Extensions.kjmakc)",
-          "display": "IronSoftwareAssemblyVersionMismatchException.IronSoftwareAssemblyVersionMismatchException(String, Version, Version, kjmakc)",
-          "severity": "ADDITIVE",
-          "target": "member",
-          "before": "",
-          "after": "public IronSoftwareAssemblyVersionMismatchException(string name, Version actual, Version expected, kjmakc version_factory)",
-          "reasons": [
-            "member added",
-            "overload signature change (see the matching removal)"
-          ]
-        }
-      ],
-      "removed": [
-        {
-          "uid": "IronSoftware.Exceptions.IronSoftwareAssemblyVersionMismatchException.#ctor(System.String,System.Version,System.Version,Iron.Pdf.Extensions.auxkyl)",
-          "display": "IronSoftwareAssemblyVersionMismatchException.IronSoftwareAssemblyVersionMismatchException(String, Version, Version, auxkyl)",
-          "severity": "BREAKING",
-          "target": "member",
-          "before": "public IronSoftwareAssemblyVersionMismatchException(string name, Version actual, Version expected, auxkyl version_factory)",
-          "after": "",
-          "reasons": [
-            "member removed",
-            "overload signature change (see the matching addition)"
-          ]
-        }
-      ],
-      "changed": []
-    },
-    {
-      "fqn": "IronSoftware.Exceptions.LicensingException",
-      "added": [
-        {
-          "uid": "IronSoftware.Exceptions.LicensingException.#ctor(Iron.Pdf.Extensions.kjmakb)",
-          "display": "LicensingException.LicensingException(kjmakb)",
-          "severity": "ADDITIVE",
-          "target": "member",
-          "before": "",
-          "after": "public LicensingException(kjmakb product)",
-          "reasons": [
-            "member added",
-            "overload signature change (see the matching removal)"
-          ]
-        },
-        {
-          "uid": "IronSoftware.Exceptions.LicensingException.#ctor(Iron.Pdf.Extensions.kjmakb,System.String)",
-          "display": "LicensingException.LicensingException(kjmakb, String)",
-          "severity": "ADDITIVE",
-          "target": "member",
-          "before": "",
-          "after": "public LicensingException(kjmakb product, string message)",
-          "reasons": [
-            "member added",
-            "overload signature change (see the matching removal)"
-          ]
-        }
-      ],
-      "removed": [
-        {
-          "uid": "IronSoftware.Exceptions.LicensingException.#ctor(Iron.Pdf.Extensions.auxkyk)",
-          "display": "LicensingException.LicensingException(auxkyk)",
-          "severity": "BREAKING",
-          "target": "member",
-          "before": "public LicensingException(auxkyk product)",
-          "after": "",
-          "reasons": [
-            "member removed",
-            "overload signature change (see the matching addition)"
-          ]
-        },
-        {
-          "uid": "IronSoftware.Exceptions.LicensingException.#ctor(Iron.Pdf.Extensions.auxkyk,System.String)",
-          "display": "LicensingException.LicensingException(auxkyk, String)",
-          "severity": "BREAKING",
-          "target": "member",
-          "before": "public LicensingException(auxkyk product, string message)",
-          "after": "",
-          "reasons": [
-            "member removed",
-            "overload signature change (see the matching addition)"
-          ]
-        }
-      ],
-      "changed": []
-    },
-    {
       "fqn": "IronSoftware.FontObject",
       "added": [],
       "removed": [],
@@ -1024,61 +891,7 @@
           "before": "public class FontObject : Object, IPdfFontObject, IPdfDocumentObject, IDocumentObject, IDocumentFontObject, IJsonSerializable",
           "after": "public class FontObject : Object, IPdfFontObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentFontObject, IFont, IJsonSerializable",
           "reasons": [
-            "base type or interface added: IFont"
-          ]
-        }
-      ]
-    },
-    {
-      "fqn": "IronSoftware.Forms.CheckboxFormField",
-      "added": [],
-      "removed": [],
-      "changed": [
-        {
-          "uid": "IronSoftware.Forms.CheckboxFormField",
-          "display": "IronSoftware.Forms.CheckboxFormField",
-          "severity": "BREAKING",
-          "target": "type",
-          "before": "public class CheckboxFormField : Object, ICheckableFormField, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IDocumentObject",
-          "after": "public class CheckboxFormField : Object, ICheckableFormField, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject",
-          "reasons": [
-            "declaration changed"
-          ]
-        }
-      ]
-    },
-    {
-      "fqn": "IronSoftware.Forms.ComboboxFormField",
-      "added": [],
-      "removed": [],
-      "changed": [
-        {
-          "uid": "IronSoftware.Forms.ComboboxFormField",
-          "display": "IronSoftware.Forms.ComboboxFormField",
-          "severity": "BREAKING",
-          "target": "type",
-          "before": "public class ComboboxFormField : Object, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IDocumentObject",
-          "after": "public class ComboboxFormField : Object, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject",
-          "reasons": [
-            "declaration changed"
-          ]
-        }
-      ]
-    },
-    {
-      "fqn": "IronSoftware.Forms.FormFieldAnnotation",
-      "added": [],
-      "removed": [],
-      "changed": [
-        {
-          "uid": "IronSoftware.Forms.FormFieldAnnotation",
-          "display": "IronSoftware.Forms.FormFieldAnnotation",
-          "severity": "BREAKING",
-          "target": "type",
-          "before": "public class FormFieldAnnotation : Object, IFormFieldAnnotation, IFormFieldAnnotationObject, IPdfDocumentObject, IDocumentObject",
-          "after": "public class FormFieldAnnotation : Object, IFormFieldAnnotation, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject",
-          "reasons": [
-            "declaration changed"
+            "interface now implemented: IFont"
           ]
         }
       ]
@@ -1174,78 +987,6 @@
       ]
     },
     {
-      "fqn": "IronSoftware.Forms.ImageFormField",
-      "added": [],
-      "removed": [],
-      "changed": [
-        {
-          "uid": "IronSoftware.Forms.ImageFormField",
-          "display": "IronSoftware.Forms.ImageFormField",
-          "severity": "BREAKING",
-          "target": "type",
-          "before": "public class ImageFormField : Object, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IDocumentObject",
-          "after": "public class ImageFormField : Object, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject",
-          "reasons": [
-            "declaration changed"
-          ]
-        }
-      ]
-    },
-    {
-      "fqn": "IronSoftware.Forms.RadioFormField",
-      "added": [],
-      "removed": [],
-      "changed": [
-        {
-          "uid": "IronSoftware.Forms.RadioFormField",
-          "display": "IronSoftware.Forms.RadioFormField",
-          "severity": "BREAKING",
-          "target": "type",
-          "before": "public class RadioFormField : Object, ICheckableFormField, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IDocumentObject",
-          "after": "public class RadioFormField : Object, ICheckableFormField, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject",
-          "reasons": [
-            "declaration changed"
-          ]
-        }
-      ]
-    },
-    {
-      "fqn": "IronSoftware.Forms.SignatureFormField",
-      "added": [],
-      "removed": [],
-      "changed": [
-        {
-          "uid": "IronSoftware.Forms.SignatureFormField",
-          "display": "IronSoftware.Forms.SignatureFormField",
-          "severity": "BREAKING",
-          "target": "type",
-          "before": "public class SignatureFormField : Object, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IDocumentObject",
-          "after": "public class SignatureFormField : Object, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject",
-          "reasons": [
-            "declaration changed"
-          ]
-        }
-      ]
-    },
-    {
-      "fqn": "IronSoftware.Forms.TextFormField",
-      "added": [],
-      "removed": [],
-      "changed": [
-        {
-          "uid": "IronSoftware.Forms.TextFormField",
-          "display": "IronSoftware.Forms.TextFormField",
-          "severity": "BREAKING",
-          "target": "type",
-          "before": "public class TextFormField : Object, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IDocumentObject",
-          "after": "public class TextFormField : Object, IFormField, IFormFieldObject, IFormFieldAnnotationObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject",
-          "reasons": [
-            "declaration changed"
-          ]
-        }
-      ]
-    },
-    {
       "fqn": "IronSoftware.IPdfDocumentObject",
       "added": [],
       "removed": [],
@@ -1253,12 +994,12 @@
         {
           "uid": "IronSoftware.IPdfDocumentObject",
           "display": "IronSoftware.IPdfDocumentObject",
-          "severity": "ADDITIVE",
+          "severity": "COSMETIC",
           "target": "type",
           "before": "public interface IPdfDocumentObject : IDocumentObject",
           "after": "public interface IPdfDocumentObject : IPdfDocumentObject, IDocumentObject",
           "reasons": [
-            "base type or interface added: IPdfDocumentObject"
+            "declaration interface list differs (newly listed: IPdfDocumentObject) — unverifiable, this page has no Implements section and DocFX renders the declaration's interface list inconsistently across versions"
           ]
         }
       ]
@@ -1271,12 +1012,12 @@
         {
           "uid": "IronSoftware.IPdfFontObject",
           "display": "IronSoftware.IPdfFontObject",
-          "severity": "ADDITIVE",
+          "severity": "COSMETIC",
           "target": "type",
           "before": "public interface IPdfFontObject : IPdfDocumentObject, IDocumentObject, IDocumentFontObject, IJsonSerializable",
           "after": "public interface IPdfFontObject : IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentFontObject, IFont, IJsonSerializable",
           "reasons": [
-            "base type or interface added: IFont"
+            "declaration interface list differs (newly listed: IFont) — unverifiable, this page has no Implements section and DocFX renders the declaration's interface list inconsistently across versions"
           ]
         }
       ]
@@ -1289,13 +1030,12 @@
         {
           "uid": "IronSoftware.IPdfImageObject",
           "display": "IronSoftware.IPdfImageObject",
-          "severity": "BREAKING",
+          "severity": "COSMETIC",
           "target": "type",
           "before": "public interface IPdfImageObject : IPdfDocumentObject, IDocumentObject, IDocumentImageObject, IBoundedDocumentObject, IBounded, ITransformable, ICloneable, IJsonSerializable",
           "after": "public interface IPdfImageObject : IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentImageObject, IBoundedPdfDocumentObject, IBounded, ITransformable, ICloneable, IJsonSerializable",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject"
+            "declaration interface list differs (no longer listed: IBoundedDocumentObject; newly listed: IBoundedPdfDocumentObject) — unverifiable, this page has no Implements section and DocFX renders the declaration's interface list inconsistently across versions"
           ]
         }
       ]
@@ -1308,13 +1048,12 @@
         {
           "uid": "IronSoftware.IPdfPathObject",
           "display": "IronSoftware.IPdfPathObject",
-          "severity": "BREAKING",
+          "severity": "COSMETIC",
           "target": "type",
           "before": "public interface IPdfPathObject : IPdfDocumentObject, IDocumentObject, IDocumentPathObject, IBoundedDocumentObject, IBounded, ITransformable, IColored, ICloneable, IDocumentLayoutFriendly, IJsonSerializable",
           "after": "public interface IPdfPathObject : IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentPathObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, IDocumentLayoutFriendly, IJsonSerializable",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject"
+            "declaration interface list differs (no longer listed: IBoundedDocumentObject; newly listed: IBoundedPdfDocumentObject) — unverifiable, this page has no Implements section and DocFX renders the declaration's interface list inconsistently across versions"
           ]
         }
       ]
@@ -1327,13 +1066,12 @@
         {
           "uid": "IronSoftware.IPdfTextObject",
           "display": "IronSoftware.IPdfTextObject",
-          "severity": "BREAKING",
+          "severity": "COSMETIC",
           "target": "type",
           "before": "public interface IPdfTextObject : IPdfDocumentObject, IDocumentObject, IDocumentTextObject, IBoundedDocumentObject, IBounded, ITransformable, IColored, ICloneable, IJsonSerializable",
           "after": "public interface IPdfTextObject : IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentTextObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, IJsonSerializable",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject"
+            "declaration interface list differs (no longer listed: IBoundedDocumentObject; newly listed: IBoundedPdfDocumentObject) — unverifiable, this page has no Implements section and DocFX renders the declaration's interface list inconsistently across versions"
           ]
         }
       ]
@@ -1374,8 +1112,8 @@
           "before": "public class ImageObject : Object, IPdfImageObject, IPdfDocumentObject, IDocumentObject, IDocumentImageObject, IBoundedDocumentObject, IBounded, ITransformable, ICloneable, IJsonSerializable",
           "after": "public class ImageObject : Object, IPdfImageObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentImageObject, IBoundedPdfDocumentObject, IBounded, ITransformable, ICloneable, IJsonSerializable",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject"
+            "interface no longer implemented: IBoundedDocumentObject",
+            "interface now implemented: IBoundedPdfDocumentObject"
           ]
         }
       ]
@@ -1405,8 +1143,8 @@
           "before": "public class PathObject : Object, IPdfPathObject, IPdfDocumentObject, IDocumentObject, IDocumentPathObject, IBoundedDocumentObject, IBounded, ITransformable, IColored, ICloneable, IDocumentLayoutFriendly, IJsonSerializable",
           "after": "public class PathObject : Object, IPdfPathObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentPathObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, IDocumentLayoutFriendly, IJsonSerializable",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject"
+            "interface no longer implemented: IBoundedDocumentObject",
+            "interface now implemented: IBoundedPdfDocumentObject"
           ]
         },
         {
@@ -1469,7 +1207,7 @@
           "before": "public class PathSegment : Object, IPathSegment",
           "after": "public class PathSegment : Object, IPdfPathSegment, IPathSegment",
           "reasons": [
-            "base type or interface added: IPdfPathSegment"
+            "interface now implemented: IPdfPathSegment"
           ]
         }
       ]
@@ -1510,8 +1248,8 @@
           "before": "public class TextObject : Object, IPdfTextObject, IPdfDocumentObject, IDocumentObject, IDocumentTextObject, IBoundedDocumentObject, IBounded, ITransformable, IColored, ICloneable, IJsonSerializable",
           "after": "public class TextObject : Object, IPdfTextObject, IPdfDocumentObject, IPdfDocumentObject, IDocumentObject, IDocumentTextObject, IBoundedPdfDocumentObject, IBounded, ITransformable, IColored, ICloneable, IJsonSerializable",
           "reasons": [
-            "base type or interface removed: IBoundedDocumentObject",
-            "base type or interface added: IBoundedPdfDocumentObject"
+            "interface no longer implemented: IBoundedDocumentObject",
+            "interface now implemented: IBoundedPdfDocumentObject"
           ]
         }
       ]
