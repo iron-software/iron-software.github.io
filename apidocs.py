@@ -28,6 +28,60 @@ APIDOCS_STORAGE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 # Reusable path template used to place generated API Documentation in their proper spots in the object-reference cache.
 APIDOCS_DESTINATION_PATH_TEMPLATE = APIDOCS_STORAGE_PATH + os.path.sep + "{}" + os.path.sep + "{}"
 
+# Directory names that live alongside the version directories under object-reference/<code>/ but are
+# not versions. Anything listed here is skipped by list_archived_versions().
+NON_VERSION_DIRECTORIES = {"_archetype-n-samples"}
+
+
+def version_sort_key(version_string:str) -> tuple:
+    """Sort key for an archived version directory name.
+
+    The archive spans two numbering eras — the old build-number style (``2021.9.3650``,
+    ``2022.11.10341``) and the modern ``YYYY.M.P`` style (``2026.6.1``) — but both are
+    dot-separated integers, so a tuple of ints orders them correctly and, crucially, sorts
+    ``2026.10.1`` after ``2026.9.1`` (which a lexical sort does not).
+
+    Non-numeric components sort last within their position rather than raising, so an unexpected
+    directory name degrades to a stable ordering instead of crashing the caller.
+
+    Args:
+        version_string (str): A version directory name.
+
+    Returns:
+        tuple: A comparable key of ``(is_non_numeric, value)`` pairs.
+    """
+    key = []
+    for component in version_string.split("."):
+        if component.isdigit():
+            key.append((0, int(component), ""))
+        else:
+            key.append((1, 0, component))
+    return tuple(key)
+
+
+def list_archived_versions(product_code:str) -> list:
+    """Return the versions already built into the object-reference cache, oldest first.
+
+    Directory existence *is* the version index for this repo — there is no manifest to read — so
+    this lists ``object-reference/<code>/`` and filters the non-version siblings.
+
+    Args:
+        product_code (str): A product's short code (e.g. ``ironzip``).
+
+    Returns:
+        list: Sorted version strings; empty when the product has no archive directory.
+    """
+    product_dir = os.path.join(APIDOCS_STORAGE_PATH, product_code)
+    if not os.path.isdir(product_dir):
+        return []
+
+    versions = [
+        entry for entry in os.listdir(product_dir)
+        if entry not in NON_VERSION_DIRECTORIES and os.path.isdir(os.path.join(product_dir, entry))
+    ]
+    versions.sort(key=version_sort_key)
+    return versions
+
 
 def get_apidoc_path(info:dict, version_string:str) -> str:
     """Builds the storage path for a product's API documentation
