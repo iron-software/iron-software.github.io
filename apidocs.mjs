@@ -6,7 +6,7 @@
  * and return shapes mirror the Python module so the two ports stay interchangeable.
  */
 
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -26,6 +26,57 @@ const MAVEN_REPOSITORY_BASE = "https://repo1.maven.org/maven2";
 export const PRODUCTS_CATALOG = join(CWD, "iron-products.json");
 /** Root of the object-reference cache where generated docs are stored. */
 export const APIDOCS_STORAGE_PATH = join(CWD, "object-reference");
+
+/**
+ * Directory names that sit alongside the version directories under object-reference/<code>/ but are
+ * not versions. Anything listed here is skipped by listArchivedVersions().
+ */
+const NON_VERSION_DIRECTORIES = new Set(["_archetype-n-samples"]);
+
+/**
+ * Sort key for an archived version directory name, as an array of `[isNonNumeric, number, text]`.
+ *
+ * The archive spans two numbering eras — the old build-number style (`2021.9.3650`) and the modern
+ * `YYYY.M.P` style (`2026.6.1`) — but both are dot-separated integers, so comparing components
+ * numerically orders them correctly and sorts `2026.10.1` after `2026.9.1` (lexical does not).
+ * Non-numeric components sort last within their position rather than throwing.
+ */
+export function versionSortKey(versionString) {
+  return versionString.split(".").map((component) =>
+    /^\d+$/.test(component) ? [0, Number(component), ""] : [1, 0, component],
+  );
+}
+
+/** Compare two version strings using versionSortKey ordering. */
+export function compareVersions(a, b) {
+  const keyA = versionSortKey(a);
+  const keyB = versionSortKey(b);
+  for (let i = 0; i < Math.max(keyA.length, keyB.length); i++) {
+    // A missing component sorts before a present one, matching Python's shorter-tuple-first rule.
+    const partA = keyA[i] ?? [-1, 0, ""];
+    const partB = keyB[i] ?? [-1, 0, ""];
+    if (partA[0] !== partB[0]) return partA[0] - partB[0];
+    if (partA[1] !== partB[1]) return partA[1] - partB[1];
+    if (partA[2] !== partB[2]) return partA[2] < partB[2] ? -1 : 1;
+  }
+  return 0;
+}
+
+/**
+ * Return the versions already built into the object-reference cache, oldest first.
+ *
+ * Directory existence *is* the version index for this repo — there is no manifest to read — so this
+ * lists `object-reference/<code>/` and filters the non-version siblings. Empty when the product has
+ * no archive directory.
+ */
+export function listArchivedVersions(productCode) {
+  const productDir = join(APIDOCS_STORAGE_PATH, productCode);
+  if (!existsSync(productDir) || !statSync(productDir).isDirectory()) return [];
+
+  return readdirSync(productDir)
+    .filter((entry) => !NON_VERSION_DIRECTORIES.has(entry) && statSync(join(productDir, entry)).isDirectory())
+    .sort(compareVersions);
+}
 
 /** Build the storage path for a product's versioned API documentation. */
 export function getApidocPath(info, versionString) {

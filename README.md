@@ -17,7 +17,8 @@ It does two things:
 | `object-reference/<code>/<version>/` | The published, committed documentation builds (the archive). |
 | `iron-products.json` | Product catalog — package type, package name / Maven coordinates, domain, and URL path per product. |
 | `scaffolds/` | DocFX templates, `docfx.<code>.json` configs, homepages, and the `tools/` toolchain (DocFX, JDK — Git LFS). |
-| `docs/` | Internal operator notes (e.g. the Windows/DocFX limitation). |
+| `docs/` | Internal operator notes (e.g. the Windows/DocFX limitation) and generated API diffs under `docs/api-diffs/`. |
+| `apidiff/` | Modules behind `diff-apidocs`, in both ports. |
 | `*.py` / `*.mjs` | The tooling, in two interchangeable ports (see below). |
 
 ## Tooling
@@ -33,6 +34,7 @@ Both versions read from the same `iron-products.json` and write to the same `obj
 | --- | --- | --- |
 | Inspect a product's version / build status | `check-apidocs.py` | `check-apidocs.mjs` |
 | Generate any missing documentation | `update-apidocs.py` | `update-apidocs.mjs` |
+| Diff the API surface between two versions | `diff-apidocs.py` | `diff-apidocs.mjs` |
 | Shared version/path helpers | `apidocs.py` | `apidocs.mjs` |
 | Colorized status output | `statuslogger.py` | `statuslogger.mjs` |
 
@@ -88,6 +90,46 @@ node update-apidocs.mjs
 > [`docs/running-generation-in-wsl.md`](docs/running-generation-in-wsl.md).
 > The version-inspection tooling (`check-apidocs`) runs fine on any platform.
 
+### `diff-apidocs` — compare two archived versions
+
+Reports what changed in a product's public API between two builds already in `object-reference/`,
+classified as breaking, additive, or cosmetic.
+
+```bash
+# Python — newest vs previous archived version
+python diff-apidocs.py -p ironzip
+# Node — an explicit pair, written out as JSON + Markdown
+node diff-apidocs.mjs -p ironzip --from 2024.1.1 --to 2026.6.2 --json --markdown
+```
+
+| Flag | Meaning |
+| --- | --- |
+| `-p, --product-code` | Product code (e.g. `ironzip`). |
+| `-n, --product-name` | Product display name (alternative to the code). |
+| `--from` / `--to` | The versions to compare. Omit both for newest-vs-previous; omit one and the newest is used for that end. |
+| `--namespace GLOB` | Only report types matching the glob; repeatable. |
+| `--exclude GLOB` | Skip types matching the glob; repeatable. |
+| `--include-internal` | Include vendored/internal namespaces (`.Internal`, `Interop`, `grpc`, `Pdfium`, `BouncyCastle`, `GrpcLayer`), which are excluded by default. |
+| `--all-visibility` | Include non-public declarations (public/protected only by default). |
+| `--json [PATH]` / `--markdown [PATH]` | Write an artifact; defaults to `docs/api-diffs/<code>/<from>..<to>.{json,md}`. |
+| `--quiet` / `--no-warnings` | Suppress the terminal report / parser warnings. |
+| `--fail-on-breaking` | Exit `2` when breaking changes are found (for release gating). |
+| `--list-versions` | List the product's archived versions and exit. |
+
+Exit codes: `0` success, `1` tool error (unknown product, missing version), `2` breaking changes
+found with `--fail-on-breaking`.
+
+This tool is **entirely offline** — it reads only the committed archive, never a package registry, so
+it needs no network and triggers no build. Two sources are combined per version: `xrefmap.yml` for
+member identity (uid, kind, parameter types) and the DocFX `api/*.html` pages for the signature
+detail xrefmap lacks (modifiers, return types, base types, default parameter values, and property
+accessors). Each declaration is located by the `data-uid` DocFX writes on its heading, which is
+byte-identical to the xrefmap uid.
+
+Because a uid encodes parameter *types*, a parameter-type change or a new overload appears as a
+removal plus an addition rather than a modification; the report notes the pairing. Only DocFX (.NET)
+products are supported — `ironpdfjava` is JavaDoc output with no xrefmap and exits with a message.
+
 ### Archetype-N API-overview enhancement
 
 After DocFX generates a .NET product's `…/object-reference/api/` pages, `update-apidocs` injects a short, task-led SEO overview into each class-reference page (prose + three meta-title/description variants + `TechArticle`/`FAQPage` JSON-LD), placed below the class summary and above the member tables, wrapped in `<!-- archetype-N:start … -->` / `<!-- archetype-N:end -->` sentinels (idempotent). This is on by default; pass `--no-enhancement` to skip it.
@@ -106,7 +148,7 @@ The per-product cache (committed, with a `_manifest.json`) makes steady-state re
 
 ## Dependencies
 
-- **Python**: `requests`, `colorama` (`pip install requests colorama`).
-- **Node.js**: `adm-zip` (`npm install`) — only needed by `update-apidocs.mjs` for nupkg extraction; `check-apidocs.mjs` and `apidocs.mjs` are dependency-free.
+- **Python**: `requests`, `colorama` (`pip install requests colorama`). `diff-apidocs.py` is stdlib-only apart from `colorama` (via `statuslogger.py`) — it does not use `requests`.
+- **Node.js**: `adm-zip` (`npm install`) — only needed by `update-apidocs.mjs` for nupkg extraction; `check-apidocs.mjs`, `diff-apidocs.mjs`, and `apidocs.mjs` are dependency-free.
 - **Generation only**: the DocFX + JDK toolchain under `scaffolds/tools/` (Git LFS), plus `mono` on Linux to run DocFX.
 - **Archetype-N enhancement**: stdlib-only (Python) / native (Node `>=18`, global `fetch`); no extra packages. An LLM API key is only needed to author pages not already in the cache.
