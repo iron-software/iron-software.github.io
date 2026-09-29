@@ -21,7 +21,7 @@ map.AddColor(new PixColor(0, 0, 0, 255));
 map.AddNewColor(new PixColor(255, 255, 255, 255), out int whiteIndex);
 ```
 
-The [replace color example](https://ironsoftware.com/csharp/ocr/examples/replace-color/) edits image colors before OCR, the [image color correction how-to](https://ironsoftware.com/csharp/ocr/how-to/image-color-correction/) covers color cleanup, and the [select text by color example](https://ironsoftware.com/csharp/ocr/examples/select-text-by-color/) matches palette colors.
+The [replace color example](https://ironsoftware.com/csharp/ocr/examples/replace-color/) edits image colors before OCR, and the [image color correction how-to](https://ironsoftware.com/csharp/ocr/how-to/image-color-correction/) covers color cleanup.
 
 ---
 

@@ -20,7 +20,7 @@ string oid = TimestampHashAlgorithms.SHA256.ToDigestAlgorithmOid();
 
 This pattern keeps signing configuration readable and avoids magic strings scattered across a codebase. The class lives entirely in the `IronPdf.Signing` namespace alongside the signing and certificate types it supports, so no additional import is needed when working with PDF signature workflows.
 
-For a broader look at PDF signing with timestamps, see the [digital signature how-to](https://ironpdf.com/how-to/digital-signature/) and the [PDF signing examples](https://ironpdf.com/examples/digitally-sign-pdf/) on the IronPDF site.
+For a broader look at PDF signing with timestamps, see the [digital signature how-to](https://ironpdf.com/how-to/digital-signature/) and the [PDF signing examples](https://ironpdf.com/examples/digitally-sign-a-pdf/) on the IronPDF site.
 
 ---
 

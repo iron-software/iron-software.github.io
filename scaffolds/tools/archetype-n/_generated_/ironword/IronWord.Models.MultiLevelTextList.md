@@ -21,7 +21,7 @@ list.AddItem(new ListItem(new Paragraph("Second")));
 document.AddMultiLevelTextList(list);
 ```
 
-The [add list example](https://ironsoftware.com/csharp/word/examples/add-list/) builds a numbered list, the [add bullet list example](https://ironsoftware.com/csharp/word/examples/add-bullet-list/) demonstrates the bulleted form, and the [document element tutorial](https://ironsoftware.com/csharp/word/tutorials/document-element/) shows how lists sit within a document.
+The [add list example](https://ironsoftware.com/csharp/word/examples/add-list/) builds a numbered list, and the [document element tutorial](https://ironsoftware.com/csharp/word/tutorials/document-element/) shows how lists sit within a document.
 
 ---
 

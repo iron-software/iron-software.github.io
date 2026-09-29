@@ -18,7 +18,7 @@ It lives in the `IronPdf.Exceptions` namespace and extends `Exception`. The runt
 
 Read the `Message` and `InnerException` properties to find the underlying cause.
 
-Consult the [unsupported features](https://ironpdf.com/troubleshooting/unsupported-features/) for common platform-specific causes.
+Consult the [troubleshooting guides](https://ironpdf.com/troubleshooting/) for common platform-specific causes.
 
 ---
 
