@@ -5,7 +5,7 @@ Target: IronXL.StreamCellType enum reference page.
 
 ## Injected overview (Markdown)
 
-`StreamCellType` identifies the kind of value held by a `StreamCell` when reading an XLSX worksheet in forward-only streaming mode. `Blank` is the default for empty cells. `Number`, `String`, and `Boolean` cover the most common data types, `Date` handles date-serial values, and `Error` flags formula errors. Check `StreamCell.CellType` against these members to branch your parsing logic safely. See the [streaming how-to](https://ironsoftware.com/csharp/excel/how-to/stream-excel-file/) for a complete walkthrough.
+`StreamCellType` identifies the kind of value held by a `StreamCell` when reading an XLSX worksheet in forward-only streaming mode. `Blank` is the default for empty cells. `Number`, `String`, and `Boolean` cover the most common data types, `Date` handles date-serial values, and `Error` flags formula errors. Check `StreamCell.CellType` against these members to branch your parsing logic safely. See the [streaming how-to](https://ironsoftware.com/excel/csharp/how-to/stream-large-excel-files/) for a complete walkthrough.
 
 ```csharp
 if (cell.CellType == StreamCellType.Number) Console.WriteLine(cell.NumericValue);

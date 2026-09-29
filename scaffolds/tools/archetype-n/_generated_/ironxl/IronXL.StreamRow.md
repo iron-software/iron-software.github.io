@@ -26,7 +26,7 @@ WorkBook.StreamXlsx("large-report.xlsx", (StreamRow row) =>
 });
 ```
 
-Explore related resources: the [IronXL getting-started guide](https://ironsoftware.com/csharp/excel/get-started/), the [streaming large Excel files how-to](https://ironsoftware.com/csharp/excel/how-to/stream-xlsx/), the [read Excel data examples](https://ironsoftware.com/csharp/excel/examples/read-excel/), and the [IronXL API docs](https://ironsoftware.com/csharp/excel/docs/).
+Explore related resources: the [IronXL getting-started guide](https://ironsoftware.com/csharp/excel/get-started/), the [streaming large Excel files how-to](https://ironsoftware.com/excel/csharp/how-to/stream-large-excel-files/), the [read Excel data examples](https://ironsoftware.com/csharp/excel/examples/read-excel/), and the [IronXL API docs](https://ironsoftware.com/csharp/excel/docs/).
 
 ---
 
