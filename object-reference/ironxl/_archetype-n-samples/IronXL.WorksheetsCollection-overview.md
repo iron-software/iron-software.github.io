@@ -24,7 +24,7 @@ WorkSheet added = workBook.WorkSheets.Create("Summary");
 workBook.SaveAs("output.xlsx");
 ```
 
-The [manage worksheets how-to](https://ironsoftware.com/csharp/excel/how-to/manage-worksheet/) walks through adding and removing sheets, the [Excel worksheets example](https://ironsoftware.com/csharp/excel/examples/excel-worksheets/) iterates a collection, and the [copy worksheet how-to](https://ironsoftware.com/csharp/excel/how-to/copy-an-excel-worksheet/) moves sheets between workbooks.
+The [manage worksheets how-to](https://ironsoftware.com/csharp/excel/how-to/manage-worksheet/) walks through adding and removing sheets, and the [copy worksheet example](https://ironsoftware.com/excel/csharp/examples/copy-an-excel-worksheet/) moves sheets between workbooks.
 
 ---
 

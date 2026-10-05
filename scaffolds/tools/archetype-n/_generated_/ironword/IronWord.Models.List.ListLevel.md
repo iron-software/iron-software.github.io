@@ -26,7 +26,7 @@ var level = new ListLevel
 };
 ```
 
-The [add list example](https://ironsoftware.com/csharp/word/examples/add-list/) builds a multi-level list, the [add bullet list example](https://ironsoftware.com/csharp/word/examples/add-bullet-list/) shows a bulleted variant, and the [document element tutorial](https://ironsoftware.com/csharp/word/tutorials/document-element/) explains how elements like this fit together.
+The [add list example](https://ironsoftware.com/csharp/word/examples/add-list/) builds a multi-level list, and the [document element tutorial](https://ironsoftware.com/csharp/word/tutorials/document-element/) explains how elements like this fit together.
 
 ---
 

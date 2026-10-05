@@ -22,7 +22,7 @@ PixColor fromPacked = PixColor.FromRgba(0xFF0000FF);
 Color shared = (Color)black;
 ```
 
-The [replace color example](https://ironsoftware.com/csharp/ocr/examples/replace-color/) edits image colors before OCR, the [select text by color example](https://ironsoftware.com/csharp/ocr/examples/select-text-by-color/) matches colors, and the [image color correction how-to](https://ironsoftware.com/csharp/ocr/how-to/image-color-correction/) covers color cleanup.
+The [replace color example](https://ironsoftware.com/csharp/ocr/examples/replace-color/) edits image colors before OCR, and the [image color correction how-to](https://ironsoftware.com/csharp/ocr/how-to/image-color-correction/) covers color cleanup.
 
 ---
 

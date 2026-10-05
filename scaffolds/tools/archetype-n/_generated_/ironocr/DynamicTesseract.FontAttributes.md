@@ -27,7 +27,7 @@ foreach (var word in result.Words)
 }
 ```
 
-For background on reading document structure with IronOCR, see the [IronOCR documentation](https://ironsoftware.com/csharp/ocr/docs/) and the [read PDF how-to](https://ironsoftware.com/csharp/ocr/how-to/read-pdf-ocr/).
+For background on reading document structure with IronOCR, see the [IronOCR documentation](https://ironsoftware.com/csharp/ocr/docs/) and the [read PDF how-to](https://ironsoftware.com/ocr/csharp/how-to/input-pdfs/).
 
 ---
 

@@ -34,7 +34,7 @@ foreach (TableObject table in result.Tables)
 string rawSlice = result.GetRawTextByPageRange(3, 7);
 ```
 
-For a broader look at PDF content extraction in IronPDF, see the [PDF extraction how-to](https://ironpdf.com/how-to/extract-text-and-tables/), the [text extraction examples](https://ironpdf.com/examples/extract-text-from-pdf/), and the [table extraction examples](https://ironpdf.com/examples/extract-tables-from-pdf/). The [IronPDF documentation hub](https://ironpdf.com/docs/) covers installation and licensing.
+For a broader look at PDF content extraction in IronPDF, see the [PDF extraction how-to](https://ironpdf.com/how-to/extract-text-and-tables/), the [text extraction examples](https://ironpdf.com/examples/extract-text-from-pdf/), and the [table extraction tutorial](https://ironpdf.com/blog/using-ironpdf/csharp-extract-table-from-pdf/). The [IronPDF documentation hub](https://ironpdf.com/docs/) covers installation and licensing.
 
 ---
 

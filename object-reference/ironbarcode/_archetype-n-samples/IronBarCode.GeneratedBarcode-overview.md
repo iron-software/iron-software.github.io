@@ -24,7 +24,7 @@ BarcodeWriter.CreateBarcode("PRODUCT-001", BarcodeEncoding.Code128)
     .SaveAsPng("labelled.png");
 ```
 
-The [create barcode images how-to](https://ironsoftware.com/csharp/barcode/how-to/create-barcode-images/) covers the save formats, the [customize barcode style how-to](https://ironsoftware.com/csharp/barcode/how-to/customize-barcode-style/) restyles a code, and the [barcode styling and annotation example](https://ironsoftware.com/csharp/barcode/examples/barcode-styling-and-annotation/) adds readable text.
+The [create barcode images how-to](https://ironsoftware.com/csharp/barcode/how-to/create-barcode-images/) covers the save formats, and the [customize barcode style how-to](https://ironsoftware.com/csharp/barcode/how-to/customize-barcode-style/) restyles a code.
 
 ---
 

@@ -14,7 +14,7 @@ You create a list item from a `Paragraph` (the text for that line) or from a `Mu
 var item = new ListItem(new Paragraph("First step"));
 ```
 
-The [add list example](https://ironsoftware.com/csharp/word/examples/add-list/) builds a list end to end, and the [add bullet list example](https://ironsoftware.com/csharp/word/examples/add-bullet-list/) shows the bulleted variant.
+The [add list example](https://ironsoftware.com/csharp/word/examples/add-list/) builds a list end to end.
 
 ---
 
