@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       StreamReadOptions Class - IronXL C# API Reference
+      v2 (human)     title:       StreamReadOptions: Stream Excel Sheets in C#
+      v1 (algorithm) description: Configure forward-only Excel streaming in C# with IronXL StreamReadOptions: set SheetIndex, SheetName, HasHeaderRow, and HeaderRowIndex for StreamRows.
+      v2 (human)     description: Use IronXL StreamReadOptions in C# to pick a worksheet and mark a header row before calling StreamRows for low-memory Excel file reading.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>StreamReadOptions Class | IronXL C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="StreamReadOptions Class | IronXL C# API Reference">
+    <meta name="description" content="Reference for IronXL StreamReadOptions in C#: configure sheet selection and header-row detection for the forward-only StreamRows read mode.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/excel/csharp/object-reference/api/IronXL.StreamReadOptions.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "StreamReadOptions Class | IronXL C# API Reference",
+    "name": "StreamReadOptions class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.StreamReadOptions.html",
+    "abstract": "Configuring a forward-only StreamRows pass through an Excel file in C# starts with a StreamReadOptions instance. Set SheetIndex or SheetName to target a worksheet, HasHeaderRow to mark that a header row is present, and HeaderRowIndex to identify which zero-based row holds the column labels. The default constructor initialises all properties to zero-value defaults, so only differing properties need assignment before passing the object to StreamRows.",
+    "description": "Reference for IronXL StreamReadOptions in C#: configure sheet selection and header-row detection for the forward-only StreamRows read mode.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nvar opts = new StreamReadOptions\n{\n    SheetName    = \"Sales\",\n    HasHeaderRow = true,\n    HeaderRowIndex = 0\n};\n\nforeach (var row in WorkBook.StreamRows(\"large-report.xlsx\", opts))\n{\n    Console.WriteLine(row[0].StringValue);\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does StreamReadOptions live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "StreamReadOptions is a class in the IronXL namespace, shipped in IronXL.dll. It derives from Object and is passed as the second argument to the WorkBook.StreamRows method to configure forward-only worksheet streaming."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you target a specific worksheet when streaming rows in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set SheetName to the worksheet's name or SheetIndex to its zero-based position on the StreamReadOptions instance before passing it to StreamRows. When both are provided, SheetName takes precedence."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronXL.StreamReadOptions">
+  
+  
+  <h1 id="IronXL_StreamReadOptions" data-uid="IronXL.StreamReadOptions" class="text-break">Class StreamReadOptions
+  </h1>
+  <div class="markdown level0 summary"><p>Options for a forward-only <a class="xref" href="IronXL.WorkBook.html#IronXL_WorkBook_StreamRows_System_String_IronXL_StreamReadOptions_">StreamRows(String, StreamReadOptions)</a> read:
+which worksheet to stream and whether the first read row is a header.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">StreamReadOptions</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronXL.html">IronXL</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="IronXL_StreamReadOptions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class StreamReadOptions : Object</code></pre>
+  </div>
+    <!-- archetype-N:start StreamReadOptions treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Controlling which worksheet to read and whether its first row is a header becomes straightforward by passing a configured <code>StreamReadOptions</code> to a forward-only <code>StreamRows</code> call. This plain options record carries four settable properties: <code>SheetIndex</code>, <code>SheetName</code>, <code>HasHeaderRow</code>, and <code>HeaderRowIndex</code>. Together they let a caller target any sheet in a workbook and tell the streaming reader exactly where column names begin, without loading the entire file into memory first.</p>
+<p><code>SheetIndex</code> and <code>SheetName</code> select the target worksheet. When both are set, <code>SheetName</code> takes precedence. <code>HasHeaderRow</code> signals that the first read row contains column labels rather than data; <code>HeaderRowIndex</code> refines that further by specifying which zero-based row index holds those labels, useful when a sheet has a title block above the real column names. The default constructor <code>StreamReadOptions()</code> initialises all properties to their zero-value defaults, so only the properties that differ from the defaults need to be assigned before passing the object to <code>StreamRows</code>.</p>
+<p>Because <code>StreamRows</code> is a forward-only, low-memory path through large files, <code>StreamReadOptions</code> is the sole configuration surface for that read mode. Keeping the options object separate from the method signature means a single configured instance can be reused across multiple files that share the same sheet layout.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+var opts = new StreamReadOptions
+{
+    SheetName    = &quot;Sales&quot;,
+    HasHeaderRow = true,
+    HeaderRowIndex = 0
+};
+
+foreach (var row in WorkBook.StreamRows(&quot;large-report.xlsx&quot;, opts))
+{
+    Console.WriteLine(row[0].StringValue);
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/get-started/">IronXL getting-started guide</a> covers installation, and the <a href="https://ironsoftware.com/csharp/excel/how-to/read-excel-file/">read Excel file how-to</a> explains broader worksheet access patterns.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronXL_StreamReadOptions__ctor_" data-uid="IronXL.StreamReadOptions.#ctor*"></a>
+  <h4 id="IronXL_StreamReadOptions__ctor" data-uid="IronXL.StreamReadOptions.#ctor">StreamReadOptions()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StreamReadOptions()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronXL_StreamReadOptions_HasHeaderRow_" data-uid="IronXL.StreamReadOptions.HasHeaderRow*"></a>
+  <h4 id="IronXL_StreamReadOptions_HasHeaderRow" data-uid="IronXL.StreamReadOptions.HasHeaderRow">HasHeaderRow</h4>
+  <div class="markdown level1 summary"><p>When true, the row at <a class="xref" href="IronXL.StreamReadOptions.html#IronXL_StreamReadOptions_HeaderRowIndex">HeaderRowIndex</a> is consumed to name columns and is not
+yielded; rows after it are the data rows.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasHeaderRow { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_StreamReadOptions_HeaderRowIndex_" data-uid="IronXL.StreamReadOptions.HeaderRowIndex*"></a>
+  <h4 id="IronXL_StreamReadOptions_HeaderRowIndex" data-uid="IronXL.StreamReadOptions.HeaderRowIndex">HeaderRowIndex</h4>
+  <div class="markdown level1 summary"><p>Zero-based sheet row that holds the header, when <a class="xref" href="IronXL.StreamReadOptions.html#IronXL_StreamReadOptions_HasHeaderRow">HasHeaderRow</a> is true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HeaderRowIndex { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_StreamReadOptions_SheetIndex_" data-uid="IronXL.StreamReadOptions.SheetIndex*"></a>
+  <h4 id="IronXL_StreamReadOptions_SheetIndex" data-uid="IronXL.StreamReadOptions.SheetIndex">SheetIndex</h4>
+  <div class="markdown level1 summary"><p>Zero-based worksheet index to stream. Ignored when <a class="xref" href="IronXL.StreamReadOptions.html#IronXL_StreamReadOptions_SheetName">SheetName</a> is set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SheetIndex { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_StreamReadOptions_SheetName_" data-uid="IronXL.StreamReadOptions.SheetName*"></a>
+  <h4 id="IronXL_StreamReadOptions_SheetName" data-uid="IronXL.StreamReadOptions.SheetName">SheetName</h4>
+  <div class="markdown level1 summary"><p>Worksheet name to stream. When non-null, takes precedence over <a class="xref" href="IronXL.StreamReadOptions.html#IronXL_StreamReadOptions_SheetIndex">SheetIndex</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SheetName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

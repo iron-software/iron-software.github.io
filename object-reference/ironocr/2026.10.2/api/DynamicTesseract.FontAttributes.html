@@ -1,0 +1,389 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       FontAttributes Class - IronOCR C# API Reference
+      v2 (human)     title:       FontAttributes: OCR Font Metadata in C#
+      v1 (algorithm) description: Access OCR font metadata in C# with IronOCR FontAttributes: FontInfo, IsUnderlined, IsSmallCaps, and PointSize for each recognized word.
+      v2 (human)     description: Use IronOCR FontAttributes in C# to read font family, underline, small caps, and point size from Tesseract OCR results word by word.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>FontAttributes Class | IronOCR C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="FontAttributes Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for IronOCR FontAttributes in C#: retrieve FontInfo, IsUnderlined, IsSmallCaps, and PointSize from Tesseract OCR word results.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/ocr/csharp/object-reference/api/DynamicTesseract.FontAttributes.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "FontAttributes Class | IronOCR C# API Reference",
+    "name": "FontAttributes class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.FontAttributes.html",
+    "abstract": "FontAttributes captures the typographic metadata Tesseract detects for each recognized word in IronOCR: a FontInfo descriptor, IsUnderlined and IsSmallCaps boolean flags, and a PointSize integer. Constructed from a FontInfo value and three decoration parameters, its four properties are read-only and suit layout analysis tasks such as identifying headings or styled text within OCR output.",
+    "description": "Reference for IronOCR FontAttributes in C#: retrieve FontInfo, IsUnderlined, IsSmallCaps, and PointSize from Tesseract OCR word results.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronOcr;\n\nvar ocr = new IronTesseract();\nusing var input = new OcrInput();\ninput.LoadPdf(\"report.pdf\");\nvar result = ocr.Read(input);\n\nforeach (var word in result.Words)\n{\n    var attr = word.FontAttributes;\n    if (attr is { PointSize: >= 14 } || attr.IsSmallCaps)\n        Console.WriteLine($\"Heading candidate: {word.Text}\");\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does FontAttributes live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FontAttributes is a class in the DynamicTesseract namespace, shipped in IronOcr.dll. It derives from Object and is surfaced on individual word results produced during an IronTesseract read operation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you access font size and style from an OCR result in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Retrieve the FontAttributes record from a recognized word result. Its PointSize property gives the estimated typographic size, IsUnderlined and IsSmallCaps report decoration flags, and FontInfo carries the font family and style data that Tesseract identified."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="DynamicTesseract.FontAttributes">
+  
+  
+  <h1 id="DynamicTesseract_FontAttributes" data-uid="DynamicTesseract.FontAttributes" class="text-break">Class FontAttributes
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">FontAttributes</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="DynamicTesseract.html">DynamicTesseract</a></h6>
+  <h6><strong>Assembly</strong>: IronOcr.dll</h6>
+  <h5 id="DynamicTesseract_FontAttributes_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class FontAttributes : Object</code></pre>
+  </div>
+    <!-- archetype-N:start FontAttributes treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Captured alongside each recognized word during OCR, <code>FontAttributes</code> bundles the typographic metadata that Tesseract detects: the underlying <code>FontInfo</code> descriptor, whether the text is underlined or set in small caps, and the rendered point size. When fine-grained layout analysis matters, such as reconstructing a document's visual hierarchy or flagging headings versus body copy, this record gives the detail needed without a separate parsing pass.</p>
+<p>Construction requires a <code>FontInfo</code> value plus the three decoration flags: <code>isUnderlined</code>, <code>isSmallCaps</code>, and <code>pointSize</code>. Once built, all four properties are read-only. <code>FontInfo</code> exposes the font family and style data that Tesseract identified. <code>IsUnderlined</code> and <code>IsSmallCaps</code> are straightforward boolean flags. <code>PointSize</code> carries the size in typographic points as Tesseract estimated it from the image geometry, so its accuracy depends on image resolution and scan quality.</p>
+<p>A typical use is filtering OCR results to locate large-point or small-caps text that signals section titles:</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronOcr;
+
+var ocr = new IronTesseract();
+using var input = new OcrInput();
+input.LoadPdf(&quot;report.pdf&quot;);
+var result = ocr.Read(input);
+
+foreach (var word in result.Words)
+{
+    var attr = word.FontAttributes;
+    if (attr is { PointSize: &gt;= 14 } || attr.IsSmallCaps)
+        Console.WriteLine($&quot;Heading candidate: {word.Text}&quot;);
+}</code></pre></div>
+<p>For background on reading document structure with IronOCR, see the <a href="https://ironsoftware.com/csharp/ocr/docs/">IronOCR documentation</a> and the <a href="https://ironsoftware.com/csharp/ocr/how-to/read-pdf-ocr/">read PDF how-to</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="DynamicTesseract_FontAttributes__ctor_" data-uid="DynamicTesseract.FontAttributes.#ctor*"></a>
+  <h4 id="DynamicTesseract_FontAttributes__ctor_DynamicTesseract_FontInfo_System_Boolean_System_Boolean_System_Int32_" data-uid="DynamicTesseract.FontAttributes.#ctor(DynamicTesseract.FontInfo,System.Boolean,System.Boolean,System.Int32)">FontAttributes(FontInfo, Boolean, Boolean, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FontAttributes(FontInfo fontInfo, bool isUnderlined, bool isSmallCaps, int pointSize)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.FontInfo.html">FontInfo</a></td>
+        <td><span class="parametername">fontInfo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isUnderlined</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isSmallCaps</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pointSize</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="DynamicTesseract_FontAttributes_FontInfo_" data-uid="DynamicTesseract.FontAttributes.FontInfo*"></a>
+  <h4 id="DynamicTesseract_FontAttributes_FontInfo" data-uid="DynamicTesseract.FontAttributes.FontInfo">FontInfo</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FontInfo FontInfo { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.FontInfo.html">FontInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_FontAttributes_IsSmallCaps_" data-uid="DynamicTesseract.FontAttributes.IsSmallCaps*"></a>
+  <h4 id="DynamicTesseract_FontAttributes_IsSmallCaps" data-uid="DynamicTesseract.FontAttributes.IsSmallCaps">IsSmallCaps</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSmallCaps { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_FontAttributes_IsUnderlined_" data-uid="DynamicTesseract.FontAttributes.IsUnderlined*"></a>
+  <h4 id="DynamicTesseract_FontAttributes_IsUnderlined" data-uid="DynamicTesseract.FontAttributes.IsUnderlined">IsUnderlined</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsUnderlined { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_FontAttributes_PointSize_" data-uid="DynamicTesseract.FontAttributes.PointSize*"></a>
+  <h4 id="DynamicTesseract_FontAttributes_PointSize" data-uid="DynamicTesseract.FontAttributes.PointSize">PointSize</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PointSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronOcr/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronOcr' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

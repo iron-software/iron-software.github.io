@@ -1,0 +1,823 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PixColor Struct - IronOCR C# API Reference
+      v2 (human)     title:       PixColor: RGBA Color for OCR in C#
+      v1 (algorithm) description: Hold an RGBA color in C# with the IronOCR PixColor struct: Red, Green, Blue, Alpha, FromRgb, FromRgba, and conversion to Color.
+      v2 (human)     description: Work with a single Leptonica color in C# using PixColor: set its RGBA channels, build from a packed value, or convert to a drawing Color.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PixColor Struct | IronOCR C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PixColor Struct | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR PixColor struct in C#: RGBA channels, FromRgb and FromRgba factories, and conversion to IronSoftware Color.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/ocr/csharp/object-reference/api/DynamicTesseract.PixColor.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PixColor Struct | IronOCR C# API Reference",
+    "name": "PixColor class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.PixColor.html",
+    "abstract": "Hold a single RGBA color in Leptonica's pixel model with PixColor in IronOCR for C#. Construct it from four channel bytes or the FromRgb and FromRgba factories, read the Red, Green, Blue, and Alpha properties, and pack them back with ToRGBA. Explicit operators convert to and from IronSoftware.Drawing.Color, and a PixColor is passed to a PixColormap when adjusting image colors.",
+    "description": "Reference for the IronOCR PixColor struct in C#: RGBA channels, FromRgb and FromRgba factories, and conversion to IronSoftware Color.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using DynamicTesseract;\nusing IronSoftware.Drawing;\n\nvar black = new PixColor(0, 0, 0, 255);\nPixColor fromPacked = PixColor.FromRgba(0xFF0000FF);\nColor shared = (Color)black;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PixColor live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PixColor is a value-type struct in the DynamicTesseract namespace, shipped in IronOcr.dll. It is declared as a struct (sealed class : ValueType in docfx) and implements IEquatable<PixColor>, so it compares by value. It represents one RGBA color in the Leptonica image layer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create a PixColor in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call the constructor with red, green, blue, and alpha bytes, as in new PixColor(0, 0, 0, 255), or use the static FromRgb and FromRgba factories to build one from a packed unsigned integer. ToRGBA packs the channels back into a single value."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you convert a PixColor to a drawing Color?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PixColor defines explicit conversion operators to and from IronSoftware.Drawing.Color, so cast a PixColor to Color, or a Color to PixColor, to move between the Leptonica color and the shared drawing color the rest of the library uses."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="DynamicTesseract.PixColor">
+  
+  
+  <h1 id="DynamicTesseract_PixColor" data-uid="DynamicTesseract.PixColor" class="text-break">Class PixColor
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">PixColor</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a>&gt;</div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="DynamicTesseract.html">DynamicTesseract</a></h6>
+  <h6><strong>Assembly</strong>: IronOcr.dll</h6>
+  <h5 id="DynamicTesseract_PixColor_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class PixColor : ValueType</code></pre>
+  </div>
+    <!-- archetype-N:start PixColor treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>A single RGBA color in Leptonica's pixel model is held by <code>PixColor</code>. It is the color value used across the low-level image layer, the entries of a <code>PixColormap</code>, the channels of a pixel, and the colors compared when selecting or replacing regions of an image. Working with it directly is rarely needed for ordinary text OCR, but it is the type that appears when code inspects or edits the colors of an image before recognition.</p>
+<p>A <code>PixColor</code> is created from its four channel bytes with <code>new PixColor(red, green, blue, alpha)</code>, or built from a packed integer through the static <code>FromRgb</code> and <code>FromRgba</code> factories. It is a value type, so copies are independent and two colors compare by value through <code>Equals</code> and the <code>==</code> and <code>!=</code> operators. Explicit conversion operators bridge to and from <code>IronSoftware.Drawing.Color</code>, so a <code>PixColor</code> can be turned into the shared drawing color the rest of the library uses, and back again.</p>
+<p>The four channel properties, <code>Red</code>, <code>Green</code>, <code>Blue</code>, and <code>Alpha</code>, expose the components for reading or matching, and <code>ToRGBA</code> packs them back into a single integer for APIs that expect the combined form. Because the struct is immutable in practice, construct a new value rather than mutating an existing one when a different color is needed. Pass a <code>PixColor</code> to a <code>PixColormap</code> to add or test palette entries when adjusting an image's colors.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using DynamicTesseract;
+using IronSoftware.Drawing;
+
+var black = new PixColor(0, 0, 0, 255);
+PixColor fromPacked = PixColor.FromRgba(0xFF0000FF);
+Color shared = (Color)black;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/examples/replace-color/">replace color example</a> edits image colors before OCR, the <a href="https://ironsoftware.com/csharp/ocr/examples/select-text-by-color/">select text by color example</a> matches colors, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/image-color-correction/">image color correction how-to</a> covers color cleanup.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="DynamicTesseract_PixColor__ctor_" data-uid="DynamicTesseract.PixColor.#ctor*"></a>
+  <h4 id="DynamicTesseract_PixColor__ctor_System_Byte_System_Byte_System_Byte_System_Byte_" data-uid="DynamicTesseract.PixColor.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)">PixColor(Byte, Byte, Byte, Byte)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PixColor(byte red, byte green, byte blue, byte alpha = 255)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><span class="parametername">red</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><span class="parametername">green</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><span class="parametername">blue</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><span class="parametername">alpha</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="DynamicTesseract_PixColor_Alpha_" data-uid="DynamicTesseract.PixColor.Alpha*"></a>
+  <h4 id="DynamicTesseract_PixColor_Alpha" data-uid="DynamicTesseract.PixColor.Alpha">Alpha</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte Alpha { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColor_Blue_" data-uid="DynamicTesseract.PixColor.Blue*"></a>
+  <h4 id="DynamicTesseract_PixColor_Blue" data-uid="DynamicTesseract.PixColor.Blue">Blue</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte Blue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColor_Green_" data-uid="DynamicTesseract.PixColor.Green*"></a>
+  <h4 id="DynamicTesseract_PixColor_Green" data-uid="DynamicTesseract.PixColor.Green">Green</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte Green { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColor_Red_" data-uid="DynamicTesseract.PixColor.Red*"></a>
+  <h4 id="DynamicTesseract_PixColor_Red" data-uid="DynamicTesseract.PixColor.Red">Red</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte Red { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="DynamicTesseract_PixColor_Equals_" data-uid="DynamicTesseract.PixColor.Equals*"></a>
+  <h4 id="DynamicTesseract_PixColor_Equals_DynamicTesseract_PixColor_" data-uid="DynamicTesseract.PixColor.Equals(DynamicTesseract.PixColor)">Equals(PixColor)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(PixColor other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColor_Equals_" data-uid="DynamicTesseract.PixColor.Equals*"></a>
+  <h4 id="DynamicTesseract_PixColor_Equals_System_Object_" data-uid="DynamicTesseract.PixColor.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColor_FromRgb_" data-uid="DynamicTesseract.PixColor.FromRgb*"></a>
+  <h4 id="DynamicTesseract_PixColor_FromRgb_System_UInt32_" data-uid="DynamicTesseract.PixColor.FromRgb(System.UInt32)">FromRgb(UInt32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PixColor FromRgb(uint value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColor_FromRgba_" data-uid="DynamicTesseract.PixColor.FromRgba*"></a>
+  <h4 id="DynamicTesseract_PixColor_FromRgba_System_UInt32_" data-uid="DynamicTesseract.PixColor.FromRgba(System.UInt32)">FromRgba(UInt32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PixColor FromRgba(uint value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColor_GetHashCode_" data-uid="DynamicTesseract.PixColor.GetHashCode*"></a>
+  <h4 id="DynamicTesseract_PixColor_GetHashCode" data-uid="DynamicTesseract.PixColor.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColor_ToRGBA_" data-uid="DynamicTesseract.PixColor.ToRGBA*"></a>
+  <h4 id="DynamicTesseract_PixColor_ToRGBA" data-uid="DynamicTesseract.PixColor.ToRGBA">ToRGBA()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint ToRGBA()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColor_ToString_" data-uid="DynamicTesseract.PixColor.ToString*"></a>
+  <h4 id="DynamicTesseract_PixColor_ToString" data-uid="DynamicTesseract.PixColor.ToString">ToString()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="operators">Operators
+  </h3>
+  
+  
+  <a id="DynamicTesseract_PixColor_op_Equality_" data-uid="DynamicTesseract.PixColor.op_Equality*"></a>
+  <h4 id="DynamicTesseract_PixColor_op_Equality_DynamicTesseract_PixColor_DynamicTesseract_PixColor_" data-uid="DynamicTesseract.PixColor.op_Equality(DynamicTesseract.PixColor,DynamicTesseract.PixColor)">Equality(PixColor, PixColor)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(PixColor lhs, PixColor rhs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td><span class="parametername">lhs</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td><span class="parametername">rhs</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColor_op_Explicit_" data-uid="DynamicTesseract.PixColor.op_Explicit*"></a>
+  <h4 id="DynamicTesseract_PixColor_op_Explicit_DynamicTesseract_PixColor__IronSoftware_Drawing_Color" data-uid="DynamicTesseract.PixColor.op_Explicit(DynamicTesseract.PixColor)~IronSoftware.Drawing.Color">Explicit(PixColor to Color)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator Color(PixColor color)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Drawing.Color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColor_op_Explicit_" data-uid="DynamicTesseract.PixColor.op_Explicit*"></a>
+  <h4 id="DynamicTesseract_PixColor_op_Explicit_IronSoftware_Drawing_Color__DynamicTesseract_PixColor" data-uid="DynamicTesseract.PixColor.op_Explicit(IronSoftware.Drawing.Color)~DynamicTesseract.PixColor">Explicit(Color to PixColor)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator PixColor(Color color)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Drawing.Color</span></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColor_op_Inequality_" data-uid="DynamicTesseract.PixColor.op_Inequality*"></a>
+  <h4 id="DynamicTesseract_PixColor_op_Inequality_DynamicTesseract_PixColor_DynamicTesseract_PixColor_" data-uid="DynamicTesseract.PixColor.op_Inequality(DynamicTesseract.PixColor,DynamicTesseract.PixColor)">Inequality(PixColor, PixColor)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(PixColor lhs, PixColor rhs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td><span class="parametername">lhs</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td><span class="parametername">rhs</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IEquatable&lt;&gt;</span>
+  </div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronOcr/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronOcr' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

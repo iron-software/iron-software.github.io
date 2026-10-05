@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       CssToken Class - IronPDF C# API Reference
+      v2 (human)     title:       CssToken: Inspect CSS Tokens in C# with IronPDF
+      v1 (algorithm) description: Reference for the IronPDF CssToken class in C#: construct a CSS token with CssTokenType and Value, then inspect or mutate it in a stylesheet pipeline.
+      v2 (human)     description: Use IronPDF's CssToken class in C# to pair a CssTokenType classification with raw text, enabling precise inspection and rewriting of CSS token streams.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>CssToken Class | IronPDF C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="CssToken Class | IronPDF C# API Reference">
+    <meta name="description" content="IronPDF CssToken class in C#: create, inspect, and mutate CSS tokens by Type and Value before they reach the PDF rendering pipeline.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/IronPdf.CssToken.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "CssToken Class | IronPDF C# API Reference",
+    "name": "CssToken class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.CssToken.html",
+    "abstract": "Precise inspection and rewriting of CSS token streams in C# is handled through the IronPDF CssToken class. Constructed with a CssTokenType and a string Value, each token exposes both properties with public getters and setters, allowing in-place mutation as a pipeline transforms stylesheet content before PDF rendering.",
+    "description": "IronPDF CssToken class in C#: create, inspect, and mutate CSS tokens by Type and Value before they reach the PDF rendering pipeline.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\nvar token = new CssToken(CssTokenType.Value, \"14px\");\nif (token.Type == CssTokenType.Value)\n    token.Value = \"16px\"; // scale up base font size before rendering"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does CssToken live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CssToken is a class in the IronPdf namespace, shipped in IronPdf.dll. It derives from Object and holds two properties: Type (a CssTokenType) and Value (a string)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create and modify a CssToken in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call the constructor CssToken(CssTokenType type, string value) to create a token. Both the Type and Value properties have public setters, so you can update either field in place as your CSS processing pipeline runs."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronPdf.CssToken">
+  
+  
+  <h1 id="IronPdf_CssToken" data-uid="IronPdf.CssToken" class="text-break">Class CssToken
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a CSS token with its type and value</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CssToken</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronPdf.html">IronPdf</a></h6>
+  <h6><strong>Assembly</strong>: IronPdf.dll</h6>
+  <h5 id="IronPdf_CssToken_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CssToken : Object</code></pre>
+  </div>
+    <!-- archetype-N:start CssToken treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Parsing and inspecting CSS at a granular level becomes straightforward when each piece of a stylesheet is represented as a <code>CssToken</code>, a record pairing a classification with its raw text. Each token carries a <code>Type</code> property of kind <code>CssTokenType</code> that identifies the role the token plays (selector, property name, value, delimiter, and so on) alongside a <code>Value</code> string that holds the exact text extracted from the source. Together these two properties let downstream code branch on token kind and act on the literal content without re-parsing the stylesheet.</p>
+<p>Construct a token directly with <code>CssToken(CssTokenType type, string value)</code> when building a token stream by hand, for example when writing a CSS pre-processor or injecting synthetic rules before IronPDF renders a document. Both <code>Type</code> and <code>Value</code> expose public setters, so a token can be mutated in place as a pipeline transforms it, rather than requiring a new allocation for every edit.</p>
+<p><code>CssToken</code> sits at the low level of IronPDF's CSS handling. Higher-level rendering options such as custom stylesheets and media-type overrides are configured through the main rendering API, but <code>CssToken</code> gives precise access to the token stream for tooling that needs to inspect or rewrite CSS before it reaches the renderer.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+var token = new CssToken(CssTokenType.Value, &quot;14px&quot;);
+if (token.Type == CssTokenType.Value)
+    token.Value = &quot;16px&quot;; // scale up base font size before rendering</code></pre></div>
+<p>See the <a href="https://ironpdf.com/docs/">IronPDF documentation hub</a> for an overview of the rendering pipeline, and the <a href="https://ironpdf.com/how-to/custom-css/">custom CSS how-to</a> for practical examples of injecting styles into a PDF render job.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronPdf_CssToken__ctor_" data-uid="IronPdf.CssToken.#ctor*"></a>
+  <h4 id="IronPdf_CssToken__ctor_IronPdf_CssTokenType_System_String_" data-uid="IronPdf.CssToken.#ctor(IronPdf.CssTokenType,System.String)">CssToken(CssTokenType, String)</h4>
+  <div class="markdown level1 summary"><p>Creates a new CSS token</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CssToken(CssTokenType type, string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPdf.CssTokenType.html">CssTokenType</a></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>Token type</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Token value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronPdf_CssToken_Type_" data-uid="IronPdf.CssToken.Type*"></a>
+  <h4 id="IronPdf_CssToken_Type" data-uid="IronPdf.CssToken.Type">Type</h4>
+  <div class="markdown level1 summary"><p>Type of the CSS token (declaration, comment, delimiter, etc.)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CssTokenType Type { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPdf.CssTokenType.html">CssTokenType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPdf_CssToken_Value_" data-uid="IronPdf.CssToken.Value*"></a>
+  <h4 id="IronPdf_CssToken_Value" data-uid="IronPdf.CssToken.Value">Value</h4>
+  <div class="markdown level1 summary"><p>The actual string value of the token</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Value { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

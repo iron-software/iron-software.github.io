@@ -1,0 +1,473 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ContentElement Class - IronWord C# API
+      v2 (human)     title:       ContentElement: The Word Content Model Base in C#
+      v1 (algorithm) description: ContentElement is the base for every IronWord document node in C#: paragraphs, tables, images, and shapes share its Parent, Status, Clone, and Remove members.
+      v2 (human)     description: Work with any Word document node in C# through IronWord's ContentElement base: every element shares Remove, Replace, Clone, and a Parent link.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ContentElement Class | IronWord C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ContentElement Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord ContentElement class in C#: the abstract base behind paragraphs, tables, images, and shapes, with shared editing members.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/word/csharp/object-reference/api/IronWord.Models.Abstract.ContentElement.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ContentElement Class | IronWord C# API",
+    "name": "ContentElement class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Abstract.ContentElement.html",
+    "abstract": "Treating every piece of content in an IronWord document through one shared shape in C# is what the ContentElement base class enables. Paragraphs, runs, tables, images, shapes, and charts are all content elements, which is why they share a Parent link, a Status flag, and the editing members Remove, Replace, Clone, and GetIndex. ParentElement and TextContentElement extend it to add child-holding and text behavior.",
+    "description": "Reference for the IronWord ContentElement class in C#: the abstract base behind paragraphs, tables, images, and shapes, with shared editing members.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord;\nusing IronWord.Models;\n\nWordDocument doc = new WordDocument(\"input.docx\");\nforeach (Paragraph paragraph in doc.Paragraphs)\n    paragraph.Remove();\ndoc.Save(\"trimmed.docx\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ContentElement live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ContentElement is an abstract class in the IronWord.Models.Abstract namespace, shipped in IronWord.dll. It derives from System.Object and is the base for document nodes such as Break, Chart, Image, Shape, TextContent, ParentElement, and TextContentElement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you remove or replace an element in a Word document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every element inherits Remove and Replace from ContentElement. Call Remove to detach a node from its parent, or Replace to swap in a new child at the same position. Use Clone to copy an element before placing it elsewhere."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ContentElement and ParentElement?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ContentElement is the base every document node shares. ParentElement extends it for nodes that hold children, adding Children, AddChild, and related members. A plain ContentElement such as Break or Image carries no child collection."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronWord.Models.Abstract.ContentElement">
+  
+  
+  <h1 id="IronWord_Models_Abstract_ContentElement" data-uid="IronWord.Models.Abstract.ContentElement" class="text-break">Class ContentElement
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a base class for all content elements in the content model.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ContentElement</span></div>
+      <div class="level2"><a class="xref" href="IronWord.Models.Abstract.ParentElement.html">ParentElement</a></div>
+      <div class="level2"><a class="xref" href="IronWord.Models.Break.html">Break</a></div>
+      <div class="level2"><a class="xref" href="IronWord.Models.Chart.html">Chart</a></div>
+      <div class="level2"><a class="xref" href="IronWord.Models.ImageContent.html">ImageContent</a></div>
+      <div class="level2"><a class="xref" href="IronWord.Models.List.ListLevel.html">ListLevel</a></div>
+      <div class="level2"><a class="xref" href="IronWord.Models.ShapeContent.html">ShapeContent</a></div>
+      <div class="level2"><a class="xref" href="IronWord.Models.TextContent.html">TextContent</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObject</span></div>
+    <div><span class="xref">IronSoftware.Abstractions.IDocumentObject</span></div>
+    <div><span class="xref">System.ICloneable</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronWord.Models.Abstract.html">IronWord.Models.Abstract</a></h6>
+  <h6><strong>Assembly</strong>: IronWord.dll</h6>
+  <h5 id="IronWord_Models_Abstract_ContentElement_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class ContentElement : Object</code></pre>
+  </div>
+    <!-- archetype-N:start ContentElement treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Working with any piece of content in an IronWord document through one shared shape in C# is what <code>ContentElement</code> makes possible. A paragraph, a run, a table, an image, a shape, and a chart are all content elements, so this base is what lets the library treat the body of a document as one uniform tree of nodes that can be located, moved, and replaced. You rarely name <code>ContentElement</code> directly in everyday code, but understanding it explains why elements share the same handful of positioning operations.</p>
+<p>Concrete elements such as <code>Break</code>, <code>Chart</code>, <code>Image</code>, <code>ImageContent</code>, <code>Shape</code>, <code>ShapeContent</code>, and <code>TextContent</code> derive from it, and so do the parent-side bases <code>ParentElement</code> and <code>TextContentElement</code>. Once an element has been added to a document it gains a <code>Parent</code>, which points at the <code>ParentElement</code> that holds it, so a node always knows where it sits in the tree. The <code>Status</code> property records whether the element is new, updated, or unchanged, which the save pipeline reads when it writes the file back.</p>
+<p>The members that matter day to day are the editing operations every element inherits. <code>Remove</code> detaches the element from its parent, <code>Replace</code> swaps in a new child at the same position, and <code>Clone</code> returns a deep copy you can place elsewhere. <code>GetIndex&lt;T&gt;</code> reports where the element falls among siblings of its own type. Because these live on the base, the same call works whether you hold an image, a paragraph, or a table, which keeps editing logic short.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord;
+using IronWord.Models;
+
+WordDocument doc = new WordDocument(&quot;input.docx&quot;);
+foreach (Paragraph paragraph in doc.Paragraphs)
+    paragraph.Remove();
+doc.Save(&quot;trimmed.docx&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/edit-text/">edit text how-to</a> walks through changing element content, the <a href="https://ironsoftware.com/csharp/word/how-to/remove-text/">remove text how-to</a> shows detaching nodes, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> maps the whole tree.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronWord_Models_Abstract_ContentElement__ctor_" data-uid="IronWord.Models.Abstract.ContentElement.#ctor*"></a>
+  <h4 id="IronWord_Models_Abstract_ContentElement__ctor" data-uid="IronWord.Models.Abstract.ContentElement.#ctor">ContentElement()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the ContentElement class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ContentElement()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronWord_Models_Abstract_ContentElement_Parent_" data-uid="IronWord.Models.Abstract.ContentElement.Parent*"></a>
+  <h4 id="IronWord_Models_Abstract_ContentElement_Parent" data-uid="IronWord.Models.Abstract.ContentElement.Parent">Parent</h4>
+  <div class="markdown level1 summary"><p>Gets the parent element of this element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ParentElement Parent { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Abstract.ParentElement.html">ParentElement</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Abstract_ContentElement_Status_" data-uid="IronWord.Models.Abstract.ContentElement.Status*"></a>
+  <h4 id="IronWord_Models_Abstract_ContentElement_Status" data-uid="IronWord.Models.Abstract.ContentElement.Status">Status</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the status of the element, indicating whether it is new, updated, or deleted.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ElementStatus Status { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.Word.ElementStatus</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronWord_Models_Abstract_ContentElement_Clone_" data-uid="IronWord.Models.Abstract.ContentElement.Clone*"></a>
+  <h4 id="IronWord_Models_Abstract_ContentElement_Clone" data-uid="IronWord.Models.Abstract.ContentElement.Clone">Clone()</h4>
+  <div class="markdown level1 summary"><p>Creates a copy of the ContentElement.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual object Clone()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><p>A new instance of the Shape with all properties copied.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Abstract_ContentElement_CloneObject_" data-uid="IronWord.Models.Abstract.ContentElement.CloneObject*"></a>
+  <h4 id="IronWord_Models_Abstract_ContentElement_CloneObject" data-uid="IronWord.Models.Abstract.ContentElement.CloneObject">CloneObject()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual object CloneObject()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Abstract_ContentElement_GetIndex_" data-uid="IronWord.Models.Abstract.ContentElement.GetIndex*"></a>
+  <h4 id="IronWord_Models_Abstract_ContentElement_GetIndex__1" data-uid="IronWord.Models.Abstract.ContentElement.GetIndex``1">GetIndex&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>Gets the index of this element within its parent's list of child elements of the same type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int GetIndex&lt;T&gt;()
+    where T : ContentElement</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The index of this element, or 0 if it has no parent.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the element and its siblings.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Abstract_ContentElement_Remove_" data-uid="IronWord.Models.Abstract.ContentElement.Remove*"></a>
+  <h4 id="IronWord_Models_Abstract_ContentElement_Remove" data-uid="IronWord.Models.Abstract.ContentElement.Remove">Remove()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Remove()</code></pre>
+  </div>
+  
+  
+  <a id="IronWord_Models_Abstract_ContentElement_Replace_" data-uid="IronWord.Models.Abstract.ContentElement.Replace*"></a>
+  <h4 id="IronWord_Models_Abstract_ContentElement_Replace_IronSoftware_Abstractions_Word_IWordDocumentObject_" data-uid="IronWord.Models.Abstract.ContentElement.Replace(IronSoftware.Abstractions.Word.IWordDocumentObject)">Replace(IWordDocumentObject)</h4>
+  <div class="markdown level1 summary"><p>Replaces the current element with a new child element into same position within parent.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Replace(IWordDocumentObject newChild)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObject</span></td>
+        <td><span class="parametername">newChild</span></td>
+        <td><p>The new child element to replace the current element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObject</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.IDocumentObject</span>
+  </div>
+  <div>
+      <span class="xref">System.ICloneable</span>
+  </div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronWord/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with NuGet
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronWord' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

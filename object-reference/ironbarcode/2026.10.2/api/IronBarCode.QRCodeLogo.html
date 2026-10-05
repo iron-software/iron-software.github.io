@@ -1,0 +1,805 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       QRCodeLogo Class - IronBarcode C# API
+      v2 (human)     title:       QRCodeLogo: Add a Logo to a QR Code in C#
+      v1 (algorithm) description: Embed a logo in a QR code in C# with the IronBarcode QRCodeLogo class: set the bitmap, width, height, and corner radius for CreateQrCodeWithLogo.
+      v2 (human)     description: Add a brand mark to a QR code in C# with the IronBarcode QRCodeLogo class: size and round a center logo, then pass it to QRCodeWriter.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>QRCodeLogo | IronBarcode C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="QRCodeLogo | IronBarcode C# API Reference">
+    <meta name="description" content="Reference for the IronBarcode QRCodeLogo class in C#: a center logo with bitmap, width, height, and corner radius for CreateQrCodeWithLogo.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/barcode/csharp/object-reference/api/IronBarCode.QRCodeLogo.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "QRCodeLogo | IronBarcode C# API Reference",
+    "name": "QRCodeLogo class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.QRCodeLogo.html",
+    "abstract": "QRCodeLogo describes an image embedded in the center of a QR code in C#, passed to IronBarcode's QRCodeWriter.CreateQrCodeWithLogo. Build it from an AnyBitmap, byte array, stream, file path, or Uri with a size or explicit width and height plus an optional roundedCornerRadius, all exposed through the Logo, LogoWidth, LogoHeight, and RoundedCornerRadius properties. Keep the mark small so the code still scans.",
+    "description": "Reference for the IronBarcode QRCodeLogo class in C#: a center logo with bitmap, width, height, and corner radius for CreateQrCodeWithLogo.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\nusing IronSoftware.Drawing;\n\nvar logo = new QRCodeLogo(AnyBitmap.FromFile(\"logo.png\"), 100, 100, 5);\nQRCodeWriter.CreateQrCodeWithLogo(\"https://ironsoftware.com\", logo).SaveAsPng(\"branded-qr.png\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does QRCodeLogo live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "QRCodeLogo is a class in the IronBarCode namespace, shipped in IronBarCode.dll. Build a QRCodeLogo and pass it to QRCodeWriter.CreateQrCodeWithLogo to embed an image in the center of a generated QR code."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add a logo to a QR code in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct a QRCodeLogo from your image with a width and height, then pass it to QRCodeWriter.CreateQrCodeWithLogo along with the value to encode. Set RoundedCornerRadius for softer corners, and keep the logo small so the covered modules can still be recovered."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you stop a logo from breaking a QR code in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Size the QRCodeLogo conservatively with LogoWidth and LogoHeight so it covers little of the symbol, and rely on the high error correction CreateQrCodeWithLogo applies. Test a scan before shipping, since a logo that fills too much of the code defeats recovery."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronBarCode.QRCodeLogo">
+  
+  
+  <h1 id="IronBarCode_QRCodeLogo" data-uid="IronBarCode.QRCodeLogo" class="text-break">Class QRCodeLogo
+  </h1>
+  <div class="markdown level0 summary"><p>A class allowing for advanced control on the logo of QR type barcodes.</p>
+<p><a class="xref" href="IronBarCode.QRCodeLogo.html">QRCodeLogo</a> gives the developer access to set logo image, logo width, logo height, and rounded logo corner.</p><p>Logo image can be provide as <span class="xref">IronSoftware.Drawing.AnyBitmap</span>, Files, Array of <span class="xref">System.Byte</span> and <span class="xref">System.IO.Stream</span>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">QRCodeLogo</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronBarCode.html">IronBarCode</a></h6>
+  <h6><strong>Assembly</strong>: IronBarCode.dll</h6>
+  <h5 id="IronBarCode_QRCodeLogo_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class QRCodeLogo : Object</code></pre>
+  </div>
+    <!-- archetype-N:start QRCodeLogo treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>An image embedded in the center of a QR code, with control over its size and corner rounding, is described by <code>QRCodeLogo</code>. It is passed to <code>QRCodeWriter.CreateQrCodeWithLogo</code>, so a brand mark is placed on the code at the moment it is generated. Build one from the logo image and the dimensions it should occupy, then hand it to the writer alongside the value being encoded.</p>
+<p>The constructor is overloaded across the ways a developer might supply the artwork: an <code>AnyBitmap</code>, a <code>byte[]</code>, a <code>Stream</code>, a file path <code>string</code>, or a <code>Uri</code>. Each form takes either a single <code>size</code> or an explicit <code>width</code> and <code>height</code>, plus an optional <code>roundedCornerRadius</code>. The same values are readable and settable afterward through the <code>Logo</code>, <code>LogoWidth</code>, <code>LogoHeight</code>, and <code>RoundedCornerRadius</code> properties, so a logo built one way can be adjusted before the code is written.</p>
+<p><code>LogoWidth</code> and <code>LogoHeight</code> size the mark within the symbol, and <code>RoundedCornerRadius</code> softens its corners for a more finished placement. The <code>Logo</code> property holds the <code>AnyBitmap</code> source itself, which lets a developer swap the artwork without rebuilding the object. Keep the mark modest relative to the overall code: a logo covers part of the pattern, so a small, centered image leaves enough of the symbol intact to scan.</p>
+<p>Because the covered modules cannot be read directly, pair a logo with a high error-correction level. <code>CreateQrCodeWithLogo</code> builds in headroom for this, but a logo that fills too much of the code will still defeat recovery, so size it conservatively and test a scan before shipping. For QR codes without a logo, or for non-QR symbologies, use <code>QRCodeWriter.CreateQrCode</code> or <code>BarcodeWriter.CreateBarcode</code> instead.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+using IronSoftware.Drawing;
+
+var logo = new QRCodeLogo(AnyBitmap.FromFile(&quot;logo.png&quot;), 100, 100, 5);
+QRCodeWriter.CreateQrCodeWithLogo(&quot;https://ironsoftware.com&quot;, logo).SaveAsPng(&quot;branded-qr.png&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/customize-qr-code-style/">customize QR code style how-to</a> embeds and sizes a logo, the <a href="https://ironsoftware.com/csharp/barcode/examples/csharp-custom-qr-code/">custom QR code example</a> shows it within a styled code, and the <a href="https://ironsoftware.com/csharp/barcode/tutorials/csharp-qr-code-generator/">QR code generator tutorial</a> builds a complete branded generator.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronBarCode_QRCodeLogo__ctor_" data-uid="IronBarCode.QRCodeLogo.#ctor*"></a>
+  <h4 id="IronBarCode_QRCodeLogo__ctor" data-uid="IronBarCode.QRCodeLogo.#ctor">QRCodeLogo()</h4>
+  <div class="markdown level1 summary"><p>Creates a Logo to stamp onto a QR code. File formats acceptable include: Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QRCodeLogo()</code></pre>
+  </div>
+  
+  
+  <a id="IronBarCode_QRCodeLogo__ctor_" data-uid="IronBarCode.QRCodeLogo.#ctor*"></a>
+  <h4 id="IronBarCode_QRCodeLogo__ctor_IronSoftware_Drawing_AnyBitmap_System_Int32_System_Int32_System_Single_" data-uid="IronBarCode.QRCodeLogo.#ctor(IronSoftware.Drawing.AnyBitmap,System.Int32,System.Int32,System.Single)">QRCodeLogo(AnyBitmap, Int32, Int32, Single)</h4>
+  <div class="markdown level1 summary"><p>Creates a Logo to stamp onto a QR code. File formats acceptable include: Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QRCodeLogo(AnyBitmap logoImage, int width, int height, float roundedCornerRadius = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Drawing.AnyBitmap</span></td>
+        <td><span class="parametername">logoImage</span></td>
+        <td><p>The logo image as a <span class="xref">IronSoftware.Drawing.AnyBitmap</span>. Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width of the logo image in pixels. Use the default value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height of the logo image in pixels. Use the default value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">roundedCornerRadius</span></td>
+        <td><p>The radius of the rounded corner of the logo image. Use the default value 0 (zero) for square corners.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeLogo__ctor_" data-uid="IronBarCode.QRCodeLogo.#ctor*"></a>
+  <h4 id="IronBarCode_QRCodeLogo__ctor_IronSoftware_Drawing_AnyBitmap_System_Int32_System_Single_" data-uid="IronBarCode.QRCodeLogo.#ctor(IronSoftware.Drawing.AnyBitmap,System.Int32,System.Single)">QRCodeLogo(AnyBitmap, Int32, Single)</h4>
+  <div class="markdown level1 summary"><p>Creates a Logo to stamp onto a QR code. File formats acceptable include: Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QRCodeLogo(AnyBitmap logoImage, int size = 0, float roundedCornerRadius = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Drawing.AnyBitmap</span></td>
+        <td><span class="parametername">logoImage</span></td>
+        <td><p>The logo image as a <span class="xref">IronSoftware.Drawing.AnyBitmap</span>. Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The desired width and height of the logo image in pixels. If this image is too large for the QR to be readable and exception will be thrown. Use the value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">roundedCornerRadius</span></td>
+        <td><p>The radius of the rounded corner of the logo image. Use the default value 0 (zero) for square corners.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeLogo__ctor_" data-uid="IronBarCode.QRCodeLogo.#ctor*"></a>
+  <h4 id="IronBarCode_QRCodeLogo__ctor_System_Byte___System_Int32_System_Int32_System_Single_" data-uid="IronBarCode.QRCodeLogo.#ctor(System.Byte[],System.Int32,System.Int32,System.Single)">QRCodeLogo(Byte[], Int32, Int32, Single)</h4>
+  <div class="markdown level1 summary"><p>Creates a Logo to stamp onto a QR code. File formats acceptable include: Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QRCodeLogo(byte[] bytes, int width, int height, float roundedCornerRadius = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">bytes</span></td>
+        <td><p>The logo image as a array of <span class="xref">System.Byte</span>. Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width of the logo image in pixels. Use the default value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height of the logo image in pixels. Use the default value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">roundedCornerRadius</span></td>
+        <td><p>The radius of the rounded corner of the logo image. Use the default value 0 (zero) for square corners.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeLogo__ctor_" data-uid="IronBarCode.QRCodeLogo.#ctor*"></a>
+  <h4 id="IronBarCode_QRCodeLogo__ctor_System_Byte___System_Int32_System_Single_" data-uid="IronBarCode.QRCodeLogo.#ctor(System.Byte[],System.Int32,System.Single)">QRCodeLogo(Byte[], Int32, Single)</h4>
+  <div class="markdown level1 summary"><p>Creates a Logo to stamp onto a QR code. File formats acceptable include: Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QRCodeLogo(byte[] bytes, int size, float roundedCornerRadius = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">bytes</span></td>
+        <td><p>The logo image as a array of <span class="xref">System.Byte</span>. Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The desired width and height of the logo image in pixels. If this image is too large for the QR to be readable and exception will be thrown. Use the value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">roundedCornerRadius</span></td>
+        <td><p>The radius of the rounded corner of the logo image. Use the default value 0 (zero) for square corners.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeLogo__ctor_" data-uid="IronBarCode.QRCodeLogo.#ctor*"></a>
+  <h4 id="IronBarCode_QRCodeLogo__ctor_System_IO_Stream_System_Int32_System_Int32_System_Single_" data-uid="IronBarCode.QRCodeLogo.#ctor(System.IO.Stream,System.Int32,System.Int32,System.Single)">QRCodeLogo(Stream, Int32, Int32, Single)</h4>
+  <div class="markdown level1 summary"><p>Creates a Logo to stamp onto a QR code.  File formats acceptable include: Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QRCodeLogo(Stream stream, int width, int height, float roundedCornerRadius = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The logo image as a <span class="xref">System.IO.Stream</span>. Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width of the logo image in pixels. Use the default value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height of the logo image in pixels. Use the default value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">roundedCornerRadius</span></td>
+        <td><p>The radius of the rounded corner of the logo image. Use the default value 0 (zero) for square corners.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeLogo__ctor_" data-uid="IronBarCode.QRCodeLogo.#ctor*"></a>
+  <h4 id="IronBarCode_QRCodeLogo__ctor_System_IO_Stream_System_Int32_System_Single_" data-uid="IronBarCode.QRCodeLogo.#ctor(System.IO.Stream,System.Int32,System.Single)">QRCodeLogo(Stream, Int32, Single)</h4>
+  <div class="markdown level1 summary"><p>Creates a Logo to stamp onto a QR code. File formats acceptable include: Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QRCodeLogo(Stream stream, int size = 0, float roundedCornerRadius = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The logo image as a <span class="xref">IronSoftware.Drawing.AnyBitmap</span>. Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The desired width and height of the logo image in pixels. If this image is too large for the QR to be readable and exception will be thrown. Use the value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">roundedCornerRadius</span></td>
+        <td><p>The radius of the rounded corner of the logo image. Use the default value 0 (zero) for square corners.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeLogo__ctor_" data-uid="IronBarCode.QRCodeLogo.#ctor*"></a>
+  <h4 id="IronBarCode_QRCodeLogo__ctor_System_String_System_Int32_System_Int32_System_Single_" data-uid="IronBarCode.QRCodeLogo.#ctor(System.String,System.Int32,System.Int32,System.Single)">QRCodeLogo(String, Int32, Int32, Single)</h4>
+  <div class="markdown level1 summary"><p>Creates a Logo to stamp onto a QR code. File formats acceptable include: Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QRCodeLogo(string filepath, int width, int height, float roundedCornerRadius = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filepath</span></td>
+        <td><p>The logo image as a full or relative filepath. Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width of the logo image in pixels. Use the default value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height of the logo image in pixels. Use the default value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">roundedCornerRadius</span></td>
+        <td><p>The radius of the rounded corner of the logo image. Use the default value 0 (zero) for square corners.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeLogo__ctor_" data-uid="IronBarCode.QRCodeLogo.#ctor*"></a>
+  <h4 id="IronBarCode_QRCodeLogo__ctor_System_String_System_Int32_System_Single_" data-uid="IronBarCode.QRCodeLogo.#ctor(System.String,System.Int32,System.Single)">QRCodeLogo(String, Int32, Single)</h4>
+  <div class="markdown level1 summary"><p>Creates a Logo to stamp onto a QR code. File formats acceptable include: Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QRCodeLogo(string filepath, int size = 0, float roundedCornerRadius = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filepath</span></td>
+        <td><p>The logo image as a full or relative filepath. Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The desired width and height of the logo image in pixels. If this image is too large for the QR to be readable and exception will be thrown. Use the value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">roundedCornerRadius</span></td>
+        <td><p>The radius of the rounded corner of the logo image. Use the default value 0 (zero) for square corners.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeLogo__ctor_" data-uid="IronBarCode.QRCodeLogo.#ctor*"></a>
+  <h4 id="IronBarCode_QRCodeLogo__ctor_System_Uri_System_Int32_System_Int32_System_Single_" data-uid="IronBarCode.QRCodeLogo.#ctor(System.Uri,System.Int32,System.Int32,System.Single)">QRCodeLogo(Uri, Int32, Int32, Single)</h4>
+  <div class="markdown level1 summary"><p>Creates a Logo to stamp onto a QR code. File formats acceptable include: Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QRCodeLogo(Uri URI, int width, int height, float roundedCornerRadius = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">URI</span></td>
+        <td><p>The logo image as a <span class="xref">System.Uri</span>. Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width of the logo image in pixels. Use the default value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height of the logo image in pixels. Use the default value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">roundedCornerRadius</span></td>
+        <td><p>The radius of the rounded corner of the logo image. Use the default value 0 (zero) for square corners.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeLogo__ctor_" data-uid="IronBarCode.QRCodeLogo.#ctor*"></a>
+  <h4 id="IronBarCode_QRCodeLogo__ctor_System_Uri_System_Int32_System_Single_" data-uid="IronBarCode.QRCodeLogo.#ctor(System.Uri,System.Int32,System.Single)">QRCodeLogo(Uri, Int32, Single)</h4>
+  <div class="markdown level1 summary"><p>Creates a Logo to stamp onto a QR code. File formats acceptable include: Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QRCodeLogo(Uri URI, int size = 0, float roundedCornerRadius = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">URI</span></td>
+        <td><p>The logo image as a <span class="xref">System.Uri</span>. Jpeg, Jpeg2000, Png, Bmp, Tiff &amp; Gif Image formats are supported.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The desired width and height of the logo image in pixels. If this image is too large for the QR to be readable and exception will be thrown. Use the value 0 (zero) to automatically find the largest viable size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">roundedCornerRadius</span></td>
+        <td><p>The radius of the rounded corner of the logo image. Use the default value 0 (zero) for square corners.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronBarCode_QRCodeLogo_Logo_" data-uid="IronBarCode.QRCodeLogo.Logo*"></a>
+  <h4 id="IronBarCode_QRCodeLogo_Logo" data-uid="IronBarCode.QRCodeLogo.Logo">Logo</h4>
+  <div class="markdown level1 summary"><p>Image Logo to stamp onto a QR code as a <span class="xref">IronSoftware.Drawing.AnyBitmap</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnyBitmap Logo { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Drawing.AnyBitmap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeLogo_LogoHeight_" data-uid="IronBarCode.QRCodeLogo.LogoHeight*"></a>
+  <h4 id="IronBarCode_QRCodeLogo_LogoHeight" data-uid="IronBarCode.QRCodeLogo.LogoHeight">LogoHeight</h4>
+  <div class="markdown level1 summary"><p>Desired height of Logo in px. If zero (default) IronBarcode will automatically maximize the size of your logo for you.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LogoHeight { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeLogo_LogoWidth_" data-uid="IronBarCode.QRCodeLogo.LogoWidth*"></a>
+  <h4 id="IronBarCode_QRCodeLogo_LogoWidth" data-uid="IronBarCode.QRCodeLogo.LogoWidth">LogoWidth</h4>
+  <div class="markdown level1 summary"><p>Desired width of Logo in px. If zero (default) IronBarcode will automatically maximize the size of your logo for you.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LogoWidth { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeLogo_RoundedCornerRadius_" data-uid="IronBarCode.QRCodeLogo.RoundedCornerRadius*"></a>
+  <h4 id="IronBarCode_QRCodeLogo_RoundedCornerRadius" data-uid="IronBarCode.QRCodeLogo.RoundedCornerRadius">RoundedCornerRadius</h4>
+  <div class="markdown level1 summary"><p>Desired rounding of Logo corners for design purposes. If zero (default) IronBarcode not round the corners of your logo.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RoundedCornerRadius { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/BarCode/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/BarCode' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

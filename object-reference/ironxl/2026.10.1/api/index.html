@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IronXL - The Excel Library for .Net | C# Excel API | IronXL </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IronXL - The Excel Library for .Net | C# Excel API | IronXL ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/excel/csharp/object-reference/api/index.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="ironxl---the-excel-library-for-net">IronXL - The Excel Library for .Net</h1>
+
+<p>IronXL is a powerful .NET Excel library that enables developers to read, generate, and edit Excel files (XLS, XLSX) without relying on Microsoft.Office.Interop.Excel.</p>
+<p>With IronXL, developers can seamlessly read, modify, and create spreadsheets in .NET applications and websites, offering a fast and intuitive approach to working with Excel files in C#.</p>
+<p>Quickstart Guide: <a href="https://ironsoftware.com/csharp/excel/">https://ironsoftware.com/csharp/excel/</a> <br>
+Nuget Package : <a href="https://www.nuget.org/packages/IronXL.Excel/">https://www.nuget.org/packages/IronXL.Excel/</a></p>
+<h1 id="key-library-features">Key Library Features</h1>
+<ul>
+<li>Intuitive C# &amp; VB.NET Excel Spreadsheet API</li>
+<li>No need to install MS Office or Excel Interop</li>
+<li>Read, edit, and create Excel spreadsheet files</li>
+<li>Fully supports .NET Core, .NET Framework, and Azure</li>
+<li>Import data from XLS, XLSX, CSV, TSV</li>
+<li>Export worksheets to XLS, XLSX, CSV, TSV, JSON</li>
+<li>Work with spreadsheets as System.Data.DataSet and System.Data.DataTable objects</li>
+<li>Excel formulas are recalculated every time a sheet is edited</li>
+<li>Intuitive range setting using <code>WorkSheet[&quot;A1:B10&quot;]</code> syntax.</li>
+<li>Sort ranges, columns, and rows</li>
+<li>Style cells – font, size, background pattern, border, alignment, and number formats</li>
+</ul>
+<h1 id="compatibility">Compatibility</h1>
+<p>IronXL works well in C#, VB.NET, MVC, ASP.NET projects for Websites, Console &amp; Desktop APPs.</p>
+<p>Works with:</p>
+<ul>
+<li>.NET 9, .NET 8, .NET 7, .NET 6, .NET 5, and .NET Core, Standard, and Framework 4.6.2+</li>
+<li>Windows, macOS, Linux, Docker, Azure, and AWS</li>
+<li>Console, Desktop, and Web Apps. MVC, Blazor, MAUI, Razor Pages, Web Forms</li>
+</ul>
+<p>Does NOT require Excel or MS office to be installed.</p>
+<h1 id="c-excel-code-example">C# Excel Code Example</h1>
+<pre><code class="lang-csharp">using IronXL;
+  
+// Create new Excel WorkBook document
+// The default file format is XLSX, but we can override that for legacy support
+WorkBook workbook = WorkBook.Create(ExcelFileFormat.XLS);
+workbook.Metadata.Author = &quot;IronXL&quot;;
+
+// Add a blank WorkSheet
+WorkSheet worksheet = workbook.CreateWorkSheet(&quot;new_sheet&quot;);
+// Add data and styles to the new worksheet
+
+worksheet[&quot;A1&quot;].Value = &quot;Hello World&quot;;
+worksheet[&quot;A2&quot;].Style.BottomBorder.SetColor(&quot;#ff6600&quot;);
+worksheet[&quot;A2&quot;].Style.BottomBorder.Type = IronXL.Styles.BorderType.Double;
+
+// Save the excel file
+workbook.SaveAs(&quot;NewExcelFile.xls&quot;);
+</code></pre>
+<h1 id="further-documentation">Further Documentation</h1>
+<ul>
+<li>Code Examples : <a href="https://ironsoftware.com/csharp/excel/examples/read-excel/">https://ironsoftware.com/csharp/excel/examples/read-excel/</a></li>
+<li>How-To Guides : <a href="https://ironsoftware.com/csharp/excel/how-to/create-xlsx-file-c-sharp/">https://ironsoftware.com/csharp/excel/how-to/create-xlsx-file-c-sharp/</a></li>
+<li>Tutorials : <a href="https://ironsoftware.com/csharp/excel/tutorials/how-to-read-excel-file-csharp/">https://ironsoftware.com/csharp/excel/tutorials/how-to-read-excel-file-csharp/</a></li>
+<li>MSDN Class Reference : <a href="https://ironsoftware.com/csharp/excel/object-reference/">https://ironsoftware.com/csharp/excel/object-reference/</a></li>
+<li>Support : <a href="mailto:support@ironsoftware.com">support@ironsoftware.com</a></li>
+</ul>
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="#helpscout-support" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

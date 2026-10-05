@@ -1,0 +1,618 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       QRCodeWriter Class - IronBarcode C# API
+      v2 (human)     title:       QRCodeWriter: Generate QR Codes in C#
+      v1 (algorithm) description: Generate QR codes in C# with the IronBarcode QRCodeWriter class. Call static CreateQrCode with a value, size, and error correction to get a GeneratedBarcode.
+      v2 (human)     description: Create QR codes in C# with the IronBarcode QRCodeWriter class: set size, version, error correction, and an embedded logo, then save the result.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>QRCodeWriter Class | IronBarcode C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="QRCodeWriter Class | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode QRCodeWriter class in C#: static CreateQrCode and CreateQrCodeWithLogo for QR codes with error correction.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/barcode/csharp/object-reference/api/IronBarCode.QRCodeWriter.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "QRCodeWriter Class | IronBarcode C# API",
+    "name": "QRCodeWriter class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.QRCodeWriter.html",
+    "abstract": "Generating QR codes with version, error correction, and a logo in C# runs through the IronBarcode QRCodeWriter class. Its static CreateQrCode encodes a string, byte array, or stream with a size, QrErrorCorrectionLevel, and qrVersion, and CreateQrCodeWithLogo adds a QRCodeLogo in the center. Both return a GeneratedBarcode to save, stamp, or export.",
+    "description": "Reference for the IronBarcode QRCodeWriter class in C#: static CreateQrCode and CreateQrCodeWithLogo for QR codes with error correction.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nQRCodeWriter.CreateQrCode(\"https://ironsoftware.com\", 500, QRCodeWriter.QrErrorCorrectionLevel.High)\n    .SaveAsPng(\"qr.png\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does QRCodeWriter live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "QRCodeWriter is a static class in the IronBarCode namespace, shipped in IronBarCode.dll. Call QRCodeWriter.CreateQrCode or CreateQrCodeWithLogo directly to get a GeneratedBarcode, with no instance to construct."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set the error correction of a QR code in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pass a QRCodeWriter.QrErrorCorrectionLevel to CreateQrCode. Raise it for codes that face print wear or a logo overlay, since higher correction lets a scanner recover the value from a partly damaged or covered symbol."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronBarCode.QRCodeWriter">
+  
+  
+  <h1 id="IronBarCode_QRCodeWriter" data-uid="IronBarCode.QRCodeWriter" class="text-break">Class QRCodeWriter
+  </h1>
+  <div class="markdown level0 summary"><p>A class allowing for advanced control on the generation of QR type barcodes.</p>
+<p><a class="xref" href="IronBarCode.QRCodeWriter.html">QRCodeWriter</a> gives the developer access to set QR code error correction levels, and to add logo images to QR codes.</p><p>Generated Barcodes can be exported as Images, Bitmaps, Files and Streams.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">QRCodeWriter</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronBarCode.html">IronBarCode</a></h6>
+  <h6><strong>Assembly</strong>: IronBarCode.dll</h6>
+  <h5 id="IronBarCode_QRCodeWriter_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class QRCodeWriter : Object</code></pre>
+  </div>
+    <!-- archetype-N:start QRCodeWriter treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>QRCodeWriter</code> generates QR codes with QR-specific options in C#, including version, error correction, and an embedded logo. Both members are static, so call <code>QRCodeWriter.CreateQrCode(...)</code> and a <code>GeneratedBarcode</code> comes back, ready to save as an image, stamp onto a PDF, or export as a data URL.</p>
+<p><code>CreateQrCode</code> encodes a <code>string</code>, <code>byte[]</code>, or <code>Stream</code> and accepts a <code>size</code>, a <code>QRCodeWriter.QrErrorCorrectionLevel</code>, and a <code>qrVersion</code>. The error-correction argument is what lets a code survive print wear or a partial cover, so raise it for labels that take physical handling. <code>CreateQrCodeWithLogo</code> does the same but also takes a <code>QRCodeLogo</code>, placing a brand mark in the center of the symbol and building in the extra correction a logo needs. For non-QR symbologies, or for a plain QR code without these options, use <code>BarcodeWriter.CreateBarcode</code> with <code>BarcodeEncoding.QRCode</code> instead. Because both methods return the same <code>GeneratedBarcode</code>, the choice of output format is made afterward and is independent of how the code was encoded.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+QRCodeWriter.CreateQrCode(&quot;https://ironsoftware.com&quot;, 500, QRCodeWriter.QrErrorCorrectionLevel.High)
+    .SaveAsPng(&quot;qr.png&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/create-2d-barcodes/">create 2D barcodes how-to</a> generates a QR code, and the <a href="https://ironsoftware.com/csharp/barcode/examples/csharp-custom-qr-code/">custom QR code example</a> applies version, error correction, and a logo.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronBarCode_QRCodeWriter_CreateQrCode_" data-uid="IronBarCode.QRCodeWriter.CreateQrCode*"></a>
+  <h4 id="IronBarCode_QRCodeWriter_CreateQrCode_System_Byte___System_Int32_IronBarCode_QRCodeWriter_QrErrorCorrectionLevel_System_Int32_" data-uid="IronBarCode.QRCodeWriter.CreateQrCode(System.Byte[],System.Int32,IronBarCode.QRCodeWriter.QrErrorCorrectionLevel,System.Int32)">CreateQrCode(Byte[], Int32, QRCodeWriter.QrErrorCorrectionLevel, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders a QR code.</p>
+<p>Overload methods and methods of the created GeneratedBarcode object allow for barcode sizes and colors to be customized.   Logos &amp; Branding may also be added using the CreateQrCodeWithLogo method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GeneratedBarcode CreateQrCode(byte[] binaryData, int size = 500, QRCodeWriter.QrErrorCorrectionLevel errorCorrection, int qrVersion = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">binaryData</span></td>
+        <td><p>The value of the QR code as a byte array.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The width and height of the QR code in pixels.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronBarCode.QRCodeWriter.QrErrorCorrectionLevel.html">QRCodeWriter.QrErrorCorrectionLevel</a></td>
+        <td><span class="parametername">errorCorrection</span></td>
+        <td><p>The error correction level of the QR code.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">qrVersion</span></td>
+        <td><p>The symbol version of the QR Code. The default value 0 will automatically assign an appropriate QR version for your data (highly recommended).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronBarCode.GeneratedBarcode.html">GeneratedBarcode</a></td>
+        <td><p>A GeneratedBarcode object for the QR code which can be manipulated, annotated and saved to a System.Drawing.Image, an object, image file, PDF, MediaURL or data stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeWriter_CreateQrCode_" data-uid="IronBarCode.QRCodeWriter.CreateQrCode*"></a>
+  <h4 id="IronBarCode_QRCodeWriter_CreateQrCode_System_IO_Stream_System_Int32_IronBarCode_QRCodeWriter_QrErrorCorrectionLevel_System_Int32_" data-uid="IronBarCode.QRCodeWriter.CreateQrCode(System.IO.Stream,System.Int32,IronBarCode.QRCodeWriter.QrErrorCorrectionLevel,System.Int32)">CreateQrCode(Stream, Int32, QRCodeWriter.QrErrorCorrectionLevel, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders a QR code.</p>
+<p>Overload methods and methods of the created GeneratedBarcode object allow for barcode sizes and colors to be customized.  Logos &amp; Branding may also be added using the CreateQrCodeWithLogo method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GeneratedBarcode CreateQrCode(Stream binaryDataStream, int size = 500, QRCodeWriter.QrErrorCorrectionLevel errorCorrection, int qrVersion = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">binaryDataStream</span></td>
+        <td><p>The value of the QR code as a stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The width and height of the QR code in pixels.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronBarCode.QRCodeWriter.QrErrorCorrectionLevel.html">QRCodeWriter.QrErrorCorrectionLevel</a></td>
+        <td><span class="parametername">errorCorrection</span></td>
+        <td><p>The error correction level of the QR code.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">qrVersion</span></td>
+        <td><p>The symbol version of the QR Code. The default value 0 will automatically assign an appropriate QR version for your data (highly recommended).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronBarCode.GeneratedBarcode.html">GeneratedBarcode</a></td>
+        <td><p>A GeneratedBarcode object for the QR code which can be manipulated, annotated and saved to a System.Drawing.Image, an object, image file, PDF, MediaURL or data stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeWriter_CreateQrCode_" data-uid="IronBarCode.QRCodeWriter.CreateQrCode*"></a>
+  <h4 id="IronBarCode_QRCodeWriter_CreateQrCode_System_String_System_Int32_IronBarCode_QRCodeWriter_QrErrorCorrectionLevel_System_Int32_" data-uid="IronBarCode.QRCodeWriter.CreateQrCode(System.String,System.Int32,IronBarCode.QRCodeWriter.QrErrorCorrectionLevel,System.Int32)">CreateQrCode(String, Int32, QRCodeWriter.QrErrorCorrectionLevel, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders a QR code from a String of data.  UTF-8 fully supported.</p>
+<p>Overload methods and methods of the created GeneratedBarcode object allow for barcode sizes and colors to be customized.  Logos / Branding may also be added.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GeneratedBarcode CreateQrCode(string value, int size = 500, QRCodeWriter.QrErrorCorrectionLevel errorCorrection, int qrVersion = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value of the QR code as a string.  Also suitable for URLS.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The width and height of the QR code in pixels.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronBarCode.QRCodeWriter.QrErrorCorrectionLevel.html">QRCodeWriter.QrErrorCorrectionLevel</a></td>
+        <td><span class="parametername">errorCorrection</span></td>
+        <td><p>The error correction level of the QR code.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">qrVersion</span></td>
+        <td><p>The symbol version of the QR Code. The default value 0 will automatically assign an appropriate QR version for your data (highly recommended).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronBarCode.GeneratedBarcode.html">GeneratedBarcode</a></td>
+        <td><p>A GeneratedBarcode object for the QR code which can be manipulated, annotated and saved to a System.Drawing.Image, an object, image file, PDF, MediaURL or data stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeWriter_CreateQrCodeWithLogo_" data-uid="IronBarCode.QRCodeWriter.CreateQrCodeWithLogo*"></a>
+  <h4 id="IronBarCode_QRCodeWriter_CreateQrCodeWithLogo_System_Byte___IronBarCode_QRCodeLogo_System_Int32_System_Int32_" data-uid="IronBarCode.QRCodeWriter.CreateQrCodeWithLogo(System.Byte[],IronBarCode.QRCodeLogo,System.Int32,System.Int32)">CreateQrCodeWithLogo(Byte[], QRCodeLogo, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders a QR code of given dimensions with a logo image at its center.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GeneratedBarcode CreateQrCodeWithLogo(byte[] binaryData, QRCodeLogo qrCodeLogo, int size = 500, int qrVersion = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">binaryData</span></td>
+        <td><p>The value of the QR code as a byte array.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronBarCode.QRCodeLogo.html">QRCodeLogo</a></td>
+        <td><span class="parametername">qrCodeLogo</span></td>
+        <td><p>A <a class="xref" href="IronBarCode.QRCodeLogo.html">QRCodeLogo</a> class instance representing your desired logo image settings.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The width and height of the QR code in pixels.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">qrVersion</span></td>
+        <td><p>The symbol version of the QR Code. The default value 0 will automatically assign an appropriate QR version for your data (highly recommended).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronBarCode.GeneratedBarcode.html">GeneratedBarcode</a></td>
+        <td><p>A GeneratedBarcode object for the QR code which can be manipulated, annotated and saved to a System.Drawing.Image, an object, image file, PDF, MediaURL or data stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeWriter_CreateQrCodeWithLogo_" data-uid="IronBarCode.QRCodeWriter.CreateQrCodeWithLogo*"></a>
+  <h4 id="IronBarCode_QRCodeWriter_CreateQrCodeWithLogo_System_IO_Stream_IronBarCode_QRCodeLogo_System_Int32_System_Int32_" data-uid="IronBarCode.QRCodeWriter.CreateQrCodeWithLogo(System.IO.Stream,IronBarCode.QRCodeLogo,System.Int32,System.Int32)">CreateQrCodeWithLogo(Stream, QRCodeLogo, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders a QR code of given dimensions with a logo image at its center.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GeneratedBarcode CreateQrCodeWithLogo(Stream binaryDataStream, QRCodeLogo qrCodeLogo, int size = 500, int qrVersion = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">binaryDataStream</span></td>
+        <td><p>The value of the QR code as a stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronBarCode.QRCodeLogo.html">QRCodeLogo</a></td>
+        <td><span class="parametername">qrCodeLogo</span></td>
+        <td><p>A <a class="xref" href="IronBarCode.QRCodeLogo.html">QRCodeLogo</a> class instance representing your desired logo image settings.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The width and height of the QR code in pixels.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">qrVersion</span></td>
+        <td><p>The symbol version of the QR Code. The default value 0 will automatically assign an appropriate QR version for your data (highly recommended).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronBarCode.GeneratedBarcode.html">GeneratedBarcode</a></td>
+        <td><p>A GeneratedBarcode object for the QR code which can be manipulated, annotated and saved to a System.Drawing.Image, an object, image file, PDF, MediaURL or data stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_QRCodeWriter_CreateQrCodeWithLogo_" data-uid="IronBarCode.QRCodeWriter.CreateQrCodeWithLogo*"></a>
+  <h4 id="IronBarCode_QRCodeWriter_CreateQrCodeWithLogo_System_String_IronBarCode_QRCodeLogo_System_Int32_System_Int32_" data-uid="IronBarCode.QRCodeWriter.CreateQrCodeWithLogo(System.String,IronBarCode.QRCodeLogo,System.Int32,System.Int32)">CreateQrCodeWithLogo(String, QRCodeLogo, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders a QR code of given dimensions with a logo image at its center.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GeneratedBarcode CreateQrCodeWithLogo(string value, QRCodeLogo qrCodeLogo, int size = 500, int qrVersion = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value of the QR code as a string.  Also suitable for URLS.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronBarCode.QRCodeLogo.html">QRCodeLogo</a></td>
+        <td><span class="parametername">qrCodeLogo</span></td>
+        <td><p>A <a class="xref" href="IronBarCode.QRCodeLogo.html">QRCodeLogo</a> class instance representing your desired logo image settings.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The width and height of the QR code in pixels.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">qrVersion</span></td>
+        <td><p>The symbol version of the QR Code. The default value 0 will automatically assign an appropriate QR version for your data (highly recommended).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronBarCode.GeneratedBarcode.html">GeneratedBarcode</a></td>
+        <td><p>A GeneratedBarcode object for the QR code which can be manipulated, annotated and saved to a System.Drawing.Image, an object, image file, PDF, MediaURL or data stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/BarCode/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/BarCode' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

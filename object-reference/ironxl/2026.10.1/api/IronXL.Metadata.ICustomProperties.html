@@ -1,0 +1,527 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ICustomProperties Interface - IronXL C# API
+      v2 (human)     title:       ICustomProperties: Custom Excel Fields in C#
+      v1 (algorithm) description: ICustomProperties is the IronXL contract for custom Excel fields in C#: AddProperty, Contains, Remove, GetValue, GetValue<T>, and TryGetValue<T>.
+      v2 (human)     description: Attach custom named values to a spreadsheet in C# with IronXL's ICustomProperties: add, check, read, and remove application-defined fields.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ICustomProperties Interface | IronXL C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ICustomProperties Interface | IronXL C# API">
+    <meta name="description" content="Reference for the IronXL ICustomProperties interface in C#: the contract IMetadata.CustomProperties returns for custom workbook fields.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/excel/csharp/object-reference/api/IronXL.Metadata.ICustomProperties.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ICustomProperties Interface | IronXL C# API",
+    "name": "ICustomProperties interface | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Metadata.ICustomProperties.html",
+    "abstract": "ICustomProperties is the IronXL contract for a workbook's application-defined fields in C#. IMetadata.CustomProperties returns it. AddProperty stores a named value of any type, Contains checks a key, Remove deletes one, and GetValue, the generic GetValue<T>, and TryGetValue<T> read values back. The collection is edited in place and saved with the file.",
+    "description": "Reference for the IronXL ICustomProperties interface in C#: the contract IMetadata.CustomProperties returns for custom workbook fields.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "ICustomProperties properties = workbook.Metadata.CustomProperties;\nproperties.AddProperty(\"ProjectCode\", \"X-42\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ICustomProperties live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ICustomProperties is an interface in the IronXL.Metadata namespace, shipped in IronXL.dll. The IMetadata.CustomProperties property returns it for an open workbook."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What returns an ICustomProperties in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IMetadata.CustomProperties returns the ICustomProperties for a workbook. There is no public constructor; the collection belongs to the workbook's metadata, so it is edited in place with AddProperty and Remove and saved with the file."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronXL.Metadata.ICustomProperties">
+  
+  
+  <h1 id="IronXL_Metadata_ICustomProperties" data-uid="IronXL.Metadata.ICustomProperties" class="text-break">Interface ICustomProperties
+  </h1>
+  <div class="markdown level0 summary"><p>Interface that represents set of custom metadata properties</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronXL.Metadata.html">IronXL.Metadata</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="IronXL_Metadata_ICustomProperties_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ICustomProperties</code></pre>
+  </div>
+    <!-- archetype-N:start ICustomProperties treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p>Application-defined fields that a spreadsheet carries beyond the standard author and title, such as a project code, a review status, or a department tag, live behind <code>ICustomProperties</code>. A developer uses this contract to attach arbitrary named values to a workbook and read them back, the same custom properties Excel exposes under File, Info, Properties, Advanced. Where <code>IMetadata</code> covers the fixed Office fields, <code>ICustomProperties</code> holds the open-ended key/value pairs a team defines for itself.</p>
+<p>A developer obtains an <code>ICustomProperties</code> from the metadata: <code>IMetadata.CustomProperties</code> returns it for the open workbook, and there is no constructor to call. The collection is edited in place and saved with the file. <code>AddProperty(string name, object value)</code> stores a named value of any type, <code>Contains(string name)</code> checks whether a key is present, and <code>Remove(string name)</code> deletes one. Reading offers two forms: <code>GetValue(string name)</code> returns an <code>object</code>, while the generic <code>GetValue&lt;T&gt;(string name)</code> returns the value typed, and <code>TryGetValue&lt;T&gt;(string name, out T value)</code> reads it safely without throwing when the key is missing. Prefer the <code>TryGetValue&lt;T&gt;</code> pattern for keys that may not exist.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">ICustomProperties properties = workbook.Metadata.CustomProperties;
+properties.AddProperty(&quot;ProjectCode&quot;, &quot;X-42&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/examples/edit-excel-metadata-csharp/">edit Excel metadata example</a> writes document properties, and the <a href="https://ironsoftware.com/csharp/excel/how-to/edit-workbook-metadata/">edit workbook metadata how-to</a> walks through reading and updating them.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronXL_Metadata_ICustomProperties_AddProperty_" data-uid="IronXL.Metadata.ICustomProperties.AddProperty*"></a>
+  <h4 id="IronXL_Metadata_ICustomProperties_AddProperty_System_String_System_Object_" data-uid="IronXL.Metadata.ICustomProperties.AddProperty(System.String,System.Object)">AddProperty(String, Object)</h4>
+  <div class="markdown level1 summary"><p>Method for adding property with the specified name and value.</p>
+<p>Available value types are: <span class="xref">System.Int32</span>, <span class="xref">System.Double</span>, <span class="xref">System.String</span>, <span class="xref">System.Boolean</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AddProperty(string name, object value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Name of the property.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Value of the property.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_ICustomProperties_Contains_" data-uid="IronXL.Metadata.ICustomProperties.Contains*"></a>
+  <h4 id="IronXL_Metadata_ICustomProperties_Contains_System_String_" data-uid="IronXL.Metadata.ICustomProperties.Contains(System.String)">Contains(String)</h4>
+  <div class="markdown level1 summary"><p>Method to check whether set of properties contains property with the specified name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Contains(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Name of the property.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if property with the specified name exists, otherwise <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_ICustomProperties_GetValue_" data-uid="IronXL.Metadata.ICustomProperties.GetValue*"></a>
+  <h4 id="IronXL_Metadata_ICustomProperties_GetValue_System_String_" data-uid="IronXL.Metadata.ICustomProperties.GetValue(System.String)">GetValue(String)</h4>
+  <div class="markdown level1 summary"><p>Method for getting custom property value by its name. See <a class="xref" href="IronXL.Metadata.ICustomProperties.html#IronXL_Metadata_ICustomProperties_AddProperty_System_String_System_Object_">AddProperty(String, Object)</a> for list of possible types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object GetValue(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the property.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><p>The value of the property.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_ICustomProperties_GetValue_" data-uid="IronXL.Metadata.ICustomProperties.GetValue*"></a>
+  <h4 id="IronXL_Metadata_ICustomProperties_GetValue__1_System_String_" data-uid="IronXL.Metadata.ICustomProperties.GetValue``1(System.String)">GetValue&lt;T&gt;(String)</h4>
+  <div class="markdown level1 summary"><p>Unsafe method for getting strongly-typed custom property value by its name. See <a class="xref" href="IronXL.Metadata.ICustomProperties.html#IronXL_Metadata_ICustomProperties_AddProperty_System_String_System_Object_">AddProperty(String, Object)</a> for list of possible types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">T GetValue&lt;T&gt;(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Name of the property.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><p>Returns default(T) is such property wasn't found</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_ICustomProperties_Remove_" data-uid="IronXL.Metadata.ICustomProperties.Remove*"></a>
+  <h4 id="IronXL_Metadata_ICustomProperties_Remove_System_String_" data-uid="IronXL.Metadata.ICustomProperties.Remove(System.String)">Remove(String)</h4>
+  <div class="markdown level1 summary"><p>Method for removing property by its name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Remove(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the property.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if property was removed, otherwise <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_ICustomProperties_TryGetValue_" data-uid="IronXL.Metadata.ICustomProperties.TryGetValue*"></a>
+  <h4 id="IronXL_Metadata_ICustomProperties_TryGetValue__1_System_String___0__" data-uid="IronXL.Metadata.ICustomProperties.TryGetValue``1(System.String,``0@)">TryGetValue&lt;T&gt;(String, out T)</h4>
+  <div class="markdown level1 summary"><p>Safe method for getting strongly-typed custom property value by its name. See <a class="xref" href="IronXL.Metadata.ICustomProperties.html#IronXL_Metadata_ICustomProperties_AddProperty_System_String_System_Object_">AddProperty(String, Object)</a> for list of possible types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetValue&lt;T&gt;(string name, out T value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the property.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value of the property..</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if value was returned successfully, otherwise <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type of the return value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

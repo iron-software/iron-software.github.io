@@ -1,0 +1,513 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IFont Interface - IronXL C# API Reference
+      v2 (human)     title:       IFont: Set Excel Cell Fonts in C#
+      v1 (algorithm) description: Set Excel cell fonts in C# through the IronXL IFont interface from IStyle.Font: control Name, Height, Bold, Italic, Underline, and color via SetColor.
+      v2 (human)     description: Control Excel cell typefaces in C# with the IronXL IFont contract: read Style.Font and set family, size, bold, italic, underline, and color.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IFont Interface | IronXL C# .NET API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IFont Interface | IronXL C# .NET API">
+    <meta name="description" content="Reference for the IronXL IFont interface in C#: the font contract from IStyle.Font for typeface, size, bold, italic, underline, and color.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/excel/csharp/object-reference/api/IronXL.Styles.IFont.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IFont Interface | IronXL C# .NET API",
+    "name": "IFont interface | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Styles.IFont.html",
+    "abstract": "IStyle.Font returns IronXL's IFont interface in C#, the font contract for an Excel cell or range. Name sets the typeface, Height the point size, and Bold and Italic the weight and slant. Underline takes a FontUnderlineType, Strikeout and FontScript add decoration, and Color or the SetColor method sets the text color. Assigning through a range's style applies the font to every cell.",
+    "description": "Reference for the IronXL IFont interface in C#: the font contract from IStyle.Font for typeface, size, bold, italic, underline, and color.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nWorkBook workbook = WorkBook.Load(\"report.xlsx\");\nWorkSheet sheet = workbook.DefaultWorkSheet;\nIFont font = sheet[\"A1\"].Style.Font;\nfont.Name = \"Calibri\";\nfont.Height = 14;\nfont.Bold = true;\nfont.SetColor(\"#C00000\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IFont live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IFont is an interface in the IronXL.Styles namespace, shipped in IronXL.dll. It is returned by the Font property of IStyle, which itself comes from Cell.Style or Range.Style."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What returns IFont in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IStyle.Font returns an IFont. Because IStyle comes from Cell.Style and Range.Style, the typical path is range.Style.Font. IronXL exposes IFont through that property rather than letting you construct one directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you make Excel text bold in C# with IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read Cell.Style.Font or Range.Style.Font to get an IFont, then set Bold to true. The same object's Name, Height, Italic, Underline, and SetColor control the typeface, size, slant, underline, and color."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronXL.Styles.IFont">
+  
+  
+  <h1 id="IronXL_Styles_IFont" data-uid="IronXL.Styles.IFont" class="text-break">Interface IFont
+  </h1>
+  <div class="markdown level0 summary"><p>Interface for cell font value</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronXL.Styles.html">IronXL.Styles</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="IronXL_Styles_IFont_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IFont</code></pre>
+  </div>
+    <!-- archetype-N:start IFont treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>Controlling the typeface of an Excel cell in C# runs through <code>IFont</code>. It describes the font applied to a cell or range, the family, size, weight, and decoration, and is the part of a cell's style a developer touches whenever text needs to stand out as a heading, a total, or a flagged value. It pairs with the borders and fill on the same cell to produce the finished look.</p>
+<p>A developer reaches <code>IFont</code> through <code>IStyle.Font</code>, the get-only property on the style returned by <code>Cell.Style</code> or <code>Range.Style</code>. There is no separate construction step: read <code>.Style.Font</code> and assign to its members, and assigning through a range's style applies the font to every cell in that range at once. This keeps header rows and labeled columns consistent without per-cell code.</p>
+<p>The members map closely to Excel's font dialog. <code>Name</code> sets the typeface and <code>Height</code> the point size, while <code>Bold</code> and <code>Italic</code> control the weight and slant a heading or total usually needs. <code>Underline</code> takes a <code>FontUnderlineType</code> for single or double underlining, <code>Strikeout</code> draws a line through the text for struck-out values, and <code>FontScript</code> raises or lowers text for superscript and subscript. Color is set either through the <code>Color</code> string property or the <code>SetColor</code> method, which accepts a <code>Color</code> value or an RGB string for convenience, so a developer can pass whichever form is already on hand. Because <code>IFont</code> is reached through <code>IStyle.Font</code>, the usual idiom chains the two: <code>range.Style.Font.Bold = true</code>, and the same font members carry over whether the target is one cell or a whole range.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+WorkBook workbook = WorkBook.Load(&quot;report.xlsx&quot;);
+WorkSheet sheet = workbook.DefaultWorkSheet;
+IFont font = sheet[&quot;A1&quot;].Style.Font;
+font.Name = &quot;Calibri&quot;;
+font.Height = 14;
+font.Bold = true;
+font.SetColor(&quot;#C00000&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/cell-font-size/">cell font size how-to</a> covers sizing and weight, the <a href="https://ironsoftware.com/csharp/excel/examples/excel-style-cells-borders-fonts/">style cells, borders, and fonts example</a> shows fonts alongside the rest of a cell's styling, and the <a href="https://ironsoftware.com/csharp/excel/how-to/border-alignment/">border and alignment how-to</a> covers the borders and layout that pair with a font on the same style.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronXL_Styles_IFont_Bold_" data-uid="IronXL.Styles.IFont.Bold*"></a>
+  <h4 id="IronXL_Styles_IFont_Bold" data-uid="IronXL.Styles.IFont.Bold">Bold</h4>
+  <div class="markdown level1 summary"><p>Property that indicates if cell font is bold</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Bold { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Styles_IFont_Color_" data-uid="IronXL.Styles.IFont.Color*"></a>
+  <h4 id="IronXL_Styles_IFont_Color" data-uid="IronXL.Styles.IFont.Color">Color</h4>
+  <div class="markdown level1 summary"><p>Property that returns font color in rgb format.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Color { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Styles_IFont_FontScript_" data-uid="IronXL.Styles.IFont.FontScript*"></a>
+  <h4 id="IronXL_Styles_IFont_FontScript" data-uid="IronXL.Styles.IFont.FontScript">FontScript</h4>
+  <div class="markdown level1 summary"><p>Gets or sets script property of font. Also take a look at <a class="xref" href="IronXL.Styles.IFont.html#IronXL_Styles_IFont_FontScript">FontScript</a> to get list of available options</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">FontScript FontScript { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.Styles.FontScript.html">FontScript</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Styles_IFont_Height_" data-uid="IronXL.Styles.IFont.Height*"></a>
+  <h4 id="IronXL_Styles_IFont_Height" data-uid="IronXL.Styles.IFont.Height">Height</h4>
+  <div class="markdown level1 summary"><p>Gets or sets font size in px</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">short Height { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Styles_IFont_Italic_" data-uid="IronXL.Styles.IFont.Italic*"></a>
+  <h4 id="IronXL_Styles_IFont_Italic" data-uid="IronXL.Styles.IFont.Italic">Italic</h4>
+  <div class="markdown level1 summary"><p>Property that indicates if cell font is italic</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Italic { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Styles_IFont_Name_" data-uid="IronXL.Styles.IFont.Name*"></a>
+  <h4 id="IronXL_Styles_IFont_Name" data-uid="IronXL.Styles.IFont.Name">Name</h4>
+  <div class="markdown level1 summary"><p>Gets or sets font name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Name { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Styles_IFont_Strikeout_" data-uid="IronXL.Styles.IFont.Strikeout*"></a>
+  <h4 id="IronXL_Styles_IFont_Strikeout" data-uid="IronXL.Styles.IFont.Strikeout">Strikeout</h4>
+  <div class="markdown level1 summary"><p>Get whether to use a strikeout horizontal line through the text or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Strikeout { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Styles_IFont_Underline_" data-uid="IronXL.Styles.IFont.Underline*"></a>
+  <h4 id="IronXL_Styles_IFont_Underline" data-uid="IronXL.Styles.IFont.Underline">Underline</h4>
+  <div class="markdown level1 summary"><p>Gets or sets underline property of font. Also take a look at <a class="xref" href="IronXL.Styles.FontUnderlineType.html">FontUnderlineType</a> to get list of available options</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">FontUnderlineType Underline { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.Styles.FontUnderlineType.html">FontUnderlineType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronXL_Styles_IFont_SetColor_" data-uid="IronXL.Styles.IFont.SetColor*"></a>
+  <h4 id="IronXL_Styles_IFont_SetColor_IronSoftware_Drawing_Color_" data-uid="IronXL.Styles.IFont.SetColor(IronSoftware.Drawing.Color)">SetColor(Color)</h4>
+  <div class="markdown level1 summary"><p>Method for setting font color with <a class="xref" href="IronXL.Styles.IFont.html#IronXL_Styles_IFont_Color">Color</a> value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetColor(Color color)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Drawing.Color</span></td>
+        <td><span class="parametername">color</span></td>
+        <td><p>Color value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Styles_IFont_SetColor_" data-uid="IronXL.Styles.IFont.SetColor*"></a>
+  <h4 id="IronXL_Styles_IFont_SetColor_System_String_" data-uid="IronXL.Styles.IFont.SetColor(System.String)">SetColor(String)</h4>
+  <div class="markdown level1 summary"><p>Method for setting font color with the rgb string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetColor(string rgb)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">rgb</span></td>
+        <td><p>Color rgb value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>
