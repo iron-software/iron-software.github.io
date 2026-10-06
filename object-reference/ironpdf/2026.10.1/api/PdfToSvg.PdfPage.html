@@ -1,0 +1,608 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfPage Class - IronPDF C# API Reference
+      v2 (human)     title:       PdfPage: Convert PDF Pages to SVG in C#
+      v1 (algorithm) description: Use the IronPDF PdfPage class in C# to convert a PDF page to SVG via SaveAsSvg, SaveAsSvgAsync, ToSvgString, or ToSvgStringAsync with SvgConversionOptions.
+      v2 (human)     description: Convert any PDF page to scalable vector graphics in C# with IronPDF's PdfPage: save to file, stream, or string, sync or async.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfPage Class | IronPDF C# SVG API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PdfPage Class | IronPDF C# SVG API Reference">
+    <meta name="description" content="Reference for the IronPDF PdfPage class: convert PDF pages to SVG in C# with sync and async methods, streams, file paths, and conversion options.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/PdfToSvg.PdfPage.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfPage Class | IronPDF C# SVG API Reference",
+    "name": "PdfPage class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/PdfToSvg.PdfPage.html",
+    "abstract": "Converting a single PDF page to scalable vector graphics in C# runs through the PdfToSvg.PdfPage class in IronPDF. Obtained from a PdfDocument, PdfPage exposes SaveAsSvg and SaveAsSvgAsync for writing SVG to a file path or Stream, and ToSvgString and ToSvgStringAsync for capturing the markup as an in-memory string. All methods accept an optional SvgConversionOptions and a CancellationToken. The Document, FileAttachments, and Images properties give access to the parent document and embedded page content.",
+    "description": "Reference for the IronPDF PdfPage class: convert PDF pages to SVG in C# with sync and async methods, streams, file paths, and conversion options.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using PdfToSvg;\n\nusing var doc = await PdfDocument.LoadAsync(\"report.pdf\");\nPdfPage page = doc.Pages[0];\n\nawait page.SaveAsSvgAsync(\n    \"page-one.svg\",\n    new SvgConversionOptions { IncludeHiddenText = true },\n    cancellationToken);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PdfPage live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfPage is a class in the PdfToSvg namespace, shipped in IronPdf.dll. It derives from Object and is obtained from a PdfDocument rather than constructed directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you convert a PDF page to an SVG string in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call ToSvgString on a PdfPage instance to receive the SVG markup as a string synchronously, or await ToSvgStringAsync for the non-blocking form. Both accept an optional SvgConversionOptions and a CancellationToken."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between SaveAsSvg and ToSvgString on PdfPage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SaveAsSvg writes the SVG output to a file path or a Stream and returns void, while ToSvgString returns the SVG markup as a string without touching the file system. Both have async counterparts: SaveAsSvgAsync and ToSvgStringAsync."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you cancel a long-running SVG conversion with PdfPage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pass a CancellationToken to SaveAsSvgAsync, ToSvgStringAsync, or their synchronous overloads. The token is optional on all four conversion methods, making it straightforward to integrate with ASP.NET request cancellation or a timeout policy."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PdfToSvg.PdfPage">
+  
+  
+  <h1 id="PdfToSvg_PdfPage" data-uid="PdfToSvg.PdfPage" class="text-break">Class PdfPage
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">PdfPage</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="PdfToSvg.html">PdfToSvg</a></h6>
+  <h6><strong>Assembly</strong>: IronPdf.dll</h6>
+  <h5 id="PdfToSvg_PdfPage_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class PdfPage : Object</code></pre>
+  </div>
+    <!-- archetype-N:start PdfPage treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>A handle to a single page inside a PDF document, <code>PdfPage</code> is the object through which IronPDF converts that page to scalable vector graphics. Whether the goal is writing an SVG file to disk, streaming it to a response, or capturing the markup as an in-memory string, every conversion path starts here.</p>
+<p><code>PdfPage</code> instances are obtained from a <code>PdfDocument</code> rather than constructed directly. Once you hold a page reference, three conversion families are available. <code>SaveAsSvg</code> writes to either a file path or a <code>Stream</code> synchronously; <code>SaveAsSvgAsync</code> provides the awaitable counterpart for keeping I/O off the UI or request thread. <code>ToSvgString</code> and <code>ToSvgStringAsync</code> skip the file system entirely and return the SVG markup as a <code>string</code>, which is convenient when the output feeds a downstream pipeline, a template engine, or an HTTP response body. All four methods accept an optional <code>SvgConversionOptions</code> argument for controlling fidelity, fonts, and other rendering details, and an optional <code>CancellationToken</code> for cooperative cancellation in long-running or server-side workflows.</p>
+<p>Beyond conversion, <code>PdfPage</code> exposes three read-only properties that reflect the content of the underlying page. <code>Document</code> returns the parent <code>PdfDocument</code>, so you can navigate back to the full document context without holding a separate reference. <code>FileAttachments</code> surfaces the <code>FileAttachmentCollection</code> scoped to the page, and <code>Images</code> provides an <code>ImageEnumerable</code> for inspecting or extracting raster images embedded on that page.</p>
+<p>The code below shows a representative async workflow: open a document, select a page, and save it as an SVG file using a cancellation token tied to an ASP.NET <code>HttpContext</code>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using PdfToSvg;
+
+using var doc = await PdfDocument.LoadAsync(&quot;report.pdf&quot;);
+PdfPage page = doc.Pages[0];
+
+await page.SaveAsSvgAsync(
+    &quot;page-one.svg&quot;,
+    new SvgConversionOptions { IncludeHiddenText = true },
+    cancellationToken);</code></pre></div>
+<p>For a string-based path, swap <code>SaveAsSvgAsync</code> for <code>ToSvgStringAsync</code> and assign the result directly to a variable for further processing.</p>
+<p>Explore related resources at the <a href="https://ironpdf.com/get-started/">IronPDF get-started guide</a>, the <a href="https://ironpdf.com/how-to/pdf-to-svg/">PDF-to-SVG how-to</a>, the <a href="https://ironpdf.com/examples/pdf-to-svg/">SVG conversion examples</a>, and the full <a href="https://ironpdf.com/docs/">IronPDF documentation hub</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="PdfToSvg_PdfPage_Document_" data-uid="PdfToSvg.PdfPage.Document*"></a>
+  <h4 id="PdfToSvg_PdfPage_Document" data-uid="PdfToSvg.PdfPage.Document">Document</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PdfDocument Document { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.PdfDocument.html">PdfDocument</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_PdfPage_FileAttachments_" data-uid="PdfToSvg.PdfPage.FileAttachments*"></a>
+  <h4 id="PdfToSvg_PdfPage_FileAttachments" data-uid="PdfToSvg.PdfPage.FileAttachments">FileAttachments</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FileAttachmentCollection FileAttachments { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.FileAttachmentCollection.html">FileAttachmentCollection</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_PdfPage_Images_" data-uid="PdfToSvg.PdfPage.Images*"></a>
+  <h4 id="PdfToSvg_PdfPage_Images" data-uid="PdfToSvg.PdfPage.Images">Images</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImageEnumerable Images { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.ImageEnumerable.html">ImageEnumerable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="PdfToSvg_PdfPage_SaveAsSvg_" data-uid="PdfToSvg.PdfPage.SaveAsSvg*"></a>
+  <h4 id="PdfToSvg_PdfPage_SaveAsSvg_System_IO_Stream_PdfToSvg_SvgConversionOptions_System_Threading_CancellationToken_" data-uid="PdfToSvg.PdfPage.SaveAsSvg(System.IO.Stream,PdfToSvg.SvgConversionOptions,System.Threading.CancellationToken)">SaveAsSvg(Stream, SvgConversionOptions, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SaveAsSvg(Stream stream, SvgConversionOptions options = null, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.SvgConversionOptions.html">SvgConversionOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_PdfPage_SaveAsSvg_" data-uid="PdfToSvg.PdfPage.SaveAsSvg*"></a>
+  <h4 id="PdfToSvg_PdfPage_SaveAsSvg_System_String_PdfToSvg_SvgConversionOptions_System_Threading_CancellationToken_" data-uid="PdfToSvg.PdfPage.SaveAsSvg(System.String,PdfToSvg.SvgConversionOptions,System.Threading.CancellationToken)">SaveAsSvg(String, SvgConversionOptions, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SaveAsSvg(string path, SvgConversionOptions options = null, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.SvgConversionOptions.html">SvgConversionOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_PdfPage_SaveAsSvgAsync_" data-uid="PdfToSvg.PdfPage.SaveAsSvgAsync*"></a>
+  <h4 id="PdfToSvg_PdfPage_SaveAsSvgAsync_System_IO_Stream_PdfToSvg_SvgConversionOptions_System_Threading_CancellationToken_" data-uid="PdfToSvg.PdfPage.SaveAsSvgAsync(System.IO.Stream,PdfToSvg.SvgConversionOptions,System.Threading.CancellationToken)">SaveAsSvgAsync(Stream, SvgConversionOptions, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SaveAsSvgAsync(Stream stream, SvgConversionOptions options = null, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.SvgConversionOptions.html">SvgConversionOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_PdfPage_SaveAsSvgAsync_" data-uid="PdfToSvg.PdfPage.SaveAsSvgAsync*"></a>
+  <h4 id="PdfToSvg_PdfPage_SaveAsSvgAsync_System_String_PdfToSvg_SvgConversionOptions_System_Threading_CancellationToken_" data-uid="PdfToSvg.PdfPage.SaveAsSvgAsync(System.String,PdfToSvg.SvgConversionOptions,System.Threading.CancellationToken)">SaveAsSvgAsync(String, SvgConversionOptions, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SaveAsSvgAsync(string path, SvgConversionOptions options = null, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.SvgConversionOptions.html">SvgConversionOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_PdfPage_ToSvgString_" data-uid="PdfToSvg.PdfPage.ToSvgString*"></a>
+  <h4 id="PdfToSvg_PdfPage_ToSvgString_PdfToSvg_SvgConversionOptions_System_Threading_CancellationToken_" data-uid="PdfToSvg.PdfPage.ToSvgString(PdfToSvg.SvgConversionOptions,System.Threading.CancellationToken)">ToSvgString(SvgConversionOptions, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToSvgString(SvgConversionOptions options = null, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.SvgConversionOptions.html">SvgConversionOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_PdfPage_ToSvgStringAsync_" data-uid="PdfToSvg.PdfPage.ToSvgStringAsync*"></a>
+  <h4 id="PdfToSvg_PdfPage_ToSvgStringAsync_PdfToSvg_SvgConversionOptions_System_Threading_CancellationToken_" data-uid="PdfToSvg.PdfPage.ToSvgStringAsync(PdfToSvg.SvgConversionOptions,System.Threading.CancellationToken)">ToSvgStringAsync(SvgConversionOptions, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; ToSvgStringAsync(SvgConversionOptions options = null, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.SvgConversionOptions.html">SvgConversionOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

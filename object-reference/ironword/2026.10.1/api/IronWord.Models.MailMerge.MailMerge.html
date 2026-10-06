@@ -1,0 +1,604 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       MailMerge Class - IronWord C# API Reference
+      v2 (human)     title:       MailMerge: Fill Word Templates in C#
+      v1 (algorithm) description: Run a Word mail merge in C# with the IronWord MailMerge class: detect fields, then fill them with Execute or repeat regions with ExecuteWithRegions.
+      v2 (human)     description: Fill a Word template with data in C# using IronWord MailMerge: merge a dictionary, DataRow, or DataTable, and repeat regions from a DataSet.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>MailMerge Class | IronWord C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="MailMerge Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord MailMerge class in C#: discover merge fields, fill them with Execute, and repeat regions with ExecuteWithRegions.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/word/csharp/object-reference/api/IronWord.Models.MailMerge.MailMerge.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "MailMerge Class | IronWord C# API Reference",
+    "name": "MailMerge class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.MailMerge.MailMerge.html",
+    "abstract": "Mail merge in IronWord for C# runs through the MailMerge class, reached through the WordDocument.MailMerge property. It discovers merge fields with GetFieldNames, GetFields, and GetRegionNames, fills them with the Execute overloads (dictionary, name/value pairs, DataRow, or DataTable), repeats template blocks with ExecuteWithRegions, and exposes run settings through Options.",
+    "description": "Reference for the IronWord MailMerge class in C#: discover merge fields, fill them with Execute, and repeat regions with ExecuteWithRegions.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "WordDocument document = new WordDocument(\"template.docx\");\ndocument.MailMerge.Execute(new Dictionary<string, string>\n{\n    [\"FirstName\"] = \"Ada\",\n    [\"Company\"] = \"Iron Software\"\n});\ndocument.Save(\"letter.docx\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does MailMerge live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MailMerge is a class in the IronWord.Models.MailMerge namespace, shipped in IronWord.dll, with base type System.Object. A document exposes it through the get-only WordDocument.MailMerge property, so it is not constructed directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you run a mail merge on a Word document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open the document, call GetFieldNames on its MailMerge to see the fields, then pass matching data to an Execute overload (a dictionary, name and value lists, a DataRow, or a DataTable). Save the document afterward."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you repeat a region per data row in an IronWord mail merge?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mark the repeating block with TableStart:Region and TableEnd:Region fields, then call ExecuteWithRegions with a DataSet, a DataTable, or a region name and DataTable. Each supplied row produces one copy of the marked block."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between MailMerge and MergeField in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MailMerge performs the merge: it discovers fields and fills them with data. MergeField is the read-only record returned by GetFields describing one discovered field, with its Name, Instruction, Kind, and RegionName. MailMergeOptions holds the run settings."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronWord.Models.MailMerge.MailMerge">
+  
+  
+  <h1 id="IronWord_Models_MailMerge_MailMerge" data-uid="IronWord.Models.MailMerge.MailMerge" class="text-break">Class MailMerge
+  </h1>
+  <div class="markdown level0 summary"><p>Provides mail merge functionality for a <a class="xref" href="IronWord.WordDocument.html">WordDocument</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">MailMerge</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronWord.Models.MailMerge.html">IronWord.Models.MailMerge</a></h6>
+  <h6><strong>Assembly</strong>: IronWord.dll</h6>
+  <h5 id="IronWord_Models_MailMerge_MailMerge_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MailMerge : Object</code></pre>
+  </div>
+    <!-- archetype-N:start MailMerge treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Populating a Word template with data, names on a batch of letters, line items on an invoice, rows in a report, runs through <code>MailMerge</code>. It detects the merge fields already in a document, whether they were authored in Microsoft Word or another compatible library, and fills them from the data a developer supplies. It is the type behind a &quot;C# mail merge&quot; search, and it sits alongside <code>MergeField</code>, the read-only record describing one discovered field, and <code>MailMergeOptions</code>, the settings that govern the run.</p>
+<p>A document hands back its merge facade through the get-only <code>WordDocument.MailMerge</code> property, so there is no separate object to construct. From there the members fall into four groups. **Discovery**: <code>GetFieldNames</code> lists every merge field name, <code>GetFields</code> returns the richer <code>MergeField</code> records, and <code>GetRegionNames</code> reports the repeating-region names. **Flat merge**: the <code>Execute</code> overloads fill the fields once, accepting an <code>IDictionary&lt;string, string&gt;</code>, a parallel pair of <code>IEnumerable&lt;string&gt;</code> names and values, a <code>DataRow</code>, or a <code>DataTable</code> (whose first row supplies the values). **Region merge**: the <code>ExecuteWithRegions</code> overloads repeat a block of the template per data row, accepting a <code>DataSet</code>, a <code>DataTable</code>, or a region name paired with a <code>DataTable</code>, driven by fields marked <code>TableStart:Region</code> and <code>TableEnd:Region</code>. **Configuration**: the <code>Options</code> property exposes a <code>MailMergeOptions</code> for null handling and unused-field removal.</p>
+<p>The usual sequence is to read the field names, build matching data, then call one <code>Execute</code> overload for a single record or <code>ExecuteWithRegions</code> for a repeating section. Configure <code>Options</code> first if the defaults need adjusting, then save the document as usual.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">WordDocument document = new WordDocument(&quot;template.docx&quot;);
+document.MailMerge.Execute(new Dictionary&lt;string, string&gt;
+{
+    [&quot;FirstName&quot;] = &quot;Ada&quot;,
+    [&quot;Company&quot;] = &quot;Iron Software&quot;
+});
+document.Save(&quot;letter.docx&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/replace-words/">replace words how-to</a> covers replacing field text, the <a href="https://ironsoftware.com/csharp/word/examples/create-word-from-text/">create word from text example</a> builds a document to merge into, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> explains the document model around it.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronWord_Models_MailMerge_MailMerge_Options_" data-uid="IronWord.Models.MailMerge.MailMerge.Options*"></a>
+  <h4 id="IronWord_Models_MailMerge_MailMerge_Options" data-uid="IronWord.Models.MailMerge.MailMerge.Options">Options</h4>
+  <div class="markdown level1 summary"><p>Gets the options that control how this <a class="xref" href="IronWord.Models.MailMerge.MailMerge.html">MailMerge</a> instance behaves.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MailMergeOptions Options { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.MailMerge.MailMergeOptions.html">MailMergeOptions</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronWord_Models_MailMerge_MailMerge_Execute_" data-uid="IronWord.Models.MailMerge.MailMerge.Execute*"></a>
+  <h4 id="IronWord_Models_MailMerge_MailMerge_Execute_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="IronWord.Models.MailMerge.MailMerge.Execute(System.Collections.Generic.IDictionary{System.String,System.String})">Execute(IDictionary&lt;String, String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Replaces every merge field whose name appears in <code data-dev-comment-type="paramref" class="paramref">data</code> with the
+matching value. Fields that have no entry are removed (when
+<a class="xref" href="IronWord.Models.MailMerge.MailMergeOptions.html#IronWord_Models_MailMerge_MailMergeOptions_RemoveUnusedFields">RemoveUnusedFields</a> is <span class="xref">true</span>) or left in place.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Execute(IDictionary&lt;string, string&gt; data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>A dictionary keyed by merge field name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_MailMerge_MailMerge_Execute_" data-uid="IronWord.Models.MailMerge.MailMerge.Execute*"></a>
+  <h4 id="IronWord_Models_MailMerge_MailMerge_Execute_System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_String__" data-uid="IronWord.Models.MailMerge.MailMerge.Execute(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">Execute(IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Replaces fields named in <code data-dev-comment-type="paramref" class="paramref">fieldNames</code> with the corresponding entries
+in <code data-dev-comment-type="paramref" class="paramref">values</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Execute(IEnumerable&lt;string&gt; fieldNames, IEnumerable&lt;string&gt; values)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">fieldNames</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">values</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>Thrown when <code data-dev-comment-type="paramref" class="paramref">fieldNames</code> and <code data-dev-comment-type="paramref" class="paramref">values</code> are different lengths.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_MailMerge_MailMerge_Execute_" data-uid="IronWord.Models.MailMerge.MailMerge.Execute*"></a>
+  <h4 id="IronWord_Models_MailMerge_MailMerge_Execute_System_Data_DataRow_" data-uid="IronWord.Models.MailMerge.MailMerge.Execute(System.Data.DataRow)">Execute(DataRow)</h4>
+  <div class="markdown level1 summary"><p>Replaces fields using the column names of <code data-dev-comment-type="paramref" class="paramref">dataRow</code> as field names.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Execute(DataRow dataRow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataRow</span></td>
+        <td><span class="parametername">dataRow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_MailMerge_MailMerge_Execute_" data-uid="IronWord.Models.MailMerge.MailMerge.Execute*"></a>
+  <h4 id="IronWord_Models_MailMerge_MailMerge_Execute_System_Data_DataTable_" data-uid="IronWord.Models.MailMerge.MailMerge.Execute(System.Data.DataTable)">Execute(DataTable)</h4>
+  <div class="markdown level1 summary"><p>Replaces fields using the column names of <code data-dev-comment-type="paramref" class="paramref">dataTable</code> as field names
+and the first row's values. Equivalent to calling <a class="xref" href="IronWord.Models.MailMerge.MailMerge.html#IronWord_Models_MailMerge_MailMerge_Execute_System_Data_DataRow_">Execute(DataRow)</a>
+with <code>dataTable.Rows[0]</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Execute(DataTable dataTable)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataTable</span></td>
+        <td><span class="parametername">dataTable</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_MailMerge_MailMerge_ExecuteWithRegions_" data-uid="IronWord.Models.MailMerge.MailMerge.ExecuteWithRegions*"></a>
+  <h4 id="IronWord_Models_MailMerge_MailMerge_ExecuteWithRegions_System_Data_DataSet_" data-uid="IronWord.Models.MailMerge.MailMerge.ExecuteWithRegions(System.Data.DataSet)">ExecuteWithRegions(DataSet)</h4>
+  <div class="markdown level1 summary"><p>Expands every <code>TableStart</code>/<code>TableEnd</code> region in the document by repeating
+its content once for each row of the matching table in <code data-dev-comment-type="paramref" class="paramref">dataSet</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExecuteWithRegions(DataSet dataSet)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td><span class="parametername">dataSet</span></td>
+        <td><p>A <span class="xref">System.Data.DataSet</span> containing tables that correspond to region names
+defined by <code>TableStart:RegionName</code> and <code>TableEnd:RegionName</code> fields.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_MailMerge_MailMerge_ExecuteWithRegions_System_Data_DataSet__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    Tables are matched to regions by name.
+</p>
+<p>
+    Non-region merge fields are not populated by this method.
+    To populate standard merge fields, call <a class="xref" href="IronWord.Models.MailMerge.MailMerge.html#IronWord_Models_MailMerge_MailMerge_Execute_System_Collections_Generic_IDictionary_System_String_System_String__">Execute(IDictionary&lt;String, String&gt;)</a>
+    after region expansion.
+</p>
+</div>
+  
+  
+  <a id="IronWord_Models_MailMerge_MailMerge_ExecuteWithRegions_" data-uid="IronWord.Models.MailMerge.MailMerge.ExecuteWithRegions*"></a>
+  <h4 id="IronWord_Models_MailMerge_MailMerge_ExecuteWithRegions_System_Data_DataTable_" data-uid="IronWord.Models.MailMerge.MailMerge.ExecuteWithRegions(System.Data.DataTable)">ExecuteWithRegions(DataTable)</h4>
+  <div class="markdown level1 summary"><p>Expands a single region using <code data-dev-comment-type="paramref" class="paramref">dataTable</code>'s
+<span class="xref">System.Data.DataTable.TableName</span> as the region name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExecuteWithRegions(DataTable dataTable)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataTable</span></td>
+        <td><span class="parametername">dataTable</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_MailMerge_MailMerge_ExecuteWithRegions_" data-uid="IronWord.Models.MailMerge.MailMerge.ExecuteWithRegions*"></a>
+  <h4 id="IronWord_Models_MailMerge_MailMerge_ExecuteWithRegions_System_String_System_Data_DataTable_" data-uid="IronWord.Models.MailMerge.MailMerge.ExecuteWithRegions(System.String,System.Data.DataTable)">ExecuteWithRegions(String, DataTable)</h4>
+  <div class="markdown level1 summary"><p>Expands the named region with rows from <code data-dev-comment-type="paramref" class="paramref">dataTable</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExecuteWithRegions(string regionName, DataTable dataTable)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">regionName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Data.DataTable</span></td>
+        <td><span class="parametername">dataTable</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_MailMerge_MailMerge_GetFieldNames_" data-uid="IronWord.Models.MailMerge.MailMerge.GetFieldNames*"></a>
+  <h4 id="IronWord_Models_MailMerge_MailMerge_GetFieldNames" data-uid="IronWord.Models.MailMerge.MailMerge.GetFieldNames">GetFieldNames()</h4>
+  <div class="markdown level1 summary"><p>Gets the names of every value-style merge field declared in the document (in document order, deduplicated).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;string&gt; GetFieldNames()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_MailMerge_MailMerge_GetFields_" data-uid="IronWord.Models.MailMerge.MailMerge.GetFields*"></a>
+  <h4 id="IronWord_Models_MailMerge_MailMerge_GetFields" data-uid="IronWord.Models.MailMerge.MailMerge.GetFields">GetFields()</h4>
+  <div class="markdown level1 summary"><p>Gets every merge field discovered in the document, including <code>TableStart</code>/<code>TableEnd</code> markers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;MergeField&gt; GetFields()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="IronWord.Models.MailMerge.MergeField.html">MergeField</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_MailMerge_MailMerge_GetRegionNames_" data-uid="IronWord.Models.MailMerge.MailMerge.GetRegionNames*"></a>
+  <h4 id="IronWord_Models_MailMerge_MailMerge_GetRegionNames" data-uid="IronWord.Models.MailMerge.MailMerge.GetRegionNames">GetRegionNames()</h4>
+  <div class="markdown level1 summary"><p>Gets the names of every <code>TableStart</code> region declared in the document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;string&gt; GetRegionNames()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronWord/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with NuGet
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronWord' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

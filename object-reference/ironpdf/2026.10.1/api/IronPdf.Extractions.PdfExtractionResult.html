@@ -1,0 +1,851 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfExtractionResult Class - IronPDF C# API
+      v2 (human)     title:       PdfExtractionResult: PDF Tables & Text in C#
+      v1 (algorithm) description: Use PdfExtractionResult in IronPDF C# to access extracted tables, text, and metadata from a PDF. Query by page, range, or full document with typed methods.
+      v2 (human)     description: PdfExtractionResult holds every table, text layer, and metadata from an IronPDF extraction. Slice results by page or range with built-in C# query methods.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfExtractionResult Class | IronPDF C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PdfExtractionResult Class | IronPDF C# API Reference">
+    <meta name="description" content="Reference for IronPDF PdfExtractionResult in C#: access extracted tables and text by page or range, plus document metadata, from one result object.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.PdfExtractionResult.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfExtractionResult Class | IronPDF C# API Reference",
+    "name": "PdfExtractionResult class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronPdf.Extractions.PdfExtractionResult.html",
+    "abstract": "Calling PdfExtractor.Extract returns a PdfExtractionResult, the object that consolidates all tables, text content, and document metadata from a single PDF extraction pass. Tables exposes the full List of TableObject instances; GetTablesByPage, GetTablesByPageRange, and GetTableByPageAndIndex narrow the set. FullText and Text provide formatted text; GetRawText, GetRawTextByPage, and GetRawTextByPageRange deliver unformatted strings. The Metadata property surfaces document-level properties such as title and author. PdfExtractionResult lives in the IronPdf.Extractions namespace, shipped in IronPdf.dll, and derives from Object.",
+    "description": "Reference for IronPDF PdfExtractionResult in C#: access extracted tables and text by page or range, plus document metadata, from one result object.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf.Extractions;\n\nPdfExtractionResult result = PdfExtractor.Extract(\"annual-report.pdf\");\n\n// Inspect document metadata\nConsole.WriteLine(result.Metadata.Title);\n\n// Iterate every table in the document\nforeach (TableObject table in result.Tables)\n    Console.WriteLine($\"Page {table.PageNumber}: {table.RowCount} rows\");\n\n// Pull raw text from pages 3 through 7 for indexing\nstring rawSlice = result.GetRawTextByPageRange(3, 7);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PdfExtractionResult live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfExtractionResult is a class in the IronPdf.Extractions namespace, shipped in IronPdf.dll. It derives from Object and is returned by PdfExtractor.Extract after processing a PDF document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you retrieve tables from a specific page using PdfExtractionResult?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call GetTablesByPage(int pageNumber) to get a List<TableObject> for that page. To target a single table when a page holds more than one, use GetTableByPageAndIndex(int pageNumber, int tableIndexOnPage). For a span of pages, use GetTablesByPageRange(int startPage, int endPage)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between FullText and GetRawText on PdfExtractionResult?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FullText returns the complete formatted text string for the document, preserving layout hints. GetRawText returns an unformatted string stripped of those hints, which is better suited for feeding content to a parser, search index, or NLP pipeline. Both page-scoped and range-scoped variants exist for each approach."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you access document metadata from a PdfExtractionResult?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Metadata property returns a DocumentMetadata object containing document-level properties such as title, author, and creation date, all captured during the same extraction call that produced the tables and text."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronPdf.Extractions.PdfExtractionResult">
+  
+  
+  <h1 id="IronPdf_Extractions_PdfExtractionResult" data-uid="IronPdf.Extractions.PdfExtractionResult" class="text-break">Class PdfExtractionResult
+  </h1>
+  <div class="markdown level0 summary"><p>Represents the output of a PDF extraction operation, containing all extracted</p>
+<p>tables and text content, along with document metadata.</p>
+<p>Provides convenient methods to access specific portions of the extracted content.</p>
+<p>------------------------------------------------</p>
+<p>
+<strong>Usage:</strong>
+</p>
+<pre><code>var result = PdfExtractor.Extract(&quot;document.pdf&quot;);
+<p>// Access all tables
+foreach (var table in result.Tables)
+{
+Console.WriteLine($&quot;Table on page {table.PageNumber} with {table.RowCount} rows&quot;);
+}</p>
+<p>// Get tables from a specific page
+var pageTables = result.GetTablesByPage(5);</p>
+<p>// Get text from a specific page
+var pageText = result.GetRawTextByPage(5);</p>
+<p>// Get full text including tables
+var fullText = result.FullText;</code></pre><p>
+<p>------------------------------------------------</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">PdfExtractionResult</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronPdf.Extractions.html">IronPdf.Extractions</a></h6>
+  <h6><strong>Assembly</strong>: IronPdf.dll</h6>
+  <h5 id="IronPdf_Extractions_PdfExtractionResult_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PdfExtractionResult : Object</code></pre>
+  </div>
+      <!-- archetype-N:start PdfExtractionResult treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>The record a developer receives after calling <code>PdfExtractor.Extract</code> is a <code>PdfExtractionResult</code>, the single object that bundles every table, every text layer, and the document metadata produced by one extraction pass. Rather than making separate calls for tables and text, you query this result object to slice the output by page, page range, or the whole document.</p>
+<p><code>PdfExtractionResult</code> organises its surface into two functional areas: structured table data and text content.</p>
+<p>**Tables:** <code>Tables</code> returns the full <code>List&lt;TableObject&gt;</code> found across the document. When you need only one page, <code>GetTablesByPage(int pageNumber)</code> narrows the list. For a contiguous span of pages, <code>GetTablesByPageRange(int startPage, int endPage)</code> covers the range. To pinpoint a single table when a page holds more than one, <code>GetTableByPageAndIndex(int pageNumber, int tableIndexOnPage)</code> selects by zero-based position on that page.</p>
+<p>**Text:** <code>FullText</code> exposes the complete formatted text string for the document. <code>Text</code> gives a <code>TextContent</code> object for richer programmatic access. The <code>Get</code>-prefixed text methods mirror the table methods: <code>GetFullTextByPage</code> and <code>GetFullTextByPageRange</code> return formatted text; <code>GetRawText</code>, <code>GetRawTextByPage</code>, and <code>GetRawTextByPageRange</code> return unformatted strings stripped of layout hints, which is useful when feeding content to a parser or search index.</p>
+<p><code>Metadata</code> surfaces a <code>DocumentMetadata</code> record containing author, title, creation date, and related document-level properties.</p>
+<p>A common workflow reads all tables from a report, then pulls the raw text from the same pages to feed a downstream pipeline:</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf.Extractions;
+
+PdfExtractionResult result = PdfExtractor.Extract(&quot;annual-report.pdf&quot;);
+
+// Inspect document metadata
+Console.WriteLine(result.Metadata.Title);
+
+// Iterate every table in the document
+foreach (TableObject table in result.Tables)
+    Console.WriteLine($&quot;Page {table.PageNumber}: {table.RowCount} rows&quot;);
+
+// Pull raw text from pages 3 through 7 for indexing
+string rawSlice = result.GetRawTextByPageRange(3, 7);</code></pre></div>
+<p>For a broader look at PDF content extraction in IronPDF, see the <a href="https://ironpdf.com/how-to/extract-text-and-tables/">PDF extraction how-to</a>, the <a href="https://ironpdf.com/examples/extract-text-from-pdf/">text extraction examples</a>, and the <a href="https://ironpdf.com/blog/using-ironpdf/csharp-extract-table-from-pdf/">table extraction tutorial</a>. The <a href="https://ironpdf.com/docs/">IronPDF documentation hub</a> covers installation and licensing.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronPdf_Extractions_PdfExtractionResult_FullText_" data-uid="IronPdf.Extractions.PdfExtractionResult.FullText*"></a>
+  <h4 id="IronPdf_Extractions_PdfExtractionResult_FullText" data-uid="IronPdf.Extractions.PdfExtractionResult.FullText">FullText</h4>
+  <div class="markdown level1 summary"><p>Gets the full text of the document, including tables</p>
+<p>Combines both the extracted text and the content of all tables in reading order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string FullText { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPdf_Extractions_PdfExtractionResult_Metadata_" data-uid="IronPdf.Extractions.PdfExtractionResult.Metadata*"></a>
+  <h4 id="IronPdf_Extractions_PdfExtractionResult_Metadata" data-uid="IronPdf.Extractions.PdfExtractionResult.Metadata">Metadata</h4>
+  <div class="markdown level1 summary"><p>Document-level metadata</p>
+<p>Contains information about the document, such as total pages and table counts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DocumentMetadata Metadata { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPdf.Extractions.DocumentMetadata.html">DocumentMetadata</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPdf_Extractions_PdfExtractionResult_Tables_" data-uid="IronPdf.Extractions.PdfExtractionResult.Tables*"></a>
+  <h4 id="IronPdf_Extractions_PdfExtractionResult_Tables" data-uid="IronPdf.Extractions.PdfExtractionResult.Tables">Tables</h4>
+  <div class="markdown level1 summary"><p>List of all extracted tables</p>
+<p>Contains all tables detected and extracted from the PDF document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;TableObject&gt; Tables { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="IronPdf.Extractions.TableObject.html">TableObject</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPdf_Extractions_PdfExtractionResult_Text_" data-uid="IronPdf.Extractions.PdfExtractionResult.Text*"></a>
+  <h4 id="IronPdf_Extractions_PdfExtractionResult_Text" data-uid="IronPdf.Extractions.PdfExtractionResult.Text">Text</h4>
+  <div class="markdown level1 summary"><p>Extracted text content (outside of tables)</p>
+<p>Contains text extracted from the PDF document, excluding text within tables.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextContent Text { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPdf.Extractions.TextContent.html">TextContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronPdf_Extractions_PdfExtractionResult_GetFullTextByPage_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetFullTextByPage*"></a>
+  <h4 id="IronPdf_Extractions_PdfExtractionResult_GetFullTextByPage_System_Int32_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetFullTextByPage(System.Int32)">GetFullTextByPage(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets full text (with tables) for a specific page</p>
+<p>Combines both the extracted text and the content of all tables from the specified page in reading order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetFullTextByPage(int pageNumber)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageNumber</span></td>
+        <td><p>Page number (1-based)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Full text content from the specified page, including tables</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown when <code data-dev-comment-type="paramref" class="paramref">pageNumber</code> is less than 1 or
+greater than the total number of pages.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPdf_Extractions_PdfExtractionResult_GetFullTextByPageRange_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetFullTextByPageRange*"></a>
+  <h4 id="IronPdf_Extractions_PdfExtractionResult_GetFullTextByPageRange_System_Int32_System_Int32_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetFullTextByPageRange(System.Int32,System.Int32)">GetFullTextByPageRange(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets full text (with tables) for a page range</p>
+<p>Combines both the extracted text and the content of all tables from the specified page range in reading order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetFullTextByPageRange(int startPage, int endPage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startPage</span></td>
+        <td><p>Starting page number (1-based, inclusive)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endPage</span></td>
+        <td><p>Ending page number (1-based, inclusive)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Full text content from the specified page range, including tables</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown when:</p>
+<ul><li>Either page is less than 1</li><li><code data-dev-comment-type="paramref" class="paramref">endPage</code> is less than <code data-dev-comment-type="paramref" class="paramref">startPage</code></li><li>Either page exceeds total pages</li></ul>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPdf_Extractions_PdfExtractionResult_GetRawText_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetRawText*"></a>
+  <h4 id="IronPdf_Extractions_PdfExtractionResult_GetRawText" data-uid="IronPdf.Extractions.PdfExtractionResult.GetRawText">GetRawText()</h4>
+  <div class="markdown level1 summary"><p>Gets the raw text of the document, excluding tables</p>
+<p>Returns only the text content, without any table content.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetRawText()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPdf_Extractions_PdfExtractionResult_GetRawTextByPage_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetRawTextByPage*"></a>
+  <h4 id="IronPdf_Extractions_PdfExtractionResult_GetRawTextByPage_System_Int32_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetRawTextByPage(System.Int32)">GetRawTextByPage(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets raw text for a specific page</p>
+<p>Returns only the text content from the specified page, without any table content.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetRawTextByPage(int pageNumber)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageNumber</span></td>
+        <td><p>Page number (1-based)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Text content from the specified page</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPdf_Extractions_PdfExtractionResult_GetRawTextByPageRange_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetRawTextByPageRange*"></a>
+  <h4 id="IronPdf_Extractions_PdfExtractionResult_GetRawTextByPageRange_System_Int32_System_Int32_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetRawTextByPageRange(System.Int32,System.Int32)">GetRawTextByPageRange(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets raw text for a page range</p>
+<p>Returns only the text content from the specified page range, without any table content.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetRawTextByPageRange(int startPage, int endPage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startPage</span></td>
+        <td><p>Starting page number (1-based, inclusive)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endPage</span></td>
+        <td><p>Ending page number (1-based, inclusive)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Text content from the specified page range</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPdf_Extractions_PdfExtractionResult_GetTableByPageAndIndex_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetTableByPageAndIndex*"></a>
+  <h4 id="IronPdf_Extractions_PdfExtractionResult_GetTableByPageAndIndex_System_Int32_System_Int32_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetTableByPageAndIndex(System.Int32,System.Int32)">GetTableByPageAndIndex(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets a specific table by page number and table index on that page</p>
+<p>Returns the table at the specified index on the specified page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TableObject GetTableByPageAndIndex(int pageNumber, int tableIndexOnPage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageNumber</span></td>
+        <td><p>Page number (1-based)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">tableIndexOnPage</span></td>
+        <td><p>Table index on the page (0-based)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPdf.Extractions.TableObject.html">TableObject</a></td>
+        <td><p>A <a class="xref" href="IronPdf.Extractions.TableObject.html">TableObject</a> representing the specified table, or null if not found</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown when:</p>
+<ul><li><code data-dev-comment-type="paramref" class="paramref">pageNumber</code> is less than 1 or exceeds total pages</li><li><code data-dev-comment-type="paramref" class="paramref">tableIndexOnPage</code> is negative</li></ul>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPdf_Extractions_PdfExtractionResult_GetTablesByPage_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetTablesByPage*"></a>
+  <h4 id="IronPdf_Extractions_PdfExtractionResult_GetTablesByPage_System_Int32_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetTablesByPage(System.Int32)">GetTablesByPage(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets all tables from a specific page</p>
+<p>Returns a list of all tables found on the specified page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;TableObject&gt; GetTablesByPage(int pageNumber)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageNumber</span></td>
+        <td><p>Page number (1-based)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="IronPdf.Extractions.TableObject.html">TableObject</a>&gt;</td>
+        <td><p>List of <a class="xref" href="IronPdf.Extractions.TableObject.html">TableObject</a> instances representing tables on the page</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown when <code data-dev-comment-type="paramref" class="paramref">pageNumber</code> is less than 1 or
+greater than the total number of pages.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPdf_Extractions_PdfExtractionResult_GetTablesByPageRange_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetTablesByPageRange*"></a>
+  <h4 id="IronPdf_Extractions_PdfExtractionResult_GetTablesByPageRange_System_Int32_System_Int32_" data-uid="IronPdf.Extractions.PdfExtractionResult.GetTablesByPageRange(System.Int32,System.Int32)">GetTablesByPageRange(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets all tables from a page range</p>
+<p>Returns a list of all tables found within the specified page range.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;TableObject&gt; GetTablesByPageRange(int startPage, int endPage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startPage</span></td>
+        <td><p>Starting page number (1-based, inclusive)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endPage</span></td>
+        <td><p>Ending page number (1-based, inclusive)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="IronPdf.Extractions.TableObject.html">TableObject</a>&gt;</td>
+        <td><p>List of <a class="xref" href="IronPdf.Extractions.TableObject.html">TableObject</a> instances representing tables in the page range</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown when:</p>
+<ul><li>Either page is less than 1</li><li><code data-dev-comment-type="paramref" class="paramref">endPage</code> is less than <code data-dev-comment-type="paramref" class="paramref">startPage</code></li><li>Either page exceeds total pages</li></ul>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

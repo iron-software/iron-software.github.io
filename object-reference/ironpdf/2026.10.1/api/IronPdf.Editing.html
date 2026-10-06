@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace IronPdf.Editing
+   | C# PDF Library Documentation | IronPDF </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace IronPdf.Editing
+   | C# PDF Library Documentation | IronPDF ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/IronPdf.Editing.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronPdf.Editing">
+  
+  <h1 id="IronPdf_Editing" data-uid="IronPdf.Editing" class="text-break">Namespace IronPdf.Editing
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="IronPdf.Editing.BarcodeEncoding.html">BarcodeEncoding</a></h4>
+      <section><p>PDF Barcode Encoding Types. Please check the supported characters for each encoding type as some do not support all symbols.</p>
+<p>Setting a <a class="xref" href="IronPdf.Editing.BarcodeEncoding.html">BarcodeEncoding</a> when rendering Barcodes chooses the type and design of barcode to be generated.</p><pre><code>// Add product barcode:
+var barcode = new BarcodeStamper(&quot;ABC123456&quot;, BarcodeEncoding.Code128);
+pdf.ApplyStamp(barcode);
+<p>// Add QR code for URL:
+var qr = new BarcodeStamper(&quot;https://example.com&quot;, BarcodeEncoding.QRCode);
+pdf.ApplyStamp(qr);</p>
+<p>// Add inventory code:
+var code39 = new BarcodeStamper(&quot;ITEM-12345&quot;, BarcodeEncoding.Code39);
+pdf.ApplyStamp(code39);</code></pre><p>See: <a href="https://ironpdf.com/how-to/add-barcodes-to-pdfs/">https://ironpdf.com/how-to/add-barcodes-to-pdfs/</a></p><p>
+</section>
+      <h4><a class="xref" href="IronPdf.Editing.BarcodeStamper.html">BarcodeStamper</a></h4>
+      <section><p>Stamps barcodes and QR codes onto PDF pages for tracking, URLs, and data encoding.
+Supports Code128, Code39, and QR Code formats with customizable dimensions.</p>
+<p><strong>Example - Add barcodes to PDFs:</strong><pre><code>var pdf = PdfDocument.FromFile(&quot;invoice.pdf&quot;);
+<p>// QR code for payment URL (top-right corner):
+var paymentQR = new BarcodeStamper(
+&quot;https://pay.example.com/inv-12345&quot;,
+BarcodeEncoding.QRCode)
+{
+Width = 100,
+Height = 100,
+HorizontalAlignment = HorizontalAlignment.Right,
+VerticalAlignment = VerticalAlignment.Top,
+VerticalOffset = new Length(20, MeasurementUnit.Pixel)
+};
+pdf.ApplyStamp(paymentQR);</p>
+<p>// Product barcode (bottom of page):
+var productCode = new BarcodeStamper(
+&quot;SKU-2024-0012345&quot;,
+BarcodeEncoding.Code128)
+{
+Width = 200,
+Height = 50,
+VerticalAlignment = VerticalAlignment.Bottom
+};
+pdf.ApplyStamp(productCode);</p>
+<p>pdf.SaveAs(&quot;invoice_with_barcodes.pdf&quot;);</code></pre></p><p>
+</section>
+      <h4><a class="xref" href="IronPdf.Editing.HorizontalAlignment.html">HorizontalAlignment</a></h4>
+      <section><p>The horizontal alignment relative to the page.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Editing.HtmlStamper.html">HtmlStamper</a></h4>
+      <section><p>Stamps rich HTML content onto PDF pages with full CSS/JavaScript support.
+Enables complex layouts, images, tables, and dynamic content for advanced stamping.</p>
+<pre><code>// Simple HTML watermark:
+var watermark = new HtmlStamper(@&quot;
+    &lt;div style=&apos;opacity:0.3; font-size:72px; color:red;
+                transform:rotate(-45deg)&apos;>
+        CONFIDENTIAL
+    &lt;/div>&quot;);
+pdf.ApplyStamp(watermark);
+
+// Complex footer with table:
+var footer = new HtmlStamper(@&quot;
+    &lt;table style=&apos;width:100%&apos;>
+        &lt;tr>
+            &lt;td>{date}&lt;/td>
+            &lt;td style=&apos;text-align:center&apos;>Page {page}&lt;/td>
+            &lt;td style=&apos;text-align:right&apos;>Â© 2024&lt;/td>
+        &lt;/tr>
+    &lt;/table>&quot;);
+pdf.ApplyStamp(footer);
+
+// Logo with external image:
+var logo = new HtmlStamper(
+    &quot;&lt;img src=&apos;logo.png&apos; width=&apos;100&apos;/>&quot;,
+    @&quot;C:\images\&quot;);  // Base URL for resources
+pdf.ApplyStamp(logo);</code></pre><p> Supports full HTML5/CSS3/JavaScript rendering</p><p> External resources require HtmlBaseUrl to be set</p><p>See: https://ironpdf.com/how-to/stamping/#html-stamper</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Editing.ImageStamper.html">ImageStamper</a></h4>
+      <section><p>Stamps images onto PDF pages for logos, signatures, watermarks, and visual elements.
+Supports various image formats and flexible positioning/sizing options.</p>
+<pre><code>// Company logo:
+var logo = new ImageStamper(&quot;logo.png&quot;) {
+    Width = new Length(100, MeasurementUnit.Pixel),
+    Height = new Length(50, MeasurementUnit.Pixel),
+    HorizontalAlignment = HorizontalAlignment.Right,
+    VerticalAlignment = VerticalAlignment.Top
+};
+pdf.ApplyStamp(logo);
+
+// Signature on last page:
+var signature = new ImageStamper(&quot;signature.jpg&quot;) {
+    HorizontalOffset = new Length(400, MeasurementUnit.Pixel),
+    VerticalOffset = new Length(100, MeasurementUnit.Pixel)
+};
+pdf.ApplyStamp(signature, pdf.PageCount - 1);
+
+// Semi-transparent watermark:
+var watermark = new ImageStamper(&quot;watermark.png&quot;) {
+    Opacity = 30,
+    Layer = StampLayer.BehindExistingPDFContent,
+    HorizontalAlignment = HorizontalAlignment.Center,
+    VerticalAlignment = VerticalAlignment.Middle
+};
+pdf.ApplyStamp(watermark);
+
+// From bitmap (requires disposal):
+using (var stamper = new ImageStamper(myBitmap)) {
+    pdf.ApplyStamp(stamper);
+}</code></pre><p> Supports PNG, JPG, GIF, BMP, TIFF, WEBP formats</p><p> Always dispose when using AnyBitmap constructor</p><p>See: https://ironpdf.com/how-to/stamping/#image-stamper</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Editing.Length.html">Length</a></h4>
+      <section><p>Represents a value with a specific measurement unit.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Editing.MeasurementUnit.html">MeasurementUnit</a></h4>
+      <section><p>The unit of measurement used for positioning and sizing.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Editing.Stamper.html">Stamper</a></h4>
+      <section><p>Defines a PDF Stamper. <seealso cref="!:PdfDocument.ApplyStamp(IronPdf.Editing.Stamper)"></seealso><br><p>To see a full class walkthrough with diagrams and examples visit: <a href="https://ironpdf.com/tutorials/csharp-edit-pdf-complete-tutorial/#stamping-and-watermarking">https://ironpdf.com/tutorials/csharp-edit-pdf-complete-tutorial/#stamping-and-watermarking</a></p><seealso cref="!:PdfDocument.ApplyStamp(IronPdf.Editing.Stamper)"></seealso></p>
+</section>
+      <h4><a class="xref" href="IronPdf.Editing.StampLayer.html">StampLayer</a></h4>
+      <section><p>Controls whether stamps appear above or below existing PDF content.
+Essential for watermarks, backgrounds, and overlay positioning.</p>
+<pre><code>// Watermark behind content (won&apos;t obscure text):
+var watermark = new TextStamper(&quot;CONFIDENTIAL&quot;) {
+    Layer = StampLayer.BehindExistingPDFContent,
+    Opacity = 30
+};
+pdf.ApplyStamp(watermark);
+
+// Annotation on top (covers content):
+var stamp = new HtmlStamper(&quot;&lt;div>APPROVED&lt;/div>&quot;) {
+    Layer = StampLayer.OnTopOfExistingPDFContent
+};
+pdf.ApplyStamp(stamp);</code></pre><p> Behind = watermarks, On top = annotations/signatures</p><p>See: https://ironpdf.com/how-to/stamping/</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Editing.TextStamper.html">TextStamper</a></h4>
+      <section><p>Stamps text content onto PDF pages with full styling control.
+Perfect for watermarks, page numbers, annotations, and dynamic text overlay.</p>
+<pre><code>// Simple watermark:
+var watermark = new TextStamper(&quot;CONFIDENTIAL&quot;) {
+    FontSize = 60,
+    Color = Color.Red,
+    Opacity = 30,
+    Rotation = -45,
+    HorizontalAlignment = HorizontalAlignment.Center,
+    VerticalAlignment = VerticalAlignment.Middle
+};
+pdf.ApplyStamp(watermark);
+
+// Page numbers:
+var pageNum = new TextStamper(&quot;Page {page} of {total-pages}&quot;) {
+    FontFamily = &quot;Arial&quot;,
+    FontSize = 10,
+    VerticalAlignment = VerticalAlignment.Bottom
+};
+pdf.ApplyStamp(pageNum);
+
+// Bold approval stamp:
+var approved = new TextStamper(&quot;APPROVED&quot;) {
+    IsBold = true,
+    FontSize = 48,
+    Color = Color.Green,
+    BackgroundColor = Color.LightYellow
+};
+pdf.ApplyStamp(approved, 0);  // First page only</code></pre><p> Supports {page} and {total-pages} merge fields</p><p> Google Fonts require UseGoogleFont = true</p><p>See: https://ironpdf.com/how-to/stamping/#text-stamper</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Editing.VerticalAlignment.html">VerticalAlignment</a></h4>
+      <section><p>The vertical alignment relative to the page.</p>
+</section>
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

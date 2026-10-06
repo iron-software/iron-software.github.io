@@ -1,0 +1,597 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       OcrReadTask Class - IronOCR C# API Reference
+      v2 (human)     title:       OcrReadTask: Async OCR Reads in C#
+      v1 (algorithm) description: Run OCR asynchronously in C# with the IronOCR OcrReadTask class: a Task<OcrResult> that wraps a read, supports CancellationToken, and Cancel.
+      v2 (human)     description: Read images off the main thread in C# with the IronOCR OcrReadTask: an awaitable OCR job that returns an OcrResult and supports cancellation.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>OcrReadTask Class | IronOCR C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="OcrReadTask Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR OcrReadTask class in C#: the Task&lt;OcrResult&gt; an async OCR read returns, with cancellation and a Cancel method.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/ocr/csharp/object-reference/api/IronOcr.OcrReadTask.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OcrReadTask Class | IronOCR C# API Reference",
+    "name": "OcrReadTask class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.OcrReadTask.html",
+    "abstract": "Running an OCR read asynchronously in C# uses the IronOCR OcrReadTask class, a Task<OcrResult> that wraps a synchronous recognition function. Construct it with a Func<OcrResult> plus an optional CancellationToken, TaskCreationOptions, or state object, then await it to receive the OcrResult. Call Cancel to request that an in-flight read stop. Continuations, status, and exceptions behave as on any Task.",
+    "description": "Reference for the IronOCR OcrReadTask class in C#: the Task<OcrResult> an async OCR read returns, with cancellation and a Cancel method.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronOcr;\n\nvar ocr = new IronTesseract();\nusing var input = new OcrInput();\ninput.LoadImage(\"scan.png\");\nOcrResult result = await ocr.ReadAsync(input);\nConsole.WriteLine(result.Text);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does OcrReadTask live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OcrReadTask is a class in the IronOcr namespace, shipped in IronOcr.dll. It derives from System.Threading.Tasks.Task<OcrResult>, so it works with standard async and await."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you run an OCR read asynchronously in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Await an asynchronous read, which returns an OcrReadTask, a Task<OcrResult>. The awaited result is an OcrResult with the recognized text and structure. Pass a CancellationToken when constructing the task to allow cancellation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you cancel an OcrReadTask?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Cancel on the task to request that the in-flight read stop, and construct the task with a CancellationToken so the wrapped OCR function can observe the request and exit. The task then completes as cancelled."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronOcr.OcrReadTask">
+  
+  
+  <h1 id="IronOcr_OcrReadTask" data-uid="IronOcr.OcrReadTask" class="text-break">Class OcrReadTask
+  </h1>
+  <div class="markdown level0 summary"><p>Represents an asynchronous OCR (Optical Character Recognition) read task.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">OcrReadTask</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronOcr.html">IronOcr</a></h6>
+  <h6><strong>Assembly</strong>: IronOcr.dll</h6>
+  <h5 id="IronOcr_OcrReadTask_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class OcrReadTask : Task&lt;OcrResult&gt;</code></pre>
+  </div>
+    <!-- archetype-N:start OcrReadTask treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Running an OCR read in the background, while the rest of an application stays responsive, runs through <code>OcrReadTask</code>. It represents one asynchronous recognition job and produces an <code>OcrResult</code> once the read finishes, so a UI app keeps painting and a web request stays free while Tesseract works. Because it derives from the standard <code>Task&lt;OcrResult&gt;</code>, it slots into the usual <code>async</code>/<code>await</code> patterns a developer already knows, while adding OCR-specific construction and cancellation.</p>
+<p>A task is created around the synchronous OCR function it wraps. The constructors accept a <code>Func&lt;OcrResult&gt;</code> (the work to run), optionally with a <code>CancellationToken</code>, a <code>TaskCreationOptions</code> value, or a state object for the overloads that take <code>Func&lt;object, OcrResult&gt;</code>. Once started, awaiting the task yields the <code>OcrResult</code>, the same document model a direct <code>Read</code> call would return, with its text, page structure, and confidence intact.</p>
+<p>In practice, most code reaches asynchronous OCR through the higher-level read methods rather than constructing this type by hand, but the task is what those methods return and what a developer awaits. The key members are the constructor overloads that bind the OCR function plus its cancellation and scheduling options, and <code>Cancel</code>, which requests that an in-flight read stop. Pair <code>Cancel</code> with a <code>CancellationToken</code> constructor overload so the wrapped function can observe the request and exit cleanly. Everything else, continuations, status, exceptions, comes from the <code>Task&lt;OcrResult&gt;</code> base, so the awaited result and any error handling behave exactly as they do for any other task.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronOcr;
+
+var ocr = new IronTesseract();
+using var input = new OcrInput();
+input.LoadImage(&quot;scan.png&quot;);
+OcrResult result = await ocr.ReadAsync(input);
+Console.WriteLine(result.Text);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/async/">async OCR how-to</a> walks through reading off the main thread, the <a href="https://ironsoftware.com/csharp/ocr/examples/csharp-tesseract-multithreading-for-speed/">multithreading example</a> scales several reads across cores, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/progress-tracking/">progress tracking how-to</a> reports on a long-running read.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronOcr_OcrReadTask__ctor_" data-uid="IronOcr.OcrReadTask.#ctor*"></a>
+  <h4 id="IronOcr_OcrReadTask__ctor_System_Func_IronOcr_OcrResult__" data-uid="IronOcr.OcrReadTask.#ctor(System.Func{IronOcr.OcrResult})">OcrReadTask(Func&lt;OcrResult&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronOcr.OcrReadTask.html">OcrReadTask</a> class with the specified synchronous OCR function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OcrReadTask(Func&lt;OcrResult&gt; function)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="IronOcr.OcrResult.html">OcrResult</a>&gt;</td>
+        <td><span class="parametername">function</span></td>
+        <td><p>The synchronous function that represents the OCR operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronOcr_OcrReadTask__ctor_System_Func_IronOcr_OcrResult___seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronOcr.OcrResult.html">OcrResult</a></div>
+  </div>
+  
+  
+  <a id="IronOcr_OcrReadTask__ctor_" data-uid="IronOcr.OcrReadTask.#ctor*"></a>
+  <h4 id="IronOcr_OcrReadTask__ctor_System_Func_IronOcr_OcrResult__System_Threading_CancellationToken_" data-uid="IronOcr.OcrReadTask.#ctor(System.Func{IronOcr.OcrResult},System.Threading.CancellationToken)">OcrReadTask(Func&lt;OcrResult&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronOcr.OcrReadTask.html">OcrReadTask</a> class with the specified synchronous OCR function and cancellation token.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OcrReadTask(Func&lt;OcrResult&gt; function, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="IronOcr.OcrResult.html">OcrResult</a>&gt;</td>
+        <td><span class="parametername">function</span></td>
+        <td><p>The synchronous function that represents the OCR operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to observe.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronOcr_OcrReadTask__ctor_System_Func_IronOcr_OcrResult__System_Threading_CancellationToken__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronOcr.OcrResult.html">OcrResult</a></div>
+  </div>
+  
+  
+  <a id="IronOcr_OcrReadTask__ctor_" data-uid="IronOcr.OcrReadTask.#ctor*"></a>
+  <h4 id="IronOcr_OcrReadTask__ctor_System_Func_IronOcr_OcrResult__System_Threading_CancellationToken_System_Threading_Tasks_TaskCreationOptions_" data-uid="IronOcr.OcrReadTask.#ctor(System.Func{IronOcr.OcrResult},System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions)">OcrReadTask(Func&lt;OcrResult&gt;, CancellationToken, TaskCreationOptions)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronOcr.OcrReadTask.html">OcrReadTask</a> class with the specified synchronous OCR function, cancellation token, and task creation options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OcrReadTask(Func&lt;OcrResult&gt; function, CancellationToken cancellationToken, TaskCreationOptions creationOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="IronOcr.OcrResult.html">OcrResult</a>&gt;</td>
+        <td><span class="parametername">function</span></td>
+        <td><p>The synchronous function that represents the OCR operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to observe.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.TaskCreationOptions</span></td>
+        <td><span class="parametername">creationOptions</span></td>
+        <td><p>The options that control the behavior of the OCR task.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronOcr_OcrReadTask__ctor_System_Func_IronOcr_OcrResult__System_Threading_CancellationToken_System_Threading_Tasks_TaskCreationOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronOcr.OcrResult.html">OcrResult</a></div>
+  </div>
+  
+  
+  <a id="IronOcr_OcrReadTask__ctor_" data-uid="IronOcr.OcrReadTask.#ctor*"></a>
+  <h4 id="IronOcr_OcrReadTask__ctor_System_Func_IronOcr_OcrResult__System_Threading_Tasks_TaskCreationOptions_" data-uid="IronOcr.OcrReadTask.#ctor(System.Func{IronOcr.OcrResult},System.Threading.Tasks.TaskCreationOptions)">OcrReadTask(Func&lt;OcrResult&gt;, TaskCreationOptions)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronOcr.OcrReadTask.html">OcrReadTask</a> class with the specified synchronous OCR function and task creation options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OcrReadTask(Func&lt;OcrResult&gt; function, TaskCreationOptions creationOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="IronOcr.OcrResult.html">OcrResult</a>&gt;</td>
+        <td><span class="parametername">function</span></td>
+        <td><p>The synchronous function that represents the OCR operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.TaskCreationOptions</span></td>
+        <td><span class="parametername">creationOptions</span></td>
+        <td><p>The options that control the behavior of the OCR task.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronOcr_OcrReadTask__ctor_System_Func_IronOcr_OcrResult__System_Threading_Tasks_TaskCreationOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronOcr.OcrResult.html">OcrResult</a></div>
+  </div>
+  
+  
+  <a id="IronOcr_OcrReadTask__ctor_" data-uid="IronOcr.OcrReadTask.#ctor*"></a>
+  <h4 id="IronOcr_OcrReadTask__ctor_System_Func_System_Object_IronOcr_OcrResult__System_Object_" data-uid="IronOcr.OcrReadTask.#ctor(System.Func{System.Object,IronOcr.OcrResult},System.Object)">OcrReadTask(Func&lt;Object, OcrResult&gt;, Object)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronOcr.OcrReadTask.html">OcrReadTask</a> class with the specified asynchronous OCR function and state object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OcrReadTask(Func&lt;object, OcrResult&gt; function, object state)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Object</span>, <a class="xref" href="IronOcr.OcrResult.html">OcrResult</a>&gt;</td>
+        <td><span class="parametername">function</span></td>
+        <td><p>The asynchronous function that represents the OCR operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>An object representing data to be used by the OCR operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronOcr_OcrReadTask__ctor_System_Func_System_Object_IronOcr_OcrResult__System_Object__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronOcr.OcrResult.html">OcrResult</a></div>
+  </div>
+  
+  
+  <a id="IronOcr_OcrReadTask__ctor_" data-uid="IronOcr.OcrReadTask.#ctor*"></a>
+  <h4 id="IronOcr_OcrReadTask__ctor_System_Func_System_Object_IronOcr_OcrResult__System_Object_System_Threading_CancellationToken_" data-uid="IronOcr.OcrReadTask.#ctor(System.Func{System.Object,IronOcr.OcrResult},System.Object,System.Threading.CancellationToken)">OcrReadTask(Func&lt;Object, OcrResult&gt;, Object, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronOcr.OcrReadTask.html">OcrReadTask</a> class with the specified asynchronous OCR function, state object, and cancellation token.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OcrReadTask(Func&lt;object, OcrResult&gt; function, object state, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Object</span>, <a class="xref" href="IronOcr.OcrResult.html">OcrResult</a>&gt;</td>
+        <td><span class="parametername">function</span></td>
+        <td><p>The asynchronous function that represents the OCR operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>An object representing data to be used by the OCR operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to observe.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronOcr_OcrReadTask__ctor_System_Func_System_Object_IronOcr_OcrResult__System_Object_System_Threading_CancellationToken__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronOcr.OcrResult.html">OcrResult</a></div>
+  </div>
+  
+  
+  <a id="IronOcr_OcrReadTask__ctor_" data-uid="IronOcr.OcrReadTask.#ctor*"></a>
+  <h4 id="IronOcr_OcrReadTask__ctor_System_Func_System_Object_IronOcr_OcrResult__System_Object_System_Threading_CancellationToken_System_Threading_Tasks_TaskCreationOptions_" data-uid="IronOcr.OcrReadTask.#ctor(System.Func{System.Object,IronOcr.OcrResult},System.Object,System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions)">OcrReadTask(Func&lt;Object, OcrResult&gt;, Object, CancellationToken, TaskCreationOptions)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronOcr.OcrReadTask.html">OcrReadTask</a> class with the specified asynchronous OCR function, state object, cancellation token, and task creation options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OcrReadTask(Func&lt;object, OcrResult&gt; function, object state, CancellationToken cancellationToken, TaskCreationOptions creationOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Object</span>, <a class="xref" href="IronOcr.OcrResult.html">OcrResult</a>&gt;</td>
+        <td><span class="parametername">function</span></td>
+        <td><p>The asynchronous function that represents the OCR operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>An object representing data to be used by the OCR operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to observe.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.TaskCreationOptions</span></td>
+        <td><span class="parametername">creationOptions</span></td>
+        <td><p>The options that control the behavior of the OCR task.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronOcr_OcrReadTask__ctor_System_Func_System_Object_IronOcr_OcrResult__System_Object_System_Threading_CancellationToken_System_Threading_Tasks_TaskCreationOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronOcr.OcrResult.html">OcrResult</a></div>
+  </div>
+  
+  
+  <a id="IronOcr_OcrReadTask__ctor_" data-uid="IronOcr.OcrReadTask.#ctor*"></a>
+  <h4 id="IronOcr_OcrReadTask__ctor_System_Func_System_Object_IronOcr_OcrResult__System_Object_System_Threading_Tasks_TaskCreationOptions_" data-uid="IronOcr.OcrReadTask.#ctor(System.Func{System.Object,IronOcr.OcrResult},System.Object,System.Threading.Tasks.TaskCreationOptions)">OcrReadTask(Func&lt;Object, OcrResult&gt;, Object, TaskCreationOptions)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronOcr.OcrReadTask.html">OcrReadTask</a> class with the specified asynchronous OCR function, state object, and task creation options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OcrReadTask(Func&lt;object, OcrResult&gt; function, object state, TaskCreationOptions creationOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Object</span>, <a class="xref" href="IronOcr.OcrResult.html">OcrResult</a>&gt;</td>
+        <td><span class="parametername">function</span></td>
+        <td><p>The asynchronous function that represents the OCR operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>An object representing data to be used by the OCR operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.TaskCreationOptions</span></td>
+        <td><span class="parametername">creationOptions</span></td>
+        <td><p>The options that control the behavior of the OCR task.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronOcr_OcrReadTask__ctor_System_Func_System_Object_IronOcr_OcrResult__System_Object_System_Threading_Tasks_TaskCreationOptions__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronOcr.OcrResult.html">OcrResult</a></div>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronOcr_OcrReadTask_Cancel_" data-uid="IronOcr.OcrReadTask.Cancel*"></a>
+  <h4 id="IronOcr_OcrReadTask_Cancel" data-uid="IronOcr.OcrReadTask.Cancel">Cancel()</h4>
+  <div class="markdown level1 summary"><p>Abort the associated Ocr reading</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Cancel()</code></pre>
+  </div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronOcr/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronOcr' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

@@ -1,0 +1,471 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       LocalFont Class - IronPDF C# API Reference
+      v2 (human)     title:       LocalFont: SVG Font Substitution in C#
+      v1 (algorithm) description: Use LocalFont in IronPDF to specify a system font by family, weight, and style for PDF-to-SVG conversion in C#. Extends Font with value equality support.
+      v2 (human)     description: Control SVG text rendering in C# with IronPDF's LocalFont: name a system typeface, set weight and style, and substitute fonts during PDF-to-SVG conversion.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>LocalFont Class | IronPDF C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="LocalFont Class | IronPDF C# API Reference">
+    <meta name="description" content="Reference for IronPDF's LocalFont class in C#: specify a local system font by family, FontWeight, and FontStyle for accurate PDF-to-SVG text output.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/PdfToSvg.LocalFont.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "LocalFont Class | IronPDF C# API Reference",
+    "name": "LocalFont class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/PdfToSvg.LocalFont.html",
+    "abstract": "Specifying a system-installed typeface for SVG output during PDF conversion is the role the IronPDF LocalFont object fills. Constructed with a font family string, a FontWeight, and a FontStyle, it exposes those values through the FontFamily, FontWeight, and FontStyle properties and plugs into the PDF-to-SVG rendering pipeline wherever a Font reference is accepted. Overrides of Equals and GetHashCode make instances safe for use in dictionaries and hash sets, supporting font-substitution mapping scenarios.",
+    "description": "Reference for IronPDF's LocalFont class in C#: specify a local system font by family, FontWeight, and FontStyle for accurate PDF-to-SVG text output.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using PdfToSvg;\n\n// Substitute a PDF font with a locally installed typeface.\nvar localFont = new LocalFont(\"Arial\", FontWeight.Bold, FontStyle.Normal);\n\nConsole.WriteLine(localFont.FontFamily); // Arial\nConsole.WriteLine(localFont.ToString());"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does LocalFont live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LocalFont is a class in the PdfToSvg namespace, shipped in IronPdf.dll. It extends the Font base type and is constructed with new LocalFont(string fontFamily, FontWeight fontWeight, FontStyle fontStyle)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you specify a system font for PDF-to-SVG conversion in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct a LocalFont with the family name, a FontWeight value, and a FontStyle value. The resulting object can be passed to the IronPDF PDF-to-SVG conversion configuration wherever a Font reference is accepted."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can LocalFont instances be used as dictionary keys or in hash sets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. LocalFont overrides both Equals and GetHashCode, so instances compare by value and behave correctly as dictionary keys or hash-set members, which is useful when building font-substitution maps."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you inspect the typeface details stored in a LocalFont?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the FontFamily, FontWeight, and FontStyle properties after construction. Call ToString for a human-readable summary suitable for logging or diagnostics."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PdfToSvg.LocalFont">
+  
+  
+  <h1 id="PdfToSvg_LocalFont" data-uid="PdfToSvg.LocalFont" class="text-break">Class LocalFont
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="PdfToSvg.Font.html">Font</a></div>
+    <div class="level2"><span class="xref">LocalFont</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="PdfToSvg.html">PdfToSvg</a></h6>
+  <h6><strong>Assembly</strong>: IronPdf.dll</h6>
+  <h5 id="PdfToSvg_LocalFont_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class LocalFont : Font</code></pre>
+  </div>
+    <!-- archetype-N:start LocalFont treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Specifying a system-installed typeface for SVG output during PDF conversion is the job <code>LocalFont</code> handles. When IronPDF renders a PDF page to SVG, text elements need a font reference; <code>LocalFont</code> lets you name a font that is already present on the host machine, avoiding any embedded-font extraction and giving you precise control over which typeface, weight, and style the SVG consumer will use.</p>
+<p><code>LocalFont</code> extends <code>Font</code> and is constructed directly: pass the font family name as a string, a <code>FontWeight</code> value such as <code>FontWeight.Bold</code>, and a <code>FontStyle</code> value such as <code>FontStyle.Italic</code>. The three properties <code>FontFamily</code>, <code>FontWeight</code>, and <code>FontStyle</code> then expose those choices back to the rendering pipeline and to any code that inspects the font object after construction. Because <code>LocalFont</code> overrides <code>Equals</code> and <code>GetHashCode</code>, instances can be compared by value and stored safely in dictionaries or hash sets, which matters when you are building a mapping of source PDF fonts to local substitutes. <code>ToString</code> returns a human-readable description useful for logging or diagnostics.</p>
+<p>A typical use case is font substitution: a PDF references a proprietary typeface that the SVG viewer does not have, so you map it to a locally available alternative before conversion. The font object is consumed by the PDF-to-SVG conversion configuration rather than constructed in isolation.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using PdfToSvg;
+
+// Substitute a PDF font with a locally installed typeface.
+var localFont = new LocalFont(&quot;Arial&quot;, FontWeight.Bold, FontStyle.Normal);
+
+Console.WriteLine(localFont.FontFamily); // Arial
+Console.WriteLine(localFont.ToString());</code></pre></div>
+<p>Because <code>LocalFont</code> derives from <code>Font</code>, it fits anywhere the conversion API accepts a <code>Font</code> reference, keeping substitution logic consistent across different font source types. The <code>FontWeight</code> and <code>FontStyle</code> properties let downstream code branch on style without parsing the family name string, which simplifies conditional rendering logic.</p>
+<p>For broader context on PDF-to-SVG conversion in IronPDF, see the <a href="https://ironpdf.com/docs/">IronPDF documentation hub</a>, the <a href="https://ironpdf.com/how-to/pdf-to-svg/">PDF conversion how-to guides</a>, and the <a href="https://ironpdf.com/get-started/">getting-started guide</a>. Font substitution examples are covered in the <a href="https://ironpdf.com/examples/pdf-to-svg/">PDF rendering examples</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="PdfToSvg_LocalFont__ctor_" data-uid="PdfToSvg.LocalFont.#ctor*"></a>
+  <h4 id="PdfToSvg_LocalFont__ctor_System_String_PdfToSvg_FontWeight_PdfToSvg_FontStyle_" data-uid="PdfToSvg.LocalFont.#ctor(System.String,PdfToSvg.FontWeight,PdfToSvg.FontStyle)">LocalFont(String, FontWeight, FontStyle)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LocalFont(string fontFamily, FontWeight fontWeight, FontStyle fontStyle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fontFamily</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.FontWeight.html">FontWeight</a></td>
+        <td><span class="parametername">fontWeight</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.FontStyle.html">FontStyle</a></td>
+        <td><span class="parametername">fontStyle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="PdfToSvg_LocalFont_FontFamily_" data-uid="PdfToSvg.LocalFont.FontFamily*"></a>
+  <h4 id="PdfToSvg_LocalFont_FontFamily" data-uid="PdfToSvg.LocalFont.FontFamily">FontFamily</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string FontFamily { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PdfToSvg.Font.html#PdfToSvg_Font_FontFamily">Font.FontFamily</a></div>
+  
+  
+  <a id="PdfToSvg_LocalFont_FontStyle_" data-uid="PdfToSvg.LocalFont.FontStyle*"></a>
+  <h4 id="PdfToSvg_LocalFont_FontStyle" data-uid="PdfToSvg.LocalFont.FontStyle">FontStyle</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FontStyle FontStyle { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.FontStyle.html">FontStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_LocalFont_FontWeight_" data-uid="PdfToSvg.LocalFont.FontWeight*"></a>
+  <h4 id="PdfToSvg_LocalFont_FontWeight" data-uid="PdfToSvg.LocalFont.FontWeight">FontWeight</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FontWeight FontWeight { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.FontWeight.html">FontWeight</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="PdfToSvg_LocalFont_Equals_" data-uid="PdfToSvg.LocalFont.Equals*"></a>
+  <h4 id="PdfToSvg_LocalFont_Equals_System_Object_" data-uid="PdfToSvg.LocalFont.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_LocalFont_GetHashCode_" data-uid="PdfToSvg.LocalFont.GetHashCode*"></a>
+  <h4 id="PdfToSvg_LocalFont_GetHashCode" data-uid="PdfToSvg.LocalFont.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PdfToSvg.Font.html#PdfToSvg_Font_GetHashCode">Font.GetHashCode()</a></div>
+  
+  
+  <a id="PdfToSvg_LocalFont_ToString_" data-uid="PdfToSvg.LocalFont.ToString*"></a>
+  <h4 id="PdfToSvg_LocalFont_ToString" data-uid="PdfToSvg.LocalFont.ToString">ToString()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PdfToSvg.Font.html#PdfToSvg_Font_ToString">Font.ToString()</a></div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

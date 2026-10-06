@@ -1,0 +1,804 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PixColormap Class - IronOCR C# API
+      v2 (human)     title:       PixColormap: Edit Image Palettes in C#
+      v1 (algorithm) description: Manage a Leptonica image palette in C# with the IronOCR PixColormap class: Create, AddColor, AddNearestColor, and Count by index.
+      v2 (human)     description: Inspect or edit a colormapped image's palette in C# with PixColormap: create a map, add PixColor entries, and read colors by index.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PixColormap Class | IronOCR C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PixColormap Class | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR PixColormap class in C#: build a palette with Create, add PixColor entries, and query the table by index.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/ocr/csharp/object-reference/api/DynamicTesseract.PixColormap.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PixColormap Class | IronOCR C# API",
+    "name": "PixColormap class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.PixColormap.html",
+    "abstract": "Manage the palette of a colormapped Leptonica image with PixColormap in IronOCR for C#, the indexed table mapping each pixel value to a PixColor. Create or CreateLinear build a map, AddColor and AddNewColor add entries, AddNearestColor maps to the closest existing color, and Count, Depth, and the Item indexer report and read the table. It holds a native handle, so dispose it after editing.",
+    "description": "Reference for the IronOCR PixColormap class in C#: build a palette with Create, add PixColor entries, and query the table by index.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using DynamicTesseract;\n\nusing PixColormap map = PixColormap.Create(8);\nmap.AddColor(new PixColor(0, 0, 0, 255));\nmap.AddNewColor(new PixColor(255, 255, 255, 255), out int whiteIndex);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PixColormap live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PixColormap is a sealed class in the DynamicTesseract namespace, shipped in IronOcr.dll. It derives from System.Object and implements IDisposable, so dispose it after editing. It represents the color palette of a colormapped Leptonica image."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you build a color palette in C# with PixColormap?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call the static PixColormap.Create with a bit depth to allocate an empty map, or CreateLinear for a grayscale ramp, then call AddColor or AddNewColor with a PixColor for each entry. Read entries by position through the Item indexer and dispose the map when finished."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between AddColor, AddNewColor, and AddNearestColor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AddColor appends a PixColor to the palette. AddNewColor adds one only if it is not already present and returns its index. AddNearestColor does not add a color but returns the index of the closest existing entry to the requested color."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="DynamicTesseract.PixColormap">
+  
+  
+  <h1 id="DynamicTesseract_PixColormap" data-uid="DynamicTesseract.PixColormap" class="text-break">Class PixColormap
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">PixColormap</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="DynamicTesseract.html">DynamicTesseract</a></h6>
+  <h6><strong>Assembly</strong>: IronOcr.dll</h6>
+  <h5 id="DynamicTesseract_PixColormap_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class PixColormap : Object</code></pre>
+  </div>
+      <!-- archetype-N:start PixColormap treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PixColormap</code> manages the palette of a colormapped Leptonica image, the indexed table that maps each pixel value to an actual <code>PixColor</code>. It is the type code works through when an image stores colors by index rather than per pixel, for example a quantized scan whose palette must be inspected or edited before recognition. Most text OCR never touches it, but color cleanup and image-preparation steps do.</p>
+<p>A colormap is created through the static factories rather than a constructor: <code>Create</code> allocates an empty map of a given bit depth, while the two <code>CreateLinear</code> overloads build a ready-made grayscale ramp. Because the type holds a native handle and implements <code>IDisposable</code>, dispose it (or use <code>using</code>) once editing is finished. <code>Count</code> reports how many colors the map currently holds, <code>FreeCount</code> how many slots remain, and <code>Depth</code> the bit depth that bounds its capacity.</p>
+<p>Colors are added and queried through the palette methods. <code>AddColor</code> appends a <code>PixColor</code>, <code>AddNewColor</code> adds one only if it is not already present and returns its index, and <code>AddNearestColor</code> maps a requested color to the closest existing entry. <code>AddBlackOrWhite</code> and <code>SetBlackOrWhite</code> manage the black and white endpoints, <code>IsUsableColor</code> tests whether a color can be added within the depth limit, and the <code>Item</code> indexer reads an entry by position. <code>Clear</code> empties the map for reuse. Build each entry from a <code>PixColor</code>, the RGBA color this table indexes.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using DynamicTesseract;
+
+using PixColormap map = PixColormap.Create(8);
+map.AddColor(new PixColor(0, 0, 0, 255));
+map.AddNewColor(new PixColor(255, 255, 255, 255), out int whiteIndex);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/examples/replace-color/">replace color example</a> edits image colors before OCR, and the <a href="https://ironsoftware.com/csharp/ocr/how-to/image-color-correction/">image color correction how-to</a> covers color cleanup.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="DynamicTesseract_PixColormap_Count_" data-uid="DynamicTesseract.PixColormap.Count*"></a>
+  <h4 id="DynamicTesseract_PixColormap_Count" data-uid="DynamicTesseract.PixColormap.Count">Count</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColormap_Depth_" data-uid="DynamicTesseract.PixColormap.Depth*"></a>
+  <h4 id="DynamicTesseract_PixColormap_Depth" data-uid="DynamicTesseract.PixColormap.Depth">Depth</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Depth { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColormap_FreeCount_" data-uid="DynamicTesseract.PixColormap.FreeCount*"></a>
+  <h4 id="DynamicTesseract_PixColormap_FreeCount" data-uid="DynamicTesseract.PixColormap.FreeCount">FreeCount</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FreeCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColormap_Item_" data-uid="DynamicTesseract.PixColormap.Item*"></a>
+  <h4 id="DynamicTesseract_PixColormap_Item_System_Int32_" data-uid="DynamicTesseract.PixColormap.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PixColor this[int index] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="DynamicTesseract_PixColormap_AddBlackOrWhite_" data-uid="DynamicTesseract.PixColormap.AddBlackOrWhite*"></a>
+  <h4 id="DynamicTesseract_PixColormap_AddBlackOrWhite_System_Int32_System_Int32__" data-uid="DynamicTesseract.PixColormap.AddBlackOrWhite(System.Int32,System.Int32@)">AddBlackOrWhite(Int32, out Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AddBlackOrWhite(int color, out int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColormap_AddColor_" data-uid="DynamicTesseract.PixColormap.AddColor*"></a>
+  <h4 id="DynamicTesseract_PixColormap_AddColor_DynamicTesseract_PixColor_" data-uid="DynamicTesseract.PixColormap.AddColor(DynamicTesseract.PixColor)">AddColor(PixColor)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AddColor(PixColor color)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColormap_AddNearestColor_" data-uid="DynamicTesseract.PixColormap.AddNearestColor*"></a>
+  <h4 id="DynamicTesseract_PixColormap_AddNearestColor_DynamicTesseract_PixColor_System_Int32__" data-uid="DynamicTesseract.PixColormap.AddNearestColor(DynamicTesseract.PixColor,System.Int32@)">AddNearestColor(PixColor, out Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AddNearestColor(PixColor color, out int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColormap_AddNewColor_" data-uid="DynamicTesseract.PixColormap.AddNewColor*"></a>
+  <h4 id="DynamicTesseract_PixColormap_AddNewColor_DynamicTesseract_PixColor_System_Int32__" data-uid="DynamicTesseract.PixColormap.AddNewColor(DynamicTesseract.PixColor,System.Int32@)">AddNewColor(PixColor, out Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AddNewColor(PixColor color, out int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColormap_Clear_" data-uid="DynamicTesseract.PixColormap.Clear*"></a>
+  <h4 id="DynamicTesseract_PixColormap_Clear" data-uid="DynamicTesseract.PixColormap.Clear">Clear()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+  
+  
+  <a id="DynamicTesseract_PixColormap_Create_" data-uid="DynamicTesseract.PixColormap.Create*"></a>
+  <h4 id="DynamicTesseract_PixColormap_Create_System_Int32_" data-uid="DynamicTesseract.PixColormap.Create(System.Int32)">Create(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PixColormap Create(int depth)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">depth</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColormap.html">PixColormap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColormap_CreateLinear_" data-uid="DynamicTesseract.PixColormap.CreateLinear*"></a>
+  <h4 id="DynamicTesseract_PixColormap_CreateLinear_System_Int32_System_Boolean_System_Boolean_" data-uid="DynamicTesseract.PixColormap.CreateLinear(System.Int32,System.Boolean,System.Boolean)">CreateLinear(Int32, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PixColormap CreateLinear(int depth, bool firstIsBlack, bool lastIsWhite)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">depth</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">firstIsBlack</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">lastIsWhite</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColormap.html">PixColormap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColormap_CreateLinear_" data-uid="DynamicTesseract.PixColormap.CreateLinear*"></a>
+  <h4 id="DynamicTesseract_PixColormap_CreateLinear_System_Int32_System_Int32_" data-uid="DynamicTesseract.PixColormap.CreateLinear(System.Int32,System.Int32)">CreateLinear(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PixColormap CreateLinear(int depth, int levels)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">depth</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">levels</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColormap.html">PixColormap</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColormap_Dispose_" data-uid="DynamicTesseract.PixColormap.Dispose*"></a>
+  <h4 id="DynamicTesseract_PixColormap_Dispose" data-uid="DynamicTesseract.PixColormap.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  
+  <a id="DynamicTesseract_PixColormap_IsUsableColor_" data-uid="DynamicTesseract.PixColormap.IsUsableColor*"></a>
+  <h4 id="DynamicTesseract_PixColormap_IsUsableColor_DynamicTesseract_PixColor_" data-uid="DynamicTesseract.PixColormap.IsUsableColor(DynamicTesseract.PixColor)">IsUsableColor(PixColor)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsUsableColor(PixColor color)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.PixColor.html">PixColor</a></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_PixColormap_SetBlackOrWhite_" data-uid="DynamicTesseract.PixColormap.SetBlackOrWhite*"></a>
+  <h4 id="DynamicTesseract_PixColormap_SetBlackOrWhite_System_Boolean_System_Boolean_" data-uid="DynamicTesseract.PixColormap.SetBlackOrWhite(System.Boolean,System.Boolean)">SetBlackOrWhite(Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SetBlackOrWhite(bool setBlack, bool setWhite)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">setBlack</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">setWhite</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronOcr/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronOcr' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

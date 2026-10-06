@@ -1,0 +1,585 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       CellInfo Class - IronOCR C# API Reference
+      v2 (human)     title:       CellInfo: Scanned Table Cell in C#
+      v1 (algorithm) description: CellInfo holds one scanned table cell in C# from IronOCR: CellRect for the cell rectangle and CellText for the recognized text, with Deconstruct.
+      v2 (human)     description: Read a single table cell in C# with the IronOCR CellInfo value type: its CellRect rectangle and CellText, deconstructable in one line.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>CellInfo Class | IronOCR C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="CellInfo Class | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR CellInfo class in C#: one recognized table cell with a CellRect rectangle and CellText, collected from a TableInfo.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/ocr/csharp/object-reference/api/IronOcr.Extension.AdvancedScan.CellInfo.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "CellInfo Class | IronOCR C# API Reference",
+    "name": "CellInfo class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.Extension.AdvancedScan.CellInfo.html",
+    "abstract": "Reading a single cell of a scanned table runs through CellInfo in C#, the record IronOCR produces for each recognized cell. CellRect holds the cell's border rectangle and CellText holds the text inside it, so cell positions can rebuild rows and columns. CellInfo is a value type with a Deconstruct method, and instances are collected from a TableInfo's CellInfos list.",
+    "description": "Reference for the IronOCR CellInfo class in C#: one recognized table cell with a CellRect rectangle and CellText, collected from a TableInfo.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does CellInfo live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CellInfo is a struct in the IronOcr.Extension.AdvancedScan namespace, shipped in IronOcr.dll. docfx renders it as a sealed class deriving from ValueType, and it implements IEquatable<CellInfo>. Instances come from the CellInfos list on a TableInfo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read a scanned table cell's text and position in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read CellText for the recognized text and CellRect for the cell's bounding rectangle. Because CellInfo is a value type with a Deconstruct method, you can also write var (rect, text) = cell; to get both at once."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronOcr.Extension.AdvancedScan.CellInfo">
+  
+  
+  <h1 id="IronOcr_Extension_AdvancedScan_CellInfo" data-uid="IronOcr.Extension.AdvancedScan.CellInfo" class="text-break">Class CellInfo
+  </h1>
+  <div class="markdown level0 summary"><p>Information of each cell including cell border rectangle and text inside.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CellInfo</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="IronOcr.Extension.AdvancedScan.CellInfo.html">CellInfo</a>&gt;</div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronOcr.Extension.AdvancedScan.html">IronOcr.Extension.AdvancedScan</a></h6>
+  <h6><strong>Assembly</strong>: IronOcr.dll</h6>
+  <h5 id="IronOcr_Extension_AdvancedScan_CellInfo_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class CellInfo : ValueType</code></pre>
+  </div>
+    <!-- archetype-N:start CellInfo treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Reading a single cell of a scanned table runs through <code>CellInfo</code>, the record IronOCR produces for each cell it recognizes. You collect these from the <code>CellInfos</code> list on a <code>TableInfo</code>, one per cell, after an advanced table scan.</p>
+<p><code>CellRect</code> holds the cell's border rectangle on the page, and <code>CellText</code> holds the text recognized inside it, which together let you rebuild rows and columns from cell positions. Because <code>CellInfo</code> is a value type with a <code>Deconstruct</code> method, you can pull both fields out in one line, <code>var (rect, text) = cell;</code>, and compare cells with <code>Equals</code>. Use it when table layout matters and a flat string of recognized text is not enough; the rectangles tell you where each value sits relative to the others.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/read-table-in-document/">read table in a document how-to</a> demonstrates working with these cells, and the <a href="https://ironsoftware.com/csharp/ocr/examples/read-table-in-document/">read table example</a> puts the rectangles and text together.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronOcr_Extension_AdvancedScan_CellInfo__ctor_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.#ctor*"></a>
+  <h4 id="IronOcr_Extension_AdvancedScan_CellInfo__ctor_IronSoftware_Drawing_Rectangle_System_String_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.#ctor(IronSoftware.Drawing.Rectangle,System.String)">CellInfo(Rectangle, String)</h4>
+  <div class="markdown level1 summary"><p>Information of each cell including cell border rectangle and text inside.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CellInfo(Rectangle CellRect, string CellText)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Drawing.Rectangle</span></td>
+        <td><span class="parametername">CellRect</span></td>
+        <td><p>Cell border rectangle</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">CellText</span></td>
+        <td><p>Text inside the cell</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronOcr_Extension_AdvancedScan_CellInfo_CellRect_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.CellRect*"></a>
+  <h4 id="IronOcr_Extension_AdvancedScan_CellInfo_CellRect" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.CellRect">CellRect</h4>
+  <div class="markdown level1 summary"><p>Cell border rectangle</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle CellRect { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_Extension_AdvancedScan_CellInfo_CellText_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.CellText*"></a>
+  <h4 id="IronOcr_Extension_AdvancedScan_CellInfo_CellText" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.CellText">CellText</h4>
+  <div class="markdown level1 summary"><p>Text inside the cell</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string CellText { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronOcr_Extension_AdvancedScan_CellInfo_Deconstruct_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.Deconstruct*"></a>
+  <h4 id="IronOcr_Extension_AdvancedScan_CellInfo_Deconstruct_IronSoftware_Drawing_Rectangle__System_String__" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.Deconstruct(IronSoftware.Drawing.Rectangle@,System.String@)">Deconstruct(out Rectangle, out String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Deconstruct(out Rectangle CellRect, out string CellText)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Drawing.Rectangle</span></td>
+        <td><span class="parametername">CellRect</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">CellText</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_Extension_AdvancedScan_CellInfo_Equals_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.Equals*"></a>
+  <h4 id="IronOcr_Extension_AdvancedScan_CellInfo_Equals_IronOcr_Extension_AdvancedScan_CellInfo_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.Equals(IronOcr.Extension.AdvancedScan.CellInfo)">Equals(CellInfo)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(CellInfo other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronOcr.Extension.AdvancedScan.CellInfo.html">CellInfo</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_Extension_AdvancedScan_CellInfo_Equals_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.Equals*"></a>
+  <h4 id="IronOcr_Extension_AdvancedScan_CellInfo_Equals_System_Object_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_Extension_AdvancedScan_CellInfo_GetHashCode_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.GetHashCode*"></a>
+  <h4 id="IronOcr_Extension_AdvancedScan_CellInfo_GetHashCode" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_Extension_AdvancedScan_CellInfo_ToString_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.ToString*"></a>
+  <h4 id="IronOcr_Extension_AdvancedScan_CellInfo_ToString" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.ToString">ToString()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="operators">Operators
+  </h3>
+  
+  
+  <a id="IronOcr_Extension_AdvancedScan_CellInfo_op_Equality_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.op_Equality*"></a>
+  <h4 id="IronOcr_Extension_AdvancedScan_CellInfo_op_Equality_IronOcr_Extension_AdvancedScan_CellInfo_IronOcr_Extension_AdvancedScan_CellInfo_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.op_Equality(IronOcr.Extension.AdvancedScan.CellInfo,IronOcr.Extension.AdvancedScan.CellInfo)">Equality(CellInfo, CellInfo)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(CellInfo left, CellInfo right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronOcr.Extension.AdvancedScan.CellInfo.html">CellInfo</a></td>
+        <td><span class="parametername">left</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronOcr.Extension.AdvancedScan.CellInfo.html">CellInfo</a></td>
+        <td><span class="parametername">right</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_Extension_AdvancedScan_CellInfo_op_Inequality_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.op_Inequality*"></a>
+  <h4 id="IronOcr_Extension_AdvancedScan_CellInfo_op_Inequality_IronOcr_Extension_AdvancedScan_CellInfo_IronOcr_Extension_AdvancedScan_CellInfo_" data-uid="IronOcr.Extension.AdvancedScan.CellInfo.op_Inequality(IronOcr.Extension.AdvancedScan.CellInfo,IronOcr.Extension.AdvancedScan.CellInfo)">Inequality(CellInfo, CellInfo)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(CellInfo left, CellInfo right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronOcr.Extension.AdvancedScan.CellInfo.html">CellInfo</a></td>
+        <td><span class="parametername">left</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronOcr.Extension.AdvancedScan.CellInfo.html">CellInfo</a></td>
+        <td><span class="parametername">right</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IEquatable&lt;&gt;</span>
+  </div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronOcr/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronOcr' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

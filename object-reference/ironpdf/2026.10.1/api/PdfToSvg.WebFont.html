@@ -1,0 +1,560 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       WebFont Class - IronPDF C# API Reference
+      v2 (human)     title:       WebFont: SVG Web Font Config in C# IronPDF
+      v1 (algorithm) description: Configure web fonts for PDF-to-SVG conversion in C# with the IronPDF WebFont class. Supply WOFF, WOFF2, TTF, or OTF URLs plus a LocalFont fallback.
+      v2 (human)     description: Use WebFont in IronPDF to embed remote typefaces in SVG output: set WOFF2, WOFF, TTF, and OTF URLs with a local fallback font for offline safety.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>WebFont Class | IronPDF PdfToSvg C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="WebFont Class | IronPDF PdfToSvg C# API">
+    <meta name="description" content="Reference for IronPDF WebFont in C#: configure WOFF, WOFF2, TTF, and OTF URLs plus a LocalFont fallback for accurate PDF-to-SVG font rendering.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/PdfToSvg.WebFont.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "WebFont Class | IronPDF PdfToSvg C# API",
+    "name": "WebFont class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/PdfToSvg.WebFont.html",
+    "abstract": "When converting PDFs to SVG in C#, WebFont provides the URL slots and fallback configuration that control how remote typefaces are embedded in the output. Construct a WebFont with up to four format URLs (WoffUrl, Woff2Url, TrueTypeUrl, OpenTypeUrl) and an optional LocalFont fallback, then pass the instance wherever the IronPDF conversion pipeline accepts a Font. The FontFamily property exposes the derived CSS name, and Equals plus GetHashCode make instances safe as dictionary keys.",
+    "description": "Reference for IronPDF WebFont in C#: configure WOFF, WOFF2, TTF, and OTF URLs plus a LocalFont fallback for accurate PDF-to-SVG font rendering.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using PdfToSvg;\n\n// Serve WOFF 2.0 with a WOFF fallback; use Arial locally when offline.\nvar webFont = new WebFont(\n    fallbackFont : new LocalFont(\"Arial\"),\n    woff2Url     : \"https://example.com/fonts/opensans.woff2\",\n    woffUrl      : \"https://example.com/fonts/opensans.woff\"\n);\n\nConsole.WriteLine(webFont.FontFamily);   // CSS font-family name\nConsole.WriteLine(webFont.FallbackFont); // LocalFont(\"Arial\")"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does WebFont live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WebFont is a class in the PdfToSvg namespace, shipped in IronPdf.dll. It extends the Font base type and is constructed with new WebFont(), accepting optional LocalFont and URL parameters for WOFF, WOFF2, TTF, and OTF formats."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you supply a fallback font when remote URLs are unavailable?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pass a LocalFont instance as the fallbackFont parameter of the WebFont constructor. The FallbackFont property then exposes it, and the SVG renderer uses it when all remote font URLs are unreachable or unsupported."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you maximise browser compatibility when using WebFont?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Populate multiple URL properties: set Woff2Url for modern browsers, WoffUrl for broader support, and TrueTypeUrl or OpenTypeUrl for legacy renderers. The SVG output includes each supplied format so the renderer picks the first one it supports."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can WebFont instances be compared or used as dictionary keys in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. WebFont overrides Equals and GetHashCode, so instances can be compared for equality and used safely as keys in Dictionary or HashSet collections, and in LINQ distinct operations."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PdfToSvg.WebFont">
+  
+  
+  <h1 id="PdfToSvg_WebFont" data-uid="PdfToSvg.WebFont" class="text-break">Class WebFont
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="PdfToSvg.Font.html">Font</a></div>
+    <div class="level2"><span class="xref">WebFont</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="PdfToSvg.html">PdfToSvg</a></h6>
+  <h6><strong>Assembly</strong>: IronPdf.dll</h6>
+  <h5 id="PdfToSvg_WebFont_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class WebFont : Font</code></pre>
+  </div>
+    <!-- archetype-N:start WebFont treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Precise font rendering in SVG output becomes possible when you supply <code>WebFont</code>, a configuration record that tells the IronPDF SVG converter where to fetch a web-hosted typeface and which local font to use when those remote URLs are unavailable. Construct one instance per typeface and pass it wherever the conversion pipeline accepts a <code>Font</code>-derived object.</p>
+<p><code>WebFont</code> extends <code>Font</code> and holds up to four URL slots covering every common web-font format: <code>WoffUrl</code> for WOFF, <code>Woff2Url</code> for the compressed WOFF 2.0 variant, <code>TrueTypeUrl</code> for TTF, and <code>OpenTypeUrl</code> for OTF. Browsers and SVG renderers pick the first format they support, so supplying multiple URLs maximises compatibility across environments. The <code>FontFamily</code> property exposes the CSS font-family name derived from the configuration, ready for injection into the SVG <code>&lt;style&gt;</code> block. <code>FallbackFont</code> holds the <code>LocalFont</code> passed at construction time; when all remote URLs are unreachable or the renderer does not support web fonts, the fallback keeps text legible using a locally installed typeface.</p>
+<p>All constructor parameters are optional. Passing only a <code>woff2Url</code> is enough for modern browser targets, while adding a <code>trueTypeUrl</code> alongside it covers legacy renderers. Passing a <code>LocalFont</code> as <code>fallbackFont</code> is recommended for any production pipeline where network access cannot be guaranteed. The <code>Equals</code> and <code>GetHashCode</code> overrides make <code>WebFont</code> instances safe to use as dictionary keys or in LINQ distinct operations, and <code>ToString</code> returns a human-readable summary useful for logging and diagnostics.</p>
+<p>Because <code>WebFont</code> derives from <code>Font</code>, it slots into any API surface that accepts the base type, keeping font configuration uniform whether you are working with local or remote typefaces. This design means switching between a <code>LocalFont</code> and a <code>WebFont</code> requires only a constructor change, not a restructuring of the conversion call.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using PdfToSvg;
+
+// Serve WOFF 2.0 with a WOFF fallback; use Arial locally when offline.
+var webFont = new WebFont(
+    fallbackFont : new LocalFont(&quot;Arial&quot;),
+    woff2Url     : &quot;https://example.com/fonts/opensans.woff2&quot;,
+    woffUrl      : &quot;https://example.com/fonts/opensans.woff&quot;
+);
+
+Console.WriteLine(webFont.FontFamily);   // CSS font-family name
+Console.WriteLine(webFont.FallbackFont); // LocalFont(&quot;Arial&quot;)</code></pre></div>
+<p>For a broader look at PDF-to-SVG conversion options, see the <a href="https://ironpdf.com/docs/">IronPDF documentation hub</a>, the <a href="https://ironpdf.com/how-to/pdf-to-svg/">PDF to SVG how-to guide</a>, and the <a href="https://ironpdf.com/examples/pdf-to-svg-fonts/">font handling examples</a>. Getting started quickly is covered on the <a href="https://ironpdf.com/get-started/">IronPDF get-started page</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="PdfToSvg_WebFont__ctor_" data-uid="PdfToSvg.WebFont.#ctor*"></a>
+  <h4 id="PdfToSvg_WebFont__ctor_PdfToSvg_LocalFont_System_String_System_String_System_String_System_String_" data-uid="PdfToSvg.WebFont.#ctor(PdfToSvg.LocalFont,System.String,System.String,System.String,System.String)">WebFont(LocalFont, String, String, String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WebFont(LocalFont fallbackFont = null, string woffUrl = null, string woff2Url = null, string trueTypeUrl = null, string openTypeUrl = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.LocalFont.html">LocalFont</a></td>
+        <td><span class="parametername">fallbackFont</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">woffUrl</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">woff2Url</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">trueTypeUrl</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">openTypeUrl</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="PdfToSvg_WebFont_FallbackFont_" data-uid="PdfToSvg.WebFont.FallbackFont*"></a>
+  <h4 id="PdfToSvg_WebFont_FallbackFont" data-uid="PdfToSvg.WebFont.FallbackFont">FallbackFont</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LocalFont FallbackFont { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.LocalFont.html">LocalFont</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_WebFont_FontFamily_" data-uid="PdfToSvg.WebFont.FontFamily*"></a>
+  <h4 id="PdfToSvg_WebFont_FontFamily" data-uid="PdfToSvg.WebFont.FontFamily">FontFamily</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string FontFamily { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PdfToSvg.Font.html#PdfToSvg_Font_FontFamily">Font.FontFamily</a></div>
+  
+  
+  <a id="PdfToSvg_WebFont_OpenTypeUrl_" data-uid="PdfToSvg.WebFont.OpenTypeUrl*"></a>
+  <h4 id="PdfToSvg_WebFont_OpenTypeUrl" data-uid="PdfToSvg.WebFont.OpenTypeUrl">OpenTypeUrl</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string OpenTypeUrl { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_WebFont_TrueTypeUrl_" data-uid="PdfToSvg.WebFont.TrueTypeUrl*"></a>
+  <h4 id="PdfToSvg_WebFont_TrueTypeUrl" data-uid="PdfToSvg.WebFont.TrueTypeUrl">TrueTypeUrl</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TrueTypeUrl { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_WebFont_Woff2Url_" data-uid="PdfToSvg.WebFont.Woff2Url*"></a>
+  <h4 id="PdfToSvg_WebFont_Woff2Url" data-uid="PdfToSvg.WebFont.Woff2Url">Woff2Url</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Woff2Url { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_WebFont_WoffUrl_" data-uid="PdfToSvg.WebFont.WoffUrl*"></a>
+  <h4 id="PdfToSvg_WebFont_WoffUrl" data-uid="PdfToSvg.WebFont.WoffUrl">WoffUrl</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string WoffUrl { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="PdfToSvg_WebFont_Equals_" data-uid="PdfToSvg.WebFont.Equals*"></a>
+  <h4 id="PdfToSvg_WebFont_Equals_System_Object_" data-uid="PdfToSvg.WebFont.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_WebFont_GetHashCode_" data-uid="PdfToSvg.WebFont.GetHashCode*"></a>
+  <h4 id="PdfToSvg_WebFont_GetHashCode" data-uid="PdfToSvg.WebFont.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PdfToSvg.Font.html#PdfToSvg_Font_GetHashCode">Font.GetHashCode()</a></div>
+  
+  
+  <a id="PdfToSvg_WebFont_ToString_" data-uid="PdfToSvg.WebFont.ToString*"></a>
+  <h4 id="PdfToSvg_WebFont_ToString" data-uid="PdfToSvg.WebFont.ToString">ToString()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PdfToSvg.Font.html#PdfToSvg_Font_ToString">Font.ToString()</a></div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

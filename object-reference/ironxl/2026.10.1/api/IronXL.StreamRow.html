@@ -1,0 +1,534 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       StreamRow Class - IronXL C# API Reference
+      v2 (human)     title:       StreamRow: Stream Excel Rows in C#
+      v1 (algorithm) description: Use IronXL StreamRow in C# to read one XLSX row at a time during forward-only streaming. Access cells by index or name with TryGetCell for safe lookup.
+      v2 (human)     description: StreamRow lets you process huge Excel files row by row in C# with IronXL, accessing sparse cells by column index, name, or safe TryGetCell lookup.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>StreamRow Class | IronXL C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="StreamRow Class | IronXL C# API Reference">
+    <meta name="description" content="Reference for IronXL StreamRow in C#: stream XLSX rows with Cells, RowNumber, and TryGetCell for memory-efficient large-file processing.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/excel/csharp/object-reference/api/IronXL.StreamRow.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "StreamRow Class | IronXL C# API Reference",
+    "name": "StreamRow class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.StreamRow.html",
+    "abstract": "When processing large XLSX files without loading them fully into memory, StreamRow delivers one worksheet row at a time during a forward-only streaming pass in IronXL. Each record exposes RowNumber, a sparse Cells list, and a Header list for name-based lookup. Reach a specific column with the int or string indexer, or call TryGetCell to retrieve a StreamCell safely when the column may be absent. The class lives in the IronXL namespace, shipped in IronXL.dll, and derives from Object.",
+    "description": "Reference for IronXL StreamRow in C#: stream XLSX rows with Cells, RowNumber, and TryGetCell for memory-efficient large-file processing.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nWorkBook.StreamXlsx(\"large-report.xlsx\", (StreamRow row) =>\n{\n    if (row.RowNumber == 0) return; // skip header row\n\n    if (row.TryGetCell(\"Revenue\", out StreamCell revenueCell))\n        Console.WriteLine($\"Row {row.RowNumber}: {revenueCell.Value}\");\n});"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does StreamRow live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "StreamRow is a class in the IronXL namespace, shipped in IronXL.dll. It derives from System.Object and is delivered row by row during a forward-only XLSX streaming operation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you access a specific cell in a StreamRow by column name?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the string indexer row[\"ColumnName\"] to retrieve a StreamCell by header name, or call TryGetCell(\"ColumnName\", out StreamCell cell) to avoid an exception when the column may not be present in that row."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the Cells list on StreamRow described as sparse?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "StreamRow only includes StreamCell entries for columns that contained actual content in the source XLSX row. Columns with no data are omitted entirely, so the list length may be smaller than the total column count of the sheet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you unit-test code that consumes StreamRow without a real Excel file?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The public constructor StreamRow(int rowNumber, IReadOnlyList<StreamCell> cells) lets you build synthetic StreamRow instances in test code, so pipeline logic can be verified without reading an actual XLSX file."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronXL.StreamRow">
+  
+  
+  <h1 id="IronXL_StreamRow" data-uid="IronXL.StreamRow" class="text-break">Class StreamRow
+  </h1>
+  <div class="markdown level0 summary"><p>A single row of <a class="xref" href="IronXL.StreamCell.html">StreamCell</a> values read while forward-only streaming through
+an XLSX worksheet. <a class="xref" href="IronXL.StreamRow.html#IronXL_StreamRow_Cells">Cells</a> is sparse: only columns that actually had content in
+the source row are present, so gaps must be looked up via the indexer.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">StreamRow</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronXL.html">IronXL</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="IronXL_StreamRow_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class StreamRow : Object</code></pre>
+  </div>
+      <!-- archetype-N:start StreamRow treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Streaming through a large XLSX worksheet row by row without loading the whole workbook into memory is what <code>StreamRow</code> makes possible. Each <code>StreamRow</code> represents one worksheet row delivered during a forward-only streaming pass, carrying the row's position and a sparse collection of <code>StreamCell</code> values for every column that actually contained content in the source file.</p>
+<p><code>RowNumber</code> gives the zero-based or one-based index of the row within the sheet, so positional logic stays straightforward. <code>Cells</code> exposes the populated columns as an <code>IReadOnlyList&lt;StreamCell&gt;</code>, but because the list is sparse, columns with no content are absent rather than represented by empty entries. To reach a specific column safely, use the <code>this[int columnIndex]</code> indexer for a numeric column address or <code>this[string columnName]</code> for a header-based name such as <code>&quot;Price&quot;</code>. When the column might be absent and a missing-key exception would be disruptive, <code>TryGetCell(string columnName, out StreamCell cell)</code> returns <code>false</code> cleanly instead of throwing, making it the right choice inside conditional branches.</p>
+<p><code>Header</code> pairs with the column-name indexer: it holds the header row values captured earlier in the stream, so <code>row[&quot;Price&quot;]</code> resolves correctly even though the streaming reader never revisits earlier rows. This design keeps memory use flat across worksheets with hundreds of thousands of rows, because only the current <code>StreamRow</code> and its <code>StreamCell</code> objects need to be live at any moment.</p>
+<p>The constructor <code>StreamRow(int rowNumber, IReadOnlyList&lt;StreamCell&gt; cells)</code> is public, which allows unit tests to build synthetic rows without touching a real file, a practical advantage when testing pipeline logic in isolation.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+WorkBook.StreamXlsx(&quot;large-report.xlsx&quot;, (StreamRow row) =&gt;
+{
+    if (row.RowNumber == 0) return; // skip header row
+
+    if (row.TryGetCell(&quot;Revenue&quot;, out StreamCell revenueCell))
+        Console.WriteLine($&quot;Row {row.RowNumber}: {revenueCell.Value}&quot;);
+});</code></pre></div>
+<p>Explore related resources: the <a href="https://ironsoftware.com/csharp/excel/get-started/">IronXL getting-started guide</a>, the <a href="https://ironsoftware.com/excel/csharp/how-to/stream-large-excel-files/">streaming large Excel files how-to</a>, the <a href="https://ironsoftware.com/csharp/excel/examples/read-excel/">read Excel data examples</a>, and the <a href="https://ironsoftware.com/csharp/excel/docs/">IronXL API docs</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronXL_StreamRow__ctor_" data-uid="IronXL.StreamRow.#ctor*"></a>
+  <h4 id="IronXL_StreamRow__ctor_System_Int32_System_Collections_Generic_IReadOnlyList_IronXL_StreamCell__" data-uid="IronXL.StreamRow.#ctor(System.Int32,System.Collections.Generic.IReadOnlyList{IronXL.StreamCell})">StreamRow(Int32, IReadOnlyList&lt;StreamCell&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates a new forward-only stream row.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StreamRow(int rowNumber, IReadOnlyList&lt;StreamCell&gt; cells)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rowNumber</span></td>
+        <td><p>Zero-based row number (the worksheet's 1-based Excel row number minus one), matching
+what <span class="xref">NPOI.XSSF.EventUserModel.XSSFSheetXMLHandler</span> emits.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="IronXL.StreamCell.html">StreamCell</a>&gt;</td>
+        <td><span class="parametername">cells</span></td>
+        <td><p>The cells present in this row. They need not be sorted by column: the indexer scans them
+linearly for rows created through this public constructor, so out-of-order cells resolve
+correctly.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronXL_StreamRow_Cells_" data-uid="IronXL.StreamRow.Cells*"></a>
+  <h4 id="IronXL_StreamRow_Cells" data-uid="IronXL.StreamRow.Cells">Cells</h4>
+  <div class="markdown level1 summary"><p>The cells present in this row. May be sparse (columns with no content are simply absent).
+Rows produced by <a class="xref" href="IronXL.WorkBook.html#IronXL_WorkBook_StreamRows_System_String_System_Int32_">StreamRows(String, Int32)</a> and its overloads are in
+ascending column order, which the indexer exploits with a binary search; rows built
+through the public constructor may be unsorted and are looked up linearly instead.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;StreamCell&gt; Cells { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="IronXL.StreamCell.html">StreamCell</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_StreamRow_Header_" data-uid="IronXL.StreamRow.Header*"></a>
+  <h4 id="IronXL_StreamRow_Header" data-uid="IronXL.StreamRow.Header">Header</h4>
+  <div class="markdown level1 summary"><p>Column names from the configured header row, positional so that <code>Header[i]</code> is the
+header name at column <code>i</code> (or <code>null</code> where that column's header cell is blank
+or absent), or <code>null</code> if no header was configured for this stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;string&gt; Header { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_StreamRow_Item_" data-uid="IronXL.StreamRow.Item*"></a>
+  <h4 id="IronXL_StreamRow_Item_System_Int32_" data-uid="IronXL.StreamRow.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"><p>Gets the cell at the given zero-based column index, or <code>null</code> if the row has no
+cell at that column (a sparse gap). For rows whose cells are known to be in ascending
+column order (all <a class="xref" href="IronXL.WorkBook.html#IronXL_WorkBook_StreamRows_System_String_System_Int32_">StreamRows(String, Int32)</a> output) this runs in
+O(log n) via a binary search; for rows built from arbitrary caller-supplied cells it
+falls back to an O(n) linear scan so out-of-order cells still resolve correctly.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StreamCell this[int columnIndex] { get; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">columnIndex</span></td>
+        <td><p>Zero-based column index to look up.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.StreamCell.html">StreamCell</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_StreamRow_Item_" data-uid="IronXL.StreamRow.Item*"></a>
+  <h4 id="IronXL_StreamRow_Item_System_String_" data-uid="IronXL.StreamRow.Item(System.String)">Item[String]</h4>
+  <div class="markdown level1 summary"><p>Gets the cell under the named header column, or <code>null</code> if this row has no cell
+there (a sparse gap). Throws <span class="xref">System.ArgumentException</span> if the column name is not
+in the header, and <span class="xref">System.InvalidOperationException</span> if no header was configured.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StreamCell this[string columnName] { get; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">columnName</span></td>
+        <td><p>Header column name to look up (trimmed, case-insensitive).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.StreamCell.html">StreamCell</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_StreamRow_RowNumber_" data-uid="IronXL.StreamRow.RowNumber*"></a>
+  <h4 id="IronXL_StreamRow_RowNumber" data-uid="IronXL.StreamRow.RowNumber">RowNumber</h4>
+  <div class="markdown level1 summary"><p>Zero-based row number (the worksheet's 1-based Excel row number minus one). For
+example, Excel row 1 has <a class="xref" href="IronXL.StreamRow.html#IronXL_StreamRow_RowNumber">RowNumber</a> == 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RowNumber { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronXL_StreamRow_TryGetCell_" data-uid="IronXL.StreamRow.TryGetCell*"></a>
+  <h4 id="IronXL_StreamRow_TryGetCell_System_String_IronXL_StreamCell__" data-uid="IronXL.StreamRow.TryGetCell(System.String,IronXL.StreamCell@)">TryGetCell(String, out StreamCell)</h4>
+  <div class="markdown level1 summary"><p>Looks up a cell by header column name. Returns <code>true</code> if the column name exists in
+the header (<code data-dev-comment-type="paramref" class="paramref">cell</code> is that cell, or <code>null</code> for a sparse gap);
+returns <code>false</code> if the column name is unknown (<code data-dev-comment-type="paramref" class="paramref">cell</code> is
+<code>null</code>). Throws <span class="xref">System.InvalidOperationException</span> if no header was
+configured.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetCell(string columnName, out StreamCell cell)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">columnName</span></td>
+        <td><p>Header column name to look up (trimmed, case-insensitive).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronXL.StreamCell.html">StreamCell</a></td>
+        <td><span class="parametername">cell</span></td>
+        <td><p>The matching cell, or <code>null</code> if unknown or a sparse gap.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>
