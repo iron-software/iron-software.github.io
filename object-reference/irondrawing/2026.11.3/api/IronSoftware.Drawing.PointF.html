@@ -1,0 +1,720 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PointF Class - IronDrawing C# API Reference
+      v2 (human)     title:       PointF: 2D Float Coordinates in C#
+      v1 (algorithm) description: Use PointF in IronDrawing C# to store float X and Y coordinates, offset positions, and convert implicitly to SKPoint and System.Drawing.PointF.
+      v2 (human)     description: PointF stores precise 2D coordinates in IronDrawing for .NET. Set X and Y, shift with Offset, and convert seamlessly to SKPoint or System.Drawing.PointF.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PointF Class | IronDrawing C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PointF Class | IronDrawing C# API Reference">
+    <meta name="description" content="Reference for IronSoftware.Drawing.PointF in C#: float X/Y coordinates, Offset for translation, and implicit conversion to SKPoint and platform point types.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/open-source/csharp/drawing/object-reference/api/IronSoftware.Drawing.PointF.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PointF Class | IronDrawing C# API Reference",
+    "name": "PointF class | IronDrawing C# API",
+    "url": "https://ironsoftware.com/open-source/csharp/drawing/object-reference/api/IronSoftware.Drawing.PointF.html",
+    "abstract": "Precise sub-pixel positioning in cross-platform .NET graphics relies on the IronSoftware.Drawing.PointF class, which stores an ordered pair of single-precision floating-point values as X and Y. Construct it with PointF(float x, float y), translate it in place with Offset(float dx, float dy), and pass it directly to SkiaSharp or System.Drawing APIs through implicit conversion operators. Equals and GetHashCode are overridden for value-based comparison. PointF lives in the IronSoftware.Drawing namespace and is shipped in IronSoftware.Drawing.dll.",
+    "description": "Reference for IronSoftware.Drawing.PointF in C#: float X/Y coordinates, Offset for translation, and implicit conversion to SKPoint and platform point types.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronDrawing",
+      "url": "https://ironsoftware.com/open-source/csharp/drawing/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronSoftware.Drawing;\n\n// Build a point, shift it, then use it as an SKPoint implicitly.\nvar origin = new PointF(12.5f, 34.75f);\norigin.Offset(5f, -10f);          // origin is now (17.5, 24.75)\n\nSkiaSharp.SKPoint skPt = origin;  // implicit operator, no cast needed\nConsole.WriteLine($\"SKPoint: {skPt.X}, {skPt.Y}\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PointF live in the IronDrawing API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PointF is a class in the IronSoftware.Drawing namespace, shipped in IronSoftware.Drawing.dll. It derives from System.Object and is constructed with new PointF(float x, float y)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you shift a PointF position without creating a new instance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Offset(float dx, float dy) on an existing PointF. It adds dx to X and dy to Y in place, avoiding a new allocation. This is useful in layout loops that apply a fixed margin to many points."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you convert a PointF to an SKPoint in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PointF provides an implicit operator to SKPoint, so assigning a PointF to an SKPoint variable or passing it to an SKPoint parameter requires no explicit cast. The reverse conversion from SKPoint to PointF is also implicit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can PointF instances be compared by value or used as dictionary keys?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. PointF overrides Equals and GetHashCode so that two instances with identical X and Y values are considered equal. This makes PointF safe to use as a dictionary key or in LINQ operations such as Distinct."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronSoftware.Drawing.PointF">
+  
+  
+  <h1 id="IronSoftware_Drawing_PointF" data-uid="IronSoftware.Drawing.PointF" class="text-break">Class PointF
+  </h1>
+  <div class="markdown level0 summary"><p>Represents an ordered pair of integer x- and y-coordinates that defines a point in a two-dimensional plane.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">PointF</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronSoftware.Drawing.html">IronSoftware.Drawing</a></h6>
+  <h6><strong>Assembly</strong>: IronSoftware.Drawing.Common.dll</h6>
+  <h5 id="IronSoftware_Drawing_PointF_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PointF : Object</code></pre>
+  </div>
+    <!-- archetype-N:start PointF treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Precise sub-pixel positioning in cross-platform .NET graphics relies on <code>PointF</code>, a lightweight coordinate record that stores an ordered pair of single-precision floating-point values as <code>X</code> and <code>Y</code>. Wherever IronDrawing needs to express a location on a two-dimensional plane, such as a text anchor, a crop origin, or a shape vertex, <code>PointF</code> is the common currency that travels between rendering engines without losing fractional precision.</p>
+<p>Construct a point with <code>new PointF(float x, float y)</code> and read or update its position through the <code>X</code> and <code>Y</code> properties, both of which are mutable. To shift a point relative to its current location, call <code>Offset(float dx, float dy)</code>, which adds the supplied deltas directly to <code>X</code> and <code>Y</code> in place. This avoids allocating a replacement instance when only a translation is needed, which is common in layout loops that nudge elements by a fixed margin.</p>
+<p><code>PointF</code> integrates smoothly with SkiaSharp through a set of implicit conversion operators. An <code>SKPoint</code> converts to <code>PointF</code> automatically, and a <code>PointF</code> converts back to <code>SKPoint</code>, so code that mixes IronDrawing APIs with direct SkiaSharp calls requires no explicit casts. Additional implicit operators cover the <code>System.Drawing.PointF</code> type and related platform point types, meaning a value obtained from one graphics subsystem passes directly into another. <code>Equals</code> and <code>GetHashCode</code> are overridden so that <code>PointF</code> instances compare by coordinate value rather than reference, making them safe to use as dictionary keys or in LINQ distinct operations.</p>
+<p>Because <code>PointF</code> derives from <code>Object</code> and carries no unmanaged resources, no disposal step is required. It is a plain, allocatable value-holder that fits naturally into collections, tuples, and return types throughout the IronDrawing surface.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronSoftware.Drawing;
+
+// Build a point, shift it, then use it as an SKPoint implicitly.
+var origin = new PointF(12.5f, 34.75f);
+origin.Offset(5f, -10f);          // origin is now (17.5, 24.75)
+
+SkiaSharp.SKPoint skPt = origin;  // implicit operator, no cast needed
+Console.WriteLine($&quot;SKPoint: {skPt.X}, {skPt.Y}&quot;);</code></pre></div>
+<p>Explore further with the <a href="https://ironsoftware.com/open-source/csharp/drawing/get-started/">IronDrawing getting-started guide</a>, the <a href="https://ironsoftware.com/open-source/csharp/drawing/how-to/coordinate-geometry/">coordinate and geometry how-to</a>, the <a href="https://ironsoftware.com/open-source/csharp/drawing/examples/anybitmapobject/">AnyBitmap drawing examples</a>, and the <a href="https://ironsoftware.com/open-source/csharp/drawing/docs/">IronDrawing API documentation hub</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_PointF__ctor_" data-uid="IronSoftware.Drawing.PointF.#ctor*"></a>
+  <h4 id="IronSoftware_Drawing_PointF__ctor_System_Single_System_Single_" data-uid="IronSoftware.Drawing.PointF.#ctor(System.Single,System.Single)">PointF(Single, Single)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronSoftware.Drawing.PointF.html">PointF</a> struct with the specified coordinates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PointF(float x, float y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_PointF_X_" data-uid="IronSoftware.Drawing.PointF.X*"></a>
+  <h4 id="IronSoftware_Drawing_PointF_X" data-uid="IronSoftware.Drawing.PointF.X">X</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the x-coordinate of this <a class="xref" href="IronSoftware.Drawing.PointF.html">PointF</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float X { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_PointF_Y_" data-uid="IronSoftware.Drawing.PointF.Y*"></a>
+  <h4 id="IronSoftware_Drawing_PointF_Y" data-uid="IronSoftware.Drawing.PointF.Y">Y</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the y-coordinate of this <a class="xref" href="IronSoftware.Drawing.PointF.html">PointF</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Y { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_PointF_Equals_" data-uid="IronSoftware.Drawing.PointF.Equals*"></a>
+  <h4 id="IronSoftware_Drawing_PointF_Equals_System_Object_" data-uid="IronSoftware.Drawing.PointF.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"><p>Specifies whether this <a class="xref" href="IronSoftware.Drawing.PointF.html">PointF</a> instance contains the same coordinates as another <a class="xref" href="IronSoftware.Drawing.PointF.html">PointF</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>The point to test for equality.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if other has the same coordinates as this point instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_PointF_GetHashCode_" data-uid="IronSoftware.Drawing.PointF.GetHashCode*"></a>
+  <h4 id="IronSoftware_Drawing_PointF_GetHashCode" data-uid="IronSoftware.Drawing.PointF.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"><p>Hashing integer based on image raw binary data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Int</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_PointF_Offset_" data-uid="IronSoftware.Drawing.PointF.Offset*"></a>
+  <h4 id="IronSoftware_Drawing_PointF_Offset_System_Single_System_Single_" data-uid="IronSoftware.Drawing.PointF.Offset(System.Single,System.Single)">Offset(Single, Single)</h4>
+  <div class="markdown level1 summary"><p>Translates this <a class="xref" href="IronSoftware.Drawing.PointF.html">PointF</a> by the specified amount.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Offset(float dx, float dy)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">dx</span></td>
+        <td><p>The amount to offset the x-coordinate.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">dy</span></td>
+        <td><p>The amount to offset the y-coordinate.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="operators">Operators
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_PointF_op_Implicit_" data-uid="IronSoftware.Drawing.PointF.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_PointF_op_Implicit_IronSoftware_Drawing_PointF__Microsoft_Maui_Graphics_PointF" data-uid="IronSoftware.Drawing.PointF.op_Implicit(IronSoftware.Drawing.PointF)~Microsoft.Maui.Graphics.PointF">Implicit(PointF to PointF)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts PointF objects to Microsoft.Maui.Graphics.Point</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator PointF(PointF point)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.PointF.html">PointF</a></td>
+        <td><span class="parametername">point</span></td>
+        <td><p>PointF will automatically be casted to Microsoft.Maui.Graphics.Point</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Maui.Graphics.PointF</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_PointF_op_Implicit_" data-uid="IronSoftware.Drawing.PointF.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_PointF_op_Implicit_IronSoftware_Drawing_PointF__SixLabors_ImageSharp_PointF" data-uid="IronSoftware.Drawing.PointF.op_Implicit(IronSoftware.Drawing.PointF)~SixLabors.ImageSharp.PointF">Implicit(PointF to PointF)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts a PointF object to SixLabors.ImageSharp.PointF</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator PointF(PointF point)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.PointF.html">PointF</a></td>
+        <td><span class="parametername">point</span></td>
+        <td><p>PointF will automatically be casted to SixLabors.ImageSharp.PointF</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.PointF</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_PointF_op_Implicit_" data-uid="IronSoftware.Drawing.PointF.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_PointF_op_Implicit_IronSoftware_Drawing_PointF__SkiaSharp_SKPoint" data-uid="IronSoftware.Drawing.PointF.op_Implicit(IronSoftware.Drawing.PointF)~SkiaSharp.SKPoint">Implicit(PointF to SKPoint)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts PointF objects to SkiaSharp.SKPoint</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator SKPoint(PointF point)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.PointF.html">PointF</a></td>
+        <td><span class="parametername">point</span></td>
+        <td><p>PointF will automatically be casted to SkiaSharp.SKPoint</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKPoint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_PointF_op_Implicit_" data-uid="IronSoftware.Drawing.PointF.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_PointF_op_Implicit_Microsoft_Maui_Graphics_PointF__IronSoftware_Drawing_PointF" data-uid="IronSoftware.Drawing.PointF.op_Implicit(Microsoft.Maui.Graphics.PointF)~IronSoftware.Drawing.PointF">Implicit(PointF to PointF)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts Microsoft.Maui.Graphics.Point objects to PointF</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator PointF(PointF point)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Maui.Graphics.PointF</span></td>
+        <td><span class="parametername">point</span></td>
+        <td><p>Microsoft.Maui.Graphics.Point will automatically be casted to PointF</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.PointF.html">PointF</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_PointF_op_Implicit_" data-uid="IronSoftware.Drawing.PointF.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_PointF_op_Implicit_SixLabors_ImageSharp_PointF__IronSoftware_Drawing_PointF" data-uid="IronSoftware.Drawing.PointF.op_Implicit(SixLabors.ImageSharp.PointF)~IronSoftware.Drawing.PointF">Implicit(PointF to PointF)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SixLabors.ImageSharp.PointF objects to PointF</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator PointF(PointF point)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.PointF</span></td>
+        <td><span class="parametername">point</span></td>
+        <td><p>SixLabors.ImageSharp.PointF will automatically be casted to PointF</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.PointF.html">PointF</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_PointF_op_Implicit_" data-uid="IronSoftware.Drawing.PointF.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_PointF_op_Implicit_SkiaSharp_SKPoint__IronSoftware_Drawing_PointF" data-uid="IronSoftware.Drawing.PointF.op_Implicit(SkiaSharp.SKPoint)~IronSoftware.Drawing.PointF">Implicit(SKPoint to PointF)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SkiaSharp.SKPoint objects to PointF</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator PointF(SKPoint point)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKPoint</span></td>
+        <td><span class="parametername">point</span></td>
+        <td><p>SkiaSharp.SKPoint will automatically be casted to PointF</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.PointF.html">PointF</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronSoftware.System.Drawing/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon api-reference-right-sidebar__list-item--display-none">
+                    <a href="" target="_blank" class="api-reference-right-sidebar__link"></a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronSoftware.System.Drawing/' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

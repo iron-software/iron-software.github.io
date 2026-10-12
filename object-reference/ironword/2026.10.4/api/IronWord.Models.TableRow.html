@@ -1,0 +1,827 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TableRow Class - IronWord C# API Reference
+      v2 (human)     title:       TableRow: Build Word Table Rows in C#
+      v1 (algorithm) description: Build Word table rows in C# with the IronWord TableRow class: hold cells in a Cells list, add cells with AddCell, set Height, and add the row with Table.AddRow.
+      v2 (human)     description: Assemble Word tables row by row with the IronWord TableRow class in C#: add cells, set row height, and append the row to a table.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TableRow Class | IronWord C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="TableRow Class | IronWord C# API Reference">
+    <meta name="description" content="Reference for the IronWord TableRow class in C#: an enumerable band of TableCell objects with a Height property, added to a table through Table.AddRow.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/word/csharp/object-reference/api/IronWord.Models.TableRow.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TableRow Class | IronWord C# API Reference",
+    "name": "TableRow class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.TableRow.html",
+    "abstract": "Building a Word table row by row in C# runs through the IronWord TableRow class. Construct a row empty or from cells, append cells with AddCell, and add the finished row to a table through Table.AddRow. The Cells list and the row indexer reach its cells, the row is enumerable through GetEnumerator, and Height controls its height.",
+    "description": "Reference for the IronWord TableRow class in C#: an enumerable band of TableCell objects with a Height property, added to a table through Table.AddRow.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\n\nTableRow row = new TableRow();\nrow.AddCell(new TableCell(\"Number\"));\nrow.AddCell(new TableCell(\"Name\"));\n\nTable table = new Table();\ntable.AddRow(row);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TableRow live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TableRow is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from TableElement and is added to a table through Table.AddRow, with its rows exposed on the Table.Rows list."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you build a table row in C# with IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a TableRow, append cells with AddCell (or pass them to the constructor), set Height if needed, then call Table.AddRow to attach the row. The Cells list and the row indexer reach the cells afterwards."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set the height of a table row in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the Height property directly, or call SetHeight with a value and a MeasurementUnit. GetHeight reads the current height back in the unit you request."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronWord.Models.TableRow">
+  
+  
+  <h1 id="IronWord_Models_TableRow" data-uid="IronWord.Models.TableRow" class="text-break">Class TableRow
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a row element within a table.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="IronWord.Models.Abstract.ContentElement.html">ContentElement</a></div>
+    <div class="level2"><a class="xref" href="IronWord.Models.Abstract.ParentElement.html">ParentElement</a></div>
+    <div class="level3"><a class="xref" href="IronWord.Models.Abstract.TableElement.html">TableElement</a></div>
+    <div class="level4"><span class="xref">TableRow</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IronSoftware.Abstractions.Word.ITableRow</span></div>
+    <div><span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObject</span></div>
+    <div><span class="xref">IronSoftware.Abstractions.IDocumentObject</span></div>
+    <div><span class="xref">System.ICloneable</span></div>
+    <div><span class="xref">IronSoftware.Abstractions.IParent</span>&lt;<span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObjectCollection</span>, <span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObject</span>&gt;</div>
+    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">IronSoftware.Abstractions.Word.ITableCell</span>&gt;</div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.TableElement.html#IronWord_Models_Abstract_TableElement_ExtractImages">TableElement.ExtractImages()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.TableElement.html#IronWord_Models_Abstract_TableElement_ExtractShapes">TableElement.ExtractShapes()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.TableElement.html#IronWord_Models_Abstract_TableElement_Borders">TableElement.Borders</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.TableElement.html#IronWord_Models_Abstract_TableElement_BackgroundColor">TableElement.BackgroundColor</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_AddChild_IronSoftware_Abstractions_Word_IWordDocumentObject___">ParentElement.AddChild(IWordDocumentObject[])</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_InsertChildToIndex_System_Int32_IronSoftware_Abstractions_Word_IWordDocumentObject___">ParentElement.InsertChildToIndex(Int32, IWordDocumentObject[])</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Remove">ParentElement.Remove()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_RemoveChildren_IronSoftware_Abstractions_Word_IWordDocumentObject___">ParentElement.RemoveChildren(IWordDocumentObject[])</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_RemoveAllChildren">ParentElement.RemoveAllChildren()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_ExtractElements__1">ParentElement.ExtractElements&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_GetChildByIndex__1_System_Int32_">ParentElement.GetChildByIndex&lt;T&gt;(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Clone">ParentElement.Clone()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_CloneObject">ParentElement.CloneObject()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_LogObjectTree">ParentElement.LogObjectTree()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Texts">ParentElement.Texts</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Tables">ParentElement.Tables</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Children">ParentElement.Children</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Replace_IronSoftware_Abstractions_Word_IWordDocumentObject_">ContentElement.Replace(IWordDocumentObject)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_GetIndex__1">ContentElement.GetIndex&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Parent">ContentElement.Parent</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Status">ContentElement.Status</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronWord.Models.html">IronWord.Models</a></h6>
+  <h6><strong>Assembly</strong>: IronWord.dll</h6>
+  <h5 id="IronWord_Models_TableRow_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TableRow : TableElement</code></pre>
+  </div>
+    <!-- archetype-N:start TableRow treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>TableRow</code> is the horizontal band of cells you assemble when building a Word table row by row. Each instance holds an ordered list of <code>TableCell</code> objects and the row's height, and a <code>Table</code> exposes its rows for reading and editing. Use it when a table is built incrementally, adding one populated row at a time rather than sizing the whole grid up front.</p>
+<p>Create a row empty (<code>new TableRow()</code>) or from cells (<code>new TableRow(params TableCell[])</code>), then add it to a table with <code>Table.AddRow</code>. The cells inside a row are reachable through the <code>Cells</code> list and through the row's indexer, <code>row[index]</code>, and <code>AddCell</code> appends a <code>TableCell</code> to the end. Because <code>TableRow</code> is enumerable, <code>GetEnumerator</code> and a <code>foreach</code> walk its cells directly, which is handy when filling or reading a row in a loop.</p>
+<p>Row height is controlled by the <code>Height</code> property, and <code>GetHeight</code> and <code>SetHeight</code> read and write it in a chosen <code>MeasurementUnit</code>. <code>Index</code> reports the row's position within the table, and <code>InsertRowAfterSelf</code> and <code>InsertRowBeforeSelf</code> add a neighbouring row relative to this one, so rows can be spliced in without rebuilding the table. The usual pattern is to build a <code>TableRow</code> with its cells, set the height if it matters, and hand it to the table. Building a table row by row is the natural approach when the row count is not known up front, such as turning a list of records into a table where each record becomes one row. After a row is added, it stays reachable through <code>Table.Rows</code>, so a later pass can adjust its height or read its cells.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+
+TableRow row = new TableRow();
+row.AddCell(new TableCell(&quot;Number&quot;));
+row.AddCell(new TableCell(&quot;Name&quot;));
+
+Table table = new Table();
+table.AddRow(row);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/add-table/">add a table how-to</a> covers building tables from rows and cells, the <a href="https://ironsoftware.com/csharp/word/examples/add-table/">add table example</a> iterates rows to populate a grid, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> covers how rows sit in the document model.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronWord_Models_TableRow__ctor_" data-uid="IronWord.Models.TableRow.#ctor*"></a>
+  <h4 id="IronWord_Models_TableRow__ctor" data-uid="IronWord.Models.TableRow.#ctor">TableRow()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the TableRow class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TableRow()</code></pre>
+  </div>
+  
+  
+  <a id="IronWord_Models_TableRow__ctor_" data-uid="IronWord.Models.TableRow.#ctor*"></a>
+  <h4 id="IronWord_Models_TableRow__ctor_IronWord_Models_TableCell___" data-uid="IronWord.Models.TableRow.#ctor(IronWord.Models.TableCell[])">TableRow(TableCell[])</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the TableRow class with the specified cells.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TableRow(params TableCell[] cells)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.TableCell.html">TableCell</a>[]</td>
+        <td><span class="parametername">cells</span></td>
+        <td><p>The table cells to be added.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronWord_Models_TableRow_Cells_" data-uid="IronWord.Models.TableRow.Cells*"></a>
+  <h4 id="IronWord_Models_TableRow_Cells" data-uid="IronWord.Models.TableRow.Cells">Cells</h4>
+  <div class="markdown level1 summary"><p>Gets the list of TableCell elements contained within this row.
+Thread-safe implementation with caching for performance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;ITableCell&gt; Cells { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">IronSoftware.Abstractions.Word.ITableCell</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_TableRow_Height_" data-uid="IronWord.Models.TableRow.Height*"></a>
+  <h4 id="IronWord_Models_TableRow_Height" data-uid="IronWord.Models.TableRow.Height">Height</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the height of the table row in inches.
+The height is internally stored in EMU (English Metric Units) and converted to inches for display.
+Setting this property will automatically convert the inch value to EMU for internal storage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Height { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_TableRow_Index_" data-uid="IronWord.Models.TableRow.Index*"></a>
+  <h4 id="IronWord_Models_TableRow_Index" data-uid="IronWord.Models.TableRow.Index">Index</h4>
+  <div class="markdown level1 summary"><p>The index of this table row within the parent table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Index { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_TableRow_Item_" data-uid="IronWord.Models.TableRow.Item*"></a>
+  <h4 id="IronWord_Models_TableRow_Item_System_Int32_" data-uid="IronWord.Models.TableRow.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the table cell at the specified column index within the row.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ITableCell this[int index] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index of the column within the row.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.Word.ITableCell</span></td>
+        <td><p>The table cell at the specified column index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronWord_Models_TableRow_AddCell_" data-uid="IronWord.Models.TableRow.AddCell*"></a>
+  <h4 id="IronWord_Models_TableRow_AddCell_IronWord_Models_TableCell_" data-uid="IronWord.Models.TableRow.AddCell(IronWord.Models.TableCell)">AddCell(TableCell)</h4>
+  <div class="markdown level1 summary"><p>Adds a new TableCell to the row.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddCell(TableCell cell)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.TableCell.html">TableCell</a></td>
+        <td><span class="parametername">cell</span></td>
+        <td><p>The TableCell object to be added to the row.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_TableRow_CloneStruct_" data-uid="IronWord.Models.TableRow.CloneStruct*"></a>
+  <h4 id="IronWord_Models_TableRow_CloneStruct" data-uid="IronWord.Models.TableRow.CloneStruct">CloneStruct()</h4>
+  <div class="markdown level1 summary"><p>Creates and returns a new instance of <a class="xref" href="IronWord.Models.TableRow.html">TableRow</a> with the same structure (number of cells and their structure) as the current row.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TableRow CloneStruct()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.TableRow.html">TableRow</a></td>
+        <td><p>A cloned <a class="xref" href="IronWord.Models.TableRow.html">TableRow</a> with the same structure as the current row.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_TableRow_GetEnumerator_" data-uid="IronWord.Models.TableRow.GetEnumerator*"></a>
+  <h4 id="IronWord_Models_TableRow_GetEnumerator" data-uid="IronWord.Models.TableRow.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection of TableCell elements in the row.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;ITableCell&gt; GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;<span class="xref">IronSoftware.Abstractions.Word.ITableCell</span>&gt;</td>
+        <td><p>An enumerator that can be used to iterate through the collection of TableCell elements in the row.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_TableRow_GetHeight_" data-uid="IronWord.Models.TableRow.GetHeight*"></a>
+  <h4 id="IronWord_Models_TableRow_GetHeight_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.TableRow.GetHeight(IronWord.Models.Enums.MeasurementUnit)">GetHeight(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the height of the table row in the specified measurement unit.
+The height is internally stored in EMU and converted to the requested unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetHeight(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The measurement unit for the height. Default is twentieths of a point (Twips).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The height of the table row in the specified measurement unit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_TableRow_InsertRowAfterSelf_" data-uid="IronWord.Models.TableRow.InsertRowAfterSelf*"></a>
+  <h4 id="IronWord_Models_TableRow_InsertRowAfterSelf" data-uid="IronWord.Models.TableRow.InsertRowAfterSelf">InsertRowAfterSelf()</h4>
+  <div class="markdown level1 summary"><p>Inserts a new TableRow after this row within the parent table with the same structure (number of cells and their structure) as the current row.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InsertRowAfterSelf()</code></pre>
+  </div>
+  
+  
+  <a id="IronWord_Models_TableRow_InsertRowAfterSelf_" data-uid="IronWord.Models.TableRow.InsertRowAfterSelf*"></a>
+  <h4 id="IronWord_Models_TableRow_InsertRowAfterSelf_IronSoftware_Abstractions_Word_ITableRow_" data-uid="IronWord.Models.TableRow.InsertRowAfterSelf(IronSoftware.Abstractions.Word.ITableRow)">InsertRowAfterSelf(ITableRow)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InsertRowAfterSelf(ITableRow row)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.Word.ITableRow</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_TableRow_InsertRowBeforeSelf_" data-uid="IronWord.Models.TableRow.InsertRowBeforeSelf*"></a>
+  <h4 id="IronWord_Models_TableRow_InsertRowBeforeSelf" data-uid="IronWord.Models.TableRow.InsertRowBeforeSelf">InsertRowBeforeSelf()</h4>
+  <div class="markdown level1 summary"><p>Inserts a new TableRow before this row within the parent table with the same structure (number of cells and their structure) as the current row.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InsertRowBeforeSelf()</code></pre>
+  </div>
+  
+  
+  <a id="IronWord_Models_TableRow_InsertRowBeforeSelf_" data-uid="IronWord.Models.TableRow.InsertRowBeforeSelf*"></a>
+  <h4 id="IronWord_Models_TableRow_InsertRowBeforeSelf_IronSoftware_Abstractions_Word_ITableRow_" data-uid="IronWord.Models.TableRow.InsertRowBeforeSelf(IronSoftware.Abstractions.Word.ITableRow)">InsertRowBeforeSelf(ITableRow)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InsertRowBeforeSelf(ITableRow row)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.Word.ITableRow</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_TableRow_SetHeight_" data-uid="IronWord.Models.TableRow.SetHeight*"></a>
+  <h4 id="IronWord_Models_TableRow_SetHeight_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.TableRow.SetHeight(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetHeight(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Sets the height of the table row.
+The height value will be converted to EMU for internal storage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetHeight(double height, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height value to set.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The measurement unit of the provided height. Default is twentieths of a point (Twips).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.Word.ITableRow</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObject</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.IDocumentObject</span>
+  </div>
+  <div>
+      <span class="xref">System.ICloneable</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.IParent&lt;, &gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
+  </div>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.TableElement.html#IronWord_Models_Abstract_TableElement_ExtractImages">ExtractImages()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.TableElement.html#IronWord_Models_Abstract_TableElement_ExtractShapes">ExtractShapes()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.TableElement.html#IronWord_Models_Abstract_TableElement_Borders">Borders</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.TableElement.html#IronWord_Models_Abstract_TableElement_BackgroundColor">BackgroundColor</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_AddChild_IronSoftware_Abstractions_Word_IWordDocumentObject___">AddChild(IWordDocumentObject[])</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_InsertChildToIndex_System_Int32_IronSoftware_Abstractions_Word_IWordDocumentObject___">InsertChildToIndex(Int32, IWordDocumentObject[])</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Remove">Remove()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_RemoveChildren_IronSoftware_Abstractions_Word_IWordDocumentObject___">RemoveChildren(IWordDocumentObject[])</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_RemoveAllChildren">RemoveAllChildren()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_ExtractElements__1">ExtractElements&lt;T&gt;()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_GetChildByIndex__1_System_Int32_">GetChildByIndex&lt;T&gt;(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Clone">Clone()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_CloneObject">CloneObject()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_LogObjectTree">LogObjectTree()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Texts">Texts</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Tables">Tables</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Children">Children</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Replace_IronSoftware_Abstractions_Word_IWordDocumentObject_">Replace(IWordDocumentObject)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_GetIndex__1">GetIndex&lt;T&gt;()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Parent">Parent</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Status">Status</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronWord/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with NuGet
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronWord' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

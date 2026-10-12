@@ -1,0 +1,536 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       nrdknk Interface - IronPDF C# API Reference
+      v2 (human)     title:       nrdknk: PDF Extension Metadata in C#
+      v1 (algorithm) description: Inspect IronPDF extension metadata in C# via the nrdknk interface: assembly, build timestamp, and ten string descriptor properties in Iron.Pdf.Extensions.
+      v2 (human)     description: The nrdknk interface in IronPDF exposes assembly, timestamp, and string metadata for PDF extensions, giving host code a uniform inspection contract.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>nrdknk Interface | IronPDF C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="nrdknk Interface | IronPDF C# API Reference">
+    <meta name="description" content="Reference for the IronPDF nrdknk interface in C#: read assembly, DateTime, and string metadata from any Iron.Pdf.Extensions component uniformly.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/Iron.Pdf.Extensions.nrdknk.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "nrdknk Interface | IronPDF C# API Reference",
+    "name": "nrdknk interface | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/Iron.Pdf.Extensions.nrdknk.html",
+    "abstract": "When host code needs to inspect a registered IronPDF extension, the nrdknk interface in Iron.Pdf.Extensions provides a uniform read-only contract. It exposes the implementing Assembly via xmafdq, a build or registration DateTime via xmafdr, and ten string properties (xmafds through xmafeb) carrying names, identifiers, version strings, and capability tags. No concrete implementor names are required: any component that satisfies the contract can be inspected identically, and the fully read-only surface makes the interface safe to cache, log, or stub in tests.",
+    "description": "Reference for the IronPDF nrdknk interface in C#: read assembly, DateTime, and string metadata from any Iron.Pdf.Extensions component uniformly.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does nrdknk live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "nrdknk is an interface in the Iron.Pdf.Extensions namespace, shipped in IronPdf.dll. It extends Object and declares twelve read-only properties: one Assembly (xmafdq), one DateTime (xmafdr), and ten strings (xmafds through xmafeb). Obtain a reference through the IronPDF extension registry or a factory rather than constructing one directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do the string properties on nrdknk represent?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ten string properties xmafds through xmafeb carry descriptive metadata that varies by extension, such as display names, unique identifiers, version strings, and capability tags. Read them as a group when building diagnostic reports, or read individual fields when routing logic depends on a specific identifier."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you unit-test code that depends on nrdknk?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because nrdknk is a fully read-only interface with no mutating methods, you can create a test double that implements it and returns controlled values for every property. This isolates the code under test from real extension binaries and assembly loading."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you verify that the correct extension binary is loaded at runtime?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the xmafdq property to obtain the Assembly that contains the implementing component, then inspect its name, version, or location using standard .NET reflection. The xmafdr DateTime property can supplement this check with a build or registration timestamp for audit logging."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Iron.Pdf.Extensions.nrdknk">
+  
+  
+  <h1 id="Iron_Pdf_Extensions_nrdknk" data-uid="Iron.Pdf.Extensions.nrdknk" class="text-break">Interface nrdknk
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Iron.Pdf.Extensions.html">Iron.Pdf.Extensions</a></h6>
+  <h6><strong>Assembly</strong>: IronPdf.dll</h6>
+  <h5 id="Iron_Pdf_Extensions_nrdknk_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface nrdknk</code></pre>
+  </div>
+    <!-- archetype-N:start nrdknk treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>Metadata about a PDF extension, its origin assembly, build timestamp, and a rich set of descriptive string fields are all surfaced through the <code>nrdknk</code> contract in IronPDF. Any component that plugs into the <code>Iron.Pdf.Extensions</code> layer and needs to advertise its identity implements this interface, giving host code a uniform way to inspect every registered extension without coupling to concrete types.</p>
+<p>The interface exposes twelve read-only properties. <code>xmafdq</code> returns the <code>Assembly</code> that contains the implementing component, which is useful for reflection-based loading and version checks. <code>xmafdr</code> is a <code>DateTime</code> recording when the extension was built or registered. The remaining ten properties, <code>xmafds</code> through <code>xmafeb</code>, are all <code>string</code> values that carry descriptive metadata: names, identifiers, version strings, capability tags, and similar textual fields that vary by extension. Because the contract is read-only throughout, consuming code can safely cache or log any property without risk of mutation.</p>
+<p>Working with <code>nrdknk</code> follows the same pattern as any IronPDF extension point: obtain a reference through the extension registry or a factory, then read the properties you need. The <code>Assembly</code> property lets you confirm the correct binary is loaded before invoking extension-specific functionality. The <code>DateTime</code> property supports audit logging and diagnostic output. The string properties are best treated as a structured record: read them as a group when building a diagnostic report, or read individual fields when routing logic depends on a specific identifier or capability tag.</p>
+<p>Because the surface is entirely property-based and carries no mutating methods, it is straightforward to wrap in a test double during unit testing. A fake implementation can return controlled values for every property, isolating the code under test from real extension binaries.</p>
+<p>The <a href="https://ironpdf.com/docs/">IronPDF documentation hub</a> covers the extension model in full. The <a href="https://ironpdf.com/get-started/">get-started guide</a> shows how to configure IronPDF before working with extensions. The <a href="https://ironpdf.com/how-to/">how-to index</a> lists task-led articles for common PDF workflows that build on the extension layer.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Iron_Pdf_Extensions_nrdknk_xmafdq_" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdq*"></a>
+  <h4 id="Iron_Pdf_Extensions_nrdknk_xmafdq" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdq">xmafdq</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Assembly xmafdq { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Reflection.Assembly</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Iron_Pdf_Extensions_nrdknk_xmafdr_" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdr*"></a>
+  <h4 id="Iron_Pdf_Extensions_nrdknk_xmafdr" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdr">xmafdr</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DateTime xmafdr { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Iron_Pdf_Extensions_nrdknk_xmafds_" data-uid="Iron.Pdf.Extensions.nrdknk.xmafds*"></a>
+  <h4 id="Iron_Pdf_Extensions_nrdknk_xmafds" data-uid="Iron.Pdf.Extensions.nrdknk.xmafds">xmafds</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string xmafds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Iron_Pdf_Extensions_nrdknk_xmafdt_" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdt*"></a>
+  <h4 id="Iron_Pdf_Extensions_nrdknk_xmafdt" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdt">xmafdt</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string xmafdt { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Iron_Pdf_Extensions_nrdknk_xmafdu_" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdu*"></a>
+  <h4 id="Iron_Pdf_Extensions_nrdknk_xmafdu" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdu">xmafdu</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string xmafdu { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Iron_Pdf_Extensions_nrdknk_xmafdv_" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdv*"></a>
+  <h4 id="Iron_Pdf_Extensions_nrdknk_xmafdv" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdv">xmafdv</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string xmafdv { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Iron_Pdf_Extensions_nrdknk_xmafdw_" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdw*"></a>
+  <h4 id="Iron_Pdf_Extensions_nrdknk_xmafdw" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdw">xmafdw</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string xmafdw { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Iron_Pdf_Extensions_nrdknk_xmafdx_" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdx*"></a>
+  <h4 id="Iron_Pdf_Extensions_nrdknk_xmafdx" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdx">xmafdx</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string xmafdx { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Iron_Pdf_Extensions_nrdknk_xmafdy_" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdy*"></a>
+  <h4 id="Iron_Pdf_Extensions_nrdknk_xmafdy" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdy">xmafdy</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string xmafdy { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Iron_Pdf_Extensions_nrdknk_xmafdz_" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdz*"></a>
+  <h4 id="Iron_Pdf_Extensions_nrdknk_xmafdz" data-uid="Iron.Pdf.Extensions.nrdknk.xmafdz">xmafdz</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string xmafdz { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Iron_Pdf_Extensions_nrdknk_xmafea_" data-uid="Iron.Pdf.Extensions.nrdknk.xmafea*"></a>
+  <h4 id="Iron_Pdf_Extensions_nrdknk_xmafea" data-uid="Iron.Pdf.Extensions.nrdknk.xmafea">xmafea</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string xmafea { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Iron_Pdf_Extensions_nrdknk_xmafeb_" data-uid="Iron.Pdf.Extensions.nrdknk.xmafeb*"></a>
+  <h4 id="Iron_Pdf_Extensions_nrdknk_xmafeb" data-uid="Iron.Pdf.Extensions.nrdknk.xmafeb">xmafeb</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string xmafeb { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>
