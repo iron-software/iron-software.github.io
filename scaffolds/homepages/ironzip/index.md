@@ -68,7 +68,7 @@ using (var archive = new IronZipArchive("existing.zip"))
 
 ## Documentation
 
-- Code Examples : <https://ironsoftware.com/csharp/zip/examples/qr-quickstart/>
+- Code Examples : <https://ironsoftware.com/zip/csharp/examples/>
 - How-To Guides : <https://ironsoftware.com/csharp/zip/how-to/license-keys/>
 - Tutorials : <https://ironsoftware.com/csharp/zip/tutorials/create-read-extract-zip/>
 - API Reference : [https://ironsoftware.com/csharp/zip/object-reference/api/](index.html)

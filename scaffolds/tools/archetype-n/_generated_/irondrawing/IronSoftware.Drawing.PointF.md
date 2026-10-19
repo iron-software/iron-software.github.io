@@ -25,7 +25,7 @@ SkiaSharp.SKPoint skPt = origin;  // implicit operator, no cast needed
 Console.WriteLine($"SKPoint: {skPt.X}, {skPt.Y}");
 ```
 
-Explore further with the [IronDrawing getting-started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/), the [coordinate and geometry how-to](https://ironsoftware.com/open-source/csharp/drawing/how-to/coordinate-geometry/), the [AnyBitmap drawing examples](https://ironsoftware.com/open-source/csharp/drawing/examples/anybitmapobject/), and the [IronDrawing API documentation hub](https://ironsoftware.com/open-source/csharp/drawing/docs/).
+Explore further with the [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/), the [Point & PointF examples](https://ironsoftware.com/open-source/csharp/drawing/examples/point-pointf/), and the [Generate AnyBitmap example](https://ironsoftware.com/open-source/csharp/drawing/examples/generate-anybitmap/).
 
 ---
 

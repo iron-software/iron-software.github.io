@@ -34,7 +34,7 @@ RectangleF inches = region.ConvertTo(MeasurementUnits.Inches, 300);
 SKRect skRect = region;
 ```
 
-Explore further at the [IronDrawing getting-started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/), the [drawing docs overview](https://ironsoftware.com/open-source/csharp/drawing/docs/), the [cross-platform compatibility how-to](https://ironsoftware.com/open-source/csharp/drawing/how-to/cross-platform-compatibility/), and the [rectangle usage examples](https://ironsoftware.com/open-source/csharp/drawing/examples/rectangle/).
+Explore further in the [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/) and the [Rectangle & RectangleF example](https://ironsoftware.com/open-source/csharp/drawing/examples/rectangle-rectanglef/).
 
 ---
 

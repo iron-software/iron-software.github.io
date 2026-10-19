@@ -5,7 +5,7 @@ Target: IronSoftware.Drawing.AnyBitmap.RotateMode
 
 ## Injected overview (Markdown)
 
-`RotateMode` controls the clockwise rotation applied when transforming an `AnyBitmap` image. `None` leaves the image unchanged and is the default. `Rotate90`, `Rotate180`, and `Rotate270` rotate the canvas by the corresponding degree clockwise. Pass the value directly to the relevant `AnyBitmap` rotation method. See the [IronDrawing getting started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/) for setup details.
+`RotateMode` controls the clockwise rotation applied when transforming an `AnyBitmap` image. `None` leaves the image unchanged and is the default. `Rotate90`, `Rotate180`, and `Rotate270` rotate the canvas by the corresponding degree clockwise. Pass the value directly to the relevant `AnyBitmap` rotation method. See the [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/) for setup details.
 
 ```csharp
 AnyBitmap rotated = bitmap.Rotate(AnyBitmap.RotateMode.Rotate90);

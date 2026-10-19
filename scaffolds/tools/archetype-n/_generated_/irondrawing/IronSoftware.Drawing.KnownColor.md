@@ -5,7 +5,7 @@ Target: IronSoftware.Drawing.KnownColor
 
 ## Injected overview (Markdown)
 
-`KnownColor` identifies a named color by label for use with `IronSoftware.Drawing.Color`, covering 176 values split across two groups: standard web colors such as `Black`, `White`, `Red`, `Blue`, `Green`, `Cyan`, `Fuchsia`, and `AliceBlue`, and system UI colors such as `Control`, `Desktop`, and `ActiveBorder` that reflect the host environment's theme. Pass a member to `Color.FromKnownColor` to obtain the corresponding `Color` value. See the [IronDrawing getting-started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/) for setup details.
+`KnownColor` identifies a named color by label for use with `IronSoftware.Drawing.Color`, covering 176 values split across two groups: standard web colors such as `Black`, `White`, `Red`, `Blue`, `Green`, `Cyan`, `Fuchsia`, and `AliceBlue`, and system UI colors such as `Control`, `Desktop`, and `ActiveBorder` that reflect the host environment's theme. Pass a member to `Color.FromKnownColor` to obtain the corresponding `Color` value. See the [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/) for setup details.
 
 ```csharp
 Color highlight = Color.FromKnownColor(KnownColor.CornflowerBlue);

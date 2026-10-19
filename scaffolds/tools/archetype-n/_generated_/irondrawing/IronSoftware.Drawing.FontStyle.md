@@ -5,7 +5,7 @@ Target: IronSoftware.Drawing.FontStyle
 
 ## Injected overview (Markdown)
 
-`FontStyle` controls the typographic decoration applied to text in IronDrawing. `Regular` is the baseline choice with no decoration, `Bold` and `Italic` apply weight and slant independently, and `BoldItalic` combines both. `Strikeout` draws a horizontal line through the text and `Underline` draws one beneath it. Pass a value wherever an `IronSoftware.Drawing` API accepts a font style parameter. See the [IronDrawing get-started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/) for setup details.
+`FontStyle` controls the typographic decoration applied to text in IronDrawing. `Regular` is the baseline choice with no decoration, `Bold` and `Italic` apply weight and slant independently, and `BoldItalic` combines both. `Strikeout` draws a horizontal line through the text and `Underline` draws one beneath it. Pass a value wherever an `IronSoftware.Drawing` API accepts a font style parameter. See the [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/) for setup details.
 
 ```csharp
 var font = new Font("Arial", 14, FontStyle.BoldItalic);

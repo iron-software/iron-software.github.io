@@ -40,7 +40,7 @@ Rectangle inchRect = ironRect.ConvertTo(MeasurementUnits.Inch, 150);
 bool hit = crop.Contains(100, 200);
 ```
 
-Explore the [IronDrawing get-started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/) for installation, the [drawing docs](https://ironsoftware.com/open-source/csharp/drawing/docs/) for the full type catalogue, and the [image cropping example](https://ironsoftware.com/open-source/csharp/drawing/examples/image-crop/) for a practical `Rectangle` workflow.
+Explore the [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/) for installation and the [Create and Cast Rectangle example](https://ironsoftware.com/open-source/csharp/drawing/examples/create-and-cast-croprectangle/) for a practical `Rectangle` workflow.
 
 ---
 

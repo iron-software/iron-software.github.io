@@ -29,7 +29,7 @@ Color overlay = new Color("#80FF5733");
 Console.WriteLine(overlay.ToString());
 ```
 
-Explore further at the [IronDrawing getting-started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/), the [color usage examples](https://ironsoftware.com/open-source/csharp/drawing/examples/color/), the [cross-platform compatibility how-to](https://ironsoftware.com/open-source/csharp/drawing/how-to/cross-platform-color/), and the [IronDrawing docs hub](https://ironsoftware.com/open-source/csharp/drawing/docs/).
+Explore further in the [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/) and the [Create Color example](https://ironsoftware.com/open-source/csharp/drawing/examples/create-color/).
 
 ---
 

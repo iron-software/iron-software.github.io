@@ -33,7 +33,7 @@ using var gif = AnyBitmap.CreateMultiFrameGif(
 gif.ExportFile("animation.gif", AnyBitmap.ImageFormat.Gif);
 ```
 
-Explore further in the [IronDrawing getting-started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/), the [image conversion how-to](https://ironsoftware.com/open-source/csharp/drawing/how-to/image-conversion/), the [multi-frame TIFF and GIF examples](https://ironsoftware.com/open-source/csharp/drawing/examples/create-multi-frame-tiff/), and the full [API documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/).
+Explore further in the [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/), the [Cast to AnyBitmap example](https://ironsoftware.com/open-source/csharp/drawing/examples/cast-to-anybitmap/), and the [multipage TIFF and GIF example](https://ironsoftware.com/open-source/csharp/drawing/examples/create-multipage-tiff-and-gif/).
 
 ---
 

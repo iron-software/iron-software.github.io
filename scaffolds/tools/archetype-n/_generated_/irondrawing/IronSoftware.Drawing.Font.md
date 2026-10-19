@@ -27,7 +27,7 @@ Console.WriteLine(caption.Underline);  // True
 SkiaSharp.SKFont skFont = heading;
 ```
 
-Explore the [IronDrawing get-started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/) for environment setup, the [font usage how-to](https://ironsoftware.com/open-source/csharp/drawing/how-to/fonts/) for practical text-rendering patterns, the [FontStyle examples](https://ironsoftware.com/open-source/csharp/drawing/examples/font-style/) for combining style flags, and the [IronDrawing docs hub](https://ironsoftware.com/open-source/csharp/drawing/docs/) for the full API surface.
+Explore the [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/) for environment setup and the [Create and Cast Font example](https://ironsoftware.com/open-source/csharp/drawing/examples/create-and-cast-font/) for practical usage patterns.
 
 ---
 

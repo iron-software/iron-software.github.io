@@ -34,7 +34,7 @@ Vector2 vec   = scaled;                   // implicit to Vector2
 Console.WriteLine(scaled.ToString());
 ```
 
-Explore more in the [IronDrawing get-started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/), the [color and geometry examples](https://ironsoftware.com/open-source/csharp/drawing/examples/), the [cross-library conversion how-to](https://ironsoftware.com/open-source/csharp/drawing/how-to/cross-library-image-conversion/), and the [IronDrawing docs hub](https://ironsoftware.com/open-source/csharp/drawing/docs/).
+Explore more in the [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/), the [IronDrawing code examples](https://ironsoftware.com/open-source/csharp/drawing/examples/), and the [Cast to AnyBitmap example](https://ironsoftware.com/open-source/csharp/drawing/examples/cast-to-anybitmap/).
 
 ---
 

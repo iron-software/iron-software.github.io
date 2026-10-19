@@ -5,7 +5,7 @@ Target: IronSoftware.Drawing.AnyBitmap.FlipMode
 
 ## Injected overview (Markdown)
 
-`FlipMode` controls the axis along which `AnyBitmap` mirrors an image. `None` leaves the bitmap unchanged and is the safe default. `Horizontal` flips pixels left-to-right across the vertical axis, and `Vertical` flips pixels top-to-bottom across the horizontal axis. Pass the value wherever an `AnyBitmap` flip operation is accepted. See the [IronDrawing getting-started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/) for setup details.
+`FlipMode` controls the axis along which `AnyBitmap` mirrors an image. `None` leaves the bitmap unchanged and is the safe default. `Horizontal` flips pixels left-to-right across the vertical axis, and `Vertical` flips pixels top-to-bottom across the horizontal axis. Pass the value wherever an `AnyBitmap` flip operation is accepted. See the [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/) for setup details.
 
 ```csharp
 AnyBitmap flipped = bitmap.Flip(AnyBitmap.FlipMode.Horizontal);

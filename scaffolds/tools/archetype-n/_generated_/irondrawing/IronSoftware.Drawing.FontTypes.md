@@ -35,7 +35,7 @@ FontTypes body    = FontTypes.TimesNewRoman;
 FontTypes mono    = FontTypes.CourierNew;
 ```
 
-Explore the [IronDrawing get-started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/) for setup, the [font rendering how-to](https://ironsoftware.com/open-source/csharp/drawing/how-to/font-rendering/) for practical usage patterns, the [PDF font examples](https://ironsoftware.com/open-source/csharp/drawing/examples/pdf-fonts/), and the [full API docs](https://ironsoftware.com/open-source/csharp/drawing/docs/) for related drawing types.
+Explore the [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/) for setup and the [Create and Cast Font example](https://ironsoftware.com/open-source/csharp/drawing/examples/create-and-cast-font/) for practical usage patterns.
 
 ---
 

@@ -25,7 +25,7 @@ SKPointI skPoint = origin;
 Console.WriteLine($"SKPointI: {skPoint.X}, {skPoint.Y}");
 ```
 
-The [IronDrawing get-started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/) covers installation and setup. The [coordinate types overview](https://ironsoftware.com/open-source/csharp/drawing/docs/) explains how `Point`, `Rectangle`, and `Color` relate to each other. For practical usage patterns, the [cross-library interop examples](https://ironsoftware.com/open-source/csharp/drawing/examples/cross-library-types/) show implicit conversions in action.
+The [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/) covers installation and setup. For practical usage patterns, see the [Point & PointF examples](https://ironsoftware.com/open-source/csharp/drawing/examples/point-pointf/).
 
 ---
 

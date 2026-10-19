@@ -34,7 +34,7 @@ Size half = padded / 2;
 SizeF precise = half;
 ```
 
-Explore the [IronDrawing get-started guide](https://ironsoftware.com/open-source/csharp/drawing/get-started/) for installation, the [color and image primitives docs](https://ironsoftware.com/open-source/csharp/drawing/docs/) for how `Size` relates to `Rectangle` and `Point`, the [AnyBitmap how-to](https://ironsoftware.com/open-source/csharp/drawing/how-to/anybitmap/) for bitmap dimension workflows, and the [coordinate types example](https://ironsoftware.com/open-source/csharp/drawing/examples/coordinate-types/) for practical conversion patterns.
+Explore the [IronDrawing documentation](https://ironsoftware.com/open-source/csharp/drawing/docs/) for installation, the [Generate AnyBitmap example](https://ironsoftware.com/open-source/csharp/drawing/examples/generate-anybitmap/) for bitmap dimension workflows, and the [Point & PointF examples](https://ironsoftware.com/open-source/csharp/drawing/examples/point-pointf/) for practical conversion patterns.
 
 ---
 
