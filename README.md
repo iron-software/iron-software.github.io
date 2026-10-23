@@ -37,6 +37,7 @@ Both versions read from the same `iron-products.json` and write to the same `obj
 | Diff the API surface between two versions | `diff-apidocs.py` | `diff-apidocs.mjs` |
 | Shared version/path helpers | `apidocs.py` | `apidocs.mjs` |
 | Colorized status output | `statuslogger.py` | `statuslogger.mjs` |
+| Build + diff new releases (nightly CI) | — | `nightly-apidocs.mjs` |
 
 ### `check-apidocs` — inspect a product
 
@@ -129,6 +130,25 @@ byte-identical to the xrefmap uid.
 Because a uid encodes parameter *types*, a parameter-type change or a new overload appears as a
 removal plus an addition rather than a modification; the report notes the pairing. Only DocFX (.NET)
 products are supported — `ironpdfjava` is JavaDoc output with no xrefmap and exits with a message.
+
+### `nightly-apidocs` — the nightly build
+
+`.github/workflows/nightly-apidocs.yml` runs `nightly-apidocs.mjs` every night at 02:00 ICT. It builds
+each release published since a product's newest archived version, diffs it against the release
+before it, and commits both to the `nightly/apidocs` branch with one open PR into `main`. Nothing is
+published until that PR is merged; delete the branch when merging.
+
+It is **forward-only**: versions older than the newest archived one are never built, so a version
+that cannot build is not retried forever. Fill old gaps with `update-apidocs` by hand.
+
+```bash
+node nightly-apidocs.mjs --dry-run            # what would be built
+node nightly-apidocs.mjs --code ironpdf       # build one product's new releases (Linux/WSL)
+```
+
+The workflow needs the `APIDOCS_CLAUDE_API_KEY` repository secret (Archetype-N overviews), and the
+repository must allow GitHub Actions to create pull requests (Settings > Actions > General).
+"Run workflow" has a dry-run option.
 
 ### Archetype-N API-overview enhancement
 

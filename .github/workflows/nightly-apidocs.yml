@@ -1,0 +1,162 @@
+name: Nightly API documentation
+
+# Builds the API docs for any product release published since the last build, diffs each new
+# release against the one before it, and puts the result in ONE pull request from the
+# `nightly/apidocs` branch. Nothing reaches `main` (and so GitHub Pages) until a person merges
+# that PR. The work itself is `nightly-apidocs.mjs`; this file only prepares the runner.
+#
+# While the PR is open, each night adds to the same branch (with `main` merged in first), so a
+# release built last night is not rebuilt, and its Archetype-N overviews are not paid for twice.
+# Once the PR is merged or closed, the next night starts the branch again from `main`.
+# Delete the branch when merging.
+#
+# `schedule` and the "Run workflow" button only fire from the default branch (`main`).
+
+on:
+  schedule:
+    - cron: "0 19 * * *" # 19:00 UTC = 02:00 ICT (UTC+7)
+  workflow_dispatch:
+    inputs:
+      code:
+        description: "One product code, e.g. ironpdf (blank = every product)"
+        required: false
+        default: ""
+      dry_run:
+        description: "List the releases that would be built. Builds nothing, opens no PR."
+        type: boolean
+        default: false
+
+concurrency:
+  group: nightly-apidocs
+  cancel-in-progress: false
+
+env:
+  BRANCH: nightly/apidocs
+
+jobs:
+  build:
+    # ubuntu-22.04, not ubuntu-latest: DocFX 2.59 is a .NET Framework exe that runs under mono,
+    # and the 22.04 image ships mono while 24.04 does not.
+    runs-on: ubuntu-22.04
+    timeout-minutes: 180
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      # Archetype-N writes the overview for each new class with Claude. Without the key the build
+      # still succeeds but ships those classes with no overview, so fail early instead.
+      - name: Check the secrets this job needs
+        if: ${{ !inputs.dry_run }}
+        env:
+          CLAUDE_API_KEY: ${{ secrets.APIDOCS_CLAUDE_API_KEY }}
+        run: |
+          if [ -z "$CLAUDE_API_KEY" ]; then
+            echo "::error title=Nightly API documentation::Missing repository secret APIDOCS_CLAUDE_API_KEY. Set it under Settings > Secrets and variables > Actions (needs a repository admin). Nothing was built."
+            exit 1
+          fi
+
+      # Full history: `main` is merged into the nightly branch below, and that needs a common
+      # ancestor. LFS stays off here; the toolchain is pulled only when there is something to build.
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          lfs: false
+
+      - name: Identify the commit author (bot)
+        run: |
+          git config user.name "iron-apidocs-bot"
+          git config user.email "docs-bot@ironsoftware.com"
+
+      - name: Continue the open nightly PR, or start from main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          open_pr=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // empty')
+          if [ -n "$open_pr" ]; then
+            git checkout -B "$BRANCH" "origin/$BRANCH"
+            if ! git merge --no-edit origin/main; then
+              echo "::error title=Nightly API documentation::main does not merge cleanly into $BRANCH (PR #$open_pr). Merge or close that PR, then re-run."
+              exit 1
+            fi
+          else
+            git checkout -B "$BRANCH" origin/main
+          fi
+          echo "OPEN_PR=$open_pr" >> "$GITHUB_ENV"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.18.0"
+
+      # The repository has no package-lock.json; adm-zip is its only dependency.
+      - name: Install dependencies
+        run: npm install --no-package-lock --no-audit --no-fund
+
+      - name: Plan
+        id: plan
+        env:
+          CODE: ${{ inputs.code }}
+        run: |
+          node nightly-apidocs.mjs --dry-run --summary plan.md ${CODE:+--code "$CODE"}
+          cat plan.md >> "$GITHUB_STEP_SUMMARY"
+          if grep -q "| planned |" plan.md; then echo "has_work=true" >> "$GITHUB_OUTPUT"; fi
+
+      # The DocFX and JDK binaries are Git LFS objects (~340 MB). Caching .git/lfs keeps a pull
+      # from spending LFS bandwidth again while the toolchain is unchanged.
+      - name: List the toolchain's LFS objects
+        if: ${{ steps.plan.outputs.has_work && !inputs.dry_run }}
+        run: git lfs ls-files -l -I "scaffolds/tools/docfx/tools/**,scaffolds/tools/jdk/linux/**" > lfs-toolchain.txt
+
+      - uses: actions/cache@v4
+        if: ${{ steps.plan.outputs.has_work && !inputs.dry_run }}
+        with:
+          path: .git/lfs
+          key: lfs-toolchain-${{ hashFiles('lfs-toolchain.txt') }}
+
+      - name: Pull the DocFX and JDK toolchain
+        if: ${{ steps.plan.outputs.has_work && !inputs.dry_run }}
+        run: |
+          git lfs pull -I "scaffolds/tools/docfx/tools/**,scaffolds/tools/jdk/linux/**"
+          chmod +x scaffolds/tools/jdk/linux/bin/*
+          command -v mono || { sudo apt-get update && sudo apt-get install -y mono-complete; }
+          mono --version | head -1
+
+      - name: Build and diff the new releases
+        id: build
+        if: ${{ steps.plan.outputs.has_work && !inputs.dry_run }}
+        continue-on-error: true
+        env:
+          CLAUDE_API_KEY: ${{ secrets.APIDOCS_CLAUDE_API_KEY }}
+          CODE: ${{ inputs.code }}
+        run: |
+          node nightly-apidocs.mjs --summary summary.md ${CODE:+--code "$CODE"}
+
+      # Releases that built are committed even when another one failed; the failure still turns
+      # the run red in the last step.
+      - name: Commit and open or update the PR
+        if: ${{ steps.plan.outputs.has_work && !inputs.dry_run }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat summary.md >> "$GITHUB_STEP_SUMMARY"
+          git add object-reference docs/api-diffs scaffolds/tools/archetype-n/_generated_
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+            exit 0
+          fi
+          git commit -q -m "Nightly API documentation $(date -u +%Y-%m-%d)"
+          if [ -n "$OPEN_PR" ]; then
+            git push origin "HEAD:$BRANCH"
+            gh pr comment "$OPEN_PR" --body-file summary.md
+          else
+            # No open PR, so whatever is left on the branch is an old, merged or closed run.
+            git push --force origin "HEAD:$BRANCH"
+            gh pr create --base main --head "$BRANCH" \
+              --title "Nightly API documentation $(date -u +%Y-%m-%d)" --body-file summary.md
+          fi
+
+      - name: Fail the run if a build or diff failed
+        if: ${{ steps.build.outcome == 'failure' }}
+        run: |
+          echo "::error title=Nightly API documentation::At least one release failed to build or diff. See the summary table and the build step log."
+          exit 1
