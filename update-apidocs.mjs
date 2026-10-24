@@ -141,6 +141,9 @@ async function buildJavaApidoc(info, versionString) {
   const jarFilename = `ironpdf-${versionString}-javadoc-java11-javadoc.jar`;
   const jarAlternateFilename = `ironpdf-${versionString}-javadoc.jar`;
   const releaseBase = `https://github.com/iron-software/IronPDF-for-Java/releases/download/${versionString}`;
+  // Some older releases have no GitHub release; Maven Central always carries the javadoc jar.
+  const mavenJarUrl = `https://repo1.maven.org/maven2/${info.groupId.replaceAll(".", "/")}/${info.artifactId}`
+    + `/${versionString}/${info.artifactId}-${versionString}-javadoc.jar`;
   const downloadPath = join(DOCS_BUILDING_DIR, "output", info.domain, "java");
   const destinationPath = getApidocPath(info, versionString);
   // The JavaDoc tree root is served at the `…/object-reference/api/` URL segment.
@@ -160,8 +163,11 @@ async function buildJavaApidoc(info, versionString) {
   if (!(await downloadFile(`${releaseBase}/${jarFilename}`, jarFilePath))) {
     StatusLogger.notice("Primary jar name not found; trying the alternate name...");
     if (!(await downloadFile(`${releaseBase}/${jarAlternateFilename}`, jarFilePath))) {
-      StatusLogger.error(`No JavaDoc jar published for ${info.name} v${versionString}; skipping.`);
-      return;
+      StatusLogger.notice("No jar on GitHub releases; trying Maven Central...");
+      if (!(await downloadFile(mavenJarUrl, jarFilePath))) {
+        StatusLogger.error(`No JavaDoc jar published for ${info.name} v${versionString}; skipping.`);
+        return;
+      }
     }
   }
 
