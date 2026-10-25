@@ -9,8 +9,13 @@ name: Sync API docs to iron-websites
 #   2. `manage:docs:sync -- --match-site --no-generate` copies the API docs for that version from
 #      THIS commit into the site and splices in the site's header.
 #
-# The PR always comes from the `sync/object-reference` branch, rebuilt from `develop` on every
-# run, so an open PR is refreshed rather than duplicated. No change: no push, no PR.
+# The PR always comes from the `sync/object-reference` branch, rebuilt from `develop` and
+# force-pushed on every run, so an open PR is refreshed rather than duplicated — and anything
+# pushed to that branch by hand is lost on the next run. No change: no push, and an open sync PR
+# is closed as out of date.
+#
+# The run turns red, after the PR is opened, when a product's site version has no matching docs
+# in this repo: the PR then moves the version ahead of its docs, and its body says so.
 #
 # Needs the secret IRON_WEBSITES_PR_TOKEN: a fine-grained token on iron-software/iron-websites
 # with Contents and Pull requests read/write. The job's own GITHUB_TOKEN cannot write to
@@ -30,8 +35,10 @@ on:
         type: boolean
         default: false
 
+# Dry runs get their own group: GitHub keeps one waiting run per group, so a dry run in the
+# shared group could cancel a real run that is queued behind the current one.
 concurrency:
-  group: object-reference-sync
+  group: object-reference-sync${{ inputs.dry_run && '-dry-run' || '' }}
   cancel-in-progress: false
 
 env:
@@ -56,8 +63,11 @@ jobs:
             exit 1
           fi
 
-      # The commit that triggered the run, so the website gets exactly what was just merged.
-      # LFS stays off: the docs are plain HTML; only the generator toolchain is in LFS.
+      # The commit that triggered the run. The docs sync copies a version only when the site does
+      # not already have it: a tree already at its recorded version is skipped, so docs rebuilt in
+      # place under an existing version do not reach the site.
+      # LFS stays off: nothing under `object-reference/` is LFS-tracked here; only the generator
+      # toolchain under `scaffolds/` is.
       - name: Check out the API docs (this commit)
         uses: actions/checkout@v4
         with:
@@ -68,7 +78,8 @@ jobs:
 
       # persist-credentials: false, or the checkout login stays in git config and is sent on
       # the push below instead of the PAT (iron-websites' helpcenter sync failed on a 403 this way).
-      # LFS stays off: the sync touches no LFS-tracked file, so the pointers are left as they are.
+      # lfs: false so the website's LFS files are not downloaded on every run (LFS bandwidth is
+      # billed). They stay as pointers, which the sync leaves alone.
       - name: Check out iron-websites (develop)
         uses: actions/checkout@v4
         with:
@@ -78,6 +89,14 @@ jobs:
           token: ${{ secrets.IRON_WEBSITES_PR_TOKEN }}
           lfs: false
           persist-credentials: false
+
+      # iron-websites tracks *.jar and *.zip with LFS, and the Java API docs include some (the
+      # javadoc jar and the search-index zips). A Java version bump replaces them, so `git add`
+      # must store them as LFS pointers, and the push must upload the files to LFS.
+      # --skip-smudge keeps the existing pointers from being downloaded.
+      - name: Store the website's LFS files as pointers
+        working-directory: iron-websites
+        run: git lfs install --local --skip-smudge
 
       - uses: actions/setup-node@v4
         with:
@@ -97,22 +116,44 @@ jobs:
         working-directory: iron-websites
         run: npm run manage:products:sync -- --apply
 
-      # `--no-generate`: this runner has no DocFX toolchain. A version missing from the archive is
-      # reported in the log and that tree is left as it was.
+      # `--no-generate`: this runner has no DocFX toolchain. A product whose site version has no
+      # docs here is listed under "⚠ no source version" and its tree is left as it was. Those with
+      # "no archive version" or "no archive dir" are collected for the PR body and the last step.
+      # "no site-declared version" is not: it means the site does not publish that product's docs.
       - name: Copy the API docs into the site
         working-directory: iron-websites
-        run: npm run manage:docs:sync -- --source "$GITHUB_WORKSPACE/github-io" --match-site --no-generate
+        run: |
+          set -o pipefail
+          npm run manage:docs:sync -- --source "$GITHUB_WORKSPACE/github-io" --match-site --no-generate \
+            | tee "$RUNNER_TEMP/docs-sync.log"
+          awk '/^⚠ no source version/ { inblock = 1; next }
+               inblock && /^  - / { if ($0 ~ /: no archive (version under|dir)/) print; next }
+               { inblock = 0 }' "$RUNNER_TEMP/docs-sync.log" > "$RUNNER_TEMP/missing-docs.txt"
+          if [ -s "$RUNNER_TEMP/missing-docs.txt" ]; then
+            {
+              echo "**No docs in this repo for the site's version of:**"
+              sed 's/^  //' "$RUNNER_TEMP/missing-docs.txt"
+            } | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
 
-      - name: Commit, and open or refresh the PR
+      - name: Commit, and open, refresh or close the PR
         working-directory: iron-websites
         env:
           GH_TOKEN: ${{ secrets.IRON_WEBSITES_PR_TOKEN }}
           DRY_RUN: ${{ inputs.dry_run }}
           SOURCE_URL: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
         run: |
+          open_pr=$(gh pr list --repo "$WEBSITE_REPO" --head "$BRANCH" --base "$BASE" --state open --json number --jq '.[0].number // empty')
+
           git add -A -- src
           if git diff --cached --quiet; then
             echo "No change to the website. Nothing pushed." | tee -a "$GITHUB_STEP_SUMMARY"
+            # An open sync PR now holds changes `develop` already has, or no longer wants.
+            if [ -n "$open_pr" ] && [ "$DRY_RUN" != "true" ]; then
+              gh pr close "$open_pr" --repo "$WEBSITE_REPO" \
+                --comment "Closed by the sync workflow: ${SOURCE_URL} found nothing to change on \`develop\`, so this PR is out of date."
+              echo "Closed out-of-date PR #$open_pr." | tee -a "$GITHUB_STEP_SUMMARY"
+            fi
             exit 0
           fi
           git diff --cached --stat | tail -n 1 | tee -a "$GITHUB_STEP_SUMMARY"
@@ -129,12 +170,18 @@ jobs:
           # Rebuilt from develop each run, so the force-push replaces the previous sync.
           git push --force "https://x-access-token:${GH_TOKEN}@github.com/${WEBSITE_REPO}.git" "HEAD:refs/heads/${BRANCH}"
 
-          printf '%s\n\n%s\n\n%s\n' \
-            "***New API docs from iron-software.github.io, plus the product versions to match.***" \
-            "This PR copies the API reference pages from ${SOURCE_URL} into the site and updates each product's version to its newest release. Opened by a workflow; review and merge by hand." \
-            "Check: open one changed \`object-reference\` page on staging and the product page whose version changed." > pr-body.md
+          {
+            printf '%s\n\n' "***New API docs from iron-software.github.io, plus the product versions to match.***"
+            printf '%s\n\n' "This PR copies the API reference pages for each new version from ${SOURCE_URL} into the site and updates each product's version to its newest release. Pages rebuilt under a version the site already has are not copied. Opened by a workflow; review and merge by hand."
+            if [ -s "$RUNNER_TEMP/missing-docs.txt" ]; then
+              printf '%s\n\n' "**Warning: this PR moves these products to a version with no API docs yet.** Their API reference stays on the old version until the docs reach iron-software.github.io:"
+              sed 's/^  //' "$RUNNER_TEMP/missing-docs.txt"
+              printf '\n'
+            fi
+            printf '%s\n\n' "Do not push fixes to \`${BRANCH}\`: the next run rebuilds it from \`${BASE}\` and force-pushes, which discards them. Fix things in a separate PR."
+            printf '%s\n' "Check: open one changed \`object-reference\` page on staging and the product page whose version changed."
+          } > pr-body.md
 
-          open_pr=$(gh pr list --repo "$WEBSITE_REPO" --head "$BRANCH" --base "$BASE" --state open --json number --jq '.[0].number // empty')
           if [ -n "$open_pr" ]; then
             gh pr edit "$open_pr" --repo "$WEBSITE_REPO" --body-file pr-body.md
             echo "Refreshed PR #$open_pr." | tee -a "$GITHUB_STEP_SUMMARY"
@@ -143,8 +190,16 @@ jobs:
               --title "[WEB-DEV] Sync the API docs from iron-software.github.io" --body-file pr-body.md
           fi
 
+      # After the PR step, so the docs that did sync are still offered for review.
+      - name: Fail the run if a product's version has no docs
+        run: |
+          if [ -s "$RUNNER_TEMP/missing-docs.txt" ]; then
+            echo "::error title=Sync API docs::A product's site version has no API docs in this repo. Its docs were left on the old version; see the run summary."
+            exit 1
+          fi
+
       - name: Fail the run if the product version update failed
-        if: ${{ steps.products.outcome == 'failure' }}
+        if: ${{ !cancelled() && steps.products.outcome == 'failure' }}
         run: |
           echo "::error title=Sync API docs::manage:products:sync failed (registry error or bad arguments). The docs were still synced; see that step's log."
           exit 1

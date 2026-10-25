@@ -155,13 +155,24 @@ repository must allow GitHub Actions to create pull requests (Settings > Actions
 `.github/workflows/object-reference-sync.yml` runs when a push to `main` changes `object-reference/`
 (normally the merged nightly PR). It checks out `iron-websites` on `develop`, runs that repo's
 `manage:products:sync -- --apply` and `manage:docs:sync -- --match-site --no-generate` against the
-commit just merged, and opens one PR into `develop` from the `sync/object-reference` branch. The
-branch is rebuilt from `develop` on every run, so an open PR is refreshed, not duplicated. No change
-means no PR.
+commit just merged, and opens one PR into `develop` from the `sync/object-reference` branch. Only
+new versions are copied: a product already at its recorded version is skipped, so docs rebuilt in
+place under that version do not reach the site.
+
+- The branch is rebuilt from `develop` and **force-pushed** on every run, so an open PR is refreshed,
+  not duplicated. **Do not push fixes to `sync/object-reference`** — the next run discards them. Fix
+  things in a separate PR.
+- No change means no PR, and an open sync PR is closed as out of date.
+- If a product's new site version has no docs here yet, the PR is still opened, its body lists the
+  product, and the run turns red. That product's API reference stays on the old version until the
+  docs arrive.
 
 It needs the `IRON_WEBSITES_PR_TOKEN` repository secret: a fine-grained token on
-`iron-software/iron-websites` with Contents and Pull requests read/write. "Run workflow" has a
-dry-run option that runs both syncs and prints the diff without pushing.
+`iron-software/iron-websites` with Contents and Pull requests read/write. The current token is
+Darrius Serrant's, so the PRs show him as the author. When it expires the run fails on the
+checkout of iron-websites; its expiry date is on the token's page under his GitHub Settings >
+Developer settings > Fine-grained tokens. "Run workflow" has a dry-run option that runs both syncs
+and prints the diff without pushing.
 
 ### Archetype-N API-overview enhancement
 
