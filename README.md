@@ -150,6 +150,19 @@ The workflow needs the `APIDOCS_CLAUDE_API_KEY` repository secret (Archetype-N o
 repository must allow GitHub Actions to create pull requests (Settings > Actions > General).
 "Run workflow" has a dry-run option.
 
+### Sending new docs to the website
+
+`.github/workflows/object-reference-sync.yml` runs when a push to `main` changes `object-reference/`
+(normally the merged nightly PR). It checks out `iron-websites` on `develop`, runs that repo's
+`manage:products:sync -- --apply` and `manage:docs:sync -- --match-site --no-generate` against the
+commit just merged, and opens one PR into `develop` from the `sync/object-reference` branch. The
+branch is rebuilt from `develop` on every run, so an open PR is refreshed, not duplicated. No change
+means no PR.
+
+It needs the `IRON_WEBSITES_PR_TOKEN` repository secret: a fine-grained token on
+`iron-software/iron-websites` with Contents and Pull requests read/write. "Run workflow" has a
+dry-run option that runs both syncs and prints the diff without pushing.
+
 ### Archetype-N API-overview enhancement
 
 After DocFX generates a .NET product's `…/object-reference/api/` pages, `update-apidocs` injects a short, task-led SEO overview into each class-reference page (prose + three meta-title/description variants + `TechArticle`/`FAQPage` JSON-LD), placed below the class summary and above the member tables, wrapped in `<!-- archetype-N:start … -->` / `<!-- archetype-N:end -->` sentinels (idempotent). This is on by default; pass `--no-enhancement` to skip it.
