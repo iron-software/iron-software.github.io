@@ -146,6 +146,14 @@ jobs:
           open_pr=$(gh pr list --repo "$WEBSITE_REPO" --head "$BRANCH" --base "$BASE" --state open --json number --jq '.[0].number // empty')
 
           git add -A -- src
+          # Some *.zip / *.jar files are committed as ordinary files, not LFS pointers. With the LFS
+          # filter installed, `git add` stages them as pointers even when the sync never touched
+          # them. Unstage every file whose bytes on disk are still what `develop` has.
+          git diff --cached --name-only -z --diff-filter=M | while IFS= read -r -d '' f; do
+            if [ "$(git hash-object --no-filters -- "$f")" = "$(git rev-parse "HEAD:$f")" ]; then
+              git restore --staged -- "$f"
+            fi
+          done
           if git diff --cached --quiet; then
             echo "No change to the website. Nothing pushed." | tee -a "$GITHUB_STEP_SUMMARY"
             # An open sync PR now holds changes `develop` already has, or no longer wants.
