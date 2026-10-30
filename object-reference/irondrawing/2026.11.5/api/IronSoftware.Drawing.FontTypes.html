@@ -1,0 +1,908 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       FontTypes Class - IronDrawing C# API Reference
+      v2 (human)     title:       FontTypes: PDF Font Selection in C#
+      v1 (algorithm) description: Select PDF-standard fonts in C# with IronSoftware.Drawing.FontTypes. Choose from 23 static properties or resolve by name with FromString at runtime.
+      v2 (human)     description: Pick any of 23 PDF-standard fonts in C# using IronDrawing FontTypes: Arial, Helvetica, Courier, Times, Symbol, ZapfDingbats, and more.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>FontTypes Class | IronDrawing C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="FontTypes Class | IronDrawing C# API Reference">
+    <meta name="description" content="Reference for IronDrawing FontTypes in C#: 23 static PDF font properties covering Arial, Helvetica, Courier, Times, and symbol sets, plus FromString.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/open-source/csharp/drawing/object-reference/api/IronSoftware.Drawing.FontTypes.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "FontTypes Class | IronDrawing C# API Reference",
+    "name": "FontTypes class | IronDrawing C# API",
+    "url": "https://ironsoftware.com/open-source/csharp/drawing/object-reference/api/IronSoftware.Drawing.FontTypes.html",
+    "abstract": "Selecting a standard PDF font in C# is a matter of picking the right FontTypes value from IronSoftware.Drawing. The class catalogs all 23 PDF-standard typefaces as static properties, grouped into Arial, Courier and Courier New, Helvetica, Times New Roman, Symbol, and ZapfDingbats families. The FromString method resolves a font by name at runtime, covering cases where the font choice comes from configuration or user input rather than being fixed in code.",
+    "description": "Reference for IronDrawing FontTypes in C#: 23 static PDF font properties covering Arial, Helvetica, Courier, Times, and symbol sets, plus FromString.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronDrawing",
+      "url": "https://ironsoftware.com/open-source/csharp/drawing/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronSoftware.Drawing;\n\n// Resolve a font from a config value at runtime\nstring configuredFont = \"TimesNewRomanBold\";\nFontTypes font = FontTypes.FromString(configuredFont);\n\n// Or reference a font directly by its static property\nFontTypes heading = FontTypes.HelveticaBold;\nFontTypes body    = FontTypes.TimesNewRoman;\nFontTypes mono    = FontTypes.CourierNew;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does FontTypes live in the IronDrawing API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FontTypes is a class in the IronSoftware.Drawing namespace, shipped in IronSoftware.Drawing.dll. It acts as an enumeration of PDF-standard font values, all exposed as static properties, with no base type beyond the root object. No constructor is needed; reference members directly, such as FontTypes.Helvetica, or call FontTypes.FromString with a name string."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you select a PDF font at runtime in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call FontTypes.FromString with the font name as a string. It returns the matching FontTypes value, which is useful when the font choice comes from a configuration file, database, or user input. For compile-time selection, reference the static property directly, for example FontTypes.TimesNewRomanBold."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which font families does FontTypes cover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FontTypes covers Arial (four styles), Courier and Courier New (eight variants), Helvetica (four styles), Times New Roman (four styles), Symbol, and ZapfDingbats, totaling 23 members. These correspond to the 14 fonts guaranteed by the PDF specification plus extended variants."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you need to install fonts to use FontTypes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The fonts represented by FontTypes are part of the PDF specification and are embedded or referenced by compliant PDF viewers without requiring separate font installation on the host machine. Simply reference the desired static property or use FromString to resolve by name."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronSoftware.Drawing.FontTypes">
+  
+  
+  <h1 id="IronSoftware_Drawing_FontTypes" data-uid="IronSoftware.Drawing.FontTypes" class="text-break">Class FontTypes
+  </h1>
+  <div class="markdown level0 summary"><p>Supported PDF Fonts</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">IronSoftware.Drawing.Extensions.Enumeration</span></div>
+    <div class="level2"><span class="xref">FontTypes</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IComparable</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronSoftware.Drawing.html">IronSoftware.Drawing</a></h6>
+  <h6><strong>Assembly</strong>: IronSoftware.Drawing.Common.dll</h6>
+  <h5 id="IronSoftware_Drawing_FontTypes_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class FontTypes : Enumeration</code></pre>
+  </div>
+    <!-- archetype-N:start FontTypes treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Selecting a standard PDF font in C# is a matter of picking the right <code>FontTypes</code> value and passing it wherever a font parameter is expected. <code>FontTypes</code> is the catalog of PDF-standard typefaces available across IronSoftware rendering pipelines, covering the 14 fonts guaranteed by the PDF specification plus extended variants, all exposed as static properties on the class.</p>
+<p>The 23 members fall into four functional families:</p>
+<p>**Arial variants:** <code>Arial</code>, <code>ArialBold</code>, <code>ArialItalic</code>, <code>ArialBoldItalic</code> cover the sans-serif workhorse in its four standard styles.</p>
+<p>**Courier and Courier New variants:** <code>Courier</code>, <code>CourierBold</code>, <code>CourierOblique</code>, <code>CourierBoldOblique</code>, <code>CourierNew</code>, <code>CourierNewBold</code>, <code>CourierNewItalic</code>, <code>CourierNewBoldItalic</code> provide monospaced options useful for code listings, receipts, and tabular data where character-width consistency matters.</p>
+<p>**Helvetica variants:** <code>Helvetica</code>, <code>HelveticaBold</code>, <code>HelveticaOblique</code>, <code>HelveticaBoldOblique</code> deliver the classic neutral sans-serif in upright and oblique weights.</p>
+<p>**Serif and symbol fonts:** <code>TimesNewRoman</code>, <code>TimesNewRomanBold</code>, <code>TimesNewRomanItalic</code>, <code>TimesNewRomanBoldItalic</code> handle body text that benefits from serifs, while <code>Symbol</code> and <code>ZapfDingbats</code> supply mathematical symbols and decorative glyphs that are embedded in the PDF specification itself.</p>
+<p>Beyond the static properties, <code>FromString</code> accepts a font name as a plain string and returns the matching <code>FontTypes</code> value, which is useful when a font choice arrives from configuration, a database column, or user input rather than being fixed at compile time.</p>
+<p>Because every member is a static property, no constructor call is needed. Reference the font directly by name, or resolve it at runtime with <code>FromString</code>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronSoftware.Drawing;
+
+// Resolve a font from a config value at runtime
+string configuredFont = &quot;TimesNewRomanBold&quot;;
+FontTypes font = FontTypes.FromString(configuredFont);
+
+// Or reference a font directly by its static property
+FontTypes heading = FontTypes.HelveticaBold;
+FontTypes body    = FontTypes.TimesNewRoman;
+FontTypes mono    = FontTypes.CourierNew;</code></pre></div>
+<p>Explore the <a href="https://ironsoftware.com/open-source/csharp/drawing/docs/">IronDrawing documentation</a> for setup and the <a href="https://ironsoftware.com/open-source/csharp/drawing/examples/create-and-cast-font/">Create and Cast Font example</a> for practical usage patterns.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_Arial_" data-uid="IronSoftware.Drawing.FontTypes.Arial*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_Arial" data-uid="IronSoftware.Drawing.FontTypes.Arial">Arial</h4>
+  <div class="markdown level1 summary"><p>Represents the Arial font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes Arial { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_ArialBold_" data-uid="IronSoftware.Drawing.FontTypes.ArialBold*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_ArialBold" data-uid="IronSoftware.Drawing.FontTypes.ArialBold">ArialBold</h4>
+  <div class="markdown level1 summary"><p>Represents the Arial-Bold font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes ArialBold { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_ArialBoldItalic_" data-uid="IronSoftware.Drawing.FontTypes.ArialBoldItalic*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_ArialBoldItalic" data-uid="IronSoftware.Drawing.FontTypes.ArialBoldItalic">ArialBoldItalic</h4>
+  <div class="markdown level1 summary"><p>Represents the Arial-BoldItalic font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes ArialBoldItalic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_ArialItalic_" data-uid="IronSoftware.Drawing.FontTypes.ArialItalic*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_ArialItalic" data-uid="IronSoftware.Drawing.FontTypes.ArialItalic">ArialItalic</h4>
+  <div class="markdown level1 summary"><p>Represents the Arial-Italic font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes ArialItalic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_Courier_" data-uid="IronSoftware.Drawing.FontTypes.Courier*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_Courier" data-uid="IronSoftware.Drawing.FontTypes.Courier">Courier</h4>
+  <div class="markdown level1 summary"><p>Represents the Courier font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes Courier { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_CourierBold_" data-uid="IronSoftware.Drawing.FontTypes.CourierBold*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_CourierBold" data-uid="IronSoftware.Drawing.FontTypes.CourierBold">CourierBold</h4>
+  <div class="markdown level1 summary"><p>Represents the Courier-Bold font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes CourierBold { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_CourierBoldOblique_" data-uid="IronSoftware.Drawing.FontTypes.CourierBoldOblique*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_CourierBoldOblique" data-uid="IronSoftware.Drawing.FontTypes.CourierBoldOblique">CourierBoldOblique</h4>
+  <div class="markdown level1 summary"><p>Represents the Courier-BoldOblique font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes CourierBoldOblique { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_CourierNew_" data-uid="IronSoftware.Drawing.FontTypes.CourierNew*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_CourierNew" data-uid="IronSoftware.Drawing.FontTypes.CourierNew">CourierNew</h4>
+  <div class="markdown level1 summary"><p>Represents the CourierNew font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes CourierNew { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_CourierNewBold_" data-uid="IronSoftware.Drawing.FontTypes.CourierNewBold*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_CourierNewBold" data-uid="IronSoftware.Drawing.FontTypes.CourierNewBold">CourierNewBold</h4>
+  <div class="markdown level1 summary"><p>Represents the CourierNew-Bold font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes CourierNewBold { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_CourierNewBoldItalic_" data-uid="IronSoftware.Drawing.FontTypes.CourierNewBoldItalic*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_CourierNewBoldItalic" data-uid="IronSoftware.Drawing.FontTypes.CourierNewBoldItalic">CourierNewBoldItalic</h4>
+  <div class="markdown level1 summary"><p>Represents the CourierNew-BoldItalic font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes CourierNewBoldItalic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_CourierNewItalic_" data-uid="IronSoftware.Drawing.FontTypes.CourierNewItalic*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_CourierNewItalic" data-uid="IronSoftware.Drawing.FontTypes.CourierNewItalic">CourierNewItalic</h4>
+  <div class="markdown level1 summary"><p>Represents the CourierNew-Italic font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes CourierNewItalic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_CourierOblique_" data-uid="IronSoftware.Drawing.FontTypes.CourierOblique*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_CourierOblique" data-uid="IronSoftware.Drawing.FontTypes.CourierOblique">CourierOblique</h4>
+  <div class="markdown level1 summary"><p>Represents the Courier-Oblique font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes CourierOblique { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_Helvetica_" data-uid="IronSoftware.Drawing.FontTypes.Helvetica*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_Helvetica" data-uid="IronSoftware.Drawing.FontTypes.Helvetica">Helvetica</h4>
+  <div class="markdown level1 summary"><p>Represents the Helvetica font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes Helvetica { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_HelveticaBold_" data-uid="IronSoftware.Drawing.FontTypes.HelveticaBold*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_HelveticaBold" data-uid="IronSoftware.Drawing.FontTypes.HelveticaBold">HelveticaBold</h4>
+  <div class="markdown level1 summary"><p>Represents the Helvetica-Bold font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes HelveticaBold { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_HelveticaBoldOblique_" data-uid="IronSoftware.Drawing.FontTypes.HelveticaBoldOblique*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_HelveticaBoldOblique" data-uid="IronSoftware.Drawing.FontTypes.HelveticaBoldOblique">HelveticaBoldOblique</h4>
+  <div class="markdown level1 summary"><p>Represents the Helvetica-BoldOblique font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes HelveticaBoldOblique { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_HelveticaOblique_" data-uid="IronSoftware.Drawing.FontTypes.HelveticaOblique*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_HelveticaOblique" data-uid="IronSoftware.Drawing.FontTypes.HelveticaOblique">HelveticaOblique</h4>
+  <div class="markdown level1 summary"><p>Represents the Helvetica-Oblique font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes HelveticaOblique { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_Symbol_" data-uid="IronSoftware.Drawing.FontTypes.Symbol*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_Symbol" data-uid="IronSoftware.Drawing.FontTypes.Symbol">Symbol</h4>
+  <div class="markdown level1 summary"><p>Represents the Symbol font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes Symbol { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_TimesNewRoman_" data-uid="IronSoftware.Drawing.FontTypes.TimesNewRoman*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_TimesNewRoman" data-uid="IronSoftware.Drawing.FontTypes.TimesNewRoman">TimesNewRoman</h4>
+  <div class="markdown level1 summary"><p>Represents the TimesNewRoman font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes TimesNewRoman { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_TimesNewRomanBold_" data-uid="IronSoftware.Drawing.FontTypes.TimesNewRomanBold*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_TimesNewRomanBold" data-uid="IronSoftware.Drawing.FontTypes.TimesNewRomanBold">TimesNewRomanBold</h4>
+  <div class="markdown level1 summary"><p>Represents the TimesNewRoman-Bold font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes TimesNewRomanBold { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_TimesNewRomanBoldItalic_" data-uid="IronSoftware.Drawing.FontTypes.TimesNewRomanBoldItalic*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_TimesNewRomanBoldItalic" data-uid="IronSoftware.Drawing.FontTypes.TimesNewRomanBoldItalic">TimesNewRomanBoldItalic</h4>
+  <div class="markdown level1 summary"><p>Represents the TimesNewRoman-BoldItalic font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes TimesNewRomanBoldItalic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_TimesNewRomanItalic_" data-uid="IronSoftware.Drawing.FontTypes.TimesNewRomanItalic*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_TimesNewRomanItalic" data-uid="IronSoftware.Drawing.FontTypes.TimesNewRomanItalic">TimesNewRomanItalic</h4>
+  <div class="markdown level1 summary"><p>Represents the TimesNewRoman-Italic font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes TimesNewRomanItalic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_ZapfDingbats_" data-uid="IronSoftware.Drawing.FontTypes.ZapfDingbats*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_ZapfDingbats" data-uid="IronSoftware.Drawing.FontTypes.ZapfDingbats">ZapfDingbats</h4>
+  <div class="markdown level1 summary"><p>Represents the ZapfDingbats font type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes ZapfDingbats { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_FontTypes_FromString_" data-uid="IronSoftware.Drawing.FontTypes.FromString*"></a>
+  <h4 id="IronSoftware_Drawing_FontTypes_FromString_System_String_" data-uid="IronSoftware.Drawing.FontTypes.FromString(System.String)">FromString(String)</h4>
+  <div class="markdown level1 summary"><p>Returns the corresponding <a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a> based on the provided font name string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FontTypes FromString(string fontName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fontName</span></td>
+        <td><p>The name of the font.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a></td>
+        <td><p>The corresponding <a class="xref" href="IronSoftware.Drawing.FontTypes.html">FontTypes</a> object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidCastException</span></td>
+        <td><p>Thrown when the provided font name is not a recognized standard PDF font type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IComparable</span>
+  </div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronSoftware.System.Drawing/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon api-reference-right-sidebar__list-item--display-none">
+                    <a href="" target="_blank" class="api-reference-right-sidebar__link"></a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronSoftware.System.Drawing/' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

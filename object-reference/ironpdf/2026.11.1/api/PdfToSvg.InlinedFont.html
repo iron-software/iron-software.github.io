@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       InlinedFont Class - IronPDF C# API Reference
+      v2 (human)     title:       InlinedFont: Embed Fonts in SVG Output with C#
+      v1 (algorithm) description: Use InlinedFont in IronPDF's PdfToSvg namespace to embed font data directly into SVG output in C#, ensuring portable text rendering via FontFamily.
+      v2 (human)     description: InlinedFont wraps a SourceFont to embed font data in SVG files during PDF conversion in C#, guaranteeing correct text display without system fonts.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>InlinedFont Class | IronPDF C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="InlinedFont Class | IronPDF C# API Reference">
+    <meta name="description" content="Reference for IronPDF's InlinedFont class in C#: embed SourceFont data into SVG output and expose the CSS font-family name for portable rendering.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/PdfToSvg.InlinedFont.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "InlinedFont Class | IronPDF C# API Reference",
+    "name": "InlinedFont class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/PdfToSvg.InlinedFont.html",
+    "abstract": "InlinedFont embeds a SourceFont's full data into SVG output during PDF-to-SVG conversion in IronPDF, ensuring text renders correctly without relying on system fonts. It extends the Font base type in the PdfToSvg namespace, ships in IronPdf.dll, and exposes a FontFamily property that returns the CSS-compatible family name written into the SVG font-family attribute.",
+    "description": "Reference for IronPDF's InlinedFont class in C#: embed SourceFont data into SVG output and expose the CSS font-family name for portable rendering.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using PdfToSvg;\n\n// SourceFont is supplied by the conversion pipeline; InlinedFont wraps it.\nvar inlined = new InlinedFont(sourceFont);\nstring family = inlined.FontFamily; // e.g. \"Arial\" - used in SVG font-family"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does InlinedFont live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "InlinedFont is a class in the PdfToSvg namespace, shipped in IronPdf.dll. It extends the Font base type and is constructed with a SourceFont supplied by the PDF-to-SVG conversion pipeline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you use InlinedFont to ensure portable SVG text rendering in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct an InlinedFont by passing a SourceFont to its constructor. The object serializes the font data inline into the SVG, and the FontFamily property returns the CSS family name used in the SVG font-family attribute, so text displays correctly without any external font dependency."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PdfToSvg.InlinedFont">
+  
+  
+  <h1 id="PdfToSvg_InlinedFont" data-uid="PdfToSvg.InlinedFont" class="text-break">Class InlinedFont
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="PdfToSvg.Font.html">Font</a></div>
+    <div class="level2"><span class="xref">InlinedFont</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="PdfToSvg.Font.html#PdfToSvg_Font_GetHashCode">Font.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="PdfToSvg.Font.html#PdfToSvg_Font_ToString">Font.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="PdfToSvg.html">PdfToSvg</a></h6>
+  <h6><strong>Assembly</strong>: IronPdf.dll</h6>
+  <h5 id="PdfToSvg_InlinedFont_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class InlinedFont : Font</code></pre>
+  </div>
+    <!-- archetype-N:start InlinedFont treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>When converting a PDF page to SVG, <code>InlinedFont</code> embeds the full font data directly into the SVG output so that text renders correctly on any viewer without relying on system fonts. Constructed from a <code>SourceFont</code>, it extends the base <code>Font</code> type and exposes a <code>FontFamily</code> property that returns the CSS-compatible family name used in the generated SVG markup.</p>
+<p><code>InlinedFont(SourceFont font)</code> is the single constructor: pass a <code>SourceFont</code> extracted during PDF-to-SVG conversion and the object takes responsibility for serializing that font's data inline. The <code>FontFamily</code> property (an override of the base <code>Font</code> member) returns the string name that appears in the SVG <code>font-family</code> attribute, keeping the rendered glyphs tied to the correct typeface even when the SVG is viewed in isolation.</p>
+<p>Choosing <code>InlinedFont</code> over a referenced font trades a slightly larger SVG file for complete portability: the SVG carries everything it needs to display text faithfully. This matters for archival output, email attachments, or any context where external font hosting is unavailable. The <code>PdfToSvg</code> namespace handles the conversion pipeline, and <code>InlinedFont</code> sits at the point where font fidelity is locked in before the SVG bytes are written.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using PdfToSvg;
+
+// SourceFont is supplied by the conversion pipeline; InlinedFont wraps it.
+var inlined = new InlinedFont(sourceFont);
+string family = inlined.FontFamily; // e.g. &quot;Arial&quot; - used in SVG font-family</code></pre></div>
+<p>For broader PDF-to-SVG conversion options, see the <a href="https://ironpdf.com/docs/">IronPDF documentation</a> and the <a href="https://ironpdf.com/how-to/pdf-to-svg/">PDF to SVG how-to guide</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="PdfToSvg_InlinedFont__ctor_" data-uid="PdfToSvg.InlinedFont.#ctor*"></a>
+  <h4 id="PdfToSvg_InlinedFont__ctor_PdfToSvg_SourceFont_" data-uid="PdfToSvg.InlinedFont.#ctor(PdfToSvg.SourceFont)">InlinedFont(SourceFont)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InlinedFont(SourceFont font)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PdfToSvg.SourceFont.html">SourceFont</a></td>
+        <td><span class="parametername">font</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="PdfToSvg_InlinedFont_FontFamily_" data-uid="PdfToSvg.InlinedFont.FontFamily*"></a>
+  <h4 id="PdfToSvg_InlinedFont_FontFamily" data-uid="PdfToSvg.InlinedFont.FontFamily">FontFamily</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string FontFamily { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="PdfToSvg.Font.html#PdfToSvg_Font_FontFamily">Font.FontFamily</a></div>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="PdfToSvg.Font.html#PdfToSvg_Font_GetHashCode">GetHashCode()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="PdfToSvg.Font.html#PdfToSvg_Font_ToString">ToString()</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

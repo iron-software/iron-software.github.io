@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       DocumentInfo Class - IronPDF C# API Reference
+      v2 (human)     title:       DocumentInfo: Read PDF Metadata in C#
+      v1 (algorithm) description: Access PDF metadata in C# with the IronPDF DocumentInfo class. Read Title, Author, Keywords, Producer, Creator, Subject, CreationDate, and ModDate.
+      v2 (human)     description: Read PDF document metadata in C# with DocumentInfo: get title, author, keywords, timestamps, and toolchain fields from any PDF information dictionary.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>DocumentInfo Class | IronPDF C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="DocumentInfo Class | IronPDF C# API Reference">
+    <meta name="description" content="Reference for the IronPDF DocumentInfo class in C#: read-only PDF metadata including Title, Author, Keywords, CreationDate, ModDate, and Producer.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/PdfToSvg.DocumentInfo.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "DocumentInfo Class | IronPDF C# API Reference",
+    "name": "DocumentInfo class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/PdfToSvg.DocumentInfo.html",
+    "abstract": "Retrieving the metadata embedded in a PDF file runs through the DocumentInfo record in the PdfToSvg namespace. The object exposes eight read-only properties drawn from the PDF information dictionary: Author, Creator, Keywords, Producer, Subject, and Title as strings, plus CreationDate and ModDate as Nullable DateTimeOffset values that reflect the optional, timezone-aware timestamps the PDF specification defines. DocumentInfo is obtained from the IronPDF conversion pipeline rather than constructed directly, and all properties are read-only.",
+    "description": "Reference for the IronPDF DocumentInfo class in C#: read-only PDF metadata including Title, Author, Keywords, CreationDate, ModDate, and Producer.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using PdfToSvg;\n\nusing var doc = PdfDocument.Load(\"report.pdf\");\nDocumentInfo info = doc.Info;\n\nConsole.WriteLine($\"Title:    {info.Title}\");\nConsole.WriteLine($\"Author:   {info.Author}\");\nConsole.WriteLine($\"Keywords: {info.Keywords}\");\n\nif (info.CreationDate.HasValue)\n    Console.WriteLine($\"Created:  {info.CreationDate.Value:yyyy-MM-dd}\");\n\nif (info.ModDate.HasValue)\n    Console.WriteLine($\"Modified: {info.ModDate.Value:yyyy-MM-dd}\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does DocumentInfo live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DocumentInfo is a class in the PdfToSvg namespace, shipped in IronPdf.dll. It derives from Object and is obtained from the IronPDF document pipeline rather than instantiated directly with new DocumentInfo()."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are CreationDate and ModDate typed as Nullable<DateTimeOffset>?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The PDF specification makes both date fields optional, and when present they carry timezone offset information. Nullable<DateTimeOffset> models both facts: a null value means the field was absent in the document, and a non-null value preserves the full timezone-aware timestamp."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read the title and author of a PDF in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Obtain a DocumentInfo object from the IronPDF document pipeline and read its Title and Author properties. Both are plain strings that map directly to the corresponding PDF information dictionary keys."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Creator and Producer in DocumentInfo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Creator identifies the application that originally authored the source document, such as a word processor or design tool. Producer identifies the software that wrote or converted the final PDF bytes, such as a PDF library or printer driver."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PdfToSvg.DocumentInfo">
+  
+  
+  <h1 id="PdfToSvg_DocumentInfo" data-uid="PdfToSvg.DocumentInfo" class="text-break">Class DocumentInfo
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">DocumentInfo</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="PdfToSvg.html">PdfToSvg</a></h6>
+  <h6><strong>Assembly</strong>: IronPdf.dll</h6>
+  <h5 id="PdfToSvg_DocumentInfo_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class DocumentInfo : Object</code></pre>
+  </div>
+    <!-- archetype-N:start DocumentInfo treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>A read-only record of the metadata embedded in a PDF file, <code>DocumentInfo</code> gives every field that PDF producers write into a document's information dictionary: authorship, timestamps, toolchain provenance, and descriptive text. Retrieving this object is the first step whenever a workflow needs to audit, display, or index PDF metadata without opening the full document for rendering.</p>
+<p><code>DocumentInfo</code> surfaces eight properties drawn directly from the PDF information dictionary. The string fields, <code>Author</code>, <code>Creator</code>, <code>Keywords</code>, <code>Producer</code>, <code>Subject</code>, and <code>Title</code>, mirror the standard PDF metadata keys by the same names. <code>Creator</code> records the application that originally created the source document (for example, a word processor), while <code>Producer</code> identifies the software that converted or wrote the PDF bytes. <code>Keywords</code> arrives as a single string whose internal delimiter follows whatever convention the producing tool used, so splitting on commas or semicolons is the caller's responsibility.</p>
+<p>The two timestamp properties, <code>CreationDate</code> and <code>ModDate</code>, are typed as <code>Nullable&lt;DateTimeOffset&gt;</code> rather than plain strings. That choice reflects the PDF specification: a document may omit either date entirely, and when present the value carries timezone information. Checking for <code>null</code> before formatting is therefore correct practice, not defensive boilerplate.</p>
+<p>All eight properties are read-only. <code>DocumentInfo</code> is a value-carrying record, not a builder, so there are no setters and no constructor to call directly. The object is obtained from the IronPDF conversion pipeline rather than constructed in application code.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using PdfToSvg;
+
+using var doc = PdfDocument.Load(&quot;report.pdf&quot;);
+DocumentInfo info = doc.Info;
+
+Console.WriteLine($&quot;Title:    {info.Title}&quot;);
+Console.WriteLine($&quot;Author:   {info.Author}&quot;);
+Console.WriteLine($&quot;Keywords: {info.Keywords}&quot;);
+
+if (info.CreationDate.HasValue)
+    Console.WriteLine($&quot;Created:  {info.CreationDate.Value:yyyy-MM-dd}&quot;);
+
+if (info.ModDate.HasValue)
+    Console.WriteLine($&quot;Modified: {info.ModDate.Value:yyyy-MM-dd}&quot;);</code></pre></div>
+<p>The <a href="https://ironpdf.com/get-started/">IronPDF get-started guide</a> covers initial setup. The <a href="https://ironpdf.com/how-to/pdf-metadata/">PDF metadata how-to</a> explains reading and writing document properties in depth. The <a href="https://ironpdf.com/examples/pdf-to-svg/">PDF to SVG conversion example</a> shows the broader pipeline that surfaces <code>DocumentInfo</code>. Full API documentation is available at the <a href="https://ironpdf.com/docs/">IronPDF docs hub</a>.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="PdfToSvg_DocumentInfo_Author_" data-uid="PdfToSvg.DocumentInfo.Author*"></a>
+  <h4 id="PdfToSvg_DocumentInfo_Author" data-uid="PdfToSvg.DocumentInfo.Author">Author</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Author { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_DocumentInfo_CreationDate_" data-uid="PdfToSvg.DocumentInfo.CreationDate*"></a>
+  <h4 id="PdfToSvg_DocumentInfo_CreationDate" data-uid="PdfToSvg.DocumentInfo.CreationDate">CreationDate</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Nullable&lt;DateTimeOffset&gt; CreationDate { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_DocumentInfo_Creator_" data-uid="PdfToSvg.DocumentInfo.Creator*"></a>
+  <h4 id="PdfToSvg_DocumentInfo_Creator" data-uid="PdfToSvg.DocumentInfo.Creator">Creator</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Creator { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_DocumentInfo_Keywords_" data-uid="PdfToSvg.DocumentInfo.Keywords*"></a>
+  <h4 id="PdfToSvg_DocumentInfo_Keywords" data-uid="PdfToSvg.DocumentInfo.Keywords">Keywords</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Keywords { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_DocumentInfo_ModDate_" data-uid="PdfToSvg.DocumentInfo.ModDate*"></a>
+  <h4 id="PdfToSvg_DocumentInfo_ModDate" data-uid="PdfToSvg.DocumentInfo.ModDate">ModDate</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Nullable&lt;DateTimeOffset&gt; ModDate { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_DocumentInfo_Producer_" data-uid="PdfToSvg.DocumentInfo.Producer*"></a>
+  <h4 id="PdfToSvg_DocumentInfo_Producer" data-uid="PdfToSvg.DocumentInfo.Producer">Producer</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Producer { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_DocumentInfo_Subject_" data-uid="PdfToSvg.DocumentInfo.Subject*"></a>
+  <h4 id="PdfToSvg_DocumentInfo_Subject" data-uid="PdfToSvg.DocumentInfo.Subject">Subject</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Subject { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="PdfToSvg_DocumentInfo_Title_" data-uid="PdfToSvg.DocumentInfo.Title*"></a>
+  <h4 id="PdfToSvg_DocumentInfo_Title" data-uid="PdfToSvg.DocumentInfo.Title">Title</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Title { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

@@ -1,0 +1,607 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PrintSettings Class - IronPrint C# API
+      v2 (human)     title:       PrintSettings: Configure C# Printing in IronPrint
+      v1 (algorithm) description: Configure printing in C# with the IronPrint PrintSettings class: paper size, orientation, margins, copies, DPI, grayscale, and printer name.
+      v2 (human)     description: Control how documents print in C# with the IronPrint PrintSettings class: set paper, copies, quality, and the target printer, with code examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PrintSettings Class | IronPrint C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PrintSettings Class | IronPrint C# API Reference">
+    <meta name="description" content="Reference for the IronPrint PrintSettings class in C#: set paper size, orientation, margins, copies, DPI, and printer name, with code examples.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/print/csharp/object-reference/api/IronPrint.PrintSettings.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PrintSettings Class | IronPrint C# API Reference",
+    "name": "PrintSettings class | IronPrint C# API",
+    "url": "https://ironsoftware.com/csharp/print/object-reference/api/IronPrint.PrintSettings.html",
+    "abstract": "Configuring how a document prints in C# runs through the IronPrint PrintSettings class. It groups paper setup (PaperSize, PaperOrientation, PaperMargins), output quality (Dpi, Grayscale, Flatten), and job control (NumberOfCopies, PrinterName, Tray). Build one with new PrintSettings or start from the static DefaultSettings, then pass it to a Printer method. Some values are advisory: NumberOfCopies may be capped, and PrinterName and Tray are ignored when a print dialog is used.",
+    "description": "Reference for the IronPrint PrintSettings class in C#: set paper size, orientation, margins, copies, DPI, and printer name, with code examples.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPrint",
+      "url": "https://ironsoftware.com/csharp/print/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPrint;\n\nPrintSettings settings = new PrintSettings\n{\n    PaperSize = PaperSize.A4,\n    PaperOrientation = PaperOrientation.Landscape,\n    NumberOfCopies = 3\n};\nPrinter.Print(\"report.pdf\", settings);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PrintSettings live in the IronPrint API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PrintSettings is a class in the IronPrint namespace, shipped in IronPrint.dll. Construct it with new PrintSettings(), or read the static PrintSettings.DefaultSettings for a baseline, then pass it to a Printer print or dialog method."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does NumberOfCopies sometimes print only one copy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NumberOfCopies is advisory. On some platforms the print subsystem cannot reproduce multiple copies from a single job, so the value is ignored and one copy is printed. Loop the print call when an exact copy count is required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is PrinterName ignored when printing in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PrinterName and Tray are ignored when the user chooses a device in a print dialog, since the dialog selection takes precedence. Set PrinterName and call Printer.Print directly for silent printing to a specific device. Tray applies only on Windows."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronPrint.PrintSettings">
+  
+  
+  <h1 id="IronPrint_PrintSettings" data-uid="IronPrint.PrintSettings" class="text-break">Class PrintSettings
+  </h1>
+  <div class="markdown level0 summary"><p>A print settings class to use with a IronPrint.Printer functions as an optional parameters.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">PrintSettings</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronPrint.html">IronPrint</a></h6>
+  <h6><strong>Assembly</strong>: IronPrint.dll</h6>
+  <h5 id="IronPrint_PrintSettings_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PrintSettings : Object</code></pre>
+  </div>
+    <!-- archetype-N:start PrintSettings treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>PrintSettings</code> is the configuration object you hand to a print call to control how a document reaches paper. It carries the printer choice, copy count, paper size and orientation, margins, and output quality, and it is accepted as the optional argument to every <code>Printer</code> method. One settings object can be reused across several jobs or adjusted per call. The defaults suit most documents, so only the properties that differ from a standard print need to be set.</p>
+<p>Create one with <code>new PrintSettings()</code> for an empty configuration, or read the static <code>PrintSettings.DefaultSettings</code> for a populated baseline to adjust. The properties fall into three groups. Paper setup covers <code>PaperSize</code>, <code>PaperOrientation</code>, and <code>PaperMargins</code>, the last a <code>Nullable&lt;Margins&gt;</code> that falls back to the printer's own margins when left null. Output quality covers <code>Dpi</code>, <code>Grayscale</code>, and <code>Flatten</code>, where <code>Flatten</code> renders form fields and images before printing. Job control covers <code>NumberOfCopies</code>, <code>PrinterName</code>, and <code>Tray</code>.</p>
+<p>Several values are advisory rather than guaranteed. <code>NumberOfCopies</code> can be capped by the platform, so a multi-copy request may yield a single copy. <code>PrinterName</code> and <code>Tray</code> are ignored when the user selects a device in a print dialog, and <code>Tray</code> applies only on Windows. To target a printer reliably, read <a href="https://ironsoftware.com/csharp/print/how-to/retrieve-printer-names/">the printer names</a> first and assign one to <code>PrinterName</code> before calling <code>Printer.Print</code>.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPrint;
+
+PrintSettings settings = new PrintSettings
+{
+    PaperSize = PaperSize.A4,
+    PaperOrientation = PaperOrientation.Landscape,
+    NumberOfCopies = 3
+};
+Printer.Print(&quot;report.pdf&quot;, settings);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/print/how-to/print-settings/">print settings guide</a> walks through every option, the <a href="https://ironsoftware.com/csharp/print/how-to/set-paper-size/">paper size guide</a> and <a href="https://ironsoftware.com/csharp/print/how-to/set-paper-orientation/">paper orientation guide</a> cover layout, and the <a href="https://ironsoftware.com/csharp/print/how-to/grayscale-printing/">grayscale printing guide</a> covers monochrome output.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronPrint_PrintSettings__ctor_" data-uid="IronPrint.PrintSettings.#ctor*"></a>
+  <h4 id="IronPrint_PrintSettings__ctor" data-uid="IronPrint.PrintSettings.#ctor">PrintSettings()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronPrint.PrintSettings.html">PrintSettings</a> class with default values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PrintSettings()</code></pre>
+  </div>
+  <h5 id="IronPrint_PrintSettings__ctor_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Alternative, you can use <a class="xref" href="IronPrint.PrintSettings.html#IronPrint_PrintSettings_DefaultSettings">DefaultSettings</a> to access a predefined set of default settings.</p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronPrint_PrintSettings_CompactMemoryAfterPrint_" data-uid="IronPrint.PrintSettings.CompactMemoryAfterPrint*"></a>
+  <h4 id="IronPrint_PrintSettings_CompactMemoryAfterPrint" data-uid="IronPrint.PrintSettings.CompactMemoryAfterPrint">CompactMemoryAfterPrint</h4>
+  <div class="markdown level1 summary"><p>Whether <a class="xref" href="IronPrint.Printer.html#IronPrint_Printer_PrintAsync_System_String_IronPrint_PrintSettings_">PrintAsync(String, PrintSettings)</a> /
+<a class="xref" href="IronPrint.Printer.html#IronPrint_Printer_PrintAsync_System_Byte___IronPrint_PrintSettings_">PrintAsync(Byte[], PrintSettings)</a> should run a
+full <span class="xref">System.GC.Collect</span> + <span class="xref">System.Runtime.GCLargeObjectHeapCompactionMode.CompactOnce</span>
+pass after each print operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CompactMemoryAfterPrint { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronPrint_PrintSettings_CompactMemoryAfterPrint_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Default value is <code>true</code>. Printing a PDF allocates large managed
+buffers (decoded JPEG bitmaps, the source byte[] when reading from
+<code>byte[]</code>) that land on the Large Object Heap, which only compacts
+when explicitly requested. Forcing compaction at the print boundary
+keeps long-running services (e.g. print spoolers, batch processors)
+from accumulating LOH fragmentation across iterations.
+</p>
+<p>
+Set this to <code>false</code> if you print many small documents in a tight
+loop and would rather let the GC schedule itself — the per-call cost
+of a forced Gen2 collection can dominate when individual prints
+allocate only a few KB.
+</p>
+</div>
+  
+  
+  <a id="IronPrint_PrintSettings_DefaultSettings_" data-uid="IronPrint.PrintSettings.DefaultSettings*"></a>
+  <h4 id="IronPrint_PrintSettings_DefaultSettings" data-uid="IronPrint.PrintSettings.DefaultSettings">DefaultSettings</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronPrint.PrintSettings.html">PrintSettings</a> class with default values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PrintSettings DefaultSettings { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPrint.PrintSettings.html">PrintSettings</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPrint_PrintSettings_Dpi_" data-uid="IronPrint.PrintSettings.Dpi*"></a>
+  <h4 id="IronPrint_PrintSettings_Dpi" data-uid="IronPrint.PrintSettings.Dpi">Dpi</h4>
+  <div class="markdown level1 summary"><p>Intended print resolution in dots per inch.</p>
+<p>Default value is 300 which is a common value used in commercial printing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Dpi { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronPrint_PrintSettings_Dpi_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The actual DPI used for printing might be limited by the capabilities of the printer.</p>
+</div>
+  
+  
+  <a id="IronPrint_PrintSettings_Flatten_" data-uid="IronPrint.PrintSettings.Flatten*"></a>
+  <h4 id="IronPrint_PrintSettings_Flatten" data-uid="IronPrint.PrintSettings.Flatten">Flatten</h4>
+  <div class="markdown level1 summary"><p>Flatten the PDF before printing, which is useful for displaying form field values and images.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Flatten { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronPrint_PrintSettings_Flatten_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The default value is <code>false</code>, indicating that the PDF will not be flattened before printing.</p>
+</div>
+  
+  
+  <a id="IronPrint_PrintSettings_Grayscale_" data-uid="IronPrint.PrintSettings.Grayscale*"></a>
+  <h4 id="IronPrint_PrintSettings_Grayscale" data-uid="IronPrint.PrintSettings.Grayscale">Grayscale</h4>
+  <div class="markdown level1 summary"><p>A value indicating whether to print in grayscale.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Grayscale { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronPrint_PrintSettings_Grayscale_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The default value is <code>false</code>, indicating an attempt to print in color.</p>
+</div>
+  
+  
+  <a id="IronPrint_PrintSettings_NumberOfCopies_" data-uid="IronPrint.PrintSettings.NumberOfCopies*"></a>
+  <h4 id="IronPrint_PrintSettings_NumberOfCopies" data-uid="IronPrint.PrintSettings.NumberOfCopies">NumberOfCopies</h4>
+  <div class="markdown level1 summary"><p>The number of identical copies
+to be generated when printing a document.</p>
+<p>Default value is 1 copy</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumberOfCopies { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronPrint_PrintSettings_NumberOfCopies_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><strong>Note:</strong> In certain platforms, there may be limitations that prevent
+the accurate reproduction of multiple copies. In such cases, the specified value
+of <a class="xref" href="IronPrint.PrintSettings.html#IronPrint_PrintSettings_NumberOfCopies">NumberOfCopies</a> might be ignored, and only one copy will be printed.</p>
+</div>
+  
+  
+  <a id="IronPrint_PrintSettings_PaperMargins_" data-uid="IronPrint.PrintSettings.PaperMargins*"></a>
+  <h4 id="IronPrint_PrintSettings_PaperMargins" data-uid="IronPrint.PrintSettings.PaperMargins">PaperMargins</h4>
+  <div class="markdown level1 summary"><p>The margins to use for printing in millimeters.</p>
+<p>
+The default value is <code>null</code>, indicating the use of the default margins provided by the printer.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Nullable&lt;Margins&gt; PaperMargins { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="IronPrint.Margins.html">Margins</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPrint_PrintSettings_PaperOrientation_" data-uid="IronPrint.PrintSettings.PaperOrientation*"></a>
+  <h4 id="IronPrint_PrintSettings_PaperOrientation" data-uid="IronPrint.PrintSettings.PaperOrientation">PaperOrientation</h4>
+  <div class="markdown level1 summary"><p>The paper orientation. E.g. Automatic, Portrait or Landscape.</p>
+<p>Default value is <a class="xref" href="IronPrint.PaperOrientation.html#IronPrint_PaperOrientation_Automatic">Automatic</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PaperOrientation PaperOrientation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPrint.PaperOrientation.html">PaperOrientation</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPrint_PrintSettings_PaperSize_" data-uid="IronPrint.PrintSettings.PaperSize*"></a>
+  <h4 id="IronPrint_PrintSettings_PaperSize" data-uid="IronPrint.PrintSettings.PaperSize">PaperSize</h4>
+  <div class="markdown level1 summary"><p>Set an paper size used by the printer.</p>
+<p>Default value is <a class="xref" href="IronPrint.PaperSize.html#IronPrint_PaperSize_PrinterDefault">PrinterDefault</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PaperSize PaperSize { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPrint.PaperSize.html">PaperSize</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPrint_PrintSettings_PrinterName_" data-uid="IronPrint.PrintSettings.PrinterName*"></a>
+  <h4 id="IronPrint_PrintSettings_PrinterName" data-uid="IronPrint.PrintSettings.PrinterName">PrinterName</h4>
+  <div class="markdown level1 summary"><p>The name of the printer to use for printing.</p>
+<p>
+Default value is <code>null</code> which means the current default printer of the operating system will be used.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PrinterName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronPrint_PrintSettings_PrinterName_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p> If you choose the printer in a PrintDialog, this setting will be ignored.</p>
+To obtain the available printer names, you can use <a class="xref" href="IronPrint.Printer.html#IronPrint_Printer_GetPrinterNames">GetPrinterNames()</a> or 
+<a class="xref" href="IronPrint.Printer.html#IronPrint_Printer_GetPrinterNamesAsync">GetPrinterNamesAsync()</a> to fetch the printer name list.
+</div>
+  
+  
+  <a id="IronPrint_PrintSettings_Tray_" data-uid="IronPrint.PrintSettings.Tray*"></a>
+  <h4 id="IronPrint_PrintSettings_Tray" data-uid="IronPrint.PrintSettings.Tray">Tray</h4>
+  <div class="markdown level1 summary"><p>Printer tray used for the printing job.
+This allows users to specify a particular tray from which paper should be fed into the printer.</p>
+<p> If you choose the tray in a PrintDialog, this setting will be ignored.</p>
+To obtain the available tray, you can use <a class="xref" href="IronPrint.Printer.html#IronPrint_Printer_GetPrinterTrays_System_String_">GetPrinterTrays(String)</a> or <a class="xref" href="IronPrint.Printer.html#IronPrint_Printer_GetPrinterTraysAsync_System_String_">GetPrinterTraysAsync(String)</a>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Tray { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronPrint_PrintSettings_Tray_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The default value is <code>null</code>, indicating the use of the default tray provided by the printer.</p>
+</div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPrint/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with NuGet
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPrint' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

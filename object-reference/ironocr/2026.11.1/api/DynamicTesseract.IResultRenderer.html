@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IResultRenderer - IronOCR C# API Reference
+      v2 (human)     title:       IResultRenderer: OCR Output Contract in C#
+      v1 (algorithm) description: IResultRenderer is the IronOCR contract in C# for writing recognized Page results to output: BeginDocument, AddPage, and PageNumber.
+      v2 (human)     description: Write recognized OCR pages to a document in C# through the IronOCR IResultRenderer contract: begin a document, add pages, track the count.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IResultRenderer | IronOCR C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IResultRenderer | IronOCR C# API Reference">
+    <meta name="description" content="Reference for the IronOCR IResultRenderer interface in C#: the disposable contract that writes Page results into an output document.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/ocr/csharp/object-reference/api/DynamicTesseract.IResultRenderer.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IResultRenderer | IronOCR C# API Reference",
+    "name": "IResultRenderer interface | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/DynamicTesseract.IResultRenderer.html",
+    "abstract": "IResultRenderer is the IronOCR contract in C# for writing recognized Page results into an output document such as a searchable PDF or hOCR file. BeginDocument opens a document and returns an IDisposable, AddPage writes one Page, and PageNumber reports the count. It extends IDisposable, so dispose the renderer to release its native output handle.",
+    "description": "Reference for the IronOCR IResultRenderer interface in C#: the disposable contract that writes Page results into an output document.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IResultRenderer live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IResultRenderer is an interface in the DynamicTesseract namespace, shipped in IronOcr.dll. It extends IDisposable and defines BeginDocument, AddPage, and PageNumber for writing recognized pages to an output document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you write OCR results to a document with IResultRenderer in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call BeginDocument with a title to open the output and capture the returned IDisposable in a using block, call AddPage for each recognized Page, and read PageNumber for the running count. Disposing the document handle finishes the file."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="DynamicTesseract.IResultRenderer">
+  
+  
+  <h1 id="DynamicTesseract_IResultRenderer" data-uid="DynamicTesseract.IResultRenderer" class="text-break">Interface IResultRenderer
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="DynamicTesseract.html">DynamicTesseract</a></h6>
+  <h6><strong>Assembly</strong>: IronOcr.dll</h6>
+  <h5 id="DynamicTesseract_IResultRenderer_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IResultRenderer</code></pre>
+  </div>
+    <!-- archetype-N:start IResultRenderer treatment=mid sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="interface">
+<p><code>IResultRenderer</code> is the contract for writing recognized <code>Page</code> results into an output document, such as a searchable PDF, hOCR file, or plain text export. A renderer accumulates pages and tracks how many it has written, so the same recognition pass can feed one multi-page document.</p>
+<p>Three members define the contract. <code>BeginDocument</code> opens a new output document under a given title and returns an <code>IDisposable</code> that closes the document when disposed, so a <code>using</code> block frames the whole write. <code>AddPage</code> writes one recognized <code>Page</code> into the open document and returns whether the page was accepted. <code>PageNumber</code> reports how many pages have been rendered so far. Because the contract extends <code>IDisposable</code>, dispose the renderer to release its native output handle once every page is written, and dispose the document handle that <code>BeginDocument</code> returns to finalize the file on disk.</p>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/searchable-pdf/">searchable PDF how-to</a> and the <a href="https://ironsoftware.com/csharp/ocr/how-to/html-hocr-export/">hOCR export how-to</a> cover the high-level output that this rendering layer backs.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="DynamicTesseract_IResultRenderer_PageNumber_" data-uid="DynamicTesseract.IResultRenderer.PageNumber*"></a>
+  <h4 id="DynamicTesseract_IResultRenderer_PageNumber" data-uid="DynamicTesseract.IResultRenderer.PageNumber">PageNumber</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int PageNumber { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="DynamicTesseract_IResultRenderer_AddPage_" data-uid="DynamicTesseract.IResultRenderer.AddPage*"></a>
+  <h4 id="DynamicTesseract_IResultRenderer_AddPage_DynamicTesseract_Page_" data-uid="DynamicTesseract.IResultRenderer.AddPage(DynamicTesseract.Page)">AddPage(Page)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool AddPage(Page page)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DynamicTesseract.Page.html">Page</a></td>
+        <td><span class="parametername">page</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="DynamicTesseract_IResultRenderer_BeginDocument_" data-uid="DynamicTesseract.IResultRenderer.BeginDocument*"></a>
+  <h4 id="DynamicTesseract_IResultRenderer_BeginDocument_System_String_" data-uid="DynamicTesseract.IResultRenderer.BeginDocument(System.String)">BeginDocument(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IDisposable BeginDocument(string title)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IDisposable</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronOcr/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronOcr' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

@@ -1,0 +1,600 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Shape Class - IronPPT C# API Reference
+      v2 (human)     title:       Shape: Add Shapes to Slides in C#
+      v1 (algorithm) description: Add shapes to a slide in C# with the IronPPT Shape class: set Type from ShapeType, set FillColor and OutlineColor, and add it with Slide.AddShape.
+      v2 (human)     description: Draw arrows, rectangles, and circles on a slide in C# with the IronPPT Shape class: choose a Type, set its colors, and add it to a slide.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Shape Class | IronPPT C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Shape Class | IronPPT C# API Reference">
+    <meta name="description" content="Reference for the IronPPT Shape class in C#: a slide graphic with a ShapeType, FillColor and OutlineColor, an Id and Name, and a Clone method.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/ppt/csharp/object-reference/api/IronPPT.Models.Shape.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Shape Class | IronPPT C# API Reference",
+    "name": "Shape class | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Models.Shape.html",
+    "abstract": "Shape models a single graphic placed on an IronPPT slide in C#. Create one with new Shape(), set Type from the ShapeType enum for its geometry, and assign FillColor and OutlineColor for its look. Slide.AddShape adds it and returns an IShape, while Name, Id, and Clone identify and copy it.",
+    "description": "Reference for the IronPPT Shape class in C#: a slide graphic with a ShapeType, FillColor and OutlineColor, an Id and Name, and a Clone method.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var shape = new Shape();\nshape.Type = ShapeType.Triangle;\nshape.OutlineColor = outlineColor;\nslide.AddShape(shape);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Shape live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Shape is a class in the IronPPT.Models namespace, shipped in IronPPT.dll. It derives from BaseGraphicContainer and implements IShape, IGraphic, IContentElement, and related interfaces."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add a shape to a slide in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a Shape with new Shape(), set its Type to a ShapeType member such as Triangle, and assign FillColor and OutlineColor. Pass it to Slide.AddShape, which adds the shape and returns an IShape."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you reuse the same shape across slides?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Clone on the Shape to get a copy as an IContentElement, then add the copy to another slide. This repeats a styled shape without rebuilding its type and colors each time."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronPPT.Models.Shape">
+  
+  
+  <h1 id="IronPPT_Models_Shape" data-uid="IronPPT.Models.Shape" class="text-break">Class Shape
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="IronPPT.Models.Abstract.ContentElement.html">ContentElement</a></div>
+    <div class="level2"><a class="xref" href="IronPPT.Models.Abstract.ParentElement.html">ParentElement</a></div>
+    <div class="level3"><a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html">BaseGraphicContainer</a></div>
+    <div class="level4"><span class="xref">Shape</span></div>
+      <div class="level5"><a class="xref" href="IronPPT.Models.TextBox.html">TextBox</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="IronPPT.Interfaces.ICloneableElement.html">ICloneableElement</a></div>
+    <div><a class="xref" href="IronPPT.Interfaces.IParentElement.html">IParentElement</a></div>
+    <div><a class="xref" href="IronPPT.Interfaces.IShape.html">IShape</a></div>
+    <div><a class="xref" href="IronPPT.Interfaces.IGraphic.html">IGraphic</a></div>
+    <div><a class="xref" href="IronPPT.Interfaces.IContentElement.html">IContentElement</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_Resize_System_Int32_System_Int32_">BaseGraphicContainer.Resize(Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_Rotate_System_Double_">BaseGraphicContainer.Rotate(Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_FlipHorizontal">BaseGraphicContainer.FlipHorizontal()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_FlipVertical">BaseGraphicContainer.FlipVertical()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_Height">BaseGraphicContainer.Height</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_Position">BaseGraphicContainer.Position</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_Width">BaseGraphicContainer.Width</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_Angle">BaseGraphicContainer.Angle</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_AddChild_IronPPT_Interfaces_IContentElement___">ParentElement.AddChild(IContentElement[])</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_InsertChildToIndex_System_Int32_IronPPT_Interfaces_IContentElement___">ParentElement.InsertChildToIndex(Int32, IContentElement[])</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_Remove">ParentElement.Remove()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_RemoveChildren_IronPPT_Interfaces_IContentElement___">ParentElement.RemoveChildren(IContentElement[])</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_RemoveAllChildren">ParentElement.RemoveAllChildren()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_ExtractElements__1">ParentElement.ExtractElements&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_GetChildByIndex__1_System_Int32_">ParentElement.GetChildByIndex&lt;T&gt;(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_CloneElement__1___0_">ParentElement.CloneElement&lt;T&gt;(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_LogObjectTree">ParentElement.LogObjectTree()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_Children">ParentElement.Children</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement__Index">ContentElement._Index</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_Replace_IronPPT_Interfaces_IContentElement_">ContentElement.Replace(IContentElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_GetIndex">ContentElement.GetIndex()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_CloneObject__1___0_">ContentElement.CloneObject&lt;T&gt;(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_CaptureInitialValues">ContentElement.CaptureInitialValues()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_Index">ContentElement.Index</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_Parent">ContentElement.Parent</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_Status">ContentElement.Status</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronPPT.Models.html">IronPPT.Models</a></h6>
+  <h6><strong>Assembly</strong>: IronPPT.dll</h6>
+  <h5 id="IronPPT_Models_Shape_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Shape : BaseGraphicContainer, ICloneableElement, IParentElement, IShape, IGraphic, IContentElement</code></pre>
+  </div>
+    <!-- archetype-N:start Shape treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Drawing a shape onto a slide, an arrow, rectangle, or circle that structures content or draws the eye, runs through <code>Shape</code>. It models a single graphic placed on a slide, with its own type, colors, and identity, so a developer can build diagrams and callouts directly from code.</p>
+<p>A developer creates one with <code>new Shape()</code> and adds it to a slide through <code>Slide.AddShape</code>, which accepts the shape and returns an <code>IShape</code>. The <code>Type</code> property, a <code>Nullable&lt;ShapeType&gt;</code>, picks the geometry from the <code>ShapeType</code> enum (a triangle, rectangle, or one of the other preset forms). <code>FillColor</code> and <code>OutlineColor</code> are <code>IColor</code> values that set the interior and the border. <code>Name</code> gives the shape a readable label and <code>Id</code> (a <code>uint</code>) is its identifier within the slide. The <code>Clone</code> method returns a copy as an <code>IContentElement</code>, handy for repeating a styled shape across slides.</p>
+<p>Set <code>Type</code> first so the shape has a geometry, then assign <code>FillColor</code> and <code>OutlineColor</code> for its look; size and position come from the inherited graphic members. The <code>ShapeType</code> enum covers the common preset forms, so picking a member is how a developer chooses between an arrow, a rectangle, an oval, and the rest without drawing geometry by hand. Because <code>Shape</code> is a content element, the same instance can be added, cloned, and re-styled without rebuilding it from scratch, which keeps diagram-generation code compact. When a slide needs several similar shapes, build one, set its type and colors, and use <code>Clone</code> to stamp out the variants rather than repeating the setup.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var shape = new Shape();
+shape.Type = ShapeType.Triangle;
+shape.OutlineColor = outlineColor;
+slide.AddShape(shape);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> builds and colors a shape, the <a href="https://ironsoftware.com/csharp/ppt/how-to/add-slide/">add slide how-to</a> creates slides to place them on, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-slide/">manage slide how-to</a> arranges the slides that hold them.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronPPT_Models_Shape__ctor_" data-uid="IronPPT.Models.Shape.#ctor*"></a>
+  <h4 id="IronPPT_Models_Shape__ctor" data-uid="IronPPT.Models.Shape.#ctor">Shape()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Shape()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronPPT_Models_Shape_FillColor_" data-uid="IronPPT.Models.Shape.FillColor*"></a>
+  <h4 id="IronPPT_Models_Shape_FillColor" data-uid="IronPPT.Models.Shape.FillColor">FillColor</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IColor FillColor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPPT.Interfaces.IColor.html">IColor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPPT_Models_Shape_Id_" data-uid="IronPPT.Models.Shape.Id*"></a>
+  <h4 id="IronPPT_Models_Shape_Id" data-uid="IronPPT.Models.Shape.Id">Id</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPPT_Models_Shape_Name_" data-uid="IronPPT.Models.Shape.Name*"></a>
+  <h4 id="IronPPT_Models_Shape_Name" data-uid="IronPPT.Models.Shape.Name">Name</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPPT_Models_Shape_OutlineColor_" data-uid="IronPPT.Models.Shape.OutlineColor*"></a>
+  <h4 id="IronPPT_Models_Shape_OutlineColor" data-uid="IronPPT.Models.Shape.OutlineColor">OutlineColor</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IColor OutlineColor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPPT.Interfaces.IColor.html">IColor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPPT_Models_Shape_Type_" data-uid="IronPPT.Models.Shape.Type*"></a>
+  <h4 id="IronPPT_Models_Shape_Type" data-uid="IronPPT.Models.Shape.Type">Type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Nullable&lt;ShapeType&gt; Type { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="IronPPT.Enums.ShapeType.html">ShapeType</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronPPT_Models_Shape_Clone_" data-uid="IronPPT.Models.Shape.Clone*"></a>
+  <h4 id="IronPPT_Models_Shape_Clone" data-uid="IronPPT.Models.Shape.Clone">Clone()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override IContentElement Clone()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPPT.Interfaces.IContentElement.html">IContentElement</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_Clone">ParentElement.Clone()</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="IronPPT.Interfaces.ICloneableElement.html">ICloneableElement</a>
+  </div>
+  <div>
+      <a class="xref" href="IronPPT.Interfaces.IParentElement.html">IParentElement</a>
+  </div>
+  <div>
+      <a class="xref" href="IronPPT.Interfaces.IShape.html">IShape</a>
+  </div>
+  <div>
+      <a class="xref" href="IronPPT.Interfaces.IGraphic.html">IGraphic</a>
+  </div>
+  <div>
+      <a class="xref" href="IronPPT.Interfaces.IContentElement.html">IContentElement</a>
+  </div>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_Resize_System_Int32_System_Int32_">Resize(Int32, Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_Rotate_System_Double_">Rotate(Double)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_FlipHorizontal">FlipHorizontal()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_FlipVertical">FlipVertical()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_Height">Height</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_Position">Position</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_Width">Width</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.BaseGraphicContainer.html#IronPPT_Models_Abstract_BaseGraphicContainer_Angle">Angle</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_AddChild_IronPPT_Interfaces_IContentElement___">AddChild(IContentElement[])</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_InsertChildToIndex_System_Int32_IronPPT_Interfaces_IContentElement___">InsertChildToIndex(Int32, IContentElement[])</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_Remove">Remove()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_RemoveChildren_IronPPT_Interfaces_IContentElement___">RemoveChildren(IContentElement[])</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_RemoveAllChildren">RemoveAllChildren()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_ExtractElements__1">ExtractElements&lt;T&gt;()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_GetChildByIndex__1_System_Int32_">GetChildByIndex&lt;T&gt;(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_CloneElement__1___0_">CloneElement&lt;T&gt;(T)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_LogObjectTree">LogObjectTree()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ParentElement.html#IronPPT_Models_Abstract_ParentElement_Children">Children</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement__Index">_Index</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_Replace_IronPPT_Interfaces_IContentElement_">Replace(IContentElement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_GetIndex">GetIndex()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_CloneObject__1___0_">CloneObject&lt;T&gt;(T)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_CaptureInitialValues">CaptureInitialValues()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_Index">Index</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_Parent">Parent</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Models.Abstract.ContentElement.html#IronPPT_Models_Abstract_ContentElement_Status">Status</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPPT/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with NuGet
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPPT' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>
