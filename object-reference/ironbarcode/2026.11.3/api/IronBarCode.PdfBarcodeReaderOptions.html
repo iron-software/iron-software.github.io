@@ -1,0 +1,511 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PdfBarcodeReaderOptions - IronBarcode C# API
+      v2 (human)     title:       PdfBarcodeReaderOptions: Read PDFs in C#
+      v1 (algorithm) description: Read barcodes from PDFs in C# with the IronBarcode PdfBarcodeReaderOptions class: set PageNumbers, DPI, Scale, and Password for ReadPdf.
+      v2 (human)     description: Control PDF barcode reads in C# with IronBarcode PdfBarcodeReaderOptions: choose pages, set render DPI and scale, and open password-protected files.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PdfBarcodeReaderOptions | IronBarcode C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PdfBarcodeReaderOptions | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode PdfBarcodeReaderOptions class in C#: page selection, DPI, scale, and password settings for ReadPdf.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/barcode/csharp/object-reference/api/IronBarCode.PdfBarcodeReaderOptions.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PdfBarcodeReaderOptions | IronBarcode C# API",
+    "name": "PdfBarcodeReaderOptions class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.PdfBarcodeReaderOptions.html",
+    "abstract": "Reading barcodes out of a PDF in C# is configured through the IronBarcode PdfBarcodeReaderOptions class, the argument BarcodeReader.ReadPdf and ReadPdfs accept. It derives from BarcodeReaderOptions and adds PDF-only properties: PageNumbers to restrict the read, DPI and Scale to control page rendering, and Password to open an encrypted file. The inherited symbology and speed settings still apply.",
+    "description": "Reference for the IronBarcode PdfBarcodeReaderOptions class in C#: page selection, DPI, scale, and password settings for ReadPdf.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nvar options = new PdfBarcodeReaderOptions\n{\n    PageNumbers = new[] { 1, 2 },\n    DPI = 150,\n    Password = \"secret\"\n};\nBarcodeResults results = BarcodeReader.ReadPdf(\"invoice.pdf\", options);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PdfBarcodeReaderOptions live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfBarcodeReaderOptions is a class in the IronBarCode namespace, shipped in IronBarCode.dll, deriving from BarcodeReaderOptions. Construct one and pass it to BarcodeReader.ReadPdf, ReadPdfs, or ReadPdfsAsync."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I read a barcode from specific PDF pages in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the PageNumbers property to an IEnumerable of the page numbers you want, then pass the PdfBarcodeReaderOptions to BarcodeReader.ReadPdf. The reader scans only those pages instead of the whole document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can IronBarcode read a barcode from a password-protected PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Set the Password property on PdfBarcodeReaderOptions to the document password before calling ReadPdf. Raising DPI or Scale also helps small or dense codes resolve before scanning."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronBarCode.PdfBarcodeReaderOptions">
+  
+  
+  <h1 id="IronBarCode_PdfBarcodeReaderOptions" data-uid="IronBarCode.PdfBarcodeReaderOptions" class="text-break">Class PdfBarcodeReaderOptions
+  </h1>
+  <div class="markdown level0 summary"><p>An Options class of <a class="xref" href="IronBarCode.PdfBarcodeReaderOptions.html">PdfBarcodeReaderOptions</a> for reading many popular barcode formats from PDFs.</p>
+<param>Features: MaxParallelThreads, Reading detail, ExpectMultipleBarcodes, Crop-area, Image filters and preprocessing for improved accuracy.
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="IronBarCode.BarcodeReaderOptions.html">BarcodeReaderOptions</a></div>
+    <div class="level2"><span class="xref">PdfBarcodeReaderOptions</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_Speed">BarcodeReaderOptions.Speed</a>
+    </div>
+    <div>
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_ExpectMultipleBarcodes">BarcodeReaderOptions.ExpectMultipleBarcodes</a>
+    </div>
+    <div>
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_ExpectBarcodeTypes">BarcodeReaderOptions.ExpectBarcodeTypes</a>
+    </div>
+    <div>
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_Multithreaded">BarcodeReaderOptions.Multithreaded</a>
+    </div>
+    <div>
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_MaxParallelThreads">BarcodeReaderOptions.MaxParallelThreads</a>
+    </div>
+    <div>
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_CropArea">BarcodeReaderOptions.CropArea</a>
+    </div>
+    <div>
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_UseCode39ExtendedMode">BarcodeReaderOptions.UseCode39ExtendedMode</a>
+    </div>
+    <div>
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_RemoveFalsePositive">BarcodeReaderOptions.RemoveFalsePositive</a>
+    </div>
+    <div>
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_ImageFilters">BarcodeReaderOptions.ImageFilters</a>
+    </div>
+    <div>
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_ScanMode">BarcodeReaderOptions.ScanMode</a>
+    </div>
+    <div>
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_ConfidenceThreshold">BarcodeReaderOptions.ConfidenceThreshold</a>
+    </div>
+    <div>
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_AutoRotate">BarcodeReaderOptions.AutoRotate</a>
+    </div>
+    <div>
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_MinScanLines">BarcodeReaderOptions.MinScanLines</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronBarCode.html">IronBarCode</a></h6>
+  <h6><strong>Assembly</strong>: IronBarCode.dll</h6>
+  <h5 id="IronBarCode_PdfBarcodeReaderOptions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PdfBarcodeReaderOptions : BarcodeReaderOptions</code></pre>
+  </div>
+    <!-- archetype-N:start PdfBarcodeReaderOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Page selection, rendering resolution, and password handling for reading barcodes out of a PDF live on <code>PdfBarcodeReaderOptions</code>. It is the argument a developer passes to <code>BarcodeReader.ReadPdf</code>, <code>ReadPdfs</code>, and <code>ReadPdfsAsync</code> to point the reader at the right pages of a document and to open a protected file. This is the type behind a search like &quot;read barcode from PDF C#&quot; or &quot;scan barcode in PDF page&quot;, and it answers the questions a plain image read cannot.</p>
+<p><code>PdfBarcodeReaderOptions</code> derives from <code>BarcodeReaderOptions</code>, so it carries every base setting, the symbology, scan mode, speed, and image handling, and adds the PDF-only properties on top. A developer constructs one, sets the PDF-specific properties a job needs, and passes it to a <code>ReadPdf</code> overload that takes a path, byte array, or stream. Constructor overloads let a single page number or a sequence of page numbers be supplied up front.</p>
+<p>The PDF-specific properties are few and purposeful. <code>PageNumbers</code> is an <code>IEnumerable&lt;int&gt;</code> that restricts the read to chosen pages instead of scanning the whole document, which matters for large files. <code>DPI</code> sets the resolution each page is rendered at before scanning, and <code>Scale</code> adjusts the rendered page size; raising either helps small or dense codes resolve at the cost of speed. <code>Password</code> opens an encrypted PDF so its pages can be rendered and read. Because the base properties still apply, a PDF read can also set <code>ExpectBarcodeTypes</code>, <code>Speed</code>, and the rest exactly as an image read would. Leave the PDF properties at their defaults to scan every page at the standard resolution.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+var options = new PdfBarcodeReaderOptions
+{
+    PageNumbers = new[] { 1, 2 },
+    DPI = 150,
+    Password = &quot;secret&quot;
+};
+BarcodeResults results = BarcodeReader.ReadPdf(&quot;invoice.pdf&quot;, options);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/read-barcodes-from-pdf/">read barcodes from PDF how-to</a> walks through a document read, the <a href="https://ironsoftware.com/csharp/barcode/examples/pdf-barcode-reader-settings-csharp/">PDF barcode reader settings example</a> shows the configured options, and the <a href="https://ironsoftware.com/csharp/barcode/tutorials/reading-barcodes/">reading barcodes tutorial</a> covers the wider workflow.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronBarCode_PdfBarcodeReaderOptions__ctor_" data-uid="IronBarCode.PdfBarcodeReaderOptions.#ctor*"></a>
+  <h4 id="IronBarCode_PdfBarcodeReaderOptions__ctor" data-uid="IronBarCode.PdfBarcodeReaderOptions.#ctor">PdfBarcodeReaderOptions()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronBarCode.PdfBarcodeReaderOptions.html">PdfBarcodeReaderOptions</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PdfBarcodeReaderOptions()</code></pre>
+  </div>
+  
+  
+  <a id="IronBarCode_PdfBarcodeReaderOptions__ctor_" data-uid="IronBarCode.PdfBarcodeReaderOptions.#ctor*"></a>
+  <h4 id="IronBarCode_PdfBarcodeReaderOptions__ctor_System_Collections_Generic_IEnumerable_System_Int32__" data-uid="IronBarCode.PdfBarcodeReaderOptions.#ctor(System.Collections.Generic.IEnumerable{System.Int32})">PdfBarcodeReaderOptions(IEnumerable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronBarCode.PdfBarcodeReaderOptions.html">PdfBarcodeReaderOptions</a> class with the specified pages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PdfBarcodeReaderOptions(IEnumerable&lt;int&gt; pageNumbers)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">pageNumbers</span></td>
+        <td><p>The page numbers of the PDF.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_PdfBarcodeReaderOptions__ctor_" data-uid="IronBarCode.PdfBarcodeReaderOptions.#ctor*"></a>
+  <h4 id="IronBarCode_PdfBarcodeReaderOptions__ctor_System_Int32_" data-uid="IronBarCode.PdfBarcodeReaderOptions.#ctor(System.Int32)">PdfBarcodeReaderOptions(Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronBarCode.PdfBarcodeReaderOptions.html">PdfBarcodeReaderOptions</a> class with the specified page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PdfBarcodeReaderOptions(int pageNumber)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageNumber</span></td>
+        <td><p>The page number of the PDF.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronBarCode_PdfBarcodeReaderOptions_DPI_" data-uid="IronBarCode.PdfBarcodeReaderOptions.DPI*"></a>
+  <h4 id="IronBarCode_PdfBarcodeReaderOptions_DPI" data-uid="IronBarCode.PdfBarcodeReaderOptions.DPI">DPI</h4>
+  <div class="markdown level1 summary"><p>The Dots per inch to rendering each Barcode images.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DPI { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_PdfBarcodeReaderOptions_PageNumbers_" data-uid="IronBarCode.PdfBarcodeReaderOptions.PageNumbers*"></a>
+  <h4 id="IronBarCode_PdfBarcodeReaderOptions_PageNumbers" data-uid="IronBarCode.PdfBarcodeReaderOptions.PageNumbers">PageNumbers</h4>
+  <div class="markdown level1 summary"><p>The page numbers of the PDF to read expressed as an Array, List or IEnumerable of <span class="xref">System.Int32</span>. PageNumbers are '1 based' meaning that the first page number is 1 rather than zero.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;int&gt; PageNumbers { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_PdfBarcodeReaderOptions_Password_" data-uid="IronBarCode.PdfBarcodeReaderOptions.Password*"></a>
+  <h4 id="IronBarCode_PdfBarcodeReaderOptions_Password" data-uid="IronBarCode.PdfBarcodeReaderOptions.Password">Password</h4>
+  <div class="markdown level1 summary"><p>The password string to open / unencrypt the PDF. Null or &quot;&quot; assign no password.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Password { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_PdfBarcodeReaderOptions_Scale_" data-uid="IronBarCode.PdfBarcodeReaderOptions.Scale*"></a>
+  <h4 id="IronBarCode_PdfBarcodeReaderOptions_Scale" data-uid="IronBarCode.PdfBarcodeReaderOptions.Scale">Scale</h4>
+  <div class="markdown level1 summary"><p>The Scale Factor for Scaling Width and Height when convert Pdf to Image. Default 3.5.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Scale { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_Speed">Speed</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_ExpectMultipleBarcodes">ExpectMultipleBarcodes</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_ExpectBarcodeTypes">ExpectBarcodeTypes</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_Multithreaded">Multithreaded</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_MaxParallelThreads">MaxParallelThreads</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_CropArea">CropArea</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_UseCode39ExtendedMode">UseCode39ExtendedMode</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_RemoveFalsePositive">RemoveFalsePositive</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_ImageFilters">ImageFilters</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_ScanMode">ScanMode</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_ConfidenceThreshold">ConfidenceThreshold</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_AutoRotate">AutoRotate</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronBarCode.BarcodeReaderOptions.html#IronBarCode_BarcodeReaderOptions_MinScanLines">MinScanLines</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/BarCode/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/BarCode' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace IronPdf.Security
+   | C# PDF Library Documentation | IronPDF </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace IronPdf.Security
+   | C# PDF Library Documentation | IronPDF ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/IronPdf.Security.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronPdf.Security">
+  
+  <h1 id="IronPdf_Security" data-uid="IronPdf.Security" class="text-break">Namespace IronPdf.Security
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="IronPdf.Security.PdfEditSecurity.html">PdfEditSecurity</a></h4>
+      <section><p>Controls PDF editing permissions for password-protected documents.
+Defines what changes users can make without the owner password.</p>
+<pre><code>// Prevent ALL editing:
+pdf.SecuritySettings.AllowUserEdits = PdfEditSecurity.NoEdit;
+pdf.SecuritySettings.UserPassword = &quot;read123&quot;;
+pdf.SecuritySettings.OwnerPassword = &quot;admin456&quot;;
+
+// Allow only page management:
+pdf.SecuritySettings.AllowUserEdits = PdfEditSecurity.EditPages;
+
+// Allow full editing:
+pdf.SecuritySettings.AllowUserEdits = PdfEditSecurity.EditAll;</code></pre><p> Users with owner password always have full access</p><p> Actual restrictions depend on PDF viewer compliance</p><p>See: https://ironpdf.com/how-to/pdf-security/</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Security.PdfEncryptionType.html">PdfEncryptionType</a></h4>
+      <section><p>The encryption algorithm used to secure a PDF document's content when a password is applied.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Security.PdfPrintSecurity.html">PdfPrintSecurity</a></h4>
+      <section><p>Controls PDF printing permissions for secured documents.
+Restricts how users can print without the owner password.</p>
+<pre><code>// Prevent printing confidential docs:
+pdf.SecuritySettings.AllowUserPrinting = PdfPrintSecurity.NoPrint;
+pdf.SecuritySettings.UserPassword = &quot;view_only&quot;;
+
+// Allow draft quality printing only:
+pdf.SecuritySettings.AllowUserPrinting = PdfPrintSecurity.PrintLowQuality;
+
+// Allow full quality printing:
+pdf.SecuritySettings.AllowUserPrinting = PdfPrintSecurity.FullPrintRights;</code></pre><p> Low quality typically means 150 DPI max</p><p> Print restrictions require compliant PDF viewers</p><p>See: https://ironpdf.com/how-to/pdf-security/</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Security.PdfSecuritySettings.html">PdfSecuritySettings</a></h4>
+      <section><p>Enterprise-grade PDF security: pdf.SecuritySettings.MakePdfDocumentReadOnly(&quot;owner123&quot;)
+Control passwords, 128-bit encryption, permissions for print/copy/edit. Essential for legal, financial, and government documents.
+Used via PdfDocument.SecuritySettings property.</p>
+</section>
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

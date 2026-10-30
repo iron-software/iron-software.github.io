@@ -1,0 +1,1297 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       PageSetup Class - IronWord C# API Reference
+      v2 (human)     title:       PageSetup: Word Page Layout in C#
+      v1 (algorithm) description: Set Word page size, orientation, and margins in C# with the IronWord PageSetup class: PaperSize, Orientation, SetCustomPaperSize, and margin setters.
+      v2 (human)     description: Control the page layout of a Word section in C# with the IronWord PageSetup class: paper size, portrait or landscape, margins, and header bands.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>PageSetup Class | IronWord .NET API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PageSetup Class | IronWord .NET API Reference">
+    <meta name="description" content="Reference for the IronWord PageSetup class in C#: per-section page size, orientation, margins, gutter, and header and footer heights.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/word/csharp/object-reference/api/IronWord.Models.PageSetup.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PageSetup Class | IronWord .NET API Reference",
+    "name": "PageSetup class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.PageSetup.html",
+    "abstract": "Controlling the page size, orientation, and margins of a Word section in C# runs through the IronWord PageSetup class. Each DocumentSection owns one through its PageSetup property. PaperSize and Orientation pick a layout, SetCustomPaperSize sets exact dimensions, the margin setters take a value with a MeasurementUnit, and GetWidth and GetHeight read the page dimensions back in any unit.",
+    "description": "Reference for the IronWord PageSetup class in C#: per-section page size, orientation, margins, gutter, and header and footer heights.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "PageSetup setup = section.PageSetup;\nsetup.Orientation = PageOrientation.Landscape;\nsetup.SetTopMargin(2.5, MeasurementUnit.Centimeter);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does PageSetup live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PageSetup is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object, and each DocumentSection exposes its own instance through the PageSetup property so layout can vary per section."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set page orientation and margins in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Get the section's PageSetup, assign Orientation for portrait or landscape, and call SetTopMargin, SetBottomMargin, SetLeftMargin, or SetRightMargin with a value and a MeasurementUnit. Use SetCustomPaperSize for exact page dimensions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can different sections have different page layouts in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Because every DocumentSection owns its own PageSetup, one document can mix portrait and landscape pages or different paper sizes. Obtain a section from the WordDocument's Sections collection and configure its PageSetup independently."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronWord.Models.PageSetup">
+  
+  
+  <h1 id="IronWord_Models_PageSetup" data-uid="IronWord.Models.PageSetup" class="text-break">Class PageSetup
+  </h1>
+  <div class="markdown level0 summary"><p>Represents the page setup and layout settings for a section in the document.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">PageSetup</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronWord.Models.html">IronWord.Models</a></h6>
+  <h6><strong>Assembly</strong>: IronWord.dll</h6>
+  <h5 id="IronWord_Models_PageSetup_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PageSetup : Object</code></pre>
+  </div>
+    <!-- archetype-N:start PageSetup treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Page size, orientation, margins, and the header and footer bands for a section all live on <code>PageSetup</code>. It is the type that decides how a stretch of the document is laid out on the page, the settings a developer reaches for to switch to landscape, set a custom paper size, or widen the margins for binding.</p>
+<p>Each <code>DocumentSection</code> owns a <code>PageSetup</code> through its <code>PageSetup</code> property, so layout can differ from section to section within one document. A developer obtains a section from the <code>WordDocument</code> (its <code>Sections</code> collection, or a new one added with <code>AddSection</code>), reads or assigns that section's <code>PageSetup</code>, and the change applies to every page the section covers. Settings here describe the section's page frame, not the content inside it.</p>
+<p>The members fall into a few groups. Paper: <code>PaperSize</code> and <code>Orientation</code> pick a standard size and portrait or landscape, while <code>SetCustomPaperSize</code> (overloaded for raw integers or a value pair with a <code>MeasurementUnit</code>) sets exact dimensions. Margins: <code>SetTopMargin</code>, <code>SetBottomMargin</code>, <code>SetLeftMargin</code>, and <code>SetRightMargin</code> take a value plus a <code>MeasurementUnit</code>, with matching <code>GetTopMargin</code> and the others reading them back; <code>Gutter</code> (and <code>SetGutter</code>) reserves binding space. Header and footer: the <code>Header</code> and <code>Footer</code> properties hold the bands, and <code>SetHeaderHeight</code> and <code>SetFooterHeight</code>, with their <code>GetHeaderHeight</code> and <code>GetFooterHeight</code> readers, size them. Measured reads: <code>GetWidth</code> and <code>GetHeight</code> return the page dimensions in any <code>MeasurementUnit</code> you request.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">PageSetup setup = section.PageSetup;
+setup.Orientation = PageOrientation.Landscape;
+setup.SetTopMargin(2.5, MeasurementUnit.Centimeter);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/word-to-pdf/">word to PDF how-to</a> shows how page layout carries into a rendered document, and the <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">document element tutorial</a> covers sections and structure.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronWord_Models_PageSetup__ctor_" data-uid="IronWord.Models.PageSetup.#ctor*"></a>
+  <h4 id="IronWord_Models_PageSetup__ctor" data-uid="IronWord.Models.PageSetup.#ctor">PageSetup()</h4>
+  <div class="markdown level1 summary"><p>Initialize a new instance of PageSetup with default settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PageSetup()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronWord_Models_PageSetup_BottomMargin_" data-uid="IronWord.Models.PageSetup.BottomMargin*"></a>
+  <h4 id="IronWord_Models_PageSetup_BottomMargin" data-uid="IronWord.Models.PageSetup.BottomMargin">BottomMargin</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the margin size at the bottom of the page in twips.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double BottomMargin { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_Footer_" data-uid="IronWord.Models.PageSetup.Footer*"></a>
+  <h4 id="IronWord_Models_PageSetup_Footer" data-uid="IronWord.Models.PageSetup.Footer">Footer</h4>
+  <div class="markdown level1 summary"><p>Gets or sets height of the page footer in twips.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Footer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_Gutter_" data-uid="IronWord.Models.PageSetup.Gutter*"></a>
+  <h4 id="IronWord_Models_PageSetup_Gutter" data-uid="IronWord.Models.PageSetup.Gutter">Gutter</h4>
+  <div class="markdown level1 summary"><p>Gets or sets print Gutter of the page in twips.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Gutter { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_Header_" data-uid="IronWord.Models.PageSetup.Header*"></a>
+  <h4 id="IronWord_Models_PageSetup_Header" data-uid="IronWord.Models.PageSetup.Header">Header</h4>
+  <div class="markdown level1 summary"><p>Gets or sets height of the page header in twips.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Header { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_LeftMargin_" data-uid="IronWord.Models.PageSetup.LeftMargin*"></a>
+  <h4 id="IronWord_Models_PageSetup_LeftMargin" data-uid="IronWord.Models.PageSetup.LeftMargin">LeftMargin</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the margin size at the left of the page in twips.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double LeftMargin { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_Orientation_" data-uid="IronWord.Models.PageSetup.Orientation*"></a>
+  <h4 id="IronWord_Models_PageSetup_Orientation" data-uid="IronWord.Models.PageSetup.Orientation">Orientation</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the paper orientation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PageOrientation Orientation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.PageOrientation.html">PageOrientation</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_PaperSize_" data-uid="IronWord.Models.PageSetup.PaperSize*"></a>
+  <h4 id="IronWord_Models_PageSetup_PaperSize" data-uid="IronWord.Models.PageSetup.PaperSize">PaperSize</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the paper size.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PaperSize PaperSize { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.PaperSize.html">PaperSize</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_RightMargin_" data-uid="IronWord.Models.PageSetup.RightMargin*"></a>
+  <h4 id="IronWord_Models_PageSetup_RightMargin" data-uid="IronWord.Models.PageSetup.RightMargin">RightMargin</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the margin size at the right of the page in twips.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double RightMargin { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_TopMargin_" data-uid="IronWord.Models.PageSetup.TopMargin*"></a>
+  <h4 id="IronWord_Models_PageSetup_TopMargin" data-uid="IronWord.Models.PageSetup.TopMargin">TopMargin</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the margin size at the top of the page in twips.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double TopMargin { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronWord_Models_PageSetup_GetBottomMargin_" data-uid="IronWord.Models.PageSetup.GetBottomMargin*"></a>
+  <h4 id="IronWord_Models_PageSetup_GetBottomMargin_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.GetBottomMargin(IronWord.Models.Enums.MeasurementUnit)">GetBottomMargin(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the bottom margin of the document page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetBottomMargin(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The desired unit of measurement for the bottom margin.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The bottom margin of the document page in the specified measurement unit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_GetFooterHeight_" data-uid="IronWord.Models.PageSetup.GetFooterHeight*"></a>
+  <h4 id="IronWord_Models_PageSetup_GetFooterHeight_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.GetFooterHeight(IronWord.Models.Enums.MeasurementUnit)">GetFooterHeight(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the footer height of the document page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetFooterHeight(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The desired unit of measurement for the footer height.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The footer height  of the document page in the specified measurement unit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_GetGutter_" data-uid="IronWord.Models.PageSetup.GetGutter*"></a>
+  <h4 id="IronWord_Models_PageSetup_GetGutter_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.GetGutter(IronWord.Models.Enums.MeasurementUnit)">GetGutter(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the gutter size of the document page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetGutter(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The desired unit of measurement for the gutter size.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The gutter size of the document page in the specified measurement unit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_GetHeaderHeight_" data-uid="IronWord.Models.PageSetup.GetHeaderHeight*"></a>
+  <h4 id="IronWord_Models_PageSetup_GetHeaderHeight_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.GetHeaderHeight(IronWord.Models.Enums.MeasurementUnit)">GetHeaderHeight(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the header height of the document page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetHeaderHeight(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The desired unit of measurement for the header height.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The header height of the document page in the specified measurement unit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_GetHeight_" data-uid="IronWord.Models.PageSetup.GetHeight*"></a>
+  <h4 id="IronWord_Models_PageSetup_GetHeight_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.GetHeight(IronWord.Models.Enums.MeasurementUnit)">GetHeight(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the height of the document page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetHeight(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The desired unit of measurement for the height.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The height of the document page in the specified measurement unit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_GetLeftMargin_" data-uid="IronWord.Models.PageSetup.GetLeftMargin*"></a>
+  <h4 id="IronWord_Models_PageSetup_GetLeftMargin_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.GetLeftMargin(IronWord.Models.Enums.MeasurementUnit)">GetLeftMargin(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the left margin of the document page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetLeftMargin(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The desired unit of measurement for the left margin.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The left margin of the document page in the specified measurement unit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_GetRightMargin_" data-uid="IronWord.Models.PageSetup.GetRightMargin*"></a>
+  <h4 id="IronWord_Models_PageSetup_GetRightMargin_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.GetRightMargin(IronWord.Models.Enums.MeasurementUnit)">GetRightMargin(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the right margin of the document page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetRightMargin(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The desired unit of measurement for the right margin.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The right margin of the document page in the specified measurement unit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_GetTopMargin_" data-uid="IronWord.Models.PageSetup.GetTopMargin*"></a>
+  <h4 id="IronWord_Models_PageSetup_GetTopMargin_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.GetTopMargin(IronWord.Models.Enums.MeasurementUnit)">GetTopMargin(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the top margin of the document page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetTopMargin(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The desired unit of measurement for the top margin.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The top margin of the document page in the specified measurement unit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_GetWidth_" data-uid="IronWord.Models.PageSetup.GetWidth*"></a>
+  <h4 id="IronWord_Models_PageSetup_GetWidth_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.GetWidth(IronWord.Models.Enums.MeasurementUnit)">GetWidth(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the width of the document page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetWidth(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The desired unit of measurement for the width.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The width of the document page in the specified measurement unit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_SetBottomMargin_" data-uid="IronWord.Models.PageSetup.SetBottomMargin*"></a>
+  <h4 id="IronWord_Models_PageSetup_SetBottomMargin_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.SetBottomMargin(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetBottomMargin(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Sets the bottom margin for the document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBottomMargin(double bottomMargin, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">bottomMargin</span></td>
+        <td><p>The size of the bottom margin.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the bottom margin size.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_PageSetup_SetBottomMargin_System_Double_IronWord_Models_Enums_MeasurementUnit__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Use this method to set the size of the bottom margin for the document.</p>
+</div>
+  
+  
+  <a id="IronWord_Models_PageSetup_SetCustomPaperSize_" data-uid="IronWord.Models.PageSetup.SetCustomPaperSize*"></a>
+  <h4 id="IronWord_Models_PageSetup_SetCustomPaperSize_System_Double_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.SetCustomPaperSize(System.Double,System.Double,IronWord.Models.Enums.MeasurementUnit)">SetCustomPaperSize(Double, Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Sets a custom paper size for the document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetCustomPaperSize(double width, double height, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width of the custom paper size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height of the custom paper size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the custom paper size dimensions.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_PageSetup_SetCustomPaperSize_System_Double_System_Double_IronWord_Models_Enums_MeasurementUnit__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Use this method to set a custom paper size for the document.
+The width and height must be positive values, otherwise, an <span class="xref">System.ArgumentOutOfRangeException</span> is thrown.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown if the width or height is a negative value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_SetCustomPaperSize_" data-uid="IronWord.Models.PageSetup.SetCustomPaperSize*"></a>
+  <h4 id="IronWord_Models_PageSetup_SetCustomPaperSize_System_Int32_System_Int32_" data-uid="IronWord.Models.PageSetup.SetCustomPaperSize(System.Int32,System.Int32)">SetCustomPaperSize(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets a custom paper size for the document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetCustomPaperSize(int width, int height)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width of the custom paper size in twips.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height of the custom paper size in twips.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_PageSetup_SetCustomPaperSize_System_Int32_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Use this method to set a custom paper size for the document.
+The width and height must be positive values, otherwise, an <span class="xref">System.ArgumentOutOfRangeException</span> is thrown.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown if the width or height is a negative value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_SetFooterHeight_" data-uid="IronWord.Models.PageSetup.SetFooterHeight*"></a>
+  <h4 id="IronWord_Models_PageSetup_SetFooterHeight_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.SetFooterHeight(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetFooterHeight(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Sets the footer height for the document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFooterHeight(double footerHeight, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">footerHeight</span></td>
+        <td><p>The size of the footer height .</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the footer height  size.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_PageSetup_SetFooterHeight_System_Double_IronWord_Models_Enums_MeasurementUnit__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Use this method to set the size of the footer height  for the document.</p>
+</div>
+  
+  
+  <a id="IronWord_Models_PageSetup_SetGutter_" data-uid="IronWord.Models.PageSetup.SetGutter*"></a>
+  <h4 id="IronWord_Models_PageSetup_SetGutter_System_Int32_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.SetGutter(System.Int32,IronWord.Models.Enums.MeasurementUnit)">SetGutter(Int32, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Sets the gutter size for the document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetGutter(int gutter, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">gutter</span></td>
+        <td><p>The size of the gutter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the gutter size.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_PageSetup_SetGutter_System_Int32_IronWord_Models_Enums_MeasurementUnit__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The gutter size is used to specify additional space on the right margin.
+It is typically used for binding purposes in printed documents.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown if the provided gutter size is negative.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_PageSetup_SetHeaderHeight_" data-uid="IronWord.Models.PageSetup.SetHeaderHeight*"></a>
+  <h4 id="IronWord_Models_PageSetup_SetHeaderHeight_System_Int32_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.SetHeaderHeight(System.Int32,IronWord.Models.Enums.MeasurementUnit)">SetHeaderHeight(Int32, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Sets the header height for the document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetHeaderHeight(int headerHeight, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">headerHeight</span></td>
+        <td><p>The size of the header height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the header height size.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_PageSetup_SetHeaderHeight_System_Int32_IronWord_Models_Enums_MeasurementUnit__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Use this method to set the size of the header height for the document.</p>
+</div>
+  
+  
+  <a id="IronWord_Models_PageSetup_SetLeftMargin_" data-uid="IronWord.Models.PageSetup.SetLeftMargin*"></a>
+  <h4 id="IronWord_Models_PageSetup_SetLeftMargin_System_Int32_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.SetLeftMargin(System.Int32,IronWord.Models.Enums.MeasurementUnit)">SetLeftMargin(Int32, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Sets the left margin for the document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetLeftMargin(int leftMargin, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">leftMargin</span></td>
+        <td><p>The size of the left margin.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the left margin size.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_PageSetup_SetLeftMargin_System_Int32_IronWord_Models_Enums_MeasurementUnit__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Use this method to set the size of the left margin for the document.</p>
+</div>
+  
+  
+  <a id="IronWord_Models_PageSetup_SetRightMargin_" data-uid="IronWord.Models.PageSetup.SetRightMargin*"></a>
+  <h4 id="IronWord_Models_PageSetup_SetRightMargin_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.SetRightMargin(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetRightMargin(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Sets the right margin for the document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRightMargin(double rightMargin, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">rightMargin</span></td>
+        <td><p>The size of the right margin.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the right margin size.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_PageSetup_SetRightMargin_System_Double_IronWord_Models_Enums_MeasurementUnit__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Use this method to set the size of the right margin for the document.</p>
+</div>
+  
+  
+  <a id="IronWord_Models_PageSetup_SetTopMargin_" data-uid="IronWord.Models.PageSetup.SetTopMargin*"></a>
+  <h4 id="IronWord_Models_PageSetup_SetTopMargin_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.PageSetup.SetTopMargin(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetTopMargin(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Sets the top margin for the document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetTopMargin(double topMargin, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">topMargin</span></td>
+        <td><p>The size of the top margin.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the top margin size.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_PageSetup_SetTopMargin_System_Double_IronWord_Models_Enums_MeasurementUnit__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Use this method to set the size of the top margin for the document.</p>
+</div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronWord/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with NuGet
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronWord' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

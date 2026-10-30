@@ -1,0 +1,962 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Reflection Class - IronWord C# API
+      v2 (human)     title:       Reflection: Mirrored Text Effect in C#
+      v1 (algorithm) description: Add a mirrored reflection to Word text in C# with the IronWord Reflection class: set StartingOpacity, EndingOpacity, BlurRadius, and positions.
+      v2 (human)     description: Make text in a Word document look like it sits on glass in C# with the IronWord Reflection class: a faded mirror image with a tunable blur.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Reflection Class | IronWord C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Reflection Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord Reflection class in C#: the mirrored text effect set as TextEffect.ReflectionEffect, with opacity, blur, and position.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/word/csharp/object-reference/api/IronWord.Models.Reflection.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Reflection Class | IronWord C# API",
+    "name": "Reflection class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Reflection.html",
+    "abstract": "Adding a mirrored reflection to Word text in C# runs through the IronWord Reflection class. StartingOpacity, EndingOpacity, StartPosition, and EndPosition shape the fade, BlurRadius softens the mirror, and skew and scaling properties shear the copy. SetBlurRadius, SetDistanceFromText, and the position setters take a MeasurementUnit. A reflection attaches as the ReflectionEffect on a TextEffect.",
+    "description": "Reference for the IronWord Reflection class in C#: the mirrored text effect set as TextEffect.ReflectionEffect, with opacity, blur, and position.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronWord.Models;\nusing IronWord.Models.Enums;\n\nvar reflection = new Reflection();\nreflection.StartingOpacity = 60;\nreflection.EndingOpacity = 0;\nreflection.SetBlurRadius(2, MeasurementUnit.Point);\nreflection.SetDistanceFromText(1, MeasurementUnit.Point);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Reflection live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Reflection is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from Object and is attached as the ReflectionEffect property of a TextEffect to mirror styled text."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you apply a reflection to text in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a Reflection, set its fade with StartingOpacity and EndingOpacity, soften it with SetBlurRadius, and assign it as the ReflectionEffect on a TextEffect. The position setters and blur method take a MeasurementUnit so the dimensions are unambiguous."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Reflection and Shadow in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Reflection produces a faded mirror image of the text beneath it, as if it sits on glass. Shadow casts a dark, offset copy behind the text. Both attach to a TextEffect, but through the ReflectionEffect and ShadowEffect properties respectively."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronWord.Models.Reflection">
+  
+  
+  <h1 id="IronWord_Models_Reflection" data-uid="IronWord.Models.Reflection" class="text-break">Class Reflection
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a reflection effect applied to text or objects.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Reflection</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronWord.Models.html">IronWord.Models</a></h6>
+  <h6><strong>Assembly</strong>: IronWord.dll</h6>
+  <h5 id="IronWord_Models_Reflection_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Reflection : Object</code></pre>
+  </div>
+    <!-- archetype-N:start Reflection treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Reflection</code> is the mirrored-image effect a developer attaches when text in a Word document should appear to reflect off a surface below it. It describes the faded copy that falls beneath the original, the polished touch on a title or heading that makes the type look like it is sitting on glass. A developer styling a document reaches for it when flat text needs a sense of depth, and it is the effect most easily confused with <code>Shadow</code>, which casts a dark offset rather than a faded mirror.</p>
+<p>A reflection is set as the <code>ReflectionEffect</code> on a <code>TextEffect</code>, so it is configured as part of a text style's effects rather than on its own. Build the reflection's geometry and fade once, attach it to the text effect, and the mirrored copy renders wherever that styled text appears.</p>
+<p>The fade is controlled by <code>StartingOpacity</code> and <code>EndingOpacity</code> together with <code>StartPosition</code> and <code>EndPosition</code>, which set where the reflection begins and ends and how it dissolves. <code>BlurRadius</code> softens the mirrored image, <code>DistanceFromText</code> pushes it away from the original, and <code>Alignment</code> and <code>FadeDirectionAngle</code> orient it. The skew and scaling properties (<code>HorizontalSkewAngle</code>, <code>VerticalSkewAngle</code>, <code>HorizontalScalingFactor</code>, <code>VerticalScalingFactor</code>) shear and size the reflected copy, while <code>SchemeColor</code> and <code>DirectionAngle</code> tune its tint and direction. Because Word measurements can be expressed in several units, the <code>SetBlurRadius</code>, <code>SetDistanceFromText</code>, <code>SetStartPosition</code>, and <code>SetEndPosition</code> methods take a value plus a <code>MeasurementUnit</code>, and the matching <code>Get</code> methods read those values back in a chosen unit. Prefer the <code>Set</code> methods over the raw properties whenever the unit matters, so the dimension is recorded unambiguously.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronWord.Models;
+using IronWord.Models.Enums;
+
+var reflection = new Reflection();
+reflection.StartingOpacity = 60;
+reflection.EndingOpacity = 0;
+reflection.SetBlurRadius(2, MeasurementUnit.Point);
+reflection.SetDistanceFromText(1, MeasurementUnit.Point);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-reflection-effect/">reflection text effect how-to</a> walks through applying it, the <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-shadow-effect/">shadow text effect how-to</a> covers the related offset effect, and the <a href="https://ironsoftware.com/csharp/word/how-to/text-effect-glow-effect/">glow text effect how-to</a> shows another text styling option.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronWord_Models_Reflection__ctor_" data-uid="IronWord.Models.Reflection.#ctor*"></a>
+  <h4 id="IronWord_Models_Reflection__ctor" data-uid="IronWord.Models.Reflection.#ctor">Reflection()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Reflection()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronWord_Models_Reflection_Alignment_" data-uid="IronWord.Models.Reflection.Alignment*"></a>
+  <h4 id="IronWord_Models_Reflection_Alignment" data-uid="IronWord.Models.Reflection.Alignment">Alignment</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the alignment of the reflection effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RectangleAlignmentValues Alignment { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.RectangleAlignmentValues.html">RectangleAlignmentValues</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_BlurRadius_" data-uid="IronWord.Models.Reflection.BlurRadius*"></a>
+  <h4 id="IronWord_Models_Reflection_BlurRadius" data-uid="IronWord.Models.Reflection.BlurRadius">BlurRadius</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the blur radius of the reflection effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double BlurRadius { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_Reflection_BlurRadius_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The blur radius is specified in points (1/72 inch).</p>
+</div>
+  
+  
+  <a id="IronWord_Models_Reflection_DirectionAngle_" data-uid="IronWord.Models.Reflection.DirectionAngle*"></a>
+  <h4 id="IronWord_Models_Reflection_DirectionAngle" data-uid="IronWord.Models.Reflection.DirectionAngle">DirectionAngle</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the direction angle of the reflection effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double DirectionAngle { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_Reflection_DirectionAngle_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The direction angle is specified in degrees.</p>
+</div>
+  
+  
+  <a id="IronWord_Models_Reflection_DistanceFromText_" data-uid="IronWord.Models.Reflection.DistanceFromText*"></a>
+  <h4 id="IronWord_Models_Reflection_DistanceFromText" data-uid="IronWord.Models.Reflection.DistanceFromText">DistanceFromText</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the distance of the reflection effect from the text or object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double DistanceFromText { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_Reflection_DistanceFromText_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The distance is specified in points (1/72 inch).</p>
+</div>
+  
+  
+  <a id="IronWord_Models_Reflection_EndingOpacity_" data-uid="IronWord.Models.Reflection.EndingOpacity*"></a>
+  <h4 id="IronWord_Models_Reflection_EndingOpacity" data-uid="IronWord.Models.Reflection.EndingOpacity">EndingOpacity</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the ending opacity of the reflection effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double EndingOpacity { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_EndPosition_" data-uid="IronWord.Models.Reflection.EndPosition*"></a>
+  <h4 id="IronWord_Models_Reflection_EndPosition" data-uid="IronWord.Models.Reflection.EndPosition">EndPosition</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the ending position of the reflection effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double EndPosition { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_FadeDirectionAngle_" data-uid="IronWord.Models.Reflection.FadeDirectionAngle*"></a>
+  <h4 id="IronWord_Models_Reflection_FadeDirectionAngle" data-uid="IronWord.Models.Reflection.FadeDirectionAngle">FadeDirectionAngle</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the fade direction of the reflection effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double FadeDirectionAngle { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_HorizontalScalingFactor_" data-uid="IronWord.Models.Reflection.HorizontalScalingFactor*"></a>
+  <h4 id="IronWord_Models_Reflection_HorizontalScalingFactor" data-uid="IronWord.Models.Reflection.HorizontalScalingFactor">HorizontalScalingFactor</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the horizontal scaling factor of the reflection effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HorizontalScalingFactor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_HorizontalSkewAngle_" data-uid="IronWord.Models.Reflection.HorizontalSkewAngle*"></a>
+  <h4 id="IronWord_Models_Reflection_HorizontalSkewAngle" data-uid="IronWord.Models.Reflection.HorizontalSkewAngle">HorizontalSkewAngle</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the horizontal skew angle of the reflection effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double HorizontalSkewAngle { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_Reflection_HorizontalSkewAngle_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The skew angle is specified in degrees.</p>
+</div>
+  
+  
+  <a id="IronWord_Models_Reflection_SchemeColor_" data-uid="IronWord.Models.Reflection.SchemeColor*"></a>
+  <h4 id="IronWord_Models_Reflection_SchemeColor" data-uid="IronWord.Models.Reflection.SchemeColor">SchemeColor</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the scheme color of the reflection effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color SchemeColor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Color.html">Color</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_StartingOpacity_" data-uid="IronWord.Models.Reflection.StartingOpacity*"></a>
+  <h4 id="IronWord_Models_Reflection_StartingOpacity" data-uid="IronWord.Models.Reflection.StartingOpacity">StartingOpacity</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the starting opacity of the reflection effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double StartingOpacity { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_StartPosition_" data-uid="IronWord.Models.Reflection.StartPosition*"></a>
+  <h4 id="IronWord_Models_Reflection_StartPosition" data-uid="IronWord.Models.Reflection.StartPosition">StartPosition</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the starting position of the reflection effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double StartPosition { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_VerticalScalingFactor_" data-uid="IronWord.Models.Reflection.VerticalScalingFactor*"></a>
+  <h4 id="IronWord_Models_Reflection_VerticalScalingFactor" data-uid="IronWord.Models.Reflection.VerticalScalingFactor">VerticalScalingFactor</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the vertical scaling factor of the reflection effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double VerticalScalingFactor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_VerticalSkewAngle_" data-uid="IronWord.Models.Reflection.VerticalSkewAngle*"></a>
+  <h4 id="IronWord_Models_Reflection_VerticalSkewAngle" data-uid="IronWord.Models.Reflection.VerticalSkewAngle">VerticalSkewAngle</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the vertical skew angle of the reflection effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double VerticalSkewAngle { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_Reflection_VerticalSkewAngle_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The skew angle is specified in degrees.</p>
+</div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronWord_Models_Reflection_GetBlurRadius_" data-uid="IronWord.Models.Reflection.GetBlurRadius*"></a>
+  <h4 id="IronWord_Models_Reflection_GetBlurRadius_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.Reflection.GetBlurRadius(IronWord.Models.Enums.MeasurementUnit)">GetBlurRadius(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the blur radius of the reflection effect in the specified measurement unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetBlurRadius(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The measurement unit to convert the blur radius to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The blur radius of the reflection effect.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_GetDistanceFromText_" data-uid="IronWord.Models.Reflection.GetDistanceFromText*"></a>
+  <h4 id="IronWord_Models_Reflection_GetDistanceFromText_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.Reflection.GetDistanceFromText(IronWord.Models.Enums.MeasurementUnit)">GetDistanceFromText(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the distance of the reflection effect from the text or object in the specified measurement unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetDistanceFromText(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The measurement unit to convert the distance to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The distance of the reflection effect from the text or object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_GetEndPosition_" data-uid="IronWord.Models.Reflection.GetEndPosition*"></a>
+  <h4 id="IronWord_Models_Reflection_GetEndPosition_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.Reflection.GetEndPosition(IronWord.Models.Enums.MeasurementUnit)">GetEndPosition(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the End position of the reflection effect in the specified measurement unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetEndPosition(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The measurement unit to convert the position to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The End position of the reflection effect from the text or object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_GetStartPosition_" data-uid="IronWord.Models.Reflection.GetStartPosition*"></a>
+  <h4 id="IronWord_Models_Reflection_GetStartPosition_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.Reflection.GetStartPosition(IronWord.Models.Enums.MeasurementUnit)">GetStartPosition(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Gets the Start position of the reflection effect in the specified measurement unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetStartPosition(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The measurement unit to convert the position to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The Start position of the reflection effect from the text or object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_SetBlurRadius_" data-uid="IronWord.Models.Reflection.SetBlurRadius*"></a>
+  <h4 id="IronWord_Models_Reflection_SetBlurRadius_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.Reflection.SetBlurRadius(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetBlurRadius(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Sets the blur radius of the reflection effect to the specified value in the specified measurement unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBlurRadius(double blurRadius, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">blurRadius</span></td>
+        <td><p>The blur radius of the reflection effect.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The measurement unit of the specified blur radius.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_SetDistanceFromText_" data-uid="IronWord.Models.Reflection.SetDistanceFromText*"></a>
+  <h4 id="IronWord_Models_Reflection_SetDistanceFromText_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.Reflection.SetDistanceFromText(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetDistanceFromText(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Sets the distance of the reflection effect from the text or object to the specified value in the specified measurement unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDistanceFromText(double distance, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">distance</span></td>
+        <td><p>The distance of the reflection effect from the text or object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The measurement unit of the specified distance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_SetEndPosition_" data-uid="IronWord.Models.Reflection.SetEndPosition*"></a>
+  <h4 id="IronWord_Models_Reflection_SetEndPosition_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.Reflection.SetEndPosition(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetEndPosition(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Sets the distance of the reflection effect from the text or object to the specified value in the specified measurement unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEndPosition(double endPosition, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">endPosition</span></td>
+        <td><p>The End position of the reflection effect from the text or object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The measurement unit of the specified position.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Reflection_SetStartPosition_" data-uid="IronWord.Models.Reflection.SetStartPosition*"></a>
+  <h4 id="IronWord_Models_Reflection_SetStartPosition_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.Reflection.SetStartPosition(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetStartPosition(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Sets the distance of the reflection effect from the text or object to the specified value in the specified measurement unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetStartPosition(double startPosition, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">startPosition</span></td>
+        <td><p>The Start position of the reflection effect from the text or object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The measurement unit of the specified position.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronWord/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with NuGet
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronWord' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

@@ -1,0 +1,434 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextSpan Class - IronPDF C# API Reference
+      v2 (human)     title:       TextSpan: Extracted PDF Text Spans in C#
+      v1 (algorithm) description: Use the IronPDF TextSpan class in C# to access extracted PDF text runs with font, size, color, bounding box, and fragment-level detail per span.
+      v2 (human)     description: TextSpan gives you extracted PDF text in C#, with font, size, fill color, bounding box, and per-fragment access via IronPDF's text pipeline.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextSpan Class | IronPDF C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="TextSpan Class | IronPDF C# API Reference">
+    <meta name="description" content="Reference for the IronPDF TextSpan class in C#: read Contents, FontSize, FillColor, BoundingBox, and Fragments from each extracted PDF text run.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/IronSoftware.TextSpan.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextSpan Class | IronPDF C# API Reference",
+    "name": "TextSpan class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.TextSpan.html",
+    "abstract": "A TextSpan record in IronPDF captures a contiguous run of PDF text that shares a single font, size, and fill color. Instances surface through IronPDF's text-extraction pipeline rather than direct construction. Each span exposes Contents for the text, FontSize and Font for typographic detail, FillColor for the rendered color, BoundingBox as a RectangleF in PDF user-space, and Fragments as an IReadOnlyList of TextObject entries for sub-span inspection. The class lives in the IronSoftware namespace, ships in IronPdf.dll, and derives from Object.",
+    "description": "Reference for the IronPDF TextSpan class in C#: read Contents, FontSize, FillColor, BoundingBox, and Fragments from each extracted PDF text run.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\nusing IronSoftware;\n\nusing var pdf = PdfDocument.FromFile(\"report.pdf\");\nvar page = pdf.Pages[0];\n\nforeach (TextSpan span in page.GetTextSpans())\n{\n    if (span.FontSize >= 14f)\n        Console.WriteLine($\"{span.Contents}  [{span.BoundingBox.X:F1}, {span.BoundingBox.Y:F1}]\");\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TextSpan live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextSpan is a class in the IronSoftware namespace, shipped in IronPdf.dll. It derives from Object. Instances are returned by IronPDF's text-extraction pipeline when you interrogate a PDF page; you do not construct TextSpan directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you extract text with font and color information from a PDF in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use IronPDF's text-extraction pipeline to obtain TextSpan objects from a PDF page. Each TextSpan exposes Contents for the text, Font and FontSize for typographic detail, and FillColor for the rendered color, so you can filter or group spans by their visual style."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the BoundingBox property on TextSpan represent?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BoundingBox is a RectangleF in PDF user-space coordinates, with the origin at the bottom-left of the page and Y increasing upward. It gives the position and dimensions of the text run on the page, which you can use for spatial filtering, cropping, or overlay annotation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When would you use the Fragments property instead of Contents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Contents gives the combined string for the entire span. Fragments exposes each constituent TextObject as an IReadOnlyList<TextObject>, which is useful when a span is built from multiple discrete drawing operations and you need sub-span positional or stylistic detail."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronSoftware.TextSpan">
+  
+  
+  <h1 id="IronSoftware_TextSpan" data-uid="IronSoftware.TextSpan" class="text-break">Class TextSpan
+  </h1>
+  <div class="markdown level0 summary"><p>Run of text sharing font, size and color (PyMuPDF-style span).</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">TextSpan</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronSoftware.html">IronSoftware</a></h6>
+  <h6><strong>Assembly</strong>: IronPdf.dll</h6>
+  <h5 id="IronSoftware_TextSpan_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TextSpan : Object</code></pre>
+  </div>
+    <!-- archetype-N:start TextSpan treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>A <code>TextSpan</code> is the atomic record of extracted PDF text: a contiguous run of characters that share the same font, size, and fill color, modeled after the span concept in PyMuPDF. Whenever IronPDF walks a PDF page to surface its textual content, each visually uniform segment arrives as one of these objects, giving you precise access to both the characters and the typographic context around them.</p>
+<p>The <code>Contents</code> property holds the raw string for the span. Alongside it, <code>FontSize</code> gives the point size, <code>Font</code> exposes the full <code>FontObject</code> descriptor (name, weight, and encoding details), and <code>FillColor</code> returns the rendered <code>Color</code> so you can distinguish, for example, red headings from black body text. <code>BoundingBox</code> provides a <code>RectangleF</code> in PDF user-space coordinates, which maps the span's position and dimensions onto the page, useful for spatial filtering or overlay annotation. When a span is composed of multiple discrete drawing operations, <code>Fragments</code> exposes each constituent <code>TextObject</code> as an <code>IReadOnlyList&lt;TextObject&gt;</code>, letting you inspect sub-span detail without losing the grouped view.</p>
+<p>You do not construct <code>TextSpan</code> directly in typical workflows. Instances surface through IronPDF's text-extraction pipeline when you interrogate a <code>PdfDocument</code> page. From there, iterate the spans, filter by <code>FillColor</code> or <code>FontSize</code>, and read <code>Contents</code> to assemble the text you need.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+using IronSoftware;
+
+using var pdf = PdfDocument.FromFile(&quot;report.pdf&quot;);
+var page = pdf.Pages[0];
+
+foreach (TextSpan span in page.GetTextSpans())
+{
+    if (span.FontSize &gt;= 14f)
+        Console.WriteLine($&quot;{span.Contents}  [{span.BoundingBox.X:F1}, {span.BoundingBox.Y:F1}]&quot;);
+}</code></pre></div>
+<p>Because <code>BoundingBox</code> uses PDF user-space (origin at the bottom-left of the page), coordinates increase upward. Convert to screen coordinates by subtracting the Y value from the page height when you need top-left-origin positioning for overlays or crop operations.</p>
+<p>Explore related topics in the IronPDF documentation: the <a href="https://ironpdf.com/how-to/extract-text-from-pdf/">text extraction how-to</a> explains the full pipeline, the <a href="https://ironpdf.com/examples/extract-text-from-pdf/">PDF reading examples</a> show common patterns, the <a href="https://ironpdf.com/how-to/custom-fonts/">font handling guide</a> covers <code>FontObject</code> usage, and the <a href="https://ironpdf.com/get-started/">get started page</a> walks through installation and licensing.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronSoftware_TextSpan__ctor_" data-uid="IronSoftware.TextSpan.#ctor*"></a>
+  <h4 id="IronSoftware_TextSpan__ctor" data-uid="IronSoftware.TextSpan.#ctor">TextSpan()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextSpan()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronSoftware_TextSpan_BoundingBox_" data-uid="IronSoftware.TextSpan.BoundingBox*"></a>
+  <h4 id="IronSoftware_TextSpan_BoundingBox" data-uid="IronSoftware.TextSpan.BoundingBox">BoundingBox</h4>
+  <div class="markdown level1 summary"><p>Bounds in PDF user space, matching <a class="xref" href="IronSoftware.TextObject.html#IronSoftware_TextObject_BoundingBox">BoundingBox</a>:
+Y grows upward, so Height is negative and Bottom sits below Top.
+Note that <span class="xref">System.Drawing.RectangleF.IsEmpty</span> is therefore true for a valid box.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RectangleF BoundingBox { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.RectangleF</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_TextSpan_Contents_" data-uid="IronSoftware.TextSpan.Contents*"></a>
+  <h4 id="IronSoftware_TextSpan_Contents" data-uid="IronSoftware.TextSpan.Contents">Contents</h4>
+  <div class="markdown level1 summary"><p>Text of this span.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Contents { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_TextSpan_FillColor_" data-uid="IronSoftware.TextSpan.FillColor*"></a>
+  <h4 id="IronSoftware_TextSpan_FillColor" data-uid="IronSoftware.TextSpan.FillColor">FillColor</h4>
+  <div class="markdown level1 summary"><p>Fill color of this span.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color FillColor { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_TextSpan_Font_" data-uid="IronSoftware.TextSpan.Font*"></a>
+  <h4 id="IronSoftware_TextSpan_Font" data-uid="IronSoftware.TextSpan.Font">Font</h4>
+  <div class="markdown level1 summary"><p>Font of this span.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FontObject Font { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.FontObject.html">FontObject</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_TextSpan_FontSize_" data-uid="IronSoftware.TextSpan.FontSize*"></a>
+  <h4 id="IronSoftware_TextSpan_FontSize" data-uid="IronSoftware.TextSpan.FontSize">FontSize</h4>
+  <div class="markdown level1 summary"><p>Font size in points as rendered on the page. See <a class="xref" href="IronSoftware.TextObject.html#IronSoftware_TextObject_EffectiveFontSize">EffectiveFontSize</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float FontSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_TextSpan_Fragments_" data-uid="IronSoftware.TextSpan.Fragments*"></a>
+  <h4 id="IronSoftware_TextSpan_Fragments" data-uid="IronSoftware.TextSpan.Fragments">Fragments</h4>
+  <div class="markdown level1 summary"><p>Text fragments that make up this span, left to right.</p>
+<p>These are the page&apos;s live text objects. Setting a property on one edits the document
+(not supported over a remote IronPdfEngine), but the Contents and BoundingBox of this span,
+its line and its block are not recomputed. Read TextBlocks again after editing.</p><p>Fragments inside a Form XObject are read-only: edits to them are ignored.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;TextObject&gt; Fragments { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="IronSoftware.TextObject.html">TextObject</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

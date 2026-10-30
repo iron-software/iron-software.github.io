@@ -1,0 +1,1421 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Rectangle Class - IronDrawing C# API Reference
+      v2 (human)     title:       Rectangle: Cross-Platform Geometry in C#
+      v1 (algorithm) description: Use IronDrawing Rectangle in C# to define image regions with implicit casts to System.Drawing, SkiaSharp, ImageSharp, and MAUI rectangle types.
+      v2 (human)     description: IronDrawing Rectangle bridges System.Drawing, SkiaSharp, ImageSharp, and MAUI in C# with zero-conversion implicit casts and unit conversion support.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Rectangle Class | IronDrawing C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Rectangle Class | IronDrawing C# API Reference">
+    <meta name="description" content="Reference for IronDrawing Rectangle in C#: cross-platform geometry with implicit casts to SkiaSharp, ImageSharp, MAUI, and System.Drawing types.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/open-source/csharp/drawing/object-reference/api/IronSoftware.Drawing.Rectangle.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Rectangle Class | IronDrawing C# API Reference",
+    "name": "Rectangle class | IronDrawing C# API",
+    "url": "https://ironsoftware.com/open-source/csharp/drawing/object-reference/api/IronSoftware.Drawing.Rectangle.html",
+    "abstract": "Defining image regions and crop boundaries in C# across multiple rendering frameworks is handled by the IronSoftware.Drawing Rectangle class. Construct it from coordinates and a MeasurementUnits value, read derived edges through Left, Right, Top, and Bottom, test point containment with Contains, and convert between unit systems with ConvertTo. Implicit cast operators provide zero-code interoperability with System.Drawing.Rectangle, SkiaSharp.SKRect, SkiaSharp.SKRectI, SixLabors.ImageSharp.Rectangle, Microsoft.Maui.Graphics.Rect, and their floating-point variants in both directions.",
+    "description": "Reference for IronDrawing Rectangle in C#: cross-platform geometry with implicit casts to SkiaSharp, ImageSharp, MAUI, and System.Drawing types.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronDrawing",
+      "url": "https://ironsoftware.com/open-source/csharp/drawing/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronSoftware.Drawing;\n\n// Construct from coordinates; units default to pixels via MeasurementUnits.Pixel\nvar crop = new Rectangle(10, 20, 640, 480, MeasurementUnits.Pixel);\n\n// Implicit cast to SkiaSharp without any explicit conversion\nSkiaSharp.SKRect skRect = crop;\n\n// Promote a System.Drawing.Rectangle into IronDrawing seamlessly\nSystem.Drawing.Rectangle sysCrop = new System.Drawing.Rectangle(0, 0, 320, 240);\nRectangle ironRect = sysCrop;\n\n// Unit conversion: pixels to inches at 150 DPI\nRectangle inchRect = ironRect.ConvertTo(MeasurementUnits.Inch, 150);\n\n// Point containment check\nbool hit = crop.Contains(100, 200);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Rectangle live in the IronDrawing API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rectangle is a class in the IronSoftware.Drawing namespace, shipped in IronSoftware.Drawing.dll. It derives from Object and is constructed with new Rectangle(), new Rectangle(Point, Size, MeasurementUnits), or new Rectangle(int, int, int, int, MeasurementUnits)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you convert an IronDrawing Rectangle to a SkiaSharp or System.Drawing rectangle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Assign the Rectangle directly to a variable of the target type. Implicit cast operators cover SKRect, SKRectI, System.Drawing.Rectangle, System.Drawing.RectangleF, Microsoft.Maui.Graphics.Rect, and RectF with no explicit conversion call required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you change the unit system of a Rectangle from pixels to inches or millimetres?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call ConvertTo(MeasurementUnits toUnits, int dpi) on the Rectangle, passing the target MeasurementUnits value and the DPI of the context (default 96). The method returns a new Rectangle expressed in the requested units."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you test whether a point falls inside a Rectangle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Contains(int x, int y) on the Rectangle. It returns true when the given coordinates lie within the rectangle's bounds, which is useful for hit-testing crop regions or validating click coordinates."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronSoftware.Drawing.Rectangle">
+  
+  
+  <h1 id="IronSoftware_Drawing_Rectangle" data-uid="IronSoftware.Drawing.Rectangle" class="text-break">Class Rectangle
+  </h1>
+  <div class="markdown level0 summary"><p>A universally compatible Rectangle for .NET 7, .NET 6, .NET 5, and .NET Core. As well as compatibility with Windows, NanoServer, IIS, macOS, Mobile, Xamarin, iOS, Android, Google Compute, Azure, AWS, and Linux.</p>
+<p>Works nicely with popular Image Rectangle such as System.Drawing.Rectangle, SkiaSharp.SKRect, SixLabors.ImageSharp.Rectangle, Microsoft.Maui.Graphics.Rect.</p>
+<p>Implicit casting means that using this class to input and output Rectangle from public APIs gives full compatibility to all Rectangle type fully supported by Microsoft.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Rectangle</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronSoftware.Drawing.html">IronSoftware.Drawing</a></h6>
+  <h6><strong>Assembly</strong>: IronSoftware.Drawing.Common.dll</h6>
+  <h5 id="IronSoftware_Drawing_Rectangle_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Rectangle : Object</code></pre>
+  </div>
+    <!-- archetype-N:start Rectangle treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>A cross-platform rectangle record, <code>Rectangle</code> is the single geometry type that bridges <code>System.Drawing.Rectangle</code>, <code>SkiaSharp.SKRect</code>, <code>SixLabors.ImageSharp.Rectangle</code>, and <code>Microsoft.Maui.Graphics.Rect</code> without manual conversion code. Wherever a public IronDrawing API accepts or returns a region of an image, <code>Rectangle</code> is the currency, and implicit cast operators handle the translation to and from every supported framework type automatically.</p>
+<p>Construct a <code>Rectangle</code> with coordinates and dimensions directly, using <code>Rectangle(int x, int y, int width, int height, MeasurementUnits units)</code>, or from a <code>Point</code> and a <code>Size</code> pair via <code>Rectangle(Point point, Size size, MeasurementUnits units)</code>. The <code>MeasurementUnits</code> property records whether the values are expressed in pixels, inches, or millimetres, and <code>ConvertTo(MeasurementUnits toUnits, int dpi)</code> converts the rectangle to a different unit system at a given DPI, defaulting to 96. The default constructor produces a zero-origin, zero-size rectangle ready for property assignment.</p>
+<p>**Geometry properties** cover every edge and dimension needed for layout and hit-testing work:</p>
+<p>- Coordinates and size: <code>X</code>, <code>Y</code>, <code>Width</code>, <code>Height</code> - Derived edges (read-only): <code>Left</code>, <code>Right</code>, <code>Top</code>, <code>Bottom</code> - Unit metadata: <code>Units</code></p>
+<p><code>Contains(int x, int y)</code> tests whether a point falls inside the rectangle, which is useful for click-region checks or crop-boundary validation.</p>
+<p>The implicit cast operators are the practical heart of the class. Assigning a <code>Rectangle</code> to a <code>System.Drawing.RectangleF</code>, <code>SkiaSharp.SKRect</code>, <code>SkiaSharp.SKRectI</code>, <code>Microsoft.Maui.Graphics.Rect</code>, or <code>Microsoft.Maui.Graphics.RectF</code> variable requires no explicit conversion. The reverse direction works equally: any of those types assigned to a <code>Rectangle</code> variable is silently promoted. This symmetry means a method that accepts <code>Rectangle</code> can receive a <code>System.Drawing.Rectangle</code> from a caller who has never heard of IronDrawing, and a method that returns <code>Rectangle</code> can feed a SkiaSharp pipeline without an adapter layer.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronSoftware.Drawing;
+
+// Construct from coordinates; units default to pixels via MeasurementUnits.Pixel
+var crop = new Rectangle(10, 20, 640, 480, MeasurementUnits.Pixel);
+
+// Implicit cast to SkiaSharp without any explicit conversion
+SkiaSharp.SKRect skRect = crop;
+
+// Promote a System.Drawing.Rectangle into IronDrawing seamlessly
+System.Drawing.Rectangle sysCrop = new System.Drawing.Rectangle(0, 0, 320, 240);
+Rectangle ironRect = sysCrop;
+
+// Unit conversion: pixels to inches at 150 DPI
+Rectangle inchRect = ironRect.ConvertTo(MeasurementUnits.Inch, 150);
+
+// Point containment check
+bool hit = crop.Contains(100, 200);</code></pre></div>
+<p>Explore the <a href="https://ironsoftware.com/open-source/csharp/drawing/docs/">IronDrawing documentation</a> for installation and the <a href="https://ironsoftware.com/open-source/csharp/drawing/examples/create-and-cast-croprectangle/">Create and Cast Rectangle example</a> for a practical <code>Rectangle</code> workflow.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle__ctor_" data-uid="IronSoftware.Drawing.Rectangle.#ctor*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle__ctor" data-uid="IronSoftware.Drawing.Rectangle.#ctor">Rectangle()</h4>
+  <div class="markdown level1 summary"><p>Construct a new Rectangle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle()</code></pre>
+  </div>
+  <h5 id="IronSoftware_Drawing_Rectangle__ctor_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle__ctor_" data-uid="IronSoftware.Drawing.Rectangle.#ctor*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle__ctor_IronSoftware_Drawing_Point_IronSoftware_Drawing_Size_IronSoftware_Drawing_MeasurementUnits_" data-uid="IronSoftware.Drawing.Rectangle.#ctor(IronSoftware.Drawing.Point,IronSoftware.Drawing.Size,IronSoftware.Drawing.MeasurementUnits)">Rectangle(Point, Size, MeasurementUnits)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> struct.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle(Point point, Size size, MeasurementUnits units)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Point.html">Point</a></td>
+        <td><span class="parametername">point</span></td>
+        <td><p>The <a class="xref" href="IronSoftware.Drawing.Point.html">Point</a> which specifies the rectangles point in a two-dimensional plane.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Size.html">Size</a></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The <span class="xref">IronSoftware.Drawing.Rectangle.Size</span> which specifies the rectangles height and width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.MeasurementUnits.html">MeasurementUnits</a></td>
+        <td><span class="parametername">units</span></td>
+        <td><p>The measurement unit of this Rectangle</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_Rectangle__ctor_IronSoftware_Drawing_Point_IronSoftware_Drawing_Size_IronSoftware_Drawing_MeasurementUnits__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></div>
+  </div>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle__ctor_" data-uid="IronSoftware.Drawing.Rectangle.#ctor*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle__ctor_System_Int32_System_Int32_System_Int32_System_Int32_IronSoftware_Drawing_MeasurementUnits_" data-uid="IronSoftware.Drawing.Rectangle.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,IronSoftware.Drawing.MeasurementUnits)">Rectangle(Int32, Int32, Int32, Int32, MeasurementUnits)</h4>
+  <div class="markdown level1 summary"><p>Construct a new Rectangle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle(int x, int y, int width, int height, MeasurementUnits units)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The x-coordinate of the upper-left corner of this Rectangle</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The y-coordinate of the upper-left corner of this Rectangle</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width of this Rectangle</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height of this Rectangle</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.MeasurementUnits.html">MeasurementUnits</a></td>
+        <td><span class="parametername">units</span></td>
+        <td><p>The measurement unit of this Rectangle</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronSoftware_Drawing_Rectangle__ctor_System_Int32_System_Int32_System_Int32_System_Int32_IronSoftware_Drawing_MeasurementUnits__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></div>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_Bottom_" data-uid="IronSoftware.Drawing.Rectangle.Bottom*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_Bottom" data-uid="IronSoftware.Drawing.Rectangle.Bottom">Bottom</h4>
+  <div class="markdown level1 summary"><p>Gets the y-coordinate of the bottom edge of this <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Bottom { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_Height_" data-uid="IronSoftware.Drawing.Rectangle.Height*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_Height" data-uid="IronSoftware.Drawing.Rectangle.Height">Height</h4>
+  <div class="markdown level1 summary"><p>The height of this Rectangle. The default is 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Height { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_Left_" data-uid="IronSoftware.Drawing.Rectangle.Left*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_Left" data-uid="IronSoftware.Drawing.Rectangle.Left">Left</h4>
+  <div class="markdown level1 summary"><p>Gets the x-coordinate of the left edge of this <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Left { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_Right_" data-uid="IronSoftware.Drawing.Rectangle.Right*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_Right" data-uid="IronSoftware.Drawing.Rectangle.Right">Right</h4>
+  <div class="markdown level1 summary"><p>Gets the x-coordinate of the right edge of this <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Right { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_Top_" data-uid="IronSoftware.Drawing.Rectangle.Top*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_Top" data-uid="IronSoftware.Drawing.Rectangle.Top">Top</h4>
+  <div class="markdown level1 summary"><p>Gets the y-coordinate of the top edge of this <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Top { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_Units_" data-uid="IronSoftware.Drawing.Rectangle.Units*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_Units" data-uid="IronSoftware.Drawing.Rectangle.Units">Units</h4>
+  <div class="markdown level1 summary"><p>The measurement unit of this Rectangle. The default is Pixels</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MeasurementUnits Units { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.MeasurementUnits.html">MeasurementUnits</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_Width_" data-uid="IronSoftware.Drawing.Rectangle.Width*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_Width" data-uid="IronSoftware.Drawing.Rectangle.Width">Width</h4>
+  <div class="markdown level1 summary"><p>The width of this Rectangle. The default is 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Width { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_X_" data-uid="IronSoftware.Drawing.Rectangle.X*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_X" data-uid="IronSoftware.Drawing.Rectangle.X">X</h4>
+  <div class="markdown level1 summary"><p>The x-coordinate of the upper-left corner of this Rectangle. The default is 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int X { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_Y_" data-uid="IronSoftware.Drawing.Rectangle.Y*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_Y" data-uid="IronSoftware.Drawing.Rectangle.Y">Y</h4>
+  <div class="markdown level1 summary"><p>The y-coordinate of the upper-left corner of this Rectangle. The default is 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Y { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_Contains_" data-uid="IronSoftware.Drawing.Rectangle.Contains*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_Contains_System_Int32_System_Int32_" data-uid="IronSoftware.Drawing.Rectangle.Contains(System.Int32,System.Int32)">Contains(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Determines if the specified point is contained within the rectangular region defined by
+this <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(int x, int y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The x-coordinate of the given point.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The y-coordinate of the given point.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_ConvertTo_" data-uid="IronSoftware.Drawing.Rectangle.ConvertTo*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_ConvertTo_IronSoftware_Drawing_MeasurementUnits_System_Int32_" data-uid="IronSoftware.Drawing.Rectangle.ConvertTo(IronSoftware.Drawing.MeasurementUnits,System.Int32)">ConvertTo(MeasurementUnits, Int32)</h4>
+  <div class="markdown level1 summary"><p>Convert this rectangle to the specified units of measurement using the specified DPI</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle ConvertTo(MeasurementUnits toUnits, int dpi = 96)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.MeasurementUnits.html">MeasurementUnits</a></td>
+        <td><span class="parametername">toUnits</span></td>
+        <td><p>Unit of measurement</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>DPI (Dots per inch) for conversion</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td><p>A new rectangle which uses the desired units of measurement</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.NotImplementedException</span></td>
+        <td><p>Conversion not implemented</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="operators">Operators
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_IronSoftware_Drawing_Rectangle__IronSoftware_Drawing_RectangleF" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(IronSoftware.Drawing.Rectangle)~IronSoftware.Drawing.RectangleF">Implicit(Rectangle to RectangleF)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to RectangleF objects from <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support RectangleF as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator RectangleF(Rectangle Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> is explicitly cast to a RectangleF.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.RectangleF.html">RectangleF</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_IronSoftware_Drawing_Rectangle__Microsoft_Maui_Graphics_Rect" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(IronSoftware.Drawing.Rectangle)~Microsoft.Maui.Graphics.Rect">Implicit(Rectangle to Rect)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to Microsoft.Maui.Graphics.Rect objects from <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support Microsoft.Maui.Graphics.Rect as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Rect(Rectangle Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> is explicitly cast to a Microsoft.Maui.Graphics.Rect.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Maui.Graphics.Rect</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_IronSoftware_Drawing_Rectangle__Microsoft_Maui_Graphics_RectF" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(IronSoftware.Drawing.Rectangle)~Microsoft.Maui.Graphics.RectF">Implicit(Rectangle to RectF)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to Microsoft.Maui.Graphics.RectF objects from <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support Microsoft.Maui.Graphics.RectF as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator RectF(Rectangle Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> is explicitly cast to a Microsoft.Maui.Graphics.RectF.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Maui.Graphics.RectF</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_IronSoftware_Drawing_Rectangle__SixLabors_ImageSharp_Rectangle" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(IronSoftware.Drawing.Rectangle)~SixLabors.ImageSharp.Rectangle">Implicit(Rectangle to Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to SixLabors.ImageSharp.Rectangle objects from <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support SixLabors.ImageSharp.Rectangle as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Rectangle(Rectangle Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> is explicitly cast to a SixLabors.ImageSharp.Rectangle.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_IronSoftware_Drawing_Rectangle__SixLabors_ImageSharp_RectangleF" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(IronSoftware.Drawing.Rectangle)~SixLabors.ImageSharp.RectangleF">Implicit(Rectangle to RectangleF)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to SixLabors.ImageSharp.RectangleF objects from <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support SixLabors.ImageSharp.RectangleF as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator RectangleF(Rectangle Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> is explicitly cast to a SixLabors.ImageSharp.RectangleF.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.RectangleF</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_IronSoftware_Drawing_Rectangle__SkiaSharp_SKRect" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(IronSoftware.Drawing.Rectangle)~SkiaSharp.SKRect">Implicit(Rectangle to SKRect)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to SkiaSharp.SKRect objects from <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support SkiaSharp.SKRect as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator SKRect(Rectangle Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> is explicitly cast to a SkiaSharp.SKRect.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKRect</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_IronSoftware_Drawing_Rectangle__SkiaSharp_SKRectI" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(IronSoftware.Drawing.Rectangle)~SkiaSharp.SKRectI">Implicit(Rectangle to SKRectI)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to SkiaSharp.SKRectI objects from <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support SkiaSharp.SKRectI as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator SKRectI(Rectangle Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> is explicitly cast to a SkiaSharp.SKRectI.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKRectI</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_IronSoftware_Drawing_Rectangle__System_Drawing_Rectangle" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(IronSoftware.Drawing.Rectangle)~System.Drawing.Rectangle">Implicit(Rectangle to Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts to System.Drawing.Rectangle objects from <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support Rectangle as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Rectangle(Rectangle Rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td><span class="parametername">Rectangle</span></td>
+        <td><p><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> is explicitly cast to a System.Drawing.Rectangle.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_Microsoft_Maui_Graphics_Rect__IronSoftware_Drawing_Rectangle" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(Microsoft.Maui.Graphics.Rect)~IronSoftware.Drawing.Rectangle">Implicit(Rect to Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts Microsoft.Maui.Graphics.Rect objects to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support Microsoft.Maui.Graphics.Rect as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Rectangle(Rect rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Maui.Graphics.Rect</span></td>
+        <td><span class="parametername">rectangle</span></td>
+        <td><p>Microsoft.Maui.Graphics.Rect will automatically be casted to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_Microsoft_Maui_Graphics_RectF__IronSoftware_Drawing_Rectangle" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(Microsoft.Maui.Graphics.RectF)~IronSoftware.Drawing.Rectangle">Implicit(RectF to Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts Microsoft.Maui.Graphics.RectF objects to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support Microsoft.Maui.Graphics.RectF as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Rectangle(RectF rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Maui.Graphics.RectF</span></td>
+        <td><span class="parametername">rectangle</span></td>
+        <td><p>Microsoft.Maui.Graphics.RectF will automatically be casted to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_SixLabors_ImageSharp_Rectangle__IronSoftware_Drawing_Rectangle" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(SixLabors.ImageSharp.Rectangle)~IronSoftware.Drawing.Rectangle">Implicit(Rectangle to Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SixLabors.ImageSharp.Rectangle objects to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support SixLabors.ImageSharp.Rectangle as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Rectangle(Rectangle rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Rectangle</span></td>
+        <td><span class="parametername">rectangle</span></td>
+        <td><p>SixLabors.ImageSharp.Rectangle will automatically be casted to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_SixLabors_ImageSharp_RectangleF__IronSoftware_Drawing_Rectangle" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(SixLabors.ImageSharp.RectangleF)~IronSoftware.Drawing.Rectangle">Implicit(RectangleF to Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SixLabors.ImageSharp.RectangleF objects to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support SixLabors.ImageSharp.RectangleF as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Rectangle(RectangleF rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.RectangleF</span></td>
+        <td><span class="parametername">rectangle</span></td>
+        <td><p>SixLabors.ImageSharp.RectangleF will automatically be casted to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_SkiaSharp_SKRect__IronSoftware_Drawing_Rectangle" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(SkiaSharp.SKRect)~IronSoftware.Drawing.Rectangle">Implicit(SKRect to Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SkiaSharp.SKRect objects to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support SkiaSharp.SKRect as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Rectangle(SKRect sKRect)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKRect</span></td>
+        <td><span class="parametername">sKRect</span></td>
+        <td><p>SkiaSharp.SKRect will automatically be casted to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_SkiaSharp_SKRectI__IronSoftware_Drawing_Rectangle" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(SkiaSharp.SKRectI)~IronSoftware.Drawing.Rectangle">Implicit(SKRectI to Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts SkiaSharp.SKRectI objects to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support SkiaSharp.SKRectI as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Rectangle(SKRectI sKRectI)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SkiaSharp.SKRectI</span></td>
+        <td><span class="parametername">sKRectI</span></td>
+        <td><p>SkiaSharp.SKRectI will automatically be casted to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_Rectangle_op_Implicit_" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit*"></a>
+  <h4 id="IronSoftware_Drawing_Rectangle_op_Implicit_System_Drawing_Rectangle__IronSoftware_Drawing_Rectangle" data-uid="IronSoftware.Drawing.Rectangle.op_Implicit(System.Drawing.Rectangle)~IronSoftware.Drawing.Rectangle">Implicit(Rectangle to Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Implicitly casts System.Drawing.Rectangle objects to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+<p>When your .NET Class methods use <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a> as parameters and return types, you now automatically support Rectangle as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Rectangle(Rectangle rectangle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td><span class="parametername">rectangle</span></td>
+        <td><p>System.Drawing.Rectangle will automatically be casted to <a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronSoftware.Drawing.Rectangle.html">Rectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronSoftware.System.Drawing/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon api-reference-right-sidebar__list-item--display-none">
+                    <a href="" target="_blank" class="api-reference-right-sidebar__link"></a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronSoftware.System.Drawing/' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ConditionalFormattingRule Class - IronXL C# API
+      v2 (human)     title:       ConditionalFormattingRule in C# | IronXL
+      v1 (algorithm) description: Build an Excel conditional formatting rule in C# with IronXL: set ComparisonOperation, Formula1, FontFormatting, BorderFormatting, PatternFormatting.
+      v2 (human)     description: Color cells when a condition is met in C# with IronXL's ConditionalFormattingRule: pair a comparison with the font, border, or fill to apply.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ConditionalFormattingRule | IronXL C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ConditionalFormattingRule | IronXL C# API">
+    <meta name="description" content="Reference for the IronXL ConditionalFormattingRule class in C#: pair a comparison and formulas with font, border, and pattern formatting.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/excel/csharp/object-reference/api/IronXL.Formatting.ConditionalFormattingRule.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ConditionalFormattingRule | IronXL C# API",
+    "name": "ConditionalFormattingRule class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Formatting.ConditionalFormattingRule.html",
+    "abstract": "Styling cells when they meet a condition runs through IronXL's ConditionalFormattingRule in C#. One rule pairs a test with the formatting applied when it passes. ConditionType reports the category, ComparisonOperation holds the operator from IronXL.Formatting.Enums.ComparisonOperator, and Formula1 and Formula2 carry the compared values. FontFormatting, BorderFormatting, and PatternFormatting set the styles. Create a rule with CreateConditionalFormattingRule, then add it to a range.",
+    "description": "Reference for the IronXL ConditionalFormattingRule class in C#: pair a comparison and formulas with font, border, and pattern formatting.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\nusing IronXL.Formatting;\n\nWorkSheet sheet = WorkBook.Create().DefaultWorkSheet;\nConditionalFormattingRule rule =\n    sheet.ConditionalFormatting.CreateConditionalFormattingRule(ComparisonOperator.LessThan, \"8\");\nrule.FontFormatting.IsBold = true;\nsheet.ConditionalFormatting.AddConditionalFormatting(\"A1:A10\", rule);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ConditionalFormattingRule live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ConditionalFormattingRule is a class in the IronXL.Formatting namespace, shipped in IronXL.dll. CreateConditionalFormattingRule returns one, which you style and then add to a worksheet with AddConditionalFormatting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you create a conditional formatting rule in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call CreateConditionalFormattingRule on a worksheet's ConditionalFormatting accessor, passing a comparison operator and a value. Configure the returned rule's FontFormatting, BorderFormatting, or PatternFormatting, then add it to a cell range with AddConditionalFormatting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which ComparisonOperator does ComparisonOperation use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ComparisonOperation property uses the operator from IronXL.Formatting.Enums.ComparisonOperator, such as LessThan or Between. That is a different type from the ComparisonOperator in IronXL.DataValidations, which applies to data validation rules instead."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronXL.Formatting.ConditionalFormattingRule">
+  
+  
+  <h1 id="IronXL_Formatting_ConditionalFormattingRule" data-uid="IronXL.Formatting.ConditionalFormattingRule" class="text-break">Class ConditionalFormattingRule
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a description of a conditional formatting rule.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ConditionalFormattingRule</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronXL.Formatting.html">IronXL.Formatting</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="IronXL_Formatting_ConditionalFormattingRule_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ConditionalFormattingRule : Object</code></pre>
+  </div>
+    <!-- archetype-N:start ConditionalFormattingRule treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>Styling cells when they meet a condition runs through <code>ConditionalFormattingRule</code>. One rule pairs a test (a comparison against a value or a category) with the formatting applied when the test passes, so a developer expresses &quot;color this cell red when it is below 8&quot; as a single object. It is the rule a developer builds behind a search like &quot;C# Excel conditional formatting rule&quot;.</p>
+<p>A rule is produced by <code>CreateConditionalFormattingRule</code> on a worksheet's conditional formatting accessor, then attached to a cell range with <code>AddConditionalFormatting</code>. The factory call sets the rule's <code>ComparisonOperation</code> and <code>Formula1</code>; the returned object is then configured with the styles to apply and added to the sheet. The rule belongs to the formatting pass that runs when the workbook is saved or evaluated.</p>
+<p>Two groups of members do the work. The condition group decides when the rule fires: <code>ConditionType</code> reports the category (cell-value comparison, formula, color scale, and similar), <code>ComparisonOperation</code> holds the operator from the <code>IronXL.Formatting.Enums.ComparisonOperator</code> set such as <code>LessThan</code> or <code>Between</code>, and <code>Formula1</code> and <code>Formula2</code> carry the compared values, with <code>Formula2</code> used by range operators like <code>Between</code>. The styling group decides what the rule does: <code>FontFormatting</code> sets font and color, <code>BorderFormatting</code> sets borders, and <code>PatternFormatting</code> sets the background fill and pattern. Note that <code>ComparisonOperation</code> uses the formatting enum, which differs from the same-named operator in <code>IronXL.DataValidations</code> used for data validation rules; the two are separate types with separate members.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+using IronXL.Formatting;
+
+WorkSheet sheet = WorkBook.Create().DefaultWorkSheet;
+ConditionalFormattingRule rule =
+    sheet.ConditionalFormatting.CreateConditionalFormattingRule(ComparisonOperator.LessThan, &quot;8&quot;);
+rule.FontFormatting.IsBold = true;
+sheet.ConditionalFormatting.AddConditionalFormatting(&quot;A1:A10&quot;, rule);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/conditional-formatting/">conditional formatting how-to</a> walks through creating and styling a rule, the <a href="https://ironsoftware.com/csharp/excel/examples/excel-conditional-formatting/">conditional formatting example</a> applies one to a range, and the <a href="https://ironsoftware.com/csharp/excel/examples/excel-style-cells-borders-fonts/">style cells example</a> covers the fonts and borders a rule sets.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronXL_Formatting_ConditionalFormattingRule_BorderFormatting_" data-uid="IronXL.Formatting.ConditionalFormattingRule.BorderFormatting*"></a>
+  <h4 id="IronXL_Formatting_ConditionalFormattingRule_BorderFormatting" data-uid="IronXL.Formatting.ConditionalFormattingRule.BorderFormatting">BorderFormatting</h4>
+  <div class="markdown level1 summary"><p>Gets the border formatting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IBorderFormatting BorderFormatting { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.Formatting.IBorderFormatting.html">IBorderFormatting</a></td>
+        <td><p>The border formatting.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Formatting_ConditionalFormattingRule_ComparisonOperation_" data-uid="IronXL.Formatting.ConditionalFormattingRule.ComparisonOperation*"></a>
+  <h4 id="IronXL_Formatting_ConditionalFormattingRule_ComparisonOperation" data-uid="IronXL.Formatting.ConditionalFormattingRule.ComparisonOperation">ComparisonOperation</h4>
+  <div class="markdown level1 summary"><p>The comparison function used when the type of conditional formatting is Set to <a class="xref" href="IronXL.Formatting.ConditionType.html#IronXL_Formatting_ConditionType_CellValueIs">CellValueIs</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ComparisonOperator ComparisonOperation { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.Formatting.Enums.ComparisonOperator.html">ComparisonOperator</a></td>
+        <td><p>The conditional format operator.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Formatting_ConditionalFormattingRule_ConditionType_" data-uid="IronXL.Formatting.ConditionalFormattingRule.ConditionType*"></a>
+  <h4 id="IronXL_Formatting_ConditionalFormattingRule_ConditionType" data-uid="IronXL.Formatting.ConditionalFormattingRule.ConditionType">ConditionType</h4>
+  <div class="markdown level1 summary"><p>Type of conditional formatting rule. MUST be either <a class="xref" href="IronXL.Formatting.ConditionType.html#IronXL_Formatting_ConditionType_CellValueIs">CellValueIs</a> or <span class="xref">NPOI.SS.Formula.Formula</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConditionType ConditionType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.Formatting.ConditionType.html">ConditionType</a></td>
+        <td><p>The type of condition.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Formatting_ConditionalFormattingRule_FontFormatting_" data-uid="IronXL.Formatting.ConditionalFormattingRule.FontFormatting*"></a>
+  <h4 id="IronXL_Formatting_ConditionalFormattingRule_FontFormatting" data-uid="IronXL.Formatting.ConditionalFormattingRule.FontFormatting">FontFormatting</h4>
+  <div class="markdown level1 summary"><p>Gets the font formatting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IFontFormatting FontFormatting { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.Formatting.IFontFormatting.html">IFontFormatting</a></td>
+        <td><p>The font formatting.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Formatting_ConditionalFormattingRule_Formula1_" data-uid="IronXL.Formatting.ConditionalFormattingRule.Formula1*"></a>
+  <h4 id="IronXL_Formatting_ConditionalFormattingRule_Formula1" data-uid="IronXL.Formatting.ConditionalFormattingRule.Formula1">Formula1</h4>
+  <div class="markdown level1 summary"><p>The formula used to Evaluate the first operand for the conditional formatting rule.</p>
+<p>
+If the condition type is <a class="xref" href="IronXL.Formatting.ConditionType.html#IronXL_Formatting_ConditionType_CellValueIs">CellValueIs</a> this field is the first operand of the comparison.
+If type is <span class="xref">NPOI.SS.Formula.Formula</span>, this formula is used to determine if the conditional formatting is applied.
+</p><p>
+If comparison type is <span class="xref">NPOI.SS.Formula.Formula</span> the formula MUST be a Boolean function
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Formula1 { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The first formula of the rule</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Formatting_ConditionalFormattingRule_Formula2_" data-uid="IronXL.Formatting.ConditionalFormattingRule.Formula2*"></a>
+  <h4 id="IronXL_Formatting_ConditionalFormattingRule_Formula2" data-uid="IronXL.Formatting.ConditionalFormattingRule.Formula2">Formula2</h4>
+  <div class="markdown level1 summary"><p>The formula used to Evaluate the second operand of the comparison when
+condition type is <a class="xref" href="IronXL.Formatting.ConditionType.html#IronXL_Formatting_ConditionType_CellValueIs">CellValueIs</a> and operator
+is either <a class="xref" href="IronXL.Formatting.Enums.ComparisonOperator.html#IronXL_Formatting_Enums_ComparisonOperator_Between">Between</a> or <a class="xref" href="IronXL.Formatting.Enums.ComparisonOperator.html#IronXL_Formatting_Enums_ComparisonOperator_NotBetween">NotBetween</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Formula2 { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The second formula of the rule.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Formatting_ConditionalFormattingRule_PatternFormatting_" data-uid="IronXL.Formatting.ConditionalFormattingRule.PatternFormatting*"></a>
+  <h4 id="IronXL_Formatting_ConditionalFormattingRule_PatternFormatting" data-uid="IronXL.Formatting.ConditionalFormattingRule.PatternFormatting">PatternFormatting</h4>
+  <div class="markdown level1 summary"><p>Gets the pattern formatting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IPatternFormatting PatternFormatting { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.Formatting.IPatternFormatting.html">IPatternFormatting</a></td>
+        <td><p>The pattern formatting.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

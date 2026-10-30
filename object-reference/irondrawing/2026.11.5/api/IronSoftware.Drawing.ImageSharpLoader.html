@@ -1,0 +1,525 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ImageSharpLoader Class - IronDrawing C# API
+      v2 (human)     title:       ImageSharpLoader: Safe Image Loading in C#
+      v1 (algorithm) description: Use ImageSharpLoader in IronDrawing to safely decode images in C#, rejecting malformed TIFF and other untrusted input before ImageSharp processes it.
+      v2 (human)     description: Load images safely in C# with IronDrawing's ImageSharpLoader: guards against CVE-2026-106116 and untrusted input across .NET Framework and .NET 6/8.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ImageSharpLoader Class | IronDrawing C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ImageSharpLoader Class | IronDrawing C# API">
+    <meta name="description" content="Reference for IronDrawing's ImageSharpLoader class in C#: safe byte[] and Stream overloads that validate untrusted image data before ImageSharp decodes it.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/open-source/csharp/drawing/object-reference/api/IronSoftware.Drawing.ImageSharpLoader.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ImageSharpLoader Class | IronDrawing C# API",
+    "name": "ImageSharpLoader class | IronDrawing C# API",
+    "url": "https://ironsoftware.com/open-source/csharp/drawing/object-reference/api/IronSoftware.Drawing.ImageSharpLoader.html",
+    "abstract": "ImageSharpLoader in IronSoftware.Drawing provides static Load overloads that validate untrusted image data before delegating to SixLabors.ImageSharp, preventing hangs and exploits such as CVE-2026-106116 on .NET Standard 2.0. Four overloads accept either a byte array or a Stream and return either a plain Image or a strongly typed Image of TPixel.",
+    "description": "Reference for IronDrawing's ImageSharpLoader class in C#: safe byte[] and Stream overloads that validate untrusted image data before ImageSharp decodes it.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronDrawing",
+      "url": "https://ironsoftware.com/open-source/csharp/drawing/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using SixLabors.ImageSharp;\nusing IronSoftware.Drawing;\n\nusing var stream = File.OpenRead(\"upload.tiff\");\nusing Image image = ImageSharpLoader.Load(stream);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ImageSharpLoader live in the IronDrawing API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ImageSharpLoader is a class in the IronSoftware.Drawing namespace, shipped in IronSoftware.Drawing.dll. It derives from Object and exposes four static Load methods; no instantiation is required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why use ImageSharpLoader instead of calling SixLabors.ImageSharp.Image.Load directly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ImageSharpLoader applies version-aware validation before ImageSharp processes the data. On .NET Standard 2.0 it rejects BigTIFF files with oversized image file directories that cause ImageSharp 2.x to loop indefinitely (CVE-2026-106116). Calling Image.Load directly on untrusted input skips that guard."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronSoftware.Drawing.ImageSharpLoader">
+  
+  
+  <h1 id="IronSoftware_Drawing_ImageSharpLoader" data-uid="IronSoftware.Drawing.ImageSharpLoader" class="text-break">Class ImageSharpLoader
+  </h1>
+  <div class="markdown level0 summary"><p>Decodes images with SixLabors.ImageSharp after rejecting input that the referenced ImageSharp
+version cannot decode safely. Use these methods instead of calling
+<span class="xref">SixLabors.ImageSharp.Image.Load(System.Byte[])</span> directly on untrusted data.</p>
+<p>On .NET Standard 2.0 (used by .NET Framework) ImageSharp 2.x is referenced, which Six Labors
+no longer patches. There, BigTIFF data whose image file directory declares more entries than the
+data can hold is rejected, because ImageSharp 2.x loops on it without making progress
+(CVE-2026-106116, GHSA-wmxv-xphr-5c9g). On .NET 6 and .NET 8 the referenced ImageSharp versions
+are patched and these methods behave exactly like <span class="xref">SixLabors.ImageSharp.Image.Load(System.Byte[])</span>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ImageSharpLoader</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronSoftware.Drawing.html">IronSoftware.Drawing</a></h6>
+  <h6><strong>Assembly</strong>: IronSoftware.Drawing.Common.dll</h6>
+  <h5 id="IronSoftware_Drawing_ImageSharpLoader_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class ImageSharpLoader : Object</code></pre>
+  </div>
+    <!-- archetype-N:start ImageSharpLoader treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Safely decoding untrusted image bytes in .NET projects is what <code>ImageSharpLoader</code> is built for. Rather than calling <code>SixLabors.ImageSharp.Image.Load</code> directly on arbitrary input, route that call through <code>ImageSharpLoader</code> so that malformed or exploitable data is rejected before ImageSharp ever processes it.</p>
+<p>The four static methods split cleanly across two axes: input source (<code>byte[]</code> or <code>Stream</code>) and pixel type (untyped <code>Image</code> or generic <code>Image&lt;TPixel&gt;</code>). <code>Load(byte[] data)</code> and <code>Load(Stream stream)</code> return a plain <code>Image</code> when the pixel format does not matter at the call site. <code>Load&lt;TPixel&gt;(byte[] data)</code> and <code>Load&lt;TPixel&gt;(Stream stream)</code> return a strongly typed <code>Image&lt;TPixel&gt;</code>, useful when downstream code needs to inspect or manipulate individual pixels through the <code>IPixel&lt;TPixel&gt;</code> contract. All four overloads apply the same pre-flight validation before delegating to ImageSharp.</p>
+<p>The validation logic adapts to the referenced ImageSharp version. On .NET Standard 2.0 targets (used by .NET Framework projects), IronDrawing references ImageSharp 2.x, which Six Labors no longer patches. On that target, <code>ImageSharpLoader</code> rejects BigTIFF data whose image file directory declares more entries than the payload can hold, because ImageSharp 2.x loops on such input without making progress (CVE-2026-106116, GHSA-wmxv-xphr-5c9g). On .NET 6 and .NET 8, a newer ImageSharp version is referenced and the guard set is adjusted accordingly.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using SixLabors.ImageSharp;
+using IronSoftware.Drawing;
+
+using var stream = File.OpenRead(&quot;upload.tiff&quot;);
+using Image image = ImageSharpLoader.Load(stream);</code></pre></div>
+<p>Explore the <a href="https://ironsoftware.com/open-source/csharp/drawing/get-started/">IronDrawing getting-started guide</a> for setup, and the <a href="https://ironsoftware.com/open-source/csharp/drawing/how-to/load-images/">image loading how-to</a> for broader usage patterns.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronSoftware_Drawing_ImageSharpLoader_Load_" data-uid="IronSoftware.Drawing.ImageSharpLoader.Load*"></a>
+  <h4 id="IronSoftware_Drawing_ImageSharpLoader_Load_System_Byte___" data-uid="IronSoftware.Drawing.ImageSharpLoader.Load(System.Byte[])">Load(Byte[])</h4>
+  <div class="markdown level1 summary"><p>Decodes an image from <code data-dev-comment-type="paramref" class="paramref">data</code>, like <span class="xref">SixLabors.ImageSharp.Image.Load(System.Byte[])</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Image Load(byte[] data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The encoded image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Image</span></td>
+        <td><p>The decoded image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.InvalidImageContentException</span></td>
+        <td><p>The data is a malformed BigTIFF (.NET Standard 2.0 only), or ImageSharp rejects it.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_ImageSharpLoader_Load_" data-uid="IronSoftware.Drawing.ImageSharpLoader.Load*"></a>
+  <h4 id="IronSoftware_Drawing_ImageSharpLoader_Load_System_IO_Stream_" data-uid="IronSoftware.Drawing.ImageSharpLoader.Load(System.IO.Stream)">Load(Stream)</h4>
+  <div class="markdown level1 summary"><p>Decodes an image from the current position of <code data-dev-comment-type="paramref" class="paramref">stream</code>, like
+<span class="xref">SixLabors.ImageSharp.Image.Load(System.IO.Stream)</span>. The remaining stream content is read into memory first.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Image Load(Stream stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream containing the encoded image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Image</span></td>
+        <td><p>The decoded image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.InvalidImageContentException</span></td>
+        <td><p>The data is a malformed BigTIFF (.NET Standard 2.0 only), or ImageSharp rejects it.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_ImageSharpLoader_Load_" data-uid="IronSoftware.Drawing.ImageSharpLoader.Load*"></a>
+  <h4 id="IronSoftware_Drawing_ImageSharpLoader_Load__1_System_Byte___" data-uid="IronSoftware.Drawing.ImageSharpLoader.Load``1(System.Byte[])">Load&lt;TPixel&gt;(Byte[])</h4>
+  <div class="markdown level1 summary"><p>Decodes an image from <code data-dev-comment-type="paramref" class="paramref">data</code>, like <span class="xref">SixLabors.ImageSharp.Image.Load``1(System.Byte[])</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Image&lt;TPixel&gt; Load&lt;TPixel&gt;(byte[] data)
+    where TPixel : struct,, IPixel&lt;TPixel&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The encoded image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Image</span>&lt;TPixel&gt;</td>
+        <td><p>The decoded image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TPixel</span></td>
+        <td><p>The pixel format to decode to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.InvalidImageContentException</span></td>
+        <td><p>The data is a malformed BigTIFF (.NET Standard 2.0 only), or ImageSharp rejects it.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_Drawing_ImageSharpLoader_Load_" data-uid="IronSoftware.Drawing.ImageSharpLoader.Load*"></a>
+  <h4 id="IronSoftware_Drawing_ImageSharpLoader_Load__1_System_IO_Stream_" data-uid="IronSoftware.Drawing.ImageSharpLoader.Load``1(System.IO.Stream)">Load&lt;TPixel&gt;(Stream)</h4>
+  <div class="markdown level1 summary"><p>Decodes an image from the current position of <code data-dev-comment-type="paramref" class="paramref">stream</code>, like
+<span class="xref">SixLabors.ImageSharp.Image.Load``1(System.IO.Stream)</span>. The remaining stream content is read into memory first.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Image&lt;TPixel&gt; Load&lt;TPixel&gt;(Stream stream)
+    where TPixel : struct,, IPixel&lt;TPixel&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream containing the encoded image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.Image</span>&lt;TPixel&gt;</td>
+        <td><p>The decoded image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TPixel</span></td>
+        <td><p>The pixel format to decode to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SixLabors.ImageSharp.InvalidImageContentException</span></td>
+        <td><p>The data is a malformed BigTIFF (.NET Standard 2.0 only), or ImageSharp rejects it.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronSoftware.System.Drawing/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon api-reference-right-sidebar__list-item--display-none">
+                    <a href="" target="_blank" class="api-reference-right-sidebar__link"></a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronSoftware.System.Drawing/' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

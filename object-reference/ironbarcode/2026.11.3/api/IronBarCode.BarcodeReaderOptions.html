@@ -1,0 +1,605 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       BarcodeReaderOptions - IronBarcode C# API
+      v2 (human)     title:       BarcodeReaderOptions: Tune Reads in C#
+      v1 (algorithm) description: Tune barcode reading in C# with the IronBarcode BarcodeReaderOptions class: set ExpectBarcodeTypes, ScanMode, Speed, and ConfidenceThreshold.
+      v2 (human)     description: Control how IronBarcode reads in C# with BarcodeReaderOptions: pick symbologies, scan mode, and speed, and handle multiple or imperfect codes.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>BarcodeReaderOptions Class | IronBarcode C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="BarcodeReaderOptions Class | IronBarcode C# API">
+    <meta name="description" content="Reference for the IronBarcode BarcodeReaderOptions class in C#: configure symbology, scan mode, speed, and image handling for a read.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/barcode/csharp/object-reference/api/IronBarCode.BarcodeReaderOptions.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "BarcodeReaderOptions Class | IronBarcode C# API",
+    "name": "BarcodeReaderOptions class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.BarcodeReaderOptions.html",
+    "abstract": "Tuning a read in C# runs through the IronBarcode BarcodeReaderOptions class, which every BarcodeReader.Read overload accepts. Set ExpectBarcodeTypes and ExpectMultipleBarcodes for symbology, ScanMode, Speed, and ConfidenceThreshold for detection strategy, and AutoRotate, ImageFilters, and CropArea for image handling. PdfBarcodeReaderOptions derives from it and adds PDF page, DPI, and password settings.",
+    "description": "Reference for the IronBarcode BarcodeReaderOptions class in C#: configure symbology, scan mode, speed, and image handling for a read.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nvar options = new BarcodeReaderOptions\n{\n    ExpectBarcodeTypes = BarcodeEncoding.QRCode,\n    Speed = ReadingSpeed.Faster,\n    ExpectMultipleBarcodes = true\n};\nBarcodeResults results = BarcodeReader.Read(\"barcode.png\", options);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does BarcodeReaderOptions live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BarcodeReaderOptions is a class in the IronBarCode namespace, shipped in IronBarCode.dll, deriving from Object. Construct one with new BarcodeReaderOptions() and pass it to a BarcodeReader.Read call."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I make IronBarcode read barcodes faster in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the Speed property to ReadingSpeed.Faster and use ExpectBarcodeTypes to limit the scan to the symbologies you expect. Set ExpectMultipleBarcodes to false so the reader stops after the first code when only one is present."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between BarcodeReaderOptions and PdfBarcodeReaderOptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PdfBarcodeReaderOptions derives from BarcodeReaderOptions and adds PDF-specific settings such as PageNumbers, DPI, Scale, and Password. Use BarcodeReaderOptions for images and streams, and PdfBarcodeReaderOptions for ReadPdf calls."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronBarCode.BarcodeReaderOptions">
+  
+  
+  <h1 id="IronBarCode_BarcodeReaderOptions" data-uid="IronBarCode.BarcodeReaderOptions" class="text-break">Class BarcodeReaderOptions
+  </h1>
+  <div class="markdown level0 summary"><p>An Options class of <a class="xref" href="IronBarCode.BarcodeReader.html">BarcodeReader</a> for reading many popular barcode formats from Images and PDFs.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">BarcodeReaderOptions</span></div>
+      <div class="level2"><a class="xref" href="IronBarCode.PdfBarcodeReaderOptions.html">PdfBarcodeReaderOptions</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronBarCode.html">IronBarCode</a></h6>
+  <h6><strong>Assembly</strong>: IronBarCode.dll</h6>
+  <h5 id="IronBarCode_BarcodeReaderOptions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class BarcodeReaderOptions : Object</code></pre>
+  </div>
+    <!-- archetype-N:start BarcodeReaderOptions treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>When a read needs tuning for accuracy or speed, <code>BarcodeReaderOptions</code> carries the settings that steer it. Every <code>BarcodeReader.Read</code> and <code>ReadAsync</code> overload accepts one, so the same options object decides which symbologies to scan for, how hard to look, and how to handle awkward source images. Reaching for it is the answer to &quot;barcode reading too slow in C#&quot; or &quot;IronBarcode not detecting barcode&quot;, since the defaults favor accuracy and most tuning happens here.</p>
+<p>A reader receives the options as an argument; construct one with <code>new BarcodeReaderOptions()</code>, set the properties a job needs, and pass it to a read call. <code>PdfBarcodeReaderOptions</code> derives from this class and adds the PDF-specific page, DPI, and password settings, so a PDF read configures the same base properties plus those extras. Leaving the argument out applies the defaults, which scan for all supported types at balanced speed.</p>
+<p>The properties group by purpose. Symbology selection is <code>ExpectBarcodeTypes</code>, a <code>BarcodeEncoding</code> value that limits the scan to the formats a job expects, and <code>ExpectMultipleBarcodes</code>, which keeps scanning after the first code is found instead of stopping early. Detection strategy is <code>ScanMode</code>, a <code>BarcodeScanMode</code> that chooses a basic pass or a machine-learning model, <code>Speed</code>, a <code>ReadingSpeed</code> that runs from <code>Faster</code> to <code>ExtremeDetail</code> and defaults to <code>Balanced</code>, and <code>ConfidenceThreshold</code>, the minimum machine-learning confidence in the range zero to one with a default of 0.7. Image handling is <code>AutoRotate</code>, <code>ImageFilters</code>, <code>CropArea</code>, and <code>MinScanLines</code>, which correct, filter, and bound the region scanned. Throughput is <code>Multithreaded</code>, <code>MaxParallelThreads</code>, and <code>RemoveFalsePositive</code>. The Code 39 specific <code>UseCode39ExtendedMode</code> enables the extended character set. Set only the properties a job needs and leave the rest at their defaults.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+var options = new BarcodeReaderOptions
+{
+    ExpectBarcodeTypes = BarcodeEncoding.QRCode,
+    Speed = ReadingSpeed.Faster,
+    ExpectMultipleBarcodes = true
+};
+BarcodeResults results = BarcodeReader.Read(&quot;barcode.png&quot;, options);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/reading-speed-options/">reading speed options how-to</a> tunes accuracy against throughput, the <a href="https://ironsoftware.com/csharp/barcode/examples/barcode-reader-settings-csharp/">barcode reader settings example</a> shows a configured read, and the <a href="https://ironsoftware.com/csharp/barcode/how-to/read-multiple-barcodes/">read multiple barcodes how-to</a> sets the multi-code option.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions__ctor_" data-uid="IronBarCode.BarcodeReaderOptions.#ctor*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions__ctor" data-uid="IronBarCode.BarcodeReaderOptions.#ctor">BarcodeReaderOptions()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="IronBarCode.BarcodeReader.html">BarcodeReader</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BarcodeReaderOptions()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions_AutoRotate_" data-uid="IronBarCode.BarcodeReaderOptions.AutoRotate*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions_AutoRotate" data-uid="IronBarCode.BarcodeReaderOptions.AutoRotate">AutoRotate</h4>
+  <div class="markdown level1 summary"><p>Toggle whether to automatically rotate barcodes or not in an ML detection. Default = true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AutoRotate { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions_ConfidenceThreshold_" data-uid="IronBarCode.BarcodeReaderOptions.ConfidenceThreshold*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions_ConfidenceThreshold" data-uid="IronBarCode.BarcodeReaderOptions.ConfidenceThreshold">ConfidenceThreshold</h4>
+  <div class="markdown level1 summary"><p>Minimum confidence level for ML model detection to be considered valid.
+The value is between (0.0, 1.0). Default value is 0.7</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double ConfidenceThreshold { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions_CropArea_" data-uid="IronBarCode.BarcodeReaderOptions.CropArea*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions_CropArea" data-uid="IronBarCode.BarcodeReaderOptions.CropArea">CropArea</h4>
+  <div class="markdown level1 summary"><p>The area of each image frame in which to scan for barcodes. A <span class="xref">IronSoftware.Drawing.Rectangle</span> measured in pixels.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle CropArea { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions_ExpectBarcodeTypes_" data-uid="IronBarCode.BarcodeReaderOptions.ExpectBarcodeTypes*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions_ExpectBarcodeTypes" data-uid="IronBarCode.BarcodeReaderOptions.ExpectBarcodeTypes">ExpectBarcodeTypes</h4>
+  <div class="markdown level1 summary"><p>The barcode encoding types to read from the InputImage. By default all supported barcodes types are scanned for.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BarcodeEncoding ExpectBarcodeTypes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronBarCode.BarcodeEncoding.html">BarcodeEncoding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions_ExpectMultipleBarcodes_" data-uid="IronBarCode.BarcodeReaderOptions.ExpectMultipleBarcodes*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions_ExpectMultipleBarcodes" data-uid="IronBarCode.BarcodeReaderOptions.ExpectMultipleBarcodes">ExpectMultipleBarcodes</h4>
+  <div class="markdown level1 summary"><p>If set to <code>false</code> the barcode reader will stop scanning a given image once a barcode has been found to increase performance. Default = true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ExpectMultipleBarcodes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions_ImageFilters_" data-uid="IronBarCode.BarcodeReaderOptions.ImageFilters*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions_ImageFilters" data-uid="IronBarCode.BarcodeReaderOptions.ImageFilters">ImageFilters</h4>
+  <div class="markdown level1 summary"><p>A collection of image filters for image pre-processing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImageFilterCollection ImageFilters { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronBarCode.ImageFilterCollection.html">ImageFilterCollection</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions_MaxParallelThreads_" data-uid="IronBarCode.BarcodeReaderOptions.MaxParallelThreads*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions_MaxParallelThreads" data-uid="IronBarCode.BarcodeReaderOptions.MaxParallelThreads">MaxParallelThreads</h4>
+  <div class="markdown level1 summary"><p>Max Threads for parallel. Default 4</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxParallelThreads { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions_MinScanLines_" data-uid="IronBarCode.BarcodeReaderOptions.MinScanLines*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions_MinScanLines" data-uid="IronBarCode.BarcodeReaderOptions.MinScanLines">MinScanLines</h4>
+  <div class="markdown level1 summary"><p>The minimum number of scan-lines that must agree on a barcode result for it to be considered valid.</p>
+<p>Increasing this reduces false positives (misreads) but may prevent detection of thin or low-quality barcodes.</p><p>Decreasing this (e.g. to 1) increases sensitivity for difficult barcodes but may introduce noise.</p><p>Default is 2.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MinScanLines { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>A value greater than or equal to 1.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions_Multithreaded_" data-uid="IronBarCode.BarcodeReaderOptions.Multithreaded*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions_Multithreaded" data-uid="IronBarCode.BarcodeReaderOptions.Multithreaded">Multithreaded</h4>
+  <div class="markdown level1 summary"><p>Reads barcodes from multiple images in parallel.  Multiple threads will automatically be started and managed to improve performance for batch barcode reading tasks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Multithreaded { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions_RemoveFalsePositive_" data-uid="IronBarCode.BarcodeReaderOptions.RemoveFalsePositive*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions_RemoveFalsePositive" data-uid="IronBarCode.BarcodeReaderOptions.RemoveFalsePositive">RemoveFalsePositive</h4>
+  <div class="markdown level1 summary"><p>Attempt to remove false positive barcode reads. This can be disabled to improve performance at the cost of accuracy. Default = true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RemoveFalsePositive { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions_ScanMode_" data-uid="IronBarCode.BarcodeReaderOptions.ScanMode*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions_ScanMode" data-uid="IronBarCode.BarcodeReaderOptions.ScanMode">ScanMode</h4>
+  <div class="markdown level1 summary"><p>Define how IronBarcode scans and detects barcodes in an image to read.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BarcodeScanMode ScanMode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronBarCode.BarcodeScanMode.html">BarcodeScanMode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions_Speed_" data-uid="IronBarCode.BarcodeReaderOptions.Speed*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions_Speed" data-uid="IronBarCode.BarcodeReaderOptions.Speed">Speed</h4>
+  <div class="markdown level1 summary"><p>Barcode reading speed. Default = Balanced.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReadingSpeed Speed { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronBarCode.ReadingSpeed.html">ReadingSpeed</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_BarcodeReaderOptions_UseCode39ExtendedMode_" data-uid="IronBarCode.BarcodeReaderOptions.UseCode39ExtendedMode*"></a>
+  <h4 id="IronBarCode_BarcodeReaderOptions_UseCode39ExtendedMode" data-uid="IronBarCode.BarcodeReaderOptions.UseCode39ExtendedMode">UseCode39ExtendedMode</h4>
+  <div class="markdown level1 summary"><p>If a Code39 barcode is detected, use the extended mode for the full ASCII character set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool UseCode39ExtendedMode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/BarCode/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/BarCode' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>
