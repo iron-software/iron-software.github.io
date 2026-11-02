@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Code128EncodingInfo - IronBarcode C# API
+      v2 (human)     title:       Code128EncodingInfo: Inspect Encoding in C#
+      v1 (algorithm) description: Inspect how a Code 128 barcode was encoded in C# with the IronBarcode Code128EncodingInfo class: OriginalData, TotalSymbols, IsGS1, and Segments.
+      v2 (human)     description: See exactly how a Code 128 string was packed in C# with IronBarcode Code128EncodingInfo: character-set segments, total symbols, and GS1 status.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Code128EncodingInfo Class | IronBarcode .NET API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Code128EncodingInfo Class | IronBarcode .NET API">
+    <meta name="description" content="Reference for the IronBarcode Code128EncodingInfo class in C#: read the Segments list, CharacterSetSummary, and TotalSymbols for a Code 128 barcode.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/barcode/csharp/object-reference/api/IronBarCode.Code128EncodingInfo.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Code128EncodingInfo Class | IronBarcode .NET API",
+    "name": "Code128EncodingInfo class | IronBarcode C# API",
+    "url": "https://ironsoftware.com/csharp/barcode/object-reference/api/IronBarCode.Code128EncodingInfo.html",
+    "abstract": "Code128EncodingInfo reports how a string was encoded into a Code 128 barcode in C# with IronBarcode. OriginalData holds the source string, TotalSymbols counts the symbols produced, IsGS1 flags GS1 application-identifier data, and Segments breaks the data into character-set runs as a List of Code128EncodingSegment. CharacterSetSummary renders the same breakdown as a readable string for logging.",
+    "description": "Reference for the IronBarcode Code128EncodingInfo class in C#: read the Segments list, CharacterSetSummary, and TotalSymbols for a Code 128 barcode.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronBarcode",
+      "url": "https://ironsoftware.com/csharp/barcode/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronBarCode;\n\nCode128EncodingInfo info = result.EncodingInfo;\nConsole.WriteLine(info.CharacterSetSummary);\nforeach (Code128EncodingSegment segment in info.Segments)\n    Console.WriteLine($\"{segment.CharacterSetName}: {segment.Data}\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Code128EncodingInfo live in the IronBarcode API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Code128EncodingInfo is a class in the IronBarCode namespace, shipped in IronBarCode.dll, with base type Object. It is read-only output describing one Code 128 encoding; read its Segments list and CharacterSetSummary to inspect how the data was packed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you see which Code 128 character sets a barcode used in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Segments property of Code128EncodingInfo, a List of Code128EncodingSegment. Each segment names the character set that encoded its run of data. CharacterSetSummary gives the same breakdown as a short string for quick logging."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the IsGS1 property on Code128EncodingInfo indicate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IsGS1 returns true when the encoded data follows the GS1 application-identifier convention used on retail and logistics labels. TotalSymbols reports how many symbols the resulting Code 128 barcode contains, and OriginalData holds the source string that was encoded."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronBarCode.Code128EncodingInfo">
+  
+  
+  <h1 id="IronBarCode_Code128EncodingInfo" data-uid="IronBarCode.Code128EncodingInfo" class="text-break">Class Code128EncodingInfo
+  </h1>
+  <div class="markdown level0 summary"><p>Contains encoding information for a Code 128 barcode, including segment breakdown.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Code128EncodingInfo</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronBarCode.html">IronBarCode</a></h6>
+  <h6><strong>Assembly</strong>: IronBarCode.dll</h6>
+  <h5 id="IronBarCode_Code128EncodingInfo_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Code128EncodingInfo : Object</code></pre>
+  </div>
+    <!-- archetype-N:start Code128EncodingInfo treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Code128EncodingInfo</code> is the report a developer reads back to learn how a string was packed into a Code 128 barcode. Code 128 switches between three character sets (A, B, and C) to pack letters, digits, and control codes as compactly as possible, and this object spells out exactly which sets were used and where. It is what you inspect when a Code 128 symbol is wider or narrower than expected and the question is why the encoder made the choices it did.</p>
+<p>The object describes a single Code 128 encoding rather than driving the read or write. <code>OriginalData</code> holds the source string that was encoded, <code>TotalSymbols</code> reports how many symbols the resulting barcode contains, and <code>IsGS1</code> flags whether the data follows the GS1 application-identifier convention used on retail and logistics labels. The detail that makes the report useful is <code>Segments</code>, a <code>List&lt;Code128EncodingSegment&gt;</code> that breaks the data into runs, each tagged with the character set that encoded it.</p>
+<p>Read <code>Segments</code> to walk the encoding run by run, since that is where the set switches and their symbol costs become visible. <code>CharacterSetSummary</code> gives the same breakdown as a short readable string for logging or a quick console check, so a developer can confirm the layout without iterating. Treat the object as read-only output describing one barcode, not a configuration surface. Because the segment list reflects the encoder's real decisions, comparing it across inputs is the practical way to understand why one payload produced a denser symbol than another. The <a href="https://ironsoftware.com/csharp/barcode/how-to/output-data-formats/">output data formats how-to</a> shows how to surface read results, and the <a href="https://ironsoftware.com/csharp/barcode/tutorials/reading-barcodes/">reading barcodes tutorial</a> covers the wider read workflow.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronBarCode;
+
+Code128EncodingInfo info = result.EncodingInfo;
+Console.WriteLine(info.CharacterSetSummary);
+foreach (Code128EncodingSegment segment in info.Segments)
+    Console.WriteLine($&quot;{segment.CharacterSetName}: {segment.Data}&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/barcode/how-to/checksum-and-format-validation/">checksum and format validation how-to</a> walks through validating encoded payloads end to end.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronBarCode_Code128EncodingInfo__ctor_" data-uid="IronBarCode.Code128EncodingInfo.#ctor*"></a>
+  <h4 id="IronBarCode_Code128EncodingInfo__ctor" data-uid="IronBarCode.Code128EncodingInfo.#ctor">Code128EncodingInfo()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Code128EncodingInfo()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronBarCode_Code128EncodingInfo_CharacterSetSummary_" data-uid="IronBarCode.Code128EncodingInfo.CharacterSetSummary*"></a>
+  <h4 id="IronBarCode_Code128EncodingInfo_CharacterSetSummary" data-uid="IronBarCode.Code128EncodingInfo.CharacterSetSummary">CharacterSetSummary</h4>
+  <div class="markdown level1 summary"><p>Gets a summary of character sets used in order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string CharacterSetSummary { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_Code128EncodingInfo_IsGS1_" data-uid="IronBarCode.Code128EncodingInfo.IsGS1*"></a>
+  <h4 id="IronBarCode_Code128EncodingInfo_IsGS1" data-uid="IronBarCode.Code128EncodingInfo.IsGS1">IsGS1</h4>
+  <div class="markdown level1 summary"><p>Indicates whether this is a GS1-128 barcode (starts with FNC1).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsGS1 { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_Code128EncodingInfo_OriginalData_" data-uid="IronBarCode.Code128EncodingInfo.OriginalData*"></a>
+  <h4 id="IronBarCode_Code128EncodingInfo_OriginalData" data-uid="IronBarCode.Code128EncodingInfo.OriginalData">OriginalData</h4>
+  <div class="markdown level1 summary"><p>The original input data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string OriginalData { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_Code128EncodingInfo_Segments_" data-uid="IronBarCode.Code128EncodingInfo.Segments*"></a>
+  <h4 id="IronBarCode_Code128EncodingInfo_Segments" data-uid="IronBarCode.Code128EncodingInfo.Segments">Segments</h4>
+  <div class="markdown level1 summary"><p>List of encoding segments showing how the data is encoded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Code128EncodingSegment&gt; Segments { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="IronBarCode.Code128EncodingSegment.html">Code128EncodingSegment</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronBarCode_Code128EncodingInfo_TotalSymbols_" data-uid="IronBarCode.Code128EncodingInfo.TotalSymbols*"></a>
+  <h4 id="IronBarCode_Code128EncodingInfo_TotalSymbols" data-uid="IronBarCode.Code128EncodingInfo.TotalSymbols">TotalSymbols</h4>
+  <div class="markdown level1 summary"><p>Total number of symbols in the barcode (excluding start, stop, and check digit).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TotalSymbols { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronBarCode_Code128EncodingInfo_ToString_" data-uid="IronBarCode.Code128EncodingInfo.ToString*"></a>
+  <h4 id="IronBarCode_Code128EncodingInfo_ToString" data-uid="IronBarCode.Code128EncodingInfo.ToString">ToString()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/BarCode/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/BarCode' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

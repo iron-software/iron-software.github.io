@@ -1,0 +1,613 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TesseractConfiguration Class - IronOCR C# API
+      v2 (human)     title:       TesseractConfiguration: Tune OCR Settings in C#
+      v1 (algorithm) description: Tune the IronOCR Tesseract engine in C# with the TesseractConfiguration class: set EngineMode, PageSegmentationMode, character lists, and output.
+      v2 (human)     description: Configure IronOCR in C# with the TesseractConfiguration class: choose the engine and segmentation, restrict characters, and emit searchable PDF.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TesseractConfiguration Class | IronOCR C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="TesseractConfiguration Class | IronOCR C# API">
+    <meta name="description" content="Reference for the IronOCR TesseractConfiguration class in C#: EngineMode, PageSegmentationMode, character lists, and searchable-PDF output.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/ocr/csharp/object-reference/api/IronOcr.TesseractConfiguration.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TesseractConfiguration Class | IronOCR C# API",
+    "name": "TesseractConfiguration class | IronOCR C# API",
+    "url": "https://ironsoftware.com/csharp/ocr/object-reference/api/IronOcr.TesseractConfiguration.html",
+    "abstract": "TesseractConfiguration is the settings object that fine-tunes IronOCR's Tesseract engine in C#, reached through IronTesseract.Configuration. It selects the engine with EngineMode, TesseractVersion, and PageSegmentationMode, toggles RenderSearchablePdf, RenderHocr, ReadBarCodes, and ReadDataTables, restricts glyphs with WhiteListCharacters and BlackListCharacters, and passes raw options through TesseractVariables. It implements ICloneable for independent copies.",
+    "description": "Reference for the IronOCR TesseractConfiguration class in C#: EngineMode, PageSegmentationMode, character lists, and searchable-PDF output.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronOCR",
+      "url": "https://ironsoftware.com/csharp/ocr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronOcr;\n\nvar ocr = new IronTesseract();\nocr.Configuration.EngineMode = TesseractEngineMode.TesseractAndLstm;\nocr.Configuration.PageSegmentationMode = TesseractPageSegmentationMode.Auto;\nocr.Configuration.RenderSearchablePdf = true;"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TesseractConfiguration live in the IronOCR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TesseractConfiguration is a class in the IronOcr namespace, shipped in IronOcr.dll. It derives from Object and implements ICloneable, and is reached through the Configuration property of an IronTesseract instance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you change Tesseract settings in C# with IronOCR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Configuration property on an IronTesseract instance and set values on it before calling Read. For example, assign EngineMode, PageSegmentationMode, or RenderSearchablePdf. You can also pass a prepared TesseractConfiguration to the IronTesseract constructor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you restrict which characters IronOCR recognizes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set WhiteListCharacters to limit recognition to a specific set of glyphs, or BlackListCharacters to forbid certain ones. Both are string properties on TesseractConfiguration. Over-constraining the set is a common cause of missing text."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronOcr.TesseractConfiguration">
+  
+  
+  <h1 id="IronOcr_TesseractConfiguration" data-uid="IronOcr.TesseractConfiguration" class="text-break">Class TesseractConfiguration
+  </h1>
+  <div class="markdown level0 summary"><p>A configuration object that fine-tunes Tesseract behavior at an Instance level.    Gives access to every option available to tesseract command line or C++ API users.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">TesseractConfiguration</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.ICloneable</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronOcr.html">IronOcr</a></h6>
+  <h6><strong>Assembly</strong>: IronOcr.dll</h6>
+  <h5 id="IronOcr_TesseractConfiguration_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TesseractConfiguration : Object</code></pre>
+  </div>
+    <!-- archetype-N:start TesseractConfiguration treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>TesseractConfiguration</code> is the settings object that fine-tunes how IronOCR's Tesseract engine recognizes text, exposing the same options a command-line or C++ Tesseract user would reach for. A developer uses it to switch engines, restrict which characters are accepted, turn on barcode or table reading, and emit searchable PDF or hOCR output, all without leaving managed code. It is the knob set most often when out-of-the-box accuracy needs tuning for a specific kind of document.</p>
+<p>Every <code>IronTesseract</code> instance owns one through its <code>Configuration</code> property, so the usual pattern is to read that property and set values on it before calling <code>Read</code>. The same object can also be passed to the <code>IronTesseract(TesseractConfiguration)</code> constructor when a prepared configuration is reused across engines. Because the class implements <code>ICloneable</code>, <code>Clone</code> produces an independent copy, which is handy for keeping a baseline configuration and varying one setting per job.</p>
+<p>The settings fall into a few groups. Engine selection covers <code>EngineMode</code>, <code>TesseractVersion</code>, and <code>PageSegmentationMode</code>, which together choose the recognition algorithm, the binary, and the layout-analysis strategy. Output toggles, <code>RenderSearchablePdf</code>, <code>RenderHocr</code>, <code>ReadBarCodes</code>, and <code>ReadDataTables</code>, decide what the read produces beyond plain text. Character control is handled by <code>WhiteListCharacters</code> and <code>BlackListCharacters</code>, which constrain or forbid specific glyphs. For options without a dedicated property, <code>TesseractVariables</code> is a <code>Dictionary&lt;string, object&gt;</code> that passes raw Tesseract variables through, and <code>TrySaveAllTesseractVariablesToFile</code> writes the active set out for inspection. Start from the defaults and change only what a document demands, since over-constraining segmentation or the character set is a common cause of dropped text.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronOcr;
+
+var ocr = new IronTesseract();
+ocr.Configuration.EngineMode = TesseractEngineMode.TesseractAndLstm;
+ocr.Configuration.PageSegmentationMode = TesseractPageSegmentationMode.Auto;
+ocr.Configuration.RenderSearchablePdf = true;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ocr/how-to/iron-tesseract/">Tesseract config how-to</a> walks through the options, the <a href="https://ironsoftware.com/csharp/ocr/how-to/ocr-fast-configuration/">fast configuration how-to</a> tunes for speed, and the <a href="https://ironsoftware.com/csharp/ocr/tutorials/c-sharp-tesseract-ocr/">Tesseract OCR tutorial</a> puts a full read together.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronOcr_TesseractConfiguration__ctor_" data-uid="IronOcr.TesseractConfiguration.#ctor*"></a>
+  <h4 id="IronOcr_TesseractConfiguration__ctor" data-uid="IronOcr.TesseractConfiguration.#ctor">TesseractConfiguration()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TesseractConfiguration()</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="IronOcr_TesseractConfiguration_EngineMode" data-uid="IronOcr.TesseractConfiguration.EngineMode">EngineMode</h4>
+  <div class="markdown level1 summary"><p>Allows the developer to choose the algorithm Tesseract will use for OCR.  TesseractAndLstm is the recommended behavior for IronOCR.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TesseractEngineMode EngineMode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronOcr.TesseractEngineMode.html">TesseractEngineMode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronOcr_TesseractConfiguration_PageSegmentationMode" data-uid="IronOcr.TesseractConfiguration.PageSegmentationMode">PageSegmentationMode</h4>
+  <div class="markdown level1 summary"><p>Determines how a page is scanned to find potential blocks of text.  Best documented in Tesseract developer websites.</p>
+<p><a class="xref" href="IronOcr.TesseractPageSegmentationMode.html#IronOcr_TesseractPageSegmentationMode_AutoOsd">AutoOsd</a> is a safe default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TesseractPageSegmentationMode PageSegmentationMode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronOcr.TesseractPageSegmentationMode.html">TesseractPageSegmentationMode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronOcr_TesseractConfiguration_ReadBarCodes" data-uid="IronOcr.TesseractConfiguration.ReadBarCodes">ReadBarCodes</h4>
+  <div class="markdown level1 summary"><p>Optionally turns on Barcode reading alongside OCR.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ReadBarCodes</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronOcr_TesseractConfiguration_ReadDataTables" data-uid="IronOcr.TesseractConfiguration.ReadDataTables">ReadDataTables</h4>
+  <div class="markdown level1 summary"><p>Optionally turns on Table Detection and Parsing. To see tables in the OcrResult, access the Tables property.</p>
+<pre><code>var result = Ocr.Read(ocrInput);
+result.Tables; // Output tables</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ReadDataTables</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronOcr_TesseractConfiguration_RenderHocr" data-uid="IronOcr.TesseractConfiguration.RenderHocr">RenderHocr</h4>
+  <div class="markdown level1 summary"><p>Prerenders HOCR files during Tesseract read operations.
+Required True to use <a class="xref" href="IronOcr.OcrResult.html#IronOcr_OcrResult_SaveAsHocrFile_System_String_">SaveAsHocrFile(String)</a> method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RenderHocr</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronOcr_TesseractConfiguration_RenderSearchablePdf" data-uid="IronOcr.TesseractConfiguration.RenderSearchablePdf">RenderSearchablePdf</h4>
+  <div class="markdown level1 summary"><p>Enables the creation of a Searchable PDF of the OcrInput in memory during Tesseract read operations.
+Must be True to save as Searachable PDF. <see cref="!:OcrResult.SaveAsSearchablePdf(string, bool)"></see> methods.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RenderSearchablePdf</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronOcr_TesseractConfiguration_TesseractVariables" data-uid="IronOcr.TesseractConfiguration.TesseractVariables">TesseractVariables</h4>
+  <div class="markdown level1 summary"><p>Add Tesseract configuration variables of type bool, int, double or string.  Gives access to all Tesseract command-line and config file options.</p>
+<p>
+To learn how to use this, Tesseract documentation is very sparse.  Please use <a class="xref" href="IronOcr.TesseractConfiguration.html#IronOcr_TesseractConfiguration_TrySaveAllTesseractVariablesToFile_System_String_">TrySaveAllTesseractVariablesToFile(String)</a> to output all available tesseract variables for your installation of Tesseract.
+</p>
+<p>
+To learn more about how to use TesseractVariables see our guide at: https://ironsoftware.com/csharp/ocr/docs/questions/csharp-tesseract-config-configuration-variables/
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, object&gt; TesseractVariables</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronOcr_TesseractConfiguration_TesseractVersion" data-uid="IronOcr.TesseractConfiguration.TesseractVersion">TesseractVersion</h4>
+  <div class="markdown level1 summary"><p>IronOcr supports Tesseract 5.1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TesseractVersion TesseractVersion</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronOcr.TesseractVersion.html">TesseractVersion</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronOcr_TesseractConfiguration_BlackListCharacters_" data-uid="IronOcr.TesseractConfiguration.BlackListCharacters*"></a>
+  <h4 id="IronOcr_TesseractConfiguration_BlackListCharacters" data-uid="IronOcr.TesseractConfiguration.BlackListCharacters">BlackListCharacters</h4>
+  <div class="markdown level1 summary"><p>If set, any characters in this string will not be recognized by IronTesseract OCR.  An example use-case is to remove characters with accents.</p>
+<p>BlackListCharacters and WhiteListCharacters can positively impact speed and accuracy if set thoughtfully.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string BlackListCharacters { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronOcr_TesseractConfiguration_BlackListCharacters_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IronOcr.TesseractConfiguration.html#IronOcr_TesseractConfiguration_WhiteListCharacters">WhiteListCharacters</a></div>
+  </div>
+  
+  
+  <a id="IronOcr_TesseractConfiguration_WhiteListCharacters_" data-uid="IronOcr.TesseractConfiguration.WhiteListCharacters*"></a>
+  <h4 id="IronOcr_TesseractConfiguration_WhiteListCharacters" data-uid="IronOcr.TesseractConfiguration.WhiteListCharacters">WhiteListCharacters</h4>
+  <div class="markdown level1 summary"><p>If set, only characters in this string will be read by IronTesseract.  Remember to include punctuation marks and space characters.</p>
+<p>If know, WhiteListCharacters can dramatically increase performance and accuracy.</p>
+<p>Also very useful if we expect only numbers or only letters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string WhiteListCharacters { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronOcr_TesseractConfiguration_Clone_" data-uid="IronOcr.TesseractConfiguration.Clone*"></a>
+  <h4 id="IronOcr_TesseractConfiguration_Clone" data-uid="IronOcr.TesseractConfiguration.Clone">Clone()</h4>
+  <div class="markdown level1 summary"><p>Clone this See <a class="xref" href="IronOcr.TesseractConfiguration.html">TesseractConfiguration</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object Clone()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><p>A copy of this <a class="xref" href="IronOcr.TesseractConfiguration.html">TesseractConfiguration</a> as an object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronOcr_TesseractConfiguration_TrySaveAllTesseractVariablesToFile_" data-uid="IronOcr.TesseractConfiguration.TrySaveAllTesseractVariablesToFile*"></a>
+  <h4 id="IronOcr_TesseractConfiguration_TrySaveAllTesseractVariablesToFile_System_String_" data-uid="IronOcr.TesseractConfiguration.TrySaveAllTesseractVariablesToFile(System.String)">TrySaveAllTesseractVariablesToFile(String)</h4>
+  <div class="markdown level1 summary"><p>Saves all Tesseract internal settings for this Configuration to a plain text file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TrySaveAllTesseractVariablesToFile(string Path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">Path</span></td>
+        <td><p>A valid file path.  Recommended file extension is .txt</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if file successfully saved</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.ICloneable</span>
+  </div>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronOcr/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronOcr' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

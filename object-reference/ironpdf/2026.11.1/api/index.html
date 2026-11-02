@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IronPDF | C# PDF Library Documentation | IronPDF </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IronPDF | C# PDF Library Documentation | IronPDF ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/index.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="ironpdf">IronPDF</h1>
+
+<p>IronPDF is a .NET library that allows you to generate, read, edit, and save PDF files in .NET projects.</p>
+<p>IronPDF supports HTML to PDF conversion for .NET Core, .NET Standard, and .NET Framework, with full compatibility for CSS3 and JavaScript.</p>
+<p>A quick-start guide is available at <a href="https://ironpdf.com/docs/">https://ironpdf.com/docs/</a></p>
+<h2 id="compatibility">Compatibility</h2>
+<p>Welcome the the cutting edge of .NET PDF rendering and manipulation technology with IronPDF now featuring Chrome identical HTML rendering with full support for:</p>
+<ul>
+<li>Generating PDFs from: HTML, URL, JavaScript, CSS and many image formats.</li>
+<li>.NET 9, .NET 8, .NET 7, .NET 6, .NET 5, and .NET Core, Standard, and Framework 4.6.2+</li>
+<li>Windows, macOS, Linux, Docker, Azure, and AWS</li>
+<li>Console, Desktop, and Web Apps. MVC, Blazor, MAUI, Razor Pages, Web Forms</li>
+<li>And many more! Visit our website to see all our code examples and a full list of our 50+ features</li>
+</ul>
+<h2 id="to-install">To Install</h2>
+<pre><code class="lang-shell">PM&gt; Install-Package IronPdf
+</code></pre>
+<h3 id="pixel-perfect-chrome-rendering">Pixel Perfect Chrome Rendering!</h3>
+<p>We haven’t changed the IronPDF API you are using. It will remain the same!</p>
+<p>However, the old style is being replaced with a better version to give you more control. For example, you now have access to print options and HTTP login controls specific to your renderer.</p>
+<pre><code class="lang-cs">using IronPdf;
+
+// Instantiate Chrome renderer
+ChromePdfRenderer renderer = new ChromePdfRenderer();
+
+// Configure rendering engine
+renderer.RenderingOptions.PaperFit.UseFitToPageRendering();
+renderer.RenderingOptions.CssMediaType = IronPdf.Rendering.PdfCssMediaType.Screen;
+renderer.RenderingOptions.PrintHtmlBackgrounds = true;
+renderer.RenderingOptions.CreatePdfFormsFromHtml = true;
+
+// Render HTML string to PDF
+var pdf = renderer.RenderHtmlAsPdf(&quot;&lt;h1&gt;Hello world!&lt;/h1&gt;&quot;);
+
+// Render URL to PDF
+//var pdf = Renderer.RenderUrlAsPdf(&quot;https://www.google.com/&quot;);
+
+// Render HTML file to PDF
+//var pdf = Renderer.RenderHtmlFileAsPdf(&quot;example.html&quot;);
+
+// Export PDF document
+pdf.SaveAs(&quot;google_chrome.pdf&quot;);
+</code></pre>
+<h3 id="use-chromes-default-settings">Use Chrome's Default Settings!</h3>
+<p>This example will generate PDFs that are pixel-perfect, matching the latest Chrome desktop browser’s 'Print to PDF' functionality.</p>
+<pre><code class="lang-cs">// Instantiate Chrome renderer
+ChromePdfRenderer renderer = new ChromePdfRenderer();
+
+// Use Chrome default setting
+renderer.RenderingOptions = ChromePdfRenderOptions.DefaultChrome;
+
+var pdf = renderer.RenderUrlAsPdf(&quot;https://www.google.com/&quot;);
+</code></pre>
+<h3 id="use-responsive-layout">Use Responsive Layout!</h3>
+<p>Using screen stylesheets to print PDFs which are less fiddly to develop and more true to existing web assets.</p>
+<ul>
+<li>Responsive layout support</li>
+<li>Creating PDF Forms from your HTML form elements</li>
+</ul>
+<pre><code class="lang-cs">// Instantiate Chrome renderer
+ChromePdfRenderer renderer = new ChromePdfRenderer();
+
+// Configure rendering engine
+renderer.RenderingOptions.CssMediaType = IronPdf.Rendering.PdfCssMediaType.Screen;
+renderer.RenderingOptions.PrintHtmlBackgrounds = true;
+renderer.RenderingOptions.CreatePdfFormsFromHtml = true;
+renderer.RenderingOptions.PaperFit.UseResponsiveCssRendering(1080); //px
+
+// Render URL to PDF
+var pdf = renderer.RenderUrlAsPdf(&quot;https://www.google.com/&quot;);
+</code></pre>
+<h3 id="use-every-cpu-core-available">Use every CPU core available</h3>
+<p>Multithreading and Async support for our Chrome rendering engine is in a different league to all previous builds.</p>
+<p>For enterprise grade multi-threading use our Chrome in your existing threads and it will work. For web applications this also takes zero setup.</p>
+<p>For batch processing for HtmlToPdf we suggest using the built in .NET Parallel.ForEach.</p>
+<p>We love async and have provided Async variants of methods such as ChromePdfRenderer.RenderHtmlAsPdf.</p>
+<h2 id="documentation-links">Documentation Links</h2>
+<ul>
+<li>Code Examples : <a href="https://ironpdf.com/examples/using-html-to-create-a-pdf/">https://ironpdf.com/examples/using-html-to-create-a-pdf/</a></li>
+<li>How-To Guides : <a href="https://ironpdf.com/how-to/html-file-to-pdf/">https://ironpdf.com/how-to/html-file-to-pdf/</a></li>
+<li>Tutorials : <a href="https://ironpdf.com/tutorials/html-to-pdf/">https://ironpdf.com/tutorials/html-to-pdf/</a></li>
+<li>MSDN Class Reference : <a href="index.html">https://ironpdf.com/object-reference/api/</a></li>
+<li>Support : <a href="mailto:support@ironsoftware.com">support@ironsoftware.com</a></li>
+</ul>
+<h2 id="msdn-style-class-reference">MSDN Style Class Reference</h2>
+<p>Explore the <a class="xref" href="IronPdf.html">IronPDF API</a> in the left navigation of this page.</p>
+<p>Popular Links include:</p>
+<ul>
+<li><a class="xref" href="IronPdf.html">IronPdf Namespace</a> Index of all IronPdf Classes</li>
+<li><a class="xref" href="IronPdf.ChromePdfRenderer.html">IronPdf.ChromePdfRenderer</a> Html to PDF generator</li>
+<li><a class="xref" href="IronPdf.ChromePdfRenderOptions.html">IronPdf.ChromePdfRenderOptions</a> Html to PDF generation settings</li>
+<li><a class="xref" href="IronPdf.AspxToPdf.html">IronPdf.AspxToPdf</a> ASPX to PDF generator</li>
+<li><a class="xref" href="IronPdf.ImageToPdfConverter.html">IronPdf.ImageToPdfConverter</a> Image to PDF generator</li>
+<li><a class="xref" href="IronPdf.PdfDocument.html">IronPdf.PdfDocument</a> A class to open, manipulate, extract data and save PDF files</li>
+</ul>
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="#helpscout-support" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

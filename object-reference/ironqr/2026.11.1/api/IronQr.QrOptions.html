@@ -1,0 +1,431 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       QrOptions Struct - IronQR C# API Reference
+      v2 (human)     title:       QrOptions: Configure QR Generation in C#
+      v1 (algorithm) description: Configure QR generation in C# with the IronQR QrOptions: set Encoding, ErrorCorrectionLevel, Version, and CharacterEncoding, passed to QrWriter.
+      v2 (human)     description: Control how a QR code is encoded in C# with the IronQR QrOptions: symbol type, error correction, version, and character set, with code examples.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>QrOptions | IronQR C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="QrOptions | IronQR C# API Reference">
+    <meta name="description" content="Reference for the IronQR QrOptions value in C#: set Encoding, ErrorCorrectionLevel, Version, and CharacterEncoding for QrWriter.Write.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/qr/csharp/object-reference/api/IronQr.QrOptions.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "QrOptions | IronQR C# API Reference",
+    "name": "QrOptions class | IronQR C# API",
+    "url": "https://ironsoftware.com/csharp/qr/object-reference/api/IronQr.QrOptions.html",
+    "abstract": "QrOptions carries the encoding settings for a generated QR code in C#, passed to a QrWriter.Write overload. Encoding selects the QrEncoding family, ErrorCorrectionLevel sets recovery, Version (a Nullable<int>) fixes the symbol size and capacity, and CharacterEncoding names the text encoding for non-ASCII payloads.",
+    "description": "Reference for the IronQR QrOptions value in C#: set Encoding, ErrorCorrectionLevel, Version, and CharacterEncoding for QrWriter.Write.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronQR",
+      "url": "https://ironsoftware.com/csharp/qr/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var options = new QrOptions(QrEncoding.QRCode, QrErrorCorrectionLevel.High);\nQrCode qr = QrWriter.Write(\"https://ironsoftware.com\", options);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does QrOptions live in the IronQR API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "QrOptions is a value type in the IronQr namespace, shipped in IronQr.dll. Build one and pass it to a QrWriter.Write overload to control how the code is encoded."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set the error correction or encoding when generating a QR code in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Construct a QrOptions with the QrErrorCorrectionLevel and QrEncoding you want, optionally a Version and CharacterEncoding, then pass it to QrWriter.Write. Leaving Version null lets the writer choose the smallest symbol that fits."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronQr.QrOptions">
+  
+  
+  <h1 id="IronQr_QrOptions" data-uid="IronQr.QrOptions" class="text-break">Class QrOptions
+  </h1>
+  <div class="markdown level0 summary"><p>Represents the options for a QR code, including error correction level, version, and character encoding.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">QrOptions</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronQr.html">IronQr</a></h6>
+  <h6><strong>Assembly</strong>: IronQr.dll</h6>
+  <h5 id="IronQr_QrOptions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class QrOptions : ValueType</code></pre>
+  </div>
+    <!-- archetype-N:start QrOptions treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>The encoding settings for a generated QR code, its symbol type, recovery level, version, and character set, are carried by <code>QrOptions</code>. It is passed to a <code>QrWriter.Write</code> overload, so the choices that shape the symbol are made at generation time rather than after.</p>
+<p><code>Encoding</code> selects the <code>QrEncoding</code> family, <code>ErrorCorrectionLevel</code> sets the <code>QrErrorCorrectionLevel</code> redundancy, <code>Version</code> is a <code>Nullable&lt;int&gt;</code> that fixes the symbol version and therefore its capacity (left null, the writer picks the smallest that fits), and <code>CharacterEncoding</code> names the text encoding, such as UTF-8, for non-ASCII payloads. The two constructors let a developer pass the error-correction level alone or the full set. The character encoding matters for payloads outside ASCII, such as accented text or non-Latin scripts, where UTF-8 keeps the decoded value intact. Matching the write options when reading a code is not required, since detection is format-driven rather than configured.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var options = new QrOptions(QrEncoding.QRCode, QrErrorCorrectionLevel.High);
+QrCode qr = QrWriter.Write(&quot;https://ironsoftware.com&quot;, options);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/qr/examples/generate-qr-code/">generate QR code example</a> writes with options, and the <a href="https://ironsoftware.com/csharp/qr/how-to/error-correction-qr-code/">error correction how-to</a> covers the recovery setting.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronQr_QrOptions__ctor_" data-uid="IronQr.QrOptions.#ctor*"></a>
+  <h4 id="IronQr_QrOptions__ctor_IronQr_Enum_QrEncoding_IronQr_QrErrorCorrectionLevel_System_Nullable_System_Int32__System_String_" data-uid="IronQr.QrOptions.#ctor(IronQr.Enum.QrEncoding,IronQr.QrErrorCorrectionLevel,System.Nullable{System.Int32},System.String)">QrOptions(QrEncoding, QrErrorCorrectionLevel, Nullable&lt;Int32&gt;, String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the QrOptions struct with specified QR encoding, error correction level, version, and character encoding.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QrOptions(QrEncoding encoding, QrErrorCorrectionLevel errorCorrectionLevel, Nullable&lt;int&gt; version = null, string characterEncoding = &quot;ISO-8859-1&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronQr.Enum.QrEncoding.html">QrEncoding</a></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>Encoding type of the QR. Defaults to regular QR code.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronQr.QrErrorCorrectionLevel.html">QrErrorCorrectionLevel</a></td>
+        <td><span class="parametername">errorCorrectionLevel</span></td>
+        <td><p>The error correction or fault tolerance level of the QR code. Defaults to the highest level.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">version</span></td>
+        <td><p>The symbol version of the QR code from 1-40. Defaults to null, which automatically assigns an appropriate version.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">characterEncoding</span></td>
+        <td><p>The character encoding for binary data. Defaults to &quot;ISO-8859-1&quot;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronQr_QrOptions__ctor_" data-uid="IronQr.QrOptions.#ctor*"></a>
+  <h4 id="IronQr_QrOptions__ctor_IronQr_QrErrorCorrectionLevel_System_Nullable_System_Int32__System_String_" data-uid="IronQr.QrOptions.#ctor(IronQr.QrErrorCorrectionLevel,System.Nullable{System.Int32},System.String)">QrOptions(QrErrorCorrectionLevel, Nullable&lt;Int32&gt;, String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the QrOptions struct with specified error correction level, version, and character encoding.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QrOptions(QrErrorCorrectionLevel errorCorrectionLevel, Nullable&lt;int&gt; version = null, string characterEncoding = &quot;ISO-8859-1&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronQr.QrErrorCorrectionLevel.html">QrErrorCorrectionLevel</a></td>
+        <td><span class="parametername">errorCorrectionLevel</span></td>
+        <td><p>The error correction or fault tolerance level of the QR code. Defaults to the highest level.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">version</span></td>
+        <td><p>The symbol version of the QR code from 1-40. Defaults to null, which automatically assigns an appropriate version.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">characterEncoding</span></td>
+        <td><p>The character encoding for binary data. Defaults to &quot;ISO-8859-1&quot;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronQr_QrOptions_CharacterEncoding_" data-uid="IronQr.QrOptions.CharacterEncoding*"></a>
+  <h4 id="IronQr_QrOptions_CharacterEncoding" data-uid="IronQr.QrOptions.CharacterEncoding">CharacterEncoding</h4>
+  <div class="markdown level1 summary"><p>The default character encoding for binary data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string CharacterEncoding { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronQr_QrOptions_Encoding_" data-uid="IronQr.QrOptions.Encoding*"></a>
+  <h4 id="IronQr_QrOptions_Encoding" data-uid="IronQr.QrOptions.Encoding">Encoding</h4>
+  <div class="markdown level1 summary"><p>The encoding type of the QR.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QrEncoding Encoding { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronQr.Enum.QrEncoding.html">QrEncoding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronQr_QrOptions_ErrorCorrectionLevel_" data-uid="IronQr.QrOptions.ErrorCorrectionLevel*"></a>
+  <h4 id="IronQr_QrOptions_ErrorCorrectionLevel" data-uid="IronQr.QrOptions.ErrorCorrectionLevel">ErrorCorrectionLevel</h4>
+  <div class="markdown level1 summary"><p>The error correction or fault tolerance level of a QR code. A higher <a class="xref" href="IronQr.QrErrorCorrectionLevel.html">QrErrorCorrectionLevel</a> creates more complex QR codes,
+which are less prone to reading errors. They may also be readable if damaged or partially obscured.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QrErrorCorrectionLevel ErrorCorrectionLevel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronQr.QrErrorCorrectionLevel.html">QrErrorCorrectionLevel</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronQr_QrOptions_Version_" data-uid="IronQr.QrOptions.Version*"></a>
+  <h4 id="IronQr_QrOptions_Version" data-uid="IronQr.QrOptions.Version">Version</h4>
+  <div class="markdown level1 summary"><p>The symbol version of the QR Code. The default value 0 will automatically assign an appropriate QR version for your data (highly recommended).</p>
+<p>Higher version numbers generate a more complex graphic and can encode more data. Lower version numbers generate simpler QR codes that may be more readable at a distance.</p>
+<remarks>Valid ranges for each QR type are: QR (1-40), Micro QR (1-4), rMQR (1-38)</remarks>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Nullable&lt;int&gt; Version { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronQR/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronQR' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

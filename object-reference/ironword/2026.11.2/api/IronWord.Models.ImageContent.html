@@ -1,0 +1,1533 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       ImageContent Class - IronWord C# API
+      v2 (human)     title:       ImageContent: Read Word Doc Images in C#
+      v1 (algorithm) description: ImageContent is IronWord's C# image element in a Word document: read BoundingBox, Width, and Type, or build one from a file, stream, or AnyBitmap.
+      v2 (human)     description: Inspect and reposition a picture in a Word document in C# with the IronWord ImageContent class: read its size, type, and bounding box.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>ImageContent Class | IronWord C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ImageContent Class | IronWord C# API">
+    <meta name="description" content="Reference for the IronWord ImageContent class in C#: the document image element with size, type, and bounding box, implementing IWordImageObject.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/word/csharp/object-reference/api/IronWord.Models.ImageContent.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ImageContent Class | IronWord C# API",
+    "name": "ImageContent class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.ImageContent.html",
+    "abstract": "A picture inside a Word document in C# is represented by the IronWord ImageContent class, which carries its bytes, size, and placement. Reach one by enumerating a document's images or construct it from a file, Stream, or AnyBitmap. Read Width, Height, BoundingBox, and Type, convert measurements with GetWidth and the MeasurementUnit overloads, and layer it with ZOrder. ImageContent derives from ContentElement and implements IWordImageObject.",
+    "description": "Reference for the IronWord ImageContent class in C#: the document image element with size, type, and bounding box, implementing IWordImageObject.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var doc = new WordDocument(\"report.docx\");\nforeach (ImageContent picture in doc.ExtractImages())\n{\n    double widthInches = picture.GetWidth(MeasurementUnit.Inch);\n    Console.WriteLine($\"{picture.Name}: {widthInches} in\");\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does ImageContent live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ImageContent is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from ContentElement and implements IWordImageObject, so the document model exposes a document's pictures through it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read an image from a Word document in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enumerate the images in a loaded document to get ImageContent elements, then read Width, Height, and BoundingBox, or call GetWidth with a MeasurementUnit value for a specific unit. Type reports the ImageType and ImageData exposes the Base64 bytes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between ImageContent and Image in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ImageContent is the image element the document model exposes when reading pictures back, and it implements IWordImageObject. Image is the element you build when authoring a new picture. Use ImageContent for inspection and Image for insertion."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronWord.Models.ImageContent">
+  
+  
+  <h1 id="IronWord_Models_ImageContent" data-uid="IronWord.Models.ImageContent" class="text-break">Class ImageContent
+  </h1>
+  <div class="markdown level0 summary"><p>Represents an image element within the document.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="IronWord.Models.Abstract.ContentElement.html">ContentElement</a></div>
+    <div class="level2"><span class="xref">ImageContent</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="IronWord.Models.IWordImageObject.html">IWordImageObject</a></div>
+    <div><span class="xref">IronSoftware.Abstractions.Word.IImage</span></div>
+    <div><span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObject</span></div>
+    <div><span class="xref">IronSoftware.Abstractions.IDocumentObject</span></div>
+    <div><span class="xref">System.ICloneable</span></div>
+    <div><span class="xref">IronSoftware.Abstractions.Word.IWordAbsolute</span></div>
+    <div><span class="xref">IronSoftware.Abstractions.IAbsolute</span></div>
+    <div><span class="xref">IronSoftware.Abstractions.IJsonSerializable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Replace_IronSoftware_Abstractions_Word_IWordDocumentObject_">ContentElement.Replace(IWordDocumentObject)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Remove">ContentElement.Remove()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_GetIndex__1">ContentElement.GetIndex&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Clone">ContentElement.Clone()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_CloneObject">ContentElement.CloneObject()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Parent">ContentElement.Parent</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Status">ContentElement.Status</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronWord.Models.html">IronWord.Models</a></h6>
+  <h6><strong>Assembly</strong>: IronWord.dll</h6>
+  <h5 id="IronWord_Models_ImageContent_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ImageContent : ContentElement, IWordImageObject</code></pre>
+  </div>
+    <!-- archetype-N:start ImageContent treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>A picture inside a Word document, its bytes, size, and placement, lives on <code>ImageContent</code> in C#. It is the image element the document model exposes when you read a document's pictures back, and it carries everything needed to inspect or reposition that picture. It implements <code>IWordImageObject</code>, so code that walks document content can handle it through that contract. It is the read-side counterpart of <code>Image</code>, the element a developer builds when authoring a new picture.</p>
+<p>Reach an <code>ImageContent</code> by enumerating the images in an already-loaded document, or construct one from a file path, a <code>Stream</code>, or an <code>IronSoftware.Drawing.AnyBitmap</code> to insert a picture. Like every other element it derives from <code>ContentElement</code>, so it shares the common <code>Index</code>, <code>Parent</code>, and removal behavior of the document tree, and its <code>Image</code> property holds the underlying <code>IAnyImage</code> that backs it.</p>
+<p>Size and place the picture with <code>Width</code>, <code>Height</code>, and <code>Position</code> (an <code>ElementPosition</code>), and read <code>BoundingBox</code> (a <code>RectangleF</code>) for its absolute rectangle on the page. The <code>GetWidth(MeasurementUnit)</code> and <code>GetDistanceFromTop(MeasurementUnit)</code> family return those measurements in inches, centimeters, or points. <code>Type</code> reports the <code>ImageType</code>, <code>Name</code> and <code>Id</code> identify the picture, <code>ImageData</code> exposes the Base64 bytes, and <code>TextWrapBehavior</code>, <code>ZOrder</code>, and <code>ZPosition</code> govern how it layers against the surrounding text. <code>LoadFromFile(String)</code> and <code>LoadFromStream(Stream)</code> replace the image data after construction, which lets the same element point at a different picture without rebuilding the surrounding content. Adjusting <code>DistanceFromTop</code>, <code>DistanceFromLeft</code>, and their siblings sets the gap the picture keeps from nearby text, so a caption or paragraph does not crowd the image once the document is saved.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var doc = new WordDocument(&quot;report.docx&quot;);
+foreach (ImageContent picture in doc.ExtractImages())
+{
+    double widthInches = picture.GetWidth(MeasurementUnit.Inch);
+    Console.WriteLine($&quot;{picture.Name}: {widthInches} in&quot;);
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/how-to/extract-images/">extract images how-to</a> reads each picture, the <a href="https://ironsoftware.com/csharp/word/how-to/add-image/">add image how-to</a> inserts one, and the <a href="https://ironsoftware.com/csharp/word/examples/add-image/">add image example</a> has a worked listing.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronWord_Models_ImageContent__ctor_" data-uid="IronWord.Models.ImageContent.#ctor*"></a>
+  <h4 id="IronWord_Models_ImageContent__ctor" data-uid="IronWord.Models.ImageContent.#ctor">ImageContent()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the Image class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImageContent()</code></pre>
+  </div>
+  
+  
+  <a id="IronWord_Models_ImageContent__ctor_" data-uid="IronWord.Models.ImageContent.#ctor*"></a>
+  <h4 id="IronWord_Models_ImageContent__ctor_IronSoftware_Drawing_AnyBitmap_" data-uid="IronWord.Models.ImageContent.#ctor(IronSoftware.Drawing.AnyBitmap)">ImageContent(AnyBitmap)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the Image class using an <span class="xref">IronSoftware.Drawing.AnyBitmap</span> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImageContent(AnyBitmap anyBitmap)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Drawing.AnyBitmap</span></td>
+        <td><span class="parametername">anyBitmap</span></td>
+        <td><p>An <span class="xref">IronSoftware.Drawing.AnyBitmap</span> object representing the image data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent__ctor_" data-uid="IronWord.Models.ImageContent.#ctor*"></a>
+  <h4 id="IronWord_Models_ImageContent__ctor_System_IO_Stream_" data-uid="IronWord.Models.ImageContent.#ctor(System.IO.Stream)">ImageContent(Stream)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the Image class with the specified image data stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImageContent(Stream imageStream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">imageStream</span></td>
+        <td><p>The stream containing the image data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent__ctor_" data-uid="IronWord.Models.ImageContent.#ctor*"></a>
+  <h4 id="IronWord_Models_ImageContent__ctor_System_String_" data-uid="IronWord.Models.ImageContent.#ctor(System.String)">ImageContent(String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the Image class with the specified image path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImageContent(string imagePath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">imagePath</span></td>
+        <td><p>The path to the image file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronWord_Models_ImageContent_BoundingBox_" data-uid="IronWord.Models.ImageContent.BoundingBox*"></a>
+  <h4 id="IronWord_Models_ImageContent_BoundingBox" data-uid="IronWord.Models.ImageContent.BoundingBox">BoundingBox</h4>
+  <div class="markdown level1 summary"><p>The bounding box of the image.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RectangleF BoundingBox { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.RectangleF</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_ImageContent_BoundingBox_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The X and Y coordinates of the bounding box represent its absolute position on the page of a document.</p>
+</div>
+  
+  
+  <a id="IronWord_Models_ImageContent_DistanceFromBottom_" data-uid="IronWord.Models.ImageContent.DistanceFromBottom*"></a>
+  <h4 id="IronWord_Models_ImageContent_DistanceFromBottom" data-uid="IronWord.Models.ImageContent.DistanceFromBottom">DistanceFromBottom</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the minimum distance from the bottom edge of the image and text, in points.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double DistanceFromBottom { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_DistanceFromLeft_" data-uid="IronWord.Models.ImageContent.DistanceFromLeft*"></a>
+  <h4 id="IronWord_Models_ImageContent_DistanceFromLeft" data-uid="IronWord.Models.ImageContent.DistanceFromLeft">DistanceFromLeft</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the minimum distance from the left edge of the image and text, in points.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double DistanceFromLeft { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_DistanceFromRight_" data-uid="IronWord.Models.ImageContent.DistanceFromRight*"></a>
+  <h4 id="IronWord_Models_ImageContent_DistanceFromRight" data-uid="IronWord.Models.ImageContent.DistanceFromRight">DistanceFromRight</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the minimum distance from the right edge of the image and text, in points.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double DistanceFromRight { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_DistanceFromTop_" data-uid="IronWord.Models.ImageContent.DistanceFromTop*"></a>
+  <h4 id="IronWord_Models_ImageContent_DistanceFromTop" data-uid="IronWord.Models.ImageContent.DistanceFromTop">DistanceFromTop</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the minimum distance between the top edge of the image and text, in points.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double DistanceFromTop { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_Height_" data-uid="IronWord.Models.ImageContent.Height*"></a>
+  <h4 id="IronWord_Models_ImageContent_Height" data-uid="IronWord.Models.ImageContent.Height">Height</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the height of the image in pixels measured in points (1 inch = 72 points).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Height { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_HorizontalRelativePositionOrigin_" data-uid="IronWord.Models.ImageContent.HorizontalRelativePositionOrigin*"></a>
+  <h4 id="IronWord_Models_ImageContent_HorizontalRelativePositionOrigin" data-uid="IronWord.Models.ImageContent.HorizontalRelativePositionOrigin">HorizontalRelativePositionOrigin</h4>
+  <div class="markdown level1 summary"><p>The horizontal relative position origin for the image.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HorizontalRelativePositionOrigin HorizontalRelativePositionOrigin { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.Word.HorizontalRelativePositionOrigin</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_Id_" data-uid="IronWord.Models.ImageContent.Id*"></a>
+  <h4 id="IronWord_Models_ImageContent_Id" data-uid="IronWord.Models.ImageContent.Id">Id</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a unique identifier for the image.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_Image_" data-uid="IronWord.Models.ImageContent.Image*"></a>
+  <h4 id="IronWord_Models_ImageContent_Image" data-uid="IronWord.Models.ImageContent.Image">Image</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IAnyImage Image { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.IAnyImage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_ImageData_" data-uid="IronWord.Models.ImageContent.ImageData*"></a>
+  <h4 id="IronWord_Models_ImageContent_ImageData" data-uid="IronWord.Models.ImageContent.ImageData">ImageData</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the Base64-encoded image data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ImageData { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_Index_" data-uid="IronWord.Models.ImageContent.Index*"></a>
+  <h4 id="IronWord_Models_ImageContent_Index" data-uid="IronWord.Models.ImageContent.Index">Index</h4>
+  <div class="markdown level1 summary"><p>Gets the index of this image within the parent's list of children.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Index { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_Name_" data-uid="IronWord.Models.ImageContent.Name*"></a>
+  <h4 id="IronWord_Models_ImageContent_Name" data-uid="IronWord.Models.ImageContent.Name">Name</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the name of the image file, if applicable.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_Position_" data-uid="IronWord.Models.ImageContent.Position*"></a>
+  <h4 id="IronWord_Models_ImageContent_Position" data-uid="IronWord.Models.ImageContent.Position">Position</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the position of the image within the document measured in points (1 inch = 72 points).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ElementPosition Position { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.ElementPosition.html">ElementPosition</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_TextWrapBehavior_" data-uid="IronWord.Models.ImageContent.TextWrapBehavior*"></a>
+  <h4 id="IronWord_Models_ImageContent_TextWrapBehavior" data-uid="IronWord.Models.ImageContent.TextWrapBehavior">TextWrapBehavior</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ITextWrapBehavior TextWrapBehavior { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.Word.ITextWrapBehavior</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_Type_" data-uid="IronWord.Models.ImageContent.Type*"></a>
+  <h4 id="IronWord_Models_ImageContent_Type" data-uid="IronWord.Models.ImageContent.Type">Type</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the image format.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImageType Type { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.ImageType.html">ImageType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_VerticalRelativePositionOrigin_" data-uid="IronWord.Models.ImageContent.VerticalRelativePositionOrigin*"></a>
+  <h4 id="IronWord_Models_ImageContent_VerticalRelativePositionOrigin" data-uid="IronWord.Models.ImageContent.VerticalRelativePositionOrigin">VerticalRelativePositionOrigin</h4>
+  <div class="markdown level1 summary"><p>The vertical relative position origin for the image.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public VerticalRelativePositionOrigin VerticalRelativePositionOrigin { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.Word.VerticalRelativePositionOrigin</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_Width_" data-uid="IronWord.Models.ImageContent.Width*"></a>
+  <h4 id="IronWord_Models_ImageContent_Width" data-uid="IronWord.Models.ImageContent.Width">Width</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the width of the image in points (1 inch = 72 points).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Width { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_ZOrder_" data-uid="IronWord.Models.ImageContent.ZOrder*"></a>
+  <h4 id="IronWord_Models_ImageContent_ZOrder" data-uid="IronWord.Models.ImageContent.ZOrder">ZOrder</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RelativeZOrder ZOrder { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.RelativeZOrder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_ZPosition_" data-uid="IronWord.Models.ImageContent.ZPosition*"></a>
+  <h4 id="IronWord_Models_ImageContent_ZPosition" data-uid="IronWord.Models.ImageContent.ZPosition">ZPosition</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long ZPosition { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronWord_Models_ImageContent_GetDistanceFromBottom_" data-uid="IronWord.Models.ImageContent.GetDistanceFromBottom*"></a>
+  <h4 id="IronWord_Models_ImageContent_GetDistanceFromBottom_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.ImageContent.GetDistanceFromBottom(IronWord.Models.Enums.MeasurementUnit)">GetDistanceFromBottom(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Get the minimum distance from the bottom edge of the image and text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetDistanceFromBottom(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the distance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_GetDistanceFromLeft_" data-uid="IronWord.Models.ImageContent.GetDistanceFromLeft*"></a>
+  <h4 id="IronWord_Models_ImageContent_GetDistanceFromLeft_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.ImageContent.GetDistanceFromLeft(IronWord.Models.Enums.MeasurementUnit)">GetDistanceFromLeft(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Get the minimum distance between the left edge of the image and text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetDistanceFromLeft(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the distance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_GetDistanceFromRight_" data-uid="IronWord.Models.ImageContent.GetDistanceFromRight*"></a>
+  <h4 id="IronWord_Models_ImageContent_GetDistanceFromRight_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.ImageContent.GetDistanceFromRight(IronWord.Models.Enums.MeasurementUnit)">GetDistanceFromRight(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Get the minimum distance between the right edge of the image and text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetDistanceFromRight(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the distance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_GetDistanceFromTop_" data-uid="IronWord.Models.ImageContent.GetDistanceFromTop*"></a>
+  <h4 id="IronWord_Models_ImageContent_GetDistanceFromTop_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.ImageContent.GetDistanceFromTop(IronWord.Models.Enums.MeasurementUnit)">GetDistanceFromTop(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Get the minimum distance between the top edge of the image and text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetDistanceFromTop(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the distance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_GetHeight_" data-uid="IronWord.Models.ImageContent.GetHeight*"></a>
+  <h4 id="IronWord_Models_ImageContent_GetHeight_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.ImageContent.GetHeight(IronWord.Models.Enums.MeasurementUnit)">GetHeight(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Get image height.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetHeight(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement to return the value in.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>Image height in specified measurement unit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_GetWidth_" data-uid="IronWord.Models.ImageContent.GetWidth*"></a>
+  <h4 id="IronWord_Models_ImageContent_GetWidth_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.ImageContent.GetWidth(IronWord.Models.Enums.MeasurementUnit)">GetWidth(MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Get image width.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetWidth(MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement to return the value in.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>Image width in specified measurement unit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_LoadFromFile_" data-uid="IronWord.Models.ImageContent.LoadFromFile*"></a>
+  <h4 id="IronWord_Models_ImageContent_LoadFromFile_System_String_" data-uid="IronWord.Models.ImageContent.LoadFromFile(System.String)">LoadFromFile(String)</h4>
+  <div class="markdown level1 summary"><p>Loads an image from the specified file path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadFromFile(string imagePath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">imagePath</span></td>
+        <td><p>The file path of the image to be loaded.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_ImageContent_LoadFromFile_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method attempts to load an image from the specified file path.
+If the file is not found, a <span class="xref">System.IO.FileNotFoundException</span> is thrown.
+Any other exceptions during the loading process are wrapped in an <a class="xref" href="IronWord.Models.Exceptions.ImageLoadException.html">ImageLoadException</a>.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.FileNotFoundException</span></td>
+        <td><p>Thrown if the specified image file is not found.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Exceptions.ImageLoadException.html">ImageLoadException</a></td>
+        <td><p>Thrown if there is an error loading the image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_LoadFromStream_" data-uid="IronWord.Models.ImageContent.LoadFromStream*"></a>
+  <h4 id="IronWord_Models_ImageContent_LoadFromStream_System_IO_Stream_" data-uid="IronWord.Models.ImageContent.LoadFromStream(System.IO.Stream)">LoadFromStream(Stream)</h4>
+  <div class="markdown level1 summary"><p>Loads an image from the stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadFromStream(Stream stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream to be loaded.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronWord_Models_ImageContent_LoadFromStream_System_IO_Stream__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method attempts to load an image from the specified file path.
+If the file is not found, a <span class="xref">System.IO.FileNotFoundException</span> is thrown.
+Any other exceptions during the loading process are wrapped in an <a class="xref" href="IronWord.Models.Exceptions.ImageLoadException.html">ImageLoadException</a>.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Exceptions.ImageLoadException.html">ImageLoadException</a></td>
+        <td><p>Thrown if there is an error loading the image.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_SetDistanceFromBottom_" data-uid="IronWord.Models.ImageContent.SetDistanceFromBottom*"></a>
+  <h4 id="IronWord_Models_ImageContent_SetDistanceFromBottom_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.ImageContent.SetDistanceFromBottom(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetDistanceFromBottom(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Set the minimum distance between the bottom edge of the image and text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDistanceFromBottom(double distanceFromBottom, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">distanceFromBottom</span></td>
+        <td><p>The distance value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the distance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_SetDistanceFromLeft_" data-uid="IronWord.Models.ImageContent.SetDistanceFromLeft*"></a>
+  <h4 id="IronWord_Models_ImageContent_SetDistanceFromLeft_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.ImageContent.SetDistanceFromLeft(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetDistanceFromLeft(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Set the minimum distance between the left edge of the image and text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDistanceFromLeft(double distanceFromLeft, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">distanceFromLeft</span></td>
+        <td><p>The distance value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the distance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_SetDistanceFromRight_" data-uid="IronWord.Models.ImageContent.SetDistanceFromRight*"></a>
+  <h4 id="IronWord_Models_ImageContent_SetDistanceFromRight_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.ImageContent.SetDistanceFromRight(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetDistanceFromRight(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Set the minimum distance between the right edge of the image and text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDistanceFromRight(double distanceFromRight, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">distanceFromRight</span></td>
+        <td><p>The distance value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the distance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_SetDistanceFromTop_" data-uid="IronWord.Models.ImageContent.SetDistanceFromTop*"></a>
+  <h4 id="IronWord_Models_ImageContent_SetDistanceFromTop_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.ImageContent.SetDistanceFromTop(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetDistanceFromTop(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Set the minimum distance between the top edge of the image and text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDistanceFromTop(double distanceFromTop, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">distanceFromTop</span></td>
+        <td><p>The distance value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the distance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_SetHeight_" data-uid="IronWord.Models.ImageContent.SetHeight*"></a>
+  <h4 id="IronWord_Models_ImageContent_SetHeight_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.ImageContent.SetHeight(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetHeight(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Set image height.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetHeight(double height, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The desired height for the image.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the height.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_SetWidth_" data-uid="IronWord.Models.ImageContent.SetWidth*"></a>
+  <h4 id="IronWord_Models_ImageContent_SetWidth_System_Double_IronWord_Models_Enums_MeasurementUnit_" data-uid="IronWord.Models.ImageContent.SetWidth(System.Double,IronWord.Models.Enums.MeasurementUnit)">SetWidth(Double, MeasurementUnit)</h4>
+  <div class="markdown level1 summary"><p>Set image width.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetWidth(double width, MeasurementUnit measurementUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The desired width for the image.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Enums.MeasurementUnit.html">MeasurementUnit</a></td>
+        <td><span class="parametername">measurementUnit</span></td>
+        <td><p>The unit of measurement for the width.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_ImageContent_ToJson_" data-uid="IronWord.Models.ImageContent.ToJson*"></a>
+  <h4 id="IronWord_Models_ImageContent_ToJson" data-uid="IronWord.Models.ImageContent.ToJson">ToJson()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToJson()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="IronWord.Models.IWordImageObject.html">IWordImageObject</a>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.Word.IImage</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObject</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.IDocumentObject</span>
+  </div>
+  <div>
+      <span class="xref">System.ICloneable</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.Word.IWordAbsolute</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.IAbsolute</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.IJsonSerializable</span>
+  </div>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Replace_IronSoftware_Abstractions_Word_IWordDocumentObject_">Replace(IWordDocumentObject)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Remove">Remove()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_GetIndex__1">GetIndex&lt;T&gt;()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Clone">Clone()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_CloneObject">CloneObject()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Parent">Parent</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Status">Status</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronWord/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with NuGet
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronWord' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

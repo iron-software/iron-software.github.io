@@ -1,0 +1,1478 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Paragraph Class - IronWord C# API Reference
+      v2 (human)     title:       Paragraph: Write Text in Word with C#
+      v1 (algorithm) description: Add and style text blocks in a Word document in C# with the IronWord Paragraph class: AddText, AddRun, SetStyle, SetAlignment, and FindText.
+      v2 (human)     description: Build the lines of a Word document in C# with the IronWord Paragraph class: add text and runs, set alignment and spacing, and find or replace text.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Paragraph Class | IronWord .NET API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Paragraph Class | IronWord .NET API Reference">
+    <meta name="description" content="Reference for the IronWord Paragraph class in C#: compose text with AddText and AddRun, apply a ParagraphStyle, and edit with FindText and ReplaceText.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/word/csharp/object-reference/api/IronWord.Models.Paragraph.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Paragraph Class | IronWord .NET API Reference",
+    "name": "Paragraph class | IronWord C# API",
+    "url": "https://ironsoftware.com/csharp/word/object-reference/api/IronWord.Models.Paragraph.html",
+    "abstract": "Writing and styling a block of text in a Word document in C# runs through the IronWord Paragraph class. AddText and AddRun compose its content, AddImage and AddShape place inline objects, and FindText and ReplaceText edit it. Apply a ParagraphStyle through Style or SetStyle, set justification with SetAlignment, and add the finished paragraph to a WordDocument with AddParagraph.",
+    "description": "Reference for the IronWord Paragraph class in C#: compose text with AddText and AddRun, apply a ParagraphStyle, and edit with FindText and ReplaceText.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWord",
+      "url": "https://ironsoftware.com/csharp/word/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "var paragraph = new Paragraph();\nparagraph.AddText(\"Quarterly summary\");\nparagraph.SetAlignment(TextAlignment.Center);\ndocument.AddParagraph(paragraph);"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Paragraph live in the IronWord API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Paragraph is a class in the IronWord.Models namespace, shipped in IronWord.dll. It derives from ParentElement, and a WordDocument exposes the paragraphs added to it through its Paragraphs property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add a paragraph of text in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create a Paragraph, call AddText to append a string or AddRun to add a styled Run, then call AddParagraph on the WordDocument. Use SetAlignment and SetStyle to control justification and formatting before adding it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you find and replace text within a paragraph in IronWord?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call FindText to locate a string in the paragraph and ReplaceText to swap one string for another. ExtractText reads the paragraph's plain text back when you need to inspect its content."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronWord.Models.Paragraph">
+  
+  
+  <h1 id="IronWord_Models_Paragraph" data-uid="IronWord.Models.Paragraph" class="text-break">Class Paragraph
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a paragraph element within the document.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="IronWord.Models.Abstract.ContentElement.html">ContentElement</a></div>
+    <div class="level2"><a class="xref" href="IronWord.Models.Abstract.ParentElement.html">ParentElement</a></div>
+    <div class="level3"><span class="xref">Paragraph</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="IronWord.Models.Abstract.Interfaces.ITextContainer.html">ITextContainer</a></div>
+    <div><a class="xref" href="IronWord.Models.Abstract.Interfaces.IDrawContainer.html">IDrawContainer</a></div>
+    <div><span class="xref">IronSoftware.Abstractions.Word.IParagraph</span></div>
+    <div><span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObject</span></div>
+    <div><span class="xref">IronSoftware.Abstractions.IDocumentObject</span></div>
+    <div><span class="xref">System.ICloneable</span></div>
+    <div><span class="xref">IronSoftware.Abstractions.IParent</span>&lt;<span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObjectCollection</span>, <span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObject</span>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_InsertChildToIndex_System_Int32_IronSoftware_Abstractions_Word_IWordDocumentObject___">ParentElement.InsertChildToIndex(Int32, IWordDocumentObject[])</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Remove">ParentElement.Remove()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_RemoveChildren_IronSoftware_Abstractions_Word_IWordDocumentObject___">ParentElement.RemoveChildren(IWordDocumentObject[])</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_RemoveAllChildren">ParentElement.RemoveAllChildren()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_ExtractElements__1">ParentElement.ExtractElements&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_GetChildByIndex__1_System_Int32_">ParentElement.GetChildByIndex&lt;T&gt;(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Clone">ParentElement.Clone()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_CloneObject">ParentElement.CloneObject()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_LogObjectTree">ParentElement.LogObjectTree()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Texts">ParentElement.Texts</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Tables">ParentElement.Tables</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Children">ParentElement.Children</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Replace_IronSoftware_Abstractions_Word_IWordDocumentObject_">ContentElement.Replace(IWordDocumentObject)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_GetIndex__1">ContentElement.GetIndex&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Parent">ContentElement.Parent</a>
+    </div>
+    <div>
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Status">ContentElement.Status</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronWord.Models.html">IronWord.Models</a></h6>
+  <h6><strong>Assembly</strong>: IronWord.dll</h6>
+  <h5 id="IronWord_Models_Paragraph_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Paragraph : ParentElement, ITextContainer, IDrawContainer</code></pre>
+  </div>
+    <!-- archetype-N:start Paragraph treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p>A <code>Paragraph</code> is the block of text you hold whenever you write a line, a heading, or a body passage into a Word document. It owns the runs of styled text on that line and the paragraph-level formatting (alignment, spacing, and style) applied to them, making it the everyday building block of document content.</p>
+<p>You create one and fill it, then add it to a <code>WordDocument</code> with <code>AddParagraph</code>; the document's <code>Paragraphs</code> property holds the paragraphs already placed, and a table cell or section can hold paragraphs too. A paragraph reads as the unit between line breaks, so a developer building a document from text spends most of their time assembling and styling paragraphs.</p>
+<p>Composing content is the first job: <code>AddText</code> appends text (a string or a <code>TextContent</code>), <code>AddRun</code> adds a prepared <code>Run</code> of styled characters, and <code>AddImage</code> and <code>AddShape</code> place a picture or drawing inline. The <code>Runs</code> property exposes the styled spans the paragraph already contains. Editing within a paragraph uses <code>FindText</code> to locate a string, <code>ReplaceText</code> to swap one for another, and <code>ExtractText</code> to read the plain text back. Formatting is applied through <code>Style</code> (a <code>ParagraphStyle</code>) or the shortcut <code>SetStyle</code>, with <code>Alignment</code> and <code>SetAlignment</code> for justification and <code>SpacingBefore</code>, <code>SpacingAfter</code>, and <code>LineSpacing</code> for vertical rhythm; <code>TextStyle</code> sets the default run style for the line, and <code>Index</code> reports the paragraph's position among its siblings. A paragraph with no explicit style inherits the document's current default, so set a style only where a line should differ from the body.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">var paragraph = new Paragraph();
+paragraph.AddText(&quot;Quarterly summary&quot;);
+paragraph.SetAlignment(TextAlignment.Center);
+document.AddParagraph(paragraph);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/word/examples/add-paragraph/">add paragraph example</a> builds one from scratch, the <a href="https://ironsoftware.com/csharp/word/how-to/add-text/">add text how-to</a> covers writing content, and the <a href="https://ironsoftware.com/csharp/word/how-to/edit-text/">edit text how-to</a> demonstrates find and replace.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronWord_Models_Paragraph__ctor_" data-uid="IronWord.Models.Paragraph.#ctor*"></a>
+  <h4 id="IronWord_Models_Paragraph__ctor" data-uid="IronWord.Models.Paragraph.#ctor">Paragraph()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the Paragraph class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Paragraph()</code></pre>
+  </div>
+  
+  
+  <a id="IronWord_Models_Paragraph__ctor_" data-uid="IronWord.Models.Paragraph.#ctor*"></a>
+  <h4 id="IronWord_Models_Paragraph__ctor_IronWord_Models_Abstract_ContentElement___" data-uid="IronWord.Models.Paragraph.#ctor(IronWord.Models.Abstract.ContentElement[])">Paragraph(ContentElement[])</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the Paragraph class with the specified child elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Paragraph(params ContentElement[] children)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Abstract.ContentElement.html">ContentElement</a>[]</td>
+        <td><span class="parametername">children</span></td>
+        <td><p>The child elements to be added.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronWord_Models_Paragraph_Alignment_" data-uid="IronWord.Models.Paragraph.Alignment*"></a>
+  <h4 id="IronWord_Models_Paragraph_Alignment" data-uid="IronWord.Models.Paragraph.Alignment">Alignment</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the alignment and layout settings for this paragraph.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextAlignment Alignment { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.Word.TextAlignment</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_DefaultFontIsBold_" data-uid="IronWord.Models.Paragraph.DefaultFontIsBold*"></a>
+  <h4 id="IronWord_Models_Paragraph_DefaultFontIsBold" data-uid="IronWord.Models.Paragraph.DefaultFontIsBold">DefaultFontIsBold</h4>
+  <div class="markdown level1 summary"><p>The default bold setting if child elements do not specify.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DefaultFontIsBold { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_DefaultFontIsItalic_" data-uid="IronWord.Models.Paragraph.DefaultFontIsItalic*"></a>
+  <h4 id="IronWord_Models_Paragraph_DefaultFontIsItalic" data-uid="IronWord.Models.Paragraph.DefaultFontIsItalic">DefaultFontIsItalic</h4>
+  <div class="markdown level1 summary"><p>The default italic setting if child elements do not specify.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DefaultFontIsItalic { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_DefaultFontName_" data-uid="IronWord.Models.Paragraph.DefaultFontName*"></a>
+  <h4 id="IronWord_Models_Paragraph_DefaultFontName" data-uid="IronWord.Models.Paragraph.DefaultFontName">DefaultFontName</h4>
+  <div class="markdown level1 summary"><p>The default font name if child elements do not specify.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DefaultFontName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_DefaultFontSize_" data-uid="IronWord.Models.Paragraph.DefaultFontSize*"></a>
+  <h4 id="IronWord_Models_Paragraph_DefaultFontSize" data-uid="IronWord.Models.Paragraph.DefaultFontSize">DefaultFontSize</h4>
+  <div class="markdown level1 summary"><p>The default font size if child elements do not specify.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float DefaultFontSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_FirstLineIndentation_" data-uid="IronWord.Models.Paragraph.FirstLineIndentation*"></a>
+  <h4 id="IronWord_Models_Paragraph_FirstLineIndentation" data-uid="IronWord.Models.Paragraph.FirstLineIndentation">FirstLineIndentation</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float FirstLineIndentation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_HorizontalContentAlignment_" data-uid="IronWord.Models.Paragraph.HorizontalContentAlignment*"></a>
+  <h4 id="IronWord_Models_Paragraph_HorizontalContentAlignment" data-uid="IronWord.Models.Paragraph.HorizontalContentAlignment">HorizontalContentAlignment</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HorizontalAlignments HorizontalContentAlignment { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.Styling.HorizontalAlignments</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_Index_" data-uid="IronWord.Models.Paragraph.Index*"></a>
+  <h4 id="IronWord_Models_Paragraph_Index" data-uid="IronWord.Models.Paragraph.Index">Index</h4>
+  <div class="markdown level1 summary"><p>Gets the index of this paragraph within the parent's list of children.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Index { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_LineSpacing_" data-uid="IronWord.Models.Paragraph.LineSpacing*"></a>
+  <h4 id="IronWord_Models_Paragraph_LineSpacing" data-uid="IronWord.Models.Paragraph.LineSpacing">LineSpacing</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LineSpacing LineSpacing { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.Word.LineSpacing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_Runs_" data-uid="IronWord.Models.Paragraph.Runs*"></a>
+  <h4 id="IronWord_Models_Paragraph_Runs" data-uid="IronWord.Models.Paragraph.Runs">Runs</h4>
+  <div class="markdown level1 summary"><p>A list of all runs within this paragraph.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Run&gt; Runs { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="IronWord.Models.Run.html">Run</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_SpacingAfter_" data-uid="IronWord.Models.Paragraph.SpacingAfter*"></a>
+  <h4 id="IronWord_Models_Paragraph_SpacingAfter" data-uid="IronWord.Models.Paragraph.SpacingAfter">SpacingAfter</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float SpacingAfter { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_SpacingBefore_" data-uid="IronWord.Models.Paragraph.SpacingBefore*"></a>
+  <h4 id="IronWord_Models_Paragraph_SpacingBefore" data-uid="IronWord.Models.Paragraph.SpacingBefore">SpacingBefore</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float SpacingBefore { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_SpacingBetweenLines_" data-uid="IronWord.Models.Paragraph.SpacingBetweenLines*"></a>
+  <h4 id="IronWord_Models_Paragraph_SpacingBetweenLines" data-uid="IronWord.Models.Paragraph.SpacingBetweenLines">SpacingBetweenLines</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SpacingBetweenLines { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_Style_" data-uid="IronWord.Models.Paragraph.Style*"></a>
+  <h4 id="IronWord_Models_Paragraph_Style" data-uid="IronWord.Models.Paragraph.Style">Style</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the style of this paragraph.
+If not specified, it inherits the Document's current/default style.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ParagraphStyle Style { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.ParagraphStyle.html">ParagraphStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_TextStyle_" data-uid="IronWord.Models.Paragraph.TextStyle*"></a>
+  <h4 id="IronWord_Models_Paragraph_TextStyle" data-uid="IronWord.Models.Paragraph.TextStyle">TextStyle</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the default text style of this paragraph.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextStyle TextStyle { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.TextStyle.html">TextStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronWord_Models_Paragraph_AddChild_" data-uid="IronWord.Models.Paragraph.AddChild*"></a>
+  <h4 id="IronWord_Models_Paragraph_AddChild_IronSoftware_Abstractions_Word_IWordDocumentObject___" data-uid="IronWord.Models.Paragraph.AddChild(IronSoftware.Abstractions.Word.IWordDocumentObject[])">AddChild(IWordDocumentObject[])</h4>
+  <div class="markdown level1 summary"><p>Adds one or more child content elements to the current content element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void AddChild(params IWordDocumentObject[] children)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObject</span>[]</td>
+        <td><span class="parametername">children</span></td>
+        <td><p>The content elements to be added as children.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_AddChild_IronSoftware_Abstractions_Word_IWordDocumentObject___">ParentElement.AddChild(IWordDocumentObject[])</a></div>
+  
+  
+  <a id="IronWord_Models_Paragraph_AddImage_" data-uid="IronWord.Models.Paragraph.AddImage*"></a>
+  <h4 id="IronWord_Models_Paragraph_AddImage_IronSoftware_Drawing_AnyBitmap_" data-uid="IronWord.Models.Paragraph.AddImage(IronSoftware.Drawing.AnyBitmap)">AddImage(AnyBitmap)</h4>
+  <div class="markdown level1 summary"><p>Adds an image to this paragraph.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImageContent AddImage(AnyBitmap anyBitmap)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Drawing.AnyBitmap</span></td>
+        <td><span class="parametername">anyBitmap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.ImageContent.html">ImageContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_AddImage_" data-uid="IronWord.Models.Paragraph.AddImage*"></a>
+  <h4 id="IronWord_Models_Paragraph_AddImage_IronWord_Models_ImageContent_" data-uid="IronWord.Models.Paragraph.AddImage(IronWord.Models.ImageContent)">AddImage(ImageContent)</h4>
+  <div class="markdown level1 summary"><p>Adds an image to this paragraph.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImageContent AddImage(ImageContent imageContent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.ImageContent.html">ImageContent</a></td>
+        <td><span class="parametername">imageContent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.ImageContent.html">ImageContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_AddImage_" data-uid="IronWord.Models.Paragraph.AddImage*"></a>
+  <h4 id="IronWord_Models_Paragraph_AddImage_System_IO_Stream_" data-uid="IronWord.Models.Paragraph.AddImage(System.IO.Stream)">AddImage(Stream)</h4>
+  <div class="markdown level1 summary"><p>Adds an image to this paragraph from a stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImageContent AddImage(Stream imageStream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">imageStream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.ImageContent.html">ImageContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_AddImage_" data-uid="IronWord.Models.Paragraph.AddImage*"></a>
+  <h4 id="IronWord_Models_Paragraph_AddImage_System_String_" data-uid="IronWord.Models.Paragraph.AddImage(System.String)">AddImage(String)</h4>
+  <div class="markdown level1 summary"><p>Adds an image to this paragraph from a file path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImageContent AddImage(string imagePath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">imagePath</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.ImageContent.html">ImageContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_AddRun_" data-uid="IronWord.Models.Paragraph.AddRun*"></a>
+  <h4 id="IronWord_Models_Paragraph_AddRun_IronWord_Models_Run_" data-uid="IronWord.Models.Paragraph.AddRun(IronWord.Models.Run)">AddRun(Run)</h4>
+  <div class="markdown level1 summary"><p>Adds a new run to this paragraph.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Run AddRun(Run run)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Run.html">Run</a></td>
+        <td><span class="parametername">run</span></td>
+        <td><p>The run to be added.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Run.html">Run</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_AddShape_" data-uid="IronWord.Models.Paragraph.AddShape*"></a>
+  <h4 id="IronWord_Models_Paragraph_AddShape_IronWord_Models_ShapeContent_" data-uid="IronWord.Models.Paragraph.AddShape(IronWord.Models.ShapeContent)">AddShape(ShapeContent)</h4>
+  <div class="markdown level1 summary"><p>Adds a shape to this paragraph.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ShapeContent AddShape(ShapeContent shapeContent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.ShapeContent.html">ShapeContent</a></td>
+        <td><span class="parametername">shapeContent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.ShapeContent.html">ShapeContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_AddText_" data-uid="IronWord.Models.Paragraph.AddText*"></a>
+  <h4 id="IronWord_Models_Paragraph_AddText_IronWord_Models_TextContent_" data-uid="IronWord.Models.Paragraph.AddText(IronWord.Models.TextContent)">AddText(TextContent)</h4>
+  <div class="markdown level1 summary"><p>Adds a new Run to this paragraph.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextContent AddText(TextContent textContent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.TextContent.html">TextContent</a></td>
+        <td><span class="parametername">textContent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.TextContent.html">TextContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_AddText_" data-uid="IronWord.Models.Paragraph.AddText*"></a>
+  <h4 id="IronWord_Models_Paragraph_AddText_System_String_" data-uid="IronWord.Models.Paragraph.AddText(System.String)">AddText(String)</h4>
+  <div class="markdown level1 summary"><p>Adds a new Text to this paragraph.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextContent AddText(string text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.TextContent.html">TextContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_ExtractImages_" data-uid="IronWord.Models.Paragraph.ExtractImages*"></a>
+  <h4 id="IronWord_Models_Paragraph_ExtractImages" data-uid="IronWord.Models.Paragraph.ExtractImages">ExtractImages()</h4>
+  <div class="markdown level1 summary"><p>Extract all images from this container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;ImageContent&gt; ExtractImages()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="IronWord.Models.ImageContent.html">ImageContent</a>&gt;</td>
+        <td><p>List of images</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_ExtractShapes_" data-uid="IronWord.Models.Paragraph.ExtractShapes*"></a>
+  <h4 id="IronWord_Models_Paragraph_ExtractShapes" data-uid="IronWord.Models.Paragraph.ExtractShapes">ExtractShapes()</h4>
+  <div class="markdown level1 summary"><p>Extract all shapes from this container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;ShapeContent&gt; ExtractShapes()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="IronWord.Models.ShapeContent.html">ShapeContent</a>&gt;</td>
+        <td><p>List of path segment collections</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_ExtractText_" data-uid="IronWord.Models.Paragraph.ExtractText*"></a>
+  <h4 id="IronWord_Models_Paragraph_ExtractText" data-uid="IronWord.Models.Paragraph.ExtractText">ExtractText()</h4>
+  <div class="markdown level1 summary"><p>Extract all text from the container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ExtractText()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Extracted text</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_FindText_" data-uid="IronWord.Models.Paragraph.FindText*"></a>
+  <h4 id="IronWord_Models_Paragraph_FindText_System_String_" data-uid="IronWord.Models.Paragraph.FindText(System.String)">FindText(String)</h4>
+  <div class="markdown level1 summary"><p>Find the first text element which contains the specified text</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextContent FindText(string find)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">find</span></td>
+        <td><p>Text to find</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.TextContent.html">TextContent</a></td>
+        <td><p>Text element containing the specified text</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_Remove_" data-uid="IronWord.Models.Paragraph.Remove*"></a>
+  <h4 id="IronWord_Models_Paragraph_Remove_IronWord_Models_TextContent_" data-uid="IronWord.Models.Paragraph.Remove(IronWord.Models.TextContent)">Remove(TextContent)</h4>
+  <div class="markdown level1 summary"><p>Remove the specified text element</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(TextContent element)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.TextContent.html">TextContent</a></td>
+        <td><span class="parametername">element</span></td>
+        <td><p>Text element to remove</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the element was found and removed, False otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_ReplaceText_" data-uid="IronWord.Models.Paragraph.ReplaceText*"></a>
+  <h4 id="IronWord_Models_Paragraph_ReplaceText_System_String_System_String_" data-uid="IronWord.Models.Paragraph.ReplaceText(System.String,System.String)">ReplaceText(String, String)</h4>
+  <div class="markdown level1 summary"><p>Replace all instances of the specified text</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReplaceText(string find, string replace)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">find</span></td>
+        <td><p>Text to replace</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">replace</span></td>
+        <td><p>Replacement text</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_SetAlignment_" data-uid="IronWord.Models.Paragraph.SetAlignment*"></a>
+  <h4 id="IronWord_Models_Paragraph_SetAlignment_IronSoftware_Abstractions_Word_TextAlignment_" data-uid="IronWord.Models.Paragraph.SetAlignment(IronSoftware.Abstractions.Word.TextAlignment)">SetAlignment(TextAlignment)</h4>
+  <div class="markdown level1 summary"><p>Sets the alignment for this paragraph.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Paragraph SetAlignment(TextAlignment alignment)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IronSoftware.Abstractions.Word.TextAlignment</span></td>
+        <td><span class="parametername">alignment</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Paragraph.html">Paragraph</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWord_Models_Paragraph_SetStyle_" data-uid="IronWord.Models.Paragraph.SetStyle*"></a>
+  <h4 id="IronWord_Models_Paragraph_SetStyle_IronWord_Models_ParagraphStyle_" data-uid="IronWord.Models.Paragraph.SetStyle(IronWord.Models.ParagraphStyle)">SetStyle(ParagraphStyle)</h4>
+  <div class="markdown level1 summary"><p>Sets the style for this paragraph.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Paragraph SetStyle(ParagraphStyle style)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.ParagraphStyle.html">ParagraphStyle</a></td>
+        <td><span class="parametername">style</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWord.Models.Paragraph.html">Paragraph</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="IronWord.Models.Abstract.Interfaces.ITextContainer.html">ITextContainer</a>
+  </div>
+  <div>
+      <a class="xref" href="IronWord.Models.Abstract.Interfaces.IDrawContainer.html">IDrawContainer</a>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.Word.IParagraph</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.Word.IWordDocumentObject</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.IDocumentObject</span>
+  </div>
+  <div>
+      <span class="xref">System.ICloneable</span>
+  </div>
+  <div>
+      <span class="xref">IronSoftware.Abstractions.IParent&lt;, &gt;</span>
+  </div>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_InsertChildToIndex_System_Int32_IronSoftware_Abstractions_Word_IWordDocumentObject___">InsertChildToIndex(Int32, IWordDocumentObject[])</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Remove">Remove()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_RemoveChildren_IronSoftware_Abstractions_Word_IWordDocumentObject___">RemoveChildren(IWordDocumentObject[])</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_RemoveAllChildren">RemoveAllChildren()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_ExtractElements__1">ExtractElements&lt;T&gt;()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_GetChildByIndex__1_System_Int32_">GetChildByIndex&lt;T&gt;(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Clone">Clone()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_CloneObject">CloneObject()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_LogObjectTree">LogObjectTree()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Texts">Texts</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Tables">Tables</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ParentElement.html#IronWord_Models_Abstract_ParentElement_Children">Children</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Replace_IronSoftware_Abstractions_Word_IWordDocumentObject_">Replace(IWordDocumentObject)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_GetIndex__1">GetIndex&lt;T&gt;()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Parent">Parent</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronWord.Models.Abstract.ContentElement.html#IronWord_Models_Abstract_ContentElement_Status">Status</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronWord/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with NuGet
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronWord' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

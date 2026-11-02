@@ -1,0 +1,709 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       DataValidation Class - IronXL C# API Reference
+      v2 (human)     title:       DataValidation: Restrict Cell Input in C#
+      v1 (algorithm) description: Restrict Excel cell input in C# with IronXL's DataValidation class: set ConstraintType, ComparisonOperator, Formula1, and prompt and error messages.
+      v2 (human)     description: Control what users can type into Excel cells in C# with IronXL's DataValidation class: data kind, bounds, drop-down list, prompts, and errors.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>DataValidation Class | IronXL C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="DataValidation Class | IronXL C# API">
+    <meta name="description" content="Reference for the IronXL DataValidation class in C#: a single validation rule with constraint, comparison, prompt, and error-message properties.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/excel/csharp/object-reference/api/IronXL.DataValidations.DataValidation.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "DataValidation Class | IronXL C# API",
+    "name": "DataValidation class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.DataValidations.DataValidation.html",
+    "abstract": "DataValidation describes one rule that restricts what a user may type into Excel cells in IronXL for C#. ConstraintType names the data kind, ComparisonOperator from IronXL.DataValidations.ComparisonOperator chooses the test, and Formula1 and Formula2 carry the bounds. PromptBox and ErrorBox properties set the hint and rejection messages, and ShowDropDownList toggles the in-cell list. Create a rule through the worksheet's DataValidations factory methods.",
+    "description": "Reference for the IronXL DataValidation class in C#: a single validation rule with constraint, comparison, prompt, and error-message properties.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\nusing IronXL.DataValidations;\n\nWorkSheet sheet = WorkBook.Create().DefaultWorkSheet;\nDataValidation rule =\n    sheet.DataValidations.AddIntegerRule(\"A1:A10\", ComparisonOperator.Between, 1, 100);\nrule.ErrorBoxText = \"Enter a value from 1 to 100.\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does DataValidation live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DataValidation is a class in the IronXL.DataValidations namespace, shipped in IronXL.dll. It is created through the worksheet's DataValidations collection factory methods such as AddIntegerRule and AddStringListRule, and removed with Remove."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you add a data validation rule in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call a typed factory method on the worksheet's DataValidations collection, for example AddIntegerRule with a range, a ComparisonOperator, and bounds. Refine the returned DataValidation with its prompt and error properties such as ErrorBoxText."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which ComparisonOperator does DataValidation use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ComparisonOperator property uses IronXL.DataValidations.ComparisonOperator, such as Between or GreaterThan. That is a different type from the ComparisonOperator in IronXL.Formatting.Enums, which applies to conditional formatting rules."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronXL.DataValidations.DataValidation">
+  
+  
+  <h1 id="IronXL_DataValidations_DataValidation" data-uid="IronXL.DataValidations.DataValidation" class="text-break">Class DataValidation
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a data validation rule. A data validation rule can be applied to
+a range of cells. The rule specifies the type of data that can be entered
+in the cells of the range. Additionally, the rule can limit the values to
+values in a list of allowable values that is specified by the user.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">DataValidation</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronXL.DataValidations.html">IronXL.DataValidations</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="IronXL_DataValidations_DataValidation_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class DataValidation : Object</code></pre>
+  </div>
+    <!-- archetype-N:start DataValidation treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>DataValidation</code> is the rule a developer reads back to see how a worksheet restricts what a user may type into a cell. It describes one validation constraint: the kind of data allowed, the comparison and bounds it must satisfy, and the prompt and error messages Excel shows. It is what a developer inspects behind a search like &quot;C# Excel data validation rule&quot;.</p>
+<p>A <code>DataValidation</code> is created indirectly. The worksheet's <code>DataValidations</code> collection exposes typed factory methods such as <code>AddIntegerRule</code>, <code>AddDecimalRule</code>, <code>AddDateRule</code>, <code>AddTextLengthRule</code>, <code>AddStringListRule</code>, and <code>AddFormulaListRule</code> that build the rule and attach it to a range. The properties on the resulting <code>DataValidation</code> then describe and refine that rule, and <code>Remove</code> takes the same object back out of the collection.</p>
+<p>The properties fall into three groups. The constraint group sets what is valid: <code>ConstraintType</code> names the data kind (whole number, decimal, date, list, and similar), <code>ComparisonOperator</code> from the <code>IronXL.DataValidations.ComparisonOperator</code> set chooses the test such as <code>Between</code> or <code>GreaterThan</code>, and <code>Formula1</code> and <code>Formula2</code> carry the bounds, with <code>Formula2</code> used by range operators. <code>ConstrainedRangeAddress</code> reports the cells the rule covers and <code>EmptyCellAllowed</code> decides whether a blank passes. The prompt group, <code>ShowPromptBox</code>, <code>PromptBoxTitle</code>, and <code>PromptBoxText</code>, sets the hint shown when a cell is selected. The error group, <code>ShowErrorBox</code>, <code>ErrorBoxTitle</code>, <code>ErrorBoxText</code>, and <code>ErrorAlert</code>, sets the message and its severity when an entry is rejected, and <code>ShowDropDownList</code> toggles the in-cell picker for list rules. Note that this <code>ComparisonOperator</code> is the data validation type, separate from the same-named operator in <code>IronXL.Formatting.Enums</code> used for conditional formatting.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+using IronXL.DataValidations;
+
+WorkSheet sheet = WorkBook.Create().DefaultWorkSheet;
+DataValidation rule =
+    sheet.DataValidations.AddIntegerRule(&quot;A1:A10&quot;, ComparisonOperator.Between, 1, 100);
+rule.ErrorBoxText = &quot;Enter a value from 1 to 100.&quot;;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/examples/excel-conditional-formatting/">data validation example</a> shows rule-driven cell handling, the <a href="https://ironsoftware.com/csharp/excel/how-to/select-range/">select range how-to</a> covers the ranges a rule targets, and the <a href="https://ironsoftware.com/csharp/excel/how-to/set-cell-data-format/">set cell data format how-to</a> covers related cell controls.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_ComparisonOperator_" data-uid="IronXL.DataValidations.DataValidation.ComparisonOperator*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_ComparisonOperator" data-uid="IronXL.DataValidations.DataValidation.ComparisonOperator">ComparisonOperator</h4>
+  <div class="markdown level1 summary"><p>The operator used by the data validation rule. This property is only
+used for whole number, decimal, date, time, and text length data
+validation rules. For all other types of data validation rules, this
+property returns <span class="xref">IronXL.DataValidations.ComparisonOperator.None</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ComparisonOperator ComparisonOperator { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.DataValidations.ComparisonOperator.html">ComparisonOperator</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_ConstrainedRangeAddress_" data-uid="IronXL.DataValidations.DataValidation.ConstrainedRangeAddress*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_ConstrainedRangeAddress" data-uid="IronXL.DataValidations.DataValidation.ConstrainedRangeAddress">ConstrainedRangeAddress</h4>
+  <div class="markdown level1 summary"><p>The range of cells to which this data validation rule applies.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RangeAddress ConstrainedRangeAddress { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.RangeAddress.html">RangeAddress</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_ConstraintType_" data-uid="IronXL.DataValidations.DataValidation.ConstraintType*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_ConstraintType" data-uid="IronXL.DataValidations.DataValidation.ConstraintType">ConstraintType</h4>
+  <div class="markdown level1 summary"><p>The type of data validation rule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConstraintType ConstraintType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.DataValidations.ConstraintType.html">ConstraintType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_EmptyCellAllowed_" data-uid="IronXL.DataValidations.DataValidation.EmptyCellAllowed*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_EmptyCellAllowed" data-uid="IronXL.DataValidations.DataValidation.EmptyCellAllowed">EmptyCellAllowed</h4>
+  <div class="markdown level1 summary"><p>Controlls wether the empty cell is allowed by the data validation rule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EmptyCellAllowed { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_ErrorAlert_" data-uid="IronXL.DataValidations.DataValidation.ErrorAlert*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_ErrorAlert" data-uid="IronXL.DataValidations.DataValidation.ErrorAlert">ErrorAlert</h4>
+  <div class="markdown level1 summary"><p>The style of error alert used by the data validation rule.</p>
+<ul><li>Stop
+Displays an error alert dialog box with a Stop icon in its title bar.
+</li><li>Warning
+Displays an error alert dialog box with a Warning icon in its title bar.
+</li><li>Information
+Displays an error alert dialog box with an Information icon in its title bar.
+</li></ul>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ErrorAlert ErrorAlert { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.DataValidations.ErrorAlert.html">ErrorAlert</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_ErrorBoxText_" data-uid="IronXL.DataValidations.DataValidation.ErrorBoxText*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_ErrorBoxText" data-uid="IronXL.DataValidations.DataValidation.ErrorBoxText">ErrorBoxText</h4>
+  <div class="markdown level1 summary"><p>The text of the error alert dialog box.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ErrorBoxText { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_ErrorBoxTitle_" data-uid="IronXL.DataValidations.DataValidation.ErrorBoxTitle*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_ErrorBoxTitle" data-uid="IronXL.DataValidations.DataValidation.ErrorBoxTitle">ErrorBoxTitle</h4>
+  <div class="markdown level1 summary"><p>The title of the error alert dialog box.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ErrorBoxTitle { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_Formula1_" data-uid="IronXL.DataValidations.DataValidation.Formula1*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_Formula1" data-uid="IronXL.DataValidations.DataValidation.Formula1">Formula1</h4>
+  <div class="markdown level1 summary"><p>The first formula used by the data validation rule. For list data
+validation rules, this formula specifies the list of allowable values.
+For Custom data validation rules, this formula specifies the custom
+validation formula.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Formula1 { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_Formula2_" data-uid="IronXL.DataValidations.DataValidation.Formula2*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_Formula2" data-uid="IronXL.DataValidations.DataValidation.Formula2">Formula2</h4>
+  <div class="markdown level1 summary"><p>The second formula used by the data validation rule. This formula is
+only used by whole number, decimal, date, time, and text length data
+validation rules. For all other types of data validation rules, this
+property returns <span class="xref">System.String.Empty</span> or <span class="xref">null</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Formula2 { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_PromptBoxText_" data-uid="IronXL.DataValidations.DataValidation.PromptBoxText*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_PromptBoxText" data-uid="IronXL.DataValidations.DataValidation.PromptBoxText">PromptBoxText</h4>
+  <div class="markdown level1 summary"><p>The title of the prompt box.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PromptBoxText { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_PromptBoxTitle_" data-uid="IronXL.DataValidations.DataValidation.PromptBoxTitle*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_PromptBoxTitle" data-uid="IronXL.DataValidations.DataValidation.PromptBoxTitle">PromptBoxTitle</h4>
+  <div class="markdown level1 summary"><p>The text of the prompt box.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PromptBoxTitle { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_ShowDropDownList_" data-uid="IronXL.DataValidations.DataValidation.ShowDropDownList*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_ShowDropDownList" data-uid="IronXL.DataValidations.DataValidation.ShowDropDownList">ShowDropDownList</h4>
+  <div class="markdown level1 summary"><p>Controlls wether the dropdown arrow is shown in the cell. This property
+is only used for list and custom data validation rules. It will return
+<span class="xref">false</span> for all other types of data validation rules.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShowDropDownList { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_ShowErrorBox_" data-uid="IronXL.DataValidations.DataValidation.ShowErrorBox*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_ShowErrorBox" data-uid="IronXL.DataValidations.DataValidation.ShowErrorBox">ShowErrorBox</h4>
+  <div class="markdown level1 summary"><p>Controlls wether the error alert is shown when the data validation rule
+is violated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShowErrorBox { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_ShowPromptBox_" data-uid="IronXL.DataValidations.DataValidation.ShowPromptBox*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_ShowPromptBox" data-uid="IronXL.DataValidations.DataValidation.ShowPromptBox">ShowPromptBox</h4>
+  <div class="markdown level1 summary"><p>Controlls wether the prompt box is shown when the cell is selected.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShowPromptBox { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_Equals_" data-uid="IronXL.DataValidations.DataValidation.Equals*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_Equals_System_Object_" data-uid="IronXL.DataValidations.DataValidation.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"><p>An override for the <span class="xref">System.Object.ToString</span> method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>An object to compare with this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">obj</code> is equal to
+this instance; otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_DataValidations_DataValidation_GetHashCode_" data-uid="IronXL.DataValidations.DataValidation.GetHashCode*"></a>
+  <h4 id="IronXL_DataValidations_DataValidation_GetHashCode" data-uid="IronXL.DataValidations.DataValidation.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"><p>An override for the <span class="xref">System.Object.GetHashCode</span> method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>A hash code for this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

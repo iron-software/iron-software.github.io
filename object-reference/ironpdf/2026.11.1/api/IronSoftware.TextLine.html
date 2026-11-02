@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       TextLine Class - IronPDF C# API Reference
+      v2 (human)     title:       TextLine: Read PDF Text Lines in C# | IronPDF
+      v1 (algorithm) description: Access extracted PDF text lines in C# with IronPDF's TextLine class: Contents, BoundingBox, Index, and Spans for span-level text analysis.
+      v2 (human)     description: Use IronPDF's TextLine in C# to read extracted PDF text, check bounding boxes, and iterate styled spans within each line of a document.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>TextLine Class | IronPDF C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="TextLine Class | IronPDF C# API Reference">
+    <meta name="description" content="Reference for IronPDF's TextLine class in C#: read Contents, BoundingBox, and Spans to analyze extracted text lines from a PDF page.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/IronSoftware.TextLine.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "TextLine Class | IronPDF C# API Reference",
+    "name": "TextLine class | IronPDF C# API",
+    "url": "https://ironpdf.com/object-reference/api/IronSoftware.TextLine.html",
+    "abstract": "Precise PDF text extraction in C# uses TextLine, an IronSoftware class in IronPdf.dll that represents one horizontal line of text composed of one or more TextSpan objects. Contents returns the full string, BoundingBox gives the line's RectangleF position, Index records reading order, and Spans exposes the individual styled segments for font-level inspection.",
+    "description": "Reference for IronPDF's TextLine class in C#: read Contents, BoundingBox, and Spans to analyze extracted text lines from a PDF page.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPDF",
+      "url": "https://ironpdf.com/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronPdf;\n\nforeach (TextLine line in pdfPage.TextLines)\n{\n    if (line.Contents.Contains(\"Invoice\", StringComparison.OrdinalIgnoreCase))\n        Console.WriteLine($\"Line {line.Index} at Y={line.BoundingBox.Y}: {line.Contents}\");\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does TextLine live in the IronPDF API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TextLine is a class in the IronSoftware namespace, shipped in IronPdf.dll. It derives from Object and is returned as part of IronPDF's page-level text extraction pipeline, giving access to Contents, BoundingBox, Index, and Spans."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you read individual styled segments within a TextLine in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Iterate the Spans property, which returns an IReadOnlyList<TextSpan>. Each TextSpan represents a run of text sharing the same style within the line, letting you inspect font or formatting details without manually splitting the Contents string."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronSoftware.TextLine">
+  
+  
+  <h1 id="IronSoftware_TextLine" data-uid="IronSoftware.TextLine" class="text-break">Class TextLine
+  </h1>
+  <div class="markdown level0 summary"><p>Line of text made up of one or more spans (PyMuPDF-style line).</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">TextLine</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronSoftware.html">IronSoftware</a></h6>
+  <h6><strong>Assembly</strong>: IronPdf.dll</h6>
+  <h5 id="IronSoftware_TextLine_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TextLine : Object</code></pre>
+  </div>
+    <!-- archetype-N:start TextLine treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p>Extracting structured text from a PDF page becomes precise when each horizontal run of characters is captured as a <code>TextLine</code>, a record that groups one or more <code>TextSpan</code> objects sharing the same baseline into a single addressable unit. <code>TextLine</code> follows the PyMuPDF-style line model, making its layout familiar to developers who have worked with that ecosystem.</p>
+<p>Four read-only properties expose everything needed for text analysis and coordinate-based processing. <code>Contents</code> returns the full plain-text string of the line, assembled from all its spans. <code>BoundingBox</code> gives the line's position and size as a <code>RectangleF</code>, enabling pixel-accurate region comparisons, redaction targeting, or table-cell alignment checks. <code>Index</code> identifies the line's ordinal position within its parent block, so lines can be sorted or filtered by reading order. <code>Spans</code> provides an <code>IReadOnlyList&lt;TextSpan&gt;</code> of the individual styled segments that make up the line; iterating <code>Spans</code> lets you inspect font, size, or color variations within a single line without splitting the raw string manually.</p>
+<p>A typical workflow retrieves <code>TextLine</code> objects from IronPDF's text extraction pipeline and then queries <code>Contents</code> for keyword matching or passes <code>BoundingBox</code> to a coordinate-aware extraction call.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronPdf;
+
+foreach (TextLine line in pdfPage.TextLines)
+{
+    if (line.Contents.Contains(&quot;Invoice&quot;, StringComparison.OrdinalIgnoreCase))
+        Console.WriteLine($&quot;Line {line.Index} at Y={line.BoundingBox.Y}: {line.Contents}&quot;);
+}</code></pre></div>
+<p>The <a href="https://ironpdf.com/how-to/extract-text-from-pdf/">extract text from PDF how-to</a> covers the full extraction pipeline, and the <a href="https://ironpdf.com/examples/extract-text-from-pdf/">PDF text extraction examples</a> show coordinate-based and span-level techniques.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronSoftware_TextLine__ctor_" data-uid="IronSoftware.TextLine.#ctor*"></a>
+  <h4 id="IronSoftware_TextLine__ctor" data-uid="IronSoftware.TextLine.#ctor">TextLine()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextLine()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronSoftware_TextLine_BoundingBox_" data-uid="IronSoftware.TextLine.BoundingBox*"></a>
+  <h4 id="IronSoftware_TextLine_BoundingBox" data-uid="IronSoftware.TextLine.BoundingBox">BoundingBox</h4>
+  <div class="markdown level1 summary"><p>Bounds in PDF user space, matching <a class="xref" href="IronSoftware.TextObject.html#IronSoftware_TextObject_BoundingBox">BoundingBox</a>:
+Y grows upward, so Height is negative and Bottom sits below Top.
+Note that <span class="xref">System.Drawing.RectangleF.IsEmpty</span> is therefore true for a valid box.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RectangleF BoundingBox { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.RectangleF</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_TextLine_Contents_" data-uid="IronSoftware.TextLine.Contents*"></a>
+  <h4 id="IronSoftware_TextLine_Contents" data-uid="IronSoftware.TextLine.Contents">Contents</h4>
+  <div class="markdown level1 summary"><p>Text of all spans in this line, joined without a separator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Contents { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_TextLine_Index_" data-uid="IronSoftware.TextLine.Index*"></a>
+  <h4 id="IronSoftware_TextLine_Index" data-uid="IronSoftware.TextLine.Index">Index</h4>
+  <div class="markdown level1 summary"><p>Zero based index of this line on the page, not within its parent block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Index { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronSoftware_TextLine_Spans_" data-uid="IronSoftware.TextLine.Spans*"></a>
+  <h4 id="IronSoftware_TextLine_Spans" data-uid="IronSoftware.TextLine.Spans">Spans</h4>
+  <div class="markdown level1 summary"><p>Spans in this line, left to right.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;TextSpan&gt; Spans { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="IronSoftware.TextSpan.html">TextSpan</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace IronPdf.PrintDoc
+   | C# PDF Library Documentation | IronPDF </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace IronPdf.PrintDoc
+   | C# PDF Library Documentation | IronPDF ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/IronPdf.PrintDoc.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronPdf.PrintDoc">
+  
+  <h1 id="IronPdf_PrintDoc" data-uid="IronPdf.PrintDoc" class="text-break">Namespace IronPdf.PrintDoc
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="IronPdf.PrintDoc.PdfPrintDocument.html">PdfPrintDocument</a></h4>
+      <section><p>Provides advanced control over printing PDF documents to physical printers.
+Extends <span class="xref">System.Drawing.Printing.PrintDocument</span> for full Windows print integration.</p>
+<p>
+For simple printing, use <see cref="!:PdfDocument.Print()"></see> or <see cref="!:PdfDocument.PrintToFile(string)"></see>.
+Use this class when you need granular control over print settings, events, or preview.
+</p><p><strong>Example - Advanced printing with dialog:</strong><pre><code>using System.Drawing.Printing;
+using System.Windows.Forms;
+<p>var pdf = PdfDocument.FromFile(&quot;report.pdf&quot;);
+var settings = new PdfPrintSettings();
+var printerSettings = new PrinterSettings();
+var controller = new StandardPrintController();</p>
+<p>var printDoc = new PdfPrintDocument(pdf, settings, printerSettings, controller);</p>
+<p>// Show print dialog:
+var dialog = new PrintDialog { Document = printDoc };
+if (dialog.ShowDialog() == DialogResult.OK)
+{
+printDoc.Print();
+}</p>
+<p>// Or print preview:
+var preview = new PrintPreviewDialog { Document = printDoc };
+preview.ShowDialog();</code></pre></p><p>
+</section>
+      <h4><a class="xref" href="IronPdf.PrintDoc.PdfPrintMultiplePages.html">PdfPrintMultiplePages</a></h4>
+      <section><p>Configures N-up printing to place multiple PDF pages on a single physical sheet.
+Reduces paper usage by arranging pages in a grid layout (e.g., 2-up, 4-up, 6-up).</p>
+<p><strong>Example - Common configurations:</strong><pre><code>// 2-up printing (2 pages per sheet, side by side):
+var twoUp = new PdfPrintMultiplePages(2, 1, PdfPaperOrientation.Landscape, 5f);
+<p>// 4-up printing (4 pages per sheet, 2x2 grid):
+var fourUp = new PdfPrintMultiplePages(2, 2, PdfPaperOrientation.Portrait, 3f);</p>
+<p>// 6-up printing (6 pages per sheet, 3x2 grid):
+var sixUp = new PdfPrintMultiplePages(3, 2, PdfPaperOrientation.Landscape, 2f);</p>
+<p>// Use with print settings:
+var settings = new PdfPrintSettings(fourUp);
+pdf.Print(settings);</code></pre></p><p>
+</section>
+      <h4><a class="xref" href="IronPdf.PrintDoc.PdfPrintSettings.html">PdfPrintSettings</a></h4>
+      <section><p>Controls physical printing options for PDF documents including layout and page arrangement.
+Configure how PDFs are sent to printers with support for multiple pages per sheet.</p>
+<pre><code>// Print 2 pages per sheet:
+var multiPages = new PdfPrintMultiplePages(2, 1);  // 2 rows, 1 column
+var settings = new PdfPrintSettings(multiPages);
+pdf.Print(settings);
+
+// Print 4 pages per sheet (2x2):
+var fourUp = new PdfPrintMultiplePages(2, 2);
+var settings = new PdfPrintSettings(fourUp);
+
+// Standard single page printing:
+var settings = new PdfPrintSettings(null);</code></pre><p> Multiple pages per sheet saves paper for drafts and handouts</p><p> Text may be small when printing multiple pages per sheet</p><p>See: https://ironpdf.com/how-to/print-pdf/</p>
+</section>
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

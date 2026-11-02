@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IronWord: Word Document Library for .NET | C# Word API | IronWord </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IronWord: Word Document Library for .NET | C# Word API | IronWord ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/word/csharp/object-reference/api/index.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="ironword-word-document-library-for-net">IronWord: Word Document Library for .NET</h1>
+
+<p><strong>IronWord</strong> is a Word document library developed by Iron Software. IronWord excels in providing robust functionality for working with Word documents in .NET applications.</p>
+<h2 id="features-of-ironword">Features of IronWord</h2>
+<ul>
+<li>Load, Manipulate, and Save Word and Docx Document.</li>
+<li>PageSetup: Configuring paper size, page orientation, margins, and background color.</li>
+<li>TextRun: Handling text content, styles, splitting, appending text, and adding images.</li>
+<li>TextStyle: Managing font family, size, color, bold, italic, strikethrough, underline, superscript, and subscript.</li>
+<li>Paragraph: Adding text runs, images, shapes, setting styles, alignments, bullets, and numbering lists.</li>
+<li>Table: Manipulating table structure, including adding rows, getting and setting cell values, removing rows, merging cells, and more.</li>
+<li>Image: Loading images from files or streams, setting wrap text, position offset, width, height, and other properties.</li>
+<li>Shape: Setting wrap text, position offset, width, height, shape type, and rotation.</li>
+</ul>
+<h2 id="compatibility">Compatibility</h2>
+<p>Supports applications and websites developed in:</p>
+<ul>
+<li>.NET 9, .NET 8, .NET 7, .NET 6, .NET 5, and .NET Core, Standard, and Framework 4.6.2+</li>
+<li>Windows, macOS, Linux, Android, iOS, Docker, Azure, and AWS</li>
+<li>Console, Desktop, and Web Apps. MVC, Blazor, MAUI, Razor Pages, Web Forms</li>
+</ul>
+<h2 id="get-started">Get Started</h2>
+<ul>
+<li>Quickstart Guide: <a href="https://ironsoftware.com/csharp/word/docs/">https://ironsoftware.com/csharp/word/docs/</a></li>
+<li>Install with NuGet: <a href="https://www.nuget.org/packages/IronWord/">https://www.nuget.org/packages/IronWord/</a></li>
+</ul>
+<h2 id="c-code-examples">C# Code Examples</h2>
+<h3 id="add-image">Add Image</h3>
+<pre><code class="lang-csharp">using IronWord;
+using IronWord.Models;
+
+// Load docx
+WordDocument doc = new WordDocument(&quot;document.docx&quot;);
+
+// Configure image
+IronWord.Models.Image image = new IronWord.Models.Image(&quot;image.jpg&quot;);
+image.Width = 200; // In unit pixel
+image.Height = 200; // In unit pixel
+Paragraph paragraph = new Paragraph();
+
+// Add image
+paragraph.AddImage(image);
+
+// Add paragraph
+
+doc.AddParagraph(paragraph);
+
+// Export docx
+doc.SaveAs(&quot;save_document.docx&quot;);
+</code></pre>
+<h3 id="add-table">Add Table</h3>
+<pre><code class="lang-csharp">using IronWord;
+using IronWord.Models;
+
+// Create table cell
+TableCell cell = new TableCell();
+
+TextRun textRun = new TextRun();
+textRun.Text = &quot;Sample text&quot;;
+
+// Add textrun to the cell
+cell.AddContent(new Paragraph(textRun));
+
+// Configure border style
+BorderStyle borderStyle = new BorderStyle();
+borderStyle.BorderColor = new IronColor(IronSoftware.Drawing.Color.Black);
+borderStyle.BorderValue = IronWord.Models.Enums.BorderValues.Thick;
+borderStyle.BorderSize = 5;
+
+// Configure table border
+TableBorders tableBorders = new TableBorders() { 
+    TopBorder = borderStyle,
+    RightBorder = borderStyle,
+    BottomBorder = borderStyle,
+    LeftBorder = borderStyle,
+};
+
+cell.Borders = tableBorders;
+
+// Create row and add cell
+TableRow row = new TableRow();
+row.AddCell(cell);
+row.AddCell(cell);
+
+// Create table and add row
+Table table = new Table();
+table.AddRow(row);
+
+// Create new Word document from the table
+WordDocument doc = new WordDocument(table);
+
+// Export Word document
+doc.SaveAs(&quot;Document.docx&quot;);
+</code></pre>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>More Code Samples : <a href="https://ironsoftware.com/csharp/word/examples/create-empty-word/">https://ironsoftware.com/csharp/word/examples/create-empty-word/</a></li>
+<li>How-To Guides : <a href="https://ironsoftware.com/csharp/word/how-to/license-keys/">https://ironsoftware.com/csharp/word/how-to/license-keys/</a></li>
+<li>Tutorials : <a href="https://ironsoftware.com/csharp/word/tutorials/document-element/">https://ironsoftware.com/csharp/word/tutorials/document-element/</a></li>
+<li>API Reference : <a href="index.html">https://ironsoftware.com/csharp/word/object-reference/api/</a></li>
+<li>Support : <a href="mailto:support@ironsoftware.com">support@ironsoftware.com</a></li>
+</ul>
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="#helpscout-support" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronWord/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with NuGet
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronWord' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

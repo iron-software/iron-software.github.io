@@ -1,0 +1,870 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       RangeRow Class - IronXL C# API Reference
+      v2 (human)     title:       RangeRow: Size & Hide Excel Rows in C#
+      v1 (algorithm) description: Work with a whole Excel row in C# with the IronXL RangeRow class: RowNumber, Height, AutoSizeRow, Hidden, and RemoveRow on the row from GetRow.
+      v2 (human)     description: Handle an entire Excel row in C# through the IronXL RangeRow class: read its number, set its height, auto-size it to content, hide it, or remove it.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>RangeRow Class | IronXL C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="RangeRow Class | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL RangeRow class in C#: identify a row by number, set Height, AutoSizeRow to content, and Hidden or RemoveRow.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/excel/csharp/object-reference/api/IronXL.RangeRow.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="mid" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "RangeRow Class | IronXL C# API Reference",
+    "name": "RangeRow class | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.RangeRow.html",
+    "abstract": "Sizing, hiding, identifying, or removing one Excel row as a unit in C# runs through the IronXL RangeRow class. A worksheet returns one from GetRow by index. RowNumber reports its position, Height sets its size while AutoSizeRow fits content, Hidden shows or hides it, and RemoveRow deletes it. It derives from Range, so range members apply to the row's cells too.",
+    "description": "Reference for the IronXL RangeRow class in C#: identify a row by number, set Height, AutoSizeRow to content, and Hidden or RemoveRow.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "using IronXL;\n\nWorkBook workBook = WorkBook.Load(\"sample.xlsx\");\nWorkSheet workSheet = workBook.GetWorkSheet(\"Sheet1\");\nRangeRow row = workSheet.GetRow(0);\nrow.AutoSizeRow();\nworkBook.SaveAs(\"output.xlsx\");"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does RangeRow live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RangeRow is a class in the IronXL namespace, shipped in IronXL.dll, and derives from Range. A WorkSheet returns one from GetRow, passing the row index."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you auto-size an Excel row in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Get the row with WorkSheet.GetRow, then call AutoSizeRow on the returned RangeRow to fit its height to content. An overload controls whether merged cells count, and Height sets a fixed size instead."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronXL.RangeRow">
+  
+  
+  <h1 id="IronXL_RangeRow" data-uid="IronXL.RangeRow" class="text-break">Class RangeRow
+  </h1>
+  <div class="markdown level0 summary"><p>A class that represents a single row of cells.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="IronXL.Range.html">Range</a></div>
+    <div class="level2"><span class="xref">RangeRow</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="IronXL.Cell.html">Cell</a>&gt;</div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ClearContents">Range.ClearContents()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_GetEnumerator">Range.GetEnumerator()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ToArray">Range.ToArray()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Sum">Range.Sum()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Max">Range.Max()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Min">Range.Min()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Avg">Range.Avg()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AddRange_IronXL_Range_">Range.AddRange(Range)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AddRange_IronXL_RangeAddress_">Range.AddRange(RangeAddress)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SubtractRange_IronXL_Range_">Range.SubtractRange(Range)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SubtractRange_IronXL_RangeAddress_">Range.SubtractRange(RangeAddress)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveRow_System_Int32_">Range.RemoveRow(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveRow_IronXL_RangeRow_">Range.RemoveRow(RangeRow)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveColumn_System_String_">Range.RemoveColumn(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveColumn_System_Int32_">Range.RemoveColumn(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveColumn_IronXL_RangeColumn_">Range.RemoveColumn(RangeColumn)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertRow_System_Int32_">Range.InsertRow(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertRows_System_Int32_System_Int32_">Range.InsertRows(Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumn_System_Int32_">Range.InsertColumn(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumn_System_String_">Range.InsertColumn(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumns_System_String_System_Int32_">Range.InsertColumns(String, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumns_System_Int32_System_Int32_">Range.InsertColumns(Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortAscending">Range.SortAscending()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortDescending">Range.SortDescending()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortByColumn_System_String_IronXL_SortOrder_">Range.SortByColumn(String, SortOrder)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortByColumn_System_Int32_IronXL_SortOrder_">Range.SortByColumn(Int32, SortOrder)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Trim">Range.Trim()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ToDataTable_System_Boolean_">Range.ToDataTable(Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SetCellValue_System_Int32_System_Int32_System_Object_">Range.SetCellValue(Int32, Int32, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_GetValue__1">Range.GetValue&lt;TType&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_TryGetValue__1___0__">Range.TryGetValue&lt;TType&gt;(TType)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ToString">Range.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Copy_IronXL_WorkSheet_System_String_">Range.Copy(WorkSheet, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Replace_System_String_System_String_">Range.Replace(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SaveAsNamedTable_System_String_System_Boolean_IronXL_Styles_TableStyle_System_Boolean_">Range.SaveAsNamedTable(String, Boolean, TableStyle, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SaveAsNamedRange_System_String_System_Boolean_">Range.SaveAsNamedRange(String, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Row_System_Int32_">Range.Row(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Column_System_Int32_">Range.Column(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RangeAddress">Range.RangeAddress</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RangeAddressAsString">Range.RangeAddressAsString</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Count">Range.Count</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ColumnCount">Range.ColumnCount</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RowCount">Range.RowCount</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Style">Range.Style</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_WorkBook">Range.WorkBook</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_IsEmpty">Range.IsEmpty</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Rows">Range.Rows</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Columns">Range.Columns</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Value">Range.Value</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_FormatString">Range.FormatString</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Formula">Range.Formula</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_StringValue">Range.StringValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_DateTimeValue">Range.DateTimeValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_BoolValue">Range.BoolValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_IntValue">Range.IntValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_DoubleValue">Range.DoubleValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_DecimalValue">Range.DecimalValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_FloatValue">Range.FloatValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Int64Value">Range.Int64Value</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_LongValue">Range.LongValue</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Int32Value">Range.Int32Value</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AllRowsInRange">Range.AllRowsInRange</a>
+    </div>
+    <div>
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AllColumnsInRange">Range.AllColumnsInRange</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronXL.html">IronXL</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="IronXL_RangeRow_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RangeRow : Range</code></pre>
+  </div>
+    <!-- archetype-N:start RangeRow treatment=mid sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="mid" data-sub-variant="class">
+<p><code>RangeRow</code> is the row-shaped view of an Excel sheet a developer holds in C# to size, hide, identify, or remove a single row as a unit. It is what a worksheet returns for one row, carrying the row-level operations that a plain block of cells does not, so code reaching for &quot;C# Excel row&quot; lands here.</p>
+<p>Get a row from a worksheet with <code>GetRow</code>, passing the row index, which returns the <code>RangeRow</code> for that position. Because <code>RangeRow</code> derives from <code>Range</code>, every range member still applies, so the row's cells can be read, summed, or formatted as any range, while the row-specific members add the operations that only make sense on a whole row. <code>RowNumber</code> reports the row's position, <code>Height</code> reads or sets how tall it renders, and <code>AutoSizeRow</code> fits that height to content instead, with an overload that controls whether merged cells count toward the measurement. <code>Hidden</code> shows or hides the row, and <code>RemoveRow</code> deletes it, shifting the rows below it up. These edits stay in memory until the parent <code>WorkBook</code> is saved.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">using IronXL;
+
+WorkBook workBook = WorkBook.Load(&quot;sample.xlsx&quot;);
+WorkSheet workSheet = workBook.GetWorkSheet(&quot;Sheet1&quot;);
+RangeRow row = workSheet.GetRow(0);
+row.AutoSizeRow();
+workBook.SaveAs(&quot;output.xlsx&quot;);</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/how-to/autosize-rows-columns/">auto resize how-to</a> covers <code>AutoSizeRow</code>, and the <a href="https://ironsoftware.com/csharp/excel/how-to/add-rows-columns/">add rows and columns how-to</a> inserts and removes rows.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronXL_RangeRow_Height_" data-uid="IronXL.RangeRow.Height*"></a>
+  <h4 id="IronXL_RangeRow_Height" data-uid="IronXL.RangeRow.Height">Height</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the height of the row.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Height { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_RangeRow_Hidden_" data-uid="IronXL.RangeRow.Hidden*"></a>
+  <h4 id="IronXL_RangeRow_Hidden" data-uid="IronXL.RangeRow.Hidden">Hidden</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether this row is hidden.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Hidden { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_RangeRow_RowNumber_" data-uid="IronXL.RangeRow.RowNumber*"></a>
+  <h4 id="IronXL_RangeRow_RowNumber" data-uid="IronXL.RangeRow.RowNumber">RowNumber</h4>
+  <div class="markdown level1 summary"><p>0-based index of the row.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RowNumber { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronXL_RangeRow_AutoSizeRow_" data-uid="IronXL.RangeRow.AutoSizeRow*"></a>
+  <h4 id="IronXL_RangeRow_AutoSizeRow" data-uid="IronXL.RangeRow.AutoSizeRow">AutoSizeRow()</h4>
+  <div class="markdown level1 summary"><p>Changes height of the row to fit the content based on font measurements.</p>
+<p>This method measures the text in the cell based on the font that is used for the cell.</p>
+<p>If the exact font is not found on the machine, it will try to measure with a default font (Arial).</p>
+<p>------------------------------------------------</p>
+<p>
+<strong>Usage:</strong>
+</p>
+<pre><code>// Auto-size row 5 to fit its content
+var workbook = WorkBook.Load(&quot;example.xlsx&quot;);
+var sheet = workbook.DefaultWorkSheet;
+var row = sheet.GetRow(5);
+row.AutoSizeRow();
+workbook.SaveAs(&quot;autosized.xlsx&quot;);</code></pre>
+<p>------------------------------------------------</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AutoSizeRow()</code></pre>
+  </div>
+  <h5 id="IronXL_RangeRow_AutoSizeRow_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><strong>Important Considerations:</strong></p>
+<p>
+    ⚠️ <strong>Font Availability:</strong> The exact font must be installed on the system for accurate measurements.
+</p>
+<p>
+    📝 <strong>Note:</strong> This overload does not consider merged cells. Use AutoSizeRow(true) to include merged cells.
+</p>
+<strong>Related Documentation:</strong>
+<p>
+    📖 <strong>How-To Guide:</strong><a href="https://ironsoftware.com/csharp/excel/how-to/autosize-rows-columns">AutoSize Rows and Columns Guide</a>
+</p>
+<p>
+    📚 <strong>API Reference:</strong><a href="https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.RangeRow.html#IronXL_RangeRow_AutoSizeRow">RangeRow API Documentation</a>
+</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>Thrown when the row cannot be auto-sized.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">SixLabors.Fonts.FontException</span></td>
+        <td><p>Thrown when no fonts are found installed on the machine.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_RangeRow_AutoSizeRow_" data-uid="IronXL.RangeRow.AutoSizeRow*"></a>
+  <h4 id="IronXL_RangeRow_AutoSizeRow_System_Boolean_" data-uid="IronXL.RangeRow.AutoSizeRow(System.Boolean)">AutoSizeRow(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Changes height of the row to fit the content based on font measurements.</p>
+<p>This method measures the text in the cell based on the font that is used for the cell.</p>
+<p>If the exact font is not found on the machine, it will try to measure with a default font (Arial).</p>
+<p>------------------------------------------------</p>
+<p>
+<strong>Usage:</strong>
+</p>
+<pre><code>// Auto-size row 5 including merged cells
+var workbook = WorkBook.Load(&quot;example.xlsx&quot;);
+var sheet = workbook.DefaultWorkSheet;
+var row = sheet.GetRow(5);
+row.AutoSizeRow(true);  // Include merged cells
+workbook.SaveAs(&quot;autosized.xlsx&quot;);</code></pre>
+<p>------------------------------------------------</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AutoSizeRow(bool useMergedCells)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">useMergedCells</span></td>
+        <td><p>If true, the height of merged cells will be considered.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IronXL_RangeRow_AutoSizeRow_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><strong>Important Considerations:</strong></p>
+<p>
+    ⚠️ <strong>Font Availability:</strong> The exact font must be installed on the system for accurate measurements.
+</p>
+<p>
+    📝 <strong>Merged Cells:</strong> When useMergedCells is true, the height calculation considers cells that span multiple rows.
+</p>
+<p>
+    🎯 <strong>Wrap Text:</strong> If cells have wrap text enabled, the height will be adjusted to show all wrapped content.
+</p>
+<strong>Related Documentation:</strong>
+<p>
+    📖 <strong>How-To Guide:</strong><a href="https://ironsoftware.com/csharp/excel/how-to/autosize-rows-columns">AutoSize Rows and Columns Guide</a>
+</p>
+<p>
+    📚 <strong>API Reference:</strong><a href="https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.RangeRow.html#IronXL_RangeRow_AutoSizeRow_System_Boolean_">RangeRow API Documentation</a>
+</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>Thrown when the row cannot be auto-sized.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">SixLabors.Fonts.FontException</span></td>
+        <td><p>Thrown when no fonts are found installed on the machine.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_RangeRow_RemoveRow_" data-uid="IronXL.RangeRow.RemoveRow*"></a>
+  <h4 id="IronXL_RangeRow_RemoveRow" data-uid="IronXL.RangeRow.RemoveRow">RemoveRow()</h4>
+  <div class="markdown level1 summary"><p>Removes the row from the worksheet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveRow()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
+  </div>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ClearContents">ClearContents()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_GetEnumerator">GetEnumerator()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ToArray">ToArray()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Sum">Sum()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Max">Max()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Min">Min()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Avg">Avg()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AddRange_IronXL_Range_">AddRange(Range)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AddRange_IronXL_RangeAddress_">AddRange(RangeAddress)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SubtractRange_IronXL_Range_">SubtractRange(Range)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SubtractRange_IronXL_RangeAddress_">SubtractRange(RangeAddress)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveRow_System_Int32_">RemoveRow(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveRow_IronXL_RangeRow_">RemoveRow(RangeRow)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveColumn_System_String_">RemoveColumn(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveColumn_System_Int32_">RemoveColumn(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RemoveColumn_IronXL_RangeColumn_">RemoveColumn(RangeColumn)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertRow_System_Int32_">InsertRow(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertRows_System_Int32_System_Int32_">InsertRows(Int32, Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumn_System_Int32_">InsertColumn(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumn_System_String_">InsertColumn(String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumns_System_String_System_Int32_">InsertColumns(String, Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_InsertColumns_System_Int32_System_Int32_">InsertColumns(Int32, Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortAscending">SortAscending()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortDescending">SortDescending()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortByColumn_System_String_IronXL_SortOrder_">SortByColumn(String, SortOrder)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SortByColumn_System_Int32_IronXL_SortOrder_">SortByColumn(Int32, SortOrder)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Trim">Trim()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ToDataTable_System_Boolean_">ToDataTable(Boolean)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SetCellValue_System_Int32_System_Int32_System_Object_">SetCellValue(Int32, Int32, Object)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_GetValue__1">GetValue&lt;TType&gt;()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_TryGetValue__1___0__">TryGetValue&lt;TType&gt;(TType)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ToString">ToString()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Copy_IronXL_WorkSheet_System_String_">Copy(WorkSheet, String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Replace_System_String_System_String_">Replace(String, String)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SaveAsNamedTable_System_String_System_Boolean_IronXL_Styles_TableStyle_System_Boolean_">SaveAsNamedTable(String, Boolean, TableStyle, Boolean)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_SaveAsNamedRange_System_String_System_Boolean_">SaveAsNamedRange(String, Boolean)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Row_System_Int32_">Row(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Column_System_Int32_">Column(Int32)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RangeAddress">RangeAddress</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RangeAddressAsString">RangeAddressAsString</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Count">Count</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_ColumnCount">ColumnCount</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_RowCount">RowCount</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Style">Style</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_WorkBook">WorkBook</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_IsEmpty">IsEmpty</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Rows">Rows</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Columns">Columns</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Value">Value</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_FormatString">FormatString</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Formula">Formula</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_StringValue">StringValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_DateTimeValue">DateTimeValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_BoolValue">BoolValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_IntValue">IntValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_DoubleValue">DoubleValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_DecimalValue">DecimalValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_FloatValue">FloatValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Int64Value">Int64Value</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_LongValue">LongValue</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_Int32Value">Int32Value</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AllRowsInRange">AllRowsInRange</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronXL.Range.html#IronXL_Range_AllColumnsInRange">AllColumnsInRange</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

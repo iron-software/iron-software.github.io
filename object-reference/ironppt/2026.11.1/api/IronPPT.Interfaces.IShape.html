@@ -1,0 +1,550 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IShape Interface - IronPPT C# API Reference
+      v2 (human)     title:       IShape: The Slide Shape Contract in C#
+      v1 (algorithm) description: IShape is the IronPPT shape contract in C#: read FillColor, OutlineColor, Name, and Type, and call Resize, Rotate, and Flip on any slide shape.
+      v2 (human)     description: Edit any slide shape in C# through the IronPPT IShape contract: set fill and outline color, rename, resize, and rotate, implemented by Shape and TextBox.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IShape Interface | IronPPT C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IShape Interface | IronPPT C# API">
+    <meta name="description" content="Reference for the IronPPT IShape interface in C#: the shape contract behind Shape and TextBox, with color, naming, and geometry members.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/ppt/csharp/object-reference/api/IronPPT.Interfaces.IShape.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IShape Interface | IronPPT C# API",
+    "name": "IShape interface | IronPPT C# API",
+    "url": "https://ironsoftware.com/csharp/ppt/object-reference/api/IronPPT.Interfaces.IShape.html",
+    "abstract": "Editing a shape on a slide in C# runs through the IronPPT IShape contract. It exposes FillColor and OutlineColor, Name and Type, and the geometry methods Resize, Rotate, FlipHorizontal, and FlipVertical, with Height, Width, and Position inherited from IGraphic. The implementors are Shape and TextBox, reached through ISlide.Shapes, so shape-editing code stays uniform across kinds.",
+    "description": "Reference for the IronPPT IShape interface in C#: the shape contract behind Shape and TextBox, with color, naming, and geometry members.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronPPT",
+      "url": "https://ironsoftware.com/csharp/ppt/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "foreach (IShape shape in slide.Shapes)\n{\n    shape.Name = \"Logo\";\n    shape.Rotate(90);\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IShape live in the IronPPT API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IShape is an interface in the IronPPT.Interfaces namespace, shipped in IronPPT.dll. It extends IGraphic and IContentElement, so a shape carries both its own appearance members and inherited graphic geometry."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What implements IShape in IronPPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Shape and TextBox implement IShape; a TextBox is a Shape that also holds text. You usually receive them already typed through ISlide.Shapes, a List<IShape>, rather than constructing the interface directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you change a shape's color in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set the FillColor and OutlineColor properties, both typed as IColor, on any IShape. Use Name and Type to identify the shape, and Resize, Rotate, FlipHorizontal, or FlipVertical to adjust its geometry."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronPPT.Interfaces.IShape">
+  
+  
+  <h1 id="IronPPT_Interfaces_IShape" data-uid="IronPPT.Interfaces.IShape" class="text-break">Interface IShape
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="IronPPT.Interfaces.IGraphic.html#IronPPT_Interfaces_IGraphic_Height">IGraphic.Height</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Interfaces.IGraphic.html#IronPPT_Interfaces_IGraphic_Position">IGraphic.Position</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Interfaces.IGraphic.html#IronPPT_Interfaces_IGraphic_Width">IGraphic.Width</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Interfaces.IGraphic.html#IronPPT_Interfaces_IGraphic_Angle">IGraphic.Angle</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Interfaces.IContentElement.html#IronPPT_Interfaces_IContentElement_Remove">IContentElement.Remove()</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Interfaces.IContentElement.html#IronPPT_Interfaces_IContentElement_Replace_IronPPT_Interfaces_IContentElement_">IContentElement.Replace(IContentElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Interfaces.IContentElement.html#IronPPT_Interfaces_IContentElement_Parent">IContentElement.Parent</a>
+    </div>
+    <div>
+      <a class="xref" href="IronPPT.Interfaces.IContentElement.html#IronPPT_Interfaces_IContentElement_Status">IContentElement.Status</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronPPT.Interfaces.html">IronPPT.Interfaces</a></h6>
+  <h6><strong>Assembly</strong>: IronPPT.dll</h6>
+  <h5 id="IronPPT_Interfaces_IShape_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IShape : IGraphic, IContentElement</code></pre>
+  </div>
+    <!-- archetype-N:start IShape treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p><code>IShape</code> is the contract you work through whenever code touches a shape on a slide, whether that shape is a rectangle, a picture frame, or a text box. It gives a uniform way to read and adjust a shape's appearance and placement without caring which concrete kind of shape it actually is, so a loop over a slide's shapes can recolor, rename, or reposition each one through the same members.</p>
+<p>The concrete implementors in IronPPT are <code>Shape</code> and <code>TextBox</code> (a <code>TextBox</code> is a <code>Shape</code> that also holds text). A developer rarely names the interface directly: shapes arrive already typed through <code>ISlide.Shapes</code>, which is a <code>List&lt;IShape&gt;</code>, or are added with <code>AddShape</code>. Working against <code>IShape</code> rather than a concrete class keeps shape-editing code generic across those kinds and easy to test with a stub.</p>
+<p>The everyday members are <code>FillColor</code> and <code>OutlineColor</code> (both typed as <code>IColor</code>) for appearance, <code>Name</code> and <code>Type</code> for identity, and the geometry methods <code>Resize</code>, <code>Rotate</code>, <code>FlipHorizontal</code>, and <code>FlipVertical</code>. <code>Type</code> is a <code>Nullable&lt;ShapeType&gt;</code> describing what the shape is, <code>Index</code> reports its place in the slide's shape list, and <code>Id</code> and <code>Clone</code> round out the surface. Position and size members such as <code>Height</code>, <code>Width</code>, <code>Angle</code>, and <code>Position</code> are inherited from <code>IGraphic</code>, so a single shape exposes both its own appearance surface and the graphic geometry every slide element shares. Because the same members exist on every implementor, code that recolors or repositions one shape works unchanged across rectangles, pictures, and text boxes, which is what makes batch edits over <code>ISlide.Shapes</code> practical.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">foreach (IShape shape in slide.Shapes)
+{
+    shape.Name = &quot;Logo&quot;;
+    shape.Rotate(90);
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/ppt/examples/add-shape/">add shape example</a> adds a shape to a slide, the <a href="https://ironsoftware.com/csharp/ppt/tutorials/slide-element/">slide element tutorial</a> walks through positioning elements on a slide, and the <a href="https://ironsoftware.com/csharp/ppt/how-to/manage-slide/">manage slide how-to</a> covers working with a slide's contents.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronPPT_Interfaces_IShape_FillColor_" data-uid="IronPPT.Interfaces.IShape.FillColor*"></a>
+  <h4 id="IronPPT_Interfaces_IShape_FillColor" data-uid="IronPPT.Interfaces.IShape.FillColor">FillColor</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IColor FillColor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPPT.Interfaces.IColor.html">IColor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPPT_Interfaces_IShape_Id_" data-uid="IronPPT.Interfaces.IShape.Id*"></a>
+  <h4 id="IronPPT_Interfaces_IShape_Id" data-uid="IronPPT.Interfaces.IShape.Id">Id</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">uint Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPPT_Interfaces_IShape_Index_" data-uid="IronPPT.Interfaces.IShape.Index*"></a>
+  <h4 id="IronPPT_Interfaces_IShape_Index" data-uid="IronPPT.Interfaces.IShape.Index">Index</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Index { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPPT_Interfaces_IShape_Name_" data-uid="IronPPT.Interfaces.IShape.Name*"></a>
+  <h4 id="IronPPT_Interfaces_IShape_Name" data-uid="IronPPT.Interfaces.IShape.Name">Name</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Name { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPPT_Interfaces_IShape_OutlineColor_" data-uid="IronPPT.Interfaces.IShape.OutlineColor*"></a>
+  <h4 id="IronPPT_Interfaces_IShape_OutlineColor" data-uid="IronPPT.Interfaces.IShape.OutlineColor">OutlineColor</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IColor OutlineColor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPPT.Interfaces.IColor.html">IColor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPPT_Interfaces_IShape_Type_" data-uid="IronPPT.Interfaces.IShape.Type*"></a>
+  <h4 id="IronPPT_Interfaces_IShape_Type" data-uid="IronPPT.Interfaces.IShape.Type">Type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Nullable&lt;ShapeType&gt; Type { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="IronPPT.Enums.ShapeType.html">ShapeType</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronPPT_Interfaces_IShape_Clone_" data-uid="IronPPT.Interfaces.IShape.Clone*"></a>
+  <h4 id="IronPPT_Interfaces_IShape_Clone" data-uid="IronPPT.Interfaces.IShape.Clone">Clone()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IContentElement Clone()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronPPT.Interfaces.IContentElement.html">IContentElement</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPPT_Interfaces_IShape_FlipHorizontal_" data-uid="IronPPT.Interfaces.IShape.FlipHorizontal*"></a>
+  <h4 id="IronPPT_Interfaces_IShape_FlipHorizontal" data-uid="IronPPT.Interfaces.IShape.FlipHorizontal">FlipHorizontal()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void FlipHorizontal()</code></pre>
+  </div>
+  
+  
+  <a id="IronPPT_Interfaces_IShape_FlipVertical_" data-uid="IronPPT.Interfaces.IShape.FlipVertical*"></a>
+  <h4 id="IronPPT_Interfaces_IShape_FlipVertical" data-uid="IronPPT.Interfaces.IShape.FlipVertical">FlipVertical()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void FlipVertical()</code></pre>
+  </div>
+  
+  
+  <a id="IronPPT_Interfaces_IShape_Resize_" data-uid="IronPPT.Interfaces.IShape.Resize*"></a>
+  <h4 id="IronPPT_Interfaces_IShape_Resize_System_Int32_System_Int32_" data-uid="IronPPT.Interfaces.IShape.Resize(System.Int32,System.Int32)">Resize(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Resize(int width, int height)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronPPT_Interfaces_IShape_Rotate_" data-uid="IronPPT.Interfaces.IShape.Rotate*"></a>
+  <h4 id="IronPPT_Interfaces_IShape_Rotate_System_Double_" data-uid="IronPPT.Interfaces.IShape.Rotate(System.Double)">Rotate(Double)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Rotate(double angle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">angle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="inheritance">
+    <h3>Inherited members</h3>
+    <div class="level">
+      <a class="xref" href="IronPPT.Interfaces.IGraphic.html#IronPPT_Interfaces_IGraphic_Height">Height</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Interfaces.IGraphic.html#IronPPT_Interfaces_IGraphic_Position">Position</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Interfaces.IGraphic.html#IronPPT_Interfaces_IGraphic_Width">Width</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Interfaces.IGraphic.html#IronPPT_Interfaces_IGraphic_Angle">Angle</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Interfaces.IContentElement.html#IronPPT_Interfaces_IContentElement_Remove">Remove()</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Interfaces.IContentElement.html#IronPPT_Interfaces_IContentElement_Replace_IronPPT_Interfaces_IContentElement_">Replace(IContentElement)</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Interfaces.IContentElement.html#IronPPT_Interfaces_IContentElement_Parent">Parent</a>
+    </div>
+    <div class="level">
+      <a class="xref" href="IronPPT.Interfaces.IContentElement.html#IronPPT_Interfaces_IContentElement_Status">Status</a>
+    </div>
+  </div>
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPPT/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with NuGet
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPPT' target='_blank'><i class='nuget-icon'></i> Install with NuGet</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

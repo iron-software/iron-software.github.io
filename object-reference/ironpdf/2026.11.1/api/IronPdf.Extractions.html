@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace IronPdf.Extractions
+   | C# PDF Library Documentation | IronPDF </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace IronPdf.Extractions
+   | C# PDF Library Documentation | IronPDF ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironpdf.com/object-reference/api/IronPdf.Extractions.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronPdf.Extractions">
+  
+  <h1 id="IronPdf_Extractions" data-uid="IronPdf.Extractions" class="text-break">Namespace IronPdf.Extractions
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="IronPdf.Extractions.CsvExportOptions.html">CsvExportOptions</a></h4>
+      <section><p>Configuration options for CSV exports</p>
+<p>Provides control over delimiters, quoting, and cell formatting specific to CSV format.</p>
+<p>------------------------------------------------</p>
+<p>
+<strong>Usage:</strong>
+</p>
+<pre><code>var options = new CsvExportOptions
+{
+CsvDelimiter = &quot;;&quot;,
+CsvQuoteStrings = true,
+CsvNewlineReplacement = &quot; &quot;,
+IncludeHeaders = true
+};</code></pre>
+<p>------------------------------------------------</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.DocumentMetadata.html">DocumentMetadata</a></h4>
+      <section><p>Document level metadata</p>
+<p>Contains information about the entire document, such as total pages and table counts.</p>
+<p>Also includes per-page metadata.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.ExportConfiguration.html">ExportConfiguration</a></h4>
+      <section><p>Configuration for batch export operations</p>
+<p>Controls how tables and text are exported from a complete extraction result.</p>
+<p>Provides options for file organization and table option selection.</p>
+<p>------------------------------------------------</p>
+<p>
+<strong>Usage:</strong>
+</p>
+<pre><code>var config = new ExportConfiguration
+{
+ExportTables = true,
+ExportText = true,
+TableOptions = new CsvExportOptions(),
+SeparateFilePerTable = true,
+FileNamePattern = &quot;table_{page}_{index}&quot;
+};
+<p>ExportManager.ExportResult(result, &quot;output&quot;, config);</code></pre><p>
+<p>------------------------------------------------</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.ExportFormat.html">ExportFormat</a></h4>
+      <section><p>Supported export formats</p>
+<p>Defines the file formats available for exporting extracted data.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.ExportManager.html">ExportManager</a></h4>
+      <section><p>Provides methods to export tables and text to various formats.</p>
+<p>Acts as a factory for format-specific exporters.</p>
+<p>The export format is automatically determined by the type of ExportOptions provided.</p>
+<p>------------------------------------------------</p>
+<p>
+<strong>Usage:</strong>
+</p>
+<pre><code>// Export a single table with default options (uses format parameter)
+ExportManager.ExportTable(table, &quot;output.csv&quot;, ExportFormat.Csv);
+<p>// Export multiple tables with custom options (format inferred from options type)
+var csvOptions = new CsvExportOptions { CsvDelimiter = &quot;;&quot; };
+ExportManager.ExportTables(tables, &quot;output.csv&quot;, csvOptions);</p>
+<p>// Export with custom HTML options
+var htmlOptions = new HtmlExportOptions { HtmlResponsive = true };
+ExportManager.ExportTable(table, &quot;output.html&quot;, htmlOptions);</p>
+<p>// Export entire extraction result
+var config = new ExportConfiguration
+{
+ExportTables = true,
+ExportText = true,
+TableOptions = new JsonExportOptions(),
+SeparateFilePerTable = true
+};
+ExportManager.ExportResult(result, &quot;output&quot;, config);</code></pre><p>
+<p>------------------------------------------------</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.ExportOptionsBase.html">ExportOptionsBase</a></h4>
+      <section><p>Base configuration options for exporting extracted data</p>
+<p>Contains common options applicable to all export formats.</p>
+<p>------------------------------------------------</p>
+<p>
+<strong>Usage:</strong>
+</p>
+<pre><code>// Use base options for generic export
+var options = new ExportOptionsBase
+{
+IncludeHeaders = true,
+SpanMode = SpanHandlingMode.Repeat
+};
+<p>// Or use format-specific options
+var csvOptions = new CsvExportOptions
+{
+CsvDelimiter = &quot;;&quot;,
+IncludeHeaders = true
+};</code></pre><p>
+<p>------------------------------------------------</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.ExtractionProgress.html">ExtractionProgress</a></h4>
+      <section><p>Information about the progress of an asynchronous extraction operation.</p>
+<p>Used to report progress to the caller during long-running extraction operations.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.HtmlExportOptions.html">HtmlExportOptions</a></h4>
+      <section><p>Configuration options for HTML exports</p>
+<p>Controls styling, responsiveness, and CSS class application for HTML table output.</p>
+<p>------------------------------------------------</p>
+<p>
+<strong>Usage:</strong>
+</p>
+<pre><code>var options = new HtmlExportOptions
+{
+HtmlIncludeStyles = true,
+HtmlResponsive = true,
+HtmlTableClass = &quot;custom-table&quot;
+};</code></pre>
+<p>------------------------------------------------</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.JsonExportOptions.html">JsonExportOptions</a></h4>
+      <section><p>Configuration options for JSON exports</p>
+<p>Currently inherits all options from ExportOptionsBase.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.PageMetadata.html">PageMetadata</a></h4>
+      <section><p>Per-page metadata</p>
+<p>Contains information about a specific page, such as page number, table count, and word count.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.PageText.html">PageText</a></h4>
+      <section><p>Text content for a single page</p>
+<p>Contains text extracted from a single page of a PDF document.</p>
+<p>Includes both the raw text and positioned lines for layout reconstruction.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.PdfExtractionOptions.html">PdfExtractionOptions</a></h4>
+      <section><p>Configuration options for PDF extraction behavior</p>
+<p>Provides control over how tables and text are extracted from PDF documents.</p>
+<p>Use this class to customize extraction parameters such as text mode, table detection strategy,</p>
+<p>and various tolerance values that affect extraction accuracy.</p>
+<p>------------------------------------------------</p>
+<p>
+<strong>Usage:</strong>
+</p>
+<pre><code>var options = new PdfExtractionOptions
+{
+TextMode = TextExtractionMode.Stream,
+TableStrategy = TableDetectionStrategy.Hybrid,
+EnableTableExtraction = true,
+EnableTextExtraction = true,
+CellMergeThreshold = 2.0,
+ColumnDetectionSensitivity = 15.0
+};
+var result = PdfExtractor.Extract(&quot;document.pdf&quot;, options);</code></pre>
+<p>------------------------------------------------</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.PdfExtractionResult.html">PdfExtractionResult</a></h4>
+      <section><p>Represents the output of a PDF extraction operation, containing all extracted</p>
+<p>tables and text content, along with document metadata.</p>
+<p>Provides convenient methods to access specific portions of the extracted content.</p>
+<p>------------------------------------------------</p>
+<p>
+<strong>Usage:</strong>
+</p>
+<pre><code>var result = PdfExtractor.Extract(&quot;document.pdf&quot;);
+<p>// Access all tables
+foreach (var table in result.Tables)
+{
+Console.WriteLine($&quot;Table on page {table.PageNumber} with {table.RowCount} rows&quot;);
+}</p>
+<p>// Get tables from a specific page
+var pageTables = result.GetTablesByPage(5);</p>
+<p>// Get text from a specific page
+var pageText = result.GetRawTextByPage(5);</p>
+<p>// Get full text including tables
+var fullText = result.FullText;</code></pre><p>
+<p>------------------------------------------------</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.PdfExtractor.html">PdfExtractor</a></h4>
+      <section><p>Provides methods to extract tables and text from PDF documents with various options.</p>
+<p>Supports both synchronous and asynchronous extraction operations.</p>
+<p>------------------------------------------------</p>
+<p>
+<strong>Usage:</strong>
+</p>
+<pre><code>// Extract entire document
+var result = PdfExtractor.Extract(&quot;document.pdf&quot;);
+<p>// Extract with custom options
+var options = new PdfExtractionOptions
+{
+TableStrategy = TableDetectionStrategy.Hybrid,
+EnableTextExtraction = false
+};
+var tablesOnly = PdfExtractor.Extract(&quot;document.pdf&quot;, options);</p>
+<p>// Extract specific page
+var pageResult = PdfExtractor.ExtractPage(&quot;document.pdf&quot;, 5);</p>
+<p>// Extract specific table
+var table = PdfExtractor.ExtractTable(&quot;document.pdf&quot;, 5, 0);</code></pre><p>
+<p>------------------------------------------------</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.SpanHandlingMode.html">SpanHandlingMode</a></h4>
+      <section><p>Enumeration of how to handle cells with rowspan/colspan in exports</p>
+<p>Controls how merged cells are represented in different export formats.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.TableCell.html">TableCell</a></h4>
+      <section><p>Represents a table cell with span support</p>
+<p>Contains the content and metadata for a cell in a table.</p>
+<p>Supports merged cells (spans) across rows and columns.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.TableDetectionStrategy.html">TableDetectionStrategy</a></h4>
+      <section><p>Table detection strategies</p>
+<p>Determines which algorithm(s) to use for detecting tables in PDF documents.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.TableObject.html">TableObject</a></h4>
+      <section><p>Represents an extracted table with structural information</p>
+<p>Contains the data and metadata for a table extracted from a PDF document.</p>
+<p>Provides convenient methods to access table data and structure.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.TableRow.html">TableRow</a></h4>
+      <section><p>Represents a table row</p>
+<p>Contains a collection of cells that make up a row in a table.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.TextContent.html">TextContent</a></h4>
+      <section><p>Extracted text content outside of tables</p>
+<p>Provides methods to access text content for the entire document or specific pages.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.TextExtractionMode.html">TextExtractionMode</a></h4>
+      <section><p>Text extraction modes</p>
+<p>Determines how text is extracted from PDF documents.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.TxtExportOptions.html">TxtExportOptions</a></h4>
+      <section><p>Configuration options for plain text exports</p>
+<p>Currently inherits all options from ExportOptionsBase.</p>
+<p>
+The TXT exporter does not support different span-handling strategies.
+Regardless of the value provided in <a class="xref" href="IronPdf.Extractions.ExportOptionsBase.html#IronPdf_Extractions_ExportOptionsBase_SpanMode">SpanMode</a>,
+the TXT export always behaves as though <strong>SpanHandlingMode.Merge</strong> is used.
+</p>
+<p>Other values (Repeat, Empty, Annotate) have no effect on TXT output.</p>
+</section>
+      <h4><a class="xref" href="IronPdf.Extractions.XmlExportOptions.html">XmlExportOptions</a></h4>
+      <section><p>Configuration options for XML exports</p>
+<p>Controls XML schema inclusion and formatting options.</p>
+<p>------------------------------------------------</p>
+<p>
+<strong>Usage:</strong>
+</p>
+<pre><code>var options = new XmlExportOptions
+{
+XmlIncludeSchema = true,
+XmlPrettyPrint = true
+};</code></pre>
+<p>------------------------------------------------</p>
+</section>
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronPdf/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronPdf' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

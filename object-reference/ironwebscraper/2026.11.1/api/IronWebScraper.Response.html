@@ -1,0 +1,1023 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       Response Class - IronWebScraper C# API
+      v2 (human)     title:       Response: Read Scraped Pages in C#
+      v1 (algorithm) description: Read a fetched page in C# with the IronWebScraper Response class: Html, TextContent, Css and XPath queries, status, and absolute-URL helpers.
+      v2 (human)     description: Extract data from scraped pages in C# with the IronWebScraper Response class: run CSS and XPath selectors, read status, and resolve links.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>Response Class | IronWebScraper C# API</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Response Class | IronWebScraper C# API">
+    <meta name="description" content="Reference for the IronWebScraper Response class in C#: query a page with Css and XPath, read content and status, and resolve relative URLs.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/webscraper/csharp/object-reference/api/IronWebScraper.Response.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="class">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Response Class | IronWebScraper C# API",
+    "name": "Response class | IronWebScraper C# API",
+    "url": "https://ironsoftware.com/csharp/webscraper/object-reference/api/IronWebScraper.Response.html",
+    "abstract": "Reading a fetched page in C# runs through the IronWebScraper Response class, which WebScraper passes to Parse for each download. Read Html, TextContent, or the parsed Document, and run Css, QuerySelectorAll, GetElementById, or XPath to pull matching HtmlNode results. Check StatusCode and WasSuccessful for the outcome, follow FinalUrl for redirects, and use ToAbsoluteUrl to resolve links for the next Request.",
+    "description": "Reference for the IronWebScraper Response class in C#: query a page with Css and XPath, read content and status, and resolve relative URLs.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronWebScraper",
+      "url": "https://ironsoftware.com/csharp/webscraper/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "public override void Parse(Response response)\n{\n    if (!response.WasSuccessful) return;\n    foreach (HtmlNode link in response.Css(\"a.product\"))\n        Request(response.ToAbsoluteUrl(link.GetAttribute(\"href\")), ParseProduct);\n}"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Response live in the IronWebScraper API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Response is a class in the IronWebScraper namespace, shipped in IronWebScraper.dll. The WebScraper base creates one per fetched URL and passes it to your Parse method."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you select elements from a scraped page in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Response.Css or QuerySelectorAll with a CSS selector to get an HtmlNode array, QuerySelector or GetElementById for a single node, or XPath for an XPath expression. Read InnerText or GetAttribute on the returned nodes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you turn relative links on a page into absolute URLs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call Response.ToAbsoluteUrl with a relative URL, or the overload that takes a collection, to resolve links against the page's FinalUrl. Pass the result to Request to queue the next fetch."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronWebScraper.Response">
+  
+  
+  <h1 id="IronWebScraper_Response" data-uid="IronWebScraper.Response" class="text-break">Class Response
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a http response made by IronWebScraper</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Response</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronWebScraper.html">IronWebScraper</a></h6>
+  <h6><strong>Assembly</strong>: IronWebScraper.dll</h6>
+  <h5 id="IronWebScraper_Response_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Response : Object</code></pre>
+  </div>
+    <!-- archetype-N:start Response treatment=full sub_variant=class -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="class">
+<p><code>Response</code> carries the result of a fetched URL, including its content, status, and parsed DOM, into a scraper's <code>Parse</code> method. The <code>WebScraper</code> base hands one <code>Response</code> to <code>Parse</code> for every page it downloads, so this is the object a developer reads from to extract data and decide which links to follow next.</p>
+<p>Content arrives in several forms. <code>Html</code> and <code>TextContent</code> give the raw markup and stripped text, <code>BinaryContent</code> gives the bytes for non-HTML resources, and <code>Document</code> exposes the parsed root as an <code>HtmlNode</code>. For targeted extraction, query helpers run selectors directly against the response: <code>Css</code> and <code>QuerySelectorAll</code> return matching <code>HtmlNode</code> arrays, <code>GetElementById</code> and <code>QuerySelector</code> return a single node, and <code>XPath</code> runs an XPath expression. <code>CssExists</code> tests for a match without returning nodes.</p>
+<p>When the page structure is unknown, <code>Document</code> gives the parsed root node for manual walking, and <code>CssExists</code> tests for a selector match before extraction is attempted. Request context travels with the response. <code>StatusCode</code> and <code>WasSuccessful</code> report the outcome, <code>FinalUrl</code> reflects redirects, and <code>Request</code> links back to the originating <code>Request</code>. The <code>MetaData</code> carried from that request rides along on the response, so context queued with the fetch is available while parsing. The <code>ToAbsoluteUrl</code> helpers turn the relative links found on a page into absolute URLs ready to pass to a follow-up <code>Request</code>. Read the values inside <code>Parse</code>; the response is a snapshot of one fetch.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">public override void Parse(Response response)
+{
+    if (!response.WasSuccessful) return;
+    foreach (HtmlNode link in response.Css(&quot;a.product&quot;))
+        Request(response.ToAbsoluteUrl(link.GetAttribute(&quot;href&quot;)), ParseProduct);
+}</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/webscraper/tutorials/webscraping-in-c-sharp/">web scraping tutorial</a> reads responses end to end, and the <a href="https://ironsoftware.com/csharp/webscraper/how-to/scraping-from-a-shopping-website/">shopping-site how-to</a> shows selector queries against real pages.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="IronWebScraper_Response__ctor_" data-uid="IronWebScraper.Response.#ctor*"></a>
+  <h4 id="IronWebScraper_Response__ctor" data-uid="IronWebScraper.Response.#ctor">Response()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Response()</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="IronWebScraper_Response_CharSet" data-uid="IronWebScraper.Response.CharSet">CharSet</h4>
+  <div class="markdown level1 summary"><p>Name of the charset used to encode the web resource.
+When reading TextConent, the result has already been decoded
+to C# default encoding (utf-8) on your behalf.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string CharSet</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronWebScraper_Response_CretaedFromWebCache" data-uid="IronWebScraper.Response.CretaedFromWebCache">CretaedFromWebCache</h4>
+  <div class="markdown level1 summary"><p>True if the Response was created from a cached version of the Url
+rather than from live data. See WebScraper.EnableWebCache() method,
+which is can be called from within the WebScraper.Init() method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CretaedFromWebCache</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronWebScraper_Response_FinalUrl" data-uid="IronWebScraper.Response.FinalUrl">FinalUrl</h4>
+  <div class="markdown level1 summary"><p>The Url from which the Response was returned. This may differ
+from RequestlUrl if these was an http redirect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string FinalUrl</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronWebScraper_Response_MimeType" data-uid="IronWebScraper.Response.MimeType">MimeType</h4>
+  <div class="markdown level1 summary"><p>The MIME type of the Response content.  E.g:  &quot;text/html&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string MimeType</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronWebScraper_Response_Request" data-uid="IronWebScraper.Response.Request">Request</h4>
+  <div class="markdown level1 summary"><p>The Request from which the Response was created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Request Request</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWebScraper.Request.html">Request</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="IronWebScraper_Response_StatusCode" data-uid="IronWebScraper.Response.StatusCode">StatusCode</h4>
+  <div class="markdown level1 summary"><p>The http status code given by the url which as 200 or 404. 0 is
+returned in case the server is uncontactable.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int StatusCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronWebScraper_Response_BinaryContent_" data-uid="IronWebScraper.Response.BinaryContent*"></a>
+  <h4 id="IronWebScraper_Response_BinaryContent" data-uid="IronWebScraper.Response.BinaryContent">BinaryContent</h4>
+  <div class="markdown level1 summary"><p>The content downloaded from the Url as raw binary data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] BinaryContent { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_Document_" data-uid="IronWebScraper.Response.Document*"></a>
+  <h4 id="IronWebScraper_Response_Document" data-uid="IronWebScraper.Response.Document">Document</h4>
+  <div class="markdown level1 summary"><p>Returns an HtmlNode for the entire Response Document. (HTML/XML)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HtmlNode Document { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWebScraper.HtmlNode.html">HtmlNode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_Html_" data-uid="IronWebScraper.Response.Html*"></a>
+  <h4 id="IronWebScraper_Response_Html" data-uid="IronWebScraper.Response.Html">Html</h4>
+  <div class="markdown level1 summary"><p>Synonym of content which checks for an Html content</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Html { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The HTML.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p>Document does not have an HTML
+mime type or contain a &lt;body&gt; or  &lt;html&gt; tag</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_MetaData_" data-uid="IronWebScraper.Response.MetaData*"></a>
+  <h4 id="IronWebScraper_Response_MetaData" data-uid="IronWebScraper.Response.MetaData">MetaData</h4>
+  <div class="markdown level1 summary"><p>Returns additional meta-data which was attached to the Request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MetaData MetaData { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWebScraper.MetaData.html">MetaData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_RequestlUrl_" data-uid="IronWebScraper.Response.RequestlUrl*"></a>
+  <h4 id="IronWebScraper_Response_RequestlUrl" data-uid="IronWebScraper.Response.RequestlUrl">RequestlUrl</h4>
+  <div class="markdown level1 summary"><p>The Url from which the Response was requested. This may differ
+from FinalUrl if these was an http redirect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RequestlUrl { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_TextContent_" data-uid="IronWebScraper.Response.TextContent*"></a>
+  <h4 id="IronWebScraper_Response_TextContent" data-uid="IronWebScraper.Response.TextContent">TextContent</h4>
+  <div class="markdown level1 summary"><p>The content downloaded from the Url encoded as a String.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TextContent { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_WasSuccessful_" data-uid="IronWebScraper.Response.WasSuccessful*"></a>
+  <h4 id="IronWebScraper_Response_WasSuccessful" data-uid="IronWebScraper.Response.WasSuccessful">WasSuccessful</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether this HTTP request yielded a
+successful response code.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool WasSuccessful { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if the response was successful; otherwise, <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="IronWebScraper_Response_Css_" data-uid="IronWebScraper.Response.Css*"></a>
+  <h4 id="IronWebScraper_Response_Css_System_String_" data-uid="IronWebScraper.Response.Css(System.String)">Css(String)</h4>
+  <div class="markdown level1 summary"><p>Uses CSS selectors to find all matching nodes within the Response
+Document. This works in the same way as  $('.ClassName') in jQuery
+or querySelectorAll() in JavaScript.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HtmlNode[] Css(string selector)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">selector</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWebScraper.HtmlNode.html">HtmlNode</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_CssExists_" data-uid="IronWebScraper.Response.CssExists*"></a>
+  <h4 id="IronWebScraper_Response_CssExists_System_String_" data-uid="IronWebScraper.Response.CssExists(System.String)">CssExists(String)</h4>
+  <div class="markdown level1 summary"><p>Uses CSS selectors to find if there are any matching nodes within
+the Response Document. This works in the same way as<br>
+$('.ClassName').length &gt; 0 in jQuery or
+querySelectorAll().length &gt; 0  in JavaScript.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CssExists(string selector)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">selector</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_GetElementById_" data-uid="IronWebScraper.Response.GetElementById*"></a>
+  <h4 id="IronWebScraper_Response_GetElementById_System_String_" data-uid="IronWebScraper.Response.GetElementById(System.String)">GetElementById(String)</h4>
+  <div class="markdown level1 summary"><p>Synonym of JavaScript's getElementById function. Searches
+inside the response as an HTML or XML Document by ID attribute.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HtmlNode GetElementById(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWebScraper.HtmlNode.html">HtmlNode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_GetElementsByTagName_" data-uid="IronWebScraper.Response.GetElementsByTagName*"></a>
+  <h4 id="IronWebScraper_Response_GetElementsByTagName_System_String_" data-uid="IronWebScraper.Response.GetElementsByTagName(System.String)">GetElementsByTagName(String)</h4>
+  <div class="markdown level1 summary"><p>Synonym of JavaScript's getElementById function. Searches
+inside the response as an HTML or XML Document by tag-name
+such as &quot;a&quot; or &quot;img&quot;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HtmlNode[] GetElementsByTagName(string tagName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tagName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWebScraper.HtmlNode.html">HtmlNode</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_QuerySelector_" data-uid="IronWebScraper.Response.QuerySelector*"></a>
+  <h4 id="IronWebScraper_Response_QuerySelector_System_String_" data-uid="IronWebScraper.Response.QuerySelector(System.String)">QuerySelector(String)</h4>
+  <div class="markdown level1 summary"><p>Synonym of JavaScript's querySelector function. Searches inside
+the Response document as an HTML or XML Document using CSS selectors.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HtmlNode QuerySelector(string selector)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">selector</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWebScraper.HtmlNode.html">HtmlNode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_QuerySelectorAll_" data-uid="IronWebScraper.Response.QuerySelectorAll*"></a>
+  <h4 id="IronWebScraper_Response_QuerySelectorAll_System_String_" data-uid="IronWebScraper.Response.QuerySelectorAll(System.String)">QuerySelectorAll(String)</h4>
+  <div class="markdown level1 summary"><p>Synonym of JavaScript's querySelectorAll function. Searches
+inside the response document as an HTML or XML Document using
+CSS selectors.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HtmlNode[] QuerySelectorAll(string selector)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">selector</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWebScraper.HtmlNode.html">HtmlNode</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_ToAbsoluteUrl_" data-uid="IronWebScraper.Response.ToAbsoluteUrl*"></a>
+  <h4 id="IronWebScraper_Response_ToAbsoluteUrl_System_Collections_Generic_IEnumerable_System_String__" data-uid="IronWebScraper.Response.ToAbsoluteUrl(System.Collections.Generic.IEnumerable{System.String})">ToAbsoluteUrl(IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Makes any relative url strings absolute relative to this
+Response Document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; ToAbsoluteUrl(IEnumerable&lt;string&gt; urls)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">urls</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_ToAbsoluteUrl_" data-uid="IronWebScraper.Response.ToAbsoluteUrl*"></a>
+  <h4 id="IronWebScraper_Response_ToAbsoluteUrl_System_String_" data-uid="IronWebScraper.Response.ToAbsoluteUrl(System.String)">ToAbsoluteUrl(String)</h4>
+  <div class="markdown level1 summary"><p>Makes a relative url strings absolute relative to this
+Response Document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToAbsoluteUrl(string url)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">url</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronWebScraper_Response_XPath_" data-uid="IronWebScraper.Response.XPath*"></a>
+  <h4 id="IronWebScraper_Response_XPath_System_String_" data-uid="IronWebScraper.Response.XPath(System.String)">XPath(String)</h4>
+  <div class="markdown level1 summary"><p>Searches inside the response as an HTML/XML Document using an
+XPath expression.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HtmlNode[] XPath(string expression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">expression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronWebScraper.HtmlNode.html">HtmlNode</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronWebScraper/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronWebScraper' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>

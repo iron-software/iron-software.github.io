@@ -1,0 +1,603 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang='en'>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- archetype-N alt meta variants -->
+    <!--
+      v1 (algorithm) title:       IMetadata Interface - IronXL C# API Reference
+      v2 (human)     title:       IMetadata: Edit Excel Author & Title in C#
+      v1 (algorithm) description: IMetadata is the IronXL contract for Excel document properties in C#: set Author, Title, Subject, Keywords, and the Created and Modified dates.
+      v2 (human)     description: Read and write spreadsheet document properties in C# through IronXL's IMetadata: author, title, subject, keywords, and creation and modified dates.
+    -->
+    <!-- /archetype-N alt meta variants -->
+    <title>IMetadata Interface | IronXL C# API Reference</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IMetadata Interface | IronXL C# API Reference">
+    <meta name="description" content="Reference for the IronXL IMetadata interface in C#: the contract WorkBook.Metadata returns for editing an Excel file's author, title, and dates.">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://ironsoftware.com/front/fonts/fontawesome/subset/css/all.min.css">
+        <link rel="canonical" href="https://ironsoftware.com/excel/csharp/object-reference/api/IronXL.Metadata.IMetadata.html">
+    <script src="https://ironpdf.com/front/js/jquery.min.js"></script>
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+      <script type="application/ld+json" data-archetype-n="1" data-treatment="full" data-sub-variant="interface">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "IMetadata Interface | IronXL C# API Reference",
+    "name": "IMetadata interface | IronXL C# API",
+    "url": "https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Metadata.IMetadata.html",
+    "abstract": "IMetadata is the IronXL contract for a workbook's document properties in C#. WorkBook.Metadata returns it, and the writable Author, Title, Subject, Keywords, Comments, Category, and the nullable Created, Modified, and LastPrinted fields stamp a spreadsheet. Company, Manager, Template, and ApplicationName are read-only, and CustomProperties returns an ICustomProperties for fields outside the fixed set.",
+    "description": "Reference for the IronXL IMetadata interface in C#: the contract WorkBook.Metadata returns for editing an Excel file's author, title, and dates.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "IronXL",
+      "url": "https://ironsoftware.com/csharp/excel/"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareSourceCode",
+        "programmingLanguage": "C#",
+        "codeSampleType": "code snippet",
+        "text": "IMetadata metadata = workbook.Metadata;\nmetadata.Author = \"Iron Software\";\nmetadata.Title = \"Quarterly Report\";"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does IMetadata live in the IronXL API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IMetadata is an interface in the IronXL.Metadata namespace, shipped in IronXL.dll. The WorkBook.Metadata property returns the IMetadata for an open workbook."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What returns an IMetadata in IronXL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WorkBook.Metadata returns the IMetadata for the open workbook. There is no public constructor; the metadata always belongs to a specific workbook, so it is read from and written to in place and saved with the file."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you set the author and title of an Excel file in C#?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Get WorkBook.Metadata, then assign the Author and Title properties before saving the workbook. Subject, Keywords, Comments, and the nullable Created and Modified dates are writable too, while Company, Manager, and Template are read-only."
+        }
+      }
+    ]
+  }
+]
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../api/">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search the API..." autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IronXL.Metadata.IMetadata">
+  
+  
+  <h1 id="IronXL_Metadata_IMetadata" data-uid="IronXL.Metadata.IMetadata" class="text-break">Interface IMetadata
+  </h1>
+  <div class="markdown level0 summary"><p>Interface that represents meta-data for the Excel file such as &quot;Author&quot;, &quot;Title&quot;...</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IronXL.Metadata.html">IronXL.Metadata</a></h6>
+  <h6><strong>Assembly</strong>: IronXL.dll</h6>
+  <h5 id="IronXL_Metadata_IMetadata_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IMetadata</code></pre>
+  </div>
+    <!-- archetype-N:start IMetadata treatment=full sub_variant=interface -->
+  <div class="archetype-n-overview" data-treatment="full" data-sub-variant="interface">
+<p>Document-level details for a spreadsheet, including author, title, subject, keywords, and the dates a file was created or modified, live on <code>IMetadata</code>. A developer reads and writes these properties to stamp a workbook with authorship before it ships, to populate the descriptive fields a document-management system indexes, or to audit who and when a file reports. It is the contract that surfaces the same information Excel shows under File then Info, made available to code rather than the desktop dialog. Where <code>ICustomProperties</code> holds arbitrary application-defined key/value pairs, <code>IMetadata</code> covers the fixed, well-known fields every Office document carries.</p>
+<p>A developer obtains an <code>IMetadata</code> from the workbook itself: <code>WorkBook.Metadata</code> returns the instance for the open file. There is no constructor to call, because the metadata always belongs to a specific workbook, and editing it in place is how changes are recorded. The values written through this contract are saved when the workbook is saved, so a typical flow loads or creates a <code>WorkBook</code>, sets the metadata fields, and writes the file out.</p>
+<p>The writable fields cover the descriptive surface: <code>Author</code>, <code>Title</code>, <code>Subject</code>, <code>Keywords</code>, and <code>Comments</code> are the everyday ones, while <code>Category</code> and the nullable <code>Created</code>, <code>Modified</code>, and <code>LastPrinted</code> dates record classification and history. A few fields are read-only and reflect the originating application rather than developer input: <code>Company</code>, <code>Manager</code>, <code>Template</code>, and <code>ApplicationName</code> expose values without a setter. The <code>CustomProperties</code> property returns an <code>ICustomProperties</code> for any field outside this fixed set. Setting <code>Author</code> and <code>Title</code> before saving is the most common task; the nullable date fields accept a <code>DateTime</code> or stay unset.</p>
+<div class="codewrapper"><pre><code class="lang-csharp hljs">IMetadata metadata = workbook.Metadata;
+metadata.Author = &quot;Iron Software&quot;;
+metadata.Title = &quot;Quarterly Report&quot;;</code></pre></div>
+<p>The <a href="https://ironsoftware.com/csharp/excel/examples/edit-excel-metadata-csharp/">edit Excel metadata example</a> sets the descriptive fields, the <a href="https://ironsoftware.com/csharp/excel/how-to/edit-workbook-metadata/">edit workbook metadata how-to</a> walks through reading and updating them, and the <a href="https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Metadata.ICustomProperties.html">ICustomProperties reference</a> covers application-defined fields beyond the fixed set.</p>
+  </div>
+  <!-- archetype-N:end -->
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_ApplicationName_" data-uid="IronXL.Metadata.IMetadata.ApplicationName*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_ApplicationName" data-uid="IronXL.Metadata.IMetadata.ApplicationName">ApplicationName</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the application with which the file was created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string ApplicationName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_Author_" data-uid="IronXL.Metadata.IMetadata.Author*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_Author" data-uid="IronXL.Metadata.IMetadata.Author">Author</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the author of the file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Author { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_Category_" data-uid="IronXL.Metadata.IMetadata.Category*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_Category" data-uid="IronXL.Metadata.IMetadata.Category">Category</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the category of the file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Category { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_Comments_" data-uid="IronXL.Metadata.IMetadata.Comments*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_Comments" data-uid="IronXL.Metadata.IMetadata.Comments">Comments</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the comments field value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Comments { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_Company_" data-uid="IronXL.Metadata.IMetadata.Company*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_Company" data-uid="IronXL.Metadata.IMetadata.Company">Company</h4>
+  <div class="markdown level1 summary"><p>Gets the company field value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Company { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_Created_" data-uid="IronXL.Metadata.IMetadata.Created*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_Created" data-uid="IronXL.Metadata.IMetadata.Created">Created</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the creation time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Nullable&lt;DateTime&gt; Created { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_CustomProperties_" data-uid="IronXL.Metadata.IMetadata.CustomProperties*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_CustomProperties" data-uid="IronXL.Metadata.IMetadata.CustomProperties">CustomProperties</h4>
+  <div class="markdown level1 summary"><p>Gets the custom properties of the workbook.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ICustomProperties CustomProperties { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IronXL.Metadata.ICustomProperties.html">ICustomProperties</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_Keywords_" data-uid="IronXL.Metadata.IMetadata.Keywords*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_Keywords" data-uid="IronXL.Metadata.IMetadata.Keywords">Keywords</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the keywords field value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Keywords { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_LastPrinted_" data-uid="IronXL.Metadata.IMetadata.LastPrinted*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_LastPrinted" data-uid="IronXL.Metadata.IMetadata.LastPrinted">LastPrinted</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the last printed time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Nullable&lt;DateTime&gt; LastPrinted { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_Manager_" data-uid="IronXL.Metadata.IMetadata.Manager*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_Manager" data-uid="IronXL.Metadata.IMetadata.Manager">Manager</h4>
+  <div class="markdown level1 summary"><p>Gets the manager field value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Manager { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_Modified_" data-uid="IronXL.Metadata.IMetadata.Modified*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_Modified" data-uid="IronXL.Metadata.IMetadata.Modified">Modified</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the last modification time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Nullable&lt;DateTime&gt; Modified { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_Subject_" data-uid="IronXL.Metadata.IMetadata.Subject*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_Subject" data-uid="IronXL.Metadata.IMetadata.Subject">Subject</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the subject of the file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Subject { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_Template_" data-uid="IronXL.Metadata.IMetadata.Template*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_Template" data-uid="IronXL.Metadata.IMetadata.Template">Template</h4>
+  <div class="markdown level1 summary"><p>Gets the template field value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Template { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="IronXL_Metadata_IMetadata_Title_" data-uid="IronXL.Metadata.IMetadata.Title*"></a>
+  <h4 id="IronXL_Metadata_IMetadata_Title" data-uid="IronXL.Metadata.IMetadata.Title">Title</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the title of the file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Title { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</article>
+          </div>
+           
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>Downloads</h5>
+                <ul class="api-reference-right-sidebar">
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--download-icon">
+                    <a href="https://www.nuget.org/packages/IronXL.Excel/" target="_blank" class="api-reference-right-sidebar__link">
+                      Download with Nuget
+                    </a>
+                  </li>
+                  <li class="api-reference-right-sidebar__list-item api-reference-right-sidebar__list-item--key-icon ">
+                    <a href="#trial-license" target="_blank" class="api-reference-right-sidebar__link">Start for Free</a>
+                  </li>
+                </ul>
+                <h5>In This Article</h5>
+                <div></div>
+                </nav>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div style='text-align:center'><a class='nuget-cta' href='https://www.nuget.org/packages/IronXL.Excel' target='_blank'><i class='nuget-icon'></i> Install with Nuget</a></div>
+            
+          </div>
+        </div>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/iron.js"></script>
+  </body>
+</html>
