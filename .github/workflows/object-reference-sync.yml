@@ -4,8 +4,9 @@ name: Sync API docs to iron-websites
 # repo and open ONE pull request there, into `develop`. Nothing merges by itself.
 #
 # What runs (both scripts live in iron-websites, not here):
-#   1. `manage:products:sync -- --apply` sets each product's site version to the newest release
-#      on its package registry.
+#   1. `manage:products:sync -- --apply --sync-changelog` sets each product's site version to the
+#      newest release on its package registry, and adds that release to the product's English
+#      changelog page if the page does not list it yet.
 #   2. `manage:docs:sync -- --match-site --no-generate` copies the API docs for that version from
 #      THIS commit into the site and splices in the site's header.
 #
@@ -110,11 +111,16 @@ jobs:
 
       # A registry that does not answer makes this step fail, but the docs sync still runs; the
       # run turns red in the last step.
-      - name: Update product versions from the package registries
+      #
+      # Keep `--sync-changelog`: without it the site shows the new version while the changelog
+      # page still ends at the previous release. Release notes come from NuGet; products on
+      # other registries get a "Release notes pending" line instead. The PR body lists those
+      # pages, so the notes can be added in a separate PR (pushing to this PR's branch is lost).
+      - name: Update product versions and changelogs from the package registries
         id: products
         continue-on-error: true
         working-directory: iron-websites
-        run: npm run manage:products:sync -- --apply
+        run: npm run manage:products:sync -- --apply --sync-changelog
 
       # `--no-generate`: this runner has no DocFX toolchain. A product whose site version has no
       # docs here is listed under "⚠ no source version" and its tree is left as it was. Those with
@@ -154,6 +160,18 @@ jobs:
               git restore --staged -- "$f"
             fi
           done
+
+          # Changelog pages this sync added an entry to, and those whose new entry has no release
+          # notes yet (the script writes "Release notes pending" when the registry has none).
+          git diff --cached --name-only -- ':(glob)src/content/markdown/products/en/**/changelog.md' \
+            > "$RUNNER_TEMP/changelogs.txt"
+          : > "$RUNNER_TEMP/changelogs-pending.txt"
+          while IFS= read -r f; do
+            if git diff --cached -U0 -- "$f" | grep -q '^+.*Release notes pending'; then
+              echo "$f" >> "$RUNNER_TEMP/changelogs-pending.txt"
+            fi
+          done < "$RUNNER_TEMP/changelogs.txt"
+
           if git diff --cached --quiet; then
             echo "No change to the website. Nothing pushed." | tee -a "$GITHUB_STEP_SUMMARY"
             # An open sync PR now holds changes `develop` already has, or no longer wants.
@@ -180,14 +198,19 @@ jobs:
 
           {
             printf '%s\n\n' "***New API docs from iron-software.github.io, plus the product versions to match.***"
-            printf '%s\n\n' "This PR copies the API reference pages for each new version from ${SOURCE_URL} into the site and updates each product's version to its newest release. Pages rebuilt under a version the site already has are not copied. Opened by a workflow; review and merge by hand."
+            printf '%s\n\n' "This PR copies the API reference pages for each new version from ${SOURCE_URL} into the site, updates each product's version to its newest release, and adds that release to the product's English changelog page. Pages rebuilt under a version the site already has are not copied. Opened by a workflow; review and merge by hand."
             if [ -s "$RUNNER_TEMP/missing-docs.txt" ]; then
-              printf '%s\n\n' "**Warning: this PR moves these products to a version with no API docs yet.** Their API reference stays on the old version until the docs reach iron-software.github.io:"
+              printf '%s\n\n' "**Warning: this PR moves these products to a version with no API docs yet.** Their API reference stays on the old version until the docs reach iron-software.github.io, and the API reference link in their new changelog entry returns 404 until then:"
               sed 's/^  //' "$RUNNER_TEMP/missing-docs.txt"
               printf '\n'
             fi
+            if [ -s "$RUNNER_TEMP/changelogs-pending.txt" ]; then
+              printf '%s\n\n' "**These changelog entries say \"Release notes pending\".** Their registry publishes no release notes. Copy the notes from the release post in #product-engineering-releases, in a separate PR after this one merges:"
+              sed 's/^/- /' "$RUNNER_TEMP/changelogs-pending.txt"
+              printf '\n'
+            fi
             printf '%s\n\n' "Do not push fixes to \`${BRANCH}\`: the next run rebuilds it from \`${BASE}\` and force-pushes, which discards them. Fix things in a separate PR."
-            printf '%s\n' "Check: open one changed \`object-reference\` page on staging and the product page whose version changed."
+            printf '%s\n' "Check: open one changed \`object-reference\` page on staging, the product page whose version changed, and its changelog page."
           } > pr-body.md
 
           if [ -n "$open_pr" ]; then
